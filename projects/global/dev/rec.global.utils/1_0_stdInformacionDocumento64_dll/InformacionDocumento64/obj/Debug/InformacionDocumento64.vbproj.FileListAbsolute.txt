@@ -1,0 +1,16 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.pdb
+C:\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll
+C:\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.pdb
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.AssemblyReference.cache
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.Resources.resources
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.GenerateResource.cache
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\InformacionDocumento64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll
+C:\SAX\projects\global\dev\rec.global.utils\1_0_stdInformacionDocumento64_dll\InformacionDocumento64\obj\Debug\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.pdb

@@ -1,0 +1,16 @@
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.GenerateResource.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.CoreCompileInputs.cache
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.pdb
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.AssemblyReference.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.GenerateResource.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\ControladorInstitucionBancaria64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.dll
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\obj\Debug\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.pdb
+C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.dll
+C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.pdb

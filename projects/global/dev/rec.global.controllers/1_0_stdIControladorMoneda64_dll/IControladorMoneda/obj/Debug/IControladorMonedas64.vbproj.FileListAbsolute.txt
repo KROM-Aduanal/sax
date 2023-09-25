@@ -1,0 +1,16 @@
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.GenerateResource.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.CoreCompileInputs.cache
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.pdb
+C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.dll
+C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.pdb
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.AssemblyReference.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.GenerateResource.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\IControladorMonedas64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.dll
+C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdIControladorMoneda64_dll\IControladorMoneda\obj\Debug\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.pdb
