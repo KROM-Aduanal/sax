@@ -463,7 +463,37 @@
                     "name": "InstitucionBancaria"
                 }
             ]
-        }      
+        },
+        {
+            "_id": 17,
+            "info": "Colección Global de Empresas Internacionales",
+            "name": "EmpresasInternacionales",
+            "level": 3,
+            "rolnamelinked": "bigdataglobals",
+            "collection": "Glo007EmpresasInternacionales",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección Global de EmpresasInternacionales",
+                    "name": "EmpresasInternacionales"
+                }
+            ]
+        },
+        {
+            "_id": 18,
+            "info": "Colección Global de Empresas Nacionales",
+            "name": "EmpresasNacionales",
+            "level": 3,
+            "rolnamelinked": "bigdataglobals",
+            "collection": "Glo007EmpresasNacionales",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección Global de EmpresasNacionales",
+                    "name": "EmpresasNacionales"
+                }
+            ]
+        }       
     ],
     "endpoints": [
         {
