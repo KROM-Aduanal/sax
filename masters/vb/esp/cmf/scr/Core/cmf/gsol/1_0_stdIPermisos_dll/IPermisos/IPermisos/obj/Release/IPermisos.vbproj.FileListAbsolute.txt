@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Aplicacion\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\IPermisos.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\IPermisos.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Gsol.IPermisos.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IPermisos.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IPermisos.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\IPermisos.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\IPermisos.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\IPermisos.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Gsol.IPermisos.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Release\Gsol.IPermisos.1.0.0.0.pdb

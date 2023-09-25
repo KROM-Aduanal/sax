@@ -1,0 +1,8 @@
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\ConstructorTIGIE64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\ConstructorTIGIE64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\ConstructorTIGIE64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorTIGIE64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorTIGIE64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\Syn.Documento.ConstructorTIGIE64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE_dll\ConstructorTIGIE64\obj\Debug\Syn.Documento.ConstructorTIGIE64.0.0.0.0.pdb

@@ -1,0 +1,189 @@
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.dll
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.pdb
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.xml
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.Resources.resources
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.UcCatalogo.resources
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.xml
+C:\GrupoSolium\GS\Componentes\Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Wcl000Catalogo.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Organismo64.1.0.0.1.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\ICatalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\SingletonSQLServer64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IConexiones.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Conexiones64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Permiso32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Entidad32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Guifreaks.Navisuite.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\System.Windows.Forms.Ribbon35.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Guifreaks.Common.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\GsDialogo64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\GsDialogo64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Organismo64.1.0.0.1.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Organismo64.1.0.0.1.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\ICatalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\ICatalogo.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\SingletonSQLServer64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\SingletonSQLServer64.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ICredenciales.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IPermisos.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IBitacoras.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\IConexiones.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Conexiones64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Conexiones64.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Componente32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Componente32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Funcion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Funcion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Accion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Accion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Permiso32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Permiso32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Entidad32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Entidad32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojResolveAssemblyReference.cache
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase Adrian\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svn_fake\SVN QA\Componentes\Wcl000Catalogo.dll
+C:\svn_fake\SVN QA\Componentes\Wcl000Catalogo.pdb
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojResolveAssemblyReference.cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svn\SVN QA\Namespaces\Wcl000Catalogo.dll
+C:\svn\SVN QA\Componentes\Wcl000Catalogo.dll
+C:\svn\SVN QA\Componentes\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\Wcl000Catalogo.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\Wcl000Catalogo.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\Wcl000Catalogo.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Components\Wcl000Catalogo.dll
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Components\Wcl000Catalogo.pdb
+C:\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Debug\Wcl000Catalogo.pdb

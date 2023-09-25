@@ -1,0 +1,58 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IConstructorVisual.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Componente32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Funcion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.Accion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEntidad.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEntidad.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IAtributo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IAtributo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEvento.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Release\Gsol.IEvento.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\gsol.monitoreo.Resources.resources
+C:\svn\SVN QA\Namespaces\IBitacoras.dll
+C:\svn\SVN QA\Namespaces\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\IBitacoras.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\IBitacoras.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\gsol.monitoreo.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Release\IBitacoras.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IBitacoras.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IBitacoras.pdb

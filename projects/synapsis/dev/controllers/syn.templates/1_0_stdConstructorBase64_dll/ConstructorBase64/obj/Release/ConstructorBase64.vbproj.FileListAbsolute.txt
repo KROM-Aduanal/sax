@@ -1,0 +1,9 @@
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\ConstructorBase64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\ConstructorBase64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\ConstructorBase64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Synapsis.Templates.ConstructorBase64.0.0.0.0.dll.config
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Synapsis.Templates.ConstructorBase64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Synapsis.Templates.ConstructorBase64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\Syn.Synapsis.Templates.ConstructorBase64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.templates\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Release\Syn.Synapsis.Templates.ConstructorBase64.0.0.0.0.pdb

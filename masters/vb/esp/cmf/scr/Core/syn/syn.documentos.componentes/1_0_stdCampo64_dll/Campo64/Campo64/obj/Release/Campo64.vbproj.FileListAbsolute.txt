@@ -1,0 +1,7 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampo64_dll\Campo64\Campo64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampo64_dll\Campo64\Campo64\obj\Release\Campo64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampo64_dll\Campo64\Campo64\obj\Release\Campo64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampo64_dll\Campo64\Campo64\obj\Release\Syn.Documento.Componentes.Campo64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampo64_dll\Campo64\Campo64\obj\Release\Syn.Documento.Componentes.Campo64.0.0.0.0.pdb

@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ComponentCriteria64", "ComponentCriteria64\ComponentCriteria64.vbproj", "{5DBC70F2-03E6-49F9-A50B-24019929E6F9}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IOperationsDynamicForm", "..\..\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\IOperationsDynamicForm.vbproj", "{81593AE9-A9CE-41B3-AAAF-CB6A86FB17EE}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OperationsDynamicForm64", "..\..\1_0_stdOperationsDynamicForm64_dll\OperationsDynamicForm64\OperationsDynamicForm64.vbproj", "{3B9CE24C-95F6-42C5-9A86-2CBD5125F6C7}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OperationPairControls64", "..\..\1_0_stdOperationdPairControls64_dll\OperationPairControls64\OperationPairControls64.vbproj", "{68390202-80EB-43EF-9545-8F13C64D1109}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckedCombobox", "..\..\1_0_Wm000ComboboxCheckbox_dll\CheckedCombobox\CheckedCombobox.vbproj", "{FB4BA9FF-48F1-409D-AED6-45F6846BE8C6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DateTimePickerDCKR64", "..\..\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\DateTimePickerDCKR64.vbproj", "{12908922-FFBF-45BB-8D8D-BA5F6554EC7C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextBoxDCKR64", "..\..\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\TextBoxDCKR64.vbproj", "{F1352638-E206-403F-B9BB-9BA6EF1B1165}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Componentes gráficos", "Componentes gráficos", "{19191F95-8B14-47B2-A8E8-2790A3DA9464}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WclPoll64", "..\..\1_0_Wcl000Poll64_dll\WclPoll64\WclPoll64.vbproj", "{B9934BB3-25F9-4B49-94DA-A6CEB92329BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DBC70F2-03E6-49F9-A50B-24019929E6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DBC70F2-03E6-49F9-A50B-24019929E6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DBC70F2-03E6-49F9-A50B-24019929E6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DBC70F2-03E6-49F9-A50B-24019929E6F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81593AE9-A9CE-41B3-AAAF-CB6A86FB17EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81593AE9-A9CE-41B3-AAAF-CB6A86FB17EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81593AE9-A9CE-41B3-AAAF-CB6A86FB17EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81593AE9-A9CE-41B3-AAAF-CB6A86FB17EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9CE24C-95F6-42C5-9A86-2CBD5125F6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9CE24C-95F6-42C5-9A86-2CBD5125F6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9CE24C-95F6-42C5-9A86-2CBD5125F6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9CE24C-95F6-42C5-9A86-2CBD5125F6C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68390202-80EB-43EF-9545-8F13C64D1109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68390202-80EB-43EF-9545-8F13C64D1109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68390202-80EB-43EF-9545-8F13C64D1109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68390202-80EB-43EF-9545-8F13C64D1109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4BA9FF-48F1-409D-AED6-45F6846BE8C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4BA9FF-48F1-409D-AED6-45F6846BE8C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4BA9FF-48F1-409D-AED6-45F6846BE8C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4BA9FF-48F1-409D-AED6-45F6846BE8C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12908922-FFBF-45BB-8D8D-BA5F6554EC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12908922-FFBF-45BB-8D8D-BA5F6554EC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12908922-FFBF-45BB-8D8D-BA5F6554EC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12908922-FFBF-45BB-8D8D-BA5F6554EC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1352638-E206-403F-B9BB-9BA6EF1B1165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1352638-E206-403F-B9BB-9BA6EF1B1165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1352638-E206-403F-B9BB-9BA6EF1B1165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1352638-E206-403F-B9BB-9BA6EF1B1165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9934BB3-25F9-4B49-94DA-A6CEB92329BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9934BB3-25F9-4B49-94DA-A6CEB92329BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9934BB3-25F9-4B49-94DA-A6CEB92329BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9934BB3-25F9-4B49-94DA-A6CEB92329BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1352638-E206-403F-B9BB-9BA6EF1B1165} = {19191F95-8B14-47B2-A8E8-2790A3DA9464}
+		{12908922-FFBF-45BB-8D8D-BA5F6554EC7C} = {19191F95-8B14-47B2-A8E8-2790A3DA9464}
+	EndGlobalSection
+EndGlobal

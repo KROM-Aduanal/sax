@@ -1,0 +1,36 @@
+C:\SVN\SVN QA\Namespaces\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CoreCompileInputs.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CopyComplete
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbprojAssemblyReference.cache
+d:\Trabajos\krom\Sax\projects\synapsis\libs\bin\main\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\projects\synapsis\libs\bin\main\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.AssemblyReference.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.Resources.resources
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.GenerateResource.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CoreCompileInputs.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CopyComplete
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\libs\bin\main\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\main\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.AssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\Gsol\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.Resources.resources
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.GenerateResource.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\KromComponentes64.vbproj.CoreCompileInputs.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\obj\Debug\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb

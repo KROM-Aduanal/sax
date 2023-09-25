@@ -1,0 +1,93 @@
+
+/*FILE*/
+
+.wc-file {
+	--percent: "Procesando 0%";
+	--tintColor: #6c4fd3;
+	position: relative;
+	background-color: transparent;
+	min-height: 34px;
+}
+
+.wc-file:not(.only-buttons) {
+	border-bottom: 1px solid #828282;
+	width: 100%;
+}
+
+.wc-file input[type="text"] {
+	width: 100%;
+	outline: 0;
+	border: 0;
+	pointer-events: none;
+}
+
+.wc-file a {
+	background-color: var(--tintColor);
+	background-repeat: no-repeat;
+	background-size: 24px;
+	width: auto;
+	line-height: 36px;
+	color: #fff;
+	height: 36px;
+	margin: 4px 0;
+	display: inline-block;
+}
+
+.wc-file a:first-child {
+	border-top-left-radius: 18px;
+	border-bottom-left-radius: 18px;
+	padding-right: 8px;
+}
+
+.wc-file a:last-child {
+	padding-left: 8px;
+	border-top-right-radius: 18px;
+	border-bottom-right-radius: 18px;
+}
+
+.wc-file .col-auto a.__upload {
+	background-image: url('../../imgs/cloud_upload.png');
+	padding-right: 16px;
+	background-position: 8px 50%;
+	padding-left: 36px;
+}
+
+.wc-file .col-auto a.__download {
+	background-image: url('../../imgs/cloud_download.png');
+	opacity: .75;
+	padding-right: 16px;
+	background-position: 8px 50%;
+	padding-left: 36px;
+}
+
+.wc-file .col-auto a.__delete {
+	background-image: url('../../imgs/delete.png');
+	padding-right: 16px;
+	background-position: 8px 50%;
+	padding-left: 36px;
+	background-color: #36215b;
+}
+
+.wc-file a.disabled {
+	background-color: #d7d7d7 !important;
+	color: #ffffff;
+	pointer-events: none;
+}
+
+.wc-file .col-auto a:empty {
+	padding-right: 8px;
+	background-position: center !important;
+	/*border-radius:50%;
+	height: 44px;*/
+}
+
+.wc-file .col-auto {
+	white-space: nowrap;
+}
+
+.wc-file .in-process {
+	background-image: url('../../imgs/loader.gif') !important;
+	background-color: #d7d7d7;
+	color: #686767;
+	opacity: .5 !important;
+}

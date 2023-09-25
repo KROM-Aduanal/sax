@@ -1,0 +1,17 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\gsol.krom.GeneradorLinks64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.GeneradorLinks64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\gsol.krom.GeneradorLinks64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\gsol.krom.GeneradorLinks64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.krom.web.GeneradorLinks64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.krom.web.GeneradorLinks64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\GeneradorLinks64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\gsol.krom.web.GeneradorLinks64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.krom.web\1_0_stdGeneradorLinks64_dll\GeneradorLinks64\GeneradorLinks64\obj\Debug\gsol.krom.web.GeneradorLinks64.0.0.0.0.pdb

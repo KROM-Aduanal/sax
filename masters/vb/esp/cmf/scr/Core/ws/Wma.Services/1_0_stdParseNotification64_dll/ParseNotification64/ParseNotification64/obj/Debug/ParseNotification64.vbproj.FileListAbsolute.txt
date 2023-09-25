@@ -1,0 +1,6 @@
+C:\svn\SVN QA\Aplicacion\ParseNotification64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\ParseNotification64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNotification64\ParseNotification64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNotification64\ParseNotification64\obj\Debug\ParseNotification64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNotification64\ParseNotification64\obj\Debug\ParseNotification64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNotification64\ParseNotification64\obj\Debug\ParseNotification64.0.0.0.0.pdb

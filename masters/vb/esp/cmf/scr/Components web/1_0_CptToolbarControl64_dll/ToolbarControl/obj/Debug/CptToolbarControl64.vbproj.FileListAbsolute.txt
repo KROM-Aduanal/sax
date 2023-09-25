@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptToolbarControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptToolbarControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\CptToolbarControl64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\CptToolbarControl64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\Gsol.Web.Components.CptToolbarControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\Gsol.Web.Components.CptToolbarControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptToolbarControl64_dll\ToolbarControl\obj\Debug\CptToolbarControl64.vbproj.AssemblyReference.cache

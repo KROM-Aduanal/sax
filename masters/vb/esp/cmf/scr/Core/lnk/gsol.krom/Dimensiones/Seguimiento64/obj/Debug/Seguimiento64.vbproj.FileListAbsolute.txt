@@ -1,0 +1,14 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\Seguimiento64\Seguimiento64\obj\Debug\Seguimiento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\Seguimiento64\Seguimiento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\Seguimiento64\Seguimiento64\obj\Debug\Seguimiento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\SVN\SVN QA\Namespaces\gsol.krom.Seguimiento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\SVN\SVN QA\Namespaces\gsol.krom.Seguimiento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\Seguimiento64\Seguimiento64\obj\Debug\gsol.krom.Seguimiento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\Seguimiento64\Seguimiento64\obj\Debug\gsol.krom.Seguimiento64.0.0.0.0.pdb
+C:\SVN\SVN QA\Namespaces\gsol.krom.Seguimiento64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\gsol.krom.Seguimiento64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\obj\Debug\Seguimiento64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\obj\Debug\Seguimiento64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\obj\Debug\gsol.krom.Seguimiento64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Seguimiento64\obj\Debug\gsol.krom.Seguimiento64.0.0.0.0.pdb

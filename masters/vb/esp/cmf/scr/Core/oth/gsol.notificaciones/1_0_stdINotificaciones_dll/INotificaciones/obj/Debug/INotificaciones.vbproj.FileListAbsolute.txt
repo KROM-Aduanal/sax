@@ -1,0 +1,10 @@
+c:\sax\projects\kb\libs\bin\controllers\gsol.notificaciones.INotificaciones.0.0.0.0.dll
+c:\sax\projects\kb\libs\bin\controllers\gsol.notificaciones.INotificaciones.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\INotificaciones.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\INotificaciones.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\INotificaciones.vbproj.CopyComplete
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\gsol.notificaciones.INotificaciones.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.notificaciones\1_0_stdINotificaciones_dll\INotificaciones\obj\Debug\gsol.notificaciones.INotificaciones.0.0.0.0.pdb
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.notificaciones.INotificaciones.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.notificaciones.INotificaciones.0.0.0.0.pdb

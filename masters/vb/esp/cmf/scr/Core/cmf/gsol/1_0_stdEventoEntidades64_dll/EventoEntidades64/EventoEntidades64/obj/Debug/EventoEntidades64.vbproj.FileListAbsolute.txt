@@ -1,0 +1,36 @@
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\EventoEntidades64.vbprojResolveAssemblyReference.cache
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\Resources.resources
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.GenerateResource.Cache
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.EventoEntidades64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\EventoEntidades64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEventoEntidades64_dll\EventoEntidades64\EventoEntidades64\obj\Debug\Gsol.EventoEntidades64.1.0.0.0.dll

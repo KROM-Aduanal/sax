@@ -1,0 +1,91 @@
+
+/*PAGINATOR*/
+
+.wc-paginator {
+	--tintColor: #6c4fd3;
+	
+}
+.wc-paginator input {
+	display: none;
+}
+
+.wc-paginator input + label {
+	--top: 150%;
+	--color:  #757575;
+	background-color: #ffffff;
+	border-radius: 50%;
+	border: 1px solid #e0e0e0;
+	color: var(--color);
+	width: 34px;
+	height: 34px;
+	margin: 4px 8px;
+	text-decoration: none;
+	line-height: 30px;
+	text-align: center;
+	display: block;
+	transition: .5s background-color, .5s border-color;
+	position: relative;
+	overflow: hidden;
+	top: 0;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wc-paginator input + label:hover {
+	border-color: #432774;
+	background-color: #432774;
+	color: #ffffff;
+}
+
+.wc-paginator input:checked + label {
+  border-color: #432774;
+  background-color: #432774;
+  color: #ffffff;
+  width: 46px;
+	height: 46px;
+}
+
+/*
+.wc-paginator a[page]:before {
+  content: attr(page);
+  position: absolute;
+  transition: .5s all;
+  top: var(--top);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #757575;
+}
+*/
+.wc-paginator a {
+  background-color: #c6bdd5;
+  border-radius: 50%;
+  border: 1px solid #673ab7;
+  color: #757575;
+  width: 34px;
+  height: 34px;
+  margin: 4px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.wc-paginator a.__next {
+  background-image: url('../../imgs/next.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%;
+}
+
+.wc-paginator a.__preview {
+  background-image: url('../../imgs/preview.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%;
+}
+
+.wc-paginator .disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}

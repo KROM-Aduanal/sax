@@ -1,0 +1,626 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Home.master.vb" Inherits="Home" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <%--Inclusiones de encabezado--%>
+    <head runat="server">
+
+        <meta http-equiv="content-language" content="es" />
+
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+        <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <title>Synapsis</title>
+
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    
+        <link rel="icon" type="image/png" href="/FrontEnd/Recursos/imgs/ico_Synapsis.png" />
+
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapV3/dist/css/bootstrap.min.css" />
+
+        <!-- DATATABLES CSS -->
+        <link rel="stylesheet" type="text/css" href="/FrontEnd/Librerias/DataTables/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/FrontEnd/Librerias/DataTables/css/buttons.dataTables.min.css"/>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/FontAwesome/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+   
+         <!-- Ionicons -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/Ionicons/ionicons.min.css" />
+    
+        <!-- Daterange picker -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapDateRangePicker/daterangepicker.css"/>
+    
+        <!-- Date Picker -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapDatePicker/dist/css/bootstrap-datepicker.min.css"/>
+    
+        <!-- iCheck for checkboxes and radio inputs -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/ICheck/all.css"/>
+    
+        <!-- Bootstrap Color Picker -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapColorPicker/dist/css/bootstrap-colorpicker.min.css"/>
+    
+        <!-- Theme style -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/AdminLTE/css/AdminLTE.css"/>
+    
+        <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/AdminLTE/css/_all-skins.css"/>
+    
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapWysihtml5/bootstrap3-wysihtml5.css"/>
+
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"/>
+
+        <!-- Morris chart -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/Morris/morris.css"/>
+    
+        <!-- jvectormap -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/Jvectormap/jquery-jvectormap.css"/>
+
+        <!-- Bootstrap time Picker -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/BootstrapTimePicker/bootstrap-timepicker.min.css"/>
+    
+        <!-- Select2 -->
+        <link rel="stylesheet" href="/FrontEnd/Librerias/SelectJs/select2.min.css"/>
+ 
+         <%-- Floating buttons --%>
+        <link rel="stylesheet" href="/FrontEnd/Librerias/FloatingButton/css/index.css" />
+
+        <%-- Styles krom --%>
+        <link rel="stylesheet" href="/FrontEnd/Librerias/Krom/css/krom.css?n=1" />
+
+        <link rel="stylesheet" href="/FrontEnd/Librerias/Krom/css/KBWComponents.css?n=2"/> 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
+
+        <script type="text/javascript" src="/FrontEnd/Librerias/Krom/js/Dialogs.js"></script>
+
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+
+</head>
+    
+    <body class="hold-transition skin-synapsis sidebar-mini sidebar-collapse">
+
+        <div id="ScrollBackBotton_wrapper">
+
+            <div id="ScrollBackBotton">
+
+		        <i id="ScrollBackArrow" class="fa fa-arrow-up"></i>
+
+	        </div>  
+
+        </div>
+        <form id="form1" runat="server" is="wc-form" autocomplete="off" enctype="multipart/form-data">
+            
+            <asp:ScriptManager ID="scriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+            
+            <div class="wrapper">
+            
+                <header class="main-header">
+            
+                    <div class="apps-menu f-left d-flex jc-center ai-center">
+
+                        <a href="#" class="sidebar-toggle-deprecated" data-toggle="push-menu" role="button">
+
+                            <i class="fas fa-th" style="font-size: 16px; color: #fff;"></i>
+
+                        </a>
+
+                    </div>
+
+                    <nav class="navbar navbar-static-top">
+
+                        <%'= Componente.ObtenerSVG(nombreSVG_:="greater-than", colorSVG_:="#37474F", tamanoSVG_:=20, classSVG_:="arrow-colapse-menu")%>
+
+                        <div class="finder-bar d-flex align-items-center" style="max-height: 50px;">
+
+                            <div class="finder-bar__logo">
+
+                                <img src="/FrontEnd/Recursos/Imgs/logo_synapsis_white.png" alt="logo"/>
+
+                            </div>
+
+                            <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+
+                                <ContentTemplate>
+
+                                    <asp:ContentPlaceHolder ID="ContentFindbar" runat="server"></asp:ContentPlaceHolder>
+
+                                </ContentTemplate>
+                        
+                            </asp:UpdatePanel>
+
+                        </div>
+
+                        <asp:UpdatePanel runat="server" ID="UpdatePanel2"> 
+
+                            <ContentTemplate> 
+
+                                <asp:ContentPlaceHolder ID="ContentCompanyList" runat="server"></asp:ContentPlaceHolder> 
+
+                            </ContentTemplate>
+
+                        </asp:UpdatePanel>
+
+                    </nav>
+
+                     <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                                       
+                        <ProgressTemplate>
+    
+                            <div class="loader">
+                              
+                                <div class="loader__element"></div>
+                      
+                            </div>
+
+                        </ProgressTemplate>
+
+                    </asp:UpdateProgress>
+                    
+                </header>
+        
+                <aside class="main-sidebar">
+            
+                    <section class="sidebar">
+                
+                        <div class="user-panel">
+
+                            <a href="/FrontEnd/Modulos/Generales/ConfiguracionSesion/Ges003-001-Edicion.PerfilUsuario.aspx">
+
+                                <div class="pull-left image">
+
+                                    <img src="<%= ImagenUsuario%>" class="img-circle" alt="User Image" />
+
+                                </div>
+
+                                <div class="pull-left info">
+
+                                    <p><%=NombreUsuario%></p>
+
+                                    <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                        <!--<form action="/FrontEnd/Modulos/TrackingOperaciones/Ges003-001-Consultas.Operaciones.aspx" method="post" class="sidebar-form">
+
+                            <div class="input-group">
+
+                                <input type="text" name="r" class="form-control" placeholder="Busca un referencia" maxlength="13" />
+
+                                <span class="input-group-btn">
+
+                                    <button type="submit" name="search" id="refencia-rapida" class="btn btn-flat">
+
+                                        <i class="fa fa-search"></i>
+
+                                    </button>
+
+                                </span>
+
+                            </div>
+
+                        </form>-->
+
+                        <ul class="sidebar-menu tree" data-widget="tree">
+
+                            <%=MenuDinamico%>
+
+                            <li>
+                        
+                                <a href="#" class="btnCerrarSesion">
+                            
+                                    <i class="fas fa-sign-out-alt" style="font-size: 16px;margin-right: 6px;"></i>
+                            
+                                    <span>Salir</span>
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </section>
+            
+                </aside>
+        
+                <div class="content-wrapper content-wrapper-page" style="min-height: 480px;">
+
+
+                       <asp:ContentPlaceHolder ID="contentBody" runat="server"></asp:ContentPlaceHolder>
+                     
+                </div>
+
+                <aside class="binnacle-aside binnacle-aside-hidden" style="display:flex;align-items:stretch;">
+
+                    <section class="w-100">
+
+                        <ul class="nav nav-tabs binnacle-aside__menu w-100" id="myTab" role="tablist">
+
+                            <li class="nav-item" role="presentation">
+                                <label class="w-100 m-0">
+                                    <input type="radio" name="right-menu" checked value="1"/>
+                                    <span class="w-100">Movimientos</span>
+                                </label>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <label class="w-100 m-0">
+                                    <input type="radio" name="right-menu" value="2"/>
+                                    <span class="w-100">Documentos</span>
+                                </label>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <label class="w-100 m-0">
+                                    <input type="radio" name="right-menu" value="3"/>
+                                    <span class="w-100">Actividades</span>
+                                </label>
+                            </li>
+
+                            <%-- <li class="nav-item" role="presentation">
+
+                                <a class="nav-link active binnacle-aside__menu-item" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Enviar mensaje</a>
+
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+
+                                <a class="nav-link binnacle-aside__menu-item" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Notas</a>
+
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+
+                                <a class="nav-link binnacle-aside__menu-item" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                            
+                                    <%= Componente.ObtenerSVG(nombreSVG_:="paperclip", colorSVG_:="#9e9e9e", tamanoSVG_:=14, classSVG_:="attached")%>
+                            
+                                    <sup class="total-attachedes">0</sup>
+                        
+                                </a>
+
+                            </li> --%>
+
+                        </ul>
+                        <%--
+                        <div class="separator">
+                    
+                            <div class="separator__line"></div>
+                    
+                            <p class="separator__text">Hoy</p>
+                    
+                            <div class="separator__line"></div>
+                
+                        </div> --%>
+
+                        <%'= Componente.ObtenerSVG(nombreSVG_:="greater-than", colorSVG_:="#37474F", tamanoSVG_:=20, classSVG_:="arrow-colapse colapse")%>
+
+                        <div class="toggle-menu toggle-menu-prev"></div>
+
+                        <div class="tab-content" id="myTabContent">
+
+                            <div class="tab-pane fade active in" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        
+                                <ul class="nav nav-tabs b-0" id="myTab" role="tablist">
+
+                                    <div menu-section="1" class="black-item-data">
+                                        <li class="nav-item mb-1 w-100" role="presentation">
+                                        
+                                             <p class="blank-data">No hay movimientos<br /> registrados aún</p>
+
+                                        </li>
+                                    </div>
+                                    <div menu-section="2" class="black-item-data d-none">
+                                        <li class="nav-item mb-1 w-100" role="presentation">
+                                        
+                                             <p class="blank-data">No hay documentos<br /> cargados aún</p>
+
+                                        </li>
+                                    </div>
+                                    <div menu-section="3" class="black-item-data d-none">
+                                        <li class="nav-item mb-1 w-100" role="presentation">
+                                        
+                                             <p class="blank-data">No hay actividades<br /> registradas aún</p>
+
+                                        </li>
+                                    </div>
+
+                                    <%-- 
+                                    <li class="nav-item mb-1" role="presentation" style="width: 100%;">
+
+                                        <div class="user-binnacle-item">
+
+                                            <div class="user-binnacle__photo">
+
+                                                <img loading="lazy" src="https://imgix.ranker.com/user_node_img/89/1770314/original/paul-walker-people-in-tv-photo-u38?auto=format&fit=crop&fm=pjpg&w=650&q=60&dpr=1" alt="Alternate Text" />
+
+                                            </div>
+
+                                            <div class="user-binnacle__text">
+
+                                                <p class="name-wrapper"><span class="name">Paul William Walker</span> - hace 10 minutos.</p>
+
+                                                <small class="activity">Editando generales</small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </li>
+
+                                    <li class="nav-item mb-1" role="presentation" style="width: 100%;">
+
+                                        <div class="user-binnacle-item">
+
+                                            <div class="user-binnacle__photo">
+
+                                                <img loading="lazy" src="https://www.usmagazine.com/wp-content/uploads/2020/01/Kobe-Bryant-Dead-Shocking-Celebrity-Deaths.jpg?quality=86&strip=all" alt="Alternate Text" />
+
+                                            </div>
+
+                                            <div class="user-binnacle__text">
+
+                                                <p class="name-wrapper"><span class="name">Kobe Bean Bryant</span> - hace 13 minutos.</p>
+
+                                                <small class="activity">Editando generales</small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </li>
+
+                                    <li class="nav-item mb-1" role="presentation" style="width: 100%;">
+
+                                        <div class="user-binnacle-item">
+
+                                            <div class="user-binnacle__photo">
+
+                                                <img loading="lazy" src="https://cf.girlsaskguys.com/q2350667/a43da295-0f35-4a5c-b9c3-352ae452aca9.jpg" alt="Alternate Text" />
+
+                                            </div>
+
+                                            <div class="user-binnacle__text">
+
+                                                <p class="name-wrapper"><span class="name">Stanley Martin Lieber</span> - hace 20 minutos.</p>
+
+                                                <small class="activity">Creando nuevo registro</small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </li> --%>
+                        
+                                </ul>
+                    
+                            </div>
+
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Texto2</div>
+
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Texto3</div>
+
+                        </div>
+
+                    </section>
+
+                </aside>
+
+                <footer class="main-footer">
+
+                    <div class="pull-right hidden-xs">
+
+                        <b>Version</b> 2.0.1
+   
+                    </div>
+
+                    <strong>Copyright &copy; <script>document.write(/\d{4}/.exec(Date())[0])</script> <a href="http://www.kromaduanal.com/">Krom Aduanal</a>.</strong> Informática.
+ 
+                </footer>
+
+                <aside class="control-sidebar control-sidebar-dark">
+    
+                    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+
+                        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+
+                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane" id="control-sidebar-home-tab">
+
+                            <h3 class="control-sidebar-heading">Recent Activity</h3>
+
+                            <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    
+                      </div>
+             
+                    </div>
+
+                </aside>
+ 
+               <div class="control-sidebar-bg"></div>
+             
+            </div>
+
+           
+
+        </form> 
+       <!-- jQuery 3 -->
+        <script src="/FrontEnd/Librerias/JQuery/jquery-3.3.1.js"></script>
+    
+        <!-- jQuery UI 1.11.4 -->
+        <script src="/FrontEnd/Librerias/JQuery/jquery-ui.min.js"></script>
+    
+        <!-- TADATABLES -->
+        <%--PARA QUE FUNCIONE DATATABLE TIENE QUE IR EN ESTE ORDEN LOS SCRIPTS--%>
+        <script src="/FrontEnd/Librerias/DataTables/js/jquery-dataTables.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/dataTables-buttons.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/buttons-print.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/buttons-flash.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/jszip.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/pdfmake.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/vfs-fonts.js"></script>
+        <script src="/FrontEnd/Librerias/DataTables/js/buttons-html5.js"></script>
+
+        <script src="/FrontEnd/Librerias/JQuery/jquery.cookie.js"></script>
+
+        <script src="/FrontEnd/Librerias/FloatingButton/js/index.js"></script>
+
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+    
+        <!-- Google Analytics jQuery 3 -->
+        <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    
+        <!-- Bootstrap 3.3.7 -->
+        <script src="/FrontEnd/Librerias/BootstrapV3/dist/js/bootstrap.min.js"></script>
+
+        <script src="/FrontEnd/Librerias/SelectJs/select2.full.js"></script>
+
+        <!-- InputMask -->
+        <script src="/FrontEnd/Librerias/InputMask/jquery.inputmask.js"></script>
+        <script src="/FrontEnd/Librerias/InputMask/jquery.inputmask.date.extensions.js"></script>
+        <script src="/FrontEnd/Librerias/InputMask/jquery.inputmask.extensions.js"></script>
+    
+        <!-- date-range-picker -->
+        <script src="/FrontEnd/Librerias/Moment/moment.min.js"></script>
+        <script src="/FrontEnd/Librerias/BootstrapDateRangePicker/daterangepicker.js"></script>
+
+        <!-- bootstrap color picker -->
+        <script src="/FrontEnd/Librerias/BootstrapColorPicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    
+        <!-- bootstrap date picker -->
+        <script src="/FrontEnd/Librerias/BootstrapDatePicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- bootstrap time picker -->
+        <script src="/FrontEnd/Librerias/BootstrapTimePicker/bootstrap-timepicker.min.js"></script>
+    
+        <!-- SlimScroll -->
+        <script src="/FrontEnd/Librerias/JQuery/jquery.slimscroll.min.js"></script>
+
+        <!-- FastClick -->
+        <script src="/FrontEnd/Librerias/FastClick/fastclick.js"></script>
+    
+        <!-- AdminLTE App -->
+        <script src="/FrontEnd/Librerias/AdminLTE/js/adminlte.js"></script>
+    
+        <!-- AdminLTE for demo purposes -->
+        <script src="/FrontEnd/Librerias/AdminLTE/js/demo.js"></script>
+
+        <!-- ChartJS -->
+        <script src="/FrontEnd/Librerias/ChartJS/Chart.min.js"></script>
+
+        <!-- MorrisJS -->
+        <script src="/FrontEnd/Librerias/Morris/morris.min.js"></script>
+
+        <!-- RaphaelJS -->
+        <script src="/FrontEnd/Librerias/Raphael/raphael.min.js"></script>
+
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="/FrontEnd/Librerias/BootstrapWysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+
+        <!-- iCheck 1.0.1 -->
+        <script src="/FrontEnd/Librerias/ICheck/icheck.min.js"></script>
+    
+        <script src="/FrontEnd/Librerias/Krom/js/KROM-EventosFiltros.js"></script>
+
+        <!-- JS KROM -->
+        <script src="/FrontEnd/Librerias/Krom/js/KromComponentes.js"></script>
+        <script src="/FrontEnd/Librerias/Krom/js/KROM-Plugins.js"></script>
+        <script src="/FrontEnd/Librerias/Krom/js/KROM-Eventos.js"></script>
+        <script src="/FrontEnd/Scripts/Modulos/PaginaMaestra/Ges025-001-Inicio.HomeMaster.js"></script>
+        <!--<script src="/FrontEnd/Scripts/Modulos/ConsultaOperaciones/Ges025-001-Principal.js"></script>-->
+        <script src="/FrontEnd/Librerias/Krom/js/KROM-GeneradorGraficas.js"></script>
+
+        <%-- CLASES --%>
+        <!--<script src="/FrontEnd/Scripts/Modulos/Seguimiento/TabWizard.js"></script>-->
+
+        <!-- GRAFICAS DASHBOARD -->
+        <!--<script src="/FrontEnd/Scripts/Modulos/ConsultaOperaciones/dashboard2.js"></script>-->
+
+        <script type="module" src="/FrontEnd/Librerias/Krom/js/Prototypes.js"></script>
+        <script type="module" src="/FrontEnd/Librerias/Krom/js/Components.js"></script>
+        <script src="/FrontEnd/Librerias/JQuery/jquery.nicescroll.min.js"></script>
+  
+        <script type="text/javascript">
+
+            window.document.addEventListener('OnContextClose', () => { document.getElementById('form1').context.pop(); }, false);
+
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+            if (prm != null) {
+
+                prm.add_endRequest(function (sender, e) {
+
+                    if (sender._postBackSettings.panelsToUpdate != null) {
+                        
+                        const form = document.getElementById('form1')
+
+                        form.connectedCallback();
+                    }
+
+                });
+
+            };
+
+            $(() => {
+                 
+                const ligas = $('.treeview').find("li a");
+                $.each(ligas, (i, liga) => {
+                    if (i == 2) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/Referencias/Ges022-001-Referencias.aspx");
+                    if (i == 3) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/FacturasComerciales/Ges003-001-FacturasComerciales.aspx");
+                    if (i == 9) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/BusquedaGeneral/BusquedaGeneral.aspx");
+                    if (i == 11) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx");
+                });
+
+                $(".treeview-menu").append(
+                    $('<li>').append(
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/Revalidacion/Ges022-001-Revalidacion.aspx' }).append([
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<span>', {text: 'Revalidación'})
+                        ])
+                    )
+                );
+
+                $(".treeview-menu").append(
+                    $('<li>').append(
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx' }).append([
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<span>', { text: 'Acuse de Valor' })
+                        ])
+                    )
+                );
+            
+            });
+
+        </script>
+        
+        <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
+    
+  
+    </body>
+    
+</html>

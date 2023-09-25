@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Namespaces\GSol.SesionWcf64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\GSol.SesionWcf64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\SesionWcf64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\SesionWcf64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\GSol.SesionWcf64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\GSol.SesionWcf64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\GSol.SesionWcf64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\GSol.SesionWcf64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\SesionWcf64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\SesionWcf64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\SesionWcf64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\GSol.SesionWcf64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Release\GSol.SesionWcf64.0.0.0.0.pdb

@@ -1,0 +1,15 @@
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\IControladorAcuseValor64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\Syn.Custombrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\IControladorAcuseValor64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\IControladorAcuseValor64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\IControladorAcuseValor64.vbproj.CopyComplete
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.Custombrokers.Controllers.IControladorAcuseValor64.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.Custombrokers.Controllers.IControladorAcuseValor64.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\Syn.Custombrokers.Controllers.IControladorAcuseValor64.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorCOVE64_dll\IControladorCOVE64\obj\Debug\Syn.Custombrokers.Controllers.IControladorAcuseValor64.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\IControladorAcuseValor64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\Syn.Custombrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\IControladorAcuseValor64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\IControladorAcuseValor64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\Syn.Custombrokers.Controllers.IControladorAcuseValor64.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorAcuseValor64_dll\IControladorAcuseValor64\obj\Debug\Syn.Custombrokers.Controllers.IControladorAcuseValor64.pdb

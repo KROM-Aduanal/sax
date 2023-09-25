@@ -1,0 +1,24 @@
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\OperacionGenerica64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdOperacionGenerica64_dll\OperacionGenerica64\OperacionGenerica64\obj\Debug\Syn.Documento.OperacionGenerica64.0.0.0.0.pdb

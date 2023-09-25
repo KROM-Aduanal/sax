@@ -1,0 +1,7 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\TagWatcher64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.AssemblyReference.cache
+C:\SVN QA\Aplicacion\TagWatcher64.0.0.0.0.dll

@@ -1,0 +1,20 @@
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\LineaBaseCatalogos64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\LineaBaseCatalogos64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\LineaBaseCatalogos64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\LineaBaseCatalogos64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_staLineaBaseCatalogos64_dll\LineaBaseCatalogos64\LineaBaseCatalogos64\obj\Release\LineaBaseCatalogos64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\snappy32.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\snappy64.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\libzstd.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\mongocrypt.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll.config
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb

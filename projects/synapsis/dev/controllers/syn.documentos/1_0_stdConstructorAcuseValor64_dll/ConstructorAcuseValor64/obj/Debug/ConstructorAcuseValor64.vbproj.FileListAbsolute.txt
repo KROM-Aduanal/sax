@@ -1,0 +1,8 @@
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\ConstructorAcuseValor64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\ConstructorAcuseValor64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\ConstructorAcuseValor64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorAcuseValor64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorAcuseValor64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\Syn.Documento.ConstructorAcuseValor64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorAcuseValor64_dll\ConstructorAcuseValor64\obj\Debug\Syn.Documento.ConstructorAcuseValor64.0.0.0.0.pdb

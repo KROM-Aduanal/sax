@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Namespaces\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\GenericCatalog64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.Frm000Generic.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\GenericCatalog64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\GenericCatalog64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.Frm000Generic.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\GenericCatalog64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\GenericCatalog64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Release\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb

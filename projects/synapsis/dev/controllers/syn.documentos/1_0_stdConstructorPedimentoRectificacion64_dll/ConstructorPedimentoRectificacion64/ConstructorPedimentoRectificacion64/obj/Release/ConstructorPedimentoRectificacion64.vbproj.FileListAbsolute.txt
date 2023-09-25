@@ -1,0 +1,15 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\ConstructorPedimentoRectificacion64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\ConstructorPedimentoRectificacion64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\ConstructorPedimentoRectificacion64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\ConstructorPedimentoRectificacion64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\ConstructorPedimentoRectificacion64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoRectificacion64_dll\ConstructorPedimentoRectificacion64\ConstructorPedimentoRectificacion64\obj\Release\Syn.Documento.ConstructorPedimentoRectificacion64.0.0.0.0.pdb

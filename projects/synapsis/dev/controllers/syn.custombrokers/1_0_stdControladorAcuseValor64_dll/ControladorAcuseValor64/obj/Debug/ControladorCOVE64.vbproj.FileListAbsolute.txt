@@ -1,0 +1,15 @@
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Rec.Globals.Controllers.ControladorCOVE64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Rec.Globals.Controllers.ControladorCOVE64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.CopyComplete
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\ControladorCOVE64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorCOVE64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorCOVE64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorCOVE64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorCOVE64_dll\ControladorCOVE64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorCOVE64.0.0.0.0.pdb

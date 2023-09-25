@@ -1,0 +1,12 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptSwitchControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptSwitchControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\CptSwitchControl64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\CptSwitchControl64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\Gsol.Web.Components.CptSwitchControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\Gsol.Web.Components.CptSwitchControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptSwitchControl64_dll\SwitchControl\obj\Debug\CptSwitchControl64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptTabbarControl64_dll\TabbarControl\obj\Debug\CptSwitchControl64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptTabbarControl64_dll\TabbarControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptTabbarControl64_dll\TabbarControl\obj\Debug\CptSwitchControl64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptTabbarControl64_dll\TabbarControl\obj\Debug\CptSwitchControl64.vbproj.CoreCompileInputs.cache

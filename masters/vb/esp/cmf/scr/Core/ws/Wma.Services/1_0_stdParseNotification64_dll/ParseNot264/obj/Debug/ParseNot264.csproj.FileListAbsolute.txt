@@ -1,0 +1,15 @@
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNot264\bin\Debug\ParseNot264.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\bin\Debug\ParseNot264.exe.config
+C:\svn\SVN QA\Aplicacion\ParseNot264.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.csprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\App.g.cs
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264_MarkupCompile.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.g.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.Properties.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.csproj.GenerateResource.Cache
+C:\svn\SVN QA\Aplicacion\ParseNot264.exe
+C:\svn\SVN QA\Aplicacion\ParseNot264.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\ParseNot264.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\MainWindow.baml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdParseNotification64_dll\ParseNot264\obj\Debug\MainWindow.g.cs

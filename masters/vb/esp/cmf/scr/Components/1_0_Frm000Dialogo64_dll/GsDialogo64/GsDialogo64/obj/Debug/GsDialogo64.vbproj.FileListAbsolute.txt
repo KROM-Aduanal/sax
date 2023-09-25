@@ -1,0 +1,32 @@
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\GsDialogo64\bin\Debug\GsDialogo64.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\bin\Debug\GsDialogo64.0.0.0.0.dll.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\bin\Debug\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\bin\Debug\GsDialogo64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\bin\Debug\GsDialogo64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.GsDialogo.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.0.0.0.0.pdb
+C:\svn\SVN QA\Componentes\GsDialogo64.0.0.0.0.dll.config
+C:\svn\SVN QA\Componentes\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\GsDialogo64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\GsDialogo64.0.0.0.0.dll.config
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\GsDialogo64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.GsDialogo.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\GsDialogo64.0.0.0.0.dll.config
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\GsDialogo64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.GsDialogo.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\Gsol.Componentes.SistemaBase.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Frm000Dialogo64_dll\GsDialogo64\GsDialogo64\obj\Debug\GsDialogo64.vbprojAssemblyReference.cache

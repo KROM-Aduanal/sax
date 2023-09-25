@@ -1,0 +1,17 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.PermisoPartidaPedimento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.PermisoPartidaPedimento64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Rec.Globals.Controllers.PermisoPartidaPedimento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Rec.Globals.Controllers.PermisoPartidaPedimento64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdPermisoPartidaPedimento64_dll\PermisoPartidaPedimento64\obj\Debug\PermisoPartidaPedimento64.vbproj.CopyComplete

@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\CptCatalogControl64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\CptCatalogControl64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptCatalogControl64_dll\CatalogControl\obj\Debug\CptCatalogControl64.vbproj.AssemblyReference.cache

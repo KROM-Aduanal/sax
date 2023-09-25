@@ -1,0 +1,7 @@
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdCatacteristicaCatalogo64_dll\CaracteristicaOperacion64\CaracteristicaOperacion64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdCatacteristicaCatalogo64_dll\CaracteristicaOperacion64\CaracteristicaOperacion64\obj\Release\CaracteristicaCatalogo64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdCatacteristicaCatalogo64_dll\CaracteristicaOperacion64\CaracteristicaOperacion64\obj\Release\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdCatacteristicaCatalogo64_dll\CaracteristicaOperacion64\CaracteristicaOperacion64\obj\Release\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdCatacteristicaCatalogo64_dll\CaracteristicaOperacion64\CaracteristicaOperacion64\obj\Release\CaracteristicaCatalogo64.vbprojResolveAssemblyReference.cache

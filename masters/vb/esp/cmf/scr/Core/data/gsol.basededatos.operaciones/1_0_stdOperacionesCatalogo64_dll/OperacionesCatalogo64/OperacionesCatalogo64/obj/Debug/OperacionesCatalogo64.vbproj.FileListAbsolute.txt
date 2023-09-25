@@ -1,0 +1,167 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Organismo64.1.0.0.1.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IConexiones.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\SingletonSQLServer64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Conexiones64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Permiso32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Entidad32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Guifreaks.Navisuite.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\System.Windows.Forms.Ribbon35.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Guifreaks.Common.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEspacioTrabajo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Organismo64.1.0.0.1.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Organismo64.1.0.0.1.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IConexiones.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\SingletonSQLServer64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\SingletonSQLServer64.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EspacioTrabajo32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ISectorEntorno.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IConstructorVisual.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\IBitacoras.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\GsDialogo64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\GsDialogo64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Conexiones64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Conexiones64.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IPermisos.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.LineaBaseIniciaSesion64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ConstructorVisual64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Componente32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Componente32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Funcion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Funcion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Accion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Accion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.ICredenciales.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.SectorEntorno32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Permiso32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Permiso32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Entidad32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Entidad32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.EventoEntidades64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.AtributosEntidad64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\bin\Debug\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.xml
+C:\svnGRK\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svnGRK\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbprojResolveAssemblyReference.cache
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.Cache
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svnGRK\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN QA\Namespaces\snappy32.dll
+C:\svn\SVN QA\Namespaces\snappy64.dll
+C:\svn\SVN QA\Namespaces\libzstd.dll
+C:\svn\SVN QA\Namespaces\mongocrypt.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll.config
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll.config
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll.config
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbprojAssemblyReference.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll.config
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll.config
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.AssemblyReference.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Resources.resources
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.GenerateResource.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\OperacionesCatalogo64.vbproj.CoreCompileInputs.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\obj\Debug\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.pdb

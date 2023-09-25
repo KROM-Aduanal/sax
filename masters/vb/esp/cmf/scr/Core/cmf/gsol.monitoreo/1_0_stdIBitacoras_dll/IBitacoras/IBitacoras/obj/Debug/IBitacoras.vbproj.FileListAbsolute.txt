@@ -1,0 +1,45 @@
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.dll
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.pdb
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.xml
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\Resources.resources
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.GenerateResource.Cache
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.dll
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.xml
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\IBitacoras.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.ICredenciales.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.ICredenciales.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.ICredenciales.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN QA\Namespaces\IBitacoras.dll
+C:\svn\SVN QA\Namespaces\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\gsol.monitoreo.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IBitacoras.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\gsol.monitoreo.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\gsol.monitoreo.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\IBitacoras.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\IBitacoras.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbprojAssemblyReference.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\IBitacoras.dll
+c:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\gsol.monitoreo.Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\obj\Debug\IBitacoras.dll

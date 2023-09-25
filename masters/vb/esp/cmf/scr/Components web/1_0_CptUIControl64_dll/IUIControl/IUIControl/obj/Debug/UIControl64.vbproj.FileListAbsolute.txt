@@ -1,0 +1,8 @@
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\UIControl64.vbproj.AssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\UIControl64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\UIControl64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\Gsol.Web.Components.UIControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptUIControl64_dll\IUIControl\IUIControl\obj\Debug\Gsol.Web.Components.UIControl64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.UIControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.UIControl64.0.0.0.0.pdb

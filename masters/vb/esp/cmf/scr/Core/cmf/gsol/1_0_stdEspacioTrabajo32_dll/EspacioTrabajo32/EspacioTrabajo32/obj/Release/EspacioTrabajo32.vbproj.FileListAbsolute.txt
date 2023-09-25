@@ -1,0 +1,13 @@
+C:\svn\SVN QA\Namespaces\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\EspacioTrabajo32.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\EspacioTrabajo32.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Gsol.EspacioTrabajo32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\EspacioTrabajo32.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\EspacioTrabajo32.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\EspacioTrabajo32.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Gsol.EspacioTrabajo32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEspacioTrabajo32_dll\EspacioTrabajo32\EspacioTrabajo32\obj\Release\Gsol.EspacioTrabajo32.1.0.0.0.pdb

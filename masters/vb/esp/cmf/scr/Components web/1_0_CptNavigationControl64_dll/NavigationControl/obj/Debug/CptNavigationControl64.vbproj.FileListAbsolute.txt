@@ -1,0 +1,8 @@
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptNavigationControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptNavigationControl64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\CptNavigationControl64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\CptNavigationControl64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\Gsol.Web.Components.CptNavigationControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\Gsol.Web.Components.CptNavigationControl64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptNavigationControl64_dll\NavigationControl\obj\Debug\CptNavigationControl64.vbproj.AssemblyReference.cache

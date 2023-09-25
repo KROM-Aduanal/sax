@@ -1,0 +1,43 @@
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.dll
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.pdb
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.xml
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.Resources.resources
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbproj.GenerateResource.Cache
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.dll
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.xml
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.pdb
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.TextBoxDCKR.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\bin\Debug\TextBoxDCKR64.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\bin\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\bin\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN QA\Componentes\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\Wilma\esp\bin\Components\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Resources.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbproj.GenerateResource.Cache
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\Wma.Components.TextBoxDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxDCKR64_dll\TextBoxDCKR64\TextBoxDCKR64\obj\Debug\TextBoxDCKR64.vbprojResolveAssemblyReference.cache

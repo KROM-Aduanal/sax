@@ -1,0 +1,125 @@
+﻿Imports Wma.Exceptions
+Imports Gsol.BaseDatos.Operaciones
+
+Namespace Gsol.BaseDatos
+
+    Public Class PoliticasBaseDatos
+        Implements IPoliticasBaseDatos
+
+
+#Region "Enum"
+
+
+
+#End Region
+
+#Region "Atributos"
+
+        Private _iespacioTrabajo As IEspacioTrabajo
+
+        Private _permiso As Integer
+
+        Private _tagWatcher As TagWatcher
+
+        Private _ioperaciones As IOperacionesCatalogo
+
+        Private _sistema As New Organismo
+
+
+#End Region
+
+#Region "Constructores"
+
+        Sub New()
+
+        End Sub
+
+        Sub New(ByVal permiso_ As Integer,
+                ByVal iespacioTrabajo_ As IEspacioTrabajo)
+
+            _iespacioTrabajo = iespacioTrabajo_
+
+            _permiso = permiso_
+
+            _ioperaciones = New OperacionesCatalogo
+
+            _ioperaciones.EspacioTrabajo = iespacioTrabajo_
+
+            _tagWatcher.Status = TagWatcher.TypeStatus.Empty
+
+
+
+            'If _ioperaciones.EspacioTrabajo.BuscaPermiso(permiso_, IEspacioTrabajo.TipoModulo.Abstracto) Then
+
+            'End If
+
+            _ioperaciones =
+           _sistema.ConsultaModulo(iespacioTrabajo_,
+                                   "PoliticasCorporativas", " and i_cve_permiso = " & permiso_).Clone()
+
+            If _sistema.TieneResultados(_ioperaciones) Then
+
+                _sistema.GsDialogo("Si encontro politica",
+                                   Componentes.SistemaBase.GsDialogo.TipoDialogo.Aviso)
+
+
+                For Each item_ As DataRow In _ioperaciones.Vista.Tables(0).Rows
+
+
+
+                Next
+
+            Else
+
+                _sistema.GsDialogo("No encontro politica",
+                                   Componentes.SistemaBase.GsDialogo.TipoDialogo.Aviso)
+
+
+            End If
+
+            'SIngleton
+
+            With _sistema.ConexionSingleton.SQLServerSingletonConexion
+
+                .DataSetReciente.Tables.Clear()
+
+                If .EjecutaConsultaIndividual(" " & query_ & " " & parametros_) Then
+
+                    .DataSetReciente.Tables(0).Rows(0)("field")
+
+                    If 
+
+                    End If
+
+            End With
+
+        End Sub
+
+
+
+#End Region
+
+
+#Region "Propiedades"
+
+        Public Property GetNombrePolitica As String _
+            Implements IPoliticasBaseDatos.GetNombrePolitica
+
+        Public Property GetNumeroPolitica As Integer Implements IPoliticasBaseDatos.GetNumeroPolitica
+
+        Public Property GetPermiso As Integer Implements IPoliticasBaseDatos.GetPermiso
+
+        Public Property GetTagWatcher As Wma.Exceptions.TagWatcher Implements IPoliticasBaseDatos.GetTagWatcher
+
+        Public Property IEspacioTrabajoUsuario As IEspacioTrabajo Implements IPoliticasBaseDatos.IEspacioTrabajoUsuario
+
+        Public Property ParametrosPolitica As List(Of Operaciones.ICaracteristica) Implements IPoliticasBaseDatos.ParametrosPolitica
+
+        Public Property SetPermiso As Integer _
+            Implements IPoliticasBaseDatos.SetPermiso
+
+#End Region
+
+    End Class
+
+End Namespace

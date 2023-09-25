@@ -1,0 +1,12 @@
+C:\svn\SVN QA\Componentes\Wma.Components.ObjetoPregunta64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Components.ObjetoPregunta64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\ObjetoPregunta64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\Wma.Components.ObjetoPregunta64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\Wma.Components.ObjetoPregunta64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\ObjetoPregunta64.vbprojResolveAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\ObjetoPregunta64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\ObjetoPregunta64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdObjetoPregunta64_dll\ObjetoPregunta64\obj\Debug\Wma.Components.ObjetoPregunta64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\Wma.Components.ObjetoPregunta64.0.0.0.0.dll

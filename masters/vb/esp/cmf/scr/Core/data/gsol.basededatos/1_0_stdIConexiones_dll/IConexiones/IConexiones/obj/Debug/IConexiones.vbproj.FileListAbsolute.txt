@@ -1,0 +1,32 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\bin\Debug\IConexiones.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\bin\Debug\IConexiones.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\bin\Debug\IConexiones.xml
+C:\svn\SVN QA\Namespaces\IConexiones.dll
+C:\svn\SVN QA\Namespaces\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\SVN QA\Namespaces\IConexiones.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\SVN QA\Namespaces\IConexiones.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IConexiones.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.dll
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Debug\IConexiones.vbproj.AssemblyReference.cache

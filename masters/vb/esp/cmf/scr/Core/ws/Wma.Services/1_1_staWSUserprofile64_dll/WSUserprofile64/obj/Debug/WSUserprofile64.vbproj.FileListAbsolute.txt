@@ -1,0 +1,24 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\WSUserprofile64.dll
+C:\svn\SVN QA\Namespaces\WSUserprofile64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\ws\WSUserprofile64.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\ws\WSUserprofile64.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\ws\WSUserprofile64.tlb

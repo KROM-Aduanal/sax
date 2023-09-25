@@ -1,0 +1,6 @@
+C:\SVN\SVN QA\KBW\gsol.krom.web.modulos.logIng64.0.0.0.0.dll
+C:\SVN\SVN QA\KBW\gsol.krom.web.modulos.logIng64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\Modulos\gsol.krom.web.modulos.logIng\obj\Debug\gsol.krom.web.modulos.logIng.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\Modulos\gsol.krom.web.modulos.logIng\obj\Debug\gsol.krom.web.modulos.logIng.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\Modulos\gsol.krom.web.modulos.logIng\obj\Debug\gsol.krom.web.modulos.logIng64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom.web\Modulos\gsol.krom.web.modulos.logIng\obj\Debug\gsol.krom.web.modulos.logIng64.0.0.0.0.pdb

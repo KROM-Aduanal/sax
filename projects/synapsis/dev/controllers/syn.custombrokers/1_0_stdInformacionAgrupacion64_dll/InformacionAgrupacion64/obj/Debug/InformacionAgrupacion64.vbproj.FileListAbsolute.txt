@@ -1,0 +1,16 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.InformacionAgrupacion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.InformacionAgrupacion64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Rec.Globals.Controllers.InformacionAgrupacion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Rec.Globals.Controllers.InformacionAgrupacion64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\InformacionAgrupacion64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdInformacionAgrupacion64_dll\InformacionAgrupacion64\obj\Debug\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.pdb

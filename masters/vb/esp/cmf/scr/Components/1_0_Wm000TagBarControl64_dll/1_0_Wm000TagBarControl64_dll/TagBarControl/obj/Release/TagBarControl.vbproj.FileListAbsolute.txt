@@ -1,0 +1,8 @@
+C:\svn\SVN QA\Componentes\WclTagBarControl64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\WclTagBarControl64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\TagBarControl.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\gsol.Componentes.SistemaBase.TagBarControl.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\TagBarControl.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\WclTagBarControl64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TagBarControl64_dll\1_0_Wm000TagBarControl64_dll\TagBarControl\obj\Release\WclTagBarControl64.0.0.0.0.pdb

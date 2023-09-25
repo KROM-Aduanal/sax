@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bitacora", "Bitacora", "{646A28C6-3217-43C9-AF20-4B43270C0966}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LineaBaseBitacora64", "..\..\..\gsol.monitoreo\1_0_stdLineaBaseBitacora64_dll\LineaBaseBitacora64\LineaBaseBitacora64\LineaBaseBitacora64.vbproj", "{CD668C2F-ECF3-4357-808D-DD90A6FB2428}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IBitacoras", "..\..\..\gsol.monitoreo\1_0_stdIBitacoras_dll\IBitacoras\IBitacoras\IBitacoras.vbproj", "{626855D7-9157-4EF4-8740-888F833DEEEE}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BitacoraCapaDatos64", "..\..\..\gsol.monitoreo\1_0_stdBitacoraCapaDatos64_dll\BitacoraCapaDatos64\BitacoraCapaDatos64\BitacoraCapaDatos64.vbproj", "{681FA2D3-EA48-4244-88FD-90C6FE18D42A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LineaBaseCatalogos64", "LineaBaseCatalogos64\LineaBaseCatalogos64.vbproj", "{6C94684E-3537-4ECD-961D-00E1C617E746}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IOperacionesCatalogo", "..\..\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\IOperacionesCatalogo.vbproj", "{2EA75381-E1A5-443B-ACC3-DC88ED49D04A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OperacionesCatalogo64", "..\..\1_0_stdOperacionesCatalogo64_dll\OperacionesCatalogo64\OperacionesCatalogo64\OperacionesCatalogo64.vbproj", "{CF86813A-EDE1-4537-80BD-E2AA8365132B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681FA2D3-EA48-4244-88FD-90C6FE18D42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681FA2D3-EA48-4244-88FD-90C6FE18D42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681FA2D3-EA48-4244-88FD-90C6FE18D42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681FA2D3-EA48-4244-88FD-90C6FE18D42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C94684E-3537-4ECD-961D-00E1C617E746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C94684E-3537-4ECD-961D-00E1C617E746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C94684E-3537-4ECD-961D-00E1C617E746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C94684E-3537-4ECD-961D-00E1C617E746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA75381-E1A5-443B-ACC3-DC88ED49D04A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA75381-E1A5-443B-ACC3-DC88ED49D04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA75381-E1A5-443B-ACC3-DC88ED49D04A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA75381-E1A5-443B-ACC3-DC88ED49D04A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF86813A-EDE1-4537-80BD-E2AA8365132B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF86813A-EDE1-4537-80BD-E2AA8365132B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF86813A-EDE1-4537-80BD-E2AA8365132B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF86813A-EDE1-4537-80BD-E2AA8365132B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428} = {646A28C6-3217-43C9-AF20-4B43270C0966}
+		{626855D7-9157-4EF4-8740-888F833DEEEE} = {646A28C6-3217-43C9-AF20-4B43270C0966}
+		{681FA2D3-EA48-4244-88FD-90C6FE18D42A} = {646A28C6-3217-43C9-AF20-4B43270C0966}
+	EndGlobalSection
+EndGlobal

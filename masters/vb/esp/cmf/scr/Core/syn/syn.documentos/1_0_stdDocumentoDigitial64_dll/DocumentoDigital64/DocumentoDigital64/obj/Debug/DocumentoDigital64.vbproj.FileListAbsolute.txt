@@ -1,0 +1,26 @@
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbprojAssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\Syn.Documento.DocumentoDigital64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoDigitial64_dll\DocumentoDigital64\DocumentoDigital64\obj\Debug\DocumentoDigital64.vbproj.CopyComplete

@@ -1,0 +1,13 @@
+C:\svn\SVN QA\Aplicacion\IWSExtranetSuite64.dll.config
+C:\svn\SVN QA\Aplicacion\IWSExtranetSuite64.dll
+C:\svn\SVN QA\Aplicacion\IWSExtranetSuite64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\WSExtranetSuite64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\IWSExtranetSuite64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\IWSExtranetSuite64.pdb
+C:\svn\SVN QA\Aplicacion\WSExtranetSuite\IWSExtranetSuite64.dll.config
+C:\svn\SVN QA\Aplicacion\WSExtranetSuite\IWSExtranetSuite64.dll
+C:\svn\SVN QA\Aplicacion\WSExtranetSuite\IWSExtranetSuite64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\WSExtranetSuite64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\WSExtranetSuite64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_3_stdWsExtranetSuite64_dll\WSExtranetSuite64\obj\Debug\WSExtranetSuite64.vbproj.CopyComplete

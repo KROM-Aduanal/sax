@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LineaBaseBitacora64", "LineaBaseBitacora64\LineaBaseBitacora64.vbproj", "{CD668C2F-ECF3-4357-808D-DD90A6FB2428}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SingletonBitacoras64", "..\..\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\SingletonBitacoras64.vbproj", "{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD668C2F-ECF3-4357-808D-DD90A6FB2428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

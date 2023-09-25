@@ -1,0 +1,36 @@
+
+/*TABBAR*/
+
+.wc-tabbar {
+    --tintColor: #6c4fd3;
+}
+
+.wc-tabbar label {
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    color: #616161;
+    padding: 1.5rem 0;
+    cursor: pointer;
+}
+
+.wc-tabbar label input + span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transition: .5s all;
+}
+
+.wc-tabbar label input:checked + span {
+    background-color: var(--tintColor);
+}
+
+.wc-tabbar > div:first-child {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.wc-tabbar > div:first-child input[type="radio"] {
+    display: none;
+}

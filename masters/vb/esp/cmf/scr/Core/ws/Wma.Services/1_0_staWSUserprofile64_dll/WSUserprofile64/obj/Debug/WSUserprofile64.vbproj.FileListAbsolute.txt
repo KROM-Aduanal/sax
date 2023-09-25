@@ -1,0 +1,14 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\WSUserprofile64.dll
+C:\svn\SVN QA\Namespaces\WSUserprofile64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.pdb
+D:\svn_good\SVN QA\Namespaces\WSUserprofile64.dll
+D:\svn_good\SVN QA\Namespaces\WSUserprofile64.pdb
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbprojResolveAssemblyReference.cache
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\Resources.resources
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbproj.GenerateResource.Cache
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.dll
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staWSUserprofile64_dll\WSUserprofile64\obj\Debug\WSUserprofile64.vbprojResolveAssemblyReference.cache

@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Namespaces\Gsol.EnsambladorCodigo64.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.EnsambladorCodigo64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\EnsambladorCodigo64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\EnsambladorCodigo64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Gsol.EnsambladorCodigo64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Gsol.EnsambladorCodigo64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.EnsambladorCodigo64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.EnsambladorCodigo64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\EnsambladorCodigo64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\EnsambladorCodigo64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Gsol.EnsambladorCodigo64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\Gsol.EnsambladorCodigo64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnsambladorCodigo64_dll\EnsambladorCodigo64\EnsambladorCodigo64\obj\Release\EnsambladorCodigo64.vbprojAssemblyReference.cache

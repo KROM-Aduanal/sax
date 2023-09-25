@@ -1,0 +1,10 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcherWCF64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcherWCF64.0.0.0.0.pdb

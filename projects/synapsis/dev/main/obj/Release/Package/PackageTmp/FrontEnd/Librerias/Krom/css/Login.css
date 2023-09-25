@@ -1,0 +1,415 @@
+
+.sinapsis-login {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#722c62+0,730059+45,360056+100 */
+    background: #722c62; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #722c62 0%, #730059 45%, #360056 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #722c62 0%,#730059 45%,#360056 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #722c62 0%,#730059 45%,#360056 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#722c62', endColorstr='#360056',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    justify-content: center;
+    align-items: center;
+    /*flex-direction: column;*/
+}
+
+.sinapsis-login > div {
+    width:80%;
+    max-width:900px;
+}
+
+.sinapsis-login form {
+    width:100%;
+    background-color:#ffffff;
+    border-radius:7px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.25);
+    
+}
+
+.sinapsis-form {
+    margin: auto;
+    flex-direction: row-reverse;
+}
+
+.sinapsis-form button,.sinapsis-form button:hover {
+    background-color:#380056;
+}
+
+.sinapsis-form a {
+    color:#6c4fd3 !important;
+}
+
+.sinapsis-form > div:nth-child(1){
+    overflow: hidden;
+}
+
+    .sinapsis-form > div:nth-child(1) > div {
+        background: -moz-linear-gradient(45deg, rgba(125,185,232,0) 0%, rgba(115,0,89,0.95) 20%, rgba(54,0,86,1) 60%, rgba(54,0,86,1) 100%);
+        background: -webkit-linear-gradient(45deg, rgba(125,185,232,0) 0%,rgba(115,0,89,0.95) 20%,rgba(54,0,86,1) 60%,rgba(54,0,86,1) 100%);
+        background: linear-gradient(45deg, rgba(125,185,232,0) 0%,rgba(115,0,89,0.95) 20%,rgba(54,0,86,1) 60%,rgba(54,0,86,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#360056',GradientType=1 );
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+.sinapsis-form > div:nth-child(2) {
+    padding:32px 64px;
+}
+
+.sinapsis-form img {
+    position:relative;
+    float: right;
+}
+
+.sinapsis-input-top {
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #dddddd;
+    padding: 4px;
+    width: 100%;
+    border-bottom-width: 0;
+    background: #ffffff;
+    position: relative;
+    padding-right:20px;
+}
+
+.sinapsis-input-bottom {
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #dddddd;
+    padding: 4px;
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    padding-right: 20px;
+
+}
+.sinapsis-input-top a, .sinapsis-input-bottom a {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #ddd !important;
+}
+
+.sinapsis-input-bottom:hover, .sinapsis-input-top:hover {
+    background-color: #fbfbfb;
+}
+
+.sinapsis-input-top input, .sinapsis-input-bottom input {
+    border:0;
+    outline:0;
+    width:100%;
+    padding:0;
+    background: transparent;
+}
+
+.sinapsis-input-top span, .sinapsis-input-bottom span {
+    text-transform:uppercase;
+    color:#b8b8b8;
+    font-size:75%;
+    font-weight:bold;
+}
+
+.sinapsis-input-top, .sinapsis-input-bottom {
+    margin:0;
+}
+
+.sinapsis-title {
+    color: #ffffff;
+    text-align: right;
+    padding: 20px;
+    z-index:1;
+    position: relative;
+}
+
+.sinapsis-title small {
+    display: block;
+    font-size: 50%;
+}
+
+.video-min-bg {
+    position: absolute;
+    z-index: 0;
+    top: -40%;
+    left: -80%;
+    width: 150%;
+    height: 150%;
+    filter: grayscale(1);
+}
+
+.nav-social {
+    display:flex;
+    margin: 60px 0;
+    justify-content:center;
+    color: #ffffff;
+}
+
+.nav-social a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #e6e8e7;
+    display: inline-block;
+    margin: 0 10px;
+    position: relative;
+    transition: 0.5s all;
+}
+
+.nav-social a:hover {
+    background-color: #730059;
+    border-color: #730059;
+}
+
+.nav-social a:hover i {
+    opacity:1;
+}
+
+.nav-social a i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #ffffff;
+    font-size: 18px;
+    opacity: .5;
+}
+
+/*
+ .sinapsis-login {
+    box-shadow:0 1px 9px rgba(0, 0, 0,0.075);
+    overflow: hidden;
+    z-index:1;
+}
+.sinapsis-login > div:nth-child(2):before {
+    content: "";
+    background: #730059; 
+    background: -moz-linear-gradient(left,  #730059 0%, #360056 100%); 
+    background: -webkit-linear-gradient(left,  #730059 0%,#360056 100%); 
+    background: linear-gradient(to right,  #730059 0%,#360056 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#730059', endColorstr='#360056',GradientType=1 ); 
+    opacity:0.9;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    position:absolute;
+    z-index:1;
+}
+.sinapsis-login > div:nth-child(2) > div {
+    z-index:1;
+}
+.sinapsis-login > div:nth-child(1),.sinapsis-login > div:nth-child(2) {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    overflow:hidden;
+}
+
+.sinapsis-login > div:nth-child(1) h2 {
+    color:#730059;
+    font-weight: normal;
+}
+.sinapsis-login > div:nth-child(1) > a {
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    border:1px solid #e6e8e7;
+    display:inline-block;
+    margin: 0 10px;
+    position: relative;
+    transition:0.5s all;
+}
+.sinapsis-login > div:nth-child(1) > a:hover {
+        background-color: #730059;
+        border-color:#730059;
+}
+.sinapsis-login > div:nth-child(1) > a:hover i {
+        color: #ffffff;
+}
+.sinapsis-login > div:nth-child(1) > a i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #333333;
+    font-size:18px;
+}
+
+.sinapsis-login > div:nth-child(1) > small {
+    color: #bbbbbb;
+}
+
+.sinapsis-login form {
+    margin: auto;
+    width:100%;
+}
+        
+.sinapsis-login form label {
+    position: relative;
+    display: block;
+}
+
+.sinapsis-login form label i {
+    position: absolute;
+    left: 8px;
+    top: 14px;
+    z-index: 1;
+    font-size: 20px;
+    color: #888;
+}
+
+.sinapsis-login form input:not([type="checkbox"]) {
+    background-color: #f4f8f7;
+    outline: 0;
+    border: 0;
+    padding: 8px 8px 8px 32px;
+    border-radius: 4px;
+    width: 100%;
+    background-position:left;
+    background-repeat:no-repeat;
+    line-height: 30px;
+}
+
+.sinapsis-login form a {
+    color: #333333;
+    border-bottom: 1px solid #f5f5f5;
+    background-color: transparent;
+}
+
+.sinapsis-login form a:hover {
+    color: #333333;
+    background-color: transparent;
+}
+
+.sinapsis-login form button {
+    background-color: #370056;
+    color: #ffffff;
+    line-height: 24px;
+    border-radius: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.sinapsis-login form button:hover {
+    background-color: #730059;
+    color: #ffffff;
+}
+
+.sinapsis-login > div:nth-child(2) h2 {
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.sinapsis-login > div:nth-child(2) a {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    line-height: 24px;
+    border-radius: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-decoration:none;
+    display: table;
+    margin: auto;
+}
+.touch-animate {
+    position: relative;
+}
+.touch-animate span {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid yellow;
+    position: absolute;
+    z-index: 1;
+    transform: scale(0);
+}
+
+.touch-animate span:nth-child(1) {
+    left: 0%;
+    top: -75%;
+}
+
+.touch-animate span:nth-child(2) {
+    right: 0%;
+    top: -25%;
+}
+
+.pulse-animate {
+    --delay-animate: 0s;
+    animation-delay: var(--delay-animate);
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity:0;
+        transform: scale(0);
+    }
+    19%{
+        opacity:0.25;
+        transform: scale(1.15);
+    }
+    20%{
+        opacity:0;
+        transform: scale(0);
+    }
+}
+.video-bg {
+    position: fixed;
+    z-index: -1;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    filter:grayscale(1);
+}
+body:before {
+    content:"";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 75%, rgba(255,255,255,0.5) 100%, rgba(255,255,255,0) 100%); 
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 75%,rgba(255,255,255,0.5) 100%,rgba(255,255,255,0) 100%); 
+background: linear-gradient(to bottom, rgba(255,255,255,1) 75%,rgba(255,255,255,0.5) 100%,rgba(255,255,255,0) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); 
+}
+      
+.video-min-bg {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: -150%;
+    width: 300%;
+    height: 100%;
+    transform: rotate(-180deg);
+    filter:grayscale(1);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+
+
+.nav-footer {
+    bottom:5%;
+    right:5%;
+}*/

@@ -1,0 +1,35 @@
+<Manifest GUID=""  Trace=True  Name="Tester">
+
+
+<Enviroment >
+   
+	<EnviromentBehavior Name="Milsec1.0" UsingStructure=".\Milsec.Structure" Mode="1"/>
+	<Theme Enabled=True>Sax.Theme</Theme>
+	<EnviromentType>Desktop</EnviromentType>
+	<Debug LogName=".\Debug.log">
+	
+</Enviroment>
+
+<GlobalSettings>
+
+    <GlobalPermissions>
+		<Permission ID="" Description="Nothing" Enabled=True ISaid="Put" FrameworkSaid="Done"/>
+    </GlobalPermissions>
+
+	<FileModularPermissions Path=".\ModularPermissions.Inventory"/>
+	
+	<ModulesInventory Path=".\Modules.Inventory" />
+	
+	<AssetsInventory Path=".\Assets.Inventory" />
+	
+	<StringsFile Path=".\Strings.Inventory"/>
+	
+   <DataSourceSettings AlwaysOn=False DefaultIDOption="1" >
+      <Option ID="1" ConnectionType="ADO.NET"  Driver="MSSQL" FileCredentials=".\Option1.Link"/>
+	  <Option ID="2" ConnectionType="WebServices"  Driver="MSSQL" FileCredentials=".\Option2.Link" WebServicePassword="er45sg" WSDL="" ElectronicSign=".\none.cer"/>
+     </DataSourceSettings>
+   
+</GlobalSettings>
+
+
+</Manifest>

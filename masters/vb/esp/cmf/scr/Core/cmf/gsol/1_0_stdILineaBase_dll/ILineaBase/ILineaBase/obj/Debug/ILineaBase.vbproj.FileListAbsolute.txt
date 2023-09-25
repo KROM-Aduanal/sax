@@ -1,0 +1,16 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\Gsol.ILineaBase.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\Gsol.ILineaBase.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\Gsol.ILineaBase.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\IConexiones.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\IConexiones.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\bin\Debug\IConexiones.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\ILineaBase.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\Gsol.ILineaBase.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\Gsol.ILineaBase.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\Gsol.ILineaBase.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\ILineaBase.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILineaBase_dll\ILineaBase\ILineaBase\obj\Debug\ILineaBase.vbproj.CopyComplete
+C:\svn\SVN QA\Aplicacion\Gsol.ILineaBase.1.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Gsol.ILineaBase.1.0.0.0.pdb
+C:\svn\SVN QA\Aplicacion\Gsol.ILineaBase.1.0.0.0.xml

@@ -1,0 +1,69 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IConstructorVisual.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\bin\Release\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll.config
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\snappy32.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\snappy64.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\libzstd.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\mongocrypt.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll.config
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.AssemblyReference.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Resources.resources
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.GenerateResource.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.CoreCompileInputs.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\snappy32.dll
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\snappy64.dll
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\libzstd.dll
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\mongocrypt.dll
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll.config
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+c:\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Resources.resources
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.GenerateResource.cache
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.CoreCompileInputs.cache
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+c:\Sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdIOperacionesCatalogo_dll\IOperacionesCatalogo\IOperacionesCatalogo\obj\Release\IOperacionesCatalogo.vbproj.AssemblyReference.cache

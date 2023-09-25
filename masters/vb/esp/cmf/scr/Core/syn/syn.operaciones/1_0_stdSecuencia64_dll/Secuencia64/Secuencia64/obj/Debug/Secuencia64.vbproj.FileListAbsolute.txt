@@ -1,0 +1,13 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\snappy32.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\snappy64.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\libzstd.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\mongocrypt.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.Secuencia64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.Secuencia64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.Secuencia64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Secuencia64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Syn.Operaciones.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Secuencia64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Secuencia64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Syn.Operaciones.Secuencia64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.operaciones\1_0_stdSecuencia64_dll\Secuencia64\Secuencia64\obj\Debug\Syn.Operaciones.Secuencia64.0.0.0.0.pdb

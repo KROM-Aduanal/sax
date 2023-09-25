@@ -1,0 +1,9 @@
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\clsDocumentoXML32.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\clsDocumentoXML32.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.vbproj.CopyComplete
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdDocumentoXML32_dll\clsDocumentoXML32\clsDocumentoXML32\obj\Debug\clsDocumentoXML32.pdb

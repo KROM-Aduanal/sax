@@ -1,0 +1,20 @@
+C:\SVN\SVN QA\Namespaces\TagWatcher64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\TagWatcher64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\TagWatcher64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\TagWatcher64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\TagWatcher64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Release\TagWatcher.vbproj.AssemblyReference.cache

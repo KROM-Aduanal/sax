@@ -1,0 +1,29 @@
+C:\svn\SVN QA\Namespaces\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.frm000Formulario.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Solutions\kb\Modules\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Solutions\kb\Modules\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.frm000Formulario.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+C:\Sax\Settings\Modules\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+C:\Sax\Settings\Modules\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+D:\testerborrar\ouch\sax\default\modules\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\default\modules\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.frm000Formulario.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\GenericOperators64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericOperators64\GenericOperators64\obj\Debug\Gsol.Modulos.GenericOperators64.1.0.0.0.pdb

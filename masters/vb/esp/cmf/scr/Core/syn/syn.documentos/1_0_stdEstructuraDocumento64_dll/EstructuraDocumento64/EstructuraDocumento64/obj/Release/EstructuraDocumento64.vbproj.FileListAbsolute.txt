@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.EstructuraDocumento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.EstructuraDocumento64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\EstructuraDocumento64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\EstructuraDocumento64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\EstructuraDocumento64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\Syn.Documento.EstructuraDocumento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\obj\Release\Syn.Documento.EstructuraDocumento64.0.0.0.0.pdb

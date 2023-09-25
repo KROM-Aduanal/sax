@@ -1,0 +1,10 @@
+C:\SVN\SVN QA\Componentes\WclMultiSelectorControl64.0.0.0.0.dll
+C:\SVN\SVN QA\Componentes\WclMultiSelectorControl64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\MultiSelectorControl.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\WclMultiSelectorControl64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\WclMultiSelectorControl64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\gsol.Componentes.SistemaBase.MultiSelectorControl.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\MultiSelectorControl.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\MultiSelectorControl.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclMultiSelectorControl64_dll\MultiSelector\obj\Debug\MultiSelectorControl.vbproj.CopyComplete

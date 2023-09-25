@@ -1,0 +1,6 @@
+C:\SVN\SVN QA\Namespaces\Gsol.GeneraRepresentacionImpresa64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.GeneraRepresentacionImpresa64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraRepresentacionImpresa64_dll\GeneraRepresentacionImpresa64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraRepresentacionImpresa64_dll\GeneraRepresentacionImpresa64\obj\Debug\GeneraRepresentacionImpresa64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraRepresentacionImpresa64_dll\GeneraRepresentacionImpresa64\obj\Debug\Gsol.GeneraRepresentacionImpresa64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraRepresentacionImpresa64_dll\GeneraRepresentacionImpresa64\obj\Debug\Gsol.GeneraRepresentacionImpresa64.0.0.0.0.pdb

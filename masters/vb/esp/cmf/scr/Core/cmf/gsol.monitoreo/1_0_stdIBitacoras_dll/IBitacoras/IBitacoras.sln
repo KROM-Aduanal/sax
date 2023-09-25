@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IBitacoras", "IBitacoras\IBitacoras.vbproj", "{626855D7-9157-4EF4-8740-888F833DEEEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626855D7-9157-4EF4-8740-888F833DEEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

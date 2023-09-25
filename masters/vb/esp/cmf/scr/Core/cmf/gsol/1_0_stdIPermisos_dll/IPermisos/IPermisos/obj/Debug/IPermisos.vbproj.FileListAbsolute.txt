@@ -1,0 +1,39 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IPermisos.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IPermisos.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IPermisos.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Accion32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Componente32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Funcion32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Accion32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Accion32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Componente32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Componente32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Funcion32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.Funcion32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Gsol.IPermisos.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Gsol.IPermisos.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Gsol.IPermisos.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IPermisos.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Gsol.IPermisos.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.IPermisos.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\IPermisos.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIPermisos_dll\IPermisos\IPermisos\obj\Debug\Gsol.IPermisos.1.0.0.0.dll

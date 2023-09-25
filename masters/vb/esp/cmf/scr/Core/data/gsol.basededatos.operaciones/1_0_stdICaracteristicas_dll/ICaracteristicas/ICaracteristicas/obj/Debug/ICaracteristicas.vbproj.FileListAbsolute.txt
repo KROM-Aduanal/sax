@@ -1,0 +1,27 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\bin\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.xml
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbprojAssemblyReference.cache
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Resources.resources
+C:\SAX\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.GenerateResource.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\ICaracteristicas.vbproj.CoreCompileInputs.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Debug\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll

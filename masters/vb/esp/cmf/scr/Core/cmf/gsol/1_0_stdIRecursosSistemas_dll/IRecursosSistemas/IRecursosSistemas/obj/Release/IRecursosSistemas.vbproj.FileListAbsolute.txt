@@ -1,0 +1,27 @@
+C:\svn\SVN QA\Namespaces\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Release\IRecursosSistemas.vbproj.AssemblyReference.cache

@@ -1,0 +1,20 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdPagosTerceros64_dll\1_0_stdPagosTerceros64_dll\PagosTerceros64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdPagosTerceros64_dll\1_0_stdPagosTerceros64_dll\PagosTerceros64\obj\Debug\PagosTerceros64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdPagosTerceros64_dll\1_0_stdPagosTerceros64_dll\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdPagosTerceros64_dll\1_0_stdPagosTerceros64_dll\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdPagosTerceros64_dll\1_0_stdPagosTerceros64_dll\PagosTerceros64\obj\Debug\PagosTerceros64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\PagosTerceros64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\gso.krom.PagosTerceros64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\gso.krom.PagosTerceros64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\PagosTerceros64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gso.krom.PagosTerceros64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gso.krom.PagosTerceros64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\PagosTerceros64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\PagosTerceros64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\gso.krom.PagosTerceros64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\gsol.krom.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\PagosTerceros64\obj\Debug\PagosTerceros64.vbproj.AssemblyReference.cache

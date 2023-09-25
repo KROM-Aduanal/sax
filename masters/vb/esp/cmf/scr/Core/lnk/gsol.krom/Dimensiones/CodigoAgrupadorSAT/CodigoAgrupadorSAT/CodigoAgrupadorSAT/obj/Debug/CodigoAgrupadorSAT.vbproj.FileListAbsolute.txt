@@ -1,0 +1,8 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CodigoAgrupadorSAT\CodigoAgrupadorSAT\CodigoAgrupadorSAT\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CodigoAgrupadorSAT\CodigoAgrupadorSAT\CodigoAgrupadorSAT\obj\Debug\CodigoAgrupadorSAT.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\SVN\SVN QA\Namespaces\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\SVN\SVN QA\Namespaces\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\SVN\SVN QA\Namespaces\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CodigoAgrupadorSAT\CodigoAgrupadorSAT\CodigoAgrupadorSAT\obj\Debug\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CodigoAgrupadorSAT\CodigoAgrupadorSAT\CodigoAgrupadorSAT\obj\Debug\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CodigoAgrupadorSAT\CodigoAgrupadorSAT\CodigoAgrupadorSAT\obj\Debug\gsol.krom.CodigoAgrupadorSAT64.0.0.0.0.pdb

@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Namespaces\Gsol.IniciaSesion64.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.IniciaSesion64.1.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Gsol.IniciaSesion64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\IniciaSesion64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\IniciaSesion64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Gsol.IniciaSesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Gsol.IniciaSesion64.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Gsol.IniciaSesion64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IniciaSesion64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IniciaSesion64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\IniciaSesion64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\IniciaSesion64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\IniciaSesion64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Gsol.IniciaSesion64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIniciaSesion64_dll\IniciaSesion64\IniciaSesion64\obj\Release\Gsol.IniciaSesion64.1.0.0.0.pdb

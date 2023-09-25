@@ -1,0 +1,29 @@
+C:\svn\SVN QA\Namespaces\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Debug\SingletonBitacoras64.vbproj.AssemblyReference.cache

@@ -1,0 +1,12 @@
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Release\Gsol.IEvento.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Release\Gsol.IEvento.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Release\Gsol.IEvento.1.0.0.0.xml
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\IEvento.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\IEvento.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\Gsol.IEvento.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\Gsol.IEvento.1.0.0.0.xml
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Release\Gsol.IEvento.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEvento.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEvento.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEvento.1.0.0.0.xml

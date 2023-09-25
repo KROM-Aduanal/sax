@@ -1,0 +1,5 @@
+<Permissions>
+  <Permission VarName="per1" ReturnedID="" Description="Nothing" PermissionType="Abstract" Enabled=True ISaid="Put" FrameworkSaid="Done"/>
+  <Permission VarName="" ReturnedID="" Description="Nothing" PermissionType="Graphic" Enabled=True ISaid="Put" FrameworkSaid="Done" GraphicRol="TreeViewNode"/>
+
+</Permissions>

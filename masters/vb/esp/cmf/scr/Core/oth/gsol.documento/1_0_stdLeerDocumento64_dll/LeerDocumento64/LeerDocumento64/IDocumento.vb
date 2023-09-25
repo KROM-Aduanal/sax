@@ -1,0 +1,4 @@
+﻿
+Interface IDocumento
+
+End Interface

@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptInputControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptInputControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\CptInputControl64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\CptInputControl64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\Gsol.Web.Components.CptInputControl64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\Gsol.Web.Components.CptInputControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptInputControl64_dll\InputControl\obj\Debug\CptInputControl64.vbproj.AssemblyReference.cache

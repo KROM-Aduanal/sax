@@ -1,0 +1,5 @@
+C:\SVN\SVN QA\Namespaces\gsol.krom.IControladorPeticiones64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\gsol.krom.IControladorPeticiones64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIControladorPeticiones64_dll\IControladorPeticiones64\obj\Debug\gsol.krom.IControladorPeticiones64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIControladorPeticiones64_dll\IControladorPeticiones64\obj\Debug\gsol.krom.IControladorPeticiones64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIControladorPeticiones64_dll\IControladorPeticiones64\obj\Debug\IControladorPeticiones64.vbprojResolveAssemblyReference.cache

@@ -1,0 +1,157 @@
+
+/*INPUT*/
+
+.wc-input {
+	--tintColor: #673ab7;
+	--errorColor: #ff0000;
+	min-height: 44px;
+}
+
+.wc-input > input, .wc-input > textarea {
+    border-radius: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #828282 !important;
+    padding: 6px 0 !important;
+	font-size:14px;
+	color:#424242;
+	background-position:right;
+	background-repeat:no-repeat;
+	background-size:18px;
+}
+
+.wc-input > input[icon], .wc-input > textarea[icon] {
+	padding-right:24px !important;
+}
+
+input:not(:placeholder-shown) + div + div + label, textarea:not(:placeholder-shown) + div + label {
+	top: -4px;
+	opacity: 1;
+}
+
+input:not(:placeholder-shown) + div + label, textarea:not(:placeholder-shown) + label {
+	top: -4px;
+	opacity: 1;
+}
+
+input:not(:disabled):not(:placeholder-shown) + div + div + label, textarea:not(:placeholder-shown) + div + label {
+	color: var(--tintColor);
+}
+
+input:not(:disabled):not(:placeholder-shown) + div + label, textarea:not(:placeholder-shown) + label {
+	color: var(--tintColor);
+}
+
+.wc-input > input + div + div span {
+	position: absolute;
+	bottom: -10%;
+	left: 0;
+	white-space: nowrap;
+	max-width: 100%;
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: var(--errorColor);
+	font-size: 75%;
+}
+
+.wc-input > input + div {
+	position: absolute;
+	right: 0;
+	top: 7px;
+}
+
+.wc-input input[readonly], .wc-input input[disabled], .wc-input textarea[disabled] {
+	border-color: #cecdcd !important;
+	background-color: #ffffff !important;
+}
+
+.wc-input > textarea {
+	min-height:98px;
+	resize:none;
+}
+
+
+.input-date-icon {
+	background-image: url('../../imgs/date.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	padding-right: 28px;
+}
+
+.input-time-icon {
+	background-image: url('../../imgs/time.png');
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	padding-right: 28px;
+}
+
+.float-form-control {
+	color: #939ba2;
+	position: absolute;
+	top: 50%;
+	/*left: 0;*/
+	transform: translateY(-50%);
+	pointer-events: none;
+	opacity: 0;
+	transition: 1s color, .5s top, .5s background-color;
+}
+
+.float-form-control:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: #ffffff;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	z-index: -1
+}
+
+.float-form-control span {
+	padding: 0;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.solid-textarea .wc-input > textarea {
+	background-color: #f5f5f5;
+	border: 1px solid #bdbdbd !important;
+	border-radius: 12px !important;
+	padding: 15px !important;
+}
+
+.solid-textarea .wc-input > label {
+	top: -14px;
+}
+
+.solid-textarea .wc-input > textarea[disabled] {
+	background-color: #f5f5f5 !important;
+}
+
+.wc-input .text-align-left {
+	text-align: left;
+}
+
+.wc-input .text-align-center {
+	text-align: center;
+}
+
+.wc-input .text-align-right {
+	text-align: right;
+}
+
+.wc-input .text-align-left + div + div + label {
+	left: 0;
+}
+
+.wc-input .text-align-center + div + div + label {
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.wc-input .text-align-right + div + div + label {
+	right: 0;
+}

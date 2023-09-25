@@ -1,0 +1,42 @@
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.dll
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.pdb
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.xml
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.Resources.resources
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.DateTimePickerDCKR.resources
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbproj.GenerateResource.Cache
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.dll
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.xml
+C:\Users\pedrobm.RKUVER\AppData\Local\Temporary Projects\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\bin\Debug\DateTimePickerDCKR64.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\bin\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\bin\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN QA\Componentes\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\Wilma\esp\bin\Components\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbprojResolveAssemblyReference.cache
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Resources.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbproj.GenerateResource.Cache
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\Wilma\esp\sources\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\Wma.Components.DateTimePickerDCKR64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000DateTimePickerDCKR64_dll\DateTimePickerDCKR64\DateTimePickerDCKR64\obj\Debug\DateTimePickerDCKR64.vbprojResolveAssemblyReference.cache

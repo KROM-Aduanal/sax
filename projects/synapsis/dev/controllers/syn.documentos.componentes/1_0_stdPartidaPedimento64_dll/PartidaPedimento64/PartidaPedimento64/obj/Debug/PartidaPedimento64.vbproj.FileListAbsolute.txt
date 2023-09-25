@@ -1,0 +1,17 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.CopyComplete
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.AssemblyReference.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Resources.resources
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\PartidaPedimento64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos.componentes\1_0_stdPartidaPedimento64_dll\PartidaPedimento64\PartidaPedimento64\obj\Debug\Syn.Documento.Componentes.PartidaPedimento64.0.0.0.0.pdb

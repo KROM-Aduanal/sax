@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Componentes\Wcl000Catalogo.dll
+C:\svn\SVN QA\Componentes\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\Wcl000Catalogo.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\Wcl000Catalogo.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\gsol.Componentes.SistemaBase.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\gsol.Componentes.SistemaBase.GsCatalogo.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000Catalogo\Wcl000Catalogo\obj\Release\Wcl000Catalogo.pdb

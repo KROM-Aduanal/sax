@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CptTabbarControl64", "CptTabbarControl64.vbproj", "{73167F2F-BDE4-402C-88D3-E9E4F9985238}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73167F2F-BDE4-402C-88D3-E9E4F9985238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73167F2F-BDE4-402C-88D3-E9E4F9985238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73167F2F-BDE4-402C-88D3-E9E4F9985238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73167F2F-BDE4-402C-88D3-E9E4F9985238}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C909E323-C0C2-4A81-9514-C8EAA7488A1F}
+	EndGlobalSection
+EndGlobal

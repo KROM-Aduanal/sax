@@ -1,0 +1,95 @@
+﻿/* COLLECTION */
+.wc-collectionview {
+    --tintColor: #6c4fd3;
+}
+
+.wc-collectionview > div {
+    border: 1px solid #e0e0e0;
+    position: relative;
+    margin: 1rem auto;
+    border-radius: 7px;
+    padding: 1rem 2rem;
+}
+
+.wc-collectionview > div > div:first-child a {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    opacity: .5;
+}
+
+.wc-collectionview > div > div:first-child a.__edit {
+    background-image: url('../../imgs/b_lock.png');
+}
+
+.wc-collectionview > div > div:first-child a.__cancel {
+    background-image: url('../../imgs/b_unlock.png');
+}
+
+.wc-collectionview > div > div:first-child a.__clone {
+    background-image: url('../../imgs/copy.png');
+}
+
+.wc-collectionview > div > div:first-child a.__delete {
+    background-image: url('../../imgs/deleteB.png');
+}
+
+.wc-collectionview > div > div:first-child a.__filed {
+    background-image: url('../../imgs/b_archivado.png');
+}
+
+.wc-collectionview > div > div:first-child a.__up {
+    background-image: url('../../imgs/up.png');
+    background-color: var(--tintColor);
+    opacity: 1;
+}
+
+.wc-collectionview > div > div:first-child a.__down {
+    background-image: url('../../imgs/down.png');
+    background-color: var(--tintColor);
+    opacity: 1;
+}
+
+.wc-collectionview > div > div:first-child p {
+    display: block;
+    /*padding: 8px 20px;*/
+    font-weight: bold;
+    color: #757575;
+    font-size: 18px;
+    margin: 0;
+}
+
+.wc-collectionview > div > div:first-child p span {
+    font-weight: normal;
+    padding-right: 8px;
+    margin-right: 8px;
+    border-right: 1px solid #757575;
+}
+
+.wc-collectionview .owner-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.wc-collectionview .owner-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--tintColor);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 8px;
+}
+
+.wc-collectionview .owner-item label small {
+    display: block;
+    opacity: .7;
+}

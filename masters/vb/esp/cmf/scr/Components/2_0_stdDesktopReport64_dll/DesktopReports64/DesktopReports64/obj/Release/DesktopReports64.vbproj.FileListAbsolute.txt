@@ -1,0 +1,7 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdDesktopReport64_dll\DesktopReports64\DesktopReports64\obj\Release\DesktopReports64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdDesktopReport64_dll\DesktopReports64\DesktopReports64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdDesktopReport64_dll\DesktopReports64\DesktopReports64\obj\Release\DesktopReports64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Componentes\Wma.Reports.DesktopReports64.2.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Reports.DesktopReports64.2.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdDesktopReport64_dll\DesktopReports64\DesktopReports64\obj\Release\Wma.Reports.DesktopReports64.2.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdDesktopReport64_dll\DesktopReports64\DesktopReports64\obj\Release\Wma.Reports.DesktopReports64.2.0.0.0.pdb

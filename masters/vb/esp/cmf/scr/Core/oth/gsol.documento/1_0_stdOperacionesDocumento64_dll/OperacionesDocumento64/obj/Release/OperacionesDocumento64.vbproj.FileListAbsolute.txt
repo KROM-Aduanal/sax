@@ -1,0 +1,15 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\OperacionesDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\OperacionesDocumento64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\OperacionesDocumento64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\OperacionesDocumento64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\OperacionesDocumento64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Release\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb

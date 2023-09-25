@@ -1,0 +1,92 @@
+
+/*SWITCH*/
+
+.wc-switch {
+	--tintColor: #432776;
+	border-radius: 21px;
+	padding: 4px;
+	cursor: pointer;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+	position: relative;
+	margin-top: 1rem;
+}
+
+.wc-switch input {
+	display: none;
+}
+
+.wc-switch span:nth-child(4) {
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 14px;
+	white-space: nowrap;
+	filter: brightness(1.5);
+}
+
+.wc-switch small {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #424242;
+	z-index: 0;
+	border-radius: 21px;
+}
+
+.wc-switch input:disabled + span + small {
+	background-color: #c4c0c0;
+}
+
+.wc-switch input + span:after {
+	content: "";
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	display: inline-block;
+	order: 2;
+	transition: .25s order;
+	box-shadow: -2px 1px 4px rgba(0,0,0,0.25);
+    z-index:1;
+	flex: 0 0 auto;
+	max-width: 100%;
+}
+
+.wc-switch input + span:before {
+	content: attr(off-text);
+	color: #ffffff;
+	display: inline-block;
+	order: 1;
+	transition: .25s order;
+	margin: 0 8px;
+    z-index: 1;
+
+	flex-basis: 0;
+	flex-grow: 1;
+	max-width: calc(100% - 38px);
+	text-align: center;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.wc-switch input:checked + span:before {
+	content: attr(on-text);
+	order: 2;
+}
+
+.wc-switch input:checked + span:after {
+	order: 1;
+}
+
+.wc-switch input:checked:not(:disabled) + span + small {
+	background-color: var(--tintColor);
+}
+
+.wc-switch input:not(:disabled) + span + small + span {
+	color: var(--tintColor);
+}

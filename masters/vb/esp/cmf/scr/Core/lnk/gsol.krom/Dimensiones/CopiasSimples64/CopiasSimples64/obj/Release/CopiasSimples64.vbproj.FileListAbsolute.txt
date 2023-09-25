@@ -1,0 +1,6 @@
+C:\extranet\Krombase243\bin\gsol.krom.CopiasSimples64.0.0.0.0.dll
+C:\extranet\Krombase243\bin\gsol.krom.CopiasSimples64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CopiasSimples64\CopiasSimples64\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CopiasSimples64\CopiasSimples64\obj\Release\CopiasSimples64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CopiasSimples64\CopiasSimples64\obj\Release\gsol.krom.CopiasSimples64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\CopiasSimples64\CopiasSimples64\obj\Release\gsol.krom.CopiasSimples64.0.0.0.0.pdb

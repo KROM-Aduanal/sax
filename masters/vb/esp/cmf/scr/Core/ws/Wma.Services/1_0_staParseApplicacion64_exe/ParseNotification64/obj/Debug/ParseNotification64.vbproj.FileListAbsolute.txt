@@ -1,0 +1,22 @@
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\bin\Debug\ParseNotification64.exe.config
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\obj\Debug\ParseNotification64.Resources.resources
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\obj\Debug\ParseNotification64.vbproj.GenerateResource.Cache
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\bin\Debug\ParseNotification64.exe
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\bin\Debug\ParseNotification64.pdb
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\bin\Debug\ParseNotification64.xml
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\obj\Debug\ParseNotification64.exe
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\obj\Debug\ParseNotification64.xml
+C:\Users\pedrobm\AppData\Local\Temporary Projects\ParseNotification64\obj\Debug\ParseNotification64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\ParseNot.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\ParseNot.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\ParseNot.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\ParseNot.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\ParseNotification64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\bin\Debug\Parse.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\obj\Debug\ParseNotification64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\obj\Debug\ParseNot.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_staParseApplicacion64_exe\ParseNotification64\obj\Debug\ParseNot.pdb
+C:\svn\SVN QA\Aplicacion\ParseNot.exe.config
+C:\svn\SVN QA\Aplicacion\ParseNot.exe
+C:\svn\SVN QA\Aplicacion\ParseNot.pdb

@@ -1,0 +1,33 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesMensajeCorreoElectronico_dll\IOperacionesMensajeCorreoElectronico\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesMensajeCorreoElectronico_dll\IOperacionesMensajeCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesMensajeCorreoElectronico_dll\IOperacionesMensajeCorreoElectronico\obj\Debug\Gsol.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesMensajeCorreoElectronico_dll\IOperacionesMensajeCorreoElectronico\obj\Debug\Gsol.IOperacionesCorreoElectronico.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\IOperacionesCorreoElectronico.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.correoelectronico\1_0_stdIIOperacionesCorreoElectronico_dll\IOperacionesCorreoElectronico\obj\Debug\Gsol.CorreoElectronico.IOperacionesCorreoElectronico.0.0.0.0.pdb

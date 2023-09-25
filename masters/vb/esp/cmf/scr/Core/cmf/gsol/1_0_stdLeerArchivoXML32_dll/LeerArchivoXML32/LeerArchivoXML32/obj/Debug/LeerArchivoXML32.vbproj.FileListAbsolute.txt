@@ -1,0 +1,58 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.LeerArchivoXML32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\bin\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.xml
+C:\svn_fake\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn_fake\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbprojResolveAssemblyReference.cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.Cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\SVN\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll.config
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CopyComplete
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbprojAssemblyReference.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll.config
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+D:\Trabajos\krom\Sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll.config
+D:\Trabajos\krom\Sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll
+D:\Trabajos\krom\Sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+D:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Resources.resources
+D:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.GenerateResource.cache
+D:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+D:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.dll
+D:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Debug\LeerArchivoXML32.vbproj.AssemblyReference.cache

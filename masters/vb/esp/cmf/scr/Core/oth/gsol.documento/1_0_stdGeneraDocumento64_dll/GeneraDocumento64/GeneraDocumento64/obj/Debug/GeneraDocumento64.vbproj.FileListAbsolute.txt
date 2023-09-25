@@ -1,0 +1,9 @@
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.generaDocumento.0.0.0.0.dll
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.generaDocumento.0.0.0.0.pdb
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.generaDocumento.0.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraDocumento64_dll\GeneraDocumento64\GeneraDocumento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraDocumento64_dll\GeneraDocumento64\GeneraDocumento64\obj\Debug\GeneraDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.GeneraDocumentoXMLCE.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.GeneraDocumentoXMLCE.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraDocumento64_dll\GeneraDocumento64\GeneraDocumento64\obj\Debug\Gsol.Documento.GeneraDocumentoXMLCE.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdGeneraDocumento64_dll\GeneraDocumento64\GeneraDocumento64\obj\Debug\Gsol.Documento.GeneraDocumentoXMLCE.0.0.0.0.pdb

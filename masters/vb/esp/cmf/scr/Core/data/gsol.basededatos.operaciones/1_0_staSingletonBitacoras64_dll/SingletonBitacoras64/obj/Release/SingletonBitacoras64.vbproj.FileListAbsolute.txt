@@ -1,0 +1,30 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\bin\Release\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\SingletonBitacoras64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\SingletonBitacoras64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\SingletonBitacoras64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\SingletonBitacoras64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\gsol.monitoreo.SingletonBitacoras64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.monitoreo\1_0_staSingletonBitacoras64_dll\SingletonBitacoras64\obj\Release\SingletonBitacoras64.vbprojAssemblyReference.cache

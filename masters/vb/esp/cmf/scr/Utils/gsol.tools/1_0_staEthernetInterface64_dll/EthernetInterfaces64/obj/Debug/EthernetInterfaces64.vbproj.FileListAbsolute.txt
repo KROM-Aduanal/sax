@@ -1,0 +1,6 @@
+C:\svn\SVN QA\Namespaces\Gsol.Tools.EthernetInterfaces64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staEthernetInterface64_dll\EthernetInterfaces64\obj\Debug\EthernetInterfaces64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staEthernetInterface64_dll\EthernetInterfaces64\obj\Debug\EthernetInterfaces64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staEthernetInterface64_dll\EthernetInterfaces64\obj\Debug\Gsol.Tools.EthernetInterfaces64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Gsol.Tools.EthernetInterfaces64.0.0.0.0.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staEthernetInterface64_dll\EthernetInterfaces64\obj\Debug\Gsol.Tools.EthernetInterfaces64.0.0.0.0.exe

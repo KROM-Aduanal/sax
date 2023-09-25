@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\EnlaceDatos64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\EnlaceDatos64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EnlaceDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EnlaceDatos64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\gsol.krom.EnlaceDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\gsol.krom.EnlaceDatos64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEnlaceDatos64_dll\EnlaceDatos64\obj\Debug\EnlaceDatos64.vbproj.AssemblyReference.cache

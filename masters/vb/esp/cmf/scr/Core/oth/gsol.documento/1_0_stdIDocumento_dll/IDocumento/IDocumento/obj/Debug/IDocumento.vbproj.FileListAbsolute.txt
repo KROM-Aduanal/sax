@@ -1,0 +1,13 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\bin\Debug\IDocumento.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\bin\Debug\IDocumento.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\bin\Debug\IDocumento.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\IDocumento.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\IDocumento.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\IDocumento.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\IDocumento.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Debug\IDocumento.vbproj.CopyComplete

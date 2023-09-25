@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\NodoGenerico64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\NodoGenerico64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\NodoGenerico64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Debug\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb

@@ -1,0 +1,13 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdICorreoElectronico_dll\IDocumento\IDocumento\obj\Debug\IMensajeCorreoElectronico.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdICorreoElectronico_dll\IDocumento\IDocumento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdICorreoElectronico_dll\IDocumento\IDocumento\obj\Debug\IMensajeCorreoElectronico.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdICorreoElectronico_dll\IDocumento\IDocumento\obj\Debug\Gsol.MensajeCorreoElectronico.IDocumento.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdICorreoElectronico_dll\IDocumento\IDocumento\obj\Debug\Gsol.MensajeCorreoElectronico.IDocumento.0.0.0.0.pdb
+C:\SVN QA\Namespaces\Gsol.IMensajeCorreoElectronico.0.0.0.0.dll
+C:\SVN QA\Namespaces\Gsol.IMensajeCorreoElectronico.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\IMensajeCorreoElectronico.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Gsol.IMensajeCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Gsol.IMensajeCorreoElectronico.0.0.0.0.pdb
+C:\SVN\SVN QA\Namespaces\Gsol.IMensajeCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.IMensajeCorreoElectronico.0.0.0.0.pdb

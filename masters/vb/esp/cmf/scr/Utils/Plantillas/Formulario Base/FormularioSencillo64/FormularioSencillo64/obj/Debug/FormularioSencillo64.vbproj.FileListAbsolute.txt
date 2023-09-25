@@ -1,0 +1,25 @@
+C:\svn\SVN QA\Modulos\FormularioSencillo64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.0.0.0.0.pdb
+C:\svn\SVN QA\Modulos\FormularioSencillo64.0.0.0.0.exe
+C:\svn\SVN QA\Aplicacion\FormularioSencillo64.0.0.0.0.exe
+C:\svn\SVN QA\Aplicacion\FormularioSencillo64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\FormularioSencillo64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\FormularioSencillo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\frm000Formulario.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\FormularioSencillo64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\frm000Formulario.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\FormularioSencillo64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\frm000Formulario.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\utils\Plantillas\Formulario Base\FormularioSencillo64\FormularioSencillo64\obj\Debug\FormularioSencillo64.0.0.0.0.dll

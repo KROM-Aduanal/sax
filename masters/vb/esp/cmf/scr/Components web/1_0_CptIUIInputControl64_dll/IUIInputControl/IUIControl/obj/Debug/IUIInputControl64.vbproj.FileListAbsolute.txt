@@ -1,0 +1,8 @@
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.IUIInputControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.IUIInputControl64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\IUIInputControl64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\IUIInputControl64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\Gsol.Web.Components.IUIInputControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\Gsol.Web.Components.IUIInputControl64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIInputControl64_dll\IUIInputControl\IUIControl\obj\Debug\IUIInputControl64.vbproj.AssemblyReference.cache

@@ -1,0 +1,8 @@
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.controles.TipoDatos64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.controles.TipoDatos64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\TipoDatos64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\TipoDatos64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\TipoDatos64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\gsol.controles.TipoDatos64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.controles\1_0_stdTipoDatos64_dll\TipoDatos64\obj\Debug\gsol.controles.TipoDatos64.0.0.0.0.pdb

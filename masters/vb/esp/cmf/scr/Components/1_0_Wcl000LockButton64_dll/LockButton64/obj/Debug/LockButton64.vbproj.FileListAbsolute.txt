@@ -1,0 +1,27 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.GenerateResource.Cache
+C:\svn\svn\SVN QA\Componentes\gsol.Componentes.LockButton64.0.0.0.0.dll
+C:\svn\svn\SVN QA\Componentes\gsol.Componentes.LockButton64.0.0.0.0.pdb
+C:\svn\svn\SVN QA\Componentes\gsol.Componentes.LockButton64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton64.0.0.0.0.pdb
+C:\svn\SVN QA\Componentes\gsol.Componentes.LockButton64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\gsol.Componentes.LockButton64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\gsol.Componentes.LockButton64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\gsol.Componentes.LockButton64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\LockButton64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wcl000LockButton64_dll\LockButton64\obj\Debug\gsol.Componentes.LockButton64.0.0.0.0.dll

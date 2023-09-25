@@ -1,0 +1,7 @@
+C:\svn\SVN QA\Componentes\Wma.Reports.IReport.1.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Reports.IReport.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdIReport_dll\IReport\IReport\obj\Release\IReport.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdIReport_dll\IReport\IReport\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdIReport_dll\IReport\IReport\obj\Release\IReport.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdIReport_dll\IReport\IReport\obj\Release\Wma.Reports.IReport.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_stdIReport_dll\IReport\IReport\obj\Release\Wma.Reports.IReport.1.0.0.0.pdb

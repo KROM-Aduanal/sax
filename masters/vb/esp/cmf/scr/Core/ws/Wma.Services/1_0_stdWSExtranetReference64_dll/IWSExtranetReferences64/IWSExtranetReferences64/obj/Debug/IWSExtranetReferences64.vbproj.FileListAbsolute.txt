@@ -1,0 +1,15 @@
+C:\Users\juanccs\AppData\Local\Temporary Projects\WSExtranetReferences64\obj\Debug\Resources.resources
+C:\Users\juanccs\AppData\Local\Temporary Projects\WSExtranetReferences64\obj\Debug\IWSExtranetReferences64.vbproj.GenerateResource.Cache
+C:\Users\juanccs\AppData\Local\Temporary Projects\WSExtranetReferences64\obj\Debug\Wma.Services.WSExtranetReferences64.0.0.0.0.dll
+C:\Users\juanccs\AppData\Local\Temporary Projects\WSExtranetReferences64\obj\Debug\Wma.Services.WSExtranetReferences64.0.0.0.0.pdb
+C:\SVN\SVN\SVN QA\Namespaces\IWSExtranetReferences64.dll.config
+C:\SVN\SVN\SVN QA\Namespaces\IWSExtranetReferences64.dll
+C:\SVN\SVN\SVN QA\Namespaces\IWSExtranetReferences64.pdb
+C:\SVN\SVN QA\Namespaces\IWSExtranetReferences64.dll.config
+C:\SVN\SVN QA\Namespaces\IWSExtranetReferences64.dll
+C:\SVN\SVN QA\Namespaces\IWSExtranetReferences64.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSExtranetReference64_dll\IWSExtranetReferences64\IWSExtranetReferences64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSExtranetReference64_dll\IWSExtranetReferences64\IWSExtranetReferences64\obj\Debug\IWSExtranetReferences64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSExtranetReference64_dll\IWSExtranetReferences64\IWSExtranetReferences64\obj\Debug\IWSExtranetReferences64.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSExtranetReference64_dll\IWSExtranetReferences64\IWSExtranetReferences64\obj\Debug\IWSExtranetReferences64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSExtranetReference64_dll\IWSExtranetReferences64\IWSExtranetReferences64\obj\Debug\IWSExtranetReferences64.vbprojResolveAssemblyReference.cache

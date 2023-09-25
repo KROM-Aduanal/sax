@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\ICaracteristicas.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Bin\Aplicacion\Nucleo\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Bin\Aplicacion\Nucleo\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\ICaracteristicas.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\ICaracteristicas.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\obj\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb

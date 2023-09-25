@@ -1,0 +1,29 @@
+C:\SVN\SVN QA\Namespaces\GSol.SesionWcf64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\GSol.SesionWcf64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\GSol.SesionWcf64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\ws\GSol.SesionWcf64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\ws\GSol.SesionWcf64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\ws\GSol.SesionWcf64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\ws\GSol.SesionWcf64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\GSol.SesionWcf64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdSesionWcf64_dll\SesionWcf64\obj\Debug\SesionWcf64.vbproj.AssemblyReference.cache

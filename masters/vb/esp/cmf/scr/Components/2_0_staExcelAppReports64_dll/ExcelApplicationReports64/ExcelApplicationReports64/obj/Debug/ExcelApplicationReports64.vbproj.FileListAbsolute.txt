@@ -1,0 +1,48 @@
+C:\svn\SVN QA\Namespaces\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Wma.Reports.ExcelApplicationReports64.0.0.0.0.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojResolveAssemblyReference.cache
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.xml
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svn_fake\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn_fake\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\SVN_\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\SVN_\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\SVN_\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojResolveAssemblyReference.cache
+C:\SVN_\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\SVN_\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\SVN_\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\SVN_\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.1.0.0.0.dll
+C:\SVN\SVN QA\Componentes\Wma.Reports.ExcelApplicationReports64.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\Wma.Reports.ExcelApplicationReports64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\2_0_staExcelAppReports64_dll\ExcelApplicationReports64\ExcelApplicationReports64\obj\Debug\ExcelApplicationReports64.vbproj.CopyComplete

@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\LeerArchivoXML32.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\LeerArchivoXML32.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\LeerArchivoXML32.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\LeerArchivoXML32.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdLeerArchivoXML32_dll\LeerArchivoXML32\LeerArchivoXML32\obj\Release\LeerArchivoXML32.vbprojAssemblyReference.cache

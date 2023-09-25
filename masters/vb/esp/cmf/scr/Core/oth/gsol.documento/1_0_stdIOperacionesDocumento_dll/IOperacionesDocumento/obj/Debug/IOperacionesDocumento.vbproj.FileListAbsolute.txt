@@ -1,0 +1,31 @@
+C:\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\IOperacionesDocumento.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Debug\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb

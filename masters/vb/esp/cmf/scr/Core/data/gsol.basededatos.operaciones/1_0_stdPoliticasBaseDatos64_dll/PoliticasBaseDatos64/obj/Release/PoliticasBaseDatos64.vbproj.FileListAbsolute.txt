@@ -1,0 +1,15 @@
+C:\SVN\SVN QA\Namespaces\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\PoliticasBaseDatos64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\PoliticasBaseDatos64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\PoliticasBaseDatos64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\PoliticasBaseDatos64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\PoliticasBaseDatos64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos.operaciones\1_0_stdPoliticasBaseDatos64_dll\PoliticasBaseDatos64\obj\Release\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Gsol.BaseDatos.PoliticasBaseDatos64.0.0.0.0.pdb

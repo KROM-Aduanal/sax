@@ -1,0 +1,37 @@
+C:\svn\SVN QA\Namespaces\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Debug\Configuracion64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\SAX\masters\vb\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\SAX\masters\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\SAX\masters\sax2.0\bin\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb

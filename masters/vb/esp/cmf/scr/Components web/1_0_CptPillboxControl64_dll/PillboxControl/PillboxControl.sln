@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CptPillboxControl64", "CptPillboxControl64.vbproj", "{B744402B-CDF0-4F9C-856E-6DAE14E9588E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B744402B-CDF0-4F9C-856E-6DAE14E9588E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B744402B-CDF0-4F9C-856E-6DAE14E9588E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B744402B-CDF0-4F9C-856E-6DAE14E9588E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B744402B-CDF0-4F9C-856E-6DAE14E9588E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {776D46B0-E78D-49BD-849E-8D803EDCA772}
+	EndGlobalSection
+EndGlobal

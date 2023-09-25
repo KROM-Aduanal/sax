@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.Organismo64.2.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.Organismo64.2.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Syn.Utils.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Organismo64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Organismo64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Syn.Utils.Organismo64.2.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Syn.Utils.Organismo64.2.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\2_0_stdOrganismo64_dll\Organismo64\obj\Debug\Organismo64.vbproj.AssemblyReference.cache

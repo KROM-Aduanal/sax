@@ -1,0 +1,8 @@
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\ConstructorFacturaComercial64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\ConstructorFacturaComercial64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\ConstructorFacturaComercial64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorFacturaComercial64_dll\ConstructorFacturaComercial64\obj\Debug\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.pdb

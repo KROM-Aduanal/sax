@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Aplicacion\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\ISectorEntorno.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\ISectorEntorno.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\ISectorEntorno.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\ISectorEntorno.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISectorEntorno_dll\ISectorEntorno\ISectorEntorno\obj\Release\ISectorEntorno.vbprojAssemblyReference.cache

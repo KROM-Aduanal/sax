@@ -1,0 +1,3 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staWma_exe\wma\obj\Debug\wma.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staWma_exe\wma\obj\Debug\wma.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staWma_exe\wma\obj\Debug\wma.vbproj.GenerateResource.Cache

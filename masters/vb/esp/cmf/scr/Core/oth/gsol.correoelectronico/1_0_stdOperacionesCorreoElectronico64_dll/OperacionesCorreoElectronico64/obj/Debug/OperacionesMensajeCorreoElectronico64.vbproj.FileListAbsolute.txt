@@ -1,0 +1,3 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdOperacionesMensajeCorreoElectronico64_dll\OperacionesMensajeCorreoElectronico64\obj\Debug\OperacionesMensajeCorreoElectronico64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdOperacionesMensajeCorreoElectronico64_dll\OperacionesMensajeCorreoElectronico64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdOperacionesMensajeCorreoElectronico64_dll\OperacionesMensajeCorreoElectronico64\obj\Debug\OperacionesMensajeCorreoElectronico64.vbproj.GenerateResource.Cache

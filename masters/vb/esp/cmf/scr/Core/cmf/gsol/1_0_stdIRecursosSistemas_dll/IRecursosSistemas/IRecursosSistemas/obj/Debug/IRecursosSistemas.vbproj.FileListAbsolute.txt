@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\IRecursosSistemas.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\IRecursosSistemas.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdIRecursosSistemas_dll\IRecursosSistemas\IRecursosSistemas\obj\Debug\IRecursosSistemas.vbproj.AssemblyReference.cache

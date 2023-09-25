@@ -1,0 +1,14 @@
+C:\svn\SVN QA\Namespaces\SingletonSQLServer64.dll
+C:\svn\SVN QA\Namespaces\SingletonSQLServer64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\SingletonSQLServer64.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\SingletonSQLServer64.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Release\SingletonSQLServer64.pdb

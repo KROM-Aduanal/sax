@@ -1,0 +1,37 @@
+C:\svn\SVN QA\Componentes\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\Wilma\esp\bin\Components\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\Wilma\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\Wilma\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.Cache
+C:\Wilma\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\Wilma\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\WilmaSources\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\WilmaSources\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.Cache
+C:\WilmaSources\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\WilmaSources\esp\sources\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\core\cmf\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\ComponentCriteria64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Debug\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\Wma.Components.ComponentCriteria64.0.0.0.0.dll

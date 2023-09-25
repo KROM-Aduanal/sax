@@ -1,0 +1,17 @@
+C:\SAX\projects\synapsis\dev\main\bin\snappy32.dll
+C:\SAX\projects\synapsis\dev\main\bin\snappy64.dll
+C:\SAX\projects\synapsis\dev\main\bin\libzstd.dll
+C:\SAX\projects\synapsis\dev\main\bin\mongocrypt.dll
+C:\SAX\projects\synapsis\dev\main\bin\Krombase243.dll.config
+C:\SAX\projects\synapsis\dev\main\bin\Krombase243.dll
+C:\SAX\projects\synapsis\dev\main\bin\Krombase243.pdb
+C:\SAX\projects\synapsis\dev\main\bin\Krombase243.tlb
+C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\main\obj\Release\Resources.resources
+C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\main\obj\Release\Krombase243.dll
+C:\SAX\projects\synapsis\dev\main\obj\Release\Krombase243.pdb
+C:\SAX\projects\synapsis\dev\main\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\main\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.CopyComplete

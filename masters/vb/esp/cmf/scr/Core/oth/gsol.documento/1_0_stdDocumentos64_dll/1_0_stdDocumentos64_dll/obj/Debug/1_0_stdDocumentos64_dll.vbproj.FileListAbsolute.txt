@@ -1,0 +1,9 @@
+C:\SVN\SVN QA\Aplicacion\gsol.documento.Documentos64.0.0.0.0.dll
+C:\SVN\SVN QA\Aplicacion\gsol.documento.Documentos64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\gsol.documento.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\1_0_stdDocumentos64_dll.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\gsol.documento.Documentos64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\gsol.documento.Documentos64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\1_0_stdDocumentos64_dll.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\1_0_stdDocumentos64_dll.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdDocumentos64_dll\1_0_stdDocumentos64_dll\obj\Debug\1_0_stdDocumentos64_dll.vbproj.CopyComplete

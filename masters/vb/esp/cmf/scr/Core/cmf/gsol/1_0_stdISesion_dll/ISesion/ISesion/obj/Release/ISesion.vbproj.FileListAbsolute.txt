@@ -1,0 +1,23 @@
+C:\svn\SVN QA\Namespaces\Gsol.ISesion.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.ISesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISesion.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISesion.1.0.0.0.pdb
+C:\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISesion.1.0.0.0.dll
+C:\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ISesion.1.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\Gsol.ISesion.1.0.0.0.pdb
+c:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdISesion_dll\ISesion\ISesion\obj\Release\ISesion.vbproj.AssemblyReference.cache

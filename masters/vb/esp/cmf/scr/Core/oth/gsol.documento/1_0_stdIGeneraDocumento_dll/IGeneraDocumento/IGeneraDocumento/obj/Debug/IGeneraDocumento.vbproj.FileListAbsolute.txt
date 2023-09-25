@@ -1,0 +1,9 @@
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.IgeneraDocumento.0.0.0.0.dll
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.IgeneraDocumento.0.0.0.0.pdb
+C:\SVN\SVN\SVN QA\Namespaces\gsol.documento.IgeneraDocumento.0.0.0.0.xml
+C:\SVN\SVN QA\Namespaces\gsol.documento.IgeneraDocumento.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraDocumento_dll\IGeneraDocumento\IGeneraDocumento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraDocumento_dll\IGeneraDocumento\IGeneraDocumento\obj\Debug\IGeneraDocumento.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraDocumento_dll\IGeneraDocumento\IGeneraDocumento\obj\Debug\gsol.documento.IgeneraDocumento.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IGeneraDocumento.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraDocumento_dll\IGeneraDocumento\IGeneraDocumento\obj\Debug\Gsol.Documento.IGeneraDocumento.0.0.0.0.pdb

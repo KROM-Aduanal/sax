@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\SingletonSQLServer64.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\SingletonSQLServer64.pdb
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\SingletonSQLServer64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\SingletonSQLServer64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\SingletonSQLServer64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\SingletonSQLServer64.dll
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdSingletonSQLServer64_dll\SingletonSQLServer64\SingletonSQLServer64\obj\Debug\SingletonSQLServer64.pdb

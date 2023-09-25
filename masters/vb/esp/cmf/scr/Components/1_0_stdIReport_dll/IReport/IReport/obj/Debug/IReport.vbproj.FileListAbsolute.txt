@@ -1,0 +1,27 @@
+C:\svn1\svn\SVN QA\Namespaces\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn1\svn\SVN QA\Namespaces\Wma.Reports.IReport.0.0.0.0.pdb
+C:\svn1\svn\SVN QA\Namespaces\Wma.Reports.IReport.0.0.0.0.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Wma.Reports.IReport.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Reports\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.pdb
+C:\SVN\SVN QA\Componentes\Wma.Reports.IReport.0.0.0.0.dll
+C:\SVN\SVN QA\Componentes\Wma.Reports.IReport.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIReport_dll\IReport\IReport\obj\Debug\Wma.Reports.IReport.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIReport_dll\IReport\IReport\obj\Debug\IReport.vbprojResolveAssemblyReference.cache

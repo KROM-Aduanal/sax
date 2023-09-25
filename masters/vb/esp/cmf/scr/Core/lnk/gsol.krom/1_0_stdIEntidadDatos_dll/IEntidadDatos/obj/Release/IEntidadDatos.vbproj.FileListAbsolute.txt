@@ -1,0 +1,14 @@
+C:\svn\SVN QA\Namespaces\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\IEntidadDatos.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\IEntidadDatos.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\lnk\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\lnk\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\IEntidadDatos.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\IEntidadDatos.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_stdIEntidadDatos_dll\IEntidadDatos\obj\Release\gsol.krom.IEntidadDatos.0.0.0.0.pdb

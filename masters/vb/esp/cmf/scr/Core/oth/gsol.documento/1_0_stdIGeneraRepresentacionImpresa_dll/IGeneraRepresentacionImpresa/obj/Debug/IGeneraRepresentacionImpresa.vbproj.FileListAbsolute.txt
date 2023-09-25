@@ -1,0 +1,7 @@
+C:\SVN\SVN QA\Namespaces\Gsol.IGeneraRepresentacionImpresa.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.IGeneraRepresentacionImpresa.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraRepresentacionImpresa_dll\IGeneraRepresentacionImpresa\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraRepresentacionImpresa_dll\IGeneraRepresentacionImpresa\obj\Debug\IGeneraRepresentacionImpresa.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraRepresentacionImpresa_dll\IGeneraRepresentacionImpresa\obj\Debug\Gsol.IGeneraRepresentacionImpresa.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraRepresentacionImpresa_dll\IGeneraRepresentacionImpresa\obj\Debug\Gsol.IGeneraRepresentacionImpresa.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIGeneraRepresentacionImpresa_dll\IGeneraRepresentacionImpresa\obj\Debug\IGeneraRepresentacionImpresa.vbprojResolveAssemblyReference.cache

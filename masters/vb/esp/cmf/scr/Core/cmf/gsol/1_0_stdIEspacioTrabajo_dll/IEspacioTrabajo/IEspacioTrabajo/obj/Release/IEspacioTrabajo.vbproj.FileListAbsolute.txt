@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Aplicacion\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\IEspacioTrabajo.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\IEspacioTrabajo.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\IEspacioTrabajo.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\IEspacioTrabajo.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\IEspacioTrabajo.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEspacioTrabajo_dll\IEspacioTrabajo\IEspacioTrabajo\obj\Release\Gsol.IEspacioTrabajo.1.0.0.0.pdb

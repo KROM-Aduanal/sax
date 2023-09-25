@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Configuracion64", "Configuracion64.vbproj", "{8E522A3B-25BB-45E5-A394-8AF6A54F7ED8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GrupoSolium", "..\..\..\..\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Aplicacion\GrupoSolium\GrupoSolium.vbproj", "{6050444D-35A3-43A8-AEC0-6525145E6A9F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Organismo64", "..\..\..\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\Organismo64.vbproj", "{1181585E-4123-4B06-9962-C513EEE450FC}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ICaracteristicas", "..\..\..\gsol.basededatos.operaciones\1_0_stdICaracteristicas_dll\ICaracteristicas\ICaracteristicas\ICaracteristicas.vbproj", "{B6DBE2CB-B1D7-4612-8DD7-1F559562B946}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Cifrado25664", "..\..\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\Cifrado25664.vbproj", "{B869C624-1393-4AE7-A155-EE830DEED592}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E522A3B-25BB-45E5-A394-8AF6A54F7ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E522A3B-25BB-45E5-A394-8AF6A54F7ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E522A3B-25BB-45E5-A394-8AF6A54F7ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E522A3B-25BB-45E5-A394-8AF6A54F7ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6050444D-35A3-43A8-AEC0-6525145E6A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6050444D-35A3-43A8-AEC0-6525145E6A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6050444D-35A3-43A8-AEC0-6525145E6A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6050444D-35A3-43A8-AEC0-6525145E6A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1181585E-4123-4B06-9962-C513EEE450FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1181585E-4123-4B06-9962-C513EEE450FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1181585E-4123-4B06-9962-C513EEE450FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1181585E-4123-4B06-9962-C513EEE450FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6DBE2CB-B1D7-4612-8DD7-1F559562B946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6DBE2CB-B1D7-4612-8DD7-1F559562B946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6DBE2CB-B1D7-4612-8DD7-1F559562B946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6DBE2CB-B1D7-4612-8DD7-1F559562B946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B869C624-1393-4AE7-A155-EE830DEED592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B869C624-1393-4AE7-A155-EE830DEED592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B869C624-1393-4AE7-A155-EE830DEED592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B869C624-1393-4AE7-A155-EE830DEED592}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

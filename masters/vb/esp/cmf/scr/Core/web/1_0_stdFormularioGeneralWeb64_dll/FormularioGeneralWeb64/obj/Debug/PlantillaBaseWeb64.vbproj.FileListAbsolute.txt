@@ -1,0 +1,9 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\PlantillaBaseWeb64.vbprojAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\PlantillaBaseWeb64.vbproj.GenerateResource.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\PlantillaBaseWeb64.vbproj.CoreCompileInputs.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Template.PlantillaBaseWeb64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Template.PlantillaBaseWeb64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\PlantillaBaseWeb64.vbproj.CopyComplete
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.PlantillaBaseWeb64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.PlantillaBaseWeb64.0.0.0.0.pdb

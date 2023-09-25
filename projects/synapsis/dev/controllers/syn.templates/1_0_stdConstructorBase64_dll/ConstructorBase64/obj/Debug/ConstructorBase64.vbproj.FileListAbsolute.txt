@@ -1,0 +1,9 @@
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\bin\Debug\Syn.Documento.ConstructorCliente64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\bin\Debug\Syn.Documento.ConstructorCliente64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\bin\Debug\Syn.Documento.ConstructorCliente64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\ConstructorBase64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\ConstructorBase64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\ConstructorBase64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\Syn.Documento.ConstructorCliente64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorBase64_dll\ConstructorBase64\obj\Debug\Syn.Documento.ConstructorCliente64.0.0.0.0.pdb

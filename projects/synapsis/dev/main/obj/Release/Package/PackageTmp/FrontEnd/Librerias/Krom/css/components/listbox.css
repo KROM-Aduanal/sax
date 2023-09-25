@@ -1,0 +1,136 @@
+
+/*FINDBOX*/
+
+.wc-listbox {
+	--tintColor: #6c4fd3;
+}
+
+.wc-listbox > div:nth-child(1) {
+    border-bottom: 1px solid #828282;
+	border-radius: 0;
+	position: relative;
+}
+
+.wc-listbox > div:nth-child(1) input {
+	border: 0;
+	outline: 0;
+	line-height: 1.25;
+	padding: .5rem .25rem;
+    width: 100%;
+    height: 34px;
+}
+
+.wc-listbox > div:nth-child(1) a {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 20px;
+	height: 20px;
+	display: block;
+}
+
+.wc-listbox .icon-search {
+	background-image: url('../../imgs/search.png');
+}
+
+/*.wc-findbox .icon-loader {
+	background-image: url('../../imgs/loader.gif');
+}*/
+
+.wc-listbox > div:nth-child(1) > div:nth-child(3) a {
+	background-image: url('../../imgs/close.png');
+}
+
+.wc-listbox > div:nth-child(3) {
+	position: absolute;
+	top: 36px;
+	left: 0;
+	right: 0;
+	background-color: #ffffff;
+	padding: 4px;
+	margin: 0;
+	border-radius: 7px;
+	max-height: 240px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+	z-index: 9999;
+}
+
+.wc-listbox > div:nth-child(3) > div > a {
+	text-decoration: none;
+	cursor: pointer;
+	color: var(--tintColor);
+}
+
+.wc-listbox > div:nth-child(3) > div > ul {
+	max-height: 164px;
+	overflow: auto;
+}
+
+.wc-listbox > div:nth-child(3) > div > ul > li > a {
+	padding: 4px;
+
+}
+
+.wc-listbox > div:nth-child(3) > div > ul > li > a:hover {
+	background-color: #f9f9f9;
+}
+
+.wc-listbox .float-form-control {
+	left: 0px;
+}
+
+.wc-listbox > a {
+	position:fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	z-index:9998;
+}
+
+.wc-listbox .__value:not(:placeholder-shown) + label {
+	top: -4px;
+	opacity: 1;
+}
+
+.wc-listbox .__value:not(:disabled):not(:placeholder-shown) + label {
+	color: var(--tintColor);
+}
+
+.wc-listbox > ul {
+	list-style: none;
+	border: 1px solid #dfdfdf;
+	border-top: 0;
+	padding: 8px;
+	height: 127px;
+	overflow:auto;
+	border-radius: 0 0 7px 7px;
+	background-color: #fbfbfb;
+}
+
+.wc-listbox > ul li {
+	padding: 4px 4px 4px 28px;
+	position: relative;
+}
+
+.wc-listbox > ul li:not(:last-child) {
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.wc-listbox > ul li a {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	display: block;
+	background-image: url(../../imgs/delete.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90%;
+	/*opacity: .5;*/
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: var(--tintColor);
+}

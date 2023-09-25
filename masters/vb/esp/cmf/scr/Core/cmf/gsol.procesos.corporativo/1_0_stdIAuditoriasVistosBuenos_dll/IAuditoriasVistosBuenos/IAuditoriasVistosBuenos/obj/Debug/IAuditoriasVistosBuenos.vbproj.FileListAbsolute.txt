@@ -1,0 +1,8 @@
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.procesos.corporativo.IAuditoriasVistosBuenos.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.procesos.corporativo.IAuditoriasVistosBuenos.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\IAuditoriasVistosBuenos.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\IAuditoriasVistosBuenos.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\IAuditoriasVistosBuenos.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\gsol.procesos.corporativo.IAuditoriasVistosBuenos.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdIAuditoriasVistosBuenos_dll\IAuditoriasVistosBuenos\IAuditoriasVistosBuenos\obj\Debug\gsol.procesos.corporativo.IAuditoriasVistosBuenos.0.0.0.0.pdb

@@ -1,0 +1,45 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Permiso32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Permiso32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Permiso32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Accion32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Componente32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Entidad32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Funcion32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IPermisos.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Accion32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Accion32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Componente32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Componente32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Entidad32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Entidad32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Funcion32.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.Funcion32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IPermisos.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IPermisos.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Gsol.Permiso32.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Gsol.Permiso32.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Gsol.Permiso32.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Permiso32.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Gsol.Permiso32.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Permiso32.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Permiso32.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdPermiso32_dll\Permiso32\Permiso32\obj\Debug\Gsol.Permiso32.1.0.0.0.dll

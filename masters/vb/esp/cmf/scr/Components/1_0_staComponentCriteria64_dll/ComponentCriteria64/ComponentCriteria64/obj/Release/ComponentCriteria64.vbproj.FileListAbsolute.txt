@@ -1,0 +1,7 @@
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\Wma.Components.ComponentCriteria64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Release\ComponentCriteria64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Release\ComponentCriteria64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Release\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_staComponentCriteria64_dll\ComponentCriteria64\ComponentCriteria64\obj\Release\Wma.Components.ComponentCriteria64.0.0.0.0.pdb

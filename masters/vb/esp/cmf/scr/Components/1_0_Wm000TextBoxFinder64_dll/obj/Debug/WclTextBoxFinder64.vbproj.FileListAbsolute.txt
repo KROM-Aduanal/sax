@@ -1,0 +1,65 @@
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.xml
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svnSS\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\WclTextBoxFinder64.0.0.0.0.dll
+C:\Wilma\esp\bin\Components\WclTextBoxFinder64.0.0.0.0.pdb
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\Wilma\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\WilmaSources\esp\bin\Components\WclTextBoxFinder64.0.0.0.0.dll
+C:\WilmaSources\esp\bin\Components\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.pdb
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\WilmaSources\esp\sources\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.dll
+C:\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\WclTextBoxFinder64\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\WclTextBoxFinder64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\WclTextBoxFinder64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\components\1_0_Wm000TextBoxFinder64_dll\obj\Debug\WclTextBoxFinder64.vbprojAssemblyReference.cache

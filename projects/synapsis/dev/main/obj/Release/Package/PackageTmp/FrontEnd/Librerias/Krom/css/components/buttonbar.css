@@ -1,0 +1,115 @@
+
+/*BUTTONBAR*/
+
+.wc-buttonbar {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    border-radius: 20px;
+}
+
+    .wc-buttonbar a {
+        --tintColor: #6c4fd3;
+    }
+
+.wc-buttonbar label {
+    --tintColor: #36215b;
+}
+
+.wc-buttonbar > a:first-child,
+.wc-buttonbar > label:first-child {
+    border-radius: 18px 0 0 18px;
+    padding-left:16px;
+}
+
+.wc-buttonbar > a:last-child,
+.wc-buttonbar > label:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+.wc-buttonbar > a:not(:last-child),
+.wc-buttonbar > label:not(:last-child) {
+    border-right: 1px solid #ffffff;
+}
+
+.wc-buttonbar > a,
+.wc-buttonbar > label {
+    background-color: var(--tintColor);
+    flex-grow: 1;
+    text-align: center;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.wc-buttonbar label > a {
+    color: #ffffff;
+    display: block;
+}
+
+.wc-buttonbar a[icon] {
+    --icon: '';
+    padding-left: 24px;
+    background-position: 0px 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-image: var(--icon);
+}
+
+.wc-buttonbar a[icon]:empty {
+    padding-right: 24px;
+    background-position: 50%;
+    min-height: 36px;
+}
+
+/*.wc-buttonbar > label {
+    padding-right: 24px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-image: url('../../imgs/down.png');
+    z-index: 3;
+}*/
+
+.wc-buttonbar > label > a {
+    padding-right: 24px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-image: url('../../imgs/down.png');
+    z-index: 3;
+}
+
+.wc-buttonbar > label > nav {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #ffffff;
+    padding: 4px;
+    margin: 0;
+    border-radius: 7px;
+    max-height: 240px;
+    overflow: auto;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+.wc-buttonbar > label > nav a {
+    --color: #6c4fd3;
+    color: var(--color);
+    text-align: left;
+    display: block;
+    margin: 4px -4px;
+    white-space: nowrap;
+    padding: 2px 8px;
+}
+
+.wc-buttonbar > label > nav a:hover {
+    background-color: #f7f7f7;
+}
+
+.wc-buttonbar a[disabled], .wc-buttonbar label[disabled] {
+    filter: grayscale(1);
+    opacity: .35;
+    pointer-events: none;
+}

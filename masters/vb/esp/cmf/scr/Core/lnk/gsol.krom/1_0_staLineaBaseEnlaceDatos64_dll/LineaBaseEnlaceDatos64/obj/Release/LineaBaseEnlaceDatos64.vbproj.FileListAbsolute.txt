@@ -1,0 +1,28 @@
+C:\svn\SVN QA\Namespaces\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\lnk\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\lnk\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\snappy32.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\snappy64.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\libzstd.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\mongocrypt.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\LineaBaseEnlaceDatos64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\lnk\gsol.krom\1_0_staLineaBaseEnlaceDatos64_dll\LineaBaseEnlaceDatos64\obj\Release\gsol.krom.LineaBaseEnlaceDatos64.0.0.0.0.pdb

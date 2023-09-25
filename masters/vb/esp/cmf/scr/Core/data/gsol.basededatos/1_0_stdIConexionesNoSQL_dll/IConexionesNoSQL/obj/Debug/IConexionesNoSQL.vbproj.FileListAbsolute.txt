@@ -1,0 +1,48 @@
+C:\svn\SVN QA\Namespaces\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.basededatos.IConexionesNoSQL.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.CopyComplete
+C:\svn\SVN QA\Namespaces\snappy32.dll
+C:\svn\SVN QA\Namespaces\snappy64.dll
+C:\svn\SVN QA\Namespaces\libzstd.dll
+C:\svn\SVN QA\Namespaces\mongocrypt.dll
+C:\svn\SVN QA\Namespaces\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\snappy32.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\snappy64.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\libzstd.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\mongocrypt.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll.config
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\snappy32.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\snappy64.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\libzstd.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\mongocrypt.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll.config
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\snappy32.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\snappy64.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\libzstd.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\mongocrypt.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\gsol.basededatos.IConexionesNoSQL.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos\1_0_stdIConexionesNoSQL_dll\IConexionesNoSQL\obj\Debug\IConexionesNoSQL.vbproj.AssemblyReference.cache

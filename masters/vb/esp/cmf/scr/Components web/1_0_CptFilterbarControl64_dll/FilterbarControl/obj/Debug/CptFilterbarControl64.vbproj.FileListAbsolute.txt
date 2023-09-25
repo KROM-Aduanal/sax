@@ -1,0 +1,8 @@
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptFilterbarControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptFilterbarControl64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\CptFilterbarControl64.vbproj.AssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\CptFilterbarControl64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\CptFilterbarControl64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\Gsol.Web.Components.CptFilterbarControl64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFilterbarControl64_dll\FilterbarControl\obj\Debug\Gsol.Web.Components.CptFilterbarControl64.0.0.0.0.pdb

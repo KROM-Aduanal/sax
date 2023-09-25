@@ -1,0 +1,57 @@
+app33AdvansWS.dll
+ChilkatDotNet4.dll
+dev33AdvansWS.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_.dll
+Conexiones64_25_04_2016.dll
+Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0_12_05_16.dll
+Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0_18_05_2016.dll
+Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0_30_05_2016.dll
+gsol.Contabilidad.ImprimePoliza64.0.0.0.0_04_05_2016.dll
+gsol.Contabilidad.ImprimePoliza64.0.0.0.0_08_09_2016.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0.dll 2017-12-08 134354.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_01_09_2016.dll
+gsol.Controladores.Contabilidad64.0.0.0.0_30_06_2016.dll
+gsol.Controladores.Contabilidad64.0.0.0.0_061117.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_150218.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_261017.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_01032017.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_08022017.dll
+Gsol.Controladores.Contabilidad64.0.0.0.0_mal150218.dll
+Gsol.Modulos.GesMaestroOperaciones64.0.0.0.0 _25_04_2016.dll
+Gsol.Modulos.GesMaestroOperaciones64.0.0.0.0_2019-07-31.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_01_09_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_06_06_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_08_11_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_13_06_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_15_07_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_15_07_2016_.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_21_07_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_25_05_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_27_05_2016.dll
+Gsol.Nucleo.FacturaObjeto64.0.0.0.0_08022017.dll
+Gsol.Nucleo.Modulos.GesVinProductosServicios64.0.0.0.0_01_09_2016.dll
+Gsol.Organismo64.1.0.0.1_01_09_2016.dll
+Gsol.Organismo64.1.0.0.1_30_05_2016.dll
+ParseNotification64.0.0.0.0.dll_
+Wcl000Catalogo 03-10-2016.dll
+Wcl000Catalogo_01_09_2016.dll
+Wcl000Catalogo_borrar.dll
+WclTextBoxFinder64.0.0.0.0_150217.dll
+WclTextBoxFinder64.0.0.0.0_15022017_02.dll
+Wma.Modulos.GesConceptosFactura64.0.0.0.0_01_09_2016.dll
+Wma.Modulos.GesConceptosFactura64.0.0.0.0_06_06_2016.dll
+Wma.Modulos.GesConceptosFactura64.0.0.0.0_08022017.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0 27-04-2017.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_01_09_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_06_06_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_15_07_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_15_07_2016_.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_21_07_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_27_05_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_30_06_2016.dll
+Wma.Modulos.GesFacturacion64.0.0.0.0_08022017.dll
+Wma.Modulos.GesRefFact64.0.0.0.0_01_09_2016
+Wma.Modulos.GesRefFact64.0.0.0.0_08022017.dll
+Wma.Mx.Invoices.CFDiGenerator.0.0.0.0_06_06_2016.dll
+Wma.Reports.ExcelApplicationReports64.0.0.0.0_01_06_2016.dll
+Gsol.Nucleo.Modulos.GesVinProductosServicios64.0.0.0.0_01_09_2016.dll

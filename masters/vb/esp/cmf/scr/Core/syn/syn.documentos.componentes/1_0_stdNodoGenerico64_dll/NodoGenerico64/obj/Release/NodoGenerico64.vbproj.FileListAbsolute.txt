@@ -1,0 +1,15 @@
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\NodoGenerico64.vbproj.AssemblyReference.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Resources.resources
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\NodoGenerico64.vbproj.GenerateResource.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\NodoGenerico64.vbproj.CoreCompileInputs.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\NodoGenerico64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\NodoGenerico64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdNodoGenerico64_dll\NodoGenerico64\obj\Release\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.pdb

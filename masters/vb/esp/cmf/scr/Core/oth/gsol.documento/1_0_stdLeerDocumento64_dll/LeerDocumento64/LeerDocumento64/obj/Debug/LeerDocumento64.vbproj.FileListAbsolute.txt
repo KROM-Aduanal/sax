@@ -1,0 +1,43 @@
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\LeerDocumento64\obj\Debug\Resources.resources
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\LeerDocumento64\obj\Debug\LeerDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\LeerDocumento64\LeerDocumento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\SVN\SVN\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\SVN\SVN\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn_fake\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll.config
+C:\svn_fake\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\svn_fake\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Resources.resources
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\svn_fake\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll.config
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll - copia\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll - copia\LeerDocumento64\LeerDocumento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll - copia\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll - copia\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll - copia\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\LeerDocumento64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\oth\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Debug\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.LeerDocumento64.0.0.0.0.dll.config
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb

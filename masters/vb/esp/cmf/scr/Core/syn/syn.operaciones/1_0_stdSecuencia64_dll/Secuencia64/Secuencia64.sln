@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Secuencia64", "Secuencia64\Secuencia64.vbproj", "{BFE7932E-8ABD-4B53-B8C0-0061C014A691}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFE7932E-8ABD-4B53-B8C0-0061C014A691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE7932E-8ABD-4B53-B8C0-0061C014A691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE7932E-8ABD-4B53-B8C0-0061C014A691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE7932E-8ABD-4B53-B8C0-0061C014A691}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27492507-67E0-4A5B-B502-46D410D09C2E}
+	EndGlobalSection
+EndGlobal

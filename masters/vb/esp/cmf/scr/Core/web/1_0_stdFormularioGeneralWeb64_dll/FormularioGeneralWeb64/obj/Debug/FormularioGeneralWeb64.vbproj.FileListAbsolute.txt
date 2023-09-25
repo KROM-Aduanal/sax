@@ -1,0 +1,52 @@
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\FormularioGeneralWeb64.vbprojAssemblyReference.cache
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.GenerateResource.cache
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CoreCompileInputs.cache
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CopyComplete
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+c:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdPlantillaBaseWeb64_dll\PlantillaBaseWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.GenerateResource.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CoreCompileInputs.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CopyComplete
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Plantillas\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbprojAssemblyReference.cache
+c:\sax\projects\synapsis\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+c:\sax\projects\synapsis\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+c:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+c:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.GenerateResource.cache
+c:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CoreCompileInputs.cache
+c:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+c:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.GenerateResource.cache
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CoreCompileInputs.cache
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SaxGit\projects\synapsis\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\SaxGit\projects\synapsis\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\SaxGit\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\templates\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\sax\projects\synapsis\libs\bin\main\snappy32.dll
+C:\sax\projects\synapsis\libs\bin\main\snappy64.dll
+C:\sax\projects\synapsis\libs\bin\main\libzstd.dll
+C:\sax\projects\synapsis\libs\bin\main\mongocrypt.dll
+C:\sax\projects\synapsis\libs\bin\main\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\snappy32.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\snappy64.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\libzstd.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\mongocrypt.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdFormularioGeneralWeb64_dll\FormularioGeneralWeb64\obj\Debug\FormularioGeneralWeb64.vbproj.AssemblyReference.cache

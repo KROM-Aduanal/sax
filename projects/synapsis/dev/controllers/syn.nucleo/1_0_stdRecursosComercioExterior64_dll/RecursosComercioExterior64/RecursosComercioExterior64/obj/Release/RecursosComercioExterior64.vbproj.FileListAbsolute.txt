@@ -1,0 +1,16 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Release\RecursosComercioExterior64.vbproj.AssemblyReference.cache

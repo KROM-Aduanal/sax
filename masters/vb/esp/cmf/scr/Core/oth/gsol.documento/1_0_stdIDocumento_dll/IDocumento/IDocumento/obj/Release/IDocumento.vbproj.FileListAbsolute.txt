@@ -1,0 +1,9 @@
+C:\svn\SVN QA\Modulos\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\svn\SVN QA\Modulos\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Release\IDocumento.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Release\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Release\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIDocumento_dll\IDocumento\IDocumento\obj\Release\IDocumento.vbprojResolveAssemblyReference.cache

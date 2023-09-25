@@ -1,0 +1,50 @@
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.AssemblyReference.cache
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.AssemblyReference.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\SaxGit\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\Sax\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\Sax\sax2.0\bin\Core\syn\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.AssemblyReference.cache
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Resources.resources
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.GenerateResource.cache
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.CoreCompileInputs.cache
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+d:\Trabajos\krom\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormal64_dll\ConstructorPedimentoNormal64\ConstructorPedimentoNormal64\obj\Debug\ConstructorPedimentoNormal64.vbproj.AssemblyReference.cache

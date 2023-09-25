@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\WclTextBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\WclTextBoxFinder64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Components\WclTextBoxFinder64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\gsol.Componentes.SistemaBase.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\gsol.Componentes.SistemaBase.WclTextBoxFinder.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Components\1_0_Wm000TextBoxFinder64_dll\obj\Release\WclTextBoxFinder64.0.0.0.0.pdb

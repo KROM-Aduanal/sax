@@ -1,0 +1,15 @@
+C:\svn\SVN QA\Namespaces\Conexiones64.dll
+C:\svn\SVN QA\Namespaces\Conexiones64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Conexiones64.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\Conexiones64.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdConexiones64_dll\Conexiones64\Conexiones64\obj\Release\Conexiones64.vbprojAssemblyReference.cache

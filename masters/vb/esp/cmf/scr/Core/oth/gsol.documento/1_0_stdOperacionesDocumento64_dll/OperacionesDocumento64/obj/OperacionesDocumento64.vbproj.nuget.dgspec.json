@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\oth\\gsol.documento\\1_0_stdOperacionesDocumento64_dll\\OperacionesDocumento64\\OperacionesDocumento64.vbproj": {}
+  },
+  "projects": {
+    "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\oth\\gsol.documento\\1_0_stdOperacionesDocumento64_dll\\OperacionesDocumento64\\OperacionesDocumento64.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\oth\\gsol.documento\\1_0_stdOperacionesDocumento64_dll\\OperacionesDocumento64\\OperacionesDocumento64.vbproj",
+        "projectName": "OperacionesDocumento64",
+        "projectPath": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\oth\\gsol.documento\\1_0_stdOperacionesDocumento64_dll\\OperacionesDocumento64\\OperacionesDocumento64.vbproj",
+        "packagesPath": "C:\\Users\\alexishg\\.nuget\\packages\\",
+        "outputPath": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\oth\\gsol.documento\\1_0_stdOperacionesDocumento64_dll\\OperacionesDocumento64\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexishg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\alexishg\\Downloads": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "dependencies": {
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[15.0.4797.1003, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

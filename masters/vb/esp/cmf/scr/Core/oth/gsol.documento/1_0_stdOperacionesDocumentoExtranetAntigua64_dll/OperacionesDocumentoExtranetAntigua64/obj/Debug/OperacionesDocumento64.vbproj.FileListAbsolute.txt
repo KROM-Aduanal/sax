@@ -1,0 +1,12 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento_dll\OperacionesDocumento\obj\Debug\OperacionesDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento_dll\OperacionesDocumento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento_dll\OperacionesDocumento\obj\Debug\OperacionesDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento_dll\OperacionesDocumento\obj\Debug\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento_dll\OperacionesDocumento\obj\Debug\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Debug\OperacionesDocumento64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Debug\OperacionesDocumento64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Debug\Gsol.Documento.OperacionesDocumento64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumento64_dll\OperacionesDocumento64\obj\Debug\Gsol.Documento.OperacionesDocumento64.0.0.0.0.pdb

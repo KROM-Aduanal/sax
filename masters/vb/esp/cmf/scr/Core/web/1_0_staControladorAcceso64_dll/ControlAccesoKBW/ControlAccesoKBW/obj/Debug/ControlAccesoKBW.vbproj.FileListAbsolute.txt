@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\gsol.krom.ControlAccesoKBW64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\gsol.krom.ControlAccesoKBW64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\gsol.krom.ControlAccesoKBW64.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\ControlAccesoKBW.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\ControlAccesoKBW.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\gsol.krom.ControlAccesoKBW64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\gsol.krom.ControlAccesoKBW64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_staControladorAcceso64_dll\ControlAccesoKBW\ControlAccesoKBW\obj\Debug\ControlAccesoKBW.vbproj.AssemblyReference.cache

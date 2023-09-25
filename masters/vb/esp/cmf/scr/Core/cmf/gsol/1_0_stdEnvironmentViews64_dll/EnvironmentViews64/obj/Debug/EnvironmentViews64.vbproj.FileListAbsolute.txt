@@ -1,0 +1,40 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbprojAssemblyReference.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Resources.resources
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.GenerateResource.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.CoreCompileInputs.cache
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+d:\Trabajos\krom\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.AssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\EnvironmentViews64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdEnvironmentViews64_dll\EnvironmentViews64\obj\Debug\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.pdb

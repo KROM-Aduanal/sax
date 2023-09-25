@@ -1,0 +1,10 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\bin\Debug\Gsol.ILeerArchivo.1.0.0.0.xml
+C:\svn\SVN QA\Namespaces\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\obj\Debug\ILeerArchivo.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\obj\Debug\ILeerArchivo.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\obj\Debug\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdILeerArchivo_dll\ILeerArchivo\ILeerArchivo\obj\Debug\Gsol.ILeerArchivo.1.0.0.0.pdb

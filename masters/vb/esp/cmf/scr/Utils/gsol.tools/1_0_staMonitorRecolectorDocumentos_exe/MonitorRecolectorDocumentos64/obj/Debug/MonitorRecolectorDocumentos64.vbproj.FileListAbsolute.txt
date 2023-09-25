@@ -1,0 +1,9 @@
+C:\SVN\SVN QA\Aplicacion\MonitorRecolectorDocumentos64.exe
+C:\SVN\SVN QA\Aplicacion\MonitorRecolectorDocumentos64.exe.config
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.MonitorRecolectorDocumentos.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.exe
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.pdb
+C:\SVN\SVN QA\Aplicacion\MonitorRecolectorDocumentos64.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staMonitorRecolectorDocumentos_exe\MonitorRecolectorDocumentos64\obj\Debug\MonitorRecolectorDocumentos64.vbprojResolveAssemblyReference.cache

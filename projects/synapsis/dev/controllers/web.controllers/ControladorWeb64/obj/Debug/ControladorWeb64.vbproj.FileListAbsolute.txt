@@ -1,0 +1,16 @@
+c:\sax\projects\synapsis\libs\bin\main\gsol.krom.ControladorWeb64.0.0.0.0.dll
+c:\sax\projects\synapsis\libs\bin\main\gsol.krom.ControladorWeb64.0.0.0.0.pdb
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.AssemblyReference.cache
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\Resources.resources
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.GenerateResource.cache
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.CoreCompileInputs.cache
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\gsol.krom.ControladorWeb64.0.0.0.0.dll
+c:\sax\projects\synapsis\dev\core\ControladorWeb64\obj\Debug\gsol.krom.ControladorWeb64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\gsol.krom.ControladorWeb64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\gsol.krom.ControladorWeb64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\gsol.krom.ControladorWeb64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\gsol.krom.ControladorWeb64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\web.controllers\ControladorWeb64\obj\Debug\ControladorWeb64.vbproj.AssemblyReference.cache

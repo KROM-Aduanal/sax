@@ -1,0 +1,20 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcherWCF64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcherWCF64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\svn\SVN QA\Namespaces\TagWatcherWCF64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\Resources.resources
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.GenerateResource.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcher.vbproj.CoreCompileInputs.cache
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcherWCF64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\Wma.Exceptions\0_0_stdTagWatcher64_dll\TagWatcher64\obj\Debug\TagWatcherWCF64.0.0.0.0.pdb
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\TagWatcherWCF64.0.0.0.0.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\TagWatcherWCF64.0.0.0.0.pdb

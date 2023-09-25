@@ -1,0 +1,59 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.IEnlaceDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.IEntidadDatos.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEspacioTrabajo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\IBitacoras.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.ISectorEntorno.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IConstructorVisual.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Componente32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Funcion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.Accion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEntidad.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEntidad.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IAtributo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IAtributo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEvento.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\Gsol.IEvento.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\CampoVirtual64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\CampoVirtual64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.IRecursosSistemas.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.IRecursosSistemas.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\bin\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\CampoVirtual64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\CampoVirtual64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+c:\Sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Release\CampoVirtual64.vbproj.AssemblyReference.cache

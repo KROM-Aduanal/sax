@@ -1,0 +1,8 @@
+C:\sax\projects\synapsis\libs\bin\controllers\Rec.Globals.Controllers.ControladorRecursosAduanales64.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Rec.Globals.Controllers.ControladorRecursosAduanales64.pdb
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\ControladorRecursosAduanales64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\ControladorRecursosAduanales64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\Rec.Globals.Controllers.ControladorRecursosAduanales64.dll
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\Rec.Globals.Controllers.ControladorRecursosAduanales64.pdb
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorRecursosAduanales64_dll\ControladorRecursosAduanales64\obj\Debug\ControladorRecursosAduanales64.vbproj.AssemblyReference.cache

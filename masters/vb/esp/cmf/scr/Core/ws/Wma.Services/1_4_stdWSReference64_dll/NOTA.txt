@@ -1,0 +1,15 @@
+HISTORIA DEL WS
+
+Este WS es una combinación del proyecto “1_0_stdWSReference64_dll” y de la “IWSReferences64.dll” del servidor 15 a la cual se le hizo una decompilación, es decir, 
+se tomo como base el código “1_0_stdWSReference64_dll” y se copió el código de la decompilación de la “IWSReferences64.dll” el cual se obtuvo con la ayuda del programa “JustDecompile”. 
+Se creo el proyecto “0_0_stdTagWatcher64_dll” el cual se encuentra actualizado hasta el 26 de septiembre del 2019 pero se le quitaron las propiedades “ObjectReturned” y “FlagReturned” ya que el “ObjectReturned” 
+generaba conflictos de serialización por lo que se realizo una compilación de tagwacher especial para el ws que no contiene las propiedades dichas anteriormente.
+
+Se tuvo que actualizar la clase conexiones agregando el siguiente método “EjecutaConsultaIndividualWCF” para poder ejecutar el WS y recompilar las DLLs que se encuentran en la carpeta “ws_local”.
+
+Se tuvo que comentar el namespace de las clases “IWSReferences” y “WSReferences” para poder correr el WS de forma local, se necesita des comentar el namespace de ambas clases para poder copiar la DLLs en producción, 
+de esta forma corre en producción, pero no regresa ningún resultado.
+
+Para poder correr en producción se tuvieron que recompilar las DLLs que se encuentran en la carpeta “ws_local” y todas ellas se tienen que copiar en producción para poder correr el WS.
+
+La carpeta “ws_15” contienen las DLLs de producción las cuales pueden ayudar a restaurar el WS en caso de no funcionar las DLLs locales.

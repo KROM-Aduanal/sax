@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="Wma.WebServices.WSReferences" CodeBehind="WSReferences.svc.vb" %>

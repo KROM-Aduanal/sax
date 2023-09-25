@@ -1,0 +1,8 @@
+C:\Sax\projects\synapsis\libs\bin\modules\Gsol.Web.Modulos.Ges025PaginaMaestra64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\modules\Gsol.Web.Modulos.Ges025PaginaMaestra64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Ges025PaginaMaestra64.vbproj.AssemblyReference.cache
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Gsol.Web.Modulos.Resources.resources
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Ges025PaginaMaestra64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Ges025PaginaMaestra64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Gsol.Web.Modulos.Ges025PaginaMaestra64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\modules\PaginaMaestra64\Ges025PaginaMaestra64\obj\Debug\Gsol.Web.Modulos.Ges025PaginaMaestra64.0.0.0.0.pdb

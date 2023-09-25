@@ -1,0 +1,146 @@
+
+/*DUALITYBAR*/
+/*pex responsivo*/
+.wc-dualitybar {
+  --tintColor: #432776;
+  position: relative;
+  display: flex;
+}
+
+.wc-dualitybar label {
+  padding: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction:column;
+}
+
+.wc-dualitybar label span {
+    flex-grow: 1;
+}
+
+.wc-dualitybar label:first-child span {
+  color: var(--tintColor);
+  font-weight: bold;
+}
+
+.wc-dualitybar input {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 4px;
+  width: 100%;
+}
+
+.wc-dualitybar label:nth-child(1) input {
+  border: 1px solid rgba(0,0,0,.15);
+  border-right: 0;
+  border-radius: 7px 0 0 7px;
+  color: var(--tintColor);
+  font-weight: bold;
+  text-transform: uppercase;
+  
+  border-right: 1px solid rgba(0,0,0,.4);
+}
+
+.wc-dualitybar label:nth-child(1) input:not(:placeholder-shown) {
+    font-size:120%;
+}
+
+.wc-dualitybar label:nth-child(1) input:placeholder-shown {
+    font-weight: normal;
+	text-transform: capitalize;
+}
+
+.wc-dualitybar label:nth-child(2) > div {
+  border: 1px solid rgba(0,0,0,.15);
+  border-left: 0;
+  padding-left: 12px;
+  border-radius: 0 7px 7px 0;
+  align-items: center;
+  height:38px;
+  position: relative;
+}
+
+.wc-dualitybar label:nth-child(2) > div:before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: -3px;
+    height: 13px;
+    width: 6px;
+    z-index: 1;
+    border: 6px solid #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+.wc-dualitybar label:nth-child(2) > div:after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: -3px;
+    height: 13px;
+    width: 6px;
+    z-index: 1;
+    border: 6px solid #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+.wc-dualitybar label span {
+    padding: 4px;
+}
+
+.wc-dualitybar label:nth-child(1) span {
+  filter: brightness(1.5);
+  border-right: 1px solid rgba(0,0,0,.4);
+  position:relative;
+}
+
+.wc-dualitybar label:nth-child(1) span:before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: -3px;
+    height: 13px;
+    width: 6px;
+    z-index: 1;
+    background: #fff;
+}
+
+.wc-dualitybar label:nth-child(2) span {
+  padding-left: 12px;
+}
+
+.wc-dualitybar a {
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  position: relative;
+  border: 4px solid #f44336;
+  box-sizing: border-box;
+  overflow: hidden;
+  display:block;
+  margin: 0 4px;
+}
+
+.wc-dualitybar a:before {
+  content: "";
+  width: 0px;
+  height: 34px;
+  background-color: #f44336;
+  position: absolute;
+  top: -4px;
+  right: 0;
+}
+
+.wc-dualitybar a.semi:before {
+  width:9px;
+}
+
+.wc-dualitybar a.full:before {
+  width:18px;
+}
+        

@@ -1,0 +1,26 @@
+C:\svn\SVN QA\Namespaces\Gsol.Sesion64.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.Sesion64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Sesion64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Sesion64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Sesion64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Sesion64.1.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Sesion64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdSesion64_dll\Sesion64\Sesion64\obj\Release\Gsol.Sesion64.1.0.0.0.dll

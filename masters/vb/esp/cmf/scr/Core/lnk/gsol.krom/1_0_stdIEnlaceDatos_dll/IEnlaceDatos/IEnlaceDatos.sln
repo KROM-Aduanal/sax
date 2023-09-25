@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IEnlaceDatos", "IEnlaceDatos.vbproj", "{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Capa 5A - ControladorEnlace", "Capa 5A - ControladorEnlace", "{2EBE7AFA-76DC-447C-AFE1-6EF4F1970D9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DAB24AB3-879D-41F8-B01B-5E7A65E08C4F} = {2EBE7AFA-76DC-447C-AFE1-6EF4F1970D9F}
+	EndGlobalSection
+EndGlobal

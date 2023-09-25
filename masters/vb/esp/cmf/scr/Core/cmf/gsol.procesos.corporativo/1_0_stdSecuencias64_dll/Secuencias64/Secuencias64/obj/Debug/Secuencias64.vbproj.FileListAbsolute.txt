@@ -1,0 +1,8 @@
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Secuencias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Secuencias64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Secuencias64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Gsol.Secuencias64.Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Secuencias64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Secuencias64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Gsol.Secuencias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdSecuencias64_dll\Secuencias64\Secuencias64\obj\Debug\Gsol.Secuencias64.0.0.0.0.pdb

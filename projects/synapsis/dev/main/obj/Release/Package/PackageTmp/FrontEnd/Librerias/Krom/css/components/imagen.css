@@ -1,0 +1,188 @@
+
+/*IMAGEN*/
+
+.wc-image .preload {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-image: url('../../imgs/loader.gif');
+    background-color: #f2f6f6;
+}
+
+.wc-image .preload img {
+    visibility: hidden;
+}
+
+.wc-image {
+    display: flex;
+    --time: 4s;
+}
+
+.wc-image > div {
+    position: relative;
+}
+
+/*FILL*/
+
+.wc-image[img-aspect="0"] img {
+    object-fit: none;
+}
+
+.wc-image[img-aspect="1"] img {
+    object-fit: fill;
+}
+
+.wc-image[img-aspect="2"] img {
+    object-fit: contain;
+}
+
+.wc-image[img-aspect="3"] img {
+    object-fit: cover;
+}
+
+/*LEFT*/
+
+.wc-image[img-align="LeftTop"] {
+    justify-content: start;
+}
+
+.wc-image[img-align="CenterTop"] {
+    justify-content: center;
+}
+
+.wc-image[img-align="RightTop"] {
+    justify-content: end;
+}
+
+.wc-image[img-align="LeftTop"] > div {
+    align-self: start;
+}
+
+.wc-image[img-align="CenterTop"] > div {
+    align-self: start;
+}
+
+.wc-image[img-align="RightTop"] > div {
+    align-self: start;
+}
+
+/*CENTER*/
+
+.wc-image[img-align="Left"] {
+    justify-content: start;
+}
+
+.wc-image[img-align="Center"] {
+    justify-content: center;
+}
+
+.wc-image[img-align="Right"] {
+    justify-content: end;
+}
+
+.wc-image[img-align="Left"] > div {
+    align-self: center;
+}
+
+.wc-image[img-align="Center"] > div {
+    align-self: center;
+}
+
+.wc-image[img-align="Right"] > div {
+    align-self: center
+}
+
+/*BOTTOM*/
+
+.wc-image[img-align="LeftBotom"] {
+    justify-content: start;
+}
+
+.wc-image[img-align="CenterBottom"] {
+    justify-content: center;
+}
+
+.wc-image[img-align="RightBottom"] {
+    justify-content: end;
+}
+
+.wc-image[img-align="LeftBottom"] > div {
+    align-self: end;
+}
+
+.wc-image[img-align="CenterBottom"] > div {
+    align-self: end;
+}
+
+.wc-image[img-align="RightBottom"] > div {
+    align-self: end;
+}
+
+.wc-image img {
+    display: table;
+    margin: auto;
+}
+
+/*SHADOW*/
+
+.wc-image .fixed-shadow {
+    border-radius: 8px;
+    box-shadow: 10px 10px 0px -1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 10px 10px 0px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 10px 10px 0px -1px rgba(0,0,0,0.2);
+}
+
+/*HISTORY*/
+
+.wc-image > div > div {
+    display: flex;
+    /*flex-grow: 1;
+flex-basis: 0;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    justify-content: space-between;
+    padding: 4px;
+    background-color: #000000;
+}
+
+.wc-image > div > div > span {
+    background-color: rgba(255,255,255,0.25);
+    display: block;
+    height: 4px;
+    width: 100%;
+    z-index: 1;
+}
+
+.wc-image > div > div > span:not(:last-child) {
+    border-right: 2px solid #000000;
+}
+
+.wc-image > div > div:before {
+    content: "";
+    background-color: #ffffff;
+    height: 4px;
+    width: 0%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    z-index: 0;
+}
+
+.wc-image .run:before {
+    animation-timing-function: linear;
+    animation-duration: var(--time);
+    animation-iteration-count: infinite;
+    animation-name: runHistory;
+}
+
+@keyframes runHistory {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

@@ -1,0 +1,6 @@
+C:\sax\masters\vb\esp\cmf\libs\bin\components\Gsol.Web.Components.IUIControlDataConnector64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIControlDataConnector64_dll\IUIControlDataConnector\IUIControl\obj\Release\IUIControlDataConnector64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIControlDataConnector64_dll\IUIControlDataConnector\IUIControl\obj\Release\Gsol.Web.Components.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIControlDataConnector64_dll\IUIControlDataConnector\IUIControl\obj\Release\IUIControlDataConnector64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIControlDataConnector64_dll\IUIControlDataConnector\IUIControl\obj\Release\IUIControlDataConnector64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptIUIControlDataConnector64_dll\IUIControlDataConnector\IUIControl\obj\Release\Gsol.Web.Components.IUIControlDataConnector64.0.0.0.0.dll

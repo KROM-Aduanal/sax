@@ -1,0 +1,34 @@
+
+/*GROUP*/
+
+.wc-group {
+	--items-width:  100%;
+	padding: 1.5rem 1rem 1rem  1rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.wc-group.group-boders{
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 4px;
+}
+
+.wc-group > * {
+	width: var(--items-width);
+    margin: .25rem 0;
+}
+
+.wc-group[group-title]:before {
+	content: attr(group-title);
+	position: absolute;
+	top: -16px;
+	left: 4px;
+	/*transform: translateX(-50%);*/
+	white-space: nowrap;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	font-weight: bolder;
+	font-size: 120%;
+	background-color: #ffffff;
+	padding: 0 18px;
+}

@@ -1,0 +1,8 @@
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\gsol.Procesos.Controladores.Auditorias64.Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\Auditorias64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\Auditorias64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.Procesos.Controladores.Auditorias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.Procesos.Controladores.Auditorias64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\Auditorias64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\gsol.Procesos.Controladores.Auditorias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.procesos.corporativo\1_0_stdAuditorias64_dll\Auditorias64\Auditorias64\obj\Debug\gsol.Procesos.Controladores.Auditorias64.0.0.0.0.pdb

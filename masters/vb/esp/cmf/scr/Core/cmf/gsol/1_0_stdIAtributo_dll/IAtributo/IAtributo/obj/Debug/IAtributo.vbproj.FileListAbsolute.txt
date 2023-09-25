@@ -1,0 +1,19 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\IAtributo.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IAtributo.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\IAtributo.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\IAtributo.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Gsol.IAtributo.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IAtributo.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\IAtributo.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\IAtributo.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIAtributo_dll\IAtributo\IAtributo\obj\Debug\Gsol.IAtributo.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.IAtributo.1.0.0.0.dll

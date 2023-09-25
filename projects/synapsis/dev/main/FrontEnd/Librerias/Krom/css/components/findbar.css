@@ -1,0 +1,181 @@
+
+/*FINDBAR*/
+
+.wc-findbar {
+	--tintColor: #6c4fd3;
+}
+
+.wc-findbar > div:nth-child(1) {
+	border: 1px solid rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 17.5px;
+	position: relative;
+}
+
+.wc-findbar > div:nth-child(1) input {
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+	color: #ffffff;
+	line-height: 1.25;
+	padding: .5rem .25rem;
+    width:100%;
+}
+
+.wc-findbar > div:nth-child(1) a {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 20px;
+	height: 20px;
+	display: block;
+	filter: invert(100%);
+}
+
+.wc-findbar .icon-search {
+	background-image: url('../../imgs/search.png');
+}
+
+/*.wc-findbar .icon-loader {
+	background-image: url('../../imgs/loader.gif');
+}*/
+
+.wc-findbar > div:nth-child(1) > div:nth-child(3) a {
+	background-image: url('../../imgs/close.png');
+}
+
+.wc-findbar > div:nth-child(2), .wc-findbar > ul {
+	position: absolute;
+	top: 110%;
+	left: 0;
+	right: 0;
+	background-color: #ffffff;
+	padding: 4px;
+	margin: 0;
+	border-radius: 7px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+	z-index: 9999;
+}
+
+.wc-findbar > div:nth-child(2) > div:nth-child(2) {
+	max-height: 270px;
+	overflow: auto;
+}
+
+.wc-findbar > div:nth-child(2) > div > label > span {
+	padding: 4px;
+	display: block;
+	cursor: pointer;
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+	background-size: 16px;
+	padding-left: 16px;
+	background-image: url('../../imgs/expand_more.png');
+}
+
+.wc-findbar > div:nth-child(2) > div > label > input:checked + span {
+	background-image: url('../../imgs/expand_less.png');
+}
+
+.wc-findbar > div:nth-child(2) > div > label > input:checked + span + ul {
+	display: block !important;
+}
+
+.wc-findbar > div:nth-child(2) > div > label > ul > li > a {
+	padding: 4px;
+	display: block;
+    text-align: left;
+}
+
+.wc-findbar > div:nth-child(2) > div > label > ul > li > a:hover {
+	background-color: #f9f9f9;
+}
+
+.wc-findbar > div:nth-child(2) small {
+	display:block;
+	padding:4px;
+	margin-top: 4px;
+}
+
+.wc-findbar > div:nth-child(2) small:nth-of-type(2) {
+	border-top: 1px solid #dee2e6;
+}
+
+.wc-findbar > div:nth-child(2) > div:nth-child(1) {
+	width: auto;
+}
+
+.contracted {
+	width: 15px !important;
+	overflow: hidden;
+	color: transparent;
+	background-image: url('../../imgs/expand_more.png');
+	background-repeat: no-repeat;
+	background-position: -5px 50%;
+}
+
+.contracted * {
+	visibility:hidden;
+}
+
+.wc-findbar > div:nth-child(2) > div > label > ul > li > a span {
+	font-weight: bolder;
+	color: var(--tintColor);
+	pointer-events: none;
+}
+
+.wc-findbar a[disabled] {
+	pointer-events: none;
+	opacity:0.5;
+}
+
+.wc-findbar > a {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 9998;
+}
+
+.wc-findbar > ul {
+	list-style: none;
+}
+
+.wc-findbar > ul li {
+	display: flex;
+	width: 100%;
+	cursor: pointer;
+	align-items: center;
+}
+
+.wc-findbar > ul li a:nth-child(1) {
+	display: block;
+	padding: 4px 8px;
+	color: var(--tintColor);
+}
+
+.wc-findbar > ul li a:nth-child(2) {
+	display: block;
+	width: 18px;
+	height: 18px;
+	background-image: url('../../imgs/deleteB.png');
+	background-position:center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	opacity: .5;
+}
+
+
+/*
+.wc-findbar .__dropdown > a {
+	display: block;
+	padding: 4px 8px;
+	width: 100%;
+	color: var(--tintColor);
+	cursor: pointer;
+}
+
+.wc-findbar .__dropdown > a:not(:last-child) {
+	border-bottom: 1px solid #f7f7f7;
+}*/

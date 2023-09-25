@@ -1,0 +1,17 @@
+C:\SVN\SVN\SVN QA\Namespaces\Mercancias64.dll
+C:\SVN\SVN\SVN QA\Namespaces\Mercancias64.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Mercancias64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\gsol.krom.Mercancias64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\gsol.krom.Mercancias64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Mercancias64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\gsol.krom.Mercancias64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\gsol.krom.Mercancias64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Mercancias64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Mercancias64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\gsol.krom.Mercancias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\gsol.krom.Mercancias64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.Mercancias64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.Mercancias64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Mercancias64\Mercancias64\obj\Debug\Mercancias64.vbproj.CopyComplete

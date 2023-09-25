@@ -1,0 +1,36 @@
+C:\WilmaSources\bin\Modules\Wma.Modules.GenericCatalog64.1.0.0.0.dll
+C:\WilmaSources\bin\Modules\Wma.Modules.GenericCatalog64.1.0.0.0.pdb
+C:\WilmaSources\esp\sources\Modulos\System.GenericCatalog\GenericCatalog64\obj\Debug\Wma.Modules.GenericCatalog64.Resources.resources
+C:\WilmaSources\esp\sources\Modulos\System.GenericCatalog\GenericCatalog64\obj\Debug\Wma.Modules.GenericCatalog64.Frm000Generic.resources
+C:\WilmaSources\esp\sources\Modulos\System.GenericCatalog\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.GenerateResource.Cache
+C:\WilmaSources\esp\sources\Modulos\System.GenericCatalog\GenericCatalog64\obj\Debug\Wma.Modules.GenericCatalog64.1.0.0.0.dll
+C:\WilmaSources\esp\sources\Modulos\System.GenericCatalog\GenericCatalog64\obj\Debug\Wma.Modules.GenericCatalog64.1.0.0.0.pdb
+C:\bin\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\bin\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\svn\SVN QA\Aplicacion\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Frm000Generic.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Modulos\GenericCatalog\GenericCatalog64\obj\Debug\GenericCatalog64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Solutions\kb\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Solutions\kb\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Frm000Generic.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Solutions\All\Modules\GenericCatalog\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+C:\Sax\Settings\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+C:\Sax\Settings\Modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+D:\testerborrar\ouch\sax\default\modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\default\modules\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\GenericCatalog64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.Frm000Generic.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\GenericCatalog64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Default\modules\GenericCatalog64\obj\Debug\Gsol.Modulos.GenericCatalog64.1.0.0.0.pdb

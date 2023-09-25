@@ -1,0 +1,23 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\KromSAAI\bin\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.GenerateResource.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.CoreCompileInputs.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.CopyComplete
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2020 - Integración Web\Componentes\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb
+c:\sax\projects\synapsis\libs\bin\components\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+c:\sax\projects\synapsis\libs\bin\components\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.AssemblyReference.cache
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.Resources.resources
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.GenerateResource.cache
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.CoreCompileInputs.cache
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+c:\sax\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb
+C:\SaxGit\projects\synapsis\libs\bin\components\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+C:\SaxGit\projects\synapsis\libs\bin\components\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb
+C:\SaxGit\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\SaxGit\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.GenerateResource.cache
+C:\SaxGit\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\CptPaginatorControl64.vbproj.CoreCompileInputs.cache
+C:\SaxGit\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.dll
+C:\SaxGit\projects\synapsis\dev\components\1_0_CptPaginatorControl64_dll\FieldsetControl\obj\Debug\Gsol.Web.Components.CptPaginatorControl64.0.0.0.0.pdb

@@ -1,0 +1,22 @@
+C:\svn\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll.config
+C:\svn\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Release\LeerDocumento64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Release\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Release\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Gsol.Documento.LeerDocumento64.0.0.0.0.dll.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Gsol.Documento.LeerDocumento64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Gsol.Documento.LeerDocumento64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Gsol.Documento.IDocumento.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Wma.Mx.Invoices.CFDiGenerator.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\ChilkatDotNet4.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\obj\Release\LeerDocumento64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Wma.Mx.Invoices.CFDiGenerator33.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\devAdvansWS.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Gsol.Documento.IDocumento.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Wma.Mx.Invoices.CFDiGenerator33.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdLeerDocumento64_dll\LeerDocumento64\LeerDocumento64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.pdb

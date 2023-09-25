@@ -1,0 +1,7 @@
+C:\svn\SVN QA\Aplicacion\Wma.Services.WSReferenceDashboard64.0.0.0.0.dll.config
+C:\svn\SVN QA\Aplicacion\Wma.Services.WSReferenceDashboard64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Wma.Services.WSReferenceDashboard64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSReferenceDashboard64_dll\WSReferenceDashboard64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSReferenceDashboard64_dll\WSReferenceDashboard64\obj\Debug\WSReferenceDashboard64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSReferenceDashboard64_dll\WSReferenceDashboard64\obj\Debug\Wma.Services.WSReferenceDashboard64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdWSReferenceDashboard64_dll\WSReferenceDashboard64\obj\Debug\Wma.Services.WSReferenceDashboard64.0.0.0.0.pdb

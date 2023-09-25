@@ -1,0 +1,14 @@
+C:\svn\SVN QA\Namespaces\IConexiones.dll
+C:\svn\SVN QA\Namespaces\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IConexiones.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\data\IConexiones.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\data\gsol.basededatos\1_0_stdIConexiones_dll\IConexiones\IConexiones\obj\Release\IConexiones.pdb

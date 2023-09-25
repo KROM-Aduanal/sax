@@ -1,0 +1,25 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.ICredenciales.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.ICredenciales.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.ICredenciales.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\bin\Debug\Gsol.IIniciaSesion.1.0.0.0.xml
+C:\svn\SVN QA\Namespaces\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN QA\Namespaces\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Gsol.ICredenciales.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.CopyComplete
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.ICredenciales.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Gsol.ICredenciales.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.ICredenciales.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\Gsol.ICredenciales.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdICredenciales_dll\ICredenciales\ICredenciales\obj\Debug\ICredenciales.vbprojAssemblyReference.cache

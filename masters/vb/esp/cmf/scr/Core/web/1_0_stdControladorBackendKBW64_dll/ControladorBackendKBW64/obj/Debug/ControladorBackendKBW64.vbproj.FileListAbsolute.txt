@@ -1,0 +1,8 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\Sax.Web.ControladorBackendKWB64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\web\Sax.Web.ControladorBackendKWB64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\ControladorBackendKBW64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\Sax.Web.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\ControladorBackendKBW64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\ControladorBackendKBW64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\Sax.Web.ControladorBackendKWB64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\web\1_0_stdControladorBackendKBW64_dll\ControladorBackendKBW64\obj\Debug\Sax.Web.ControladorBackendKWB64.0.0.0.0.pdb

@@ -1,0 +1,7 @@
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdSysExpert64_dll\SysExpert64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdSysExpert64_dll\SysExpert64\obj\Debug\SysExpert64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdSysExpert64_dll\SysExpert64\obj\Debug\SysExpert64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.SysExpert64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\data\Gsol.BaseDatos.SysExpert64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdSysExpert64_dll\SysExpert64\obj\Debug\Gsol.BaseDatos.SysExpert64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\data\gsol.basededatos.operaciones\1_0_stdSysExpert64_dll\SysExpert64\obj\Debug\Gsol.BaseDatos.SysExpert64.0.0.0.0.pdb

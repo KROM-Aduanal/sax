@@ -1,0 +1,8 @@
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\Resources.resources
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\ConstructorPedimentoNormalPDF64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\ConstructorPedimentoNormalPDF64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorPedimentoNormalPDF64_dll\ConstructorPedimentoNormalPDF64\obj\Debug\ConstructorPedimentoNormalPDF64.vbproj.AssemblyReference.cache

@@ -1,0 +1,38 @@
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.dll
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.pdb
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.xml
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.dll
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.pdb
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.xml
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.vbprojResolveAssemblyReference.cache
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\Resources.resources
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.vbproj.GenerateResource.Cache
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.dll
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.xml
+C:\Users\pedrobm\Desktop\SVN GZ Desarrollo\SVN Proyectos\PY001-PM000-TI2013 Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.pdb
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.dll
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.pdb
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.xml
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.dll
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.pdb
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.xml
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\Resources.resources
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.dll
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.xml
+C:\Users\andreasv\Desktop\SNV GZO\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\BitacoraExcepciones64.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\bin\Debug\IBitacoras.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\ResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\GenerateResource.read.1.tlog
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\GenerateResource.write.1.tlog
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.monitoreo\1_0_stdBitacoraExcepciones64_dll\BitacoraExcepciones64\BitacoraExcepciones64\obj\Debug\BitacoraExcepciones64.pdb

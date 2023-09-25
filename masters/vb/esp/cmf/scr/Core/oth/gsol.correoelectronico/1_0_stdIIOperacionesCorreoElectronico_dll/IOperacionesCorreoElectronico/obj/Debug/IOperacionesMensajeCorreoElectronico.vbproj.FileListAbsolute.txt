@@ -1,0 +1,6 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\IOperacionesMensajeCorreoElectronico.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.IOperacionesMensajeCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.IOperacionesMensajeCorreoElectronico.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Gsol.IOperacionesMensajeCorreoElectronico.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.correoelectronico\1_0_stdIMensajeCorreoElectronico_dll\IMensajeCorreoElectronico\obj\Debug\Gsol.IOperacionesMensajeCorreoElectronico.0.0.0.0.pdb

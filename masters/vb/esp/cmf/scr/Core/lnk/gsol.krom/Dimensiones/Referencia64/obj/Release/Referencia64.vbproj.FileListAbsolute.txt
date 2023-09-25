@@ -1,0 +1,7 @@
+C:\svn\SVN QA\Namespaces\gsol.krom.Referencia64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.Referencia64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Referencia64\obj\Release\Referencia64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Referencia64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Referencia64\obj\Release\Referencia64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Referencia64\obj\Release\gsol.krom.Referencia64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Referencia64\obj\Release\gsol.krom.Referencia64.0.0.0.0.pdb

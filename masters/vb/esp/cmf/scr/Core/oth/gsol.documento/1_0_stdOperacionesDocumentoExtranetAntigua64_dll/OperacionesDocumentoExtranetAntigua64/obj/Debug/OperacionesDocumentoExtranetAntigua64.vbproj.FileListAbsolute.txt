@@ -1,0 +1,7 @@
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumentoExtranetAntigua64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.OperacionesDocumentoExtranetAntigua64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumentoExtranetAntigua64_dll\OperacionesDocumentoExtranetAntigua64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumentoExtranetAntigua64_dll\OperacionesDocumentoExtranetAntigua64\obj\Debug\OperacionesDocumentoExtranetAntigua64.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumentoExtranetAntigua64_dll\OperacionesDocumentoExtranetAntigua64\obj\Debug\Gsol.Documento.OperacionesDocumentoExtranetAntigua64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumentoExtranetAntigua64_dll\OperacionesDocumentoExtranetAntigua64\obj\Debug\Gsol.Documento.OperacionesDocumentoExtranetAntigua64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdOperacionesDocumentoExtranetAntigua64_dll\OperacionesDocumentoExtranetAntigua64\obj\Debug\OperacionesDocumentoExtranetAntigua64.vbprojResolveAssemblyReference.cache

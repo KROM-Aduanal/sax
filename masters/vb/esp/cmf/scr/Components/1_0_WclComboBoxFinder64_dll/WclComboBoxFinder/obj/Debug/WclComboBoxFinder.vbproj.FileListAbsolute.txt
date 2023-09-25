@@ -1,0 +1,7 @@
+C:\svn\SVN QA\Aplicacion\WclComboBoxFinder64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\WclComboBoxFinder64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclComboBoxFinder64_dll\WclComboBoxFinder\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclComboBoxFinder64_dll\WclComboBoxFinder\obj\Debug\Wma.Components.WclComboboxFinder.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclComboBoxFinder64_dll\WclComboBoxFinder\obj\Debug\WclComboBoxFinder.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclComboBoxFinder64_dll\WclComboBoxFinder\obj\Debug\WclComboBoxFinder64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_WclComboBoxFinder64_dll\WclComboBoxFinder\obj\Debug\WclComboBoxFinder64.0.0.0.0.pdb

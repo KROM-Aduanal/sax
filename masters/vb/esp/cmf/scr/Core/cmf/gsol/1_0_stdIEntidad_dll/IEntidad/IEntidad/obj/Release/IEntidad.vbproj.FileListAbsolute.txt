@@ -1,0 +1,10 @@
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEntidad.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEntidad.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEntidad.1.0.0.0.xml
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\IEntidad.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\IEntidad.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\IEntidad.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\Gsol.IEntidad.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\Gsol.IEntidad.1.0.0.0.xml
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Release\Gsol.IEntidad.1.0.0.0.pdb

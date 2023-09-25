@@ -1,0 +1,15 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\IOperacionesDocumento.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\IOperacionesDocumento.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\IOperacionesDocumento.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\IOperacionesDocumento.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\IOperacionesDocumento.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Gsol.Documento.IOperacionesDocumento.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\oth\gsol.documento\1_0_stdIOperacionesDocumento_dll\IOperacionesDocumento\obj\Release\Gsol.Documento.IOperacionesDocumento.0.0.0.0.pdb

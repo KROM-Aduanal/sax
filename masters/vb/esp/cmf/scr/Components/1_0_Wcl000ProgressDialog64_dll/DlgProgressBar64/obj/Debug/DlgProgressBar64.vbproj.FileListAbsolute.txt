@@ -1,0 +1,13 @@
+C:\Users\pedrobm\AppData\Local\Temporary Projects\DlgProgressBar64\bin\Debug\DlgProgressBar64.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\bin\Debug\DlgProgressBar64.exe.config
+C:\svn\SVN QA\Namespaces\DlgProgressBar64.exe.config
+C:\svn\SVN QA\Namespaces\Wma.DlgProgressBar64.exe.config
+C:\svn\SVN QA\Namespaces\DlgProgressBar.exe.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\obj\Debug\gsol.Componentes.SistemaBase.ProgressDialog.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\obj\Debug\gsol.Componentes.SistemaBase.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\obj\Debug\DlgProgressBar64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Componentes\gsol.Componentes.DlgProgressBar.0.0.0.0.dll.config
+C:\svn\SVN QA\Componentes\gsol.Componentes.DlgProgressBar.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\gsol.Componentes.DlgProgressBar.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\obj\Debug\gsol.Componentes.DlgProgressBar.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_Wcl000ProgressDialog64_dll\DlgProgressBar64\obj\Debug\gsol.Componentes.DlgProgressBar.0.0.0.0.pdb

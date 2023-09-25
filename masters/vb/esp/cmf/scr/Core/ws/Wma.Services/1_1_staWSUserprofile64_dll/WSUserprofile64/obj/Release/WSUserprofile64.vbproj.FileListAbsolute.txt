@@ -1,0 +1,8 @@
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\ws\WSUserprofile64.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\WSUserprofile64.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\WSUserprofile64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\WSUserprofile64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\WSUserprofile64.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\ws\WSUserprofile64.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\ws\Wma.Services\1_1_staWSUserprofile64_dll\WSUserprofile64\obj\Release\WSUserprofile64.pdb

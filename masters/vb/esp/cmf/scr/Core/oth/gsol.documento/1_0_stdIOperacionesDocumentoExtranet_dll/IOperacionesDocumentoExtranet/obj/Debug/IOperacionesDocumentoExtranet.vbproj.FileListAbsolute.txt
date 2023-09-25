@@ -1,0 +1,6 @@
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumentoExtranet.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Documento.IOperacionesDocumentoExtranet.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumentoExtranet_dll\IOperacionesDocumentoExtranet\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumentoExtranet_dll\IOperacionesDocumentoExtranet\obj\Debug\IOperacionesDocumentoExtranet.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumentoExtranet_dll\IOperacionesDocumentoExtranet\obj\Debug\Gsol.Documento.IOperacionesDocumentoExtranet.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.documento\1_0_stdIOperacionesDocumentoExtranet_dll\IOperacionesDocumentoExtranet\obj\Debug\Gsol.Documento.IOperacionesDocumentoExtranet.0.0.0.0.pdb

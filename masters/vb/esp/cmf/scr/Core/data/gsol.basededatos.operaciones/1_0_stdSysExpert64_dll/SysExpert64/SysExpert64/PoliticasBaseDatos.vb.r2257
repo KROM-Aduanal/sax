@@ -1,0 +1,59 @@
+﻿Imports Wma.Exceptions
+
+Namespace Gsol.BaseDatos
+
+    Public Class PoliticasBaseDatos
+        Implements IPoliticasBaseDatos
+
+#Region "Atributos"
+
+        Private _iespacioTrabajo As IEspacioTrabajo
+
+        Private _permiso As Integer
+
+        Private _tagWatcher As TagWatcher
+
+#End Region
+
+
+#Region "Constructores"
+        Sub New()
+
+        End Sub
+
+        Sub New(ByVal permiso_ As Integer,
+                ByVal iespacioTrabajo_ As IEspacioTrabajo)
+
+            _iespacioTrabajo = iespacioTrabajo_
+
+            _permiso = permiso_
+
+        End Sub
+
+#End Region
+
+
+
+#Region "Propiedades"
+
+        Public Property GetNombrePolitica As String _
+            Implements IPoliticasBaseDatos.GetNombrePolitica
+
+        Public Property GetNumeroPolitica As Integer Implements IPoliticasBaseDatos.GetNumeroPolitica
+
+        Public Property GetPermiso As Integer Implements IPoliticasBaseDatos.GetPermiso
+
+        Public Property GetTagWatcher As Wma.Exceptions.TagWatcher Implements IPoliticasBaseDatos.GetTagWatcher
+
+        Public Property IEspacioTrabajoUsuario As IEspacioTrabajo Implements IPoliticasBaseDatos.IEspacioTrabajoUsuario
+
+        Public Property ParametrosPolitica As List(Of Operaciones.ICaracteristica) Implements IPoliticasBaseDatos.ParametrosPolitica
+
+        Public Property SetPermiso As Integer _
+            Implements IPoliticasBaseDatos.SetPermiso
+
+#End Region
+
+    End Class
+
+End Namespace

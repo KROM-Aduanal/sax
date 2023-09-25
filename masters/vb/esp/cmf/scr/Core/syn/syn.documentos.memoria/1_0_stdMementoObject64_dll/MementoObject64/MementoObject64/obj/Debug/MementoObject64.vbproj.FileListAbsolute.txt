@@ -1,0 +1,17 @@
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Memoria.MementoObject64.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\synapsis\Syn.Memoria.MementoObject64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.GenerateResource.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Syn.Memoria.MementoObject64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PTR01-PM010-TI2020 - Namespaces Web\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Syn.Memoria.MementoObject64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\SVN QA\Aplicacion\synapsis\Syn.Memoria.MementoObject64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\SVN QA\Aplicacion\synapsis\Syn.Memoria.MementoObject64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\MementoObject64.vbproj.CopyComplete
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Syn.Memoria.MementoObject64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.memoria\1_0_stdMementoObject64_dll\MementoObject64\MementoObject64\obj\Debug\Syn.Memoria.MementoObject64.0.0.0.0.pdb

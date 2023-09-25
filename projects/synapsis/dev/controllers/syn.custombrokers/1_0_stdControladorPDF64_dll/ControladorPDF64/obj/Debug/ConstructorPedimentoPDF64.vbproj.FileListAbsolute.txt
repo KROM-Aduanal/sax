@@ -1,0 +1,12 @@
+C:\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.dll.config
+C:\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.dll
+C:\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\ConstructorPedimentoPDF64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\ConstructorPedimentoPDF64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.dll.config
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoPDF64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdPedimentoPDF64_dll\ConstructorPedimentoPDF64\obj\Debug\ConstructorPedimentoPDF64.vbproj.AssemblyReference.cache

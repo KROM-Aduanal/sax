@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Conexiones64.dll">
+      <publishTime>10/17/2016 10:11:37</publishTime>
+    </File>
+    <File Include="bin/GsDialogo64.0.0.0.0.dll">
+      <publishTime>12/01/2014 11:05:27</publishTime>
+    </File>
+    <File Include="bin/Gsol.Accion32.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:08</publishTime>
+    </File>
+    <File Include="bin/Gsol.AtributosEntidad64.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:42</publishTime>
+    </File>
+    <File Include="bin/Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll">
+      <publishTime>07/06/2015 12:30:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll">
+      <publishTime>09/13/2016 13:02:45</publishTime>
+    </File>
+    <File Include="bin/Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll">
+      <publishTime>10/17/2016 12:24:47</publishTime>
+    </File>
+    <File Include="bin/Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll">
+      <publishTime>10/17/2016 11:40:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.Componente32.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:08</publishTime>
+    </File>
+    <File Include="bin/Gsol.ConstructorVisual64.1.0.0.0.dll">
+      <publishTime>05/13/2015 14:19:35</publishTime>
+    </File>
+    <File Include="bin/Gsol.Credenciales64.1.0.0.0.dll">
+      <publishTime>09/20/2016 09:38:08</publishTime>
+    </File>
+    <File Include="bin/Gsol.Entidad32.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:42</publishTime>
+    </File>
+    <File Include="bin/Gsol.EspacioTrabajo32.1.0.0.0.dll">
+      <publishTime>07/06/2015 12:50:19</publishTime>
+    </File>
+    <File Include="bin/Gsol.EventoEntidades64.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:42</publishTime>
+    </File>
+    <File Include="bin/Gsol.Funcion32.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:08</publishTime>
+    </File>
+    <File Include="bin/Gsol.IAtributo.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:37</publishTime>
+    </File>
+    <File Include="bin/Gsol.IConstructorVisual.1.0.0.0.dll">
+      <publishTime>07/06/2015 12:49:00</publishTime>
+    </File>
+    <File Include="bin/Gsol.ICredenciales.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.IEnsambladorCodigo.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.IEntidad.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:47</publishTime>
+    </File>
+    <File Include="bin/Gsol.IEspacioTrabajo.1.0.0.0.dll">
+      <publishTime>06/16/2015 13:50:14</publishTime>
+    </File>
+    <File Include="bin/Gsol.IEvento.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:41</publishTime>
+    </File>
+    <File Include="bin/Gsol.IIniciaSesion.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.ILeerArchivo.1.0.0.0.dll">
+      <publishTime>07/06/2015 12:53:28</publishTime>
+    </File>
+    <File Include="bin/Gsol.IniciaSesion64.1.0.0.0.dll">
+      <publishTime>09/20/2016 09:35:37</publishTime>
+    </File>
+    <File Include="bin/Gsol.IPermisos.1.0.0.0.dll">
+      <publishTime>03/04/2015 10:22:08</publishTime>
+    </File>
+    <File Include="bin/Gsol.ISectorEntorno.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.ISesionWcf.0.0.0.0.dll">
+      <publishTime>08/11/2016 14:04:49</publishTime>
+    </File>
+    <File Include="bin/Gsol.LeerArchivoXML32.1.0.0.0.dll">
+      <publishTime>03/09/2016 13:53:28</publishTime>
+    </File>
+    <File Include="bin/Gsol.LineaBaseIniciaSesion64.1.0.0.0.dll">
+      <publishTime>10/20/2016 09:09:28</publishTime>
+    </File>
+    <File Include="bin/Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.dll">
+      <publishTime>03/12/2016 10:57:14</publishTime>
+    </File>
+    <File Include="bin/Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.dll">
+      <publishTime>10/17/2016 13:20:34</publishTime>
+    </File>
+    <File Include="bin/Gsol.Organismo64.1.0.0.1.dll">
+      <publishTime>08/17/2016 20:30:06</publishTime>
+    </File>
+    <File Include="bin/Gsol.Permiso32.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.SectorEntorno32.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.Seguridad.Cifrado25664.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:43</publishTime>
+    </File>
+    <File Include="bin/Gsol.Seguridad.ICifrado.1.0.0.0.dll">
+      <publishTime>10/21/2014 09:37:42</publishTime>
+    </File>
+    <File Include="bin/GSol.SesionWcf64.0.0.0.0.dll">
+      <publishTime>09/20/2016 18:50:37</publishTime>
+    </File>
+    <File Include="bin/Guifreaks.Common.dll">
+      <publishTime>01/25/2012 15:03:02</publishTime>
+    </File>
+    <File Include="bin/Guifreaks.Navisuite.dll">
+      <publishTime>05/13/2015 14:19:07</publishTime>
+    </File>
+    <File Include="bin/IBitacoras.dll">
+      <publishTime>03/12/2016 09:48:09</publishTime>
+    </File>
+    <File Include="bin/IConexiones.dll">
+      <publishTime>07/15/2016 16:00:07</publishTime>
+    </File>
+    <File Include="bin/IWSSesion64.dll">
+      <publishTime>10/31/2016 17:16:22</publishTime>
+    </File>
+    <File Include="bin/IWSSesion64.xml">
+      <publishTime>10/31/2016 17:16:22</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>04/13/2016 14:31:19</publishTime>
+    </File>
+    <File Include="bin/SingletonSQLServer64.dll">
+      <publishTime>03/12/2016 11:20:53</publishTime>
+    </File>
+    <File Include="bin/System.Windows.Forms.Ribbon35.dll">
+      <publishTime>05/13/2015 14:19:07</publishTime>
+    </File>
+    <File Include="bin/TagWatcher64.0.0.0.0.dll">
+      <publishTime>08/17/2016 19:05:41</publishTime>
+    </File>
+    <File Include="bin/Wcl000Catalogo.dll">
+      <publishTime>03/11/2016 09:34:51</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.ComponentCriteria64.0.0.0.0.dll">
+      <publishTime>10/25/2014 11:07:05</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll">
+      <publishTime>10/25/2014 11:07:05</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.IOperationsDynamicForm.0.0.0.0.dll">
+      <publishTime>04/09/2015 10:19:29</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.OperationPairControls64.0.0.0.0.dll">
+      <publishTime>10/25/2014 11:07:05</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.OperationsDynamicForm64.0.0.0.0.dll">
+      <publishTime>04/09/2015 10:20:02</publishTime>
+    </File>
+    <File Include="bin/Wma.Components.TextBoxDCKR64.0.0.0.0.dll">
+      <publishTime>10/25/2014 11:07:05</publishTime>
+    </File>
+    <File Include="bin/Wma.Reports.DesktopReports64.0.0.0.0.dll">
+      <publishTime>10/31/2014 16:54:42</publishTime>
+    </File>
+    <File Include="bin/Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll">
+      <publishTime>06/01/2016 12:21:21</publishTime>
+    </File>
+    <File Include="bin/Wma.Reports.IReport.0.0.0.0.dll">
+      <publishTime>10/31/2014 16:54:42</publishTime>
+    </File>
+    <File Include="bin/WSUserprofile64.dll">
+      <publishTime>10/31/2016 15:47:55</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/31/2016 17:16:23</publishTime>
+    </File>
+    <File Include="WSSesion.svc">
+      <publishTime>10/31/2016 13:44:23</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

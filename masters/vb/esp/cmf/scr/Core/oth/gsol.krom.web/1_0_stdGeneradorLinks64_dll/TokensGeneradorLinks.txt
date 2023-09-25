@@ -1,0 +1,91 @@
+<!-- TOKEN DE GENERADOR DE LINKS -->
+
+	<!-- TOKEN DE VINCULACIÓN DE SOLICITU DE PAGO CON LOS LINKS -->
+		<Modulo VE.VinculacionSolicitudLinks="Ve013IULinksSolicitudPago"/>
+		<Modulo VT.VinculacionSolicitudLinks="Vt013LinksSolicitudPago"/>
+		<Modulo CampoLlave.VinculacionSolicitudLinks="i_Cve_LinkSolicitudPago"/>
+		<Modulo TablaEdicion.VinculacionSolicitudLinks="Vin13LinksSolicitudPago"/>
+		<Modulo Descripcion.VinculacionSolicitudLinks="Consulta vinculación solicitud de pago link"/>
+		<Modulo Multiempresa.VinculacionSolicitudLinks="-1"/>
+		<Modulo OperadorBorrado.VinculacionSolicitudLinks="Sp000OperadorCatalogosBorrado"/>
+		<Modulo OperadorInserciones.VinculacionSolicitudLinks="Sp000OperadorCatalogosInserciones"/>
+		<Modulo OperadorModificaciones.VinculacionSolicitudLinks="Sp000OperadorCatalogosModificaciones"/>
+		<Modulo PermisoActualizar.VinculacionSolicitudLinks="118"/>
+		<Modulo PermisoInsertar.VinculacionSolicitudLinks="118"/>
+		<Modulo PermisoBuscar.VinculacionSolicitudLinks="118"/>
+		<Modulo PermisoEliminar.VinculacionSolicitudLinks="0"/>
+		<Modulo PermisoModificar.VinculacionSolicitudLinks="118"/>
+	<!-- TOKEN DE VINCULACIÓN DE SOLICITU DE PAGO CON LOS LINKS -->
+
+	<!-- Token para la visualización de documentos por agrupación -->
+		<Modulo Modulo.DocumentosLinksKBW="Gsol.Modulos.GenericCatalog64.Frm000Generic"/>
+		<Modulo Ensamblado.DocumentosLinksKBW="C:\SVN\SVN QA\Modulos\Gsol.Modulos.GenericCatalog64.1.0.0.0.dll"/>
+		<Modulo NombreEnsamblado.DocumentosLinksKBW="Gsol.Modulos.GenericCatalog64.1.0.0.0.dll"/>
+		<Modulo VE.DocumentosLinksKBW="Ve029IUDocumentosLinksKBW"/>
+		<Modulo VT.DocumentosLinksKBW="Vt029DocumentosLinksKBW"/>
+		<Modulo CampoLlave.DocumentosLinksKBW="i_Cve_Documento"/>
+		<Modulo TablaEdicion.DocumentosLinksKBW="Ext012Documentos"/>
+		<Modulo Descripcion.DocumentosLinksKBW="Consulta de los documentos de los links"/>
+		<Modulo Multiempresa.DocumentosLinksKBW="-1"/>
+		<Modulo OperadorBorrado.DocumentosLinksKBW="Sp000OperadorCatalogosBorrado"/>
+		<Modulo OperadorInserciones.DocumentosLinksKBW="Sp000OperadorCatalogosInserciones"/>
+		<Modulo OperadorModificaciones.DocumentosLinksKBW="Sp000OperadorCatalogosModificaciones"/>
+		<Modulo PermisoActualizar.DocumentosLinksKBW="118"/>
+		<Modulo PermisoInsertar.DocumentosLinksKBW="0"/>
+		<Modulo PermisoBuscar.DocumentosLinksKBW="118"/>
+		<Modulo PermisoEliminar.DocumentosLinksKBW="0"/>
+		<Modulo PermisoModificar.DocumentosLinksKBW="0"/>
+	<!-- Token para la visualización de documentos por agrupación -->
+
+	<!-- Encabezado DETALLE DEL LOG -->
+		<Modulo VE.RegistroDetalleLinks="Ve029IURegistroDetalleLinks"/>
+		<Modulo VT.RegistroDetalleLinks="Vt029RegistroDetalleLinks"/>
+		<Modulo CampoLlave.RegistroDetalleLinks="i_Cve_RegistroLink"/>
+		<Modulo TablaEdicion.RegistroDetalleLinks="Enc029RegistroLinks"/>
+		<Modulo Descripcion.RegistroDetalleLinks="Registro de links a detalle"/>
+		<Modulo Multiempresa.RegistroDetalleLinks="-1"/>
+		<Modulo OperadorBorrado.RegistroDetalleLinks="Sp000OperadorCatalogosBorrado"/>
+		<Modulo OperadorInserciones.RegistroDetalleLinks="Sp000OperadorCatalogosInserciones"/>
+		<Modulo OperadorModificaciones.RegistroDetalleLinks="Sp000OperadorCatalogosModificaciones"/>
+		<Modulo PermisoActualizar.RegistroDetalleLinks="0"/>
+		<Modulo PermisoInsertar.RegistroDetalleLinks="0"/> 
+		<Modulo PermisoBuscar.RegistroDetalleLinks="118"/>
+		<Modulo PermisoEliminar.RegistroDetalleLinks="0"/> 
+		<Modulo PermisoModificar.RegistroDetalleLinks="0"/>
+	<!-- Encabezado DETALLE DEL LOG -->
+
+	<!-- DETALLE DEL LOG -->
+		<Modulo VE.DetalleLogLinks="Ve029IUArchivosRegistroLinks"/>
+		<Modulo VT.DetalleLogLinks="Vt029ArchivosRegistroLinks"/>
+		<Modulo CampoLlave.DetalleLogLinks="i_Cve_ArchivoRegistroLink"/>
+		<Modulo TablaEdicion.DetalleLogLinks="Det029ArchivosRegistroLinks"/>
+		<Modulo Descripcion.DetalleLogLinks="Detalle del los log de los link"/>
+		<Modulo Multiempresa.DetalleLogLinks="-1"/>
+		<Modulo OperadorBorrado.DetalleLogLinks="Sp000OperadorCatalogosBorrado"/>
+		<Modulo OperadorInserciones.DetalleLogLinks="Sp000OperadorCatalogosInserciones"/>
+		<Modulo OperadorModificaciones.DetalleLogLinks="Sp000OperadorCatalogosModificaciones"/>
+		<Modulo PermisoActualizar.DetalleLogLinks="118"/>
+		<Modulo PermisoInsertar.DetalleLogLinks="118"/> 
+		<Modulo PermisoBuscar.DetalleLogLinks="118"/>
+		<Modulo PermisoEliminar.DetalleLogLinks="0"/> 
+		<Modulo PermisoModificar.DetalleLogLinks="118"/>
+	<!-- DETALLE DEL LOG -->
+
+	<!-- ENCABEZADO DEL LOG -->
+		<Modulo VE.EncabezadoLogLinks="Ve029IURegistroLinks"/>
+		<Modulo VT.EncabezadoLogLinks="Vt029RegistroLinks"/>
+		<Modulo CampoLlave.EncabezadoLogLinks="i_Cve_RegistroLink"/>
+		<Modulo TablaEdicion.EncabezadoLogLinks="Enc029RegistroLinks"/>
+		<Modulo Descripcion.EncabezadoLogLinks="Encabezado del los log de los link"/>
+		<Modulo Multiempresa.EncabezadoLogLinks="-1"/>
+		<Modulo OperadorBorrado.EncabezadoLogLinks="Sp000OperadorCatalogosBorrado"/>
+		<Modulo OperadorInserciones.EncabezadoLogLinks="Sp000OperadorCatalogosInserciones"/>
+		<Modulo OperadorModificaciones.EncabezadoLogLinks="Sp000OperadorCatalogosModificaciones"/>
+		<Modulo PermisoActualizar.EncabezadoLogLinks="118"/>
+		<Modulo PermisoInsertar.EncabezadoLogLinks="118"/> 
+		<Modulo PermisoBuscar.EncabezadoLogLinks="118"/>
+		<Modulo PermisoEliminar.EncabezadoLogLinks="0"/> 
+		<Modulo PermisoModificar.EncabezadoLogLinks="118"/>
+	<!-- ENCABEZADO DEL LOG -->
+	
+<!-- TOKEN DE GENERADOR DE LINKS -->

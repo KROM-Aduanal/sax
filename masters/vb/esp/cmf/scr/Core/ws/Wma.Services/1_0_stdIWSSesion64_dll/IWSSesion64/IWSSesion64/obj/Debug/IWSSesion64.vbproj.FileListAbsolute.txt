@@ -1,0 +1,116 @@
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\bin\Debug\IWSSesion64.dll.config
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\bin\Debug\IWSSesion64.dll
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\bin\Debug\IWSSesion64.pdb
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\bin\Debug\IWSSesion64.xml
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\obj\Debug\IWSSesion64.Resources.resources
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\obj\Debug\IWSSesion64.vbproj.GenerateResource.Cache
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\obj\Debug\IWSSesion64.dll
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\obj\Debug\IWSSesion64.xml
+C:\Users\pedrobm\AppData\Local\Temporary Projects\IWSSesion64\obj\Debug\IWSSesion64.pdb
+C:\svn\SVN QA\Namespaces\IWSSesion.dll.config
+C:\svn\SVN QA\Namespaces\IWSSesion.dll
+C:\svn\SVN QA\Namespaces\IWSSesion.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IWSSesion.dll.config
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IWSSesion.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IWSSesion.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.OperacionesCatalogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.EspacioTrabajo32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEspacioTrabajo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ISesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Organismo64.1.0.0.1.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Sesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\WSUserprofile64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.ICaracteristicas0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\SingletonSQLServer64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.CaracteristicaCatlogo640.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ISectorEntorno.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IConstructorVisual.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ICredenciales.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IPermisos.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.LineaBaseIniciaSesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\GsDialogo64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ConstructorVisual64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IBitacoras.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wcl000Catalogo.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Monitoreo.BitacoraCapaDatos64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Credenciales64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IIniciaSesion.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IConexiones.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Conexiones64.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Componente32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Funcion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Accion32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEntidad.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEvento.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IAtributo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.SectorEntorno32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Permiso32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Entidad32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.EventoEntidades64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.AtributosEntidad64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEnsambladorCodigo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Guifreaks.Navisuite.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\System.Windows.Forms.Ribbon35.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Reports.IReport.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Reports.DesktopReports64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Reports.ExcelApplicationReports64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.OperationsDynamicForm64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Monitoreo.LineaBaseBitacora64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IniciaSesion64.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\MySql.Data.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Guifreaks.Common.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.OperationPairControls64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.ComponentCriteria64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.TextBoxDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.DateTimePickerDCKR64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.EspacioTrabajo32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Organismo64.1.0.0.1.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Sesion64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\WSUserprofile64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.BaseDatos.Operaciones.LineaBaseCatalogos640.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IPermisos.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IPermisos.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.ConstructorVisual64.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\IConexiones.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Conexiones64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Componente32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Componente32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Funcion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Funcion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Accion32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.Accion32.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEntidad.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEntidad.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEvento.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IEvento.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IAtributo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Gsol.IAtributo.1.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\bin\Wma.Components.OperationsDynamicForm64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion.pdb
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion64.vbprojResolveAssemblyReference.cache
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\Resources.resources
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion64.vbproj.GenerateResource.Cache
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion.dll
+D:\svn_good\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion.pdb
+C:\inetpub\wwwroot\WebServices\IWSSesion.dll.config
+C:\inetpub\wwwroot\WebServices\IWSSesion.dll
+C:\inetpub\wwwroot\WebServices\IWSSesion.pdb
+C:\svn\SVN QA\Aplicacion\IWSSesion.dll.config
+C:\svn\SVN QA\Aplicacion\IWSSesion.dll
+C:\svn\SVN QA\Aplicacion\IWSSesion.pdb
+C:\svn\SVN QA\Servicios\WebServices\IWSSesion.dll.config
+C:\svn\SVN QA\Servicios\WebServices\IWSSesion.dll
+C:\svn\SVN QA\Servicios\WebServices\IWSSesion.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Services\1_0_stdIWSSesion64_dll\IWSSesion64\IWSSesion64\obj\Debug\IWSSesion64.vbprojResolveAssemblyReference.cache

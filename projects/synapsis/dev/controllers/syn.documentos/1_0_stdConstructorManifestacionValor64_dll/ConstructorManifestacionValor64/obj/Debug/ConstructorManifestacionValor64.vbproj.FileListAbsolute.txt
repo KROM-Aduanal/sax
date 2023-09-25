@@ -1,0 +1,15 @@
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.dll
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.AssemblyReference.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\Resources.resources
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.CopyComplete
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\ConstructorManifestacionValor64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\obj\Debug\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.pdb

@@ -1,0 +1,8 @@
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProducto64_dll\ConstructorProducto64\obj\Release\Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProducto64_dll\ConstructorProducto64\obj\Release\ConstructorProducto64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProducto64_dll\ConstructorProducto64\obj\Release\ConstructorProducto64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorProducto64.0.0.0.0.dll.config
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorProducto64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorProducto64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProducto64_dll\ConstructorProducto64\obj\Release\Syn.Documento.ConstructorProducto64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProducto64_dll\ConstructorProducto64\obj\Release\Syn.Documento.ConstructorProducto64.0.0.0.0.pdb

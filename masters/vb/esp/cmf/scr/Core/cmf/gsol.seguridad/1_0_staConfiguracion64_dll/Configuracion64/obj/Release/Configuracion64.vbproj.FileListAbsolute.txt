@@ -1,0 +1,27 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.ILeerArchivo.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.LeerArchivoXML32.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.ILeerArchivo.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.LeerArchivoXML32.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\bin\Release\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Configuracion64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN QA\Namespaces\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Configuracion64.vbprojResolveAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Configuracion64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Configuracion64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\gsol.seguridad.Configuracion64.0.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\gsol.seguridad.Configuracion64.0.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol.seguridad\1_0_staConfiguracion64_dll\Configuracion64\obj\Release\Configuracion64.vbprojAssemblyReference.cache

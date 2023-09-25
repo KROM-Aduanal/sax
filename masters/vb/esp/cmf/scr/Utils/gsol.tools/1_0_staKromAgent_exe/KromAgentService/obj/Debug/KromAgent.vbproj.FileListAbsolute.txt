@@ -1,0 +1,16 @@
+C:\Windows\KromAgent.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.ProjectInstaller.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.srvAgenteKrom.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.svchostka.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgent\obj\Debug\KromAgent.pdb
+C:\svn\SVN QA\Aplicacion\KromAgent.exe
+C:\svn\SVN QA\Aplicacion\KromAgent.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.ProjectInstaller.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.srvAgenteKrom.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentService\obj\Debug\KromAgent.vbproj.GenerateResource.Cache

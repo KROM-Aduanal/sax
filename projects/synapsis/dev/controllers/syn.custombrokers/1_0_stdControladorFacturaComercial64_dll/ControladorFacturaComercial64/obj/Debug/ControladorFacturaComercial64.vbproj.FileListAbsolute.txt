@@ -1,0 +1,14 @@
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Syn.Documento.ControladorFacturaComercial64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\rec.global\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Syn.Documento.ControladorFacturaComercial64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\ControladorFacturaComercial64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorFacturaComercial64_dll\ControladorFacturaComercial64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.pdb

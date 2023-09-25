@@ -1,0 +1,143 @@
+﻿Imports Wma.Exceptions
+Imports Gsol.BaseDatos.Operaciones
+
+Namespace Gsol.BaseDatos
+
+    Public Class PoliticasBaseDatos
+        Implements IPoliticasBaseDatos
+
+#Region "Atributos"
+
+        Private _iespacioTrabajo As IEspacioTrabajo
+
+        Private _permiso As Integer
+
+        Private _tagWatcher As TagWatcher
+
+        Private _nombrePolitica As String
+
+        Private _numeroPolitica As Integer
+
+        Private _parametrosPolitica As List(Of ICaracteristica)
+
+#End Region
+
+#Region "Constructores"
+
+        Sub New()
+
+            _permiso = 0
+
+            _tagWatcher = New TagWatcher
+
+            ' _iespacioTrabajo = New IEspacioTrabajo
+
+
+        End Sub
+
+        Sub New(ByVal permiso_ As Integer,
+                ByVal iespacioTrabajo_ As IEspacioTrabajo)
+
+            _iespacioTrabajo = iespacioTrabajo_
+
+            _permiso = permiso_
+
+        End Sub
+
+#End Region
+
+
+
+#Region "Propiedades"
+
+        Public ReadOnly Property GetNombrePolitica As String _
+            Implements IPoliticasBaseDatos.GetNombrePolitica
+
+            Get
+
+                Return _nombrePolitica
+
+            End Get
+
+        End Property
+
+        Public ReadOnly Property GetNumeroPolitica As Integer Implements IPoliticasBaseDatos.GetNumeroPolitica
+
+            Get
+
+                Return _nombrePolitica
+
+            End Get
+
+        End Property
+
+        Public ReadOnly Property GetPermiso As Integer Implements IPoliticasBaseDatos.GetPermiso
+
+            Get
+
+                Return _permiso
+
+            End Get
+
+        End Property
+
+        Public ReadOnly Property GetTagWatcher As Wma.Exceptions.TagWatcher Implements IPoliticasBaseDatos.GetTagWatcher
+
+            Get
+
+                Return _tagWatcher
+
+            End Get
+
+        End Property
+        Public Property IEspacioTrabajoUsuario As IEspacioTrabajo Implements IPoliticasBaseDatos.IEspacioTrabajoUsuario
+
+            Get
+
+                Return _iespacioTrabajo
+
+            End Get
+
+            Set(ByVal value As IEspacioTrabajo)
+
+                _iespacioTrabajo = value
+
+            End Set
+
+        End Property
+
+        Public Property ParametrosPolitica As List(Of Operaciones.ICaracteristica) Implements IPoliticasBaseDatos.ParametrosPolitica
+
+            Get
+
+                Return _parametrosPolitica
+
+            End Get
+
+            Set(ByVal value As List(Of Operaciones.ICaracteristica))
+
+                _parametrosPolitica = value
+
+            End Set
+
+        End Property
+
+
+        Public WriteOnly Property SetPermiso As Integer _
+            Implements IPoliticasBaseDatos.SetPermiso
+
+            Set(ByVal value As Integer)
+
+                _permiso = value
+
+            End Set
+
+        End Property
+
+
+#End Region
+
+
+    End Class
+
+End Namespace

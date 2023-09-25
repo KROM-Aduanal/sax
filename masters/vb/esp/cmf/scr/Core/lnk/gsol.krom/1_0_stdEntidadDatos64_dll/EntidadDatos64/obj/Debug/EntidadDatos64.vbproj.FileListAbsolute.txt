@@ -1,0 +1,23 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\gsol.krom.EntidadDatos64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.EntidadDatos64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\gsol.krom.EntidadDatos64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\gsol.krom.EntidadDatos64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EntidadDatos64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\gsol.krom.EntidadDatos64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EntidadDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\gsol.krom.EntidadDatos64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EntidadDatos64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\gsol.krom.EntidadDatos64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatos64_dll\EntidadDatos64\obj\Debug\EntidadDatos64.vbproj.AssemblyReference.cache

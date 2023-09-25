@@ -1,0 +1,38 @@
+C:\svn\SVN QA\Componentes\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbprojResolveAssemblyReference.cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Resources.resources
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.GenerateResource.Cache
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.xml
+C:\svn1\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\Wilma\esp\bin\Components\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\Wilma\esp\bin\Components\Wma.Components.IOperationsDynamicForm.0.0.0.0.xml
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbprojResolveAssemblyReference.cache
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Resources.resources
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.GenerateResource.Cache
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.xml
+C:\WilmaSources\esp\sources\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\svn\SVN QA\Aplicacion\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+C:\svn\SVN QA\Aplicacion\Wma.Components.IOperationsDynamicForm.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbprojAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2014 - Integración\ID000SistemaBase\Componentes\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.CopyComplete
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Components\Wma.Components.IOperationsDynamicForm.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Components\1_0_stdIOperationsDynamicForm_dll\IOperationsDynamicForm\obj\Debug\IOperationsDynamicForm.vbprojAssemblyReference.cache

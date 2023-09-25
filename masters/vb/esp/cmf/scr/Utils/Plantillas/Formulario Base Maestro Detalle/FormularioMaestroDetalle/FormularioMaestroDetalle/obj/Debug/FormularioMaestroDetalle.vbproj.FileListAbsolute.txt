@@ -1,0 +1,7 @@
+C:\SVN\SVN QA\Modulos\FormularioMaestroDetalle.0.0.0.0.dll
+C:\SVN\SVN QA\Modulos\FormularioMaestroDetalle.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base Maestro Detalle\FormularioMaestroDetalle\FormularioMaestroDetalle\obj\Debug\FormularioMaestroDetalle.Frm000Generico.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base Maestro Detalle\FormularioMaestroDetalle\FormularioMaestroDetalle\obj\Debug\FormularioMaestroDetalle.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base Maestro Detalle\FormularioMaestroDetalle\FormularioMaestroDetalle\obj\Debug\FormularioMaestroDetalle.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base Maestro Detalle\FormularioMaestroDetalle\FormularioMaestroDetalle\obj\Debug\FormularioMaestroDetalle.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2014 - Plantillas\Formulario Base Maestro Detalle\FormularioMaestroDetalle\FormularioMaestroDetalle\obj\Debug\FormularioMaestroDetalle.0.0.0.0.pdb

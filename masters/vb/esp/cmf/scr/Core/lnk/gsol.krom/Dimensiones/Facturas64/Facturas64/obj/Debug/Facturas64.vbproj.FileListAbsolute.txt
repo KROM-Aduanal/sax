@@ -1,0 +1,18 @@
+C:\SVN\SVN\SVN QA\Namespaces\gsol.krom.Facturas64.0.0.0.0.dll
+C:\SVN\SVN\SVN QA\Namespaces\gsol.krom.Facturas64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbproj.GenerateResource.Cache
+C:\SVN\SVN QA\Namespaces\gsol.krom.Facturas64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\gsol.krom.Facturas64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\gsol.krom.Facturas64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\gsol.krom.Facturas64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.Facturas64.0.0.0.0.dll
+c:\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.Facturas64.0.0.0.0.pdb
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbproj.AssemblyReference.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Resources.resources
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbproj.GenerateResource.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbproj.CoreCompileInputs.cache
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\Facturas64.vbproj.CopyComplete
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\gsol.krom.Facturas64.0.0.0.0.dll
+c:\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\Dimensiones\Facturas64\Facturas64\obj\Debug\gsol.krom.Facturas64.0.0.0.0.pdb

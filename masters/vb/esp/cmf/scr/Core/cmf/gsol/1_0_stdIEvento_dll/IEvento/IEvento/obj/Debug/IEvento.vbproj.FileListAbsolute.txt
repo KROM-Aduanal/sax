@@ -1,0 +1,47 @@
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\bin\Debug\IEvento.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\bin\Debug\IEvento.pdb
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\bin\Debug\IEvento.xml
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\obj\Debug\IEvento.Resources.resources
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.Cache
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\obj\Debug\IEvento.dll
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\obj\Debug\IEvento.xml
+C:\Users\Pedrosev\AppData\Local\Temporary Projects\IEvento\obj\Debug\IEvento.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_sdtIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEvento.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEvento.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\Gsol.IEvento.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.IEvento.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEvento_dll\IEvento\IEvento\obj\Debug\IEvento.vbprojAssemblyReference.cache

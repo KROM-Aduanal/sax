@@ -1,0 +1,3060 @@
+﻿
+#Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
+
+'RECURSOS DEL CMF
+Imports gsol.krom
+Imports MongoDB.Bson
+Imports Syn.Documento
+Imports MongoDB.Driver
+Imports Wma.Exceptions
+Imports Syn.Operaciones
+Imports gsol.Web.Components
+Imports Syn.Nucleo.Recursos
+Imports Syn.Nucleo.Recursos.CamposClientes
+Imports Wma.Exceptions.TagWatcher
+Imports Wma.Exceptions.TagWatcher.TypeStatus
+Imports Syn.Nucleo.RecursosComercioExterior
+
+
+'UTILERIAS/RECURSOS ADICIONALES
+Imports Sax.Web
+Imports Syn.Utils.Organismo
+Imports Sax.Web.ControladorBackend.Datos
+Imports Sax.Web.ControladorBackend.Cookies
+
+'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
+Imports Rec.Globals
+Imports Rec.Globals.Empresa
+Imports Rec.Globals.Controllers
+
+'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
+Imports gsol.krom.Anexo22.Vt022AduanaSeccionA01
+Imports System.Globalization
+Imports Syn.Documento.Componentes.Campo
+
+#End Region
+
+Public Class Ges022_001_Clientes
+    Inherits ControladorBackend
+
+#Region "████████████████████████████████████████   Atributos locales  ██████████████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+
+    Private _empresa As Empresa
+
+    Private _sistema As New Syn.Utils.Organismo
+
+    Private _controladorEmpresas As New ControladorEmpresas
+
+#End Region
+
+#Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+
+    Protected Overridable Sub Page_Completed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LoadComplete
+
+        frmPrincipal.Capped = PaginaMarcada(Request.RawUrl)
+
+    End Sub
+
+    Public Overrides Sub Inicializa()
+
+        ColocaEmpresas(companyList)
+
+        With sltfindbar
+
+            .DataObject = New ConstructorCliente(True)
+
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RFC_CLIENTE, "RFC")
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_TAX_ID, "TaxID")
+
+        End With
+
+
+        'If frmPrincipal.Capped Then
+
+        'Preferencias(MiSesion, PaginaReciente, crearSiNoExiste_:=False)
+
+        'Else
+
+        '    Preferencias(MiSesion, eliminar_:=True)
+
+        'End If
+        'Carga una sola vez
+        'If Not Page.IsPostBack Then
+
+
+        '************** TEMPORAL ********** (Este segmento requiere ser cargado una sola vez y bajo demanda) ***********
+        'Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+
+        'Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+        '                        Where data.archivado = False And data.estado = 1
+        '                        Select data.modalidad, data.ciudad, data._idaduanaseccion
+
+        'If aduanasSecciones_.Count > 0 Then
+
+        '    Dim dataSource1_ As New List(Of SelectOption)
+
+        '    For index_ As Int32 = 0 To aduanasSecciones_.Count - 1
+
+        '        dataSource1_.Add(New SelectOption With
+        '                         {.Value = aduanasSecciones_(index_)._idaduanaseccion,
+        '                          .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
+
+        '    Next
+
+        '    sc_claveAduanaSeccion.DataSource = dataSource1_
+
+        'End If
+
+        'Dim patentes_ = From data In recursos_.patentes
+        '                Where data.archivado = False And data.estado = 1
+        '                Select data.agenteaduanal, data._idpatente
+
+        'If patentes_.Count > 0 Then
+
+        '    Dim dataSource1_ As New List(Of SelectOption)
+
+        '    For index_ As Int32 = 0 To patentes_.Count - 1
+
+        '        dataSource1_.Add(New SelectOption With
+        '                         {.Value = patentes_(index_)._idpatente,
+        '                          .Text = patentes_(index_)._idpatente.ToString & "|" & patentes_(index_).agenteaduanal})
+
+        '    Next
+
+        '    sc_patenteAduanal.DataSource = dataSource1_
+
+        'End If
+
+        ' End If
+
+        '************** TEMPORAL ********** (Este segmento requiere ser cargado una sola vez y bajo demanda) ***********
+
+    End Sub
+
+    Public Overrides Sub Constructores()
+
+        'Nueva operación
+        If Not GetVars("IsEditing", False) Then 'Nuevo
+
+            OperacionNueva = New ConstructorCliente(Convert.ToInt32(_empresa._idempresa),
+                                             _empresa._idempresa,
+                                             _empresa._idempresa,
+                                             _empresa.razonsocial)
+
+        Else  'Edición
+
+            OperacionGenerica = Statements.ObjectSession
+
+            OperacionCopia = New ConstructorCliente(True,
+                                         OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Clone())
+
+            OperacionActual = New ConstructorCliente(True,
+                                                      OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
+        End If
+
+    End Sub
+
+
+    'EVENTOS DEL PANEL DE CONTROL PRINCIPAL (Nuevo, editar, borrar, otras acciones)
+    Public Sub ControlBarEvent(ByVal sender_ As ButtonbarControl,
+                                  ByVal e As EventArgs)
+
+        'If Page.IsValid Then
+
+        Select Case sender_.IndexSelected
+
+            Case 0 'Guardar
+
+                'ProcesarOperacion(Of Something)()
+                If Not ProcesarTransaccion(Of ConstructorCliente)().Status = TypeStatus.Errors Then : End If
+
+            Case 1 'Guardar&Nuevo
+
+                'ProcesarOperacion(Of Something)()
+                If Not ProcesarTransaccion(Of ConstructorCliente)().Status = TypeStatus.Errors Then
+
+                    If OperacionGenerica IsNot Nothing Then
+
+                        OperacionGenerica.Dispose()
+
+                        Statements.ObjectSession = Nothing
+
+                        _empresa = Nothing
+
+                    End If
+
+                    Limpiar()
+
+                    s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
+
+                    Session("IsEditing") = False : frmPrincipal.IsEditing = False
+
+                    'Lipiamos el contenido de la búsqueda
+                    sltfindbar.Value = Nothing
+
+                    sltfindbar.Text = Nothing
+
+                Else
+
+                End If
+
+            Case 2 'Publicar
+
+            Case 3 'Eliminar
+
+                ProcesarBorrado()
+
+        End Select
+
+        'End If
+
+    End Sub
+
+
+    'EVENTOS PARA LA INSERCIÓN DE DATOS
+    Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        Dim tagwatcher_ As TagWatcher
+
+        '      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+        If session_ IsNot Nothing Then
+
+            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+
+            'tagwatcher_ = New TagWatcher
+
+            '.SetOK()
+
+            tagwatcher_ = NuevaEmpresa(session_)
+
+            If tagwatcher_.Status = TypeStatus.Ok Then
+
+                _empresa = tagwatcher_.ObjectReturned
+
+                'Grabamos la instancia en la session
+                Session("_empresa") = _empresa
+
+            End If
+
+            '  ████████fin█████████       Logica de negocios local       ███████████████████████
+
+        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
+
+            tagwatcher_ = New TagWatcher
+
+            tagwatcher_.SetOK()
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
+    Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
+
+        '----Operador automático------
+        OperadorDatos(documentoElectronico_, TiposFlujo.Entrada, Modalidades.Colectar)
+        '----Operador automático------
+
+        '************** TEMPORAL ********** (Este segmento se colocará al interior de DocomentoElectronico y como una propiedad en el CMF) ***********
+        Dim secuencia_ As New Secuencia _
+                  With {.anio = 2022,
+                        .environment = 0,
+                        .mes = 0,
+                        .nombre = "Clientes",
+                        .tiposecuencia = 1,
+                        .subtiposecuencia = 0
+                        }
+
+        Dim respuesta_ As TagWatcher = secuencia_.Generar().Result
+
+        Dim sec_ As Int32 = 0
+
+        Select Case respuesta_.Status
+
+            Case TypeStatus.Ok
+
+                sec_ = respuesta_.ObjectReturned.sec
+
+            Case Else
+
+        End Select
+
+        _empresa = Session("_empresa")
+
+        If _empresa IsNot Nothing Then : [Set](_empresa._id, CP_ID_EMPRESA) : End If
+
+        Dim domicilio_ As String = Session("_secDomicilio")
+
+        [Set](domicilio_, CamposDomicilio.CP_SEC_DOMICILIO)
+        '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = Session("_secDomicilio")
+
+        If _empresa IsNot Nothing Then : [Set](_empresa.domicilios(Session("_secDomicilio"))._iddomicilio, CamposDomicilio.CP_ID_DOMICILIO) : End If
+        ''.Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(Session("_secDomicilio"))._iddomicilio
+
+
+        '************** TEMPORAL ********** (Este segmento requiere ser cargado una sola vez y bajo demanda) ***********
+
+
+
+        With documentoElectronico_
+
+            .FolioOperacion = sec_
+            '.Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
+            '.Attribute(CamposClientes.CP_CVE_EMPRESA).Valor = i_Cve_Empresa.Value
+            '.Attribute(CamposClientes.CA_RAZON_SOCIAL).Valor = i_Cve_Empresa.Text
+            '.Attribute(CamposClientes.CP_CVE_DIVISION_MI_EMPRESA).Valor = 0
+            '.Attribute(CamposClientes.CA_RFC_CLIENTE).Valor = t_RFC.Value
+            '.Attribute(CamposClientes.CA_TAX_ID).Valor = t_TaxID.Value
+            '.Attribute(CamposClientes.CA_CURP_CLIENTE).Valor = t_CURP.Value
+
+            '.Attribute(CamposClientes.CP_TIPO_PERSONA).Valor = IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)
+            '.Attribute(CamposClientes.CP_CLIENTE_HABILITADO).Valor = s_Habilitado.Checked
+            '.Attribute(CamposClientes.CP_CLIENTE_EXTRANJERO).Valor = IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)
+
+            ''Datos del domicilio
+            '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = Session("_secDomicilio")
+            '.Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(Session("_secDomicilio"))._iddomicilio
+            '.Attribute(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor = t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value
+            '.Attribute(CamposDomicilio.CA_CALLE).Valor = t_Calle.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_EXTERIOR).Valor = t_NumeroExt.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_INTERIOR).Valor = t_NumeroInt.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_EXT_INT).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CODIGO_POSTAL).Valor = t_CP.Value
+            '.Attribute(CamposDomicilio.CA_COLONIA).Valor = t_Colonia.Value
+            '.Attribute(CamposDomicilio.CA_LOCALIDAD).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CIUDAD).Valor = t_Ciudad.Value
+            '.Attribute(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_ENTIDAD_MUNICIPIO).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CVE_PAIS).Valor = t_Pais.Value
+            '.Attribute(CamposDomicilio.CA_PAIS).Valor = t_Pais.Value
+
+            'Catalogo de aduanas
+            Dim estructuraCatalogoAduanas_ As New List(Of EstructuraCatalogoAduanas)
+
+            estructuraCatalogoAduanas_ = _cataduanasdefecto.GetDataRows(Of EstructuraCatalogoAduanas)()
+
+            For Each data_ As EstructuraCatalogoAduanas In estructuraCatalogoAduanas_
+
+                With .Seccion(SeccionesClientes.SCS2).Partida(documentoElectronico_)
+
+                    .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).Valor = data_.sc_claveAduanaSeccion.Value 'GetValue(sc_claveAduanaSeccion, DataSouce)
+                    .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).ValorPresentacion = data_.sc_claveAduanaSeccion.Text 'GetValue(sc_claveAduanaSeccion, DataSouce)
+                    .Attribute(CamposClientes.CP_MODALIDAD_ADUANA_SECCION).Valor = Nothing 'data_.campo21
+                    .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).Valor = data_.sc_patenteAduanal.Value
+                    .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).ValorPresentacion = data_.sc_patenteAduanal.Text
+                    .Attribute(CamposClientes.CP_PATENTE_ADUANAL).Valor = Nothing 'data_.campo21
+                    .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).Valor = data_.sc_tipoOperacion.Value
+                    .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).ValorPresentacion = data_.sc_tipoOperacion.Text
+                    .Attribute(CamposClientes.CP_TIPO_OPERACION).Valor = Nothing 'data_.campo21
+
+                End With
+
+            Next
+
+            'Contactos
+            Dim estructuraContactos_ As New List(Of EstructuraContactos)
+
+            estructuraContactos_ = ccContactos.GetDataRows(Of EstructuraContactos)()
+
+            For Each data_ As EstructuraContactos In estructuraContactos_
+
+                With .Seccion(SeccionesClientes.SCS3).Partida(documentoElectronico_)
+
+                    .Attribute(CamposClientes.CP_NOMBRE_CONTACTO).Valor = data_.icNombreContacto 'GetValue(sc_claveAduanaSeccion, DataSouce)
+                    .Attribute(CamposClientes.CP_INFO_CONTACTO).Valor = data_.icInfoContacto
+                    .Attribute(CamposClientes.CP_TELEFONO1_CONTACTO).Valor = data_.icTelefono1
+                    .Attribute(CamposClientes.CP_MOVIL_CONTACTO).Valor = data_.icMovil
+                    .Attribute(CamposClientes.CP_EMAIL_CONTACTO).Valor = data_.icCorreoElectronico
+
+                End With
+
+            Next
+
+            'Sellos
+            '.Attribute(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS).Valor = icRutaCertificado.Value
+            '.Attribute(CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS).Valor = icRutaLlave.Value
+            '.Attribute(CamposClientes.CP_FECHA_VIGENCIA_SELLOS).Valor = Convert.ToDateTime(icFechaVigencia.Value).Date
+            '.Attribute(CamposClientes.CP_CONTRASENIA_SELLOS).Valor = icContraseniaCertificado.Value
+            '.Attribute(CamposClientes.CP_CVE_WEB_SERVICES_SELLOS).Valor = icCveWebServices.Value
+
+        End With
+
+
+        '----Operador automático------
+        OperadorDatos(documentoElectronico_, TiposFlujo.Entrada, Modalidades.Procesar)
+        '----Operador automático------
+
+    End Sub
+
+    Public Overrides Function DespuesRealizarInsercion() As TagWatcher
+
+        Return New TagWatcher(Ok)
+
+    End Function
+
+
+    'EVENTOS PARA MODIFICACIÓN DE DATOS
+    Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        Dim tagwatcher_ As TagWatcher
+
+        '     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+        If session_ IsNot Nothing Then
+
+            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+
+            'tagwatcher_ = New TagWatcher
+
+            '.SetOK()
+
+            'Actualizamos los datos del objeto empresa en session
+            tagwatcher_ = ActualizaEmpresa(Session("_empresa"), session_)
+
+            '  ████████fin█████████        Logica de negocios local      ███████████████████████
+
+
+        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
+
+            tagwatcher_ = New TagWatcher
+
+            tagwatcher_.SetOK()
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
+    Public Overrides Function RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico) As DocumentoElectronico
+
+        OperadorDatos(documentoElectronico_, TiposFlujo.Entrada, Modalidades.Colectar)
+
+        _empresa = Session("_empresa")
+
+        With documentoElectronico_
+
+            'Datos generales
+            .Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
+
+            '.Attribute(CamposClientes.CP_CVE_EMPRESA).Valor = i_Cve_Empresa.Value
+            '.Attribute(CamposClientes.CA_RAZON_SOCIAL).Valor = i_Cve_Empresa.Text
+            '.Attribute(CamposClientes.CP_CVE_DIVISION_MI_EMPRESA).Valor = 0
+            '.Attribute(CamposClientes.CA_RFC_CLIENTE).Valor = t_RFC.Value
+            '.Attribute(CamposClientes.CA_TAX_ID).Valor = t_TaxID.Value
+            '.Attribute(CamposClientes.CA_CURP_CLIENTE).Valor = t_CURP.Value
+            '.Attribute(CamposClientes.CP_TIPO_PERSONA).Valor = IIf(s_tipoPersona.Checked, 1, 0)
+            '.Attribute(CamposClientes.CP_CLIENTE_HABILITADO).Valor = IIf(s_Habilitado.Checked, True, False)
+            '.Attribute(CamposClientes.CP_CLIENTE_EXTRANJERO).Valor = IIf(s_Extranjero.Checked, 1, 2)
+
+            ''Datos del domicilio
+            '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = Session("_secDomicilio")
+            .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(Session("_secDomicilio"))._iddomicilio
+
+            '.Attribute(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor = t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value
+            '.Attribute(CamposDomicilio.CA_CALLE).Valor = t_Calle.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_EXTERIOR).Valor = t_NumeroExt.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_INTERIOR).Valor = t_NumeroInt.Value
+            '.Attribute(CamposDomicilio.CA_NUMERO_EXT_INT).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CODIGO_POSTAL).Valor = t_CP.Value
+            '.Attribute(CamposDomicilio.CA_COLONIA).Valor = t_Colonia.Value
+            '.Attribute(CamposDomicilio.CA_LOCALIDAD).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CIUDAD).Valor = t_Ciudad.Value
+            '.Attribute(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_ENTIDAD_MUNICIPIO).Valor = Nothing
+            '.Attribute(CamposDomicilio.CA_CVE_PAIS).Valor = t_Pais.Value
+            '.Attribute(CamposDomicilio.CA_PAIS).Valor = t_Pais.Value
+
+            'Aduanas y modalidades
+
+            Dim estructura_ As New List(Of EstructuraCatalogoAduanas)
+
+            estructura_ = _cataduanasdefecto.GetDataRows(Of EstructuraCatalogoAduanas)()
+
+            For Each data_ As EstructuraCatalogoAduanas In estructura_
+
+                If data_.indice > 0 Then
+
+                    With .Seccion(SeccionesClientes.SCS2).Partida(numeroSecuencia_:=data_.indice)
+
+                        .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).Valor = data_.sc_claveAduanaSeccion.Value
+                        .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).ValorPresentacion = data_.sc_claveAduanaSeccion.Text
+                        .Attribute(CamposClientes.CP_MODALIDAD_ADUANA_SECCION).Valor = Nothing 'data_.campo21
+                        .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).Valor = data_.sc_patenteAduanal.Value
+                        .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).ValorPresentacion = data_.sc_patenteAduanal.Text
+                        .Attribute(CamposClientes.CP_PATENTE_ADUANAL).Valor = Nothing 'data_.campo21
+                        .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).Valor = data_.sc_tipoOperacion.Value
+                        .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).ValorPresentacion = data_.sc_tipoOperacion.Text
+                        .Attribute(CamposClientes.CP_TIPO_OPERACION).Valor = Nothing 'data_.campo21
+
+                    End With
+
+                Else
+
+                    With .Seccion(SeccionesClientes.SCS2).Partida(documentoElectronico_)
+
+                        .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).Valor = data_.sc_claveAduanaSeccion.Value
+                        .Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).ValorPresentacion = data_.sc_claveAduanaSeccion.Text
+                        .Attribute(CamposClientes.CP_MODALIDAD_ADUANA_SECCION).Valor = Nothing 'data_.campo21
+                        .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).Valor = data_.sc_patenteAduanal.Value
+                        .Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).ValorPresentacion = data_.sc_patenteAduanal.Text
+                        .Attribute(CamposClientes.CP_PATENTE_ADUANAL).Valor = Nothing 'data_.campo21
+                        .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).Valor = data_.sc_tipoOperacion.Value
+                        .Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).ValorPresentacion = data_.sc_tipoOperacion.Text
+                        .Attribute(CamposClientes.CP_TIPO_OPERACION).Valor = Nothing 'data_.campo21
+
+                    End With
+
+                End If
+
+            Next
+
+            'Contactos
+
+            Dim estructuraContactos_ As New List(Of EstructuraContactos)
+
+            estructuraContactos_ = ccContactos.GetDataRows(Of EstructuraContactos)()
+
+            For Each data_ As EstructuraContactos In estructuraContactos_
+
+                If data_.indice > 0 Then
+
+                    With .Seccion(SeccionesClientes.SCS3).Partida(numeroSecuencia_:=data_.indice)
+
+                        .Attribute(CamposClientes.CP_NOMBRE_CONTACTO).Valor = data_.icNombreContacto 'GetValue(sc_claveAduanaSeccion, DataSouce)
+                        .Attribute(CamposClientes.CP_INFO_CONTACTO).Valor = data_.icInfoContacto
+                        .Attribute(CamposClientes.CP_TELEFONO1_CONTACTO).Valor = data_.icTelefono1
+                        .Attribute(CamposClientes.CP_MOVIL_CONTACTO).Valor = data_.icMovil
+                        .Attribute(CamposClientes.CP_EMAIL_CONTACTO).Valor = data_.icCorreoElectronico
+
+                    End With
+
+                Else
+
+                    With .Seccion(SeccionesClientes.SCS3).Partida(documentoElectronico_)
+
+                        .Attribute(CamposClientes.CP_NOMBRE_CONTACTO).Valor = data_.icNombreContacto 'GetValue(sc_claveAduanaSeccion, DataSouce)
+                        .Attribute(CamposClientes.CP_INFO_CONTACTO).Valor = data_.icInfoContacto
+                        .Attribute(CamposClientes.CP_TELEFONO1_CONTACTO).Valor = data_.icTelefono1
+                        .Attribute(CamposClientes.CP_MOVIL_CONTACTO).Valor = data_.icMovil
+                        .Attribute(CamposClientes.CP_EMAIL_CONTACTO).Valor = data_.icCorreoElectronico
+
+                    End With
+
+                End If
+
+            Next
+
+            'Sellos
+            '.Attribute(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS).Valor = icRutaCertificado.Value
+            '.Attribute(CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS).Valor = icRutaLlave.Value
+            '.Attribute(CamposClientes.CP_FECHA_VIGENCIA_SELLOS).Valor = Convert.ToDateTime(icFechaVigencia.Value).Date
+            '.Attribute(CamposClientes.CP_CONTRASENIA_SELLOS).Valor = icContraseniaCertificado.Value
+            '.Attribute(CamposClientes.CP_CVE_WEB_SERVICES_SELLOS).Valor = icCveWebServices.Value
+
+
+        End With
+
+
+        OperadorDatos(documentoElectronico_, TiposFlujo.Entrada, Modalidades.Procesar)
+
+        Return documentoElectronico_
+
+    End Function
+
+    Public Overrides Function DespuesRealizarModificacion() As TagWatcher
+
+        s_EditarDomicilio.Checked = True
+
+        s_SeleccionarDomicilio.Checked = True
+
+        Return New TagWatcher(Ok)
+
+    End Function
+
+    Enum TiposFiltro
+        SinDefinir = 0
+        PorDefecto = 1
+        Avanzado = 2
+    End Enum
+
+    Enum TiposCaracteristica
+        cUndefined = -1
+        cInt32 = 0
+        cString = 1
+        cBoolean = 2
+        cReal = 3
+        cDateTime = 4
+    End Enum
+
+    Enum TiposLlave
+        SinLlave = 0
+        Primaria = 1
+    End Enum
+
+    Enum TiposVisible
+        No = 0
+        Si = 1
+        Acarreo = 2
+        Impresion = 3
+        Virtual = 4
+        Informacion = 5
+    End Enum
+
+    Enum TiposRigorDatos
+        No = 0
+        Si = 1
+        Opcional = 2
+    End Enum
+
+    Enum TiposAsignacion
+        Valor = 0 ' Valor
+        ValorPresentacion = 1
+    End Enum
+
+    Enum PropiedadesControl
+        Auto = 0
+        Valor = 1
+        Text = 2
+        OffText = 3
+        OnText = 4
+        Checked = 5
+    End Enum
+    Public Class Caracteristica
+
+        Property TipoDato As TiposDato
+
+        Property Control As IUIControl
+
+        Property NombreMostrar As String
+
+        Property Asignacion As TiposAsignacion
+
+        Property PropiedadDelControl As PropiedadesControl
+
+        Property Campo As [Enum]
+
+        Property Valor As Object
+
+        Property Visible As TiposVisible
+
+        Property PuedeInsertar As TiposRigorDatos
+
+        Property PuedeModificar As TiposRigorDatos
+
+        Property ValorDefault As String
+
+        Property TipoFiltro As TiposFiltro
+
+        Property Llave As TiposLlave
+
+        Property SoloLectura As Boolean
+
+        Property PermisoConsulta As Int32
+
+        Property Estado As TagWatcher
+
+    End Class
+
+    Private _caracteristicas As New List(Of Caracteristica)
+
+    Public Sub [Set](ByVal valor_ As ObjectId,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Private Sub AgregarCaracteristica(ByVal valor_ As Object,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        If soloLectura_ Then : puedeInsertar_ = False : puedeModificar_ = False : End If
+
+        _caracteristicas.Add(New Caracteristica With {.Valor = valor_, .Campo = campo_, .Asignacion = tipoAsignacion_})
+
+    End Sub
+
+    Public Sub [Set](ByRef control_ As IUIControl,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal asignarA_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal propiedadDelControl_ As PropiedadesControl = PropiedadesControl.Auto,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        '0 AS PuedeInsertar, 0 AS PuedeModificar, '' AS ValorDefault, '0' AS TipoFiltro1 AS Llave,
+        ' '' AS NameAsKey, '' AS Interfaz, '' as PermisoConsulta
+
+        control_.WorksWith = campo_
+
+        If soloLectura_ Then : puedeInsertar_ = False : puedeModificar_ = False : End If
+
+        If permisoConsulta_ IsNot Nothing Then : control_.IdPermiso = permisoConsulta_ : End If
+
+        _caracteristicas.Add(New Caracteristica With {.Control = control_, .Campo = campo_, .Asignacion = asignarA_, .PropiedadDelControl = propiedadDelControl_})
+
+    End Sub
+
+    Public Sub [Set](ByVal valor_ As String,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Public Sub [Set](ByVal valor_ As Double,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Public Sub [Set](ByVal valor_ As DateTime,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Public Sub [Set](ByVal valor_ As Object,
+                     ByVal campo_ As [Enum],
+                     ByVal tipoDato_ As TiposDato,
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        Select Case tipoDato_
+            Case TiposDato.Entero
+                valor_ = Convert.ToInt32(valor_)
+            Case TiposDato.Real
+                valor_ = Convert.ToDouble(valor_)
+            Case TiposDato.Booleano
+                valor_ = Convert.ToInt32(valor_)
+            Case TiposDato.IdObject
+                'valor_ = Convert.(valor_)
+            Case TiposDato.Texto
+                valor_ = Convert.ToString(valor_)
+            Case TiposDato.Fecha
+                valor_ = Convert.ToDateTime(valor_).Date
+
+        End Select
+
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Public Sub [Set](ByVal valor_ As Boolean,
+                     ByVal campo_ As [Enum],
+                     Optional ByVal nombreMostrar As String = Nothing,
+                     Optional ByVal tipoAsignacion_ As TiposAsignacion = TiposAsignacion.Valor,
+                     Optional ByVal visible_ As TiposVisible = TiposVisible.Si,
+                     Optional ByVal puedeInsertar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal puedeModificar_ As TiposRigorDatos = TiposRigorDatos.Si,
+                     Optional ByVal valorDefault_ As Object = Nothing,
+                     Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
+                     Optional ByVal llave_ As TiposLlave? = Nothing,
+                     Optional ByVal soloLectura_ As Boolean = False,
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+
+        AgregarCaracteristica(valor_,
+                              campo_,
+                              nombreMostrar,
+                              tipoAsignacion_,
+                              visible_,
+                              puedeInsertar_,
+                              puedeModificar_,
+                              valorDefault_,
+                              tipoFiltro_,
+                              llave_,
+                              soloLectura_,
+                              permisoConsulta_)
+
+    End Sub
+
+    Public Function Configuracion() As TagWatcher
+
+        ''.Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
+
+        [Set](i_Cve_Empresa, CP_CVE_EMPRESA)
+        '.Attribute(CamposClientes.CP_CVE_EMPRESA).Valor = i_Cve_Empresa.Value
+
+        '[Set](i_Cve_Empresa, CA_RAZON_SOCIAL, asignarA_:=TiposAsignacion.ValorPresentacion)
+        [Set](i_Cve_Empresa, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
+        '.Attribute(CamposClientes.CA_RAZON_SOCIAL).Valor = i_Cve_Empresa.Text
+
+        [Set](0, CP_CVE_DIVISION_MI_EMPRESA, TiposDato.Entero)
+        '.Attribute(CamposClientes.CP_CVE_DIVISION_MI_EMPRESA).Valor = 0
+
+        [Set](t_RFC, CA_RFC_CLIENTE)
+        '.Attribute(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS).Valor = t_RFC.Value
+
+        [Set](t_TaxID, CA_TAX_ID)
+        '.Attribute(CamposClientes.CA_TAX_ID).Valor = t_TaxID.Value
+
+        [Set](t_CURP, CA_CURP_CLIENTE)
+        '.Attribute(CamposClientes.CA_CURP_CLIENTE).Valor = t_CURP.Value
+
+        [Set](Convert.ToInt32(IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)), CP_TIPO_PERSONA, TiposDato.Entero)
+        '.Attribute(CamposClientes.CP_TIPO_PERSONA).Valor = IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)
+
+        [Set](s_Habilitado, CP_CLIENTE_HABILITADO)
+        '.Attribute(CamposClientes.CP_CLIENTE_HABILITADO).Valor = s_Habilitado.Checked
+
+        [Set](Convert.ToInt32(IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)), CP_CLIENTE_EXTRANJERO, TiposDato.Entero)
+        '.Attribute(CamposClientes.CP_CLIENTE_EXTRANJERO).Valor = IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)
+
+        ''Datos del domicilio
+
+
+        [Set](t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value, CamposDomicilio.CA_DOMICILIO_FISCAL)
+        '.Attribute(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor = t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value
+
+        [Set](t_Calle, CamposDomicilio.CA_CALLE)
+        '.Attribute(CamposDomicilio.CA_CALLE).Valor = t_Calle.Value
+
+        [Set](t_NumeroExt, CamposDomicilio.CA_NUMERO_EXTERIOR)
+        '.Attribute(CamposDomicilio.CA_NUMERO_EXTERIOR).Valor = t_NumeroExt.Value
+
+        [Set](t_NumeroInt, CamposDomicilio.CA_NUMERO_INTERIOR)
+        '.Attribute(CamposDomicilio.CA_NUMERO_INTERIOR).Valor = t_NumeroInt.Value
+
+        [Set](t_NumeroInt, CamposDomicilio.CA_NUMERO_EXT_INT)
+        '.Attribute(CamposDomicilio.CA_NUMERO_EXT_INT).Valor = Nothing
+
+        [Set](t_CP, CamposDomicilio.CA_CODIGO_POSTAL)
+        '.Attribute(CamposDomicilio.CA_CODIGO_POSTAL).Valor = t_CP.Value
+
+        [Set](t_Colonia, CamposDomicilio.CA_COLONIA)
+        '.Attribute(CamposDomicilio.CA_COLONIA).Valor = t_Colonia.Value
+
+
+
+
+        [Set](icRutaCertificado, CamposDomicilio.CA_LOCALIDAD)
+        '.Attribute(CamposDomicilio.CA_LOCALIDAD).Valor = Nothing
+        [Set](t_Ciudad, CamposDomicilio.CA_CIUDAD)
+        '.Attribute(CamposDomicilio.CA_CIUDAD).Valor = t_Ciudad.Value
+        [Set](icRutaCertificado, CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA)
+        '.Attribute(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA).Valor = Nothing
+        [Set](icRutaCertificado, CamposDomicilio.CA_ENTIDAD_MUNICIPIO)
+        '.Attribute(CamposDomicilio.CA_ENTIDAD_MUNICIPIO).Valor = Nothing
+        [Set](t_Pais, CamposDomicilio.CA_CVE_PAIS)
+        '.Attribute(CamposDomicilio.CA_CVE_PAIS).Valor = t_Pais.Value
+        [Set](t_Pais, CamposDomicilio.CA_PAIS)
+        '.Attribute(CamposDomicilio.CA_PAIS).Valor = t_Pais.Value
+
+        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS)
+        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS)
+        [Set](icFechaVigencia, CP_FECHA_VIGENCIA_SELLOS)
+        [Set](icContraseniaCertificado, CP_CONTRASENIA_SELLOS, soloLectura_:=True, permisoConsulta_:=651)
+        [Set](icCveWebServices, CP_CVE_WEB_SERVICES_SELLOS)
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Public Enum TiposFlujo
+        Entrada = 1
+        Salida = 2
+    End Enum
+
+    Public Enum Modalidades
+        Auto = 0
+        Colectar = 1
+        Procesar = 2
+    End Enum
+
+
+    Public Sub OperadorDatos(ByRef documentoElectronico_ As DocumentoElectronico,
+                             ByVal tipoFlujo_ As TiposFlujo,
+                             Optional ByVal modalidad_ As Modalidades = Modalidades.Auto)
+
+        Select Case modalidad_
+
+            Case Modalidades.Auto
+
+                'MOP. Next step must could be singleton
+                Configuracion()
+
+                Procesamiento(documentoElectronico_, tipoFlujo_)
+
+            Case Modalidades.Colectar
+
+                Configuracion()
+
+            Case Modalidades.Procesar
+
+                Procesamiento(documentoElectronico_, tipoFlujo_)
+
+        End Select
+
+    End Sub
+
+    Public Function Procesamiento(ByRef documentoElectronico_ As DocumentoElectronico,
+                                  ByVal tipoFlujo_ As TiposFlujo) As TagWatcher
+
+        Dim caracteristicas_ = _caracteristicas
+
+        Dim mensajes_ As TagWatcher
+
+        Select Case tipoFlujo_
+
+            Case TiposFlujo.Entrada
+
+                For Each caracteristica_ As Caracteristica In caracteristicas_
+
+                    With caracteristica_
+
+                        If caracteristica_.Control IsNot Nothing Then ' Mediante control
+
+                            Dim check_ As TagWatcher =
+                                [In](caracteristica_, documentoElectronico_)
+                            '[In](.Control, documentoElectronico_, .Campo, .Asignacion)
+
+                            If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
+                        ElseIf caracteristica_.Valor IsNot Nothing Then 'Mediante valor directo
+                            'Por el momento no soporta asignacion directa a otras propiedades como Text, eso solo puede suceder mediante control
+                            'Buscaremos el repositorio del dato en el documento para enterarnos del tipo de dato que toca.
+
+                            Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Campo)
+
+                            Dim campoUnico_ As Object = documentoElectronico_.Attribute(idUnico_)
+
+                            If campoUnico_ IsNot Nothing Then
+
+                                caracteristica_.TipoDato = campoUnico_.TipoDato
+
+                                Dim check_ As TagWatcher
+
+                                Select Case .TipoDato
+
+                                    Case TiposDato.IdObject
+
+                                        check_ = [In](DirectCast(.Valor, ObjectId), documentoElectronico_, .Campo, .Asignacion)
+
+                                    Case TiposDato.Booleano
+
+                                        check_ = [In](DirectCast(.Valor, Boolean), documentoElectronico_, .Campo, .Asignacion)
+
+                                    Case TiposDato.Entero
+
+                                        check_ = [In](DirectCast(.Valor, Integer), documentoElectronico_, .Campo, .Asignacion)
+
+                                    Case TiposDato.Fecha
+
+                                        check_ = [In](DirectCast(.Valor, DateTime), documentoElectronico_, .Campo) ', .Asignacion)
+
+                                    Case TiposDato.Real
+
+                                        check_ = [In](DirectCast(.Valor, Double), documentoElectronico_, .Campo, .Asignacion)
+
+                                    Case TiposDato.Texto
+
+                                        check_ = [In](DirectCast(.Valor, String), documentoElectronico_, .Campo, .Asignacion)
+
+                                    Case Else
+
+                                        'Return New TagWatcher(0, "No se encontró el tipo de dato")
+                                        mensajes_ = New TagWatcher(0, Me, "No se encontró el tipo de dato")
+
+                                End Select
+
+                                If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
+                            Else
+
+                                'Return New TagWatcher(0, Me, "No se encontró el idUnico(" & idUnico_ & ") en el documento")
+                                mensajes_ = New TagWatcher(0, Me, "No se encontró el idUnico(" & idUnico_ & ") en el documento")
+
+                            End If
+
+                        Else
+
+                            mensajes_ = New TagWatcher(0, Me, "Debe asignar un valor para el (" & caracteristica_.Campo.ToString & ")")
+
+                            'Return New TagWatcher(0, Me, "Debe colocar algún valor para la configuración correcta")
+                            'New TagWatcher(0, Me, "Debe colocar algún valor para la configuración correcta")
+
+                        End If
+
+                    End With
+
+                Next
+
+            Case TiposFlujo.Salida
+
+                For Each caracteristica_ As Caracteristica In caracteristicas_
+
+                    With caracteristica_
+
+                        If caracteristica_.Control IsNot Nothing Then ' Mediante control
+
+                            Dim check_ As TagWatcher =
+                                Out(caracteristica_, documentoElectronico_)
+
+                            If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
+                        End If
+
+                    End With
+
+                Next
+
+                '-----------------
+
+                'For Each caracteristica_ As Caracteristica In caracteristicas_
+
+                '    With caracteristica_
+
+                '        Dim check_ As TagWatcher =
+                '            Out(.Control, documentoElectronico_, .Campo, .Asignacion)
+
+                '        If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
+                '    End With
+
+                'Next
+
+        End Select
+
+    End Function
+
+    'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
+    Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
+
+        '----Operador automático------
+        OperadorDatos(documentoElectronico_, TiposFlujo.Salida, Modalidades.Auto)
+        '----Operador automático------
+        'ColectaDatos(documentoElectronico_, TiposFlujo.Salida)
+
+        With documentoElectronico_
+
+            Dim domicilio_ As domicilio
+
+            Dim listOptionsDomicilios_ As New List(Of SelectOption)
+
+
+
+            Session("_empresa") = _controladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
+                                                .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
+                                                listOptionsDomicilios_,
+                                                domicilio_)
+            _empresa = Session("_empresa")
+
+            ''s_Domicilios.Options.Clear()
+            ''s_Domicilios.DataSource = listOptionsDomicilios_
+
+            _empresa._id = .Attribute(CamposClientes.CP_ID_EMPRESA).Valor
+
+            'i_Cve_Empresa.Value = .Attribute(CamposClientes.CP_CVE_EMPRESA).Valor
+            'i_Cve_Empresa.Text = .Attribute(CamposClientes.CA_RAZON_SOCIAL).Valor
+            ''0 = .Attribute(CamposClientes.CP_CVE_DIVISION_MI_EMPRESA).Valor 
+            't_RFC.Value = .Attribute(CamposClientes.CA_RFC_CLIENTE).Valor
+            't_TaxID.Value = .Attribute(CamposClientes.CA_TAX_ID).Valor
+            't_CURP.Value = .Attribute(CamposClientes.CA_CURP_CLIENTE).Valor
+
+            's_tipoPersona.Checked = IIf(.Attribute(CamposClientes.CP_TIPO_PERSONA).Valor = 1, TiposPersona.Moral, TiposPersona.Fisica)
+            's_Habilitado.Checked = .Attribute(CamposClientes.CP_CLIENTE_HABILITADO).Valor
+            's_Extranjero.Checked = IIf(.Attribute(CamposClientes.CP_CLIENTE_EXTRANJERO).Valor = 1, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)
+
+
+            'Datos del domicilio
+            Session("_secDomicilio") = .Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor
+            ''_empresa.domicilios(Session("_secDomicilio"))._iddomicilio = .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor
+            ''.Attribute(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor = t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value
+            't_Calle.Value = .Attribute(CamposDomicilio.CA_CALLE).Valor
+            't_NumeroExt.Value = .Attribute(CamposDomicilio.CA_NUMERO_EXTERIOR).Valor
+            't_NumeroInt.Value = .Attribute(CamposDomicilio.CA_NUMERO_INTERIOR).Valor
+            ''Nothing =.Attribute(CamposDomicilio.CA_NUMERO_EXT_INT).Valor
+            't_CP.Value = .Attribute(CamposDomicilio.CA_CODIGO_POSTAL).Valor
+            't_Colonia.Value = .Attribute(CamposDomicilio.CA_COLONIA).Valor
+            ''Nothing =.Attribute(CamposDomicilio.CA_LOCALIDAD).Valor
+            't_Ciudad.Value = .Attribute(CamposDomicilio.CA_CIUDAD).Valor
+            ''.Attribute(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA).Valor
+            ''.Attribute(CamposDomicilio.CA_ENTIDAD_MUNICIPIO).Valor
+            't_Pais.Value = .Attribute(CamposDomicilio.CA_CVE_PAIS).Valor
+            't_Pais.Value = .Attribute(CamposDomicilio.CA_PAIS).Valor
+
+            'Aduanas y configuracion
+
+            Dim listaDatos_ As New List(Of EstructuraCatalogoAduanas)
+
+            For indice_ As Int32 = 1 To .Seccion(SeccionesClientes.SCS2).CantidadPartidas
+
+                listaDatos_.Add(New EstructuraCatalogoAduanas _
+                                With {
+                                      .indice = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).NumeroSecuencia,
+                                      .sc_claveAduanaSeccion = New SelectOption With {
+                                                                                    .Text = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).ValorPresentacion,
+                                                                                    .Value = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_ADUANA_SECCION).Valor
+                                                                                     },
+                                      .sc_patenteAduanal = New SelectOption With {
+                                                                                    .Text = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).ValorPresentacion,
+                                                                                    .Value = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_PATENTE_ADUANAL).Valor
+                                                                                 },
+                                      .sc_tipoOperacion = New SelectOption With {
+                                                                                    .Text = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).ValorPresentacion,
+                                                                                    .Value = documentoElectronico_.Seccion(SeccionesClientes.SCS2).Partida(indice_).Attribute(CamposClientes.CP_CVE_TIPO_OPERACION).Valor
+                                                                                }
+                                     }
+                                )
+
+            Next
+
+            _cataduanasdefecto.DataSource = listaDatos_
+
+            'Contactos
+
+            Dim estructuraContactos_ As New List(Of EstructuraContactos)
+
+            For indice_ As Int32 = 1 To .Seccion(SeccionesClientes.SCS3).CantidadPartidas
+                '.indice = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).NumeroSecuencia,
+                estructuraContactos_.Add(New EstructuraContactos _
+                                With {.indice = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).NumeroSecuencia,
+                                      .icNombreContacto = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).Attribute(CamposClientes.CP_NOMBRE_CONTACTO).Valor,
+                                      .icInfoContacto = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).Attribute(CamposClientes.CP_INFO_CONTACTO).Valor,
+                                      .icTelefono1 = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).Attribute(CamposClientes.CP_TELEFONO1_CONTACTO).Valor,
+                                      .icMovil = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).Attribute(CamposClientes.CP_MOVIL_CONTACTO).Valor,
+                                      .icCorreoElectronico = documentoElectronico_.Seccion(SeccionesClientes.SCS3).Partida(indice_).Attribute(CamposClientes.CP_EMAIL_CONTACTO).Valor}
+                                )
+
+            Next
+
+            ccContactos.DataSource = estructuraContactos_
+
+            'Sellos
+            'icRutaCertificado.Value = .Attribute(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS).Valor
+            'icRutaLlave.Value = .Attribute(CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS).Valor
+            'icFechaVigencia.Value = .Attribute(CamposClientes.CP_FECHA_VIGENCIA_SELLOS).Valor '.ToString("dd/MM/yyyy")
+            'icContraseniaCertificado.Value = .Attribute(CamposClientes.CP_CONTRASENIA_SELLOS).Valor
+            'icCveWebServices.Value = .Attribute(CamposClientes.CP_CVE_WEB_SERVICES_SELLOS).Valor
+
+            'icRutaCertificado.WorksWith = CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS
+            'icRutaLlave.WorksWith = CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS
+            'icFechaVigencia.WorksWith = CamposClientes.CP_FECHA_VIGENCIA_SELLOS
+            'icContraseniaCertificado.WorksWith = CamposClientes.CP_CONTRASENIA_SELLOS
+            'icCveWebServices.WorksWith = CamposClientes.CP_CVE_WEB_SERVICES_SELLOS
+
+            'Out(icRutaCertificado, documentoElectronico_, CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS)
+            'Out(icRutaLlave, documentoElectronico_, CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS)
+            'Out(icContraseniaCertificado, documentoElectronico_, CamposClientes.CP_CONTRASENIA_SELLOS)
+            'Out(icCveWebServices, documentoElectronico_, CamposClientes.CP_CVE_WEB_SERVICES_SELLOS)
+
+        End With
+
+    End Sub
+
+    Private Function [In](ByVal valor_? As ObjectId,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum],
+                     ByVal asignacion_ As TiposAsignacion) As TagWatcher
+
+        If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.IdObject
+
+                        If asignacion_ = TiposAsignacion.Valor Then
+
+                            .Attribute(idUnico_).Valor = valor_ : Return New TagWatcher(1)
+
+                        Else
+
+                            Return New TagWatcher(0, Me, "El tipo ObjectId no acepta valor de presentación")
+                            '.Attribute(idUnico_).ValorPresentacion = valor_ : Return New TagWatcher(1)
+
+                        End If
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor no es ObjectID")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByVal valor_? As Double,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum],
+                     ByVal asignacion_ As TiposAsignacion) As TagWatcher
+
+        If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.Real
+
+                        If asignacion_ = TiposAsignacion.Valor Then
+
+                            .Attribute(idUnico_).Valor = valor_ : Return New TagWatcher(1)
+
+                        Else
+
+                            .Attribute(idUnico_).ValorPresentacion = valor_ : Return New TagWatcher(1)
+
+                        End If
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor no es una cadena")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByVal valor_ As String,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum],
+                     ByVal asignacion_ As TiposAsignacion) As TagWatcher
+
+        If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.Texto
+
+                        If asignacion_ = TiposAsignacion.Valor Then
+
+                            .Attribute(idUnico_).Valor = valor_ : Return New TagWatcher(1)
+
+                        Else
+
+                            .Attribute(idUnico_).ValorPresentacion = valor_ : Return New TagWatcher(1)
+
+                        End If
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor no es una cadena")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByVal valor_ As Integer,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum],
+                     ByVal asignacion_ As TiposAsignacion) As TagWatcher
+
+        'If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.Entero
+
+                        If asignacion_ = TiposAsignacion.Valor Then
+
+                            .Attribute(idUnico_).Valor = valor_ : Return New TagWatcher(1)
+
+                        Else
+
+                            .Attribute(idUnico_).ValorPresentacion = valor_ : Return New TagWatcher(1)
+
+                        End If
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor no es un entero")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByVal valor_? As DateTime,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum]) As TagWatcher
+
+        If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.Fecha
+
+                        .Attribute(idUnico_).Valor = Convert.ToDateTime(valor_).Date : Return New TagWatcher(1)
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor del campo [" & idUnico_ & "] no es una fecha")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByVal valor_? As Boolean,
+                     ByRef documentoElectronico_ As DocumentoElectronico,
+                     ByVal campo_ As [Enum],
+                     ByVal asignacion_ As TiposAsignacion) As TagWatcher
+
+        If valor_ Is Nothing Then : Return New TagWatcher(1) : End If
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                Select Case campoUnico_.TipoDato
+
+                    Case Componentes.Campo.TiposDato.Booleano
+
+                        If asignacion_ = TiposAsignacion.Valor Then
+
+                            .Attribute(idUnico_).Valor = valor_ : Return New TagWatcher(1)
+
+                        Else
+
+                            .Attribute(idUnico_).ValorPresentacion = valor_ : Return New TagWatcher(1)
+
+                        End If
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "El valor no es un boolean")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function [In](ByRef caracteristica_ As Caracteristica,
+                     ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        Dim tipoControl_ As String = caracteristica_.Control.GetType.Name
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Campo)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                caracteristica_.TipoDato = campoUnico_.TipoDato
+
+                Select Case tipoControl_
+
+                    Case "SelectControl"
+
+                        Dim valorAsignado_ = Nothing
+
+                        Select Case caracteristica_.PropiedadDelControl
+
+                            Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SelectControl).Value
+
+                            Case PropiedadesControl.Text
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SelectControl).Text
+
+                            Case Else
+
+                                Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                        End Select
+
+                        If valorAsignado_ IsNot Nothing Then
+
+                            Select Case campoUnico_.TipoDato
+
+                                Case Componentes.Campo.TiposDato.Texto
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                                Case Componentes.Campo.TiposDato.Entero
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                                Case Else
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                            End Select
+
+                        End If
+
+                    Case "InputControl"
+
+                        Dim valorAsignado_ = Nothing
+
+                        Select Case caracteristica_.PropiedadDelControl
+
+                            Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, InputControl).Value
+
+                                If valorAsignado_ <> "" And
+                                        valorAsignado_ IsNot Nothing Then
+
+                                    Select Case DirectCast(caracteristica_.Control, InputControl).Format
+
+                                        Case InputControl.InputFormat.SinDefinir
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Calendar
+                                            valorAsignado_ = Convert.ToDateTime(valorAsignado_).Date  'DirectCast(caracteristica_.Control, InputControl).Value
+                                        Case InputControl.InputFormat.Card
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Money
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Numeric
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Phone
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Security
+                                            valorAsignado_ = valorAsignado_
+                                        Case InputControl.InputFormat.Time
+                                            valorAsignado_ = valorAsignado_
+
+                                    End Select
+
+                                End If
+
+                            Case PropiedadesControl.Text
+
+                                Return New TagWatcher(0, Me, "No existe la propiedad text para InputBox")
+
+                        End Select
+
+                        If valorAsignado_ IsNot Nothing Then
+
+                            Select Case campoUnico_.TipoDato
+
+                                Case Componentes.Campo.TiposDato.Fecha
+
+                                    If Trim(valorAsignado_) <> "" And IsDate(valorAsignado_) Then
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = Convert.ToDateTime(valorAsignado_).Date
+
+                                            .Attribute(idUnico_).Valor = Convert.ToDateTime(valorAsignado_).Date : Return New TagWatcher(1)
+
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_
+
+                                            .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                    End If
+
+                                Case Componentes.Campo.TiposDato.Texto
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                                Case Else
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                            End Select
+
+                        End If
+
+                    Case "SwitchControl"
+
+                        Dim valorAsignado_ = Nothing
+
+                        Select Case caracteristica_.PropiedadDelControl
+
+                            Case PropiedadesControl.Auto, PropiedadesControl.Checked
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).Checked
+
+                            Case PropiedadesControl.Valor
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).Value
+
+
+                            Case PropiedadesControl.OffText
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).OffText
+
+
+                            Case PropiedadesControl.OnText
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).OnText
+
+                            Case Else
+
+                                Return New TagWatcher(0, Me, "No existe la propiedad requerida en el SwitchControl")
+
+                        End Select
+
+                        If valorAsignado_ IsNot Nothing Then
+
+                            Select Case campoUnico_.TipoDato
+
+                                Case Componentes.Campo.TiposDato.Booleano
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = Convert.ToBoolean(valorAsignado_)
+
+                                        .Attribute(idUnico_).Valor = Convert.ToBoolean(valorAsignado_) : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+
+                                Case Componentes.Campo.TiposDato.Entero
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = Convert.ToInt32(valorAsignado_)
+
+                                        .Attribute(idUnico_).Valor = Convert.ToInt32(valorAsignado_) : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                                Case Else
+
+                                    Return New TagWatcher(0, Me, "Tipo de dato incorrecto [" & idUnico_ & "]")
+
+                            End Select
+
+                        End If
+
+                    Case "FindboxControl"
+
+                        Dim valorAsignado_ = Nothing
+
+                        Select Case caracteristica_.PropiedadDelControl
+
+                            Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, FindboxControl).Value
+
+                            Case PropiedadesControl.Text
+
+                                valorAsignado_ = DirectCast(caracteristica_.Control, FindboxControl).Text
+                                'Return New TagWatcher(0, Me, "No existe la propiedad text para InputBox")
+
+                        End Select
+
+                        If valorAsignado_ IsNot Nothing Then
+
+                            Select Case campoUnico_.TipoDato
+
+                                Case Componentes.Campo.TiposDato.Texto
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        Return New TagWatcher(1)
+
+                                    Else
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        Return New TagWatcher(1)
+
+                                    End If
+
+                                Case Else
+
+                                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                    Else
+
+                                        caracteristica_.Valor = valorAsignado_
+
+                                        .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                    End If
+
+                            End Select
+
+                        End If
+
+
+                    Case Else
+
+                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                            caracteristica_.Valor = DirectCast(caracteristica_.Control, Object).Value
+
+                            .Attribute(idUnico_).Valor = DirectCast(caracteristica_.Control, Object).Value : Return New TagWatcher(1)
+
+                        Else
+                            caracteristica_.Valor = DirectCast(caracteristica_.Control, Object).Text
+
+                            .Attribute(idUnico_).ValorPresentacion = DirectCast(caracteristica_.Control, Object).Text : Return New TagWatcher(1)
+
+                        End If
+
+                End Select
+
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    'Private Function Out(ByVal componente_ As IUIControl,
+    '                    ByRef documentoElectronico_ As DocumentoElectronico,
+    '                    ByVal campo_ As [Enum],
+    '                    ByVal tipolectura_ As TiposAsignacion) As TagWatcher
+
+    Private Function Out(ByRef caracteristica_ As Caracteristica,
+                         ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        Dim componente_ As IUIControl = caracteristica_.Control
+
+        Dim campo_ As [Enum] = caracteristica_.Campo
+
+        If componente_ Is Nothing Then
+            Return New TagWatcher(0, "Instancia del componente no establecida para el campo " & campo_.ToString)
+        End If
+
+        Dim tipo_ As String = componente_.GetType.Name
+
+        Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
+
+        With documentoElectronico_
+
+            Dim campoUnico_ As Object = .Attribute(idUnico_)
+
+            If campoUnico_ IsNot Nothing Then
+
+                If campoUnico_.Valor IsNot Nothing Then 'Tiene valor en MongoDB
+
+                    'Select Case campoUnico_.TipoDato
+
+                    '    Case Componentes.Campo.TiposDato.Texto
+
+                    Select Case tipo_
+
+                        Case "SelectControl"
+
+                            'If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                            '    DirectCast(componente_, SelectControl).Value = campoUnico_.Valor : Return New TagWatcher(1)
+
+                            'Else
+                            '    'NOT IMPLEMENTED
+                            '    DirectCast(componente_, SelectControl).Value = campoUnico_.ValorPresentacion : Return New TagWatcher(1)
+
+                            'End If
+
+                            Dim valorAsignado_ = Nothing 'campoUnico_.Valor
+
+                            Select Case caracteristica_.PropiedadDelControl
+
+                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                    valorAsignado_ = campoUnico_.Valor
+
+                                    DirectCast(caracteristica_.Control, SelectControl).Value = valorAsignado_
+
+                                Case Else
+
+                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                            End Select
+
+                            If valorAsignado_ IsNot Nothing Then
+
+                                Select Case campoUnico_.TipoDato
+
+                                    Case Componentes.Campo.TiposDato.Texto
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+
+                                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                                            'caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                    Case Componentes.Campo.TiposDato.Entero
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            ' .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                    Case Else
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                End Select
+
+                            End If
+                            'Case "SelectControl"
+
+                            '    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                            '        DirectCast(componente_, SelectControl).Value = campoUnico_.Valor : Return New TagWatcher(1)
+
+                            '    Else
+                            '        'NOT IMPLEMENTED
+                            '        DirectCast(componente_, SelectControl).Value = campoUnico_.ValorPresentacion : Return New TagWatcher(1)
+
+                            '    End If
+
+                            'Case Else
+
+                            '    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                            '        DirectCast(componente_, Object).Value = campoUnico_.Valor : Return New TagWatcher(1)
+
+                            '    Else
+
+                            '        DirectCast(componente_, Object).Value = campoUnico_.ValorPresentacion : Return New TagWatcher(1)
+
+                            '    End If
+
+
+                        Case "InputControl"
+
+                            'Dim valorAsignado_ = campoUnico_.Valor
+
+                            'Select Case caracteristica_.PropiedadDelControl
+
+                            '    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                            '        DirectCast(caracteristica_.Control, SelectControl).Value = valorAsignado_
+
+                            '    Case Else
+
+                            '        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                            'End Select
+
+                            Dim valorAsignado_ = campoUnico_.Valor
+
+                            Select Case caracteristica_.PropiedadDelControl
+
+                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                    'DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+
+                                    If valorAsignado_ <> "" And
+                                        valorAsignado_ IsNot Nothing Then
+
+                                        Select Case DirectCast(caracteristica_.Control, InputControl).Format
+                                            Case InputControl.InputFormat.SinDefinir
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Calendar
+
+                                                If IsDate(valorAsignado_) Then
+                                                    DirectCast(caracteristica_.Control, InputControl).Value = Convert.ToDateTime(valorAsignado_).Date  'DirectCast(caracteristica_.Control, InputControl).Value
+                                                End If
+
+                                            Case InputControl.InputFormat.Card
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Money
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Numeric
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Phone
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Security
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+                                            Case InputControl.InputFormat.Time
+                                                DirectCast(caracteristica_.Control, InputControl).Value = valorAsignado_
+
+                                        End Select
+
+                                    End If
+
+                                Case PropiedadesControl.Text
+
+                                    Return New TagWatcher(0, Me, "No existe la propiedad text para InputBox")
+
+                            End Select
+
+                            If valorAsignado_ IsNot Nothing Then
+
+                                Select Case campoUnico_.TipoDato
+
+                                    Case Componentes.Campo.TiposDato.Fecha
+
+                                        If Trim(valorAsignado_) <> "" And IsDate(valorAsignado_) Then
+
+                                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                                caracteristica_.Valor = Convert.ToDateTime(valorAsignado_).Date : Return New TagWatcher(1)
+
+                                                ' DirectCast(caracteristica_.Control, InputControl).Value = Convert.ToDateTime(valorAsignado_).Date : Return New TagWatcher(1)
+
+                                                '.Attribute(idUnico_).Valor = Convert.ToDateTime(valorAsignado_).Date : Return New TagWatcher(1)
+
+
+                                            Else
+
+                                                caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                                '.Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                            End If
+
+                                        End If
+
+                                    Case Componentes.Campo.TiposDato.Texto
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            ' .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                    Case Else
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+                                            '.Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                End Select
+
+                            End If
+
+                        Case "SwitchControl"
+
+                            Dim valorAsignado_ = campoUnico_.Valor
+
+                            Select Case caracteristica_.PropiedadDelControl
+
+                                Case PropiedadesControl.Auto, PropiedadesControl.Checked
+
+                                    DirectCast(caracteristica_.Control, SwitchControl).Checked = valorAsignado_
+
+                                Case PropiedadesControl.Valor
+
+                                    DirectCast(caracteristica_.Control, SwitchControl).Value = valorAsignado_
+
+
+                                Case PropiedadesControl.OffText
+
+                                    DirectCast(caracteristica_.Control, SwitchControl).OffText = valorAsignado_
+
+
+                                Case PropiedadesControl.OnText
+
+                                    DirectCast(caracteristica_.Control, SwitchControl).OnText = valorAsignado_
+
+                                Case Else
+
+                                    Return New TagWatcher(0, Me, "No existe la propiedad requerida en el SwitchControl")
+
+                            End Select
+
+                            If valorAsignado_ IsNot Nothing Then
+
+                                Select Case campoUnico_.TipoDato
+
+                                    Case Componentes.Campo.TiposDato.Booleano
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = Convert.ToBoolean(valorAsignado_) : Return New TagWatcher(1)
+
+                                            ' .Attribute(idUnico_).Valor = Convert.ToBoolean(valorAsignado_) : Return New TagWatcher(1)
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            ' .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+
+                                    Case Componentes.Campo.TiposDato.Entero
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = Convert.ToInt32(valorAsignado_) : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = Convert.ToInt32(valorAsignado_) : Return New TagWatcher(1)
+
+                                        Else
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+                                            '.Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                    Case Else
+
+                                        Return New TagWatcher(0, Me, "Tipo de dato incorrecto [" & idUnico_ & "]")
+
+                                End Select
+
+                            End If
+
+                        Case "FindboxControl"
+
+                            Dim valorAsignado_ = campoUnico_.Valor
+
+                            Select Case caracteristica_.PropiedadDelControl
+
+                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                                    DirectCast(caracteristica_.Control, FindboxControl).Value = valorAsignado_
+
+                                Case PropiedadesControl.Text
+
+                                    DirectCast(caracteristica_.Control, FindboxControl).Text = valorAsignado_
+                                    'Return New TagWatcher(0, Me, "No existe la propiedad text para InputBox")
+
+                            End Select
+
+                            If valorAsignado_ IsNot Nothing Then
+
+                                Select Case campoUnico_.TipoDato
+
+                                    Case Componentes.Campo.TiposDato.Texto
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            ' .Attribute(idUnico_).Valor = valorAsignado_
+
+                                            caracteristica_.Valor = valorAsignado_
+
+                                            Return New TagWatcher(1)
+
+                                        Else
+
+                                            '.Attribute(idUnico_).ValorPresentacion = valorAsignado_
+
+                                            caracteristica_.Valor = valorAsignado_
+
+                                            Return New TagWatcher(1)
+
+                                        End If
+
+                                    Case Else
+
+                                        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            '.Attribute(idUnico_).Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                        Else
+
+                                            caracteristica_.Valor = valorAsignado_ : Return New TagWatcher(1)
+
+                                            ' .Attribute(idUnico_).ValorPresentacion = valorAsignado_ : Return New TagWatcher(1)
+
+                                        End If
+
+                                End Select
+
+                            End If
+
+
+                        Case Else
+
+                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                                caracteristica_.Valor = .Attribute(idUnico_).Valor
+
+                                DirectCast(caracteristica_.Control, Object).Value = .Attribute(idUnico_).Valor : Return New TagWatcher(1)
+
+                                '.Attribute(idUnico_).Valor = DirectCast(caracteristica_.Control, Object).Value : Return New TagWatcher(1)
+
+                            Else
+                                caracteristica_.Valor = .Attribute(idUnico_).Valor
+
+                                DirectCast(caracteristica_.Control, Object).text = .Attribute(idUnico_).Valor : Return New TagWatcher(1)
+
+                                ' .Attribute(idUnico_).ValorPresentacion = DirectCast(caracteristica_.Control, Object).Text : Return New TagWatcher(1)
+
+                            End If
+
+                    End Select
+
+                    '    Case Componentes.Campo.TiposDato.Entero
+
+                    '        If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                    '            DirectCast(componente_, Object).Value = campoUnico_.Valor : Return New TagWatcher(1)
+
+                    '        Else
+
+                    '            DirectCast(componente_, Object).Value = campoUnico_.ValorPresentacion : Return New TagWatcher(1)
+
+                    '        End If
+
+                    'End Select
+
+                End If
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Class EstructuraCatalogoAduanas
+
+        Property indice As Integer
+        Property sc_claveAduanaSeccion As SelectOption 'Clave aduana sección
+        Property sc_patenteAduanal As SelectOption 'Patente
+        Property sc_tipoOperacion As SelectOption 'Tipo operación
+
+    End Class
+
+    Class EstructuraContactos
+        Property indice As String
+        Property icNombreContacto As String
+        Property icInfoContacto As String
+        Property icTelefono1 As String
+        Property icMovil As String
+        Property icCorreoElectronico As String
+
+    End Class
+
+    Private Sub ProcesarBorrado()
+
+
+        'Dim claveReferencia_ = "ok"
+        'Dim claveEstudiante_ = 222
+
+        'Dim referencia1_ As BsonDocument = New BsonDocument() _
+        '    .Add("_id", claveEstudiante_) _
+        '    .Add("i_ID", claveEstudiante_) _
+        '    .Add("Contacto", "Natalia Mendez") _
+        '    .Add("Familiar", "Sí") _
+        '    .Add("Fecha", 1981)
+
+
+        '*********** Inserción de los datos atípicos en la colección de recursos aduanales *************
+
+        'Dim aduanaSeccionList_ As New ControladorRecursosAduanales _
+        '    With {.tiporecurso = ControladorRecursosAduanales.TiposRecurso.Generales,
+        '          .aduanasmodalidad =
+        '      New List(Of AduanaSeccionModalidad) From
+        '           {
+        '            New AduanaSeccionModalidad With
+        '             {._idaduanaseccion = 430,
+        '              .ciudad = "Veracruz",
+        '              .estado = 1,
+        '              .modalidad = ControladorRecursosAduanales.TiposModalidad.Maritimo
+        '              },
+        '            New AduanaSeccionModalidad With
+        '              {._idaduanaseccion = 470,
+        '               .ciudad = "México",
+        '               .estado = 1,
+        '               .modalidad = ControladorRecursosAduanales.TiposModalidad.Aereo
+        '              },
+        '            New AduanaSeccionModalidad With
+        '              {._idaduanaseccion = 160,
+        '               .ciudad = "Manzanillo",
+        '               .estado = 1,
+        '               .modalidad = ControladorRecursosAduanales.TiposModalidad.Maritimo
+        '               },
+        '            New AduanaSeccionModalidad With
+        '              {._idaduanaseccion = 510,
+        '               .ciudad = "Lázaro Cárdenas",
+        '               .estado = 1,
+        '               .modalidad = ControladorRecursosAduanales.TiposModalidad.Maritimo
+        '              },
+        '            New AduanaSeccionModalidad With
+        '              {._idaduanaseccion = 240,
+        '               .ciudad = "Laredo",
+        '               .estado = 1,
+        '               .modalidad = ControladorRecursosAduanales.TiposModalidad.Terrestre
+        '              },
+        '            New AduanaSeccionModalidad With
+        '              {._idaduanaseccion = 810,
+        '               .ciudad = "Altamira",
+        '               .estado = 1,
+        '               .modalidad = ControladorRecursosAduanales.TiposModalidad.Maritimo
+        '              }
+        '           },
+        '          .patentes = New List(Of PatenteAduanal) From {
+        '                           New PatenteAduanal With {.agenteaduanal = "Rolando Reyes Kuri", .estado = 1, ._idpatente = 3210},
+        '                           New PatenteAduanal With {.agenteaduanal = "Sergio Alvarez Reyes", .estado = 1, ._idpatente = 3931},
+        '                           New PatenteAduanal With {.agenteaduanal = "Jesús Gómez Reyes", .estado = 1, ._idpatente = 3945},
+        '                           New PatenteAduanal With {.agenteaduanal = "Luis de la Cruz Reyes", .estado = 1, ._idpatente = 3921}
+        '                                    }
+        '         }
+
+        'Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+        'Dim operationsDB_ = iEnlace_.GetMongoCollection(Of ControladorRecursosAduanales)("Reg007RecursosAduanales")
+
+        'Dim tagwatcher_ As New TagWatcher
+
+        ' Dim result_ = operationsDB_.InsertOneAsync(aduanaSeccionList_).ConfigureAwait(False)
+
+        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+
+        'i_Cve_Empresa.DataSource = lista_
+        'As Dictionary(Of Object, Object)
+
+        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+                                Where data.archivado = False And data.estado = 1
+                                Select data.modalidad, data.ciudad, data._idaduanaseccion
+
+        If aduanasSecciones_.Count > 0 Then
+
+            Dim dataSource1_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To aduanasSecciones_.Count - 1
+
+                dataSource1_.Add(New SelectOption With
+                                 {.Value = aduanasSecciones_(index_)._idaduanaseccion,
+                                  .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
+
+            Next
+
+            sc_claveAduanaSeccion.DataSource = dataSource1_
+
+        End If
+
+        Dim patentes_ = From data In recursos_.patentes
+                        Where data.archivado = False And data.estado = 1
+                        Select data.agenteaduanal, data._idpatente
+
+        If patentes_.Count > 0 Then
+
+            Dim dataSource1_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To patentes_.Count - 1
+
+                dataSource1_.Add(New SelectOption With
+                                 {.Value = patentes_(index_)._idpatente,
+                                  .Text = patentes_(index_)._idpatente.ToString & " | " & patentes_(index_).agenteaduanal})
+
+            Next
+
+            sc_patenteAduanal.DataSource = dataSource1_
+
+        End If
+
+        DisplayMessage("done!", StatusMessage.Success)
+
+    End Sub
+
+
+    'EVENTOS DE BÚSQUEDA GENREAL
+    Public Overridable Sub BusquedaGeneral(ByVal sender As Object, ByVal e As EventArgs)
+
+        If sltfindbar IsNot Nothing Then
+
+            Limpiar()
+
+            Dim tagwatcher_ = BuscaDocumento(Of ConstructorCliente)(sltfindbar.Value)
+
+            If tagwatcher_.ObjectReturned IsNot Nothing Then
+
+                OperacionGenerica = tagwatcher_.ObjectReturned : Statements.ObjectSession = OperacionGenerica
+
+                If OperacionGenerica IsNot Nothing Then
+
+                    Session("IsEditing") = True
+
+                    DespuesBuquedaGeneralConDatos()
+
+                Else
+
+                    DespuesBuquedaGeneralSinDatos()
+
+                End If
+
+            End If
+
+        End If
+
+    End Sub
+
+    Public Overrides Sub DespuesBuquedaGeneralConDatos()
+
+        s_SeleccionarDomicilio.Checked = True
+
+        s_EditarDomicilio.Checked = True
+
+        VerificaCheckDomicilio(2)
+
+    End Sub
+
+    Public Overrides Sub DespuesBuquedaGeneralSinDatos()
+
+    End Sub
+
+
+    'EVENTOS DE MANTENIMIENTO
+    Public Overrides Sub LimpiaSesion()
+
+        Session("_empresa") = Nothing
+        Session("isEditing") = Nothing
+        Statements.ObjectSession = Nothing
+        Session("_empresasTemporal") = Nothing
+        Session("_secDomicilio") = Nothing
+
+    End Sub
+
+    Public Overrides Sub Limpiar()
+
+        i_Cve_Empresa.Value = Nothing
+        i_Cve_Empresa.Text = Nothing
+        t_RFC.Value = Nothing
+        t_TaxID.Value = Nothing
+        t_CURP.Value = Nothing
+        t_Calle.Value = Nothing
+        t_NumeroExt.Value = Nothing
+        t_NumeroInt.Value = Nothing
+        '.Attribute(CamposDomicilio.CA_NUMERO_EXT_INT).Valor = Nothing
+        t_CP.Value = Nothing
+        t_Colonia.Value = Nothing
+        '.Attribute(CamposDomicilio.CA_LOCALIDAD).Valor = Nothing
+        t_Ciudad.Value = Nothing
+        '.Attribute(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA).Valor = Nothing
+        '.Attribute(CamposDomicilio.CA_ENTIDAD_MUNICIPIO).Valor = Nothing
+        '.Attribute(CamposDomicilio.CA_CVE_PAIS).Valor = Nothing
+        t_Pais.Value = Nothing
+        s_SeleccionarDomicilio.Checked = False : s_EditarDomicilio.Checked = False
+
+        _cataduanasdefecto.DataSource = Nothing
+
+        LimpiaSesion()
+
+    End Sub
+
+#End Region
+
+#Region "████████████████  QUINTA CAPA  █████████       Reglas locales         ██████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██    Pendientes ( al 07/05/2022 )                                                                ██
+    '    ██      1. Mejorar la carga de los dropdowns ( hace las consultas en cada postback)               ██
+    '    ██      2. Completar el caso de uso de inserción cuando se reutilice una empresa y domicilio      ██
+    '    ██      3. Completar la carga de datos del CRUD ( el resto de las secciones )                     ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+
+    Protected Sub CambioTipoEmpresa(ByVal sender As Object, ByVal e As EventArgs)
+
+        If sender.Checked Then 'Extranjera
+
+            t_CURP.Enabled = False
+
+        Else 'Nacional
+
+            t_CURP.Enabled = True
+
+        End If
+
+    End Sub
+
+    Protected Sub s_EditarDomicilio_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+
+
+    End Sub
+
+
+    Protected Sub s_SeleccionarDomicilio_CheckedChanged(sender As Object, e As EventArgs)
+
+        VerificaCheckDomicilio()
+
+    End Sub
+
+    Sub VerificaCheckDomicilio(Optional ByVal opcion_ As Int32 = 1)
+
+        Select Case opcion_
+
+            Case 1 'Defaults
+
+                If s_SeleccionarDomicilio.Checked Then
+                    s_EditarDomicilio.Enabled = True
+                    t_Calle.Visible = False
+                    t_NumeroExt.Visible = False
+                    t_NumeroInt.Visible = False
+                    t_CP.Visible = False
+                    t_Colonia.Visible = False
+                    t_Ciudad.Visible = False
+                    t_Pais.Visible = False
+                    s_Domicilios.Visible = True
+                    s_EditarDomicilio.Enabled = True
+
+                Else
+
+                    t_Calle.Visible = True
+                    t_NumeroExt.Visible = True
+                    t_NumeroInt.Visible = True
+                    t_CP.Visible = True
+                    t_Colonia.Visible = True
+                    t_Ciudad.Visible = True
+                    t_Pais.Visible = True
+                    s_Domicilios.Visible = False
+                    s_EditarDomicilio.Enabled = False
+                End If
+
+            Case 2
+
+                If s_SeleccionarDomicilio.Checked Then
+                    s_EditarDomicilio.Enabled = True
+                    t_Calle.Visible = True
+                    t_NumeroExt.Visible = True
+                    t_NumeroInt.Visible = True
+                    t_CP.Visible = True
+                    t_Colonia.Visible = True
+                    t_Ciudad.Visible = True
+                    t_Pais.Visible = True
+                    s_Domicilios.Visible = False
+
+                Else
+                    s_EditarDomicilio.Enabled = False
+                    t_Calle.Visible = False
+                    t_NumeroExt.Visible = False
+                    t_NumeroInt.Visible = False
+                    t_CP.Visible = False
+                    t_Colonia.Visible = False
+                    t_Ciudad.Visible = False
+                    t_Pais.Visible = False
+                    s_Domicilios.Visible = True
+
+                End If
+
+        End Select
+
+    End Sub
+
+    Protected Sub s_Habilitado_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub i_Cve_Empresa_TextChanged(sender As Object, e As EventArgs)
+
+        Dim lista_ As Dictionary(Of Object, Object) =
+            _controladorEmpresas.BuscarEmpresas(Session("_empresasTemporal"),
+                           i_Cve_Empresa.Text)
+
+        i_Cve_Empresa.DataSource = lista_
+
+    End Sub
+
+    Protected Sub i_Cve_Empresa_Click(sender As Object, e As EventArgs)
+
+        With s_Domicilios
+
+            .Options.Clear()
+
+            Dim empresasTemporales_ As List(Of Empresa) = Session("_empresasTemporal")
+
+            If empresasTemporales_ IsNot Nothing And
+                Not IsNumeric(empresasTemporales_) Then
+
+                If i_Cve_Empresa.Value <> "" Then
+
+                    If IsNumeric(i_Cve_Empresa.Value) Then
+
+                        If i_Cve_Empresa.Value <> -1 Then
+
+                            Dim result_ = From data In empresasTemporales_
+                                          Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
+                                          Select data.rfc, data.curp
+
+                            If result_.Count > 0 Then
+
+                                t_RFC.Value = result_(0).rfc
+
+                                t_CURP.Value = result_(0).curp
+
+                                .DataSource = _controladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
+                                                               empresasTemporales_)
+                            End If
+
+                        End If
+
+                    End If
+
+                End If
+
+            Else
+
+                .Options.Clear()
+
+                .DataSource = Nothing
+
+                t_RFC.Value = Nothing
+
+                t_CURP.Value = Nothing
+
+            End If
+
+        End With
+
+    End Sub
+
+    Protected Sub _cataduanasdefecto_Click(sender As Object, e As EventArgs)
+
+        'MsgBox(_cataduanasdefecto.rowId(0))
+
+    End Sub
+
+    Protected Sub frmPrincipal_CheckedChanged(sender As Object, e As EventArgs)
+
+        If frmPrincipal.Capped Then
+
+            Preferencias(MiSesion, PaginaReciente, crearSiNoExiste_:=True, Request.RawUrl)
+
+        Else
+
+            Preferencias(MiSesion, eliminar_:=True)
+
+        End If
+
+    End Sub
+
+#End Region
+
+#Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
+    '    ██████   Controladores utilizados                     Documentos por coding para MongoDB      ██████
+    '    ██████    1.ControladorEmpresas                        1. En Empresa:                         ██████
+    '    ██████    2.ControladorRecursosAduanales                  a). Domicilios                      ██████
+    '    ██████    3.ControladorSecuencias                         b). Contactos                       ██████
+    '    ██████                                                                                        ██████
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+
+    Public Function BuscarRecursosAduanales(ByVal tipoRecurso_ As ControladorRecursosAduanales.TiposRecurso) As ControladorRecursosAduanales
+
+        Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+        Dim operationsDB_ = iEnlace_.GetMongoCollection(Of ControladorRecursosAduanales)("Reg007RecursosAduanales")
+
+        Dim recursosAduanales_ As ControladorRecursosAduanales
+
+        Dim filter_ = Builders(Of ControladorRecursosAduanales).Filter.Eq(Function(x) x.tiporecurso, tipoRecurso_)
+
+        Dim recursos_ As New List(Of ControladorRecursosAduanales)
+
+        Dim listEmpresas_ As New Dictionary(Of Object, Object)
+
+        recursos_ = operationsDB_.Find(filter_).ToList()
+
+        recursosAduanales_ = recursos_(0)
+
+        Return recursosAduanales_
+
+    End Function
+
+    Private Function NuevaEmpresa(Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+        Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Empresa)("Glo007Empresas")
+
+        Dim tagwatcher_ As New TagWatcher
+
+        Dim curp_ As New curp With
+                                {.curp = t_CURP.Value,
+                                 ._idcurp = ObjectId.GenerateNewId
+                                }
+
+        Dim domicilio_ As New domicilio With
+                                {._iddomicilio = ObjectId.GenerateNewId,
+                                 .sec = 1,
+                                 .calle = t_Calle.Value,
+                                 .numeroexterior = t_NumeroExt.Value,
+                                 .numerointerior = t_NumeroInt.Value,
+                                 .colonia = t_Colonia.Value,
+                                 .ciudad = t_Ciudad.Value,
+                                 .pais = t_Pais.Value,
+                                 .estadorepublica = t_Estado.Value,
+                                 .archivado = False}
+
+        Dim empresa_ As New Empresa(i_Cve_Empresa.Text,
+                            New rfc With {.rfc = t_RFC.Value, ._idrfc = ObjectId.GenerateNewId},
+                            IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica),
+                            IIf(s_Extranjero.Checked, TiposEmpresa.Extranjera, TiposEmpresa.Nacional),
+                            IIf(domicilio_ IsNot Nothing, domicilio_, Nothing),
+                            IIf(curp_ IsNot Nothing, curp_, Nothing))
+
+        Dim result_ = operationsDB_.InsertOneAsync(session_, empresa_).ConfigureAwait(False)
+
+        With tagwatcher_
+
+            .SetOK()
+
+            .ObjectReturned = empresa_
+
+        End With
+
+        Return tagwatcher_
+
+    End Function
+
+    Private Function ActualizaEmpresa(ByVal empresa_ As Empresa,
+                               Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Dim tagwatcher_ As New TagWatcher
+
+        If empresa_ IsNot Nothing Then
+
+            With empresa_
+                '._id = idEmpresa_,
+                .estado = 1
+                .abierto = True
+                ._idempresa = 0
+                ._idempresakb = 0
+                .razonsocial = i_Cve_Empresa.Text
+                '._idrfc = t_RFC.
+
+                If (.rfc <> t_RFC.Value) Then
+
+                    Dim newRFCId_ As ObjectId = ObjectId.GenerateNewId
+                    .rfc = t_RFC.Value
+                    ._idrfc = newRFCId_
+                    .rfcs.Add(New rfc With
+                          {._idrfc = newRFCId_,
+                           .rfc = t_RFC.Value
+                          })
+
+                End If
+
+                If (.curp <> t_CURP.Value) Then
+
+                    Dim newCURPId_ As ObjectId = ObjectId.GenerateNewId
+                    .curp = t_CURP.Value
+                    ._idcurp = newCURPId_
+                    .curps.Add(New curp With
+                           {._idcurp = newCURPId_,
+                            .curp = t_CURP.Value
+                           })
+
+                End If
+
+                .tipoempresa = IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)
+                .tipopersona = IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)
+
+                If s_EditarDomicilio.Checked Then
+
+                    Dim miSecuenciaDomicilio_ As Int32 = Session("_secDomicilio")
+
+                    With .domicilios(miSecuenciaDomicilio_)
+                        .calle = t_Calle.Value
+                        .numeroexterior = t_NumeroExt.Value
+                        .numerointerior = t_NumeroInt.Value
+                        .colonia = t_Colonia.Value
+                        .ciudad = t_Ciudad.Value
+                        .pais = t_Pais.Value
+                        .estadorepublica = t_Estado.Value
+                        .archivado = False
+                    End With
+
+                Else 'Domicilio nuevo
+                    .domicilios.Add(
+                    New domicilio With
+                        {._iddomicilio = ObjectId.GenerateNewId,
+                          .sec = empresa_.domicilios.Count + 1,
+                          .calle = t_Calle.Value,
+                          .numeroexterior = t_NumeroExt.Value,
+                          .numerointerior = t_NumeroInt.Value,
+                          .colonia = t_Colonia.Value,
+                          .ciudad = t_Ciudad.Value,
+                          .pais = t_Pais.Value,
+                          .estadorepublica = t_Estado.Value,
+                          .archivado = False
+                        }
+                       )
+
+                End If
+
+                '.girocomercial = "Comercializadora"
+                '._idgrupocomercial = ObjectId.GenerateNewId
+                '.contactos = New List(Of contacto) _
+                '                  From {New contacto With
+                '                            {
+                '                             ._idejecutivo = ObjectId.GenerateNewId,
+                '                             .nombrecompleto = "Pedro Bautista",
+                '                             .archivado = False
+                '                            }
+                '                       }
+                '.unidadesnegocios = New List(Of unidadnegocio) _
+                '                         From {
+                '                               New unidadnegocio With {
+                '                                                       ._idunidadnegocio = ObjectId.GenerateNewId,
+                '                                                       .nombreunidad = "Importaciones",
+                '                                                       .archivado = False
+                '                                                      }
+                '                              }
+
+                '.regimenfiscal = New List(Of regimenfiscal) _
+                '                      From {New regimenfiscal With {.id = 1456,
+                '                                                    .regimen = "Distribucion de bebidas y alimentos",
+                '                                                    .archivado = False}
+                '}
+
+
+            End With
+
+            Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Empresa)("Glo007Empresas")
+
+            Dim filter_ = Builders(Of Empresa).Filter.Eq(Function(x) x._id, empresa_._id)
+
+            Dim setStructureOfSubs_ = Builders(Of Empresa).Update.
+                                 Set(Function(x) x.razonsocial, empresa_.razonsocial).
+                                 Set(Function(x) x.rfc, empresa_.rfc).
+                                 Set(Function(x) x.curp, empresa_.curp).
+                                 Set(Function(x) x.tipopersona, empresa_.tipopersona).
+                                 Set(Function(x) x.tipoempresa, empresa_.tipoempresa).
+                                 AddToSet("rfcs", New rfc With {.rfc = empresa_.rfc, ._idrfc = empresa_._idrfc}).
+                                 AddToSet("curps", New curp With {.curp = empresa_.curp, ._idcurp = empresa_._idcurp}).
+                                 AddToSet(Of domicilio)("domicilios", empresa_.domicilios(Session("_secDomicilio")))
+
+            Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_).Result
+
+            With tagwatcher_
+
+                If result_.MatchedCount <> 0 Then
+
+                    .SetOK()
+
+                ElseIf result_.UpsertedId IsNot Nothing Then
+
+                    .SetOK()
+
+                Else
+
+                    .SetError(Me, "No se generaron cambios")
+
+                End If
+
+            End With
+
+            Return tagwatcher_
+
+        Else
+
+            tagwatcher_.SetError(Me, "No existe una instancia de la empresa")
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
+    Protected Sub sc_claveAduanaSeccion_Click()
+
+        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+
+        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+                                Where data.archivado = False And data.estado = 1
+                                Select data.modalidad, data.ciudad, data._idaduanaseccion
+
+        If aduanasSecciones_.Count > 0 Then
+
+            Dim dataSource1_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To aduanasSecciones_.Count - 1
+
+                dataSource1_.Add(New SelectOption With
+                             {.Value = aduanasSecciones_(index_)._idaduanaseccion,
+                              .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
+
+            Next
+
+            sc_claveAduanaSeccion.DataSource = dataSource1_
+
+        End If
+
+    End Sub
+
+    Protected Sub sc_patenteAduanal_Click()
+
+        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+
+        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+                                Where data.archivado = False And data.estado = 1
+                                Select data.modalidad, data.ciudad, data._idaduanaseccion
+
+        Dim patentes_ = From data In recursos_.patentes
+                        Where data.archivado = False And data.estado = 1
+                        Select data.agenteaduanal, data._idpatente
+
+        If patentes_.Count > 0 Then
+
+            Dim dataSource1_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To patentes_.Count - 1
+
+                dataSource1_.Add(New SelectOption With
+                             {.Value = patentes_(index_)._idpatente,
+                              .Text = patentes_(index_)._idpatente.ToString & "|" & patentes_(index_).agenteaduanal})
+
+            Next
+
+            sc_patenteAduanal.DataSource = dataSource1_
+
+        End If
+
+    End Sub
+
+#End Region
+
+End Class

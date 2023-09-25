@@ -1,0 +1,21 @@
+C:\svn\SVN QA\Namespaces\Gsol.Organismo64.1.0.0.1.dll
+C:\svn\SVN QA\Namespaces\Gsol.Organismo64.1.0.0.1.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.pdb
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Organismo64.1.0.0.1.dll
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.Organismo64.1.0.0.1.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Organismo64.1.0.0.1.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Organismo64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_1_stdOrganismo64_dll\Organismo64\Organismo64\obj\Release\Gsol.Organismo64.1.0.0.1.pdb

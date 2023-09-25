@@ -1,0 +1,11 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\bin\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\bin\Release\TagWatcher64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\bin\Release\TagWatcher64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\obj\Release\TagWatcherEventMonitor64.vbprojResolveAssemblyReference.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\obj\Release\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\obj\Release\TagWatcherEventMonitor64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\obj\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\Wma.Exceptions\1_0_staTagWatcherEventMonitor_dll\TagWatcherEventMonitor64\obj\Release\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.pdb
+C:\svn\SVN QA\Componentes\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.dll
+C:\svn\SVN QA\Componentes\Wma.Exceptions.TagWatcherEventMonitor64.0.0.0.0.pdb

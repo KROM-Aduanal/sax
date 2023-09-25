@@ -1,0 +1,28 @@
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IAtributo.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEvento.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IAtributo.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IAtributo.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEvento.1.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\bin\Debug\Gsol.IEvento.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Gsol.IEntidad.1.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Gsol.IEntidad.1.0.0.0.xml
+C:\SVN\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Gsol.IEntidad.1.0.0.0.pdb
+C:\Sax\v1.0\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEntidad.1.0.0.0.dll
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbprojAssemblyReference.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Resources.resources
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbproj.GenerateResource.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbproj.CoreCompileInputs.cache
+C:\Sax\v1.0\vb\esp\Src\Apps\Core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Gsol.IEntidad.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\Libs\Bin\Apps\Core\cmf\Gsol.IEntidad.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\IEntidad.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol\1_0_stdIEntidad_dll\IEntidad\IEntidad\obj\Debug\Gsol.IEntidad.1.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.IEntidad.1.0.0.0.dll

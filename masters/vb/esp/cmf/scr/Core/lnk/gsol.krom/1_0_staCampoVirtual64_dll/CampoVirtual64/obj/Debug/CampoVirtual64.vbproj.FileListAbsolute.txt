@@ -1,0 +1,17 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbproj.GenerateResource.Cache
+C:\svn\SVN QA\Namespaces\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN QA\Namespaces\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\gsol.krom.CampoVirtual64.0.0.0.0.dll
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbproj.CoreCompileInputs.cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbproj.CopyComplete
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbprojAssemblyReference.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.CampoVirtual64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\Resources.resources
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbproj.GenerateResource.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbproj.CoreCompileInputs.cache
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\gsol.krom.CampoVirtual64.0.0.0.0.dll
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\gsol.krom.CampoVirtual64.0.0.0.0.pdb
+D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_staCampoVirtual64_dll\CampoVirtual64\obj\Debug\CampoVirtual64.vbprojAssemblyReference.cache

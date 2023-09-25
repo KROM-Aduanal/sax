@@ -1,0 +1,32 @@
+<Structure>
+<Region Name="MainForm">
+   <Region Name="FrameTop">
+     <MainMenu>
+	 </MainMenu>
+   <Region>
+   <Region Name="FrameBottom">
+     <Region Name="LeftMenu">
+		 <NaviBar>
+			<NaviBan = Name="Main">	
+			    <TreeView root="Main Node">
+
+					<TreeNode Name="Option1">
+					   <TreeNode Name="Option1.1"/>
+					   <TreeNode Name="Option1.2"/>
+					   <TreeNode Name="Option1.3"/>
+				    </TreeNode>
+				      
+				    <TreeNode Name="Option2"/>
+				   
+				    <TreeNode Name="Option3"/>
+				   
+				</TreeView>
+			</NaviBan>
+		</NaviBar>
+	 </Region> 
+	 <Region Name="RightDisplay">
+	 </Region>
+   <Region>
+
+</Region>
+</Structure>

@@ -1,0 +1,7 @@
+C:\SVN\SVN QA\Namespaces\Gsol.Web.Gsol.DescargarDocumentos64.0.0.0.0.dll
+C:\SVN\SVN QA\Namespaces\Gsol.Web.Gsol.DescargarDocumentos64.0.0.0.0.pdb
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdDescargaDocumentos64_dll\DescargarDocumentos\obj\Debug\DescargarDocumentos.vbprojResolveAssemblyReference.cache
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdDescargaDocumentos64_dll\DescargarDocumentos\obj\Debug\Gsol.Web.Gsol.Resources.resources
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdDescargaDocumentos64_dll\DescargarDocumentos\obj\Debug\DescargarDocumentos.vbproj.GenerateResource.Cache
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdDescargaDocumentos64_dll\DescargarDocumentos\obj\Debug\Gsol.Web.Gsol.DescargarDocumentos64.0.0.0.0.dll
+C:\SVN\SVN Proyectos\PRT01-PM001-TI2020 - NameSpaces Web\Gsol\1_0_stdDescargaDocumentos64_dll\DescargarDocumentos\obj\Debug\Gsol.Web.Gsol.DescargarDocumentos64.0.0.0.0.pdb

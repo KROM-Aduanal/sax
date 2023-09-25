@@ -1,0 +1,12 @@
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\bin\Debug\KromAgentApplication64.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\bin\Debug\KromAgentApplication64.pdb
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\bin\Debug\KromAgentApplication64.xml
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\obj\Debug\KromAgentApplication64.svchostka.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\obj\Debug\KromAgentApplication64.Resources.resources
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\obj\Debug\KromAgentApplication64.vbproj.GenerateResource.Cache
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\obj\Debug\KromAgentApplication64.exe
+C:\svn\SVN Proyectos\PRT01-PM000-TI2013 - Namespaces\gsol.tools\1_0_staKromAgent_exe\KromAgentApplication\KromAgentApplication64\obj\Debug\KromAgentApplication64.pdb
+C:\svn\SVN QA\Aplicacion\KromAgentApplication64.exe
+C:\svn\SVN QA\Aplicacion\KromAgentApplication64.pdb
+C:\svn\SVN QA\Namespaces\KromAgentApplication64.exe
+C:\svn\SVN QA\Namespaces\KromAgentApplication64.pdb
