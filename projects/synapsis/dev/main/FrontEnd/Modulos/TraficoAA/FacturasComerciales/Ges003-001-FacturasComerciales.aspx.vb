@@ -701,186 +701,186 @@ Public Class Ges003_001_FacturasComerciales
     Protected Sub dbcNumFacturaCOVE_Click(sender As Object, e As EventArgs)
 
 
-        dbcNumFacturaCOVE.ValueDetail = "Maná"
+        dbcNumFacturaCOVE.ValueDetail = "COVE"
 
-        'Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Internacional
+        ''Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Internacional
 
-        'Dim taxids_ As New TaxId64 _
-        '              With
-        '              {
-        '               .idtaxid = ObjectId.GenerateNewId,
-        '               .sec = 1,
-        '               .taxid = "TAXID000002",
-        '               .estado = 1,
-        '               .archivado = False
-        '              }
+        ''Dim taxids_ As New TaxId64 _
+        ''              With
+        ''              {
+        ''               .idtaxid = ObjectId.GenerateNewId,
+        ''               .sec = 1,
+        ''               .taxid = "TAXID000002",
+        ''               .estado = 1,
+        ''               .archivado = False
+        ''              }
 
-        'Dim bus_ As New Bus64 _
-        '           With
-        '           {
-        '               .idunidadnegocio = ObjectId.GenerateNewId,
-        '               .sec = 1,
-        '               .unidadnegocio = "unidadPrueba",
-        '               .estado = 1,
-        '               .archivado = False
-        '           }
+        ''Dim bus_ As New Bus64 _
+        ''           With
+        ''           {
+        ''               .idunidadnegocio = ObjectId.GenerateNewId,
+        ''               .sec = 1,
+        ''               .unidadnegocio = "unidadPrueba",
+        ''               .estado = 1,
+        ''               .archivado = False
+        ''           }
 
-        'Dim domicilios_ As New Domicilio64 _
+        ''Dim domicilios_ As New Domicilio64 _
+        ''                  With
+        ''                  {
+        ''                   ._iddomicilio = ObjectId.GenerateNewId,
+        ''                   .sec = 1,
+        ''                   .calle = "2-chome",
+        ''                   .numeroexterior = "14 - 21",
+        ''                   .numerointerior = "s/N",
+        ''                   .ciudad = "Shinyokohama",
+        ''                   .colonia = Nothing,
+        ''                   .codigopostal = "222-0033",
+        ''                   .entidadfederativa = "Kanagawa",
+        ''                   .pais = "Japón",
+        ''                   .estado = 1,
+        ''                   .archivado = False
+        ''                  }
+
+
+        ''Dim contactosList_ As New Contacto64 _
+        ''                      With
+        ''                      {
+        ''                        .idcontacto = ObjectId.GenerateNewId,
+        ''                        .sec = 1,
+        ''                        .nombrecompleto = "Pedro Bautista Méndez",
+        ''                        .correoelectronico = "pedro.bautista@correo.com",
+        ''                        .telefono = "2291410473",
+        ''                        .estado = 1,
+        ''                        .archivado = False
+        ''                      }
+
+        ''Dim empresaInternacional_ As IEmpresaInternacional64 = New EmpresaInternacional64 _
+        ''                                                  With
+        ''                                                  {
+        ''                                                   ._id = ObjectId.GenerateNewId,
+        ''                                                   ._idempresa = 4,
+        ''                                                   .razonsocial = "DIGIMÓN DIGITAL MONSTERS",
+        ''                                                   .razonsocialcorto = "DIGIMÓN",
+        ''                                                   .abreviatura = "DIGIMÓN",
+        ''                                                   .nombrecomercial = "MOUNSTROUS DIGITALES",
+        ''                                                   .idpais = ObjectId.GenerateNewId,
+        ''                                                   .pais = "JAPÓN",
+        ''                                                   .domicilios = Nothing,
+        ''                                                   .girocomercial = "FRANQUICIAS KIDS",
+        ''                                                   ._idgrupocomercial = Nothing,
+        ''                                                   .contactos = Nothing,
+        ''                                                   .taxids = New List(Of TaxId64) From {taxids_},
+        ''                                                   ._idbu = Nothing,
+        ''                                                   .bu = Nothing,
+        ''                                                   .bus = Nothing,
+        ''                                                   .abierto = True,
+        ''                                                   .estado = 1,
+        ''                                                   .archivado = False
+        ''                                                  }
+
+
+        ''_icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
+
+        ''Dim pruebaInternacional = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
+
+        ''Dim actualizarEmpresaInternacional = _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
+
+
+
+        ''Dim pruebaInternacional = _icontroladorEmpresas64.BuscarEmpresas(New ObjectId("65088d535d1a7b075900cbb3"))
+
+        '' Dim prueba = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
+
+        '' _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
+
+        'Dim domicilio_ As New Domicilio64 _
         '                  With
         '                  {
         '                   ._iddomicilio = ObjectId.GenerateNewId,
         '                   .sec = 1,
-        '                   .calle = "2-chome",
-        '                   .numeroexterior = "14 - 21",
-        '                   .numerointerior = "s/N",
-        '                   .ciudad = "Shinyokohama",
-        '                   .colonia = Nothing,
-        '                   .codigopostal = "222-0033",
-        '                   .entidadfederativa = "Kanagawa",
-        '                   .pais = "Japón",
+        '                   .calle = "Río de la Platas",
+        '                   .numeroexterior = 236,
+        '                   .numerointerior = 2,
+        '                   .ciudad = "Veracruz",
+        '                   .colonia = "Lomas 4",
+        '                   .codigopostal = "91809",
+        '                   .entidadfederativa = "Veracruz",
+        '                   .pais = "México",
         '                   .estado = 1,
         '                   .archivado = False
         '                  }
 
 
-        'Dim contactosList_ As New Contacto64 _
+
+        'Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Nacional
+
+        'Dim rfcsList As New Rfc64 _
+        '                With
+        '                {
+        '                    .idrfc = New ObjectId("650b7977cf6dbc89f4a2d5cc"),
+        '                    .sec = 1,
+        '                    .rfc = "ERI660315SX5",
+        '                    .estado = 1,
+        '                    .archivado = False
+        '                }
+
+        'Dim curpList As New Curp64 _
+        '                With
+        '                {
+        '                    .idcurp = ObjectId.GenerateNewId,
+        '                    .sec = 1,
+        '                    .curp = "RARR920216MVZMSS01",
+        '                    .estado = 1,
+        '                    .archivado = False
+        '                }
+
+        'Dim regimenFiscal_ As New RegimenFiscal64 _
         '                      With
         '                      {
-        '                        .idcontacto = ObjectId.GenerateNewId,
-        '                        .sec = 1,
-        '                        .nombrecompleto = "Pedro Bautista Méndez",
-        '                        .correoelectronico = "pedro.bautista@correo.com",
-        '                        .telefono = "2291410473",
+        '                        .idregimenfiscal = New ObjectId("650b810e6c54a773816c886c"),
+        '                        ._sec = 1,
+        '                        .regimenfiscal = "Contribuyente",
         '                        .estado = 1,
         '                        .archivado = False
         '                      }
 
-        'Dim empresaInternacional_ As IEmpresaInternacional64 = New EmpresaInternacional64 _
-        '                                                  With
-        '                                                  {
-        '                                                   ._id = ObjectId.GenerateNewId,
-        '                                                   ._idempresa = 4,
-        '                                                   .razonsocial = "DIGIMÓN DIGITAL MONSTERS",
-        '                                                   .razonsocialcorto = "DIGIMÓN",
-        '                                                   .abreviatura = "DIGIMÓN",
-        '                                                   .nombrecomercial = "MOUNSTROUS DIGITALES",
-        '                                                   .idpais = ObjectId.GenerateNewId,
-        '                                                   .pais = "JAPÓN",
-        '                                                   .domicilios = Nothing,
-        '                                                   .girocomercial = "FRANQUICIAS KIDS",
-        '                                                   ._idgrupocomercial = Nothing,
-        '                                                   .contactos = Nothing,
-        '                                                   .taxids = New List(Of TaxId64) From {taxids_},
-        '                                                   ._idbu = Nothing,
-        '                                                   .bu = Nothing,
-        '                                                   .bus = Nothing,
-        '                                                   .abierto = True,
-        '                                                   .estado = 1,
-        '                                                   .archivado = False
-        '                                                  }
+
+        'Dim empresaNacional_ As IEmpresaNacional64 = New EmpresaNacional64 _
+        '                                            With
+        '                                            {
+        '                                                 ._id = New ObjectId("650b86da85e44844fdd7c5d7"),
+        '                                                 ._idempresa = 2,
+        '                                                 ._idempresakb = Nothing,
+        '                                                 .razonsocial = "Fomento Económico Mexicano SA DE CV",
+        '                                                 .razonsocialcorto = "FEMSA MANÁ",
+        '                                                 .abreviatura = "FEMSA",
+        '                                                 .nombrecomercial = "FEMSA SA",
+        '                                                 .domicilios = New List(Of Domicilio64) From {domicilio_},
+        '                                                 .girocomercial = Nothing,
+        '                                                 ._idgrupocomercial = Nothing,
+        '                                                 .contactos = Nothing,
+        '                                                 ._idrfc = rfcsList.idrfc,
+        '                                                 .rfc = rfcsList.rfc,
+        '                                                 .rfcs = New List(Of Rfc64) From {rfcsList},
+        '                                                 ._idcurp = curpList.idcurp,
+        '                                                 .curp = curpList.curp,
+        '                                                 .curps = New List(Of Curp64) From {curpList},
+        '                                                 .regimenfiscal = New List(Of RegimenFiscal64) From {regimenFiscal_},
+        '                                                 .tipopersona = IEmpresaNacional64.TiposPersona64.Fisica,
+        '                                                 .archivado = False,
+        '                                                 .estado = 1,
+        '                                                 .abierto = True
+        '                                            }
 
 
         '_icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
 
-        'Dim pruebaInternacional = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
+        '' Dim pruebaEmpresaNacional = _icontroladorEmpresas64.NuevaEmpresa(empresaNacional_)
 
-        'Dim actualizarEmpresaInternacional = _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
+        'Dim pruebaNacionalActualizar = _icontroladorEmpresas64.ActualizaEmpresa(empresaNacional_)
 
-
-
-        'Dim pruebaInternacional = _icontroladorEmpresas64.BuscarEmpresas(New ObjectId("65088d535d1a7b075900cbb3"))
-
-        ' Dim prueba = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
-
-        ' _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
-
-        Dim domicilio_ As New Domicilio64 _
-                          With
-                          {
-                           ._iddomicilio = ObjectId.GenerateNewId,
-                           .sec = 1,
-                           .calle = "Río de la Platas",
-                           .numeroexterior = 236,
-                           .numerointerior = 2,
-                           .ciudad = "Veracruz",
-                           .colonia = "Lomas 4",
-                           .codigopostal = "91809",
-                           .entidadfederativa = "Veracruz",
-                           .pais = "México",
-                           .estado = 1,
-                           .archivado = False
-                          }
-
-
-
-        Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Nacional
-
-        Dim rfcsList As New Rfc64 _
-                        With
-                        {
-                            .idrfc = New ObjectId("650b7977cf6dbc89f4a2d5cc"),
-                            .sec = 1,
-                            .rfc = "ERI660315SX5",
-                            .estado = 1,
-                            .archivado = False
-                        }
-
-        Dim curpList As New Curp64 _
-                        With
-                        {
-                            .idcurp = ObjectId.GenerateNewId,
-                            .sec = 1,
-                            .curp = "RARR920216MVZMSS01",
-                            .estado = 1,
-                            .archivado = False
-                        }
-
-        Dim regimenFiscal_ As New RegimenFiscal64 _
-                              With
-                              {
-                                .idregimenfiscal = New ObjectId("650b810e6c54a773816c886c"),
-                                ._sec = 1,
-                                .regimenfiscal = "Contribuyente",
-                                .estado = 1,
-                                .archivado = False
-                              }
-
-
-        Dim empresaNacional_ As IEmpresaNacional64 = New EmpresaNacional64 _
-                                                    With
-                                                    {
-                                                         ._id = New ObjectId("650b86da85e44844fdd7c5d7"),
-                                                         ._idempresa = 2,
-                                                         ._idempresakb = Nothing,
-                                                         .razonsocial = "Fomento Económico Mexicano SA DE CV",
-                                                         .razonsocialcorto = "FEMSA MANÁ",
-                                                         .abreviatura = "FEMSA",
-                                                         .nombrecomercial = "FEMSA SA",
-                                                         .domicilios = New List(Of Domicilio64) From {domicilio_},
-                                                         .girocomercial = Nothing,
-                                                         ._idgrupocomercial = Nothing,
-                                                         .contactos = Nothing,
-                                                         ._idrfc = rfcsList.idrfc,
-                                                         .rfc = rfcsList.rfc,
-                                                         .rfcs = New List(Of Rfc64) From {rfcsList},
-                                                         ._idcurp = curpList.idcurp,
-                                                         .curp = curpList.curp,
-                                                         .curps = New List(Of Curp64) From {curpList},
-                                                         .regimenfiscal = New List(Of RegimenFiscal64) From {regimenFiscal_},
-                                                         .tipopersona = IEmpresaNacional64.TiposPersona64.Fisica,
-                                                         .archivado = False,
-                                                         .estado = 1,
-                                                         .abierto = True
-                                                    }
-
-
-        _icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
-
-        ' Dim pruebaEmpresaNacional = _icontroladorEmpresas64.NuevaEmpresa(empresaNacional_)
-
-        Dim pruebaNacionalActualizar = _icontroladorEmpresas64.ActualizaEmpresa(empresaNacional_)
-
-        DisplayMessage("Revolución de Amor", StatusMessage.Info)
+        DisplayMessage("Maná", StatusMessage.Info)
 
     End Sub
 
