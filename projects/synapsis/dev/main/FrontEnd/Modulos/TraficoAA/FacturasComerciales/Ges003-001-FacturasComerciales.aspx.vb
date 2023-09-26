@@ -880,7 +880,7 @@ Public Class Ges003_001_FacturasComerciales
 
         'Dim pruebaNacionalActualizar = _icontroladorEmpresas64.ActualizaEmpresa(empresaNacional_)
 
-        DisplayMessage("Revolucíón de amor", StatusMessage.Info)
+        DisplayMessage("Maná 2024", StatusMessage.Info)
 
     End Sub
 
