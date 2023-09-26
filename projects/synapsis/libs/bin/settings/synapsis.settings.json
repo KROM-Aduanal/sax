@@ -503,38 +503,7 @@
             "ip": "localhost",
             "port": "default"
         },
-        {
-            "_id": 2,
-            "info": "bigdataops Cluster Mongo",
-            "url": null,
-            "ip": "cluster1-shard-00-00.eyzwc.mongodb.net:27017,cluster1-shard-00-01.eyzwc.mongodb.net:27017,cluster1-shard-00-02.eyzwc.mongodb.net:27017",
-            "stringoptions": "test?ssl=true&replicaSet=atlas-net7mh-shard-0&authSource=admin&retryWrites=true&w=majority",
-            "port": null
-        },
-        {
-            "_id": 3,
-            "info": "bigdataglobals Cluster Mongo",
-            "url": null,
-            "ip": "cluster1-shard-00-00.eyzwc.mongodb.net:27017,cluster1-shard-00-01.eyzwc.mongodb.net:27017,cluster1-shard-00-02.eyzwc.mongodb.net:27017",
-            "stringoptions": "test?ssl=true&replicaSet=atlas-net7mh-shard-0&authSource=admin&retryWrites=true&w=majority",
-            "port": "27017"
-        },
-        {
-            "_id": 4,
-            "info": "bigdataodfs Cluster Mongo",
-            "url": null,
-            "ip": "cluster1-shard-00-00.eyzwc.mongodb.net:27017,cluster1-shard-00-01.eyzwc.mongodb.net:27017,cluster1-shard-00-02.eyzwc.mongodb.net:27017",
-            "stringoptions": "test?ssl=true&replicaSet=atlas-net7mh-shard-0&authSource=admin&retryWrites=true&w=majority",
-            "port": "27017"
-        },
-		{
-            "_id": 12,
-            "info": "bigdatadocs Cluster Mongo",
-            "url": null,
-            "ip": "cluster1-shard-00-00.eyzwc.mongodb.net:27017,cluster1-shard-00-01.eyzwc.mongodb.net:27017,cluster1-shard-00-02.eyzwc.mongodb.net:27017",
-            "stringoptions": "test?ssl=true&replicaSet=atlas-net7mh-shard-0&authSource=admin&retryWrites=true&w=majority",
-            "port": "27017"
-        },
+       
         {
             "_id": 5,
             "info": "bigdataops local Mongo",
@@ -555,22 +524,7 @@
             "url": null,
             "ip": "localhost",
             "port": "3306"
-        },
-        {
-            "_id": 10,
-            "info": "sql server default",
-            "url": null,
-            "ip": "10.66.100.5",
-            "port": null
-        },
-        {
-            "_id": 11,
-            "info": "bigdataops Cluster Mongo",
-            "url": null,
-            "ip": "cluster1-shard-00-00.eyzwc.mongodb.net:27017,cluster1-shard-00-01.eyzwc.mongodb.net:27017,cluster1-shard-00-02.eyzwc.mongodb.net:27017",
-            "stringoptions": "test?ssl=true&replicaSet=atlas-net7mh-shard-0&authSource=admin&retryWrites=true&w=majority",
-            "port": "27017"
-        }
+        }           
     ],
     "environments": [
         {
