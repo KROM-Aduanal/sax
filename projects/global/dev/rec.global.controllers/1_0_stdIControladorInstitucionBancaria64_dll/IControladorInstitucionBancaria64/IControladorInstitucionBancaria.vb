@@ -17,12 +17,15 @@ Public Interface IControladorInstitucionBancaria : Inherits IDisposable
         SinDefinir = 0
         IDS = 1
         IDBANCARIO = 2
-        NUMIDBANCARIA = 3
-        NOMBRECOMERCIAL = 4
-        RAZONSOCIAL = 5
-        DOMICILIOFISCAL = 6
-        ARCHIVADO = 7
-        ESTADO = 8
+        CLAVEUSONUEVO = 3
+        CLAVEUSOBUSCAACTUALIZA = 4
+        NOMBRECOMERCIALNUEVO = 5
+        NOMBRECOMERCIALBUSCAACTUALIZA = 6
+        RAZONSOCIAL = 7
+        DOMICILIOFISCAL = 8
+        METADATOS = 9
+        ARCHIVADO = 10
+        ESTADO = 11
     End Enum
 #End Region
 
@@ -32,7 +35,7 @@ Public Interface IControladorInstitucionBancaria : Inherits IDisposable
 
     Property ModalidadTrabajo As Modalidades
 
-    Property Estado As TagWatcher
+    ReadOnly Property Estado As TagWatcher
 
 
 #End Region
@@ -47,7 +50,7 @@ Public Interface IControladorInstitucionBancaria : Inherits IDisposable
                                    ByVal tokens_ As Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object),
                                    Optional session_ As IClientSessionHandle = Nothing) As TagWatcher
     Function BuscarBancos(ByVal tokens_ As Dictionary(Of CamposBusquedaSimple, Object),
-                          modalidad_ As Modalidades) As List(Of InstitucionBancaria)
+                          modalidad_ As Modalidades) As TagWatcher
 
 #End Region
 

@@ -4,6 +4,5 @@ C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\Listbox
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\Gsol.Web.Components.Resources.resources
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\CptListboxControl64.vbproj.GenerateResource.cache
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\CptListboxControl64.vbproj.CoreCompileInputs.cache
-C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\CptListboxControl64.vbproj.CopyComplete
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\Gsol.Web.Components.CptListboxControl64.0.0.0.0.dll
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptListboxControl64_dll\ListboxControl\obj\Debug\Gsol.Web.Components.CptListboxControl64.0.0.0.0.pdb

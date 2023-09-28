@@ -110,7 +110,7 @@ Public Class ConstructorPedimentoPDF
 #Region "Encabezado"
 
         _celdas = New Dictionary(Of String, String) From {{"NUM. PEDIMENTO: ", documento_.FolioDocumento.ToString},
-                                                          {"T.OPERA: ", IIf(documento_.Attribute(CA_T_OPER).Valor IsNot Nothing, documento_.Attribute(CA_T_OPER).Valor, " ")},
+                                                          {"T.OPERA: ", IIf(documento_.Attribute(CA_TIPO_OPERACION).Valor IsNot Nothing, documento_.Attribute(CA_TIPO_OPERACION).Valor, " ")},
                                                           {"CVE. PEDIMENTO: ", IIf(documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion IsNot Nothing, documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion, "A1")},
                                                           {"REGIMEN: ", IIf(documento_.Attribute(CA_REGIMEN).Valor IsNot Nothing, documento_.Attribute(CA_REGIMEN).Valor, "IMD")}}
 
@@ -124,7 +124,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"DESTINO: ", IIf(documento_.Attribute(CA_DESTINO_ORIGEN).Valor IsNot Nothing, documento_.Attribute(CA_DESTINO_ORIGEN).Valor, " ")},
                                                           {"TIPO CAMBIO: ", IIf(documento_.Attribute(CA_TIPO_CAMBIO).Valor IsNot Nothing, documento_.Attribute(CA_TIPO_CAMBIO).Valor, " ")},
                                                           {"PESO BRUTO: ", IIf(documento_.Attribute(CA_PESO_BRUTO).Valor IsNot Nothing, documento_.Attribute(CA_PESO_BRUTO).Valor, " ")},
-                                                          {"ADUANA E/S: ", IIf(documento_.Attribute(CA_ADUANA_E_S).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_E_S).Valor, " ")}}
+                                                          {"ADUANA E/S: ", IIf(documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor, " ")}}
 
 
         tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno)
@@ -139,9 +139,9 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"ENTRADA/SALIDA:", "VACIO"},
                                                           {"ARRIBO:", "VACIO"},
                                                           {"SALIDA:", "VACIO"},
-                                                          {"VACIO", IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE).Valor, " ")},
-                                                          {"VACIO ", IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_ARRIBO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_ARRIBO).Valor, " ")},
-                                                          {"VACIO  ", IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_SALIDA).Valor, " ")}}
+                                                          {"VACIO", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE).Valor, " ")},
+                                                          {"VACIO ", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor, " ")},
+                                                          {"VACIO  ", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA).Valor, " ")}}
 
         tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno, "MEDIOS DE TRANSPORTE", False)
 
@@ -153,7 +153,7 @@ Public Class ConstructorPedimentoPDF
 
         _celdas = New Dictionary(Of String, String) From {{"VALOR DOLARES:", IIf(documento_.Attribute(CA_VALOR_DOLARES).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_DOLARES).Valor, "26,015.14")},
                                                           {"VALOR ADUANA:", IIf(documento_.Attribute(CA_VALOR_ADUANA).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_ADUANA).Valor, "524,460.00")},
-                                                          {"PRECIO PAGADO/VALOR COMERCIAL:", IIf(documento_.Attribute(CA_PRECIO_PAGADO_O_VALOR_COMERCIAL).Valor IsNot Nothing, documento_.Attribute(CA_PRECIO_PAGADO_O_VALOR_COMERCIAL).Valor, "524,460.00")}}
+                                                          {"PRECIO PAGADO/VALOR COMERCIAL:", IIf(documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor IsNot Nothing, documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor, "524,460.00")}}
 
         tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno)
 
@@ -166,9 +166,9 @@ Public Class ConstructorPedimentoPDF
         '-------------DATOS DEL IMPORTADOR/EXPORTADOR------------------------------------
         dimensiones_ = {100.0F, 100.0F, 800.0F}
 
-        _celdas = New Dictionary(Of String, String) From {{"RFC:", IIf(documento_.Attribute(CA_RFC_DEL_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_DEL_IOE).Valor, " ")},
+        _celdas = New Dictionary(Of String, String) From {{"RFC:", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"NOMBRE, DENOMINACION O RAZON SOCIAL:", "VACIO"},
-                                                          {"CURP:", IIf(documento_.Attribute(CA_CURP_DEL_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_DEL_IOE).Valor, " ")},
+                                                          {"CURP:", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")},
                                                           {"VACIO", IIf(documento_.Attribute(CA_RAZON_SOCIAL_IOE).ValorPresentacion IsNot Nothing, documento_.Attribute(CA_RAZON_SOCIAL_IOE).ValorPresentacion, " ")},
                                                           {"VACIO ", "VACIO"},
                                                           {"DOMICILIO:", IIf(documento_.Attribute(CA_DOMICILIO_IOE).Valor IsNot Nothing, documento_.Attribute(CA_DOMICILIO_IOE).Valor, "CARRETERA JOROBAS - TULA KM. 3.5 MANZ. 5 LOTE 1 FRACC. PARQUE INDUSTRIAL HUEHUETOCA 54680 HUEHUETOCA ESTADO DE MEXICO, MEXICO (ESTADOS UNIDOS MEXICANOS)")}}
@@ -189,7 +189,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"FLETES", "VACIO"},
                                                           {"EMBALAJES", "VACIO"},
                                                           {"OTROS INCREMENTABLES", "VACIO"},
-                                                          {"VACIO", IIf(documento_.Attribute(CA_VAL_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VAL_SEGUROS).Valor, "0")},
+                                                          {"VACIO", IIf(documento_.Attribute(CA_VALOR_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_SEGUROS).Valor, "0")},
                                                           {"VACIO ", IIf(documento_.Attribute(CA_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_SEGUROS).Valor, "0")},
                                                           {"VACIO  ", IIf(documento_.Attribute(CA_FLETES).Valor IsNot Nothing, documento_.Attribute(CA_FLETES).Valor, "0")},
                                                           {"VACIO   ", IIf(documento_.Attribute(CA_EMBALAJES).Valor IsNot Nothing, documento_.Attribute(CA_EMBALAJES).Valor, "0")},
@@ -204,7 +204,7 @@ Public Class ConstructorPedimentoPDF
 
 
         '-------------VALORES DECREMENTABLES-----------------------------------------------
-        If documento_.Attribute(CA_VAL_SEGUROS).Valor IsNot Nothing And documento_.Attribute(CA_VAL_SEGUROS).Valor <> 0 Then
+        If documento_.Attribute(CA_VALOR_SEGUROS).Valor IsNot Nothing And documento_.Attribute(CA_VALOR_SEGUROS).Valor <> 0 Then
 
             dimensiones_ = {1.0F, 1.0F, 1.0F, 1.0F, 2.0F}
 
@@ -215,7 +215,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"CARGA", "VACIO"},
                                                           {"DESCARGA", "VACIO"},
                                                           {"OTROS DECREMENTABLES", "VACIO"},
-                                                          {"VACIO", IIf(documento_.Attribute(CA_VAL_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VAL_SEGUROS).Valor, "0")},
+                                                          {"VACIO", IIf(documento_.Attribute(CA_VALOR_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_SEGUROS).Valor, "0")},
                                                           {"VACIO ", IIf(documento_.Attribute(CA_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_SEGUROS).Valor, "0")},
                                                           {"VACIO  ", IIf(documento_.Attribute(CA_FLETES).Valor IsNot Nothing, documento_.Attribute(CA_FLETES).Valor, "0")},
                                                           {"VACIO   ", IIf(documento_.Attribute(CA_EMBALAJES).Valor IsNot Nothing, documento_.Attribute(CA_EMBALAJES).Valor, "0")},
@@ -232,7 +232,7 @@ Public Class ConstructorPedimentoPDF
         '------------------CÓDIGO DE VALIDACIÓN--------------------------------
         dimensiones_ = {200.0F, 550.0F, 250.0F}
 
-        _celdas = New Dictionary(Of String, String) From {{"CÓDIGO DE ACEPTACIÓN:", IIf(documento_.Attribute(CA_ACUSE_ELECTONICO_DE_VALIDACION).Valor IsNot Nothing, documento_.Attribute(CA_ACUSE_ELECTONICO_DE_VALIDACION).Valor, "U8Z7A8E9")},
+        _celdas = New Dictionary(Of String, String) From {{"CÓDIGO DE ACEPTACIÓN:", IIf(documento_.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor IsNot Nothing, documento_.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor, "U8Z7A8E9")},
                                                           {"IMG", "C:/temp/CBA_RKU2100551.png"},
                                                           {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(documento_.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_DESPACHO).Valor, "430")}}
 
@@ -300,7 +300,7 @@ Public Class ConstructorPedimentoPDF
                     Dim tasa_ = CType(tasas_, PartidaGenerica)
 
                     _celdas.Add("VACIO" + espacios_, IIf(tasa_.Attribute(CA_CONTRIBUCION).ValorPresentacion IsNot Nothing, tasa_.Attribute(CA_CONTRIBUCION).ValorPresentacion, "DTA"))
-                    _celdas.Add("VACIO " + espacios_, IIf(tasa_.Attribute(CA_CVE_T_TASA).Valor IsNot Nothing, tasa_.Attribute(CA_CVE_T_TASA).Valor, "IVA/PRV"))
+                    _celdas.Add("VACIO " + espacios_, IIf(tasa_.Attribute(CA_CVE_TIPO_TASA).Valor IsNot Nothing, tasa_.Attribute(CA_CVE_TIPO_TASA).Valor, "IVA/PRV"))
                     _celdas.Add("VACIO  " + espacios_, IIf(tasa_.Attribute(CA_TASA).Valor IsNot Nothing, tasa_.Attribute(CA_TASA).Valor, "PRV"))
 
                     espacios_ += "   "
@@ -347,7 +347,7 @@ Public Class ConstructorPedimentoPDF
 
                         Dim liquidacion_ = CType(liquidaciones_, PartidaGenerica)
                         _celdas.Add("VACIO" + espacios_, IIf(liquidacion_.Attribute(CA_CONCEPTO).ValorPresentacion IsNot Nothing, liquidacion_.Attribute(CA_CONCEPTO).ValorPresentacion, " "))
-                        _celdas.Add("VACIO " + espacios_, IIf(liquidacion_.Attribute(CA_FP).Valor IsNot Nothing, liquidacion_.Attribute(CA_FP).Valor, " "))
+                        _celdas.Add("VACIO " + espacios_, IIf(liquidacion_.Attribute(CA_FORMA_PAGO).Valor IsNot Nothing, liquidacion_.Attribute(CA_FORMA_PAGO).Valor, " "))
                         _celdas.Add("VACIO  " + espacios_, IIf(liquidacion_.Attribute(CA_IMPORTE).Valor IsNot Nothing, liquidacion_.Attribute(CA_IMPORTE).Valor, " "))
 
                         espacios_ += "   "
@@ -507,21 +507,21 @@ Public Class ConstructorPedimentoPDF
 
         Nivel3_.AddHeaderCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph("DEPÓSITO REFERENCIADO - LÍNEA DE CAPTURA - INFORMACIÓN DEL PAGO").SetTextAlignment(TextAlignment.CENTER).SetFont(_arialBold).SetFontSize(8.0F).SetMultipliedLeading(1)).SetBackgroundColor(ColorConstants.LIGHT_GRAY).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
-        Nivel3_.AddCell(New Cell(rowspan:=0, colspan:=6).Add(New Div().Add(_image).Add(New Paragraph(CStr(IIf(documento_.Attribute(CA_DEP_REFERENCIADO).Valor IsNot Nothing, documento_.Attribute(CA_DEP_REFERENCIADO).Valor, "032100D13UP130040274 101879"))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F))).SetBorder(NO_BORDER).SetMargins(1.0F, 0F, 0F, 0F).SetPaddings(2.0F, 0F, 0F, 2.0F))
+        Nivel3_.AddCell(New Cell(rowspan:=0, colspan:=6).Add(New Div().Add(_image).Add(New Paragraph(CStr(IIf(documento_.Attribute(CA_DEPOSITO_REFERENCIADO).Valor IsNot Nothing, documento_.Attribute(CA_DEPOSITO_REFERENCIADO).Valor, "032100D13UP130040274 101879"))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F))).SetBorder(NO_BORDER).SetMargins(1.0F, 0F, 0F, 0F).SetPaddings(2.0F, 0F, 0F, 2.0F))
 
         Dim fechaPagoDeposito_ As DateTime = documento_.Attribute(CA_FECHA_PAGO).Valor
 
         _celdas2 = New Dictionary(Of String, Dictionary(Of String, List(Of Int64)))() From {
                                                           {"*** PAGO ELECTRÓNICO ***", New Dictionary(Of String, List(Of Int64)) From {{"VACIO", New List(Of Int64) From {6, 0}}}},
                                                           {"PATENTE:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_PATENTE).Valor IsNot Nothing, documento_.Attribute(CA_PATENTE).Valor, " "), New List(Of Int64) From {1, 1}}}},
-                                                          {"PEDIMENTO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUM_PEDIMENTO).Valor IsNot Nothing, documento_.Attribute(CA_NUM_PEDIMENTO).Valor, " "), New List(Of Int64) From {1, 1}}}},
+                                                          {"PEDIMENTO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUMERO_PEDIMENTO).Valor IsNot Nothing, documento_.Attribute(CA_NUMERO_PEDIMENTO).Valor, " "), New List(Of Int64) From {1, 1}}}},
                                                           {"ADUANA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_DESPACHO).Valor, "430"), New List(Of Int64) From {1, 1}}}},
-                                                          {"BANCO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NOMBRE_INST_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NOMBRE_INST_BANCARIA).Valor, "BBVA BANCOMER"), New List(Of Int64) From {1, 5}}}},
+                                                          {"BANCO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor, "BBVA BANCOMER"), New List(Of Int64) From {1, 5}}}},
                                                           {"LÍNEA DE CAPTURA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_LINEA_CAPTURA).Valor IsNot Nothing, documento_.Attribute(CA_LINEA_CAPTURA).Valor, "032100D13UP130040274"), New List(Of Int64) From {2, 4}}}},
                                                           {"IMPORTE PAGADO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_EFECTIVO).Valor IsNot Nothing, documento_.Attribute(CA_EFECTIVO).Valor, "$101,879"), New List(Of Int64) From {2, 1}}}},
                                                           {"FECHA DE PAGO:", New Dictionary(Of String, List(Of Int64)) From {{fechaPagoDeposito_.Day & "/" & fechaPagoDeposito_.Month & "/" & fechaPagoDeposito_.Year, New List(Of Int64) From {2, 1}}}},
-                                                          {"NÚMERO DE OPERACIÓN BANCARIA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUM_OPERACION_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NUM_OPERACION_BANCARIA).Valor, "01221029383520"), New List(Of Int64) From {3, 3}}}},
-                                                          {"NÚMERO DE TRANSACCIÓN SAT:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUM_TRANSACCION_SAT).Valor IsNot Nothing, documento_.Attribute(CA_NUM_TRANSACCION_SAT).Valor, "40012290120211025519"), New List(Of Int64) From {3, 3}}}},
+                                                          {"NÚMERO DE OPERACIÓN BANCARIA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUMERO_OPERACION_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NUMERO_OPERACION_BANCARIA).Valor, "01221029383520"), New List(Of Int64) From {3, 3}}}},
+                                                          {"NÚMERO DE TRANSACCIÓN SAT:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_NUMERO_TRANSACCION_SAT).Valor IsNot Nothing, documento_.Attribute(CA_NUMERO_TRANSACCION_SAT).Valor, "40012290120211025519"), New List(Of Int64) From {3, 3}}}},
                                                           {"MEDIO DE PRESENTACIÓN:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_MEDIO_PRESENTACION).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_PRESENTACION).Valor, "Otros medios electrónicos: (pago electrónico)"), New List(Of Int64) From {2, 4}}}},
                                                           {"MEDIO DE RECEPCIÓN/COBRO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor, "Efectivo - Cargo a cuenta"), New List(Of Int64) From {2, 4}}}}}
 
@@ -590,7 +590,7 @@ Public Class ConstructorPedimentoPDF
                     _celdas = New Dictionary(Of String, String) From {{"ID FISCAL", "VACIO"},
                                                           {"NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL", "VACIO"},
                                                           {"VACIO", IIf(proveedor_.Attribute(CA_ID_FISCAL_PROVEEDOR).Valor IsNot Nothing, proveedor_.Attribute(CA_ID_FISCAL_PROVEEDOR).Valor, " ")},
-                                                          {"VACIO ", IIf(proveedor_.Attribute(CA_NOMBRE_DEN_RAZON_SOC_POC).Valor IsNot Nothing, proveedor_.Attribute(CA_NOMBRE_DEN_RAZON_SOC_POC).Valor, " ")}}
+                                                          {"VACIO ", IIf(proveedor_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor IsNot Nothing, proveedor_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor, " ")}}
 
                     tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno)
 
@@ -635,16 +635,16 @@ Public Class ConstructorPedimentoPDF
 
                                 Dim factura_ = CType(facturas_, PartidaGenerica)
 
-                                Dim fechaFactura_ As DateTime = factura_.Attribute(CA_FECHA_FACT).Valor
+                                Dim fechaFactura_ As DateTime = factura_.Attribute(CA_FECHA_FACTURA).Valor
 
-                                _celdas.Add("VACIO" + espacios_, IIf(factura_.Attribute(CA_CFDI_O_FACT).Valor IsNot Nothing, factura_.Attribute(CA_CFDI_O_FACT).Valor, " "))
+                                _celdas.Add("VACIO" + espacios_, IIf(factura_.Attribute(CA_CFDI_FACTURA).Valor IsNot Nothing, factura_.Attribute(CA_CFDI_FACTURA).Valor, " "))
                                 _celdas.Add("VACIO " + espacios_, fechaFactura_.Day & "/" & fechaFactura_.Month & "/" & fechaFactura_.Year)
                                 _celdas.Add("VACIO  " + espacios_, IIf(factura_.Attribute(CA_INCOTERM).Valor IsNot Nothing, factura_.Attribute(CA_INCOTERM).Valor, " "))
-                                _celdas.Add("VACIO   " + espacios_, IIf(factura_.Attribute(CA_CVE_MONEDA_FACT).Valor IsNot Nothing, factura_.Attribute(CA_CVE_MONEDA_FACT).Valor, " "))
+                                _celdas.Add("VACIO   " + espacios_, IIf(factura_.Attribute(CA_CVE_MONEDA_FACTURA).Valor IsNot Nothing, factura_.Attribute(CA_CVE_MONEDA_FACTURA).Valor, " "))
 
-                                If factura_.Attribute(CA_MONTO_MONEDA_FACT).Valor IsNot Nothing And factura_.Attribute(CA_CVE_MONEDA_FACT).Valor = "USD" Then
+                                If factura_.Attribute(CA_CVE_MONEDA_FACTURA).Valor IsNot Nothing And factura_.Attribute(CA_CVE_MONEDA_FACTURA).Valor = "USD" Then
 
-                                    _celdas.Add("VACIO    " + espacios_, factura_.Attribute(CA_MONTO_MONEDA_FACT).Valor.ToString)
+                                    _celdas.Add("VACIO    " + espacios_, factura_.Attribute(CA_MONTO_MONEDA_FACTURA).Valor.ToString)
 
                                 Else
 
@@ -783,14 +783,14 @@ Public Class ConstructorPedimentoPDF
 
                     Dim transporte_ = CType(transportes_, PartidaGenerica)
 
-                    _celdas = New Dictionary(Of String, String) From {{"IDENTIFICACIÓN:", IIf(transporte_.Attribute(CA_NOMBRE_RAZON_SOC_TRANSP).Valor IsNot Nothing, transporte_.Attribute(CA_NOMBRE_RAZON_SOC_TRANSP).Valor, " ")},
+                    _celdas = New Dictionary(Of String, String) From {{"IDENTIFICACIÓN:", IIf(transporte_.Attribute(CA_NOMBRE_RAZON_SOCIAL_TRANSPORTE).Valor IsNot Nothing, transporte_.Attribute(CA_NOMBRE_RAZON_SOCIAL_TRANSPORTE).Valor, " ")},
                                                         {"PAÍS:", "VACIO"}}
 
                     tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno)
 
                     Nivel2_.AddCell(New Cell().Add(tablalayout_).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
-                    _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(transporte_.Attribute(CA_CVE_PAIS_TRANSP).Valor IsNot Nothing, transporte_.Attribute(CA_CVE_PAIS_TRANSP).Valor, " ")}}
+                    _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(transporte_.Attribute(CA_CVE_PAIS_TRANSPORTE).Valor IsNot Nothing, transporte_.Attribute(CA_CVE_PAIS_TRANSPORTE).Valor, " ")}}
 
                     tablalayout_ = _controladorPDF.setTablaLayout(_celdas, {150.0F}, TiposBordes.Niniguno)
 
@@ -835,7 +835,7 @@ Public Class ConstructorPedimentoPDF
 
                         Dim candado_ = CType(candados_, PartidaGenerica)
 
-                        _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(candados_.Attribute(CA_NUM_CANDADO).Valor IsNot Nothing, candados_.Attribute(CA_NUM_CANDADO).Valor, " ")},
+                        _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(candados_.Attribute(CA_NUMERO_CANDADO).Valor IsNot Nothing, candados_.Attribute(CA_NUMERO_CANDADO).Valor, " ")},
                                                                           {"VACIO ", " "},
                                                                           {"VACIO  ", " "},
                                                                           {"VACIO   ", " "},
@@ -846,8 +846,8 @@ Public Class ConstructorPedimentoPDF
 
                         Nivel2_.AddCell(New Cell().Add(tablalayout_).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
-                        Nivel2_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph("1RA. REVISIÓN" & CStr(IIf(candados_.Attribute(CA_NUM_CANDADO_1RA).Valor IsNot Nothing, candados_.Attribute(CA_NUM_CANDADO_1RA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F).SetMultipliedLeading(1)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        Nivel2_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph("2DA. REVISIÓN" & CStr(IIf(candados_.Attribute(CA_NUM_CANDADO_2DA).Valor IsNot Nothing, candados_.Attribute(CA_NUM_CANDADO_2DA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F).SetMultipliedLeading(1)).SetBorder(NO_BORDER))
+                        Nivel2_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph("1RA. REVISIÓN" & CStr(IIf(candados_.Attribute(CA_NUMERO_CANDADO_1RA).Valor IsNot Nothing, candados_.Attribute(CA_NUMERO_CANDADO_1RA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F).SetMultipliedLeading(1)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        Nivel2_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph("2DA. REVISIÓN" & CStr(IIf(candados_.Attribute(CA_NUMERO_CANDADO_2DA).Valor IsNot Nothing, candados_.Attribute(CA_NUMERO_CANDADO_2DA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F).SetMultipliedLeading(1)).SetBorder(NO_BORDER))
 
                     End If
 
@@ -886,8 +886,8 @@ Public Class ConstructorPedimentoPDF
 
                         Dim candado_ = CType(candados_, PartidaGenerica)
 
-                        _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(candado_.Attribute(CA_GUIA_O_MANIF_O_BL).Valor IsNot Nothing, candado_.Attribute(CA_GUIA_O_MANIF_O_BL).Valor, " ")},
-                                                                          {"VACIO ", IIf(candado_.Attribute(CA_MASTER_O_HOUSE).Valor IsNot Nothing, candado_.Attribute(CA_MASTER_O_HOUSE).Valor, " ")},
+                        _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(candado_.Attribute(CA_GUIA_MANIFIESTO_BL).Valor IsNot Nothing, candado_.Attribute(CA_GUIA_MANIFIESTO_BL).Valor, " ")},
+                                                                          {"VACIO ", IIf(candado_.Attribute(CA_MASTER_HOUSE).Valor IsNot Nothing, candado_.Attribute(CA_MASTER_HOUSE).Valor, " ")},
                                                                           {"VACIO  ", " "},
                                                                           {"VACIO   ", " "},
                                                                           {"VACIO    ", " "},
@@ -942,7 +942,7 @@ Public Class ConstructorPedimentoPDF
 
                         Dim candado_ = CType(candados_, PartidaGenerica)
 
-                        _celdas.Add("VACIO" + espacios_, IIf(candados_.Attribute(CA_NUM_CONTENEDOR_FERRO_NUM_ECON).Valor IsNot Nothing, candados_.Attribute(CA_NUM_CONTENEDOR_FERRO_NUM_ECON).Valor, " "))
+                        _celdas.Add("VACIO" + espacios_, IIf(candados_.Attribute(CA_NUMERO_CONTENEDOR_FERROCARRIL_NUMERO_ECONOMICO).Valor IsNot Nothing, candados_.Attribute(CA_NUMERO_CONTENEDOR_FERROCARRIL_NUMERO_ECONOMICO).Valor, " "))
                         _celdas.Add("VACIO " + espacios_, vinculacion_)
 
                         espacios_ += "  "
@@ -1000,10 +1000,10 @@ Public Class ConstructorPedimentoPDF
                     Dim identificador_ = CType(identificadores_, PartidaGenerica)
 
                     _celdas.Add("VACIO" + espacios_, " ")
-                    _celdas.Add("VACIO " + espacios_, IIf(identificador_.Attribute(CA_CVE_IDENTIFICADOR_G).Valor IsNot Nothing, identificador_.Attribute(CA_CVE_IDENTIFICADOR_G).Valor, " "))
-                    _celdas.Add("VACIO  " + espacios_, IIf(identificador_.Attribute(CA_COMPL_1).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_1).Valor, " "))
-                    _celdas.Add("VACIO   " + espacios_, IIf(identificador_.Attribute(CA_COMPL_2).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_2).Valor, " "))
-                    _celdas.Add("VACIO    " + espacios_, IIf(identificador_.Attribute(CA_COMPL_3).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_3).Valor, " "))
+                    _celdas.Add("VACIO " + espacios_, IIf(identificador_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor, " "))
+                    _celdas.Add("VACIO  " + espacios_, IIf(identificador_.Attribute(CA_COMPLEMENTO_1).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_1).Valor, " "))
+                    _celdas.Add("VACIO   " + espacios_, IIf(identificador_.Attribute(CA_COMPLEMENTO_2).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_2).Valor, " "))
+                    _celdas.Add("VACIO    " + espacios_, IIf(identificador_.Attribute(CA_COMPLEMENTO_3).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_3).Valor, " "))
 
                     espacios_ += "     "
 
@@ -1037,7 +1037,7 @@ Public Class ConstructorPedimentoPDF
 
                 If observaciones_.TipoNodo = Nodo.TiposNodo.Nodo Then
 
-                    observacioPartida_ += CStr(IIf(documento_.Attribute(CA_OBSERV_PEDIM).Valor IsNot Nothing, documento_.Attribute(CA_OBSERV_PEDIM).Valor, " "))
+                    observacioPartida_ += CStr(IIf(documento_.Attribute(CA_OBSERVACIONES_PEDIMENTO).Valor IsNot Nothing, documento_.Attribute(CA_OBSERVACIONES_PEDIMENTO).Valor, " "))
 
                 End If
 
@@ -1157,26 +1157,30 @@ Public Class ConstructorPedimentoPDF
 
                         noTasas_ = partida_.Seccion(SeccionesPedimento.ANS29).Nodos.Count
 
-                        Nivel3_.AddCell(New Cell(rowspan:=noTasas_, colspan:=0).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_NUM_SEC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_NUM_SEC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_FRACC_ARANC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_FRACC_ARANC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        Nivel3_.AddCell(New Cell(rowspan:=noTasas_, colspan:=0).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_SECUENCIA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_SECUENCIA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_FRACCION_ARANCELARIA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_FRACCION_ARANCELARIA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                         tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_NICO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_NICO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                         tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_VINCULACION).Valor IsNot Nothing, partida_.Attribute(CA_VINCULACION).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_MET_VALOR_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_MET_VALOR_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_METODO_VALORACION_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_METODO_VALORACION_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                         tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_UMC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_UMC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CANT_UMC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CANT_UMC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CANTIDAD_UMC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CANTIDAD_UMC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                         tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_UMT_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_UMT_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CANT_UMT_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CANT_UMT_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_PAIS_VEND_O_COMP_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_PAIS_VEND_O_COMP_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_PAIS_ORIGEN_O_DEST_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_PAIS_ORIGEN_O_DEST_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CANTIDAD_UMT_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CANTIDAD_UMT_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        ' VALIDAR TIPO DE OPERACION PARA ESTE CAMPO
+                        'COMPRADOR, DESTINO
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_PAIS_VENDEDOR_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_PAIS_VENDEDOR_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_PAIS_ORIGEN_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_PAIS_ORIGEN_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
-                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=10).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_DESCRIP_MERC_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_DESCRIP_MERC_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=10).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_DESCRIPCION_MERCANCIA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_DESCRIPCION_MERCANCIA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
-                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_VAL_ADU_O_VAL_USD_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_VAL_ADU_O_VAL_USD_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=3).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_IMP_PRECIO_PAG_O_VAL_COMER_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_IMP_PRECIO_PAG_O_VAL_COMER_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_MONTO_PRECIO_UNITARIO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_MONTO_PRECIO_UNITARIO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        ' VALIDAR TIPO DE OPERACION PARA ESTE CAMPO
+                        'USD
+                        tablalayout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_VALOR_ADUANA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_VALOR_ADUANA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=3).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_PRECIO_PAGADO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_PRECIO_PAGADO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                        tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_PRECIO_UNITARIO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_PRECIO_UNITARIO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                         Dim montoValor_ As String
-                        If partida_.Attribute(CA_MONTO_VALOR_AGREG_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_MONTO_VALOR_AGREG_PARTIDA).Valor > 0 Then
+                        If partida_.Attribute(CA_VALOR_AGREGADO_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_VALOR_AGREGADO_PARTIDA).Valor > 0 Then
                             montoValor_ = partida_.Attribute(CA_ID_FISCAL_PROVEEDOR).Valor.ToString
                         Else
                             montoValor_ = "0"
@@ -1186,16 +1190,16 @@ Public Class ConstructorPedimentoPDF
                         tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=2).Add(New Paragraph(" ").SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                         'Marca producto
-                        If partida_.Attribute(CA_NOMBRE_MARCA_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_NOMBRE_MARCA_PARTIDA).Valor <> "" Then
+                        If partida_.Attribute(CA_MARCA_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_MARCA_PARTIDA).Valor <> "" Then
 
-                            tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=3).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_NOMBRE_MARCA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_NOMBRE_MARCA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                            tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=3).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_MARCA_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_MARCA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                         End If
 
                         'Modelo producto
-                        If partida_.Attribute(CA_CVE_MODELO_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_CVE_MODELO_PARTIDA).Valor <> "" Then
+                        If partida_.Attribute(CA_MODELO_PARTIDA).Valor IsNot Nothing And partida_.Attribute(CA_MODELO_PARTIDA).Valor <> "" Then
 
-                            tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=4).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_CVE_MODELO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_CVE_MODELO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                            tablalayout_.AddCell(New Cell(rowspan:=0, colspan:=4).Add(New Paragraph(CStr(IIf(partida_.Attribute(CA_MODELO_PARTIDA).Valor IsNot Nothing, partida_.Attribute(CA_MODELO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                         End If
 
@@ -1228,10 +1232,10 @@ Public Class ConstructorPedimentoPDF
                                         Dim regulacion_ = CType(regulaciones_, PartidaGenerica)
 
                                         layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_CVE_PERMISO).Valor IsNot Nothing, regulacion_.Attribute(CA_CVE_PERMISO).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_NUM_PERMISO).Valor IsNot Nothing, regulacion_.Attribute(CA_NUM_PERMISO).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_FIRM_ELECTRON_PERMISO).Valor IsNot Nothing, regulacion_.Attribute(CA_FIRM_ELECTRON_PERMISO).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_MONTO_USD_VAL_COM).Valor IsNot Nothing, regulacion_.Attribute(CA_MONTO_USD_VAL_COM).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_CANT_UMT_O_UMC).Valor IsNot Nothing, regulacion_.Attribute(CA_CANT_UMT_O_UMC).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_NUMERO_PERMISO).Valor IsNot Nothing, regulacion_.Attribute(CA_NUMERO_PERMISO).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_FIRMA_ELECTRONICA_PERMISO).Valor IsNot Nothing, regulacion_.Attribute(CA_FIRMA_ELECTRONICA_PERMISO).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_MONTO_USD).Valor IsNot Nothing, regulacion_.Attribute(CA_MONTO_USD).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(regulacion_.Attribute(CA_CANTIDAD_UMT_UMC).Valor IsNot Nothing, regulacion_.Attribute(CA_CANTIDAD_UMT_UMC).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER))
 
                                     End If
 
@@ -1261,10 +1265,10 @@ Public Class ConstructorPedimentoPDF
 
                                         Dim identificador_ = CType(identificadores_, PartidaGenerica)
 
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_CVE_IDENTIF_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_CVE_IDENTIF_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.CENTER).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPL_1_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_1_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPL_2_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_2_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPL_3_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPL_3_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.CENTER).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPLEMENTO_1_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_1_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPLEMENTO_2_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_2_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(identificador_.Attribute(CA_COMPLEMENTO_3_PARTIDA).Valor IsNot Nothing, identificador_.Attribute(CA_COMPLEMENTO_3_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).SetBorder(NO_BORDER))
 
                                     End If
 
@@ -1293,7 +1297,7 @@ Public Class ConstructorPedimentoPDF
 
                                         Dim observacion_ = CType(observaciones_, PartidaGenerica)
 
-                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(observacion_.Attribute(CA_OBSERV_PARTIDA).Valor IsNot Nothing, observacion_.Attribute(CA_OBSERV_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).AddStyle(_estiloSinBordes).SetBorder(NO_BORDER))
+                                        layout_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(observacion_.Attribute(CA_OBSERVACIONES_PARTIDA).Valor IsNot Nothing, observacion_.Attribute(CA_OBSERVACIONES_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(9.0F)).AddStyle(_estiloSinBordes).SetBorder(NO_BORDER))
 
                                     End If
 
@@ -1330,18 +1334,18 @@ Public Class ConstructorPedimentoPDF
 
                                         If incrementable_ = 1 Then
 
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CONTRIBUCION_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CONTRIBUCION_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CONTRIBUCION).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CONTRIBUCION).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                                             Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_FP_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_FP_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                                             Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_IMPORTE_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_IMPORTE_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                                         Else
 
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CONTRIBUCION_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CONTRIBUCION_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CONTRIBUCION).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CONTRIBUCION).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                                             Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
-                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_FP_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_FP_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
+                                            Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
                                             Nivel3_.AddCell(New Cell().Add(New Paragraph(CStr(IIf(tasaPartida_.Attribute(CA_IMPORTE_PARTIDA).Valor IsNot Nothing, tasaPartida_.Attribute(CA_IMPORTE_PARTIDA).Valor, " "))).SetTextAlignment(TextAlignment.LEFT).SetFont(_arial).SetFontSize(7.0F)).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                                         End If
@@ -1417,13 +1421,13 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO ", "VACIO"},
                                                           {"VACIO   ", IIf(documento_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_AA).Valor IsNot Nothing, documento_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_AA).Valor, "JESUS ENRIQUE GOMEZ REYES - GRUPO REYES KURI S.C. GORJ800903BA")},
                                                           {"RFC:", IIf(documento_.Attribute(CA_RFC_AA).Valor IsNot Nothing, documento_.Attribute(CA_RFC_AA).Valor, " ")},
-                                                          {"CURP:", IIf(documento_.Attribute(CA_CURP_AA_O_REP_LEGAL).Valor IsNot Nothing, documento_.Attribute(CA_CURP_AA_O_REP_LEGAL).Valor, " ")},
+                                                          {"CURP:", IIf(documento_.Attribute(CA_CURP_AA_REPRESENTANTE_LEGAL).Valor IsNot Nothing, documento_.Attribute(CA_CURP_AA_REPRESENTANTE_LEGAL).Valor, " ")},
                                                           {"VACIO    ", "VACIO"},
                                                           {"MANDATARIO/PERSONA AUTORIZADA", "VACIO"},
                                                           {"VACIO     ", "VACIO"},
-                                                          {"NOMBRE:", IIf(documento_.Attribute(CA_NOMBRE_MAND_REP_AA).Valor IsNot Nothing, documento_.Attribute(CA_NOMBRE_MAND_REP_AA).Valor, " ")},
-                                                          {"RFC: ", IIf(documento_.Attribute(CA_RFC_MAND_O_AGAD_REP_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_RFC_MAND_O_AGAD_REP_ALMACEN).Valor, " ")},
-                                                          {"CURP: ", IIf(documento_.Attribute(CA_CURP_MAND_O_AGAD_REP_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_CURP_MAND_O_AGAD_REP_ALMACEN).Valor, " ")}}
+                                                          {"NOMBRE:", IIf(documento_.Attribute(CA_NOMBRE_MANDATARIO_REPRESENTANTE_AA).Valor IsNot Nothing, documento_.Attribute(CA_NOMBRE_MANDATARIO_REPRESENTANTE_AA).Valor, " ")},
+                                                          {"RFC: ", IIf(documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor, " ")},
+                                                          {"CURP: ", IIf(documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor, " ")}}
 
         tablalayout_ = _controladorPDF.setTablaLayout(_celdas, dimensiones_, TiposBordes.Niniguno)
 

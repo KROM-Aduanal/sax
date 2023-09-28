@@ -6,3 +6,11 @@ C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileContro
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\CptFileControl64.vbproj.CoreCompileInputs.cache
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\Gsol.Web.Components.CptFileControl64.0.0.0.0.dll
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\Gsol.Web.Components.CptFileControl64.0.0.0.0.pdb
+C:\saxunion\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptFileControl64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptFileControl64.0.0.0.0.pdb
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\CptFileControl64.vbproj.AssemblyReference.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\Gsol.Web.Components.Resources.resources
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\CptFileControl64.vbproj.GenerateResource.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\CptFileControl64.vbproj.CoreCompileInputs.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\Gsol.Web.Components.CptFileControl64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\cmf\scr\Components web\1_0_CptFileControl64_dll\FileControl\obj\Debug\Gsol.Web.Components.CptFileControl64.0.0.0.0.pdb

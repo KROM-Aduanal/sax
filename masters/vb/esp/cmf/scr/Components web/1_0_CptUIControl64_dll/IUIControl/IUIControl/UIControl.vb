@@ -72,19 +72,19 @@ Public Class UIControl
 
     Private Property ToolTipIsVisible As Boolean Implements IUIControl.ToolTipIsVisible
 
-        Get
+    '    Get
 
-            Return ViewState("ToolTipIsVisible")
+    '        Return ViewState("ToolTipIsVisible")
 
-        End Get
+    '    End Get
 
-        Set(value As Boolean)
+    '    Set(value As Boolean)
 
-            ViewState("ToolTipIsVisible") = value
+    '        ViewState("ToolTipIsVisible") = value
 
-        End Set
+    '    End Set
 
-    End Property
+    'End Property
 
     Public Overrides Property ToolTip As String
 
@@ -141,7 +141,7 @@ Public Class UIControl
 
     End Sub
 
-    Public Function GetToolTipSetting() As String
+    Public Sub GetToolTipSetting(ByRef control_ As TextBox)
 
         If Not String.IsNullOrWhiteSpace(ToolTip) Then
 
@@ -161,32 +161,29 @@ Public Class UIControl
 
             End With
 
-            If ToolTipIsVisible = True Then
+            If ToolTipModality = IUIControl.ToolTipModalities.Classic Then
 
-                ToolTipIsVisible = False
+                control_.Text = New JavaScriptSerializer().Serialize(setting)
+
+            Else
+
+                If ToolTipIsVisible = True Then
+
+                    control_.Text = New JavaScriptSerializer().Serialize(setting)
+
+                End If
 
             End If
 
-            'If Not ToolTipModality = IUIControl.ToolTipModalities.Classic Then
-
-            '    ToolTip = Nothing
-
-            'End If
-
-            Return New JavaScriptSerializer().Serialize(setting)
-
         End If
 
-        Return Nothing
-
-    End Function
+    End Sub
 
 #End Region
 
     'conciderar la posibilidad de un evento de clic
 
 End Class
-
 
 
 Public Module ColorExtensions

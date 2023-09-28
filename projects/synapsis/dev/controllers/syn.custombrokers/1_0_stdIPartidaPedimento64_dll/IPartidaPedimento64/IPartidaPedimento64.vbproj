@@ -46,6 +46,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Bson.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0.dll</HintPath>
@@ -127,7 +131,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

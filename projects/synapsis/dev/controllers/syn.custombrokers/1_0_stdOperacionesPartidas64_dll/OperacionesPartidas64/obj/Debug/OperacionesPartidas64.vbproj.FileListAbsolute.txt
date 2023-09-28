@@ -1,0 +1,16 @@
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.OperacionesPartidas64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.controllers\Rec.Globals.Controllers.OperacionesPartidas64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.AssemblyReference.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.GenerateResource.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.CoreCompileInputs.cache
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Rec.Globals.Controllers.OperacionesPartidas64.0.0.0.0.dll
+C:\Sax\masters\vb\esp\cmf\scr\Core\rec\rec.global.controllers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Rec.Globals.Controllers.OperacionesPartidas64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\OperacionesPartidas64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdOperacionesPartidas64_dll\OperacionesPartidas64\obj\Debug\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.pdb

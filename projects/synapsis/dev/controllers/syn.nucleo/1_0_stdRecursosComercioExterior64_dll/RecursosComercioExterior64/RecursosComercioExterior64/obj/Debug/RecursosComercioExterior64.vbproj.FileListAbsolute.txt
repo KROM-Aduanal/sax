@@ -22,3 +22,11 @@ C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExter
 C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
 C:\sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
 C:\Sax\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\RecursosComercioExterior64.vbproj.AssemblyReference.cache
+C:\saxunion\projects\synapsis\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\saxunion\projects\synapsis\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\RecursosComercioExterior64.vbproj.AssemblyReference.cache
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\Resources.resources
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\RecursosComercioExterior64.vbproj.GenerateResource.cache
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\RecursosComercioExterior64.vbproj.CoreCompileInputs.cache
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll
+C:\saxunion\projects\synapsis\dev\controllers\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\obj\Debug\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.pdb

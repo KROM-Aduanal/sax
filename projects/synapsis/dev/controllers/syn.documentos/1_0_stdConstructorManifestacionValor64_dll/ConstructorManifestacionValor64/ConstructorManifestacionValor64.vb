@@ -263,8 +263,8 @@ Namespace Syn.Documento
                                              Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha),
                                              Item(CamposFacturaComercial.CA_CVE_PAIS_FACTURACION, Texto, longitud_:=3),
                                              Item(CamposFacturaComercial.CA_PAIS_FACTURACION, Texto, longitud_:=80),
-                                             Item(CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO, Texto, longitud_:=80),
-                                             Item(CamposPedimento.CA_FECHA_PEDIM_ORIGINAL, Fecha),
+                                             Item(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, Texto, longitud_:=80),
+                                             Item(CamposPedimento.CA_FECHA_PEDIMENTO_ORIGINAL, Fecha),
                                              Item(CamposGlobales.CP_IDENTITY, Entero)
 }
 

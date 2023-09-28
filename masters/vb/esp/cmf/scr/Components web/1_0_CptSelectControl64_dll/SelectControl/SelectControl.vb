@@ -38,6 +38,8 @@ Public Class SelectControl
 
     Private _validationsElements As HtmlGenericControl
 
+    Private _tooltipControlText As TextBox
+
 #End Region
 
 #Region "Propiedades"
@@ -578,8 +580,6 @@ Public Class SelectControl
 
             .ID = ID
 
-            .Attributes.Add("tooltip-sttings", GetToolTipSetting())
-
             .ClientIDMode = ClientIDMode.AutoID
 
             .EnableViewState = True
@@ -697,6 +697,16 @@ Public Class SelectControl
 
         End With
 
+        _tooltipControlText = New TextBox
+
+        With _tooltipControlText
+
+            .Attributes.Add("class", "__tooltip d-none")
+
+            .Attributes.Add("is", "wc-tooltip")
+
+        End With
+
     End Sub
 
     Protected Overrides Sub CreateChildControls()
@@ -769,6 +779,8 @@ Public Class SelectControl
 
             .Controls.Add(_tapGesture)
 
+            .Controls.Add(_tooltipControlText)
+
             .Controls.Add(New LiteralControl("</div>"))
 
         End With
@@ -786,6 +798,8 @@ Public Class SelectControl
             _unlokedControl.Controls.Add(SetLockedControl())
 
         End If
+
+        GetToolTipSetting(_tooltipControlText)
 
         Me.RenderContents(component_)
 

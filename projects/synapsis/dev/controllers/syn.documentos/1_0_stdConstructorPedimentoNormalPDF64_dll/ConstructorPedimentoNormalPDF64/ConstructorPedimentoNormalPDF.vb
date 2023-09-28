@@ -298,7 +298,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_ADUANA_E_S).Valor,
+                                    .Contenido = documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeInferior,
@@ -442,7 +442,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE) IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE) IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.BordeIzquierdo,
@@ -451,7 +451,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_ARRIBO) IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_ARRIBO).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO) IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.SinBordes,
@@ -460,7 +460,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_SALIDA) IsNot Nothing, documento_.Attribute(CA_MEDIO_DE_TRANSPORTE_DE_SALIDA).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA) IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.SinBordes,
@@ -478,7 +478,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_PRECIO_PAGADO_O_VALOR_COMERCIAL).Valor IsNot Nothing, documento_.Attribute(CA_PRECIO_PAGADO_O_VALOR_COMERCIAL).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor IsNot Nothing, documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlDerecha,
                                         .Borde = Bordes.SinBordes,
@@ -547,7 +547,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_RFC_DEL_IOE).Valor,
+                                    .Contenido = documento_.Attribute(CA_RFC_IOE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -595,7 +595,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_CURP_DEL_IOE).Valor,
+                                    .Contenido = documento_.Attribute(CA_CURP_IOE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -739,7 +739,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_VAL_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VAL_SEGUROS).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_VALOR_SEGUROS).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_SEGUROS).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlDerecha,
                                         .Borde = Bordes.BordeIzquierdo,
@@ -1015,7 +1015,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_ACUSE_ELECTONICO_DE_VALIDACION).Valor IsNot Nothing, documento_.Attribute(CA_ACUSE_ELECTONICO_DE_VALIDACION).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor IsNot Nothing, documento_.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.BordeDerIzqInf,
@@ -1234,7 +1234,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_CVE_T_TASA) IsNot Nothing, documento_.Attribute(CA_CVE_T_TASA).Valor, 0),
+                                    .Contenido = IIf(documento_.Attribute(CA_CVE_TIPO_TASA) IsNot Nothing, documento_.Attribute(CA_CVE_TIPO_TASA).Valor, 0),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.BordeDerecho,
@@ -1494,9 +1494,9 @@ Namespace Syn.Documento
 
                                     End If
 
-                                    If partida_.Attribute(CA_FP).Valor IsNot Nothing Then
+                                    If partida_.Attribute(CA_FORMA_PAGO).Valor IsNot Nothing Then
 
-                                        formaPago_ = partida_.Attribute(CA_FP).Valor
+                                        formaPago_ = partida_.Attribute(CA_FORMA_PAGO).Valor
 
                                     End If
 
@@ -3019,7 +3019,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_RFC_DEL_IOE).Valor,
+                                    .Contenido = documento_.Attribute(CA_RFC_IOE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeDerecho,
@@ -3057,7 +3057,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_CURP_DEL_IOE).Valor,
+                                    .Contenido = documento_.Attribute(CA_CURP_IOE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.BordeDerInf,
@@ -3474,9 +3474,9 @@ Namespace Syn.Documento
 
                 Dim pedimentoOriginal_ = ""
 
-                If documento_.Attribute(CA_NUM_PEDIMENTO_ORIGINAL_7_DIGITOS) IsNot Nothing Then
+                If documento_.Attribute(CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS) IsNot Nothing Then
 
-                    pedimentoOriginal_ = documento_.Attribute(CA_NUM_PEDIMENTO_ORIGINAL_7_DIGITOS).Valor
+                    pedimentoOriginal_ = documento_.Attribute(CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS).Valor
 
                 End If
 
@@ -3570,7 +3570,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_NOMBRE_INST_BANCARIA).Valor,
+                                    .Contenido = documento_.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -3705,7 +3705,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = IIf(documento_.Attribute(CA_NUM_OPERACION_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NUM_OPERACION_BANCARIA).Valor, " "),
+                                    .Contenido = IIf(documento_.Attribute(CA_NUMERO_OPERACION_BANCARIA).Valor IsNot Nothing, documento_.Attribute(CA_NUMERO_OPERACION_BANCARIA).Valor, " "),
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -3744,7 +3744,7 @@ Namespace Syn.Documento
                                         }
                                      },
                                     New Celda With {
-                                        .Contenido = IIf(documento_.Attribute(CA_NUM_TRANSACCION_SAT).Valor IsNot Nothing, documento_.Attribute(CA_NUM_TRANSACCION_SAT).Valor, " "),
+                                        .Contenido = IIf(documento_.Attribute(CA_NUMERO_TRANSACCION_SAT).Valor IsNot Nothing, documento_.Attribute(CA_NUMERO_TRANSACCION_SAT).Valor, " "),
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlIzquierdo,
                                             .Borde = Bordes.SinBordes,
@@ -3891,7 +3891,7 @@ Namespace Syn.Documento
                                     }
                                  },
                                 New Celda With {
-                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_AA_O_REP_LEGAL).Valor,
+                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_AA_REPRESENTANTE_LEGAL).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -3951,7 +3951,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = "NOMBRE: " + documento_.Attribute(CA_NOMBRE_MAND_REP_AA).Valor,
+                                    .Contenido = "NOMBRE: " + documento_.Attribute(CA_NOMBRE_MANDATARIO_REPRESENTANTE_AA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeIzquierdo,
@@ -3981,7 +3981,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = "RFC: " + documento_.Attribute(CA_RFC_MAND_O_AGAD_REP_ALMACEN).Valor,
+                                    .Contenido = "RFC: " + documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeIzqInf,
@@ -3990,7 +3990,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_MAND_O_AGAD_REP_ALMACEN).Valor,
+                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeInferior,
@@ -4260,7 +4260,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = proveedor_.Attribute(CA_NOMBRE_DEN_RAZON_SOC_POC).Valor,
+                                    .Contenido = proveedor_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.BordeInferior,
@@ -4395,7 +4395,7 @@ Namespace Syn.Documento
 
                                     .Filas(numeroLinea_).ListCeldas = New List(Of Celda) From {
                                     New Celda With {
-                                        .Contenido = proveedor_.Attribute(CA_CFDI_O_FACT).Valor,
+                                        .Contenido = proveedor_.Attribute(CA_CFDI_FACTURA).Valor,
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlDerecha,
                                             .Borde = Bordes.BordeIzquierdo,
@@ -4404,7 +4404,7 @@ Namespace Syn.Documento
                                         }
                                      },
                                     New Celda With {
-                                        .Contenido = CType(proveedor_.Attribute(CA_FECHA_FACT).Valor, Date),
+                                        .Contenido = CType(proveedor_.Attribute(CA_FECHA_FACTURA).Valor, Date),
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlCentro,
                                             .Borde = Bordes.BordeIzquierdo,
@@ -4422,7 +4422,7 @@ Namespace Syn.Documento
                                         }
                                      },
                                     New Celda With {
-                                        .Contenido = proveedor_.Attribute(CA_CVE_MONEDA_FACT).Valor,
+                                        .Contenido = proveedor_.Attribute(CA_CVE_MONEDA_FACTURA).Valor,
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlCentro,
                                             .Borde = Bordes.BordeIzquierdo,
@@ -4431,7 +4431,7 @@ Namespace Syn.Documento
                                         }
                                      },
                                     New Celda With {
-                                        .Contenido = proveedor_.Attribute(CA_MONTO_MONEDA_FACT).Valor,
+                                        .Contenido = proveedor_.Attribute(CA_MONTO_MONEDA_FACTURA).Valor,
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlDerecha,
                                             .Borde = Bordes.BordeIzquierdo,
@@ -4548,7 +4548,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_NOMBRE_DEN_RAZON_SOC_POC).Valor,
+                                    .Contenido = documento_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlCentro,
                                         .Borde = Bordes.SinBordes,
@@ -4744,7 +4744,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = "IDENTIFICACIÓN: " + documento_.Attribute(CA_ID_TRANSPORT).Valor,
+                                    .Contenido = "IDENTIFICACIÓN: " + documento_.Attribute(CA_ID_TRANSPORTE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeIzqInf,
@@ -4753,7 +4753,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = "PAIS: " + documento_.Attribute(CA_CVE_PAIS_TRANSP).Valor,
+                                    .Contenido = "PAIS: " + documento_.Attribute(CA_CVE_PAIS_TRANSPORTE).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeDerIzqInf,
@@ -4808,7 +4808,7 @@ Namespace Syn.Documento
 
                                 .Filas(0).ListCeldas = New List(Of Celda) From {
                                     New Celda With {
-                                        .Contenido = documento_.Attribute(CA_NUM_CANDADO).Valor,
+                                        .Contenido = documento_.Attribute(CA_NUMERO_CANDADO).Valor,
                                         .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlDerecha,
                                         .Borde = Bordes.BordeDerecho,
@@ -4879,15 +4879,15 @@ Namespace Syn.Documento
 
                 Dim cancado2daRevision_ = " "
 
-                If documento_.Attribute(CA_NUM_CANDADO_1RA).Valor IsNot Nothing Then
+                If documento_.Attribute(CA_NUMERO_CANDADO_1RA).Valor IsNot Nothing Then
 
-                    cancado1erRevision_ = documento_.Attribute(CA_NUM_CANDADO_1RA).Valor
+                    cancado1erRevision_ = documento_.Attribute(CA_NUMERO_CANDADO_1RA).Valor
 
                 End If
 
-                If documento_.Attribute(CA_NUM_CANDADO_2DA) IsNot Nothing Then
+                If documento_.Attribute(CA_NUMERO_CANDADO_2DA) IsNot Nothing Then
 
-                    cancado2daRevision_ = documento_.Attribute(CA_NUM_CANDADO_2DA).Valor
+                    cancado2daRevision_ = documento_.Attribute(CA_NUMERO_CANDADO_2DA).Valor
 
                 End If
 
@@ -4907,7 +4907,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_NUM_CANDADO_1RA).Valor,
+                                    .Contenido = documento_.Attribute(CA_NUMERO_CANDADO_1RA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeDerInf,
@@ -4929,7 +4929,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = documento_.Attribute(CA_NUM_CANDADO_2DA).Valor,
+                                    .Contenido = documento_.Attribute(CA_NUMERO_CANDADO_2DA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeDerInf,
@@ -4981,7 +4981,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = numGuia_.Attribute(CA_GUIA_O_MANIF_O_BL).Valor,
+                                            .Contenido = numGuia_.Attribute(CA_GUIA_MANIFIESTO_BL).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -4990,7 +4990,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = numGuia_.Attribute(CA_MASTER_O_HOUSE).Valor,
+                                            .Contenido = numGuia_.Attribute(CA_MASTER_HOUSE).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -5089,7 +5089,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = contenedor_.Attribute(CA_NUM_CONTENEDOR_FERRO_NUM_ECON).Valor,
+                                            .Contenido = contenedor_.Attribute(CA_NUMERO_CONTENEDOR_FERROCARRIL_NUMERO_ECONOMICO).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -5245,7 +5245,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = identificador_.Attribute(CA_CVE_IDENTIFICADOR_G).Valor,
+                                            .Contenido = identificador_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5254,7 +5254,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = identificador_.Attribute(CA_COMPL_1).Valor,
+                                            .Contenido = identificador_.Attribute(CA_COMPLEMENTO_1).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5263,7 +5263,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = identificador_.Attribute(CA_COMPL_2).Valor,
+                                            .Contenido = identificador_.Attribute(CA_COMPLEMENTO_2).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5272,7 +5272,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = identificador_.Attribute(CA_COMPL_3).Valor,
+                                            .Contenido = identificador_.Attribute(CA_COMPLEMENTO_3).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerIzq,
@@ -5382,7 +5382,7 @@ Namespace Syn.Documento
 
                                 .Filas(numeroLinea_).ListCeldas = New List(Of Celda) From {
                                         New Celda With {
-                                            .Contenido = descargo_.Attribute(CA_NUM_PEDIM_ORIGINAL_COMPLETO).Valor,
+                                            .Contenido = descargo_.Attribute(CA_NUMERO_PEDIMENTO_ORIGINAL_COMPLETO).Valor,
                                             .EstiloCelda = New Estilos With {
                                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5391,7 +5391,7 @@ Namespace Syn.Documento
                                                             }
                                         },
                                         New Celda With {
-                                           .Contenido = CType(descargo_.Attribute(CA_FECHA_PEDIM_ORIGINAL).Valor, Date),
+                                           .Contenido = CType(descargo_.Attribute(CA_FECHA_PEDIMENTO_ORIGINAL).Valor, Date),
                                            .EstiloCelda = New Estilos With {
                                                                .AlineacionTexto = Alineaciones.AlCentro,
                                                                .Borde = Bordes.SinBordes,
@@ -5400,7 +5400,7 @@ Namespace Syn.Documento
                                                            }
                                         },
                                         New Celda With {
-                                            .Contenido = descargo_.Attribute(CA_CVE_PEDIM_ORIGINAL).Valor,
+                                            .Contenido = descargo_.Attribute(CA_CVE_PEDIMENTO_ORIGINAL).Valor,
                                             .EstiloCelda = New Estilos With {
                                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5481,7 +5481,7 @@ Namespace Syn.Documento
                                 New Fila With {
                                     .ListCeldas = New List(Of Celda) From {
                                         New Celda With {
-                                            .Contenido = observacion_.Attribute(CA_OBSERV_PEDIM).Valor,
+                                            .Contenido = observacion_.Attribute(CA_OBSERVACIONES_PEDIMENTO).Valor,
                                             .EstiloCelda = estiloCelda_
                                         }
                                     }
@@ -5943,7 +5943,7 @@ Namespace Syn.Documento
                                 New Fila With {
                                     .ListCeldas = New List(Of Celda) From {
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_NUM_SEC_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_SECUENCIA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzquierdo,
@@ -5952,7 +5952,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_FRACC_ARANC_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_FRACCION_ARANCELARIA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -5979,7 +5979,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_CVE_MET_VALOR_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_CVE_METODO_VALORACION_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -5997,7 +5997,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_CANT_UMC_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_CANTIDAD_UMC_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6015,7 +6015,16 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_CANT_UMT_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_CANTIDAD_UMT_PARTIDA).Valor,
+                                            .EstiloCelda = New Estilos With {
+                                                .AlineacionTexto = Alineaciones.AlCentro,
+                                                .Borde = Bordes.BordeIzqInf,
+                                                .DimensionFuente = Fuentes.Medio,
+                                                .Sombreado = False
+                                            }
+                                        }, 'validar tipo de operacion para campos  CA_CVE_PAIS_VEND_O_COMP_PARTIDA, CA_CVE_PAIS_ORIGEN_O_DEST_PARTIDA
+                                        New Celda With {
+                                            .Contenido = partida_.Attribute(CA_CVE_PAIS_VENDEDOR_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6024,16 +6033,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_CVE_PAIS_VEND_O_COMP_PARTIDA).Valor,
-                                            .EstiloCelda = New Estilos With {
-                                                .AlineacionTexto = Alineaciones.AlCentro,
-                                                .Borde = Bordes.BordeIzqInf,
-                                                .DimensionFuente = Fuentes.Medio,
-                                                .Sombreado = False
-                                            }
-                                        },
-                                        New Celda With {
-                                            .Contenido = partida_.Attribute(CA_CVE_PAIS_ORIGEN_O_DEST_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_CVE_PAIS_ORIGEN_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6057,7 +6057,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_DESCRIP_MERC_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_DESCRIPCION_MERCANCIA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6079,9 +6079,9 @@ Namespace Syn.Documento
                                                 .DimensionFuente = Fuentes.Medio,
                                                 .Sombreado = False
                                             }
-                                        },
+                                        }, 'validar tipo de operacion para campos CA_VAL_ADU_O_VAL_USD_PARTIDA, CA_IMP_PRECIO_PAG_O_VAL_COMER_PARTIDA
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_VAL_ADU_O_VAL_USD_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_VALOR_ADUANA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6090,7 +6090,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_IMP_PRECIO_PAG_O_VAL_COMER_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_PRECIO_PAGADO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6099,7 +6099,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_MONTO_PRECIO_UNITARIO_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_PRECIO_UNITARIO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6108,7 +6108,7 @@ Namespace Syn.Documento
                                             }
                                         },
                                         New Celda With {
-                                            .Contenido = partida_.Attribute(CA_MONTO_VALOR_AGREG_PARTIDA).Valor,
+                                            .Contenido = partida_.Attribute(CA_VALOR_AGREGADO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeIzqInf,
@@ -6217,7 +6217,7 @@ Namespace Syn.Documento
 
                                     partidasFraccion_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6228,7 +6228,7 @@ Namespace Syn.Documento
 
                                     partidasFraccion_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_FP_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6274,7 +6274,7 @@ Namespace Syn.Documento
 
                                     partidasDescripcion_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6285,7 +6285,7 @@ Namespace Syn.Documento
 
                                     partidasDescripcion_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_FP_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6331,7 +6331,7 @@ Namespace Syn.Documento
 
                                     partidasValAduana_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_T_TASA_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_CVE_TIPO_TASA_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6342,7 +6342,7 @@ Namespace Syn.Documento
 
                                     partidasValAduana_.Filas(0).ListCeldas.Add(
                                         New Celda With {
-                                            .Contenido = contribucionPartida_.Attribute(CA_FP_PARTIDA).Valor,
+                                            .Contenido = contribucionPartida_.Attribute(CA_FORMA_PAGO_PARTIDA).Valor,
                                             .EstiloCelda = New Estilos With {
                                                 .AlineacionTexto = Alineaciones.AlCentro,
                                                 .Borde = Bordes.BordeDerecho,
@@ -6522,7 +6522,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = RegulacionPartida_.Attribute(CA_NUM_PERMISO).Valor,
+                                                .Contenido = RegulacionPartida_.Attribute(CA_NUMERO_PERMISO).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzqInf,
@@ -6531,7 +6531,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = RegulacionPartida_.Attribute(CA_FIRM_ELECTRON_PERMISO).Valor,
+                                                .Contenido = RegulacionPartida_.Attribute(CA_FIRMA_ELECTRONICA_PERMISO).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzqInf,
@@ -6540,7 +6540,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = RegulacionPartida_.Attribute(CA_MONTO_USD_VAL_COM).Valor,
+                                                .Contenido = RegulacionPartida_.Attribute(CA_MONTO_USD).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzqInf,
@@ -6549,7 +6549,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = RegulacionPartida_.Attribute(CA_CANT_UMT_O_UMC).Valor,
+                                                .Contenido = RegulacionPartida_.Attribute(CA_CANTIDAD_UMT_UMC).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzqInf,
@@ -6743,7 +6743,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = identificadorPartida_.Attribute(CA_CVE_IDENTIF_PARTIDA).Valor,
+                                                .Contenido = identificadorPartida_.Attribute(CA_CVE_IDENTIFICADOR_PARTIDA).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzquierdo,
@@ -6752,7 +6752,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = identificadorPartida_.Attribute(CA_COMPL_1_PARTIDA).Valor,
+                                                .Contenido = identificadorPartida_.Attribute(CA_COMPLEMENTO_1_PARTIDA).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzquierdo,
@@ -6761,7 +6761,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = identificadorPartida_.Attribute(CA_COMPL_2_PARTIDA).Valor,
+                                                .Contenido = identificadorPartida_.Attribute(CA_COMPLEMENTO_2_PARTIDA).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeIzquierdo,
@@ -6770,7 +6770,7 @@ Namespace Syn.Documento
                                                 }
                                             },
                                             New Celda With {
-                                                .Contenido = identificadorPartida_.Attribute(CA_COMPL_3_PARTIDA).Valor,
+                                                .Contenido = identificadorPartida_.Attribute(CA_COMPLEMENTO_3_PARTIDA).Valor,
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.BordeDerIzq,
@@ -6935,7 +6935,7 @@ Namespace Syn.Documento
                                         }
                                     },
                                     New Celda With {
-                                        .Contenido = observacionPartida_.Attribute(CA_OBSERV_PARTIDA).Valor,
+                                        .Contenido = observacionPartida_.Attribute(CA_OBSERVACIONES_PARTIDA).Valor,
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlCentro,
                                             .Borde = Bordes.BordeDerIzqInf,
@@ -7031,7 +7031,7 @@ Namespace Syn.Documento
                                                 }
                                              },
                                             New Celda With {
-                                                .Contenido = "**** CLAVE DEL PREVALIDADOR: " + documento_.Attribute(CA_OBSERV_PEDIM).Valor + " ****",
+                                                .Contenido = "**** CLAVE DEL PREVALIDADOR: " + documento_.Attribute(CA_OBSERVACIONES_PEDIMENTO).Valor + " ****",
                                                 .EstiloCelda = New Estilos With {
                                                     .AlineacionTexto = Alineaciones.AlCentro,
                                                     .Borde = Bordes.SinBordes,
@@ -7095,7 +7095,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_AA_O_REP_LEGAL).Valor,
+                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_AA_REPRESENTANTE_LEGAL).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.SinBordes,
@@ -7153,7 +7153,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = "NOMBRE: " + documento_.Attribute(CA_NOMBRE_MAND_REP_AA).Valor,
+                                    .Contenido = "NOMBRE: " + documento_.Attribute(CA_NOMBRE_MANDATARIO_REPRESENTANTE_AA).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeIzquierdo,
@@ -7182,7 +7182,7 @@ Namespace Syn.Documento
                         New Fila With {
                             .ListCeldas = New List(Of Celda) From {
                                 New Celda With {
-                                    .Contenido = "RFC: " + documento_.Attribute(CA_RFC_MAND_O_AGAD_REP_ALMACEN).Valor,
+                                    .Contenido = "RFC: " + documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeIzqInf,
@@ -7191,7 +7191,7 @@ Namespace Syn.Documento
                                     }
                                 },
                                 New Celda With {
-                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_MAND_O_AGAD_REP_ALMACEN).Valor,
+                                    .Contenido = "CURP: " + documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor,
                                     .EstiloCelda = New Estilos With {
                                         .AlineacionTexto = Alineaciones.AlIzquierdo,
                                         .Borde = Bordes.BordeInferior,

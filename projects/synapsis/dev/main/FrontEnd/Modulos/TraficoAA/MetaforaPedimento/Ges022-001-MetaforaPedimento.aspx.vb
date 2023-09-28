@@ -8,7 +8,7 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions
 Imports Syn.Operaciones
-Imports Gsol.Web.Components
+Imports gsol.Web.Components
 Imports Syn.Documento
 Imports Syn.Documento.Componentes.Campo
 Imports Syn.Nucleo.RecursosComercioExterior
@@ -20,12 +20,13 @@ Imports Sax.Web
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals.Controllers
+Imports Rec.Globals.Controllers.ControladorRecursosAduanales
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
 Imports Rec.Globals.Utils
 Imports Syn.CustomBrokers.Controllers
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
-Imports System.Net
+Imports Rec.Globals
 
 #End Region
 
@@ -38,7 +39,7 @@ Public Class Ges022_001_MetaforaPedimento
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-    Dim _manifestacionValor As IControladorManifestacionValor
+
 
 #End Region
 
@@ -54,7 +55,7 @@ Public Class Ges022_001_MetaforaPedimento
 
             .DataObject = New ConstructorPedimentoNormal(True)
 
-            .addFilter(SeccionesPedimento.ANS1, CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO, "Pedimento")
+            .addFilter(SeccionesPedimento.ANS1, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, "Pedimento")
             .addFilter(SeccionesPedimento.ANS1, CamposPedimento.CP_REFERENCIA, "Referencia")
 
         End With
@@ -67,89 +68,114 @@ Public Class Ges022_001_MetaforaPedimento
     Public Overrides Function Configuracion() As TagWatcher
 
         ' ** * ** * Generales * ** * **
-        [Set](dbc_ReferenciaPedimento, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](dbc_ReferenciaPedimento, CA_NUM_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
-        [Set](sc_Patente, CP_MODALIDAD_ADUANA_PATENTE)
-        [Set](sc_EjecutivoCuenta, CP_EJECUTIVO_DE_CUENTA)
-        [Set](Convert.ToInt32(IIf(sch_TipoOperacion.Checked, 1, 2)), CA_T_OPER, TiposDato.Entero)
-        [Set](sc_ClavePedimento, CA_CVE_PEDIMENTO)
-        [Set](sc_Regimen, CA_REGIMEN)
-        [Set](sc_DestinoMercancia, CA_DESTINO_ORIGEN)
-        [Set](ic_TipoCambio, CA_TIPO_CAMBIO)
-        [Set](ic_PesoBruto, CA_PESO_BRUTO)
-        [Set](sc_AduanaEntradaSalida, CA_ADUANA_E_S)
-        [Set](sc_TransporteEntradaSalida, CA_MEDIO_DE_TRANSPORTE)
-        [Set](sc_MedioTransporteArribo, CA_MEDIO_DE_TRANSPORTE_DE_ARRIBO)
-        [Set](sc_MedioTransporteSalida, CA_MEDIO_DE_TRANSPORTE_DE_SALIDA)
-        [Set](ic_ValorDolares, CA_VALOR_DOLARES)
-        [Set](ic_ValorAduana, CA_VALOR_ADUANA)
-        [Set](ic_PrecioPagado, CA_PRECIO_PAGADO_O_VALOR_COMERCIAL)
+        [Set](dbcReferenciaPedimento, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](dbcReferenciaPedimento, CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        'scTipoReferencia
+        'scPrefijoReferencia
+
+        [Set](scPatente, CP_MODALIDAD_ADUANA_PATENTE)
+        [Set](scPatente.Value, CA_PATENTE)
+
+        [Set](scEjecutivoCuenta, CP_EJECUTIVO_CUENTA)
+        [Set](IIf(swcTipoOperacion.Checked, 1, 0), CA_TIPO_OPERACION, TiposDato.Entero)
+        [Set](scClavePedimento, CA_CVE_PEDIMENTO)
+        [Set](scRegimen, CA_REGIMEN)
+        [Set](scDestinoMercancia, CA_DESTINO_ORIGEN)
+        [Set](icTipoCambio, CA_TIPO_CAMBIO)
+        [Set](icPesoBruto, CA_PESO_BRUTO)
+        'ver lo del valor a 3 digitos
+        [Set](scAduanaEntradaSalida, CA_ADUANA_ENTRADA_SALIDA)
+        [Set](scAduanaEntradaSalida.Value, CA_CLAVE_SAD)
+
+        [Set](scTransporteEntradaSalida, CA_MEDIO_TRANSPORTE)
+        [Set](scMedioTransporteArribo, CA_MEDIO_TRANSPORTE_ARRIBO)
+        [Set](scMedioTransporteSalida, CA_MEDIO_TRANSPORTE_SALIDA)
+        [Set](icValorDolares, CA_VALOR_DOLARES)
+        [Set](icValorAduana, CA_VALOR_ADUANA)
+        [Set](icPrecioPagado, CA_PRECIO_PAGADO_VALOR_COMERCIAL)
+
+        If Not String.IsNullOrWhiteSpace(scAduanaEntradaSalida.Value) Then
+
+            [Set](scAduanaEntradaSalida.Value.Substring(0, 2), CA_ADUANA_SIN_SECCION)
+
+        End If
+
+        Dim informacionAgrupacion_ As InformacionAgrupacion = GetVars("_informacionAgrupacion")
+
+        If informacionAgrupacion_ IsNot Nothing Then
+
+            [Set](Convert.ToInt32(informacionAgrupacion_.numerototalpartidas), CA_NUMERO_TOTAL_PARTIDAS, TiposDato.Entero)
+            [Set](informacionAgrupacion_.fechageneracionagrupacion, CA_ANIO_VALIDACION)
+
+        End If
+
         ' ** * ** * Generales * ** * **
 
         ' ** * ** * Datos del importador/exportador * ** * **
-        [Set](fbc_Cliente, CA_RAZON_SOCIAL_IOE)
-        [Set](fbc_Cliente, CA_RAZON_SOCIAL_IOE, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
-        [Set](ic_RFCCliente, CA_RFC_DEL_IOE)
-        [Set](ic_CURP, CA_CURP_DEL_IOE)
-        [Set](ic_RFCFacturacion, CA_RFC_AA)
-        [Set](ic_DomicilioCliente, CA_DOMICILIO_IOE)
-        [Set](ic_ValorSeguros, CA_VAL_SEGUROS)
-        [Set](ic_Seguros, CA_SEGUROS)
-        [Set](ic_Fletes, CA_FLETES)
-        [Set](ic_Embalajes, CA_EMBALAJES)
-        [Set](ic_OtrosIncrementables, CA_OTROS_INCREMENTABLES)
-        [Set](ic_TransporteDec, CA_TRANSPORTE_DECREMENTABLES)
-        [Set](ic_SegurosDec, CA_SEGURO_DECREMENTABLES)
-        [Set](ic_CargaDec, CA_CARGA_DECREMENTABLES)
-        [Set](ic_DescargaDec, CA_DESCARGA_DECREMENTABLES)
-        [Set](ic_OtrosDec, CA_OTROS_DECREMENTABLES)
+        [Set](fbcCliente, CA_RAZON_SOCIAL_IOE)
+        [Set](fbcCliente, CA_RAZON_SOCIAL_IOE, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
+        [Set](icRFCCliente, CA_RFC_IOE)
+        [Set](icCURP, CA_CURP_IOE)
+        [Set](icRFCFacturacion, CA_RFC_AA)
+        [Set](icDomicilioCliente, CA_DOMICILIO_IOE)
+        [Set](icValorSeguros, CA_VALOR_SEGUROS)
+        [Set](icSeguros, CA_SEGUROS)
+        [Set](icFletes, CA_FLETES)
+        [Set](icEmbalajes, CA_EMBALAJES)
+        [Set](icOtrosIncrementables, CA_OTROS_INCREMENTABLES)
+        [Set](icTransporteDec, CA_TRANSPORTE_DECREMENTABLES)
+        [Set](icSegurosDec, CA_SEGURO_DECREMENTABLES)
+        [Set](icCargaDec, CA_CARGA_DECREMENTABLES)
+        [Set](icDescargaDec, CA_DESCARGA_DECREMENTABLES)
+        [Set](icOtrosDec, CA_OTROS_DECREMENTABLES)
         ' ** * ** * Datos del importador/exportador * ** * **
 
         ' ** * ** * ValidacionPago * ** * **
-        [Set](sc_ValidadorDesignado, CA_VALIDADOR_DESIGNADO)
-        [Set](sc_NumeroSemana, CA_NUMERO_SEMANA)
-        [Set](ic_ArchivoValidacion, CA_ARCHIVO_VALIDACION)
-        [Set](ic_AcuseValidación, CA_ACUSE_ELECTONICO_DE_VALIDACION)
-        [Set](ic_ArchivoPago, CA_ARCHIVO_PAGO)
-        [Set](ic_AcusetaPago, CA_ACUSE_ELECTONICO_DE_PAGO)
-        [Set](sc_ValidacionAduanaDespacho, CA_ADUANA_DESPACHO)
-        [Set](ic_MarcasNumeros, CA_MARCAS_NUMEROS_TOTAL_BULTOS)
-        [Set](ic_Certificacion, CA_CERTIFICACION)
-        [Set](ic_FechaValidacion, CA_FECHA_VALIDACION)
+        [Set](scValidadorDesignado, CA_VALIDADOR_DESIGNADO)
+        [Set](scNumeroSemana, CA_NUMERO_SEMANA)
+        [Set](icArchivoValidacion, CA_ARCHIVO_VALIDACION)
+        [Set](icAcuseValidación, CA_ACUSE_ELECTRONICO_VALIDACION)
+        [Set](icArchivoPago, CA_ARCHIVO_PAGO)
+        [Set](icAcusetaPago, CA_ACUSE_ELECTRONICO_PAGO)
+        [Set](scValidacionAduanaDespacho, CA_ADUANA_DESPACHO)
+        [Set](icMarcasNumeros, CA_MARCAS_NUMEROS_TOTAL_BULTOS)
+        [Set](icCertificacion, CA_CERTIFICACION)
+        [Set](icFechaValidacion, CA_FECHA_VALIDACION)
         ' ** * ** * ValidacionPago * ** * **
 
         ' ** * ** * Fechas * ** * **
-        [Set](ic_FechaRegistro, CA_FECHA_REGISTRO)
-        [Set](ic_FechaRevalidacion, CA_FECHA_REVALIDACION)
-        [Set](ic_FechaZarpe, CA_FECHA_ZARPE)
-        [Set](ic_FechaPrevio, CA_FECHA_PREVIO)
-        [Set](ic_FechaFondeo, CA_FECHA_FONDEO)
-        [Set](ic_FechaPago, CA_FECHA_PAGO)
-        [Set](ic_FechaAtraque, CA_FECHA_ATRAQUE)
-        [Set](ic_FechaDespacho, CA_FECHA_DESPACHO)
-        [Set](ic_FechaEstimadaArribo, CA_FECHA_ARRIBO)
-        [Set](ic_FechaEntrega, CA_FECHA_ENTREGA)
-        [Set](ic_FechaEntrada, CA_FECHA_ENTRADA)
-        [Set](ic_FechaFacturacion, CA_FECHA_FACTURACION)
+        [Set](icFechaRegistro, CA_FECHA_REGISTRO)
+        [Set](icFechaRevalidacion, CA_FECHA_REVALIDACION)
+        [Set](icFechaZarpe, CA_FECHA_ZARPE)
+        [Set](icFechaPrevio, CA_FECHA_PREVIO)
+        [Set](icFechaFondeo, CA_FECHA_FONDEO)
+        [Set](icFechaPago, CA_FECHA_PAGO)
+        [Set](icFechaAtraque, CA_FECHA_ATRAQUE)
+        [Set](icFechaDespacho, CA_FECHA_DESPACHO)
+        [Set](icFechaEstimadaArribo, CA_FECHA_ARRIBO)
+        [Set](icFechaEntrega, CA_FECHA_ENTREGA)
+        [Set](icFechaEntrada, CA_FECHA_ENTRADA)
+        [Set](icFechaPresentacion, CA_FECHA_PRESENTACION)
+        [Set](icFechaFacturacion, CA_FECHA_FACTURACION)
         ' ** * ** * Fechas * ** * **
 
         ' ** * ** * TasasContribuciones * ** * **
-        [Set](sc_TasasContribucion, CA_CONTRIBUCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_TasasTipoTasa, CA_CVE_T_TASA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_TasasTasa, CA_TASA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoTasas, Nothing, seccion_:=SeccionesPedimento.ANS6)
+        [Set](scTasasContribucion, CA_CONTRIBUCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTasasTipoTasa, CA_CVE_TIPO_TASA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icTasasTasa, CA_TASA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccTasas, Nothing, seccion_:=SeccionesPedimento.ANS6)
         ' ** * ** * TasasContribuciones * ** * **
 
         ' ** * ** * CatalogoCuadroLiquidacion * ** * **
-        [Set](sc_CuadroLiquidacionConcepto, CA_CONCEPTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CuadroLiquidacionDescripcion, CA_DESCRIPCION_CONCEPTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_CuadroLiquidacionFP, CA_FP, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CuadroLiquidacionImporte, CA_IMPORTE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoCuadroLiquidacion, Nothing, seccion_:=SeccionesPedimento.ANS55)
+        [Set](scCuadroLiquidacionConcepto, CA_CONCEPTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCuadroLiquidacionDescripcion, CA_DESCRIPCION_CONCEPTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scCuadroLiquidacionFP, CA_FORMA_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCuadroLiquidacionImporte, CA_IMPORTE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccCuadroLiquidacion, Nothing, seccion_:=SeccionesPedimento.ANS55)
 
-        [Set](ic_CuadroLiquidacionEfectivo, CA_EFECTIVO)
-        [Set](ic_CuadroLiquidacionOtros, CA_OTROS)
-        [Set](ic_CuadroLiquidacionTotal, CA_TOTAL)
+        [Set](icCuadroLiquidacionEfectivo, CA_EFECTIVO)
+        [Set](icCuadroLiquidacionOtros, CA_OTROS)
+        [Set](icCuadroLiquidacionTotal, CA_TOTAL)
         ' ** * ** * CatalogoCuadroLiquidacion * ** * **
 
         ' ** * ** * LineaCaptura * ** * **
@@ -183,9 +209,9 @@ Public Class Ges022_001_MetaforaPedimento
         ' ** * ** * DatosProveedoresImpo * ** * **
 
         ' ** * ** * Destinatarios * ** * **
-        [Set](ic_TaxtIDDestinatario, CA_ID_FISCAL_DESTINATARIO)
-        [Set](sc_RazonSocialDestinatario, CA_NOMBRE_RAZON_SOC_DESTINATARIO)
-        [Set](ic_DomicilioDestinatario, CA_DOMICILIO_DESTINATARIO)
+        [Set](icTaxtIDDestinatario, CA_ID_FISCAL_DESTINATARIO)
+        [Set](scRazonSocialDestinatario, CA_NOMBRE_RAZON_SOCIAL_DESTINATARIO)
+        [Set](icDomicilioDestinatario, CA_DOMICILIO_DESTINATARIO)
         ' ** * ** * Destinatarios * ** * **
 
         ' ** * ** * DatosTransporte * ** * **
@@ -202,48 +228,48 @@ Public Class Ges022_001_MetaforaPedimento
         ' ** * ** * DatosTransporte * ** * **
 
         ' ** * ** * Guias * ** * **
-        [Set](ic_Guia, CA_GUIA_O_MANIF_O_BL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_TipoGuia, CA_MASTER_O_HOUSE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoGuias, Nothing, seccion_:=SeccionesPedimento.ANS16)
+        [Set](icGuia, CA_GUIA_MANIFIESTO_BL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](swcTipoGuia, CA_MASTER_HOUSE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccGuias, Nothing, seccion_:=SeccionesPedimento.ANS16)
         ' ** * ** * Guias * ** * **
 
         ' ** * ** * Contenedores * ** * **
-        [Set](ic_NumeroContenedor, CA_NUM_CONTENEDOR_FERRO_NUM_ECON, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_TipoContenedor, CA_CVE_TIPO_CONTENEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoContenedores, Nothing, seccion_:=SeccionesPedimento.ANS17)
+        [Set](icNumeroContenedor, CA_NUMERO_CONTENEDOR_FERROCARRIL_NUMERO_ECONOMICO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTipoContenedor, CA_CVE_TIPO_CONTENEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccContenedores, Nothing, seccion_:=SeccionesPedimento.ANS17)
         ' ** * ** * Contenedores * ** * **
 
         ' ** * ** * Identificadores * ** * **
-        [Set](sc_IdentificadorPedimento, CA_CVE_IDENTIFICADOR_G, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_Complemento1Pedimento, CA_COMPL_1, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_Complemento2Pedimento, CA_COMPL_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_Complemento3Pedimento, CA_COMPL_3, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoIdentificadores, Nothing, seccion_:=SeccionesPedimento.ANS18)
+        [Set](scIdentificadorPedimento, CA_CVE_IDENTIFICADOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icComplemento1Pedimento, CA_COMPLEMENTO_1, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icComplemento2Pedimento, CA_COMPLEMENTO_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icComplemento3Pedimento, CA_COMPLEMENTO_3, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccIdentificadores, Nothing, seccion_:=SeccionesPedimento.ANS18)
         ' ** * ** * Identificadores * ** * **
 
         ' ** * ** * CuentasAduaneras * ** * **
-        [Set](sc_CuentaAduanera, CA_CVE_CTA_ADUANERA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_TipoCuentaAduanera, CA_CVE_TIPO_GARANTIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_InstitucionEmisora, CA_NOMBRE_INST_EMISORA_CTA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_NumeroCOntratoCuentaAduanera, CA_NUM_CONTRATO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_FolioConstanciaCuentaAduanera, CA_FOLIO_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_ImporteCuentaAduanera, CA_IMPORTE_TOTAL_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_FechaEmisionCuentaAduanera, CA_FECHA_EMISION_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PrecioEstimadoCuentaAduanera, CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_TitulosCuentaAduanera, CA_TITULOS_ASIGNADOS_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_ValorUnitario, CA_VALOR_UNITARIO_TITULO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoCuentasAduaneras, Nothing, seccion_:=SeccionesPedimento.ANS19)
+        [Set](scCuentaAduanera, CA_CVE_CUENTA_ADUANERA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTipoCuentaAduanera, CA_CVE_TIPO_GARANTIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scInstitucionEmisora, CA_NOMBRE_INSTITUCION_EMISORA_CUENTA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icNumeroCOntratoCuentaAduanera, CA_NUMERO_CONTRATO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFolioConstanciaCuentaAduanera, CA_FOLIO_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icImporteCuentaAduanera, CA_IMPORTE_TOTAL_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFechaEmisionCuentaAduanera, CA_FECHA_EMISION_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPrecioEstimadoCuentaAduanera, CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icTitulosCuentaAduanera, CA_TITULOS_ASIGNADOS_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icValorUnitario, CA_VALOR_UNITARIO_TITULO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccCuentasAduaneras, Nothing, seccion_:=SeccionesPedimento.ANS19)
         ' ** * ** * CuentasAduaneras * ** * **
 
         ' ** * ** * Pagosvirtuales * ** * **
-        [Set](sc_PagosVirtualesFormaPago, CA_PV_FP, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_PagosVIrtualesEmisora, CA_NOMBRE_INST_EMISORA_DOCTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PagosVirtualesDocumento, CA_NUM_DOCTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PagosVirtualesFechaDocumento, CA_FECHA_EXP_DOCTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PagosVirtualesImporteDocumento, CA_MONTO_DOCTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PagosVirtualesSaldo, CA_SALDO_DISP_DOCTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PagosVirtualesImportePedimento, CA_MONTO_PAG_PEDIM, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoPagosvirtuales, Nothing, seccion_:=SeccionesPedimento.ANS22)
+        [Set](scPagosVirtualesFormaPago, CA_PAGOS_VIRTUALES_FORMA_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPagosVIrtualesEmisora, CA_NOMBRE_INSTITUCION_EMISORA_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesDocumento, CA_NUMERO_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesFechaDocumento, CA_FECHA_EXPOCICION_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesImporteDocumento, CA_IMPORTE_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesSaldo, CA_SALDO_DISPONIBLE_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesImportePedimento, CA_IMPORTE_PAGADO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccPagosvirtuales, Nothing, seccion_:=SeccionesPedimento.ANS22)
         ' ** * ** * Pagosvirtuales * ** * **
 
         '' Estas se ejecutaran dependiendo el constructor del pedimento
@@ -282,74 +308,95 @@ Public Class Ges022_001_MetaforaPedimento
         '' Estas se ejecutaran dependiendo el constructor del pedimento
 
         ' ** * ** * CatalogoDescargos * ** * **
-        [Set](ic_DescargosPedCompletoOriginal, CA_NUM_PEDIM_ORIGINAL_COMPLETO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosFechaPedOriginal, CA_FECHA_PEDIM_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_DescargosClavePedOriginal, CA_CVE_PEDIM_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosValidacionOriginal, CA_AÑO_VALIDACION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosValidacion2Original, CA_AÑO_VALIDACION_2_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_DescargosPatenteOriginal, CA_PATENTE_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_DescargosAduanaOriginal, CA_ADUANA_DESPACHO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_DescargosAduana2Original, CA_ADUANA_DESPACHO_ORIGINAL_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosPedOriginal, CA_NUM_PEDIMENTO_ORIGINAL_7_DIGITOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosFraccionOriginal, CA_FRACCION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosUMOriginal, CA_UM_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_DescargosUMDescargo, CA_CANT_MERCANCIA_UMT_DESCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoDescargos, Nothing, seccion_:=SeccionesPedimento.ANS20)
+        [Set](icDescargosPedCompletoOriginal, CA_NUMERO_PEDIMENTO_ORIGINAL_COMPLETO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosFechaPedOriginal, CA_FECHA_PEDIMENTO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scDescargosClavePedOriginal, CA_CVE_PEDIMENTO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosValidacionOriginal, CA_ANIO_VALIDACION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosValidacion2Original, CA_ANIO_VALIDACION_2_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scDescargosPatenteOriginal, CA_PATENTE_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scDescargosAduanaOriginal, CA_ADUANA_DESPACHO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scDescargosAduana2Original, CA_ADUANA_DESPACHO_ORIGINAL_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosPedOriginal, CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosFraccionOriginal, CA_FRACCION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosUMOriginal, CA_UM_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescargosUMDescargo, CA_CANTIDAD_MERCANCIA_UMT_DESCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccDescargos, Nothing, seccion_:=SeccionesPedimento.ANS20)
         ' ** * ** * CatalogoDescargos * ** * **
 
         ' ** * ** * Compensaciones * ** * **
-        [Set](sc_CompensacionesContribucion, CA_COMPENSACION_CONTRIBUCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesPedCompletoOriginal, CA_COMPENSACION_NUM_PEDIM_ORIGINAL_COMPLETO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesFechaPagoPedOriginal, CA_FECHA_PAGO_ORIG_PARA_COMPENSAC, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesGravamen, CA_IMPORTE_GRAVAMEN_COMPENSACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_CompensacionesConcepto, CA_CVE_CONCEPTO_COMPENSACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesAñoValidacionOriginal, CA_COMPENSACION_AÑO_VALIDACION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesAñoValidacion2Original, CA_COMPENSACION_AÑO_VALIDACION_2_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_CompensacionesPatenteOriginal, CA_COMPENSACION_PATENTE_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_CompensacionesAduanaOriginal, CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_CompensacionesAduana2Original, CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_CompensacionesPedOriginal, CA_COMPENSACION_NUM_PEDIMENTO_ORIGINAL_7_DIGITOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoCompensaciones, Nothing, seccion_:=SeccionesPedimento.ANS21)
+        [Set](scCompensacionesContribucion, CA_COMPENSACION_CONTRIBUCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesPedCompletoOriginal, CA_COMPENSACION_NUMERO_PEDIMENTO_ORIGINAL_COMPLETO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesFechaPagoPedOriginal, CA_FECHA_PAGO_ORIGINAL_PARA_COMPENSACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesGravamen, CA_IMPORTE_GRAVAMEN_COMPENSACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scCompensacionesConcepto, CA_CVE_CONCEPTO_COMPENSACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesAñoValidacionOriginal, CA_COMPENSACION_ANIO_VALIDACION_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesAñoValidacion2Original, CA_COMPENSACION_ANIO_VALIDACION_2_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scCompensacionesPatenteOriginal, CA_COMPENSACION_PATENTE_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scCompensacionesAduanaOriginal, CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scCompensacionesAduana2Original, CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL_2, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCompensacionesPedOriginal, CA_COMPENSACION_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccCompensaciones, Nothing, seccion_:=SeccionesPedimento.ANS21)
         ' ** * ** * Compensaciones * ** * **
 
         ' ** * ** * Observaciones * ** * **
-        [Set](ic_OnservacionesPedimento, CA_OBSERV_PEDIM)
+        [Set](icOnservacionesPedimento, CA_OBSERVACIONES_PEDIMENTO)
         ' ** * ** * Observaciones * ** * **
 
         ' ** * ** * Partidas * ** * **
-        [Set](ic_FraccionArancelaria, CA_FRACC_ARANC_PARTIDA)
-        [Set](ic_Nico, CA_NICO_PARTIDA)
+
+        [Set](icFraccionArancelaria, CA_FRACCION_ARANCELARIA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icNico, CA_NICO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         '[Set](sc_PartidaVinculacion, CA_PARTIDAS_VINCULACION)
-        [Set](sc_PartidaMetodoValoracion, CA_CVE_MET_VALOR_PARTIDA)
-        [Set](sc_UMC, CA_CVE_UMC_PARTIDA)
-        [Set](ic_CantidadUMC, CA_CANT_UMC_PARTIDA)
-        [Set](sc_UMT, CA_CVE_UMT_PARTIDA)
+        [Set](scPartidaMetodoValoracion, CA_CVE_METODO_VALORACION_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scUMC, CA_CVE_UMC_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCantidadUMC, CA_CANTIDAD_UMC_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scUMT, CA_CVE_UMT_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-        [Set](ic_CantidadUMT, CA_CANT_UMT_PARTIDA)
-        [Set](sc_PaisVC, CA_CVE_PAIS_VEND_O_COMP_PARTIDA)
-        [Set](sc_PaisOD, CA_CVE_PAIS_ORIGEN_O_DEST_PARTIDA)
-        [Set](ic_PartidaValorAduana, CA_VAL_ADU_O_VAL_USD_PARTIDA)
-        [Set](ic_PartidaPrecioPagado, CA_IMP_PRECIO_PAG_O_VAL_COMER_PARTIDA)
-        [Set](ic_PartidaPrecioUnitario, CA_MONTO_PRECIO_UNITARIO_PARTIDA)
-        [Set](ic_PartidaValorAgregado, CA_MONTO_VALOR_AGREG_PARTIDA)
-        [Set](ic_PartidaMarca, CA_NOMBRE_MARCA_PARTIDA)
-        [Set](ic_PartidaModelo, CA_CVE_MODELO_PARTIDA)
-        [Set](ic_PartidaCodigoProducto, CA_CODIGO_PRODUCTO_PARTIDA)
+        [Set](icCantidadUMT, CA_CANTIDAD_UMT_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPaisVendedor, CA_CVE_PAIS_VENDEDOR_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPaisComprador, CA_CVE_PAIS_COMPRADOR_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-        [Set](ic_PartidaDescripcion, CA_DESCRIP_MERC_PARTIDA)
+        [Set](scPaisOrigen, CA_CVE_PAIS_ORIGEN_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPaisDestino, CA_CVE_PAIS_DESTINO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-        [Set](sc_PartidaContribucion, CA_CONTRIBUCION_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sc_PartidaTipoTasa, CA_CVE_T_TASA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PartidaTasa, CA_TASA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](catalogoPartidaTasas, Nothing, seccion_:=SeccionesPedimento.ANS29)
+        [Set](icPartidaValorAduana, CA_VALOR_ADUANA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaPrecioPagado, CA_PRECIO_PAGADO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaValorComercial, CA_VALOR_COMERCIAL_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaPrecioUnitario, CA_PRECIO_UNITARIO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaValorAgregado, CA_VALOR_AGREGADO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaMarca, CA_MARCA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaModelo, CA_MODELO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](scPartidaVinculacion, CA_CVE_VINCULACION_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-        [Set](sc_PartidaIdentificador, CA_CVE_IDENTIF_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PartidaComplemento1, CA_COMPL_1_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PartidaComplemento2, CA_COMPL_2_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ic_PartidaComplemento3, CA_COMPL_3_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](CatalogoPartidasIdentificadores, Nothing, seccion_:=SeccionesPedimento.ANS27)
+        '[Set](icPartidaCodigoProducto, CA_CODIGO_PRODUCTO_PARTIDA)
 
-        [Set](ic_PartidaObservacion, CA_OBSERV_PARTIDA)
+        [Set](icPartidaDescripcion, CA_DESCRIPCION_MERCANCIA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](scPartidaContribucion, CA_CVE_CONTRIBUCION_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPartidaTipoTasa, CA_CVE_TIPO_TASA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaTasa, CA_TASA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scFormaPago, CA_FORMA_PAGO_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icImporte, CA_IMPORTE_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccPartidaTasas, Nothing, seccion_:=SeccionesPedimento.ANS29, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](scClavePermiso, CA_CVE_PERMISO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPermisoNom, CA_NUMERO_PERMISO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFirmaDescargo, CA_FIRMA_ELECTRONICA_PERMISO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icValorComercialDLS, CA_VALOR_USD_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCantidadUMTC, CA_CANTIDAD_UMT_UMC, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccPartidasPermisos, Nothing, seccion_:=SeccionesPedimento.ANS26, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](scPartidaIdentificador, CA_CVE_IDENTIFICADOR_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaComplemento1, CA_COMPLEMENTO_1_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaComplemento2, CA_COMPLEMENTO_2_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPartidaComplemento3, CA_COMPLEMENTO_3_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccPartidasIdentificadores, Nothing, seccion_:=SeccionesPedimento.ANS27, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](icPartidaObservacion, CA_OBSERVACIONES_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](pbcPartidas, Nothing, seccion_:=SeccionesPedimento.ANS24)
+
+
         ' ** * ** * Partidas * ** * **
 
         Return New TagWatcher(1)
@@ -366,6 +413,9 @@ Public Class Ges022_001_MetaforaPedimento
 
         PreparaControles()
 
+        PreparaTarjetero(PillboxControl.ToolbarModality.Simple, pbcPartidas)
+
+
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -377,6 +427,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub BotoneraClicEditar()
 
+        PreparaTarjetero(PillboxControl.ToolbarModality.Advanced, pbcPartidas)
 
     End Sub
 
@@ -387,24 +438,78 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub BotoneraClicOtros(ByVal IndexSelected_ As Integer)
 
-        Select Case IndexSelected_
-            Case 7
+        If IndexSelected_ = 8 Then
 
-                ImprimirPedimentoNormal(dbc_ReferenciaPedimento.Value)
+            ImprimirPedimentoNormal(dbcReferenciaPedimento.Value)
 
-            Case 9
+        End If
 
-                _manifestacionValor = New ControladorManifestacionValor(1)
+        If IndexSelected_ = 10 Then
 
-                Dim tagWatcher = _manifestacionValor.Generar(OperacionGenerica.Id)
+            'pruebas 
+            'MANDAR UNA LISTA
+            'RKU23 - 402
+            Dim listaObjectID = New List(Of ObjectId) From {
+                New ObjectId("64e7cc2b4c203fa0dcb2124a"),
+                New ObjectId("64e7cead4c203fa0dcb2124b")
+            }
+            Dim factura_ As IControladorFacturaComercial = New ControladorFacturaComercial(listaObjectID, IControladorFacturaComercial.Modalidades.Externo, 1)
+            Dim listafactura_ = New List(Of DocumentoElectronico) From {
+                factura_.FacturasComerciales(0),
+                factura_.FacturasComerciales(1)
+            }
 
-                DisplayMessage(tagWatcher.LastMessage, StatusMessage.Fail)
+            Dim documentoElectronico_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
-            Case 10
+            Dim generador_ As IGeneradorPartidasPedimento = New GeneradorPartidasPedimento(Statements.GetOfficeOnline()._id, listafactura_, documentoElectronico_)
+            Dim lista_ As List(Of IGeneradorPartidasPedimento.TipoAgrupaciones) = generador_.GeneraOpcionesAgrupacion(generador_.ItemsFacturaComercial)
 
-                ImprimirMV(dbc_ReferenciaPedimento.Value)
+            Dim agrupaciones_ = generador_.AgruparItemsFacturaPor(lista_(0), generador_.ItemsFacturaComercial)
 
-        End Select
+            SetVars("_informacionAgrupacion", generador_.InformacionAgrupacion)
+
+            pbcPartidas.ClearRows()
+
+            Dim i = 1
+
+            For Each agrupacion_ As PartidaPedimento In agrupaciones_.ObjectReturned
+
+                pbcPartidas.SetPillbox(Sub(ByVal pillbox_ As PillBox)
+
+                                           pillbox_.SetIndice(pbcPartidas.KeyField, IIf(i = 1, i, 0))
+                                           pillbox_.SetIdentity(i)
+                                           pillbox_.SetControlValue(icFraccionArancelaria, New SelectOption With {.Value = agrupacion_.FraccionArancelaria, .Text = agrupacion_.DescripcionFraccionArancelaria})
+                                           pillbox_.SetControlValue(icNico, New SelectOption With {.Value = agrupacion_.Nico, .Text = agrupacion_.DescripcionNico})
+                                           pillbox_.SetControlValue(icPartidaPrecioUnitario, Convert.ToInt64(agrupacion_.PrecioUnitario))
+                                           pillbox_.SetControlValue(scPartidaMetodoValoracion, New SelectOption With {.Value = agrupacion_.MetodoValoracion, .Text = agrupacion_.DescripcionMetodoValoracion})
+                                           pillbox_.SetControlValue(icCantidadUMC, agrupacion_.CantidadUMC)
+                                           pillbox_.SetControlValue(scUMC, New SelectOption With {.Value = agrupacion_.UnidadMedidaComercial, .Text = agrupacion_.DescripcionUnidadMedidaComercial})
+                                           pillbox_.SetControlValue(icCantidadUMT, agrupacion_.CantidadUMT)
+                                           pillbox_.SetControlValue(scUMT, New SelectOption With {.Value = agrupacion_.UnidadMedidaTarifa, .Text = agrupacion_.DescripcionUnidadMedidaTarifa})
+                                           pillbox_.SetControlValue(icPartidaValorAduana, Convert.ToInt64(agrupacion_.ValorAduanal))
+                                           pillbox_.SetControlValue(icPartidaValorUSd, Convert.ToInt64(agrupacion_.ValorDolares))
+                                           pillbox_.SetControlValue(icPartidaPrecioPagado, Convert.ToInt64(agrupacion_.ImportePrecioPagado))
+                                           pillbox_.SetControlValue(icPartidaValorComercial, agrupacion_.ValorComercial)
+                                           pillbox_.SetControlValue(scPaisVendedor, New SelectOption With {.Value = agrupacion_.PaisVendedor, .Text = agrupacion_.DescripcionPaisVendedor})
+                                           pillbox_.SetControlValue(scPaisComprador, New SelectOption With {.Value = agrupacion_.PaisComprador, .Text = agrupacion_.DescripcionPaisComprador})
+                                           pillbox_.SetControlValue(scPaisOrigen, New SelectOption With {.Value = agrupacion_.PaisOrigen, .Text = agrupacion_.DescripcionPaisOrigen})
+                                           pillbox_.SetControlValue(scPaisDestino, New SelectOption With {.Value = agrupacion_.PaisDestino, .Text = agrupacion_.DescripcionPaisDestino})
+                                           pillbox_.SetControlValue(icPartidaMarca, agrupacion_.Marca)
+                                           pillbox_.SetControlValue(icPartidaModelo, agrupacion_.Modelo)
+                                           pillbox_.SetControlValue(scPartidaVinculacion, New SelectOption With {.Value = agrupacion_.Vinculacion, .Text = agrupacion_.DescripcionVinculacion})
+                                           pillbox_.SetControlValue(icPartidaValorAgregado, agrupacion_.ValorAgregado)
+                                           pillbox_.SetControlValue(icPartidaDescripcion, agrupacion_.Descripcion)
+                                           pillbox_.SetControlValue(icPartidaObservacion, agrupacion_.Observaciones)
+
+                                       End Sub)
+
+                i += 1
+
+            Next
+
+            pbcPartidas.PillBoxDataBinding()
+
+        End If
 
     End Sub
 
@@ -413,17 +518,17 @@ Public Class Ges022_001_MetaforaPedimento
 
         With documentoElectronico_
 
-            .FolioOperacion = dbc_ReferenciaPedimento.Value
+            .FolioOperacion = dbcReferenciaPedimento.Value
 
-            .FolioDocumento = dbc_ReferenciaPedimento.ValueDetail
+            .FolioDocumento = dbcReferenciaPedimento.ValueDetail
 
             .IdCliente = 0
 
-            .NombreCliente = fbc_Cliente.Text
+            .NombreCliente = fbcCliente.Text
 
         End With
 
-        LimpiaFormatos()
+        'LimpiaFormatos()
 
     End Sub
 
@@ -431,7 +536,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        LimpiaFormatos()
+        'LimpiaFormatos()
 
     End Sub
 
@@ -440,17 +545,31 @@ Public Class Ges022_001_MetaforaPedimento
 
         With documentoElectronico_
 
-            If .Attribute(CamposPedimento.CA_T_OPER).Valor = 1 Then
+            If .Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = 1 Then
 
-                sch_TipoOperacion.Checked = True
+                swcTipoOperacion.Checked = True
 
             Else
 
-                sch_TipoOperacion.Checked = False
+                swcTipoOperacion.Checked = False
 
             End If
 
         End With
+
+    End Sub
+
+    Public Overrides Sub DespuesBuquedaGeneralConDatos()
+
+
+        PreparaTarjetero(PillboxControl.ToolbarModality.Default, pbcPartidas)
+
+    End Sub
+
+    Public Overrides Sub DespuesBuquedaGeneralSinDatos()
+
+        PreparaTarjetero(PillboxControl.ToolbarModality.Default, pbcPartidas)
+
 
     End Sub
 
@@ -465,61 +584,60 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub Limpiar()
 
-        CatalogoTasas.DataSource = Nothing
-        CatalogoCuadroLiquidacion.DataSource = Nothing
-
-        CatalogoGuias.DataSource = Nothing
+        ccTasas.DataSource = Nothing
+        ccCuadroLiquidacion.DataSource = Nothing
+        ccGuias.DataSource = Nothing
 
     End Sub
 
     Private Sub LimpiaFormatos()
 
         ' ** * ** * Generales * ** * **
-        ic_TipoCambio.Value = ic_TipoCambio.Value.Replace("$", "")
-        ic_ValorDolares.Value = ic_ValorDolares.Value.Replace("$", "")
-        ic_ValorAduana.Value = ic_ValorAduana.Value.Replace("$", "")
-        ic_PrecioPagado.Value = ic_PrecioPagado.Value.Replace("$", "")
+        icTipoCambio.Value = icTipoCambio.Value.Replace("$", "")
+        icValorDolares.Value = icValorDolares.Value.Replace("$", "")
+        icValorAduana.Value = icValorAduana.Value.Replace("$", "")
+        icPrecioPagado.Value = icPrecioPagado.Value.Replace("$", "")
         ' ** * ** * Generales * ** * **
 
         ' ** * ** * Datos del importador/exportador * ** * **
-        ic_ValorSeguros.Value = ic_ValorSeguros.Value.Replace("$", "")
-        ic_Seguros.Value = ic_Seguros.Value.Replace("$", "")
-        ic_Fletes.Value = ic_Fletes.Value.Replace("$", "")
-        ic_Embalajes.Value = ic_Embalajes.Value.Replace("$", "")
-        ic_OtrosIncrementables.Value = ic_OtrosIncrementables.Value.Replace("$", "")
+        icValorSeguros.Value = icValorSeguros.Value.Replace("$", "")
+        icSeguros.Value = icSeguros.Value.Replace("$", "")
+        icFletes.Value = icFletes.Value.Replace("$", "")
+        icEmbalajes.Value = icEmbalajes.Value.Replace("$", "")
+        icOtrosIncrementables.Value = icOtrosIncrementables.Value.Replace("$", "")
 
-        ic_TransporteDec.Value = ic_TransporteDec.Value.Replace("$", "")
-        ic_SegurosDec.Value = ic_SegurosDec.Value.Replace("$", "")
-        ic_CargaDec.Value = ic_CargaDec.Value.Replace("$", "")
-        ic_DescargaDec.Value = ic_DescargaDec.Value.Replace("$", "")
-        ic_OtrosDec.Value = ic_OtrosDec.Value.Replace("$", "")
+        icTransporteDec.Value = icTransporteDec.Value.Replace("$", "")
+        icSegurosDec.Value = icSegurosDec.Value.Replace("$", "")
+        icCargaDec.Value = icCargaDec.Value.Replace("$", "")
+        icDescargaDec.Value = icDescargaDec.Value.Replace("$", "")
+        icOtrosDec.Value = icOtrosDec.Value.Replace("$", "")
         ' ** * ** * Datos del importador/exportador * ** * **
 
         ' ** * ** * DatosProveedoresImpo * ** * **
-        ic_MontoFacturaProveedor.Value = ic_MontoFacturaProveedor.Value.Replace("$", "")
-        ic_MontoFacturaUSDProveedor.Value = ic_MontoFacturaUSDProveedor.Value.Replace("$", "")
+        icMontoFacturaProveedor.Value = icMontoFacturaProveedor.Value.Replace("$", "")
+        icMontoFacturaUSDProveedor.Value = icMontoFacturaUSDProveedor.Value.Replace("$", "")
         ' ** * ** * DatosProveedoresImpo * ** * **
 
         ' ** * ** * CuadroLiquidacion * ** * **
-        ic_CuadroLiquidacionEfectivo.Value = ic_CuadroLiquidacionEfectivo.Value.Replace("$", "")
-        ic_CuadroLiquidacionOtros.Value = ic_CuadroLiquidacionOtros.Value.Replace("$", "")
-        ic_CuadroLiquidacionTotal.Value = ic_CuadroLiquidacionTotal.Value.Replace("$", "")
+        icCuadroLiquidacionEfectivo.Value = icCuadroLiquidacionEfectivo.Value.Replace("$", "")
+        icCuadroLiquidacionOtros.Value = icCuadroLiquidacionOtros.Value.Replace("$", "")
+        icCuadroLiquidacionTotal.Value = icCuadroLiquidacionTotal.Value.Replace("$", "")
         ' ** * ** * CuadroLiquidacion * ** * **
 
         ' ** * ** * CuentasAduaneras * ** * **
-        ic_ImporteCuentaAduanera.Value = ic_ImporteCuentaAduanera.Value.Replace("$", "")
-        ic_PrecioEstimadoCuentaAduanera.Value = ic_PrecioEstimadoCuentaAduanera.Value.Replace("$", "")
-        ic_ValorUnitario.Value = ic_ValorUnitario.Value.Replace("$", "")
+        icImporteCuentaAduanera.Value = icImporteCuentaAduanera.Value.Replace("$", "")
+        icPrecioEstimadoCuentaAduanera.Value = icPrecioEstimadoCuentaAduanera.Value.Replace("$", "")
+        icValorUnitario.Value = icValorUnitario.Value.Replace("$", "")
         ' ** * ** * CuentasAduaneras * ** * **
 
         ' ** * ** * Partidas * ** * **
-        ic_PartidaValorAduana.Value = ic_PartidaValorAduana.Value.Replace("$", "")
-        ic_PartidaPrecioPagado.Value = ic_PartidaPrecioPagado.Value.Replace("$", "")
-        ic_PartidaPrecioUnitario.Value = ic_PartidaPrecioUnitario.Value.Replace("$", "")
-        ic_PartidaValorAgregado.Value = ic_PartidaValorAgregado.Value.Replace("$", "")
+        icPartidaValorAduana.Value = icPartidaValorAduana.Value.Replace("$", "")
+        icPartidaPrecioPagado.Value = icPartidaPrecioPagado.Value.Replace("$", "")
+        icPartidaPrecioUnitario.Value = icPartidaPrecioUnitario.Value.Replace("$", "")
+        icPartidaValorAgregado.Value = icPartidaValorAgregado.Value.Replace("$", "")
         ' ** * ** * Partidas * ** * **
 
-        ic_LineaCapturaImporte.Value = ic_LineaCapturaImporte.Value.Replace("$", "")
+        icLineaCapturaImporte.Value = icLineaCapturaImporte.Value.Replace("$", "")
 
     End Sub
 
@@ -546,9 +664,9 @@ Public Class Ges022_001_MetaforaPedimento
 
         Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
 
-        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbc_Cliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcCliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
 
-        fbc_Cliente.DataSource = lista_
+        fbcCliente.DataSource = lista_
 
     End Sub
 
@@ -566,7 +684,7 @@ Public Class Ges022_001_MetaforaPedimento
 
         Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
 
-        Dim TagWatcher_ = controlador_.ObtenerDocumento(fbc_Cliente.Value)
+        Dim TagWatcher_ = controlador_.ObtenerDocumento(fbcCliente.Value)
 
         If TagWatcher_.ObjectReturned IsNot Nothing Then
 
@@ -579,7 +697,7 @@ Public Class Ges022_001_MetaforaPedimento
     End Sub
 
     Protected Sub sc_Patente_Click(sender As Object, e As EventArgs)
-        sc_Patente.DataSource = CargaPatente()
+        scPatente.DataSource = CargaPatente()
     End Sub
 
     Public Function ConsultaPedimentito(ByVal FolioOper_ As String) As DocumentoElectronico
@@ -646,140 +764,118 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-    Public Sub ImprimirMV(ByVal FolioOperacion_ As String)
-
-        Dim docElectronico_ As DocumentoElectronico = ConsultaPedimentito(FolioOperacion_)
-
-        If docElectronico_ IsNot Nothing Then
-
-            Dim i = 1
-
-            _manifestacionValor = New ControladorManifestacionValor(1)
-
-            Dim _manifestacionesValor = _manifestacionValor.DescargarPDF(FolioOperacion_)
-
-            For Each _manifestacionValorPDF As String In _manifestacionesValor
-
-                Dim pdfstring = "data:Application/pdf;base64, " + _manifestacionValorPDF
-
-                If i = 1 Then
-                    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "HC" & "')", True)
-                    i = 3
-                Else
-                    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "MV" & "')", True)
-                End If
-
-            Next
-
-        End If
-
-
-    End Sub
-
     Private Sub CargaCatalogos()
 
-        sc_ClavePedimento.DataEntity = New Anexo22
+        scClavePedimento.DataEntity = New Anexo22
 
-        sc_Regimen.DataEntity = New Anexo22
+        scRegimen.DataEntity = New Anexo22
 
-        sc_DestinoMercancia.DataEntity = New Anexo22
+        scDestinoMercancia.DataEntity = New Anexo22
 
-        sc_AduanaEntradaSalida.DataEntity = New Anexo22
+        scAduanaEntradaSalida.DataEntity = New Anexo22
 
-        sc_TransporteEntradaSalida.DataEntity = New Anexo22
+        scTransporteEntradaSalida.DataEntity = New Anexo22
 
-        sc_MedioTransporteArribo.DataEntity = New Anexo22
+        scMedioTransporteArribo.DataEntity = New Anexo22
 
-        sc_MedioTransporteSalida.DataEntity = New Anexo22
+        scMedioTransporteSalida.DataEntity = New Anexo22
 
-        sc_TasasContribucion.DataEntity = New Anexo22
+        scTasasContribucion.DataEntity = New Anexo22
 
-        sc_TasasTipoTasa.DataEntity = New Anexo22
+        scTasasTipoTasa.DataEntity = New Anexo22
 
-        sc_CuadroLiquidacionConcepto.DataEntity = New Anexo22
+        scCuadroLiquidacionConcepto.DataEntity = New Anexo22
 
-        sc_CuadroLiquidacionFP.DataEntity = New Anexo22
+        scCuadroLiquidacionFP.DataEntity = New Anexo22
 
-        'sc_PaisTransporte.DataEntity = New Anexo22
+        'scPaisTransporte.DataEntity = New Anexo22
 
-        sc_TipoContenedor.DataEntity = New Anexo22
+        scTipoContenedor.DataEntity = New Anexo22
 
-        sc_IdentificadorPedimento.DataEntity = New Anexo22
+        scIdentificadorPedimento.DataEntity = New Anexo22
 
-        sc_PagosVirtualesFormaPago.DataEntity = New Anexo22
+        scPagosVirtualesFormaPago.DataEntity = New Anexo22
 
-        sc_RectificacionesClavePedOriginal.DataEntity = New Anexo22
+        scRectificacionesClavePedOriginal.DataEntity = New Anexo22
 
-        sc_RectificacionesAduanaOriginal.DataEntity = New Anexo22
+        scRectificacionesAduanaOriginal.DataEntity = New Anexo22
 
-        sc_RectificacionesAduana2Original.DataEntity = New Anexo22
+        scRectificacionesAduana2Original.DataEntity = New Anexo22
 
-        sc_RectificacionesClavePedimento.DataEntity = New Anexo22
+        scRectificacionesClavePedimento.DataEntity = New Anexo22
 
-        sc_DifConConcepto.DataEntity = New Anexo22
+        scDifConConcepto.DataEntity = New Anexo22
 
-        sc_DifConFormaPago.DataEntity = New Anexo22
+        scDifConFormaPago.DataEntity = New Anexo22
 
-        sc_DescargosClavePedOriginal.DataEntity = New Anexo22
+        scDescargosClavePedOriginal.DataEntity = New Anexo22
 
-        sc_DescargosAduanaOriginal.DataEntity = New Anexo22
+        scDescargosAduanaOriginal.DataEntity = New Anexo22
 
-        sc_DescargosAduana2Original.DataEntity = New Anexo22
+        scDescargosAduana2Original.DataEntity = New Anexo22
 
-        sc_CompensacionesContribucion.DataEntity = New Anexo22
+        scCompensacionesContribucion.DataEntity = New Anexo22
 
-        sc_CompensacionesAduanaOriginal.DataEntity = New Anexo22
+        scCompensacionesAduanaOriginal.DataEntity = New Anexo22
 
-        sc_CompensacionesAduana2Original.DataEntity = New Anexo22
+        scCompensacionesAduana2Original.DataEntity = New Anexo22
 
-        sc_PruebaSuficientePaisDestino.DataEntity = New Anexo22
+        scPruebaSuficientePaisDestino.DataEntity = New Anexo22
 
-        sc_PartidaMetodoValoracion.DataEntity = New Anexo22
+        scPartidaMetodoValoracion.DataEntity = New Anexo22
 
-        sc_UMC.DataEntity = New Anexo22
+        scUMC.DataEntity = New Anexo22
 
-        sc_UMT.DataEntity = New Anexo22
+        scUMT.DataEntity = New Anexo22
 
-        sc_PaisVC.DataEntity = New Anexo22
+        scPaisVendedor.DataEntity = New Anexo22
 
-        sc_PaisOD.DataEntity = New Anexo22
+        scPaisOrigen.DataEntity = New Anexo22
 
-        sc_PartidaContribucion.DataEntity = New Anexo22
+        scPaisComprador.DataEntity = New Anexo22
 
-        sc_PartidaTipoTasa.DataEntity = New Anexo22
+        scPaisDestino.DataEntity = New Anexo22
 
-        sc_PartidaIdentificador.DataEntity = New Anexo22
+        scFormaPago.DataEntity = New Anexo22
 
-        sc_EjecutivoCuenta.DataEntity = New krom.Ejecutivos
+        scClavePermiso.DataEntity = New Anexo22
 
-        sc_EjecutivoCuenta.FreeClauses = " and i_Cve_DivisionMiEmpresa = " & Statements.GetOfficeOnline()._id
+        scPartidaContribucion.DataEntity = New Anexo22
+
+        scPartidaTipoTasa.DataEntity = New Anexo22
+
+        scPartidaIdentificador.DataEntity = New Anexo22
+
+        scEjecutivoCuenta.DataEntity = New krom.Ejecutivos
+
+        scEjecutivoCuenta.FreeClauses = " and i_Cve_DivisionMiEmpresa = " & Statements.GetOfficeOnline()._id
 
     End Sub
 
     Private Sub PreparaControles()
 
         'Inicializa Tipo de Referencia
-        sc_TipoReferencia.Value = 1
+        scTipoReferencia.Value = 1
 
         'Inicizliza prefijo
-        InicializaPrefijo(sc_TipoReferencia, sc_PrefijoReferencia)
+        InicializaPrefijo(scTipoReferencia, scPrefijoReferencia)
 
         'GeneraPrefijoReferencia
-        dbc_ReferenciaPedimento.Value = GeneraReferenciaPedimento(TipoSecuencia.Referencia, TipoFijo.Completo, sc_PrefijoReferencia)
+        dbcReferenciaPedimento.Value = GeneraReferenciaPedimento(TipoSecuencia.Referencia, TipoFijo.Completo, scPrefijoReferencia)
 
 
     End Sub
 
     Private Sub CargaCliente(ByVal datosCliente_ As OperacionGenerica)
 
-        ic_RFCCliente.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
+        icRFCCliente.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
-        ic_CURP.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_CURP_CLIENTE).Valor
+        icCURP.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_CURP_CLIENTE).Valor
 
 
-        ic_RFCFacturacion.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
+        icRFCFacturacion.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
-        ic_DomicilioCliente.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor
+        icDomicilioCliente.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor
 
     End Sub
 
@@ -810,6 +906,106 @@ Public Class Ges022_001_MetaforaPedimento
         Return Nothing
 
     End Function
+
+    Protected Sub icFraccionArancelaria_TextChanged(sender As Object, e As EventArgs)
+
+        Dim controlador_ = New ControladorTIGIE()
+
+        Dim tagwacher_ = controlador_.EnlistarFracciones(icFraccionArancelaria.Text)
+
+        If tagwacher_.Status = TypeStatus.Ok Then
+
+            Dim fracciones_ As List(Of FraccionArancelaria) = tagwacher_.ObjectReturned
+
+            Dim fraccionesData_ = New List(Of SelectOption)
+
+            fracciones_.ForEach(Sub(ByVal fraccion_ As FraccionArancelaria) fraccionesData_.Add(New SelectOption With {.Value = fraccion_.Fraccion, .Text = fraccion_.Fraccion & " | " & fraccion_.DescripcionFraccion}))
+
+            icFraccionArancelaria.DataSource = fraccionesData_
+
+        End If
+
+    End Sub
+
+    Protected Sub icFraccionArancelaria_Click(sender As Object, e As EventArgs)
+
+        Dim controlador_ = New ControladorTIGIE()
+
+        Dim tagwacher_ = controlador_.EnlistarNicosFraccion(icFraccionArancelaria.Value)
+
+        If tagwacher_.Status = TypeStatus.Ok Then
+
+            Dim nicos_ As List(Of NicoFraccionArancelaria) = tagwacher_.ObjectReturned
+
+            Dim nicosData_ = New List(Of SelectOption)
+
+            nicos_.ForEach(Sub(ByVal nico_ As NicoFraccionArancelaria) nicosData_.Add(New SelectOption With {.Value = nico_.Nico, .Text = nico_.Nico & " | " & nico_.DescripcionNico}))
+
+            icNico.DataSource = nicosData_
+
+        End If
+
+    End Sub
+
+    Protected Sub pbcPartidas_CheckedChange(sender As Object, e As EventArgs)
+
+        lbSecuencia.Text = pbcPartidas.PageIndex.ToString()
+
+    End Sub
+
+    Protected Sub pbcPartidas_Click(sender As Object, e As EventArgs)
+
+        lbSecuencia.Text = pbcPartidas.PageIndex.ToString()
+
+    End Sub
+
+    Protected Sub swcTipoOperacion_CheckedChanged(sender As Object, e As EventArgs)
+
+        If swcTipoOperacion.Checked = True Then
+            'impo
+            icFechaEntrada.Visible = True
+            icFechaPresentacion.Visible = False
+            scPaisOrigen.Visible = True
+            scPaisDestino.Visible = False
+            scPaisVendedor.Visible = True
+            scPaisComprador.Visible = False
+            icPartidaValorAduana.Visible = True
+            icPartidaValorUSd.Visible = False
+            lbValorAduana.Visible = True
+            lbValorUsd.Visible = False
+
+        Else
+            'expo
+            icFechaEntrada.Visible = False
+            icFechaPresentacion.Visible = True
+            scPaisOrigen.Visible = False
+            scPaisDestino.Visible = True
+            scPaisVendedor.Visible = False
+            scPaisComprador.Visible = True
+            icPartidaValorAduana.Visible = False
+            icPartidaValorUSd.Visible = True
+            lbValorAduana.Visible = False
+            lbValorUsd.Visible = True
+
+        End If
+
+    End Sub
+
+    Protected Sub icFecha_TextChanged(sender As Object, e As EventArgs)
+
+        Dim _icontroladorMonedas = New ControladorMonedas
+
+        Dim factorTipoCambio_ = _icontroladorMonedas.ObtenerFactorTipodeCambio("MXN", Date.Parse(sender.Value))
+
+        If factorTipoCambio_.Status = TypeStatus.Ok Then
+
+            Dim tcvalor As tipodecambioreciente = factorTipoCambio_.ObjectReturned(1)
+
+            icTipoCambio.Value = tcvalor.tipocambio
+
+        End If
+
+    End Sub
 
 #End Region
 

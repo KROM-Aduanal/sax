@@ -170,12 +170,14 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Documento.Recursos64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.Recursos64.0.0.0.0.dll</HintPath>
+    <Reference Include="Syn.Documento.Recursos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Recursos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Nucleo.RecursosComercioExterior64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll</HintPath>
+    <Reference Include="Syn.Nucleo.RecursosComercioExterior64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -266,7 +268,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

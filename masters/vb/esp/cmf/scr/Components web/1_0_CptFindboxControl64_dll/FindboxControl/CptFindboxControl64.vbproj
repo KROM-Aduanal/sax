@@ -88,8 +88,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-    <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0">
-      <HintPath>..\..\..\..\..\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
+    <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\projects\global\lib\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

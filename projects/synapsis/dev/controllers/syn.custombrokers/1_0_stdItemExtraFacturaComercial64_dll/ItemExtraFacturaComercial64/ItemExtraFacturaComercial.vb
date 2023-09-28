@@ -1,8 +1,27 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class ItemExtraFacturaComercial
     Implements IItemExtraFacturaComercial
+
+#Region "Atributos"
+
+    Private _codigoProducto As String
+
+    Private _secuenciaProducto As Integer
+
+    Private _marca As String
+
+    Private _modelo As String
+
+    Private _serie As String
+
+    Private _submodelo As String
+
+    Private _kilometraje As Integer
+
+    Private _estado As Integer
+
+#End Region
 
 #Region "Propiedades"
 
@@ -10,13 +29,29 @@ Public Class ItemExtraFacturaComercial
 
         Get
 
-            Throw New NotImplementedException()
+            Return _codigoProducto
 
         End Get
 
         Set(value As String)
 
-            Throw New NotImplementedException()
+            _codigoProducto = value
+
+        End Set
+
+    End Property
+
+    Public Property SecuenciaProducto As Integer Implements IItemExtraFacturaComercial.SecuenciaProducto
+
+        Get
+
+            Return _secuenciaProducto
+
+        End Get
+
+        Set(value As Integer)
+
+            _secuenciaProducto = value
 
         End Set
 
@@ -26,13 +61,13 @@ Public Class ItemExtraFacturaComercial
 
         Get
 
-            Throw New NotImplementedException()
+            Return _marca
 
         End Get
 
         Set(value As String)
 
-            Throw New NotImplementedException()
+            _marca = value
 
         End Set
 
@@ -42,13 +77,13 @@ Public Class ItemExtraFacturaComercial
 
         Get
 
-            Throw New NotImplementedException()
+            Return _modelo
 
         End Get
 
         Set(value As String)
 
-            Throw New NotImplementedException()
+            _modelo = value
 
         End Set
 
@@ -58,51 +93,77 @@ Public Class ItemExtraFacturaComercial
 
         Get
 
-            Throw New NotImplementedException()
+            Return _serie
 
         End Get
 
         Set(value As String)
 
-            Throw New NotImplementedException()
+            _serie = value
 
         End Set
 
     End Property
 
-    Public Property Estado As String Implements IItemExtraFacturaComercial.Estado
+    Public Property Submodelo As String Implements IItemExtraFacturaComercial.Submodelo
 
         Get
 
-            Throw New NotImplementedException()
+            Return _submodelo
 
         End Get
 
         Set(value As String)
 
-            Throw New NotImplementedException()
+            _submodelo = value
 
         End Set
 
     End Property
+
+    Public Property Kilometraje As Integer Implements IItemExtraFacturaComercial.Kilometraje
+
+        Get
+
+            Return _kilometraje
+
+        End Get
+
+        Set(ByVal value As Integer)
+
+            _kilometraje = value
+
+        End Set
+
+    End Property
+
+    Public Property Estado As Integer Implements IItemExtraFacturaComercial.Estado
+
+        Get
+
+            Return _estado
+
+        End Get
+
+        Set(value As Integer)
+
+            _estado = value
+
+        End Set
+
+    End Property
+
+    Private Sub Dispose() Implements IDisposable.Dispose
+
+        Throw New NotImplementedException()
+
+    End Sub
 
 #End Region
 
 #Region "Metodos"
 
-    Public Function AgregarOtrosDatos() As TagWatcher Implements IItemExtraFacturaComercial.AgregarOtrosDatos
-
-        Throw New NotImplementedException()
-
-    End Function
-
-    Public Function ActualizarOtrosDatos() As TagWatcher Implements IItemExtraFacturaComercial.ActualizarOtrosDatos
-
-        Throw New NotImplementedException()
-
-    End Function
-
-    Public Function EliminarOtrosDatos() As TagWatcher Implements IItemExtraFacturaComercial.EliminarOtrosDatos
+    Private Function Clone() As Object Implements ICloneable.Clone
 
         Throw New NotImplementedException()
 

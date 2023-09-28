@@ -101,6 +101,7 @@
     <Reference Include="TagWatcher64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\TagWatcher64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
