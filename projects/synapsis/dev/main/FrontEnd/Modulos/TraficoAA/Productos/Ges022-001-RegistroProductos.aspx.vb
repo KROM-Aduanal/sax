@@ -67,8 +67,21 @@ Public Class Ges022_001_RegistroProductos
         [Set](sl_Estatus, CamposProducto.CP_ESTATUS)
         [Set](txt_Observaciones, CamposProducto.CP_OBSERVACION)
         '[Set](txt_Motivo, CamposProducto.CP_MOTIVO)
+
         [Set](fbx_Cliente, CamposClientes.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](fbx_Proveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](txt_IdKrom, CamposProducto.CP_IDKROM, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](txt_NumeroParte, CamposProducto.CP_NUMERO_PARTE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](txt_Alias, CamposProducto.CP_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](sl_TipoAlias, CamposProducto.CP_TIPO_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](sl_TipoAlias, CamposProducto.CP_TIPO_ALIAS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](txt_Descripcion, CamposProducto.CP_DESCRIPCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](sw_AplicaCove, CamposProducto.CP_APLICACOVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](txt_DescripcionCove, CamposProducto.CP_DESCRIPCION_COVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](cat_DescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO5, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+
         [Set](pbx_DescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO3)
         Return New TagWatcher(1)
 
@@ -79,6 +92,8 @@ Public Class Ges022_001_RegistroProductos
         PreparaTarjetero(Simple, pbx_DescipcionesFacturas)
 
         btn_Restaurar.Enabled = False
+
+        btn_Archivar.Enabled = False
 
     End Sub
 
@@ -95,7 +110,9 @@ Public Class Ges022_001_RegistroProductos
 
         btn_Restaurar.Enabled = False
 
-        '_fshistoriales.Visible = True
+        btn_Archivar.Enabled = True
+
+        _fshistoriales.Visible = True
 
     End Sub
 
@@ -131,7 +148,7 @@ Public Class Ges022_001_RegistroProductos
 
         End If
 
-        SincronizarCatalogo()
+        'SincronizarCatalogo()
 
         Return tagwatcher_
 
@@ -180,93 +197,12 @@ Public Class Ges022_001_RegistroProductos
 
         With documentoElectronico_
 
-            Dim copyDocument_ = documentoElectronico_
-
-            Dim data_ As List(Of CatalogDataSource) = GetVars("_CatalogsData", New List(Of CatalogDataSource))
-
-            Dim indice_ = 1
-
-            'Historico Facturas
-            pbx_DescipcionesFacturas.ForEach(Sub(pillbox_ As PillBox)
-
-                                                 If pillbox_.IsFiled = False And pillbox_.IsDeleted = False Then
-
-                                                     Dim source_ = From item_ As CatalogDataSource In data_ Where item_.identity = pillbox_.GetIdentity() Select item_.source
-
-                                                     If source_.Count > 0 Then
-
-                                                         If source_(0) IsNot Nothing Then
-
-                                                             With .Seccion(SeccionesProducto.SPTO3).Partida(indice_)
-
-                                                                 For Each item_ As Dictionary(Of String, Object) In source_(0)
-
-                                                                     Dim catIndice = Convert.ToInt32(item_.Item(cat_DescipcionesFacturas.KeyField))
-
-                                                                     If catIndice > 0 Then
-
-                                                                         With .Seccion(SeccionesProducto.SPTO5).Partida(numeroSecuencia_:=catIndice)
-
-                                                                             Dim rowId_ = cat_DescipcionesFacturas.DeleteRowsId
-
-                                                                             If rowId_ IsNot Nothing Then
-
-                                                                                 If cat_DescipcionesFacturas.DeleteRowsId.Contains(catIndice) Then
-
-                                                                                     .estado = 0
-
-                                                                                 End If
-
-                                                                             End If
-
-                                                                             .Attribute(CamposProducto.CP_IDKROM).Valor = item_.Item("txt_IdKrom")
-                                                                             .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor = item_.Item("txt_NumeroParte")
-                                                                             .Attribute(CamposProducto.CP_ALIAS).Valor = item_.Item("txt_Alias")
-                                                                             .Attribute(CamposProducto.CP_TIPO_ALIAS).Valor = item_.Item("sl_TipoAlias").Item("Value")
-                                                                             .Attribute(CamposProducto.CP_TIPO_ALIAS).ValorPresentacion = item_.Item("sl_TipoAlias").Item("Text")
-                                                                             .Attribute(CamposProducto.CP_DESCRIPCION).Valor = item_.Item("txt_Descripcion")
-                                                                             .Attribute(CamposProducto.CP_APLICACOVE).Valor = item_.Item("sw_AplicaCove")
-                                                                             .Attribute(CamposProducto.CP_DESCRIPCION_COVE).Valor = item_.Item("txt_DescripcionCove")
-
-                                                                         End With
-
-                                                                     Else
-
-                                                                         With .Seccion(SeccionesProducto.SPTO5).Partida(copyDocument_)
-
-                                                                             .Attribute(CamposProducto.CP_IDKROM).Valor = item_.Item("txt_IdKrom")
-                                                                             .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor = item_.Item("txt_NumeroParte")
-                                                                             .Attribute(CamposProducto.CP_ALIAS).Valor = item_.Item("txt_Alias")
-                                                                             .Attribute(CamposProducto.CP_TIPO_ALIAS).Valor = item_.Item("sl_TipoAlias").Item("Value")
-                                                                             .Attribute(CamposProducto.CP_TIPO_ALIAS).ValorPresentacion = item_.Item("sl_TipoAlias").Item("Text")
-                                                                             .Attribute(CamposProducto.CP_DESCRIPCION).Valor = item_.Item("txt_Descripcion")
-                                                                             .Attribute(CamposProducto.CP_APLICACOVE).Valor = item_.Item("sw_AplicaCove")
-                                                                             .Attribute(CamposProducto.CP_DESCRIPCION_COVE).Valor = item_.Item("txt_DescripcionCove")
-
-                                                                         End With
-
-                                                                     End If
-
-                                                                 Next
-
-                                                             End With
-
-                                                         End If
-
-                                                     End If
-
-                                                 End If
-
-                                                 indice_ += 1
-
-                                             End Sub)
-
-            'Historio Clasificación
+            'HISTORICO CLASIFICACIÓN
             Dim clasificacionArchivados_ = GetVars("_clasificacionArchivados")
 
             If clasificacionArchivados_ IsNot Nothing Then
-
-                For Each item_ As Dictionary(Of String, String) In clasificacionArchivados_
+                'Dictionary(Of String, String)
+                For Each item_ As Object In clasificacionArchivados_
 
                     Dim claIndice = Convert.ToInt32(item_.Item(cat_HistorialClasificacion.KeyField))
 
@@ -334,7 +270,6 @@ Public Class Ges022_001_RegistroProductos
 
         End If
 
-        SincronizarCatalogo()
 
         Return tagwatcher_
 
@@ -360,98 +295,85 @@ Public Class Ges022_001_RegistroProductos
 
         Dim seccionUnicaClasificacion_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO4)
 
-        Dim clasificacionArchivados As List(Of Object) = GetVars("_clasificacionArchivados", New List(Of Object))
+        With seccionUnicaClasificacion_
 
-        For indice_ As Int32 = 1 To seccionUnicaClasificacion_.CantidadPartidas
+            cat_HistorialClasificacion.ClearRows()
 
-            clasificacionArchivados.Add(New Dictionary(Of String, String) From {
-                {cat_HistorialClasificacion.KeyField, indice_},
-                {"txt_HistoricoFraccion", seccionUnicaClasificacion_.Partida(indice_).Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor},
-                {"txt_HistoricoNico", seccionUnicaClasificacion_.Partida(indice_).Attribute(CamposProducto.CP_NICO).Valor},
-                {"txt_HistoricoMotivo", seccionUnicaClasificacion_.Partida(indice_).Attribute(CamposProducto.CP_MOTIVO).Valor},
-                {"txt_HistoricoFechaModificacion", seccionUnicaClasificacion_.Partida(indice_).Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor}
-            })
+            For indice_ As Int32 = 1 To .CantidadPartidas
 
-        Next
+                cat_HistorialClasificacion.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
 
-        If clasificacionArchivados.Count > 0 Then
+                                                      With .Partida(indice_)
 
-            cat_HistorialClasificacion.DataSource = clasificacionArchivados
+                                                          catalogRow_.SetIndice(cat_HistorialClasificacion.KeyField, indice_)
+                                                          catalogRow_.SetColumn(txt_HistoricoFraccion, .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor)
+                                                          catalogRow_.SetColumn(txt_HistoricoNico, .Attribute(CamposProducto.CP_NICO).Valor)
+                                                          catalogRow_.SetColumn(txt_HistoricoMotivo, .Attribute(CamposProducto.CP_MOTIVO).Valor)
+                                                          catalogRow_.SetColumn(txt_HistoricoFechaModificacion, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
 
-        End If
+                                                      End With
 
-        'LLENADO MANUAL DEL CATALOGO DE LA PRIMERA TARJETA
-
-        Dim seccionUnicaFacturasHasFiled = False
-
-        Dim data_ As List(Of CatalogDataSource) = GetVars("_CatalogsData", New List(Of CatalogDataSource))
-
-        Dim seccionUnicaFactura_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO3)
-
-        For indice_ As Int32 = 1 To seccionUnicaFactura_.CantidadPartidas
-
-            Dim catalogDataSource_ = New CatalogDataSource
-
-            catalogDataSource_.identity = seccionUnicaFactura_.Partida(indice_).Attribute(CamposGlobales.CP_IDENTITY).Valor
-
-            catalogDataSource_.source = New List(Of Object)
-
-            For indice2_ As Int32 = 1 To seccionUnicaFactura_.Partida(indice_).Seccion(SeccionesProducto.SPTO5).CantidadPartidas
-
-                With seccionUnicaFactura_.Partida(indice_).Seccion(SeccionesProducto.SPTO5).Partida(indice2_)
-
-                    If .estado = 1 Then
-
-                        Dim row_ As New Dictionary(Of String, Object)
-
-                        Dim valor_ = .Attribute(CamposProducto.CP_TIPO_ALIAS).Valor
-                        Dim text_ = .Attribute(CamposProducto.CP_TIPO_ALIAS).ValorPresentacion
-
-                        row_.Add(cat_DescipcionesFacturas.KeyField, indice2_)
-                        row_.Add("txt_IdKrom", .Attribute(CamposProducto.CP_IDKROM).Valor)
-                        row_.Add("txt_NumeroParte", .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor)
-                        row_.Add("txt_Alias", .Attribute(CamposProducto.CP_ALIAS).Valor)
-                        row_.Add("sl_TipoAlias", New SelectOption With {.Value = valor_, .Text = text_})
-                        row_.Add("txt_Descripcion", .Attribute(CamposProducto.CP_DESCRIPCION).Valor)
-                        row_.Add("sw_AplicaCove", .Attribute(CamposProducto.CP_APLICACOVE).Valor)
-                        row_.Add("txt_DescripcionCove", .Attribute(CamposProducto.CP_DESCRIPCION_COVE).Valor)
-
-                        catalogDataSource_.source.Add(row_)
-                    Else
-
-                        If .archivado = True Then
-
-                            seccionUnicaFacturasHasFiled = True
-
-                        End If
-
-                    End If
-
-                End With
+                                                  End Sub)
 
             Next
 
-            data_.Add(catalogDataSource_)
+            cat_HistorialClasificacion.CatalogDataBinding()
 
-        Next
+            SetVars("_clasificacionArchivados", cat_HistorialClasificacion.DataSource)
 
-        If data_.Count Then
+        End With
 
-            cat_DescipcionesFacturas.DataSource = data_(0).source
 
-        End If
+        'LLENADO DEL HISTORICO DE DESCRIPCIONES
 
-        If clasificacionArchivados.Count > 0 Or seccionUnicaFacturasHasFiled Then
+        Dim seccionUnicaDescripciones_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO3)
 
-            _fshistoriales.Visible = True
+        With seccionUnicaDescripciones_
 
-        Else
+            cat_HistorialDescripciones.ClearRows()
 
-            _fshistoriales.Visible = False
+            For indice_ As Int32 = 1 To .CantidadPartidas
 
-        End If
+                If .Partida(indice_).archivado = True Then
 
-        PreparaHistoricoDescipciones()
+                    Dim cliente_ = .Attribute(CamposClientes.CA_RAZON_SOCIAL).ValorPresentacion
+
+                    Dim proveedor_ = .Attribute(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).ValorPresentacion
+
+                    Dim subseccionUnicaDescripciones_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO3).Partida(indice_).Seccion(SeccionesProducto.SPTO5)
+
+                    With subseccionUnicaDescripciones_
+
+                        For subindice_ As Int32 = 1 To .CantidadPartidas
+
+                            cat_HistorialDescripciones.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
+
+                                                                  With .Partida(subindice_)
+
+                                                                      catalogRow_.SetIndice(cat_HistorialDescripciones.KeyField, subindice_)
+                                                                      catalogRow_.SetColumn(txt_HistoricoCliente, cliente_)
+                                                                      catalogRow_.SetColumn(txt_HistoricoProveedor, proveedor_)
+                                                                      catalogRow_.SetColumn(txt_HistoricoNumeroParte, .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor)
+                                                                      catalogRow_.SetColumn(txt_HistoricoDescripcion, .Attribute(CamposProducto.CP_DESCRIPCION).Valor)
+                                                                      'catalogRow_.SetColumn(txt_HistoricoFechaArchivado, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+
+                                                                  End With
+
+                                                              End Sub)
+
+                        Next
+
+                    End With
+
+                End If
+
+            Next
+
+            cat_HistorialDescripciones.CatalogDataBinding()
+
+        End With
+
+        _fshistoriales.Visible = True
 
     End Sub
 
@@ -526,245 +448,47 @@ Public Class Ges022_001_RegistroProductos
 
     Protected Sub fbx_FraccionArancelaria_TextChanged(sender As Object, e As EventArgs)
 
-        fbx_FraccionArancelaria.DataSource = New List(Of SelectOption) From {
-            New SelectOption With {.Value = "1", .Text = "2208.90.03 - Tequila"},
-            New SelectOption With {.Value = "2", .Text = "2208.90.04 - Sotol"},
-            New SelectOption With {.Value = "3", .Text = "2208.90.05 - Mezcal"},
-            New SelectOption With {.Value = "4", .Text = "2208.90.06 - Charanda"}
-        }
+        Dim controlador_ = New ControladorTIGIE()
+
+        Dim tagwacher_ = controlador_.EnlistarFracciones(fbx_FraccionArancelaria.Text)
+
+        If tagwacher_.Status = TypeStatus.Ok Then
+
+            Dim fracciones_ As List(Of FraccionArancelaria) = tagwacher_.ObjectReturned
+
+            Dim fraccionesData_ = New List(Of SelectOption)
+
+            fracciones_.ForEach(Sub(ByVal fraccion_ As FraccionArancelaria) fraccionesData_.Add(New SelectOption With {.Value = fraccion_.Fraccion, .Text = fraccion_.Fraccion & " | " & fraccion_.DescripcionFraccion}))
+
+            fbx_FraccionArancelaria.DataSource = fraccionesData_
+
+        End If
 
     End Sub
 
     Protected Sub fbx_FraccionArancelaria_Click(sender As Object, e As EventArgs)
 
-        FillNicos()
+        Dim controlador_ = New ControladorTIGIE()
+
+        Dim tagwacher_ = controlador_.EnlistarNicosFraccion(fbx_FraccionArancelaria.Value)
+
+        If tagwacher_.Status = TypeStatus.Ok Then
+
+            Dim nicos_ As List(Of NicoFraccionArancelaria) = tagwacher_.ObjectReturned
+
+            Dim nicosData_ = New List(Of SelectOption)
+
+            nicos_.ForEach(Sub(ByVal nico_ As NicoFraccionArancelaria) nicosData_.Add(New SelectOption With {.Value = nico_.Nico, .Text = nico_.Nico & " | " & nico_.DescripcionNico}))
+
+            sl_Nico.DataSource = nicosData_
+
+        End If
 
     End Sub
 
     Protected Sub sl_Nico_Click(sender As Object, e As EventArgs)
 
-        FillNicos()
 
-    End Sub
-
-    Private Sub FillNicos()
-
-        If fbx_FraccionArancelaria.Value = "1" Then
-
-            sl_Nico.DataSource = New List(Of SelectOption) From {
-                New SelectOption With {.Value = "1", .Text = "01 - Tequila contenido en envases con capacidad inferior o igual a 5 litros"},
-                New SelectOption With {.Value = "2", .Text = "91 - Los demástequilas."}
-            }
-
-        End If
-
-        If fbx_FraccionArancelaria.Value = "2" Then
-
-            sl_Nico.DataSource = New List(Of SelectOption) From {
-                New SelectOption With {.Value = "3", .Text = "00 - Sotol"}
-            }
-
-        End If
-
-        If fbx_FraccionArancelaria.Value = "3" Then
-
-            sl_Nico.DataSource = New List(Of SelectOption) From {
-                New SelectOption With {.Value = "3", .Text = "00 - Mezcal"}
-            }
-
-        End If
-
-        If fbx_FraccionArancelaria.Value = "4" Then
-
-            sl_Nico.DataSource = New List(Of SelectOption) From {
-                New SelectOption With {.Value = "3", .Text = "00 - Charanda"}
-            }
-
-        End If
-
-    End Sub
-
-    Protected Sub pbx_DescipcionesFacturas_BeforeClick(sender As Object, e As EventArgs)
-
-        SincronizarCatalogo()
-
-    End Sub
-
-    Protected Sub pbx_DescipcionesFacturas_Click(sender As Object, e As EventArgs)
-
-        Select Case pbx_DescipcionesFacturas.ToolbarAction
-
-            Case Nuevo
-
-                cat_DescipcionesFacturas.DataSource = Nothing
-
-            Case Borrar
-
-                ColocarDatosCatalogo()
-
-            Case Archivar
-
-                ColocarDatosCatalogo()
-
-                PreparaHistoricoDescipciones()
-
-            Case Else
-
-        End Select
-
-    End Sub
-
-    Protected Sub pbx_DescipcionesFacturas_CheckedChange(sender As Object, e As EventArgs)
-
-        SincronizarCatalogo()
-
-        ColocarDatosCatalogo()
-
-    End Sub
-
-    Private Sub ColocarDatosCatalogo()
-
-        pbx_DescipcionesFacturas.GetPillbox(Sub(pillbox As PillBox)
-
-                                                Dim data_ As List(Of CatalogDataSource) = GetVars("_CatalogsData", New List(Of CatalogDataSource))
-
-                                                Dim source_ = From item_ As CatalogDataSource In data_ Where item_.identity = pillbox.GetIdentity() Select item_
-
-                                                If source_.Count > 0 Then
-
-                                                    cat_DescipcionesFacturas.DataSource = source_(0).source
-
-                                                    cat_DescipcionesFacturas.DeleteRowsId = source_(0).deletedIds
-
-                                                End If
-
-                                            End Sub)
-
-    End Sub
-
-    Private Sub SincronizarCatalogo()
-
-        Dim page_ = 0
-
-        If pbx_DescipcionesFacturas.ToolbarAction = Anterior Then
-
-            page_ = pbx_DescipcionesFacturas.PageIndex + 1
-
-        ElseIf pbx_DescipcionesFacturas.ToolbarAction = Siguiente Then
-
-            page_ = pbx_DescipcionesFacturas.PageIndex - 1
-
-        End If
-
-        pbx_DescipcionesFacturas.GetPillbox(Sub(pillbox As PillBox)
-
-                                                Dim data_ As List(Of CatalogDataSource) = GetVars("_CatalogsData", New List(Of CatalogDataSource))
-
-                                                Dim source_ = From item_ As CatalogDataSource In data_ Where item_.identity = pillbox.GetIdentity() Select item_ '.source
-
-                                                If source_.Count = 0 Then
-
-                                                    Dim catalogDataSource_ = New CatalogDataSource
-
-                                                    With catalogDataSource_
-
-                                                        .identity = pillbox.GetIdentity()
-
-                                                        .source = cat_DescipcionesFacturas.DataSource
-
-                                                        .deletedIds = cat_DescipcionesFacturas.DeleteRowsId
-
-                                                        If pbx_DescipcionesFacturas.ToolbarAction = Borrar Then
-
-                                                            .deleted = True
-
-                                                        ElseIf pbx_DescipcionesFacturas.ToolbarAction = Archivar Then
-
-                                                            .filed = True
-
-                                                        End If
-
-                                                    End With
-
-                                                    data_.Add(catalogDataSource_)
-
-                                                Else
-
-                                                    With source_(0)
-
-                                                        .source = cat_DescipcionesFacturas.DataSource
-
-                                                        .deletedIds = cat_DescipcionesFacturas.DeleteRowsId
-
-                                                        If pbx_DescipcionesFacturas.ToolbarAction = Borrar Then
-
-                                                            .deleted = True
-
-                                                        ElseIf pbx_DescipcionesFacturas.ToolbarAction = Archivar Then
-
-                                                            .filed = True
-
-                                                        End If
-
-                                                    End With
-
-                                                End If
-
-                                            End Sub, page_)
-
-    End Sub
-
-    Private Sub PreparaHistoricoDescipciones()
-
-        Dim data_ As List(Of CatalogDataSource) = GetVars("_CatalogsData", New List(Of CatalogDataSource))
-
-        Dim dataSource_ As New List(Of Object)
-
-        pbx_DescipcionesFacturas.ForEach(Sub(pillbox_ As PillBox)
-
-                                             If pillbox_.IsFiled Then
-
-                                                 Dim source_ = From item_ As CatalogDataSource In data_ Where item_.identity = pillbox_.GetIdentity() Select item_.source
-
-                                                 If source_.Count > 0 Then
-
-                                                     If source_(0) IsNot Nothing Then
-
-                                                         For Each item_ As Dictionary(Of String, Object) In source_(0)
-
-                                                             Dim row_ As New Dictionary(Of String, Object)
-
-                                                             row_.Add("txt_HistoricoCliente", pillbox_.GetControlValue(fbx_Cliente).Text)
-
-                                                             row_.Add("txt_HistoricoProveedor", pillbox_.GetControlValue(fbx_Proveedor).Text)
-
-                                                             row_.Add("txt_HistoricoFechaArchivado", Date.Now().ToString("yyyy-MM-dd"))
-
-                                                             row_.Add("txt_HistoricoNumeroParte", item_.Item("txt_NumeroParte"))
-
-                                                             row_.Add("txt_HistoricoDescripcion", item_.Item("txt_Descripcion"))
-
-                                                             row_.Add("indice", 0)
-
-                                                             dataSource_.Add(row_)
-
-                                                         Next
-
-                                                     End If
-
-                                                 End If
-
-                                             End If
-
-                                         End Sub)
-
-        If dataSource_.Count > 0 Then
-
-            cat_HistorialDescripciones.DataSource = dataSource_
-
-            _fshistoriales.Visible = True
-
-        End If
 
     End Sub
 
@@ -792,17 +516,23 @@ Public Class Ges022_001_RegistroProductos
 
     Protected Sub btn_ConfirmarArchivado_Click(sender As Object, e As EventArgs)
 
-        Dim clasificacionArchivados As List(Of Object) = GetVars("_clasificacionArchivados", New List(Of Object))
+        Dim clasificacionArchivados As Object() = GetVars("_clasificacionArchivados")
 
-        clasificacionArchivados.Add(New Dictionary(Of String, String) From {
+        Array.Resize(clasificacionArchivados, clasificacionArchivados.Length + 1)
+
+        clasificacionArchivados(clasificacionArchivados.Length - 1) = New Dictionary(Of String, String) From {
             {cat_HistorialClasificacion.KeyField, 0},
             {"txt_HistoricoFraccion", fbx_FraccionArancelaria.Text},
             {"txt_HistoricoNico", sl_Nico.Text},
             {"txt_HistoricoMotivo", txt_Motivo.Value},
             {"txt_HistoricoFechaModificacion", Date.Now().ToString("yyyy-MM-dd")}
-        })
+        }
+
+        SetVars("_clasificacionArchivados", clasificacionArchivados)
 
         cat_HistorialClasificacion.DataSource = clasificacionArchivados
+
+        _fshistoriales.Visible = True
 
         fbx_FraccionArancelaria.Text = Nothing
 
@@ -826,12 +556,6 @@ Public Class Ges022_001_RegistroProductos
 
         ConfigurarControlesClasificacion_Click(Nothing, EventArgs.Empty)
 
-        If clasificacionArchivados.Count > 0 Then
-
-            _fshistoriales.Visible = True
-
-        End If
-
     End Sub
 
 #Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
@@ -847,101 +571,3 @@ Public Class Ges022_001_RegistroProductos
 
 
 End Class
-
-Public Class CatalogDataSource
-
-    Public Property identity As Integer
-
-    Public Property source As Object
-
-    Public Property deletedIds As List(Of Object)
-
-    Public Property deleted As Boolean = False
-
-    Public Property filed As Boolean = False
-
-End Class
-
-'Property ObjectID As ObjectId
-
-'Property Name As String
-
-
-'Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
-'End Sub
-
-'Protected Sub Unnamed_CheckedChanged(sender As Object, e As EventArgs)
-
-'    'FileStream Stream
-'    'Dim ofd = New OpenFileDialog()
-'    'Dim operationsDB_ = iEnlace_.GetMongoClient()
-'    'Dim database = operationsDB_.GetDatabase("SynDocs")
-'    'Dim fs = New GridFSBucket(database)
-
-'End Sub
-
-'Protected Sub icMate_CheckedChanged(sender As Object, e As EventArgs)
-
-'    'Conexion a MongoDB
-'    Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
-'    Dim operationsDB_ = iEnlace_.GetMongoClient()
-'    Dim database_ = operationsDB_.GetDatabase("SynDocs")
-
-'    'Nuget GridFS
-'    'Dim fs As New GridFSBucket(database_)
-
-'    'Manipulación de atrchivo
-'    Dim stream As FileStream = File.Open("C:\Users\guadalupesc\Downloads\curso.pdf", FileMode.Open)
-'    Dim buff As Byte() = streamToByteArray(stream)
-'    stream.Close()
-
-'    'Agregar opciones al GridFS
-'    'Dim opciones = New GridFSUploadOptions With {
-'    '        .ChunkSizeBytes = 16000001,
-'    '        .BatchSize = Convert.ToInt32(buff.Length),
-'    '        .Metadata = New BsonDocument From {{"filename", stream.Name}, {"contentType", ".pdf"}, {"version", 1.0}}
-'    '    }
-
-'    'Actualizar el archivo en mongo y regresar su id
-'    'ObjectID = fs.UploadFromBytesAsync("3108-curso", buff, opciones).Result
-
-'    'Debe regresar un id
-'    MsgBox("¡Terminamos! " & ObjectID.ToString())
-
-'End Sub
-
-'Protected Sub swcHabilitar_CheckedChanged(sender As Object, e As EventArgs)
-
-'    'Conexión a MongoDB
-'    Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
-'    Dim operationsDB_ = iEnlace_.GetMongoClient()
-'    Dim database_ = operationsDB_.GetDatabase("SynDocs")
-
-'    'Nuget GridFS
-'    'Dim fs As New GridFSBucket(database_)
-
-'    'Object ID ----Buscaba como usar Find para pasar el nombre y retornar el id
-'    Dim id_ As New ObjectId("630f90eb2c5590d46e46fed1")
-
-'    'Mandar a llamr el GridFs para regresar el arreglo de bytes
-'    'Dim test = fs.DownloadAsBytesAsync(id_, Nothing, Nothing)
-
-'    'Mandamos a guardar el archivo
-'    Dim rutaPDF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-'                        "PruebaCurso.pdf")
-
-'    'Sobreescribimos con el arreglo de bytes
-'    'File.WriteAllBytes(rutaPDF, test.Result)
-
-
-'End Sub
-
-'Public Shared Function streamToByteArray(ByVal stream As Stream) As Byte()
-
-'    Using ms As New MemoryStream()
-'        stream.CopyTo(ms)
-'        Return ms.ToArray()
-'    End Using
-
-'End Function

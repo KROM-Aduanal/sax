@@ -686,7 +686,7 @@ Namespace gsol.krom
 
                             Case Componentes.Campo.TiposDato.Documento
 
-                                Dim aux_ As  PartidaGenerica = Nothing
+                                Dim aux_ As PartidaGenerica = Nothing
 
                                 Select Case actualizacion_.TipoNodo
                                     Case TiposNodo.Partida

@@ -20,7 +20,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents __SYSTEM_CONTEXT_FINDER As Global.Gsol.Web.Components.FindbarControl
+    Protected WithEvents __SYSTEM_CONTEXT_FINDER As Global.gsol.Web.Components.FindbarControl
 
     '''<summary>
     '''Control __SYSTEM_ENVIRONMENT.
@@ -29,7 +29,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents __SYSTEM_ENVIRONMENT As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents __SYSTEM_ENVIRONMENT As Global.gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control __SYSTEM_MODULE_FORM.
@@ -38,7 +38,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
+    Protected WithEvents __SYSTEM_MODULE_FORM As Global.gsol.Web.Components.FormControl
 
     '''<summary>
     '''Control _fsdatosgenerales.
@@ -47,7 +47,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fsdatosgenerales As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fsdatosgenerales As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control txt_NombreComercial.
@@ -56,7 +56,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_NombreComercial As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_NombreComercial As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control sw_EstadoProducto.
@@ -65,7 +65,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sw_EstadoProducto As Global.Gsol.Web.Components.SwitchControl
+    Protected WithEvents sw_EstadoProducto As Global.gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control _fsclasificacion.
@@ -74,7 +74,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fsclasificacion As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fsclasificacion As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control btn_Archivar.
@@ -101,7 +101,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbx_FraccionArancelaria As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents fbx_FraccionArancelaria As Global.gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control txtFechaRegistro.
@@ -110,7 +110,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFechaRegistro As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txtFechaRegistro As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control sl_Nico.
@@ -119,7 +119,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sl_Nico As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents sl_Nico As Global.gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control sl_Estatus.
@@ -128,7 +128,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sl_Estatus As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents sl_Estatus As Global.gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control txt_Observaciones.
@@ -137,7 +137,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_Observaciones As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_Observaciones As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_Motivo.
@@ -146,7 +146,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_Motivo As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_Motivo As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control btn_ConfirmarArchivado.
@@ -164,7 +164,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fsdescripcionfacturas As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fsdescripcionfacturas As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control pbx_DescipcionesFacturas.
@@ -173,7 +173,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pbx_DescipcionesFacturas As Global.Gsol.Web.Components.PillboxControl
+    Protected WithEvents pbx_DescipcionesFacturas As Global.gsol.Web.Components.PillboxControl
 
     '''<summary>
     '''Control fbx_Cliente.
@@ -182,7 +182,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbx_Cliente As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents fbx_Cliente As Global.gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control fbx_Proveedor.
@@ -191,7 +191,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbx_Proveedor As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents fbx_Proveedor As Global.gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control cat_DescipcionesFacturas.
@@ -200,7 +200,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cat_DescipcionesFacturas As Global.Gsol.Web.Components.CatalogControl
+    Protected WithEvents cat_DescipcionesFacturas As Global.gsol.Web.Components.CatalogControl
 
     '''<summary>
     '''Control txt_IdKrom.
@@ -209,7 +209,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_IdKrom As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_IdKrom As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_NumeroParte.
@@ -218,7 +218,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_NumeroParte As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_NumeroParte As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_Descripcion.
@@ -227,7 +227,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_Descripcion As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_Descripcion As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control sw_AplicaCove.
@@ -236,7 +236,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sw_AplicaCove As Global.Gsol.Web.Components.SwitchControl
+    Protected WithEvents sw_AplicaCove As Global.gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control txt_DescripcionCove.
@@ -245,7 +245,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_DescripcionCove As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_DescripcionCove As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_Alias.
@@ -254,7 +254,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_Alias As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_Alias As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control sl_TipoAlias.
@@ -263,7 +263,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sl_TipoAlias As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents sl_TipoAlias As Global.gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control _fshistoriales.
@@ -272,7 +272,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fshistoriales As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fshistoriales As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control _fshistorialclasificacion.
@@ -281,7 +281,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fshistorialclasificacion As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fshistorialclasificacion As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control cat_HistorialClasificacion.
@@ -290,7 +290,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cat_HistorialClasificacion As Global.Gsol.Web.Components.CatalogControl
+    Protected WithEvents cat_HistorialClasificacion As Global.gsol.Web.Components.CatalogControl
 
     '''<summary>
     '''Control txt_HistoricoFraccion.
@@ -299,7 +299,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoFraccion As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoFraccion As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoNico.
@@ -308,7 +308,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoNico As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoNico As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoMotivo.
@@ -317,7 +317,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoMotivo As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoMotivo As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoFechaModificacion.
@@ -326,7 +326,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoFechaModificacion As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoFechaModificacion As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control _fshistorialdescipciones.
@@ -335,7 +335,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents _fshistorialdescipciones As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents _fshistorialdescipciones As Global.gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control cat_HistorialDescripciones.
@@ -344,7 +344,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cat_HistorialDescripciones As Global.Gsol.Web.Components.CatalogControl
+    Protected WithEvents cat_HistorialDescripciones As Global.gsol.Web.Components.CatalogControl
 
     '''<summary>
     '''Control txt_HistoricoNumeroParte.
@@ -353,7 +353,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoNumeroParte As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoNumeroParte As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoDescripcion.
@@ -362,7 +362,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoDescripcion As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoDescripcion As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoProveedor.
@@ -371,7 +371,7 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoProveedor As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoProveedor As Global.gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control txt_HistoricoCliente.
@@ -380,14 +380,5 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txt_HistoricoCliente As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control txt_HistoricoFechaArchivado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txt_HistoricoFechaArchivado As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents txt_HistoricoCliente As Global.gsol.Web.Components.InputControl
 End Class

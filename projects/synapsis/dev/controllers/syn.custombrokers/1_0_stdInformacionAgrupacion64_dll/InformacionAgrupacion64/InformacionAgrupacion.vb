@@ -1,192 +1,43 @@
-﻿
+﻿Imports MongoDB.Bson
 Imports Wma.Exceptions
 
 Public Class InformacionAgrupacion
-    Inherits GeneradorPartidasPedimento
 
-#Region "Propiedades"
+#Region "Atributos"
 
-    Property AgrupacionSeleccionada As IGeneradorPartidasPedimento.TipoAgrupaciones
+    Property _id As ObjectId
 
-        Get
+    Property _idpedimento As ObjectId
 
-            Throw New NotImplementedException()
+    Property agrupacionseleccionada As IGeneradorPartidasPedimento.TipoAgrupaciones
 
-        End Get
+    Property tipocambio As Double
 
-        Set(value As IGeneradorPartidasPedimento.TipoAgrupaciones)
+    Property fechatipocambio As Date
 
-            Throw New NotImplementedException()
+    Property fechageneracionagrupacion As Date
 
-        End Set
+    Property numerototalpartidas As Integer
 
-    End Property
+    Property tipooperacion As Integer
 
-    Property idPedimento As Object
+    Property pedimento As DatosPedimento
 
-        Get
+    Property recursossasociadas As List(Of DocumentoAsociado)
 
-            Throw New NotImplementedException()
+    Property itemsasociados As List(Of ItemPartida)
 
-        End Get
+    Property firmadigital As String
 
-        Set(value As Object)
+    Property archivado As Boolean
 
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property NumeroPedimento As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property TipoOperacion As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property CvePedimento As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property Regimen As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property TipoCambio As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property FechaEntrada As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property FactorMoneda As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    Property ItemsAsociados As List(Of ItemPartida)
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As List(Of ItemPartida))
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
-
-    'Property Estado As Integer
-
-    '    Get
-
-    '        Throw New NotImplementedException()
-
-    '    End Get
-
-    '    Set(value As Integer)
-
-    '        Throw New NotImplementedException()
-
-    '    End Set
-
-    'End Property
+    Property estado As Integer
 
 #End Region
 
 #Region "Metodos"
 
-    Public Function MostrarItemsAsociados(SecuenciaPartida As Integer) As TagWatcher
+    Public Function MostrarItemsAsociados(ByVal secuenciaPartida_ As Integer) As TagWatcher
 
         Throw New NotImplementedException()
 
@@ -198,6 +49,71 @@ Public Class InformacionAgrupacion
 
     End Function
 
+    Public Function MostrarAgrupacionSeleccionada() As IGeneradorPartidasPedimento.TipoAgrupaciones
+
+        Throw New NotImplementedException()
+
+    End Function
+
 #End Region
+
+End Class
+
+Public Class DatosPedimento
+
+    Property numeropedimentocompleto As String
+
+    Property aduanaseccion As String
+
+    Property patente As String
+
+    Property anio As String
+
+    Property pedimento As String
+
+    Property cvepedimento As String
+
+    Property regimen As String
+
+    Property fechaentrada As Date
+
+    Property fechapresentacion As Date
+
+End Class
+
+Public Class DocumentoAsociado
+
+    Property _iddocumentoasociado As ObjectId
+
+    Property identificadorrecurso As String
+
+    Property idcoleccion As String
+
+    Property firmadigital As String
+
+    Property metadatos As IMetadatos
+
+    Property analisisconsistencia As Integer
+
+End Class
+
+Public Interface IMetadatos
+
+End Interface
+
+Public Class InformacionAdicionalFactura
+    Implements IMetadatos
+
+    Property foliodocumento As String
+
+    Property clavemoneda As String
+
+    Property fechafactormoneda As Date
+
+    Property factormoneda As Double
+
+    Property totalincrementables As Double
+
+    Property valorfactura As Double
 
 End Class

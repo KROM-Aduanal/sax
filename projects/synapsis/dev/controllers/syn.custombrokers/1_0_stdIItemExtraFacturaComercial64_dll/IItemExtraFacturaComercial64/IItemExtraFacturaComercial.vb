@@ -1,30 +1,25 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Interface IItemExtraFacturaComercial
-
+    Inherits ICloneable, IDisposable
 
 #Region "Propiedades"
 
     Property CodigoProducto As String
 
+    Property SecuenciaProducto As Integer
+
     Property Marca As String
 
     Property Modelo As String
 
+    Property Submodelo As String
+
     Property Serie As String
 
-    Property Estado As String
+    Property Estado As Integer
 
-#End Region
-
-#Region "Metodos"
-
-    Function AgregarOtrosDatos() As TagWatcher
-
-    Function ActualizarOtrosDatos() As TagWatcher
-
-    Function EliminarOtrosDatos() As TagWatcher
+    Property Kilometraje As Integer
 
 #End Region
 

@@ -6,3 +6,11 @@ C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronic
 C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll
 C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.pdb
 C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.AssemblyReference.cache
+C:\saxunion\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.pdb
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.AssemblyReference.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Resources.resources
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.GenerateResource.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.CoreCompileInputs.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.pdb

@@ -34,7 +34,7 @@ Imports System.Globalization
 Imports Syn.Documento.Componentes.Campo
 Imports Rec.Globals.Utils
 Imports System.IO
-Imports Syn.CustomBrokers.Controllers
+Imports Syn.Custombrokers.Controllers
 
 #End Region
 
@@ -56,6 +56,8 @@ Public Class Ges022_001_Clientes
     Private _tipoObjeto As Type
 
     Private _cdocumentos As New ControladorDocumento
+
+    Private _t As Boolean
 
 #End Region
 #Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
@@ -79,7 +81,19 @@ Public Class Ges022_001_Clientes
         'icRutaCertificado.Value = "647f42e48f3c19d9cf5ea6c5"
         'icRutaCertificado.Text = "algo.pdf"
 
+        If Not Page.IsPostBack Then
+            'cv.DataSource = New List(Of Dictionary(Of String, Object)) From {
+            '   New Dictionary(Of String, Object) From {{"indice", 1}, {"f1", "aa"}, {"f2", "aa"}, {"f3", 1}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}},
+            '   New Dictionary(Of String, Object) From {{"indice", 2}, {"f1", "bb"}, {"f2", "bb"}, {"f3", 2}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}}
+            '}
+        End If
+
+
+
     End Sub
+
+
+
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
@@ -124,7 +138,11 @@ Public Class Ges022_001_Clientes
 
         [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS)
 
+        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
+
         [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS)
+
+        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
 
         [Set](icFechaVigencia, CP_FECHA_VIGENCIA_SELLOS)
 
@@ -196,6 +214,7 @@ Public Class Ges022_001_Clientes
 
         s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
 
+
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -222,6 +241,8 @@ Public Class Ges022_001_Clientes
     End Sub
 
     Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
+
+
 
     End Sub
 
@@ -477,7 +498,9 @@ Public Class Ges022_001_Clientes
         'End If
 
         's_SeleccionarDomicilio.Checked = True
+
         Return New TagWatcher(Ok)
+
     End Function
 
     'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
@@ -936,7 +959,6 @@ Public Class Ges022_001_Clientes
 
         With sender
             ._idpropietario = id
-            .nombrearchivo = "Test2.pdf"
             .nombrepropietario = "Yo Merengues Dos"
             .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
             .datosadicionales = New InformacionDocumento With {

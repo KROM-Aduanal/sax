@@ -46,6 +46,14 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="gsol.IRecursosSistemas.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Bson.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0.dll</HintPath>
@@ -59,6 +67,16 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ItemFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ItemFacturaComercial64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -133,7 +151,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

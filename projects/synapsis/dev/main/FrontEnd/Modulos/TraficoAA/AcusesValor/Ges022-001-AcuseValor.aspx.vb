@@ -981,66 +981,66 @@ Public Class Ges022_001_AcuseValor
         'End If
         'Dim Allgo = _ControladorMonedas.ObtenerFactorTipodeCambio("USD", Date.Parse("26/06/2023")).ObjectReturned
         'MsgBox("AHH")
-        'Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
+        Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
 
-        ''Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
-        ''                                    "BBVA".ToUpper}, {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSOBUSCAACTUALIZA,
-        ''                                    "012"}, {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALBUSCAACTUALIZA, "BANCOMER"},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
-        ''                                     IControladorInstitucionBancaria.Modalidades.Externo)
-        ''Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
-        ''                                     IControladorInstitucionBancaria.Modalidades.Externo)
-        ''MsgBox(Algo.LastMessage)
-        'Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
-        '                                                     ._idinstitucionbancaria = 1,
-        '                                                     ._idempresa = ObjectId.GenerateNewId,
-        '                                                     ._iddomicilio = ObjectId.GenerateNewId,
-        '                                                     .uso = New List(Of UsoIdentificador) From
-        '                                                                    {New UsoIdentificador With {.clave = "49992",
+        'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
+        '                                    "BBVA".ToUpper}, {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSOBUSCAACTUALIZA,
+        '                                    "012"}, {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALBUSCAACTUALIZA, "BANCOMER"},
+        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
+        '                                     IControladorInstitucionBancaria.Modalidades.Externo)
+        'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
+        '                                     IControladorInstitucionBancaria.Modalidades.Externo)
+        'MsgBox(Algo.LastMessage)
+        Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
+                                                             ._idinstitucionbancaria = 1,
+                                                             ._idempresa = ObjectId.GenerateNewId,
+                                                             ._iddomicilio = ObjectId.GenerateNewId,
+                                                             .uso = New List(Of UsoIdentificador) From
+                                                                            {New UsoIdentificador With {.clave = "49992",
+                                                                                                       .info = "Banxico"},
+                                                                            New UsoIdentificador With {.clave = "992",
+                                                                                                        .info = "SAT"}},
+                                                             .otrosaliasinstitucion = New List(Of AliasBancos) From
+                                                                                     {New AliasBancos With {.tipoalias = "Comercial",
+                                                                                                            .valor = "CITIBANAMEX"},
+                                                                                     New AliasBancos With {.tipoalias = "Corto",
+                                                                                                            .valor = "BANAMEX"},
+                                                                                     New AliasBancos With {.tipoalias = "Siglas",
+                                                                                                            .valor = "BNM"},
+                                                                                     New AliasBancos With {.tipoalias = "Abreviatura",
+                                                                                                            .valor = "BANX"}
+                                                                                                            },
+                                                             .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
+                                                             .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
+                                                             .metadatos = New List(Of AliasBancos) From
+                                                                                     {New AliasBancos With {.tipoalias = "Pece",
+                                                                                                            .valor = "SI"}
+                                                                                                            },
+                                                             .tipobanco = TiposBanco.Nacional,
+                                                             .estado = 1,
+                                                             .archivado = False
+                                                                }
+
+        'Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
+        '                                    "BBVA Bancomer, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer".ToUpper},
+        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSONUEVO,
+        '                                    New List(Of UsoIdentificador) From
+        '                                                                    {New UsoIdentificador With {.clave = "400012",
         '                                                                                               .info = "Banxico"},
-        '                                                                    New UsoIdentificador With {.clave = "992",
-        '                                                                                                .info = "SAT"}},
-        '                                                     .otrosaliasinstitucion = New List(Of AliasBancos) From
-        '                                                                             {New AliasBancos With {.tipoalias = "Comercial",
-        '                                                                                                    .valor = "CITIBANAMEX"},
-        '                                                                             New AliasBancos With {.tipoalias = "Corto",
-        '                                                                                                    .valor = "BANAMEX"},
-        '                                                                             New AliasBancos With {.tipoalias = "Siglas",
-        '                                                                                                    .valor = "BNM"},
-        '                                                                             New AliasBancos With {.tipoalias = "Abreviatura",
-        '                                                                                                    .valor = "BANX"}
-        '                                                                                                    },
-        '                                                     .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
-        '                                                     .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
-        '                                                     .metadatos = New List(Of AliasBancos) From
-        '                                                                             {New AliasBancos With {.tipoalias = "Pece",
-        '                                                                                                    .valor = "SI"}
-        '                                                                                                    },
-        '                                                     .tipobanco = TiposBanco.Nacional,
-        '                                                     .estado = 1,
-        '                                                     .archivado = False
-        '                                                        }
+        '                                                                    New UsoIdentificador With {.clave = "012",
+        '                                                                                                .info = "SAT"}}},
+        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALNUEVO,
+        '                                    New AliasBancos With {.tipoalias = "Abreviatura", .valor = "BBVA"}},
+        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.DOMICILIOFISCAL,
+        '                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
+        '                                    })
 
-        ''Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
-        ''                                    "BBVA Bancomer, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer".ToUpper},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSONUEVO,
-        ''                                    New List(Of UsoIdentificador) From
-        ''                                                                    {New UsoIdentificador With {.clave = "400012",
-        ''                                                                                               .info = "Banxico"},
-        ''                                                                    New UsoIdentificador With {.clave = "012",
-        ''                                                                                                .info = "SAT"}}},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALNUEVO,
-        ''                                    New AliasBancos With {.tipoalias = "Abreviatura", .valor = "BBVA"}},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.DOMICILIOFISCAL,
-        ''                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
-        ''                                    })
+        Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
 
-        'Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
-
-        'Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
+        Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
 
         'Dim seccionFac_ = SeccionesFacturaComercial.SFAC4
 

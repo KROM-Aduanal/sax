@@ -1,33 +1,62 @@
-﻿
+﻿Imports MongoDB.Bson
 Imports Wma.Exceptions
 
 Public Interface IPartidaPedimento
+    Inherits ICloneable, IDisposable
 
 #Region "Propiedades"
+
+    Property _idPartidaPedimento As ObjectId
 
     Property SecuenciaPartida As Integer
 
     Property FraccionArancelaria As String
 
+    Property DescripcionFraccionArancelaria As String
+
     Property Nico As String
 
-    Property Vinculacion As Object
+    Property DescripcionNico As String
 
-    Property MetodoValoracion As Object
+    Property Vinculacion As Integer
 
-    Property UnidadMedidaComercial As Object
+    Property DescripcionVinculacion As String
 
-    Property PaisVentaCompra As Object
+    Property MetodoValoracion As Integer
 
-    Property PaisOrigenDestino As Object
+    Property DescripcionMetodoValoracion As String
 
-    Property CantidadUMC As Object
+    Property UnidadMedidaComercial As Integer
 
-    Property UnidadMedidaTarifa As Object
+    Property DescripcionUnidadMedidaComercial As String
 
-    Property CantidadUMT As Object
+    Property PrecioUnitario As Double
 
-    Property Descipcion As String
+    Property PaisVendedor As String
+
+    Property DescripcionPaisVendedor As String
+
+    Property PaisComprador As String
+
+    Property DescripcionPaisComprador As String
+
+    Property PaisOrigen As String
+
+    Property DescripcionPaisOrigen As String
+
+    Property PaisDestino As String
+
+    Property DescripcionPaisDestino As String
+
+    Property CantidadUMC As Double
+
+    Property UnidadMedidaTarifa As Integer
+
+    Property DescripcionUnidadMedidaTarifa As String
+
+    Property CantidadUMT As Double
+
+    Property Descripcion As String
 
     Property Marca As String
 
@@ -35,9 +64,13 @@ Public Interface IPartidaPedimento
 
     Property CodigoProducto As String
 
-    Property ValorAduanalDolares As Object
+    Property ValorAduanal As Double
 
-    Property ImportePrecioPagado As Object
+    Property ValorDolares As Double
+
+    Property ImportePrecioPagado As Double
+
+    Property ValorComercial As Double
 
     Property Observaciones As String
 
@@ -47,23 +80,15 @@ Public Interface IPartidaPedimento
 
     Property Identificadores As List(Of IdentificadorPartidaPedimento)
 
-    Property Serie As Object
+    Property Serie As String
 
-    Property Kilometraje As Object
+    Property Kilometraje As Integer
 
-    Property ValorAgregado As Object
+    Property ValorAgregado As Double
+
+    Property Archivo As Boolean
 
     Property Estado As Integer
-
-#End Region
-
-#Region "Metodos"
-
-    Function AgregarPartidaPedimento() As TagWatcher
-
-    Function ActualizarPartidaPedimento() As TagWatcher
-
-    Function EliminarPartidaPedimento() As TagWatcher
 
 #End Region
 

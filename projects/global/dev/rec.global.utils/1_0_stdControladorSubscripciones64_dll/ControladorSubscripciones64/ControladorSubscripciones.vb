@@ -11,7 +11,7 @@ Imports MongoDB.Driver
 Imports MongoDB.Bson.Serialization
 Imports MongoDB.Bson.Serialization.Attributes
 Imports System.IO.Compression
-'Imports iText.IO.Source
+Imports iText.IO.Source
 Imports System.Text
 Imports System.Runtime.Serialization
 Imports System.ComponentModel
@@ -106,11 +106,21 @@ Public Class ControladorSubscripciones
 
     End Function
 
-    Public Function EliminarSuscriptores(Of T)(ByVal id_ As Object) As TagWatcher
+    Public Function EliminarSuscripciones(Of T)(ByVal id_ As Object, Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
         Dim collectionName_ As String = Nothing : Dim databaseName_ As String = Nothing
 
-        _statements.GetDatabaseAndCollectionName(databaseName_, collectionName_, GetType(T).Name, Nothing)
+        With _statements
+
+            Dim rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, GetType(T).Name, Nothing)
+
+            If rol_.officesuffix Then
+
+                collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+
+            End If
+
+        End With
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
@@ -118,10 +128,11 @@ Public Class ControladorSubscripciones
                                          GetDatabase(databaseName_).
                                          GetCollection(Of subscriptionsgroup)("Faf" & collectionName_)
 
-            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._idfriend", id_)
+            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._myid", id_)
 
-            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_idfriend", id_))
+            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_myid", id_))
 
+            'Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_).Result
             Dim result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_).Result
 
             If result_.ModifiedCount > 0 Then
@@ -140,11 +151,21 @@ Public Class ControladorSubscripciones
 
     End Function
 
-    Public Function EliminarSuscriptores(resource_ As String, ByVal id_ As Object) As TagWatcher
+    Public Function EliminarSuscripciones(resource_ As String, ByVal id_ As Object, Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
         Dim collectionName_ As String = Nothing : Dim databaseName_ As String = Nothing
 
-        _statements.GetDatabaseAndCollectionName(databaseName_, collectionName_, resource_, Nothing)
+        With _statements
+
+            Dim rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, resource_, Nothing)
+
+            If rol_.officesuffix Then
+
+                collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+
+            End If
+
+        End With
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
@@ -152,10 +173,11 @@ Public Class ControladorSubscripciones
                                          GetDatabase(databaseName_).
                                          GetCollection(Of subscriptionsgroup)("Faf" & collectionName_)
 
-            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._idfriend", id_)
+            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._myid", id_)
 
-            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_idfriend", id_))
+            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_myid", id_))
 
+            'Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_).Result
             Dim result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_).Result
 
             If result_.ModifiedCount > 0 Then
@@ -174,8 +196,94 @@ Public Class ControladorSubscripciones
 
     End Function
 
-    Public Function EliminarSuscriptores(temporalName_ As String, temporalId_ As ObjectId, session_ As IClientSessionHandle) As TagWatcher
-        Return New TagWatcher(1)
+    Public Function EliminarSuscriptores(Of T)(ByVal id_ As Object, Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Dim collectionName_ As String = Nothing : Dim databaseName_ As String = Nothing
+
+        With _statements
+
+            Dim rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, GetType(T).Name, Nothing)
+
+            If rol_.officesuffix Then
+
+                collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+
+            End If
+
+        End With
+
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+            Dim operationsDB_ = iEnlace_.GetMongoClient().
+                                         GetDatabase(databaseName_).
+                                         GetCollection(Of subscriptionsgroup)("Faf" & collectionName_)
+
+            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._idfriend", id_)
+
+            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_idfriend", id_))
+
+            'Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_).Result
+            Dim result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_).Result
+
+            If result_.ModifiedCount > 0 Then
+
+                Estado.SetOK()
+
+            Else
+
+                Estado.SetOKInfo(Me, "Elemento no encontrado.")
+
+            End If
+
+            Return Estado
+
+        End Using
+
+    End Function
+
+    Public Function EliminarSuscriptores(resource_ As String, ByVal id_ As Object, Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Dim collectionName_ As String = Nothing : Dim databaseName_ As String = Nothing
+
+        With _statements
+
+            Dim rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, resource_, Nothing)
+
+            If rol_.officesuffix Then
+
+                collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+
+            End If
+
+        End With
+
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+            Dim operationsDB_ = iEnlace_.GetMongoClient().
+                                         GetDatabase(databaseName_).
+                                         GetCollection(Of subscriptionsgroup)("Faf" & collectionName_)
+
+            Dim filter_ = Builders(Of subscriptionsgroup).Filter.Eq(Of Object)("subscriptions.followers._idfriend", id_)
+
+            Dim setStructureOfSubs_ = Builders(Of subscriptionsgroup).Update.PullFilter("subscriptions.followers", Builders(Of follower).Filter.Eq(Of Object)("_idfriend", id_))
+
+            'Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_).Result
+            Dim result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_).Result
+
+            If result_.ModifiedCount > 0 Then
+
+                Estado.SetOK()
+
+            Else
+
+                Estado.SetOKInfo(Me, "Elemento no encontrado.")
+
+            End If
+
+            Return Estado
+
+        End Using
+
     End Function
 
     Public Function Bitacora() As TagWatcher
@@ -186,7 +294,6 @@ Public Class ControladorSubscripciones
 
     End Function
 
-    'J. Oropeza: es posible este método se mueva a organismo ya que su funcionalidad es muy genérica y sera muy utilizada desde diversos puntos
     Public Function Disponibillidad(Of T)(ByVal id_ As Object) As Boolean
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
@@ -212,7 +319,9 @@ Public Class ControladorSubscripciones
 
     End Function
 
-    Public Function DifusionDatos(ByVal documentoElectronico_ As DocumentoElectronico, Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+    'contador de modificaciones igual al numero de elementos a borrar, si no es igual hay que abortar
+    Public Function DifusionDatos(ByVal documentoElectronico_ As DocumentoElectronico,
+                                  Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
         'Dim listOfUpdateModels = New List(Of UpdateOneModel(Of OperacionGenerica))
 
@@ -262,17 +371,25 @@ Public Class ControladorSubscripciones
                                              GetDatabase(databaseName_).
                                              GetCollection(Of OperacionGenerica)(collectionName_)
 
-                Dim filter_ = Builders(Of OperacionGenerica).Filter.In(Of Object)("_id", idList_)
+                Dim filter_ = Builders(Of OperacionGenerica).Filter.In(Of Object)("_id", idList_) And Builders(Of OperacionGenerica).Filter.Eq(Of Boolean)("abierto", True)
 
                 Dim combinedUpdate_ = Builders(Of OperacionGenerica).Update.Combine(updateDefinition_)
 
                 Try
 
-                    Dim result_ = operationsDB_.UpdateOneAsync(session_, filter_, combinedUpdate_).Result
+                    Dim result_ = operationsDB_.UpdateManyAsync(session_, filter_, combinedUpdate_).Result
 
                     If result_.ModifiedCount > 0 Then
 
-                        Estado.SetOK()
+                        If result_.ModifiedCount = idList_.Count Then
+
+                            Estado.SetOK()
+
+                        Else
+
+                            Estado.SetError(Me, "Se encontraron (" & idList_.Count - result_.ModifiedCount & ") registros cerrados pero no ha sido eliminada su subscripcion")
+
+                        End If
 
                     Else
 
@@ -297,6 +414,7 @@ Public Class ControladorSubscripciones
     End Function
 
 
+    'J. Oropeza: es posible este método se mueva a organismo ya que su funcionalidad es muy genérica y sera muy utilizada desde diversos puntos
     Public Function FirmaDigital(Of T)(ByVal id_ As Object) As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos

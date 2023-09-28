@@ -1,21 +1,26 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class ItemFacturaComercialNacional
 
+#Region "Atributos"
+
+    Private _valorAgregado As Integer
+
+#End Region
+
 #Region "Propiedades"
 
-    Property ValorAgregado As Object
+    Property ValorAgregado As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _valorAgregado
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _valorAgregado = value
 
         End Set
 

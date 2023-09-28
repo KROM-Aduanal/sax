@@ -54,6 +54,11 @@
       <HintPath>..\..\..\..\..\sax2.0\bin\Core\lnk\gsol.krom.IEntidadDatos.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Gsol.Web.Components.CptCatalogControl64.0.0.0.0, Version=1.0.8671.16448, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\sax2.0\bin\Components web\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Gsol.Web.Components.CptFindboxControl64.0.0.0.0, Version=1.0.8223.30477, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\sax2.0\bin\Components web\Gsol.Web.Components.CptFindboxControl64.0.0.0.0.dll</HintPath>
@@ -126,7 +131,7 @@
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\projects\global\lib\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Recursos64.0.0.0.0">

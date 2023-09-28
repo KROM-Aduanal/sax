@@ -37,6 +37,8 @@ Public Class FindboxControl
 
     Private _tapGesture As LinkButton
 
+    Private _tooltipControlText As TextBox
+
 #End Region
 
 #Region "Propiedades"
@@ -457,6 +459,16 @@ Public Class FindboxControl
 
         End With
 
+        _tooltipControlText = New TextBox
+
+        With _tooltipControlText
+
+            .Attributes.Add("class", "__tooltip d-none")
+
+            .Attributes.Add("is", "wc-tooltip")
+
+        End With
+
     End Sub
 
     Protected Overrides Sub CreateChildControls()
@@ -529,6 +541,8 @@ Public Class FindboxControl
 
             .Controls.Add(_tapGesture)
 
+            .Controls.Add(_tooltipControlText)
+
             .Controls.Add(New LiteralControl("</div>"))
 
         End With
@@ -538,6 +552,8 @@ Public Class FindboxControl
     End Sub
 
     Protected Overrides Sub Render(ByVal component_ As HtmlTextWriter)
+
+        GetToolTipSetting(_tooltipControlText)
 
         Me.RenderContents(component_)
 

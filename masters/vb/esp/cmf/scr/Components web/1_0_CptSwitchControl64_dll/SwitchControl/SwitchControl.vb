@@ -21,6 +21,8 @@ Public Class SwitchControl
 
     Private _switchControl As CheckBox
 
+    Private _tooltipControlText As TextBox
+
 #End Region
 
 #Region "Propiedades"
@@ -146,6 +148,16 @@ Public Class SwitchControl
 
         End With
 
+        _tooltipControlText = New TextBox
+
+        With _tooltipControlText
+
+            .Attributes.Add("class", "__tooltip d-none")
+
+            .Attributes.Add("is", "wc-tooltip")
+
+        End With
+
     End Sub
 
     Protected Overrides Sub CreateChildControls()
@@ -168,6 +180,8 @@ Public Class SwitchControl
 
             .Controls.Add(New LiteralControl("	<span>" & Label & "</span>"))
 
+            .Controls.Add(_tooltipControlText)
+
             .Controls.Add(New LiteralControl("</label>"))
 
         End With
@@ -177,6 +191,8 @@ Public Class SwitchControl
     End Sub
 
     Protected Overrides Sub Render(ByVal component_ As HtmlTextWriter)
+
+        GetToolTipSetting(_tooltipControlText)
 
         Me.RenderContents(component_)
 

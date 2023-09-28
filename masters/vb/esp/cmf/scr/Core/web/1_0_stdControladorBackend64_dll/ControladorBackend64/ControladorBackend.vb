@@ -1,25 +1,26 @@
 ﻿Imports Syn.Documento
-Imports Gsol.krom
+Imports gsol.krom
 Imports Wma.Exceptions
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions.TagWatcher
-Imports Gsol.Web.Template.FormularioGeneralWeb.StatusMessage
+Imports gsol.Web.Template.FormularioGeneralWeb.StatusMessage
 Imports Wma.Exceptions.TagWatcher.TypeStatus
-Imports Gsol.Web
-Imports Gsol.Web.Components
+Imports gsol.Web
+Imports gsol.Web.Components
 Imports System.Web.UI
 Imports System.Web
 Imports Syn.Documento.Componentes.Campo
 Imports Sax.Web.ControladorBackend
 Imports Rec.Globals.Utils
 Imports System.Web.UI.WebControls
-Imports Gsol.Web.Components.FormControl.ButtonbarModality
+Imports gsol.Web.Components.FormControl.ButtonbarModality
 Imports System.Text.RegularExpressions
-Imports Gsol '--
-Imports System.Xml.Serialization '--
-Imports System.IO '--
+Imports gsol
+Imports System.Xml.Serialization
+Imports System.IO
 Imports Syn.Operaciones
+
 
 Public Class ControladorBackend
     Inherits Template.FormularioGeneralWeb
@@ -223,11 +224,11 @@ Public Class ControladorBackend
         If Not Page.IsPostBack Then
             'observar y validar bien este metodo es inestable
             LimpiarSessionesOperacion()
-
+            'OperacionGenerica = Nothing
             'LimpiaSesion()
 
             ViewState("_PageID") = (New Random()).Next().ToString()
-
+            'SetVars("ActivaControles", False) : ActivaControles((GetVars("ActivaControles", False)))
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "__serverObserver();", True)
 
         Else
@@ -237,7 +238,6 @@ Public Class ControladorBackend
             InicializaTarjeteros()
 
         End If
-
 
     End Sub
 
@@ -455,11 +455,8 @@ Public Class ControladorBackend
 
                     If fieldset_.Controls(indice_).GetType().Name = "FieldsetControl" Then
 
-                        'DirectCast(control_.Controls(indice_), FieldsetControl).Enabled = activar_
-
                         For Each control_ As Object In DirectCast(fieldset_.Controls(indice_), FieldsetControl).ListControls
 
-                            'subcontrol_.Enabled = activar_
                             If control_.GetType = GetType(TabbarControl) Then
 
                                 For Each childcontrol_ As Object In DirectCast(control_, TabbarControl).TabsSections
@@ -475,6 +472,26 @@ Public Class ControladorBackend
                                     childcontrol_.Enabled = activar_
 
                                 Next
+
+                            ElseIf control_.GetType = GetType(CatalogControl) Then
+
+                                Dim catalogcontrol_ = DirectCast(control_, CatalogControl)
+
+                                With catalogcontrol_
+
+                                    For Each childcontrol_ As Object In .Columns
+
+                                        childcontrol_.Enabled = activar_
+
+                                    Next
+
+                                    .EnabledToolBar(activar_)
+
+                                End With
+
+                            ElseIf control_.GetType = GetType(FileControl) Then
+
+                                DirectCast(control_, FileControl).EnabledButton(activar_)
 
                             Else
 
@@ -659,7 +676,6 @@ Public Class ControladorBackend
             '                                 _empresa.razonsocial)
 
             OperacionNueva = Activator.CreateInstance(Buscador.DataObject.GetType)
-
 
         Else  'Edición
 
@@ -899,7 +915,7 @@ Public Class ControladorBackend
 
                     If DespuesRealizarInsercion.Status = Ok Then
 
-                        Refresh()
+                        RefreshControls()
 
                         tipoMensaje_ = Success
 
@@ -941,6 +957,7 @@ Public Class ControladorBackend
                                                   Nothing)
 
                     With tagwatcher_
+
                         If .Status = Ok Then
 
                             'ESTAMOS PROBANDO AQUI PORQUE DA SUS COSAS
@@ -948,7 +965,7 @@ Public Class ControladorBackend
 
                             If DespuesRealizarModificacion.Status = Ok Then
 
-                                Refresh()
+                                RefreshControls()
 
                                 tipoMensaje_ = Success
 
@@ -959,10 +976,10 @@ Public Class ControladorBackend
                             End If
 
                         ElseIf .Status = OkInfo Then
-                            MsgBox("SI LLEGAAA OKINFO")
+
                             If DespuesRealizarModificacion.Status = Ok Then
 
-                                Refresh()
+                                RefreshControls()
 
                                 tipoMensaje_ = Info
 
@@ -974,9 +991,10 @@ Public Class ControladorBackend
 
                         ElseIf .Status = OkBut Then
 
+
                             If DespuesRealizarModificacion.Status = Ok Then
 
-                                Refresh()
+                                RefreshControls()
 
                                 tipoMensaje_ = Info
 
@@ -1040,8 +1058,6 @@ Public Class ControladorBackend
 
                         Constructores()
 
-                        Dim Algo = operacionNueva_
-
                         tagwatcher_ = Guardar(operacionNueva_, session_)
 
                         If tagwatcher_.Status = Ok Then
@@ -1052,7 +1068,7 @@ Public Class ControladorBackend
 
                             If DespuesRealizarInsercion.Status = Ok Then
 
-                                Refresh()
+                                RefreshControls()
 
                                 tipoMensaje_ = Success : session_.CommitTransaction()
 
@@ -1075,7 +1091,7 @@ Public Class ControladorBackend
                     End If
 
                 Else
-                    'MsgBox("ES AQUÍ MEME")
+
                     Dim antesRealizarModificacion_ As Func(Of IClientSessionHandle, TagWatcher) =
                         AddressOf AntesRealizarModificacion
 
@@ -1100,15 +1116,18 @@ Public Class ControladorBackend
                                     'OperacionGenerica = .ObjectReturned ': Statements.ObjectSession = OperacionGenerica
 
                                     If DespuesRealizarModificacion.Status = Ok Then
-                                        ' MsgBox("ES AQUÍ2 XD")
 
-                                        If NotificarSubscriptores(session_).Status = TypeStatus.Ok Then
+                                        Dim notifytagwacher_ = NotificarSubscriptores(session_)
 
-                                            Refresh()
+                                        If notifytagwacher_.Status = TypeStatus.Ok Then
+
+                                            RefreshControls()
 
                                             tipoMensaje_ = Info : session_.CommitTransaction()
 
                                         Else
+
+                                            tagwatcher_.LastMessage = notifytagwacher_.ErrorDescription
 
                                             tipoMensaje_ = Fail : session_.AbortTransaction()
 
@@ -1124,14 +1143,18 @@ Public Class ControladorBackend
 
                                     If DespuesRealizarModificacion.Status = Ok Then
 
-                                        If NotificarSubscriptores(session_).Status = TypeStatus.Ok Then
+                                        Dim notifytagwacher_ = NotificarSubscriptores(session_)
 
-                                            Refresh()
+                                        If notifytagwacher_.Status = TypeStatus.Ok Then
+
+                                            RefreshControls()
 
                                             tipoMensaje_ = Info : session_.CommitTransaction()
 
                                         Else
-                                            ' MsgBox("ES AQUÍ OKINFODDDD")
+
+                                            tagwatcher_.LastMessage = notifytagwacher_.ErrorDescription
+
                                             tipoMensaje_ = Fail : session_.AbortTransaction()
 
                                         End If
@@ -1146,7 +1169,7 @@ Public Class ControladorBackend
 
                                     If DespuesRealizarModificacion.Status = Ok Then
 
-                                        Refresh()
+                                        RefreshControls()
 
                                         tipoMensaje_ = Info : session_.CommitTransaction()
 
@@ -1204,69 +1227,47 @@ Public Class ControladorBackend
 
     Private Function NotificarSubscriptores(Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
-
-
         Dim tagwacher_ As New TagWatcher
-
-
 
         Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
 
-
-
             With controladorSubscripciones_
-
-
 
                 If .LeerSuscriptores(Buscador.DataObject.GetType.Name, OperacionGenerica.Id).Count Then
 
-
-
-                    If OperacionGenerica.abierto = True Then
-
-
-
-                        tagwacher_ = .DifusionDatos(OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
-
-
-
-                    Else
-
-
-
-                        tagwacher_ = .EliminarSuscriptores(Buscador.DataObject.GetType.Name, OperacionGenerica.Id, session_)
-
-
-
-                    End If
-
-
+                    tagwacher_ = .DifusionDatos(OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
 
                 Else
 
-
-
                     tagwacher_ = New TagWatcher(Ok)
-
-
 
                 End If
 
-
-
             End With
-
-
 
         End Using
 
-
-
         Return tagwacher_
 
-
-
     End Function
+
+    Private Sub EliminarSubscripciones(Optional ByVal session_ As IClientSessionHandle = Nothing)
+
+        For Each subscriptionsgroup As subscriptionsgroup In Buscador.DataObject.SubscriptionsGroup
+
+            Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
+
+                With controladorSubscripciones_
+
+                    .EliminarSuscripciones(subscriptionsgroup.toresource, OperacionGenerica.Id)
+
+                End With
+
+            End Using
+
+        Next
+
+    End Sub
 
     Public Overridable Sub DespuesOperadorDatosProcesar(ByRef documentoElectronico_ As DocumentoElectronico)
 
@@ -1410,6 +1411,11 @@ Public Class ControladorBackend
                     DirectCast(caracteristica_.Control, ListboxControl).Value = Nothing
                     DirectCast(caracteristica_.Control, ListboxControl).Text = Nothing
 
+                Case "FileControl"
+
+                    DirectCast(caracteristica_.Control, FileControl).Value = Nothing
+                    DirectCast(caracteristica_.Control, FileControl).Text = Nothing
+
                 Case Else
 
             End Select
@@ -1479,6 +1485,11 @@ Public Class ControladorBackend
 
                     DirectCast(caracteristica_.Control, ListboxControl).Value = Nothing
                     DirectCast(caracteristica_.Control, ListboxControl).Text = Nothing
+
+                Case "FileControl"
+
+                    DirectCast(caracteristica_.Control, FileControl).Value = Nothing
+                    DirectCast(caracteristica_.Control, FileControl).Text = Nothing
 
                 Case Else
 
@@ -1643,6 +1654,12 @@ Public Class ControladorBackend
 
             Case 2 'Publicar
 
+                EliminarSubscripciones()
+
+                SetVars("ActivaControles", False) : ActivaControles(GetVars("ActivaControles"))
+
+                PreparaBotonera(Closed)
+
                 BotoneraClicPublicar()
 
             Case 3 'Seguir Editando
@@ -1784,6 +1801,13 @@ Public Class ControladorBackend
 
                         End If
 
+                    Case "FileControl"
+
+                        If Not String.IsNullOrEmpty(DirectCast(caracteristica_.Control, FileControl).Value.ToString) Then
+
+                            hasChanges += 1
+
+                        End If
                     Case Else
 
                 End Select
@@ -2041,7 +2065,7 @@ Public Class ControladorBackend
 
     End Function
 
-    Private Sub Refresh(Optional ByVal documentoElectronico_ As DocumentoElectronico = Nothing)
+    Private Sub RefreshControls(Optional ByVal documentoElectronico_ As DocumentoElectronico = Nothing)
 
         If documentoElectronico_ Is Nothing Then
             'Statements.ObjectSession
@@ -2400,149 +2424,408 @@ Public Class ControladorBackend
     Private Function [In](ByRef caracteristica_ As Caracteristica,
                      ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
 
-        Dim tipoControl_ As String = caracteristica_.Control.GetType.Name
+        Dim idSeccionUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
+
+        Dim seccionUnica_ As Componentes.Seccion = Nothing
+
+        If idSeccionUnico_ Then
+
+            seccionUnica_ = documentoElectronico_.Seccion(idSeccionUnico_)
+
+        End If
+
+
+        Dim idCampoUnico_ As Int32 = Convert.ToInt32(caracteristica_.Campo)
+
+        Dim campoUnico_ As Componentes.Campo = Nothing
+
+        If idCampoUnico_ Then
+
+            campoUnico_ = documentoElectronico_.Attribute(idCampoUnico_)
+
+        End If
+
+        Select Case caracteristica_.Control.GetType()
+
+            Case GetType(CatalogControl)
+
+                Return FillDocumentAttributesFromCatalog(caracteristica_, seccionUnica_, documentoElectronico_)
+
+            Case GetType(PillboxControl)
+
+                Return FillDocumentAttributesFromPillbox(caracteristica_, seccionUnica_, documentoElectronico_)
+
+            Case GetType(ListboxControl)
+
+                Return FillDocumentAttributesFromListbox(caracteristica_, seccionUnica_, documentoElectronico_)
+
+            Case GetType(CollectionViewControl)
+
+                Return FillDocumentAttributesFromCollectionView(caracteristica_, seccionUnica_, documentoElectronico_)
+
+            Case GetType(InputControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of InputControl)(caracteristica_, campoUnico_, documentoElectronico_)
+
+            Case GetType(SelectControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of SelectControl)(caracteristica_, campoUnico_, documentoElectronico_, True)
+
+            Case GetType(SwitchControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of SwitchControl)(caracteristica_, campoUnico_, documentoElectronico_)
+
+            Case GetType(FileControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of FileControl)(caracteristica_, campoUnico_, documentoElectronico_)
+
+            Case GetType(FindboxControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of FindboxControl)(caracteristica_, campoUnico_, documentoElectronico_)
+
+            Case GetType(DualityBarControl)
+
+                Return FillDocumentAttributesFromGenericControl(Of DualityBarControl)(caracteristica_, campoUnico_, documentoElectronico_)
+
+        End Select
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillDocumentAttributesFromGenericControl(Of T)(ByRef caracteristica_ As Caracteristica,
+                                                                    ByRef campoUnico_ As Componentes.Campo,
+                                                                    ByRef documentoElectronico_ As DocumentoElectronico,
+                                                                    ByVal Optional tieneValorPresentacion_ As Boolean = False) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        If campoUnico_ IsNot Nothing Then
+
+            With documentoElectronico_
+
+                Dim valorAsignado_ = Nothing
+
+                Dim valorPresentacionAsignado_ = Nothing
+
+                Dim control_ As Object = caracteristica_.Control 'CType(Convert.ChangeType(caracteristica_.Control, GetType(T)), T)
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        valorAsignado_ = control_.Value
+
+                    Case PropiedadesControl.Text
+
+                        valorAsignado_ = control_.Text
+
+                    Case PropiedadesControl.Checked
+
+                        valorAsignado_ = control_.Checked
+
+                    Case PropiedadesControl.ValueDetail
+
+                        valorAsignado_ = control_.ValueDetail
+
+                    Case PropiedadesControl.OnText
+
+                        valorAsignado_ = control_.OnText
+
+                    Case PropiedadesControl.OffText
+
+                        valorAsignado_ = control_.OffText
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+                If tieneValorPresentacion_ = False Then
+
+                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
+
+                        caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                        .Attribute(campoUnico_.IDUnico).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                    Else
+
+                        caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                        .Attribute(campoUnico_.IDUnico).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                    End If
+
+                Else
+                    'Lineas unicas por los selectores
+                    caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                    .Attribute(campoUnico_.IDUnico).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+
+                    valorPresentacionAsignado_ = control_.Text
+
+                    caracteristica_.ValorPresentacion = valorPresentacionAsignado_
+
+                    .Attribute(campoUnico_.IDUnico).ValorPresentacion = valorPresentacionAsignado_
+
+                End If
+
+            End With
+
+        Else
+
+            Return New TagWatcher(0, Me, "No se encontró el campo [" & campoUnico_.IDUnico & "]")
+
+        End If
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillDocumentAttributesFromCatalog(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
 
         With documentoElectronico_
 
-            If caracteristica_.Control.GetType() = GetType(CatalogControl) Then
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
 
-                'SPECIAL PROCESS FOR CATALOG CONTROL
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
 
-                Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
+                Select Case caracteristica_.PropiedadDelControl
 
-                Dim seccionUnica_ = .Seccion(idUnico_)
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
 
-                If seccionUnica_ IsNot Nothing Then
+                        Dim documentoElectronicoReferenciaLocal_ = documentoElectronico_
 
-                    Select Case caracteristica_.PropiedadDelControl
+                        Dim catalogControl_ As CatalogControl = DirectCast(caracteristica_.Control, CatalogControl)
 
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
+                        catalogControl_.ForEach(Sub(catalogRow_ As CatalogRow)
 
-                            Dim dElectronico_ = documentoElectronico_
+                                                    If catalogRow_.GetIndice(catalogControl_.KeyField) > 0 Then
 
-                            Dim catalogControl_ As CatalogControl = DirectCast(caracteristica_.Control, CatalogControl)
+                                                        With seccionUnicaReferenciaLocal_.Partida(numeroSecuencia_:=catalogRow_.GetIndice(catalogControl_.KeyField))
 
-                            catalogControl_.ForEach(Sub(catalogRow_ As CatalogRow)
+                                                            Dim rowId_ = catalogControl_.DeleteRowsId
 
-                                                        If catalogRow_.GetIndice(catalogControl_.KeyField) > 0 Then
+                                                            If rowId_ IsNot Nothing Then
 
-                                                            With seccionUnica_.Partida(numeroSecuencia_:=catalogRow_.GetIndice(catalogControl_.KeyField))
+                                                                If catalogControl_.DeleteRowsId.Contains(catalogRow_.GetIndice(catalogControl_.KeyField)) Then
 
-                                                                Dim rowId_ = catalogControl_.DeleteRowsId
+                                                                    .estado = 0
 
-                                                                If rowId_ IsNot Nothing Then
+                                                                End If
 
-                                                                    If catalogControl_.DeleteRowsId.Contains(catalogRow_.GetIndice(catalogControl_.KeyField)) Then
+                                                            End If
 
-                                                                        .estado = 0
+                                                            For Each control_ As IUIControl In catalogControl_.Columns
+
+                                                                Select Case control_.GetType()
+
+                                                                    Case GetType(InputControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, InputControl)))
+
+                                                                    Case GetType(SelectControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Value)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Text
+
+                                                                    Case GetType(SwitchControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SwitchControl)))
+
+                                                                End Select
+
+                                                            Next
+
+                                                        End With
+
+                                                    Else
+
+                                                        With seccionUnicaReferenciaLocal_.Partida(documentoElectronicoReferenciaLocal_)
+
+                                                            For Each control_ As IUIControl In catalogControl_.Columns
+
+                                                                Select Case control_.GetType()
+
+                                                                    Case GetType(InputControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, InputControl)))
+
+                                                                    Case GetType(SelectControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Value)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Text
+
+                                                                    Case GetType(SwitchControl)
+
+                                                                        .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SwitchControl)))
+
+                                                                End Select
+
+                                                            Next
+
+                                                        End With
+
+                                                    End If
+
+                                                End Sub)
+
+                        catalogControl_.CatalogDataRefresh()
+
+                    Case PropiedadesControl.Ninguno
+
+                        Return New TagWatcher(1)
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillDocumentAttributesFromPillbox(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim documentoElectronicoReferenciaLocal_ = documentoElectronico_
+
+                        Dim pillboxControl_ As PillboxControl = DirectCast(caracteristica_.Control, PillboxControl)
+
+                        pillboxControl_.ForEach(Sub(pillbox_ As PillBox)
+
+                                                    If pillbox_.GetIndice(pillboxControl_.KeyField) > 0 Then
+
+                                                        With seccionUnicaReferenciaLocal_.Partida(numeroSecuencia_:=pillbox_.GetIndice(pillboxControl_.KeyField))
+
+                                                            For Each control_ As IUIControl In pillboxControl_.PillboxListControls
+
+                                                                If pillbox_.IsDeleted() = True Then
+
+                                                                    .estado = 0
+
+                                                                End If
+
+                                                                If pillbox_.IsFiled() = True Then
+
+                                                                    .archivado = True
+
+                                                                End If
+
+                                                                If control_.WorksWith IsNot Nothing Then
+
+                                                                    Select Case control_.GetType()
+
+                                                                        Case GetType(InputControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, InputControl)))
+
+                                                                        Case GetType(SelectControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, SelectControl)).Value)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = pillbox_.GetControlValue(DirectCast(control_, SelectControl)).Text
+
+                                                                        Case GetType(SwitchControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, SwitchControl)))
+
+                                                                        Case GetType(FindboxControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, FindboxControl)).Value)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = pillbox_.GetControlValue(DirectCast(control_, FindboxControl)).Text
+
+                                                                    End Select
+
+                                                                Else
+
+                                                                    If control_.GetType() = GetType(CatalogControl) Then
+
+                                                                        Dim catalogcontrol_ = DirectCast(control_, CatalogControl)
+
+                                                                        catalogcontrol_.DataSource = pillbox_.GetControlValue(catalogcontrol_)
+
+                                                                        Dim caracteristicaAnidada_ = _caracteristicas.Find(Function(ByVal item_ As Caracteristica)
+
+                                                                                                                               If item_.Control IsNot Nothing Then
+
+                                                                                                                                   Return item_.Control.ID = catalogcontrol_.ID
+
+                                                                                                                               End If
+
+                                                                                                                               Return Nothing
+
+                                                                                                                           End Function)
+
+                                                                        If caracteristicaAnidada_ IsNot Nothing Then
+
+                                                                            caracteristicaAnidada_.PropiedadDelControl = PropiedadesControl.Valor
+
+                                                                            Dim seccionUnicaAnidada_ = .Seccion(Convert.ToInt32(caracteristicaAnidada_.Seccion))
+
+                                                                            FillDocumentAttributesFromCatalog(caracteristicaAnidada_, seccionUnicaAnidada_, documentoElectronicoReferenciaLocal_)
+
+                                                                        End If
 
                                                                     End If
 
                                                                 End If
 
-                                                                For Each control_ As IUIControl In catalogControl_.Columns
+                                                            Next
 
-                                                                    Select Case control_.GetType()
+                                                        End With
 
-                                                                        Case GetType(InputControl)
+                                                    Else
 
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, InputControl)))
+                                                        If pillbox_.IsDeleted() = False And pillbox_.IsFiled() = False Then
 
-                                                                        Case GetType(SelectControl)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Value)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Text
-
-                                                                        Case GetType(SwitchControl)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SwitchControl)))
-
-                                                                    End Select
-
-                                                                Next
-
-                                                            End With
-
-                                                        Else
-
-                                                            With seccionUnica_.Partida(dElectronico_)
-
-                                                                For Each control_ As IUIControl In catalogControl_.Columns
-
-                                                                    Select Case control_.GetType()
-
-                                                                        Case GetType(InputControl)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, InputControl)))
-
-                                                                        Case GetType(SelectControl)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Value)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = catalogRow_.GetColumn(DirectCast(control_, SelectControl)).Text
-
-                                                                        Case GetType(SwitchControl)
-
-                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, catalogRow_.GetColumn(DirectCast(control_, SwitchControl)))
-
-                                                                    End Select
-
-                                                                Next
-
-                                                            End With
-
-                                                        End If
-
-                                                    End Sub)
-
-                            catalogControl_.CatalogDataRefresh()
-
-                        Case Else
-
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                    End Select
-
-                End If
-
-            ElseIf caracteristica_.Control.GetType() = GetType(PillboxControl) Then
-
-                'SPECIAL PROCESS FOR PILLBOX CONTROL
-
-                Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
-
-                Dim seccionUnica_ = .Seccion(idUnico_)
-
-                If seccionUnica_ IsNot Nothing Then
-
-                    Select Case caracteristica_.PropiedadDelControl
-
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                            Dim dElectronico_ = documentoElectronico_
-
-                            Dim pillboxControl_ As PillboxControl = DirectCast(caracteristica_.Control, PillboxControl)
-
-                            pillboxControl_.ForEach(Sub(pillbox_ As PillBox)
-
-                                                        If pillbox_.GetIndice(pillboxControl_.KeyField) > 0 Then
-
-                                                            With seccionUnica_.Partida(numeroSecuencia_:=pillbox_.GetIndice(pillboxControl_.KeyField))
+                                                            With seccionUnicaReferenciaLocal_.Partida(documentoElectronicoReferenciaLocal_)
 
                                                                 For Each control_ As IUIControl In pillboxControl_.PillboxListControls
-
-                                                                    If pillbox_.IsDeleted() = True Then
-
-                                                                        .estado = 0
-
-                                                                    End If
-
-                                                                    If pillbox_.IsFiled() = True Then
-
-                                                                        .archivado = True
-
-                                                                    End If
 
                                                                     If control_.WorksWith IsNot Nothing Then
 
@@ -2570,97 +2853,117 @@ Public Class ControladorBackend
 
                                                                         End Select
 
+                                                                    Else
+
+                                                                        If control_.GetType() = GetType(CatalogControl) Then
+
+                                                                            Dim catalogcontrol_ = DirectCast(control_, CatalogControl)
+
+                                                                            catalogcontrol_.DataSource = pillbox_.GetControlValue(catalogcontrol_)
+
+                                                                            Dim caracteristicaAnidada_ = _caracteristicas.Find(Function(ByVal item_ As Caracteristica)
+
+                                                                                                                                   If item_.Control IsNot Nothing Then
+
+                                                                                                                                       Return item_.Control.ID = catalogcontrol_.ID
+
+                                                                                                                                   End If
+
+                                                                                                                                   Return Nothing
+
+                                                                                                                               End Function)
+
+                                                                            If caracteristicaAnidada_ IsNot Nothing Then
+
+                                                                                caracteristicaAnidada_.PropiedadDelControl = PropiedadesControl.Valor
+
+                                                                                Dim seccionUnicaAnidada_ = .Seccion(Convert.ToInt32(caracteristicaAnidada_.Seccion))
+
+                                                                                FillDocumentAttributesFromCatalog(caracteristicaAnidada_, seccionUnicaAnidada_, documentoElectronicoReferenciaLocal_)
+
+                                                                            End If
+
+                                                                        End If
+
                                                                     End If
 
                                                                 Next
 
                                                             End With
 
-                                                        Else
-
-                                                            If pillbox_.IsDeleted() = False And pillbox_.IsFiled() = False Then
-
-                                                                With seccionUnica_.Partida(dElectronico_)
-
-                                                                    For Each control_ As IUIControl In pillboxControl_.PillboxListControls
-
-                                                                        If control_.WorksWith IsNot Nothing Then
-
-                                                                            Select Case control_.GetType()
-
-                                                                                Case GetType(InputControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, InputControl)))
-
-                                                                                Case GetType(SelectControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, SelectControl)).Value)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = pillbox_.GetControlValue(DirectCast(control_, SelectControl)).Text
-
-                                                                                Case GetType(SwitchControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, SwitchControl)))
-
-                                                                                Case GetType(FindboxControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, pillbox_.GetControlValue(DirectCast(control_, FindboxControl)).Value)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = pillbox_.GetControlValue(DirectCast(control_, FindboxControl)).Text
-
-                                                                            End Select
-
-                                                                        End If
-
-                                                                    Next
-
-                                                                End With
-
-                                                            End If
-
                                                         End If
 
-                                                    End Sub)
+                                                    End If
 
-                        Case Else
+                                                End Sub)
 
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+                    Case Else
 
-                    End Select
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
 
-                End If
+                End Select
 
-            ElseIf caracteristica_.Control.GetType() = GetType(ListboxControl) Then
+            Else
 
-                'SPECIAL PROCESS FOR LISTBOX CONTROL
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
 
-                Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
+            End If
 
-                Dim seccionUnica_ = .Seccion(idUnico_)
+        End With
 
-                If seccionUnica_ IsNot Nothing Then
+        Return New TagWatcher(1)
 
-                    Select Case caracteristica_.PropiedadDelControl
+    End Function
 
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
+    Private Function FillDocumentAttributesFromListbox(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
 
-                            Dim dElectronico_ = documentoElectronico_
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
 
-                            Dim listbox_ As ListboxControl = DirectCast(caracteristica_.Control, ListboxControl)
+            Return New TagWatcher(1)
 
-                            If listbox_.Value IsNot Nothing Then
+        End If
 
-                                For Each option_ As SelectOption In listbox_.Value
+        With documentoElectronico_
 
-                                    If option_.Indice > 0 Then
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
 
-                                        With seccionUnica_.Partida(numeroSecuencia_:=option_.Indice)
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
 
-                                            If option_.Delete = True Then
+                Select Case caracteristica_.PropiedadDelControl
 
-                                                .estado = 0
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
 
-                                            End If
+                        Dim dElectronico_ = documentoElectronico_
+
+                        Dim listbox_ As ListboxControl = DirectCast(caracteristica_.Control, ListboxControl)
+
+                        If listbox_.Value IsNot Nothing Then
+
+                            For Each option_ As SelectOption In listbox_.Value
+
+                                If option_.Indice > 0 Then
+
+                                    With seccionUnicaReferenciaLocal_.Partida(numeroSecuencia_:=option_.Indice)
+
+                                        If option_.Delete = True Then
+
+                                            .estado = 0
+
+                                        End If
+
+                                        .Attribute(Convert.ToInt32(listbox_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(listbox_.WorksWith)).TipoDato, option_.Value)
+
+                                        .Attribute(Convert.ToInt32(listbox_.WorksWith)).ValorPresentacion = option_.Text
+
+                                    End With
+
+                                Else
+
+                                    If option_.Delete = False Then
+
+                                        With seccionUnicaReferenciaLocal_.Partida(dElectronico_)
 
                                             .Attribute(Convert.ToInt32(listbox_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(listbox_.WorksWith)).TipoDato, option_.Value)
 
@@ -2668,77 +2971,125 @@ Public Class ControladorBackend
 
                                         End With
 
-                                    Else
-
-                                        If option_.Delete = False Then
-
-                                            With seccionUnica_.Partida(dElectronico_)
-
-                                                .Attribute(Convert.ToInt32(listbox_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(listbox_.WorksWith)).TipoDato, option_.Value)
-
-                                                .Attribute(Convert.ToInt32(listbox_.WorksWith)).ValorPresentacion = option_.Text
-
-                                            End With
-
-                                        End If
-
                                     End If
 
-                                Next
+                                End If
 
-                            End If
+                            Next
 
-                        Case Else
+                        End If
 
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+                    Case Else
 
-                    End Select
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
 
-                End If
+                End Select
 
-            ElseIf caracteristica_.Control.GetType() = GetType(CollectionViewControl) Then
+            Else
 
-                'SPECIAL PROCESS FOR COLLECTION VIEW CONTROL
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
 
-                Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
+            End If
 
-                Dim seccionUnica_ = .Seccion(idUnico_)
+        End With
 
-                If seccionUnica_ IsNot Nothing Then
+        Return New TagWatcher(1)
 
-                    Select Case caracteristica_.PropiedadDelControl
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
+    End Function
 
-                            Dim dElectronico_ = documentoElectronico_
+    Private Function FillDocumentAttributesFromCollectionView(ByRef caracteristica_ As Caracteristica,
+                                                              ByRef seccionUnica_ As Componentes.Seccion,
+                                                              ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
 
-                            Dim collectionview_ As CollectionViewControl = DirectCast(caracteristica_.Control, CollectionViewControl)
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
 
-                            collectionview_.ForEach(Sub(ByVal collectionitem_ As CollectionItem)
+            Return New TagWatcher(1)
 
-                                                        If collectionitem_.GetIndice(collectionview_.KeyField) > 0 Then
+        End If
 
-                                                            With seccionUnica_.Partida(numeroSecuencia_:=collectionitem_.GetIndice(collectionview_.KeyField))
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim dElectronico_ = documentoElectronico_
+
+                        Dim collectionview_ As CollectionViewControl = DirectCast(caracteristica_.Control, CollectionViewControl)
+
+                        collectionview_.ForEach(Sub(ByVal collectionitem_ As CollectionItem)
+
+                                                    If collectionitem_.GetIndice(collectionview_.KeyField) > 0 Then
+
+                                                        With seccionUnicaReferenciaLocal_.Partida(numeroSecuencia_:=collectionitem_.GetIndice(collectionview_.KeyField))
+
+                                                            For Each control_ As IUIControl In collectionview_.CollectionViewListControls
+
+                                                                If collectionitem_.IsDeleted() = True Then
+
+                                                                    .estado = 0
+
+                                                                End If
+
+                                                                If collectionitem_.IsFiled() = True Then
+
+                                                                    .archivado = True
+
+                                                                End If
+
+                                                                If control_.WorksWith IsNot Nothing Then
+
+                                                                    'evaluar como hacerle para propiedades  tipo catalogo
+                                                                    'esto esta interesante
+                                                                    'seccionUnica_.Partida analizar esta parte en los catalogos porque debo entrar a las partidas correspondientes del catalogo
+                                                                    'hay pedo para saber la seccion de los grids dentro de un collection
+
+                                                                    Select Case control_.GetType()
+
+                                                                        Case GetType(InputControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, InputControl).ID))
+
+                                                                        Case GetType(SelectControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, SelectControl).ID).Value)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = collectionitem_.GetControlValue(DirectCast(control_, SelectControl).ID).Text
+
+                                                                        Case GetType(SwitchControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, SwitchControl).ID))
+
+                                                                        Case GetType(FindboxControl)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, FindboxControl).ID).Value)
+
+                                                                            .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = collectionitem_.GetControlValue(DirectCast(control_, FindboxControl).ID).Text
+
+                                                                        Case GetType(CatalogControl)
+
+
+                                                                    End Select
+
+                                                                End If
+
+                                                            Next
+
+                                                        End With
+
+                                                    Else
+
+                                                        If collectionitem_.IsDeleted() = False And collectionitem_.IsFiled() = False Then
+
+                                                            With seccionUnicaReferenciaLocal_.Partida(dElectronico_)
 
                                                                 For Each control_ As IUIControl In collectionview_.CollectionViewListControls
 
-                                                                    If collectionitem_.IsDeleted() = True Then
-
-                                                                        .estado = 0
-
-                                                                    End If
-
-                                                                    If collectionitem_.IsFiled() = True Then
-
-                                                                        .archivado = True
-
-                                                                    End If
-
                                                                     If control_.WorksWith IsNot Nothing Then
-
-                                                                        'evaluar como hacerle para propiedades  tipo catalogo
-                                                                        'esto esta interesante
-                                                                        'seccionUnica_.Partida analizar esta parte en los catalogos porque debo entrar a las partidas correspondientes del catalogo
-                                                                        'hay pedo para saber la seccion de los grids dentro de un collection
 
                                                                         Select Case control_.GetType()
 
@@ -2773,326 +3124,21 @@ Public Class ControladorBackend
 
                                                             End With
 
-                                                        Else
-
-                                                            If collectionitem_.IsDeleted() = False And collectionitem_.IsFiled() = False Then
-
-                                                                With seccionUnica_.Partida(dElectronico_)
-
-                                                                    For Each control_ As IUIControl In collectionview_.CollectionViewListControls
-
-                                                                        If control_.WorksWith IsNot Nothing Then
-
-                                                                            Select Case control_.GetType()
-
-                                                                                Case GetType(InputControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, InputControl).ID))
-
-                                                                                Case GetType(SelectControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, SelectControl).ID).Value)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = collectionitem_.GetControlValue(DirectCast(control_, SelectControl).ID).Text
-
-                                                                                Case GetType(SwitchControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, SwitchControl).ID))
-
-                                                                                Case GetType(FindboxControl)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).Valor = StringFormat(.Attribute(Convert.ToInt32(control_.WorksWith)).TipoDato, collectionitem_.GetControlValue(DirectCast(control_, FindboxControl).ID).Value)
-
-                                                                                    .Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion = collectionitem_.GetControlValue(DirectCast(control_, FindboxControl).ID).Text
-
-                                                                                Case GetType(CatalogControl)
-
-
-                                                                            End Select
-
-                                                                        End If
-
-                                                                    Next
-
-                                                                End With
-
-                                                            End If
-
                                                         End If
 
-                                                    End Sub)
+                                                    End If
 
-                        Case Else
+                                                End Sub)
 
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+                    Case Else
 
-                    End Select
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
 
-                End If
+                End Select
 
             Else
 
-                'DEFAULT PROCESS WITH CONTROLS
-
-                If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
-
-                    Return New TagWatcher(1)
-
-                End If
-
-                Dim idUnico_ As Int32 = Convert.ToInt32(caracteristica_.Campo)
-
-                Dim campoUnico_ As Object = .Attribute(idUnico_)
-
-                If campoUnico_ IsNot Nothing Then
-
-                    caracteristica_.TipoDato = campoUnico_.TipoDato
-
-                    Select Case tipoControl_
-
-                        Case "SelectControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Dim valorPresentacionAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                    Dim selectControl_ As SelectControl = DirectCast(caracteristica_.Control, SelectControl)
-
-                                    valorAsignado_ = selectControl_.Value
-
-                                    valorPresentacionAsignado_ = selectControl_.Text
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            caracteristica_.ValorPresentacion = valorPresentacionAsignado_
-
-                            .Attribute(idUnico_).ValorPresentacion = valorPresentacionAsignado_
-
-                            Return New TagWatcher(1)
-
-                        Case "InputControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, InputControl).Value
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            Else
-
-                                caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            End If
-
-                        Case "FileControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Dim valorPresentacionAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, FileControl).Value
-
-                                    valorPresentacionAsignado_ = DirectCast(caracteristica_.Control, FileControl).Text
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            .Attribute(idUnico_).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                            Return New TagWatcher(1)
-
-                        Case "SwitchControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Auto, PropiedadesControl.Checked
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).Checked
-
-                                Case PropiedadesControl.Valor
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).Value
-
-
-                                Case PropiedadesControl.OffText
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).OffText
-
-
-                                Case PropiedadesControl.OnText
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, SwitchControl).OnText
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            Else
-
-                                caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            End If
-
-                        Case "FindboxControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, FindboxControl).Value
-
-                                Case PropiedadesControl.Text
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, FindboxControl).Text
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            Else
-
-                                caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            End If
-
-                        Case "DualityBarControl"
-
-                            Dim valorAsignado_ = Nothing
-
-                            Select Case caracteristica_.PropiedadDelControl
-
-                                Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, DualityBarControl).Value
-
-                                Case PropiedadesControl.ValueDetail
-
-                                    valorAsignado_ = DirectCast(caracteristica_.Control, DualityBarControl).ValueDetail
-
-                                Case Else
-
-                                    Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                            End Select
-
-                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            Else
-
-                                caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                .Attribute(idUnico_).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
-
-                                Return New TagWatcher(1)
-
-                            End If
-
-                        Case Else
-
-                            If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                caracteristica_.Valor = DirectCast(caracteristica_.Control, Object).Value
-
-                                .Attribute(idUnico_).Valor = DirectCast(caracteristica_.Control, Object).Value : Return New TagWatcher(1)
-
-                            Else
-                                caracteristica_.ValorPresentacion = DirectCast(caracteristica_.Control, Object).Text
-
-                                .Attribute(idUnico_).ValorPresentacion = DirectCast(caracteristica_.Control, Object).Text : Return New TagWatcher(1)
-
-                            End If
-
-                    End Select
-
-
-                Else
-
-                    Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
-
-                End If
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
 
             End If
 
@@ -3105,616 +3151,566 @@ Public Class ControladorBackend
     Private Function Out(ByRef caracteristica_ As Caracteristica,
                          ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
 
-        Dim componente_ As IUIControl = caracteristica_.Control
 
-        Dim tipo_ As String = componente_.GetType.Name
+        Dim idSeccionUnico_ As Int32 = Convert.ToInt32(caracteristica_.Seccion)
 
-        With documentoElectronico_
+        Dim seccionUnica_ As Componentes.Seccion = Nothing
 
-            If caracteristica_.Control.GetType() = GetType(CatalogControl) Then
+        If idSeccionUnico_ Then
 
-                'SPECIAL PROCESS FOR CATALOG CONTROL
+            seccionUnica_ = documentoElectronico_.Seccion(idSeccionUnico_)
 
-                Dim seccion_ As [Enum] = caracteristica_.Seccion
+        End If
 
-                If componente_ Is Nothing Then
 
-                    Return New TagWatcher(0, "Instancia del componente no establecida para la seccion " & seccion_.ToString)
+        Dim idCampoUnico_ As Int32 = Convert.ToInt32(caracteristica_.Campo)
 
-                End If
+        Dim campoUnico_ As Componentes.Campo = Nothing
 
-                Dim idUnico_ As Int32 = Convert.ToInt32(seccion_)
+        If idCampoUnico_ Then
 
-                Dim seccionUnica_ = .Seccion(idUnico_)
+            campoUnico_ = documentoElectronico_.Attribute(idCampoUnico_)
 
-                If seccionUnica_ IsNot Nothing Then
+        End If
 
-                    Select Case caracteristica_.PropiedadDelControl
+        Select Case caracteristica_.Control.GetType()
 
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
+            Case GetType(CatalogControl)
 
-                            Dim catalog_ As CatalogControl = DirectCast(caracteristica_.Control, CatalogControl)
+                Return FillCatalogFromDocumentAttributes(caracteristica_, seccionUnica_, documentoElectronico_)
 
-                            catalog_.ClearRows()
+            Case GetType(PillboxControl)
 
-                            For indice_ As Int32 = 1 To seccionUnica_.CantidadPartidas
+                Return FillPillboxFromDocumentAttributes(caracteristica_, seccionUnica_, documentoElectronico_)
 
-                                If seccionUnica_.Partida(indice_).estado = 1 Then
+            Case GetType(ListboxControl)
 
-                                    catalog_.SetRow(Sub(catalogRow_ As CatalogRow)
+                Return FillListboxFromDocumentAttributes(caracteristica_, seccionUnica_, documentoElectronico_)
 
-                                                        catalogRow_.SetIndice(catalog_.KeyField, indice_)
+            Case GetType(CollectionViewControl)
 
-                                                        For Each control_ As IUIControl In catalog_.Columns
+                Return FillCollectionViewFromDocumentAttributes(caracteristica_, seccionUnica_, documentoElectronico_)
 
-                                                            If control_.WorksWith IsNot Nothing Then
+            Case GetType(InputControl)
 
-                                                                Select Case control_.GetType()
+                Return FillGenericControlFromDocumentAttributes(Of InputControl)(caracteristica_, campoUnico_, documentoElectronico_)
 
-                                                                    Case GetType(InputControl)
+            Case GetType(SelectControl)
 
-                                                                        catalogRow_.SetColumn(DirectCast(control_, InputControl), StringMask(DirectCast(control_, InputControl).Format, seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
+                Return FillGenericControlFromDocumentAttributes(Of SelectControl)(caracteristica_, campoUnico_, documentoElectronico_, True)
 
-                                                                    Case GetType(SelectControl)
+            Case GetType(SwitchControl)
 
-                                                                        catalogRow_.SetColumn(DirectCast(control_, SelectControl), New SelectOption With {
-                                                                                .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
-                                                                                .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
-                                                                            })
+                Return FillGenericControlFromDocumentAttributes(Of SwitchControl)(caracteristica_, campoUnico_, documentoElectronico_)
 
-                                                                    Case GetType(SwitchControl)
+            Case GetType(FileControl)
 
-                                                                        catalogRow_.SetColumn(DirectCast(control_, SwitchControl), seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
+                Return FillGenericControlFromDocumentAttributes(Of FileControl)(caracteristica_, campoUnico_, documentoElectronico_)
 
-                                                                End Select
+            Case GetType(FindboxControl)
 
-                                                            End If
+                Return FillGenericControlFromDocumentAttributes(Of FindboxControl)(caracteristica_, campoUnico_, documentoElectronico_)
 
-                                                        Next
+            Case GetType(DualityBarControl)
 
-                                                    End Sub)
+                Return FillGenericControlFromDocumentAttributes(Of DualityBarControl)(caracteristica_, campoUnico_, documentoElectronico_)
 
-                                End If
+        End Select
 
-                            Next
+        Return New TagWatcher(1)
 
-                            catalog_.CatalogDataBinding()
+    End Function
 
-                        Case PropiedadesControl.Ninguno
+    Private Function FillGenericControlFromDocumentAttributes(Of T)(ByRef caracteristica_ As Caracteristica,
+                                                                    ByRef campoUnico_ As Componentes.Campo,
+                                                                    ByRef documentoElectronico_ As DocumentoElectronico,
+                                                                    ByVal Optional tieneValorPresentacion_ As Boolean = False) As TagWatcher
 
-                            Return New TagWatcher(1)
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
 
-                        Case Else
+            Return New TagWatcher(1)
 
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+        End If
 
-                    End Select
+        If campoUnico_ IsNot Nothing Then
 
-                Else
+            With documentoElectronico_
 
-                    Return New TagWatcher(0, Me, "No se encontró la sección [" & idUnico_ & "]")
+                Dim valorAsignado_ = Nothing
 
-                End If
+                Dim valorPresentacionAsignado_ = Nothing
 
-            ElseIf caracteristica_.Control.GetType() = GetType(PillboxControl) Then
+                If tieneValorPresentacion_ = False Then
 
-                'SPECIAL PROCESS FOR PILLBOX CONTROL
+                    If caracteristica_.Asignacion = TiposAsignacion.Valor Then
 
-                Dim seccion_ As [Enum] = caracteristica_.Seccion
+                        valorAsignado_ = campoUnico_.Valor
 
-                If componente_ Is Nothing Then
+                        caracteristica_.Valor = valorAsignado_
 
-                    Return New TagWatcher(0, "Instancia del componente no establecida para la seccion " & seccion_.ToString)
+                    Else
 
-                End If
+                        valorAsignado_ = campoUnico_.ValorPresentacion
 
-                Dim idUnico_ As Int32 = Convert.ToInt32(seccion_)
-
-                Dim seccionUnica_ = .Seccion(idUnico_)
-
-                If seccionUnica_ IsNot Nothing Then
-
-                    Select Case caracteristica_.PropiedadDelControl
-
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                            Dim pillboxControl_ As PillboxControl = DirectCast(caracteristica_.Control, PillboxControl)
-
-                            pillboxControl_.ClearRows()
-
-                            For indice_ As Int32 = 1 To seccionUnica_.CantidadPartidas
-
-                                If seccionUnica_.Partida(indice_).estado = 1 Then
-
-                                    pillboxControl_.SetPillbox(Sub(pillbox_ As PillBox)
-
-                                                                   pillbox_.SetIndice(pillboxControl_.KeyField, indice_)
-
-                                                                   pillbox_.SetFiled(seccionUnica_.Partida(indice_).archivado)
-
-                                                                   For Each control_ As IUIControl In pillboxControl_.PillboxListControls
-
-                                                                       If control_.WorksWith IsNot Nothing Then
-
-                                                                           Select Case control_.GetType()
-
-                                                                               Case GetType(InputControl)
-
-                                                                                   pillbox_.SetControlValue(DirectCast(control_, InputControl), StringMask(DirectCast(control_, InputControl).Format, seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
-
-                                                                               Case GetType(SelectControl)
-
-                                                                                   pillbox_.SetControlValue(DirectCast(control_, SelectControl), New SelectOption With {
-                                                                                        .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
-                                                                                        .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
-                                                                                   })
-
-                                                                               Case GetType(SwitchControl)
-
-                                                                                   pillbox_.SetControlValue(DirectCast(control_, SwitchControl), seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
-
-                                                                               Case GetType(FindboxControl)
-
-                                                                                   pillbox_.SetControlValue(DirectCast(control_, FindboxControl), New SelectOption With {
-                                                                                        .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
-                                                                                        .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
-                                                                                   })
-
-                                                                           End Select
-
-                                                                       End If
-
-                                                                   Next
-
-                                                               End Sub)
-
-                                End If
-
-                            Next
-
-                            pillboxControl_.PillBoxDataBinding()
-
-                        Case PropiedadesControl.Ninguno
-
-                            Return New TagWatcher(1)
-
-                        Case Else
-
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                    End Select
-
-                Else
-
-                    Return New TagWatcher(0, Me, "No se encontró la sección [" & idUnico_ & "]")
-
-                End If
-
-
-            ElseIf caracteristica_.Control.GetType() = GetType(ListboxControl) Then
-
-                'SPECIAL PROCESS FOR LISTBOX CONTROL
-
-                Dim seccion_ As [Enum] = caracteristica_.Seccion
-
-                If componente_ Is Nothing Then
-
-                    Return New TagWatcher(0, "Instancia del componente no establecida para la seccion " & seccion_.ToString)
-
-                End If
-
-                Dim idUnico_ As Int32 = Convert.ToInt32(seccion_)
-
-                Dim seccionUnica_ = .Seccion(idUnico_)
-
-                If seccionUnica_ IsNot Nothing Then
-
-                    Select Case caracteristica_.PropiedadDelControl
-
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                            Dim listBox_ As ListboxControl = DirectCast(caracteristica_.Control, ListboxControl)
-
-                            Dim dataSource_ As New List(Of SelectOption)
-
-                            For indice_ As Int32 = 1 To seccionUnica_.CantidadPartidas
-
-                                dataSource_.Add(New SelectOption With {
-                                                   .Indice = indice_,
-                                                   .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(listBox_.WorksWith)).Valor?.ToString(),
-                                                   .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(listBox_.WorksWith)).ValorPresentacion,
-                                                   .Delete = IIf(seccionUnica_.Partida(indice_).estado = 1, False, True)})
-
-                            Next
-
-                            listBox_.Value = dataSource_
-
-                        Case PropiedadesControl.Ninguno
-
-                            Return New TagWatcher(1)
-
-                        Case Else
-
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                    End Select
-
-                Else
-
-                    Return New TagWatcher(0, Me, "No se encontró la sección [" & idUnico_ & "]")
-
-                End If
-
-            ElseIf caracteristica_.Control.GetType() = GetType(CollectionViewControl) Then
-
-                'SPECIAL PROCESS FOR COLLECTION VIEW CONTROL
-
-                Dim seccion_ As [Enum] = caracteristica_.Seccion
-
-                If componente_ Is Nothing Then
-
-                    Return New TagWatcher(0, "Instancia del componente no establecida para la seccion " & seccion_.ToString)
-
-                End If
-
-                Dim idUnico_ As Int32 = Convert.ToInt32(seccion_)
-
-                Dim seccionUnica_ = .Seccion(idUnico_)
-
-                If seccionUnica_ IsNot Nothing Then
-
-                    Select Case caracteristica_.PropiedadDelControl
-
-                        Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                            Dim collectionControl_ As CollectionViewControl = DirectCast(caracteristica_.Control, CollectionViewControl)
-
-                            'collectionControl_.ClearRows()
-                            For indice_ As Int32 = 1 To seccionUnica_.CantidadPartidas
-
-                                If seccionUnica_.Partida(indice_).estado = 1 Then
-
-                                    collectionControl_.SetItem(Sub(collectionview_ As CollectionItem)
-
-                                                                   collectionview_.SetIndice(collectionControl_.KeyField, indice_)
-
-                                                                   collectionview_.SetFiled(seccionUnica_.Partida(indice_).archivado)
-
-                                                                   For Each control_ As IUIControl In collectionControl_.CollectionViewListControls
-
-                                                                       If control_.WorksWith IsNot Nothing Then
-
-                                                                           Select Case control_.GetType()
-
-                                                                               Case GetType(InputControl)
-
-                                                                                   collectionview_.SetControlValue(DirectCast(control_, InputControl).ID, StringMask(DirectCast(control_, InputControl).Format, seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
-
-                                                                               Case GetType(SelectControl)
-
-                                                                                   collectionview_.SetControlValue(DirectCast(control_, SelectControl).ID, New SelectOption With {
-                                                                                        .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
-                                                                                        .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
-                                                                                   })
-
-                                                                               Case GetType(SwitchControl)
-
-                                                                                   collectionview_.SetControlValue(DirectCast(control_, SwitchControl).ID, seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
-
-                                                                               Case GetType(FindboxControl)
-
-                                                                                   collectionview_.SetControlValue(DirectCast(control_, FindboxControl).ID, New SelectOption With {
-                                                                                        .Value = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
-                                                                                        .Text = seccionUnica_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
-                                                                                   })
-
-                                                                               Case GetType(CatalogControl)
-
-
-
-                                                                           End Select
-
-                                                                       End If
-
-                                                                   Next
-
-                                                               End Sub)
-
-                                End If
-
-                            Next
-
-                            collectionControl_.CollectionViewDataBinding()
-
-                        Case PropiedadesControl.Ninguno
-
-                            Return New TagWatcher(1)
-
-                        Case Else
-
-                            Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                    End Select
-
-                Else
-
-                    Return New TagWatcher(0, Me, "No se encontró la sección [" & idUnico_ & "]")
-
-                End If
-
-            Else
-
-                'DEFAULT PROCESS WITH CONTROLS
-
-                Dim campo_ As [Enum] = caracteristica_.Campo
-
-                If componente_ Is Nothing Then
-
-                    Return New TagWatcher(0, "Instancia del componente no establecida para el campo " & campo_.ToString)
-
-                End If
-
-                Dim idUnico_ As Int32 = Convert.ToInt32(campo_)
-
-                If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
-
-                    Return New TagWatcher(1)
-
-                End If
-
-                Dim campoUnico_ As Object = .Attribute(idUnico_)
-
-                If campoUnico_ IsNot Nothing Then
-
-                    If campoUnico_.Valor IsNot Nothing Then 'Tiene valor en MongoDB
-
-                        Select Case tipo_
-
-                            Case "SelectControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                Dim ValorPresentacion_ = Nothing
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                        valorAsignado_ = campoUnico_.Valor
-
-                                        ValorPresentacion_ = campoUnico_.ValorPresentacion
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                If valorAsignado_ IsNot Nothing And ValorPresentacion_ IsNot Nothing Then
-
-                                    Dim selectControl_ As SelectControl = DirectCast(caracteristica_.Control, SelectControl)
-
-                                    selectControl_.DataSource = New List(Of SelectOption) From {New SelectOption With {
-                                        .Value = valorAsignado_?.ToString(),
-                                        .Text = ValorPresentacion_}
-                                    }
-
-                                    caracteristica_.Valor = valorAsignado_
-
-                                    caracteristica_.ValorPresentacion = ValorPresentacion_
-
-                                    selectControl_.Value = valorAsignado_?.ToString()
-
-                                    Return New TagWatcher(1)
-
-                                End If
-
-                            Case "InputControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                    valorAsignado_ = campoUnico_.Valor
-
-                                    caracteristica_.Valor = valorAsignado_
-
-                                Else
-
-                                    valorAsignado_ = campoUnico_.ValorPresentacion
-
-                                    caracteristica_.ValorPresentacion = valorAsignado_
-
-                                End If
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                        DirectCast(caracteristica_.Control, InputControl).Value = StringMask(DirectCast(caracteristica_.Control, InputControl).Format, valorAsignado_)
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                Return New TagWatcher(1)
-
-                            Case "FileControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                Dim ValorPresentacion_ = Nothing
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                        valorAsignado_ = campoUnico_.Valor
-
-                                        ValorPresentacion_ = campoUnico_.ValorPresentacion
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                If valorAsignado_ IsNot Nothing And ValorPresentacion_ IsNot Nothing Then
-
-                                    DirectCast(caracteristica_.Control, FileControl).Value = StringFormat(caracteristica_.TipoDato, valorAsignado_)
-
-                                    DirectCast(caracteristica_.Control, FileControl).Text = StringFormat(caracteristica_.TipoDato, ValorPresentacion_)
-
-                                    Return New TagWatcher(1)
-
-                                End If
-
-                            Case "SwitchControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                    valorAsignado_ = campoUnico_.Valor
-
-                                    caracteristica_.Valor = valorAsignado_
-
-                                Else
-
-                                    valorAsignado_ = campoUnico_.ValorPresentacion
-
-                                    caracteristica_.ValorPresentacion = valorAsignado_
-
-                                End If
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Auto, PropiedadesControl.Checked
-
-                                        DirectCast(caracteristica_.Control, SwitchControl).Checked = valorAsignado_
-
-                                    Case PropiedadesControl.Valor
-
-                                        DirectCast(caracteristica_.Control, SwitchControl).Value = valorAsignado_?.ToString()
-
-
-                                    Case PropiedadesControl.OffText
-
-                                        DirectCast(caracteristica_.Control, SwitchControl).OffText = valorAsignado_?.ToString()
-
-
-                                    Case PropiedadesControl.OnText
-
-                                        DirectCast(caracteristica_.Control, SwitchControl).OnText = valorAsignado_?.ToString()
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                Return New TagWatcher(1)
-
-                            Case "FindboxControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                    valorAsignado_ = campoUnico_.Valor
-
-                                    caracteristica_.Valor = valorAsignado_
-
-                                Else
-
-                                    valorAsignado_ = campoUnico_.ValorPresentacion
-
-                                    caracteristica_.ValorPresentacion = valorAsignado_
-
-                                End If
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                        DirectCast(caracteristica_.Control, FindboxControl).Value = valorAsignado_?.ToString()
-
-                                    Case PropiedadesControl.Text
-
-                                        DirectCast(caracteristica_.Control, FindboxControl).Text = valorAsignado_?.ToString()
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                Return New TagWatcher(1)
-
-                            Case "DualityBarControl"
-
-                                Dim valorAsignado_ = Nothing
-
-                                If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                    valorAsignado_ = campoUnico_.Valor
-
-                                    caracteristica_.Valor = valorAsignado_
-
-                                Else
-
-                                    valorAsignado_ = campoUnico_.ValorPresentacion
-
-                                    caracteristica_.ValorPresentacion = valorAsignado_
-
-                                End If
-
-                                Select Case caracteristica_.PropiedadDelControl
-
-                                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
-
-                                        DirectCast(caracteristica_.Control, DualityBarControl).Value = valorAsignado_?.ToString()
-
-                                    Case PropiedadesControl.ValueDetail
-
-                                        DirectCast(caracteristica_.Control, DualityBarControl).ValueDetail = valorAsignado_?.ToString()
-
-                                    Case Else
-
-                                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
-
-                                End Select
-
-                                Return New TagWatcher(1)
-
-                            Case Else
-
-                                If caracteristica_.Asignacion = TiposAsignacion.Valor Then
-
-                                    caracteristica_.Valor = .Attribute(idUnico_).Valor
-
-                                    DirectCast(caracteristica_.Control, Object).Value = .Attribute(idUnico_).Valor : Return New TagWatcher(1)
-
-                                Else
-
-                                    caracteristica_.ValorPresentacion = .Attribute(idUnico_).ValorPresentacion
-
-                                    DirectCast(caracteristica_.Control, Object).Text = .Attribute(idUnico_).Valor : Return New TagWatcher(1)
-
-                                End If
-
-                        End Select
+                        caracteristica_.ValorPresentacion = valorAsignado_
 
                     End If
 
                 Else
+                    'Lineas unicas por los selectores
 
-                    Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                    valorAsignado_ = campoUnico_.Valor
+
+                    caracteristica_.Valor = valorAsignado_
+
+
+                    valorPresentacionAsignado_ = campoUnico_.ValorPresentacion
+
+                    caracteristica_.ValorPresentacion = valorPresentacionAsignado_
 
                 End If
 
+                Dim control_ As Object = caracteristica_.Control 'CType(Convert.ChangeType(caracteristica_.Control, GetType(T)), T)
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Auto, PropiedadesControl.Valor
+
+                        If tieneValorPresentacion_ = False Then
+
+                            If GetType(T) = GetType(InputControl) Then
+
+                                control_.Value = StringMask(control_.Format, valorAsignado_?.ToString)
+
+                            Else
+
+                                control_.Value = valorAsignado_?.ToString
+
+                            End If
+
+                        Else
+                            'Lineas unicas por los selectores
+
+                            With control_
+
+                                .DataSource = New List(Of SelectOption) From {New SelectOption With {
+                                    .Value = valorAsignado_?.ToString,
+                                    .Text = valorPresentacionAsignado_?.ToString}
+                                }
+
+                                .Value = valorAsignado_?.ToString
+
+                            End With
+
+                        End If
+
+                    Case PropiedadesControl.Text
+
+                        control_.Text = valorAsignado_?.ToString
+
+                    Case PropiedadesControl.Checked
+
+                        control_.Checked = valorAsignado_
+
+                    Case PropiedadesControl.ValueDetail
+
+                        control_.ValueDetail = valorAsignado_?.ToString
+
+                    Case PropiedadesControl.OnText
+
+                        control_.OnText = valorAsignado_?.ToString
+
+                    Case PropiedadesControl.OffText
+
+                        control_.OffText = valorAsignado_?.ToString
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            End With
+
+        Else
+
+            Return New TagWatcher(0, Me, "No se encontró el campo [" & campoUnico_.IDUnico & "]")
+
+        End If
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillCatalogFromDocumentAttributes(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim catalog_ As CatalogControl = DirectCast(caracteristica_.Control, CatalogControl)
+
+                        catalog_.ClearRows()
+
+                        For indice_ As Int32 = 1 To seccionUnicaReferenciaLocal_.CantidadPartidas
+
+                            If seccionUnicaReferenciaLocal_.Partida(indice_).estado = 1 Then
+
+                                catalog_.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                                    catalogRow_.SetIndice(catalog_.KeyField, indice_)
+
+                                                    For Each control_ As IUIControl In catalog_.Columns
+
+                                                        If control_.WorksWith IsNot Nothing Then
+
+                                                            Select Case control_.GetType()
+
+                                                                Case GetType(InputControl)
+
+                                                                    catalogRow_.SetColumn(DirectCast(control_, InputControl), StringMask(DirectCast(control_, InputControl).Format, seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
+
+                                                                Case GetType(SelectControl)
+
+                                                                    catalogRow_.SetColumn(DirectCast(control_, SelectControl), New SelectOption With {
+                                                                            .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
+                                                                            .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
+                                                                        })
+
+                                                                Case GetType(SwitchControl)
+
+                                                                    catalogRow_.SetColumn(DirectCast(control_, SwitchControl), seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
+
+                                                            End Select
+
+                                                        End If
+
+                                                    Next
+
+                                                End Sub)
+
+                            End If
+
+                        Next
+
+                        catalog_.CatalogDataBinding()
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillPillboxFromDocumentAttributes(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim documentoElectronicoReferenciaLocal_ = documentoElectronico_
+
+                        Dim pillboxControl_ As PillboxControl = DirectCast(caracteristica_.Control, PillboxControl)
+
+                        pillboxControl_.ClearRows()
+
+                        For indice_ As Int32 = 1 To seccionUnicaReferenciaLocal_.CantidadPartidas
+
+                            If seccionUnicaReferenciaLocal_.Partida(indice_).estado = 1 Then
+
+                                pillboxControl_.SetPillbox(Sub(pillbox_ As PillBox)
+
+                                                               pillbox_.SetIndice(pillboxControl_.KeyField, indice_)
+
+                                                               pillbox_.SetFiled(seccionUnicaReferenciaLocal_.Partida(indice_).archivado)
+
+                                                               For Each control_ As IUIControl In pillboxControl_.PillboxListControls
+
+                                                                   If control_.WorksWith IsNot Nothing Then
+
+                                                                       Select Case control_.GetType()
+
+                                                                           Case GetType(InputControl)
+
+                                                                               pillbox_.SetControlValue(DirectCast(control_, InputControl), StringMask(DirectCast(control_, InputControl).Format, seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
+
+                                                                           Case GetType(SelectControl)
+
+                                                                               pillbox_.SetControlValue(DirectCast(control_, SelectControl), New SelectOption With {
+                                                                                        .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
+                                                                                        .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
+                                                                                   })
+
+                                                                           Case GetType(SwitchControl)
+
+                                                                               pillbox_.SetControlValue(DirectCast(control_, SwitchControl), seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
+
+                                                                           Case GetType(FindboxControl)
+
+                                                                               pillbox_.SetControlValue(DirectCast(control_, FindboxControl), New SelectOption With {
+                                                                                        .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
+                                                                                        .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
+                                                                                   })
+
+                                                                       End Select
+
+                                                                   Else
+
+                                                                       If control_.GetType() = GetType(CatalogControl) Then
+
+                                                                           Dim catalogcontrol_ = DirectCast(control_, CatalogControl)
+
+                                                                           Dim caracteristicaAnidada_ = _caracteristicas.Find(Function(ByVal item_ As Caracteristica)
+
+                                                                                                                                  If item_.Control IsNot Nothing Then
+
+                                                                                                                                      Return item_.Control.ID = catalogcontrol_.ID
+
+                                                                                                                                  End If
+
+                                                                                                                                  Return Nothing
+
+                                                                                                                              End Function)
+
+                                                                           With caracteristicaAnidada_
+
+                                                                               .PropiedadDelControl = PropiedadesControl.Valor
+
+                                                                               Dim seccionUnicaAnidada_ = seccionUnicaReferenciaLocal_.Partida(indice_).Seccion(Convert.ToInt32(.Seccion))
+
+                                                                               FillCatalogFromDocumentAttributes(caracteristicaAnidada_, seccionUnicaAnidada_, documentoElectronicoReferenciaLocal_)
+
+                                                                               Dim dataSource_ = New Dictionary(Of Object, Object)
+
+                                                                               With dataSource_
+
+                                                                                   .Add("Items", catalogcontrol_.DataSource)
+
+                                                                                   .Add("DropItems", Nothing)
+
+                                                                                   .Add("SelectedItem", Nothing)
+
+                                                                               End With
+
+                                                                               pillbox_.SetControlValue(catalogcontrol_, dataSource_)
+
+                                                                           End With
+
+                                                                       End If
+
+
+                                                                   End If
+
+                                                               Next
+
+                                                           End Sub)
+
+                            End If
+
+                        Next
+
+                        pillboxControl_.PillBoxDataBinding()
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillListboxFromDocumentAttributes(ByRef caracteristica_ As Caracteristica,
+                                                       ByRef seccionUnica_ As Componentes.Seccion,
+                                                       ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim listBox_ As ListboxControl = DirectCast(caracteristica_.Control, ListboxControl)
+
+                        Dim dataSource_ As New List(Of SelectOption)
+
+                        For indice_ As Int32 = 1 To seccionUnicaReferenciaLocal_.CantidadPartidas
+
+                            dataSource_.Add(New SelectOption With {
+                                               .Indice = indice_,
+                                               .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(listBox_.WorksWith)).Valor?.ToString(),
+                                               .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(listBox_.WorksWith)).ValorPresentacion,
+                                               .Delete = IIf(seccionUnicaReferenciaLocal_.Partida(indice_).estado = 1, False, True)})
+
+                        Next
+
+                        listBox_.Value = dataSource_
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+
+            End If
+
+        End With
+
+        Return New TagWatcher(1)
+
+    End Function
+
+    Private Function FillCollectionViewFromDocumentAttributes(ByRef caracteristica_ As Caracteristica,
+                                                              ByRef seccionUnica_ As Componentes.Seccion,
+                                                              ByRef documentoElectronico_ As DocumentoElectronico) As TagWatcher
+
+        If caracteristica_.PropiedadDelControl = PropiedadesControl.Ninguno Then
+
+            Return New TagWatcher(1)
+
+        End If
+
+        With documentoElectronico_
+
+            Dim seccionUnicaReferenciaLocal_ = seccionUnica_
+
+            If seccionUnicaReferenciaLocal_ IsNot Nothing Then
+
+                Select Case caracteristica_.PropiedadDelControl
+
+                    Case PropiedadesControl.Valor, PropiedadesControl.Auto
+
+                        Dim collectionControl_ As CollectionViewControl = DirectCast(caracteristica_.Control, CollectionViewControl)
+
+                        'collectionControl_.ClearRows()
+                        For indice_ As Int32 = 1 To seccionUnicaReferenciaLocal_.CantidadPartidas
+
+                            If seccionUnicaReferenciaLocal_.Partida(indice_).estado = 1 Then
+
+                                collectionControl_.SetItem(Sub(collectionview_ As CollectionItem)
+
+                                                               collectionview_.SetIndice(collectionControl_.KeyField, indice_)
+
+                                                               collectionview_.SetFiled(seccionUnicaReferenciaLocal_.Partida(indice_).archivado)
+
+                                                               For Each control_ As IUIControl In collectionControl_.CollectionViewListControls
+
+                                                                   If control_.WorksWith IsNot Nothing Then
+
+                                                                       Select Case control_.GetType()
+
+                                                                           Case GetType(InputControl)
+
+                                                                               collectionview_.SetControlValue(DirectCast(control_, InputControl).ID, StringMask(DirectCast(control_, InputControl).Format, seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor))
+
+                                                                           Case GetType(SelectControl)
+
+                                                                               collectionview_.SetControlValue(DirectCast(control_, SelectControl).ID, New SelectOption With {
+                                                                                    .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
+                                                                                    .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
+                                                                               })
+
+                                                                           Case GetType(SwitchControl)
+
+                                                                               collectionview_.SetControlValue(DirectCast(control_, SwitchControl).ID, seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor)
+
+                                                                           Case GetType(FindboxControl)
+
+                                                                               collectionview_.SetControlValue(DirectCast(control_, FindboxControl).ID, New SelectOption With {
+                                                                                    .Value = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).Valor?.ToString(),
+                                                                                    .Text = seccionUnicaReferenciaLocal_.Partida(indice_).Attribute(Convert.ToInt32(control_.WorksWith)).ValorPresentacion
+                                                                               })
+
+                                                                           Case GetType(CatalogControl)
+
+
+
+                                                                       End Select
+
+                                                                   End If
+
+                                                               Next
+
+                                                           End Sub)
+
+                            End If
+
+                        Next
+
+                        collectionControl_.CollectionViewDataBinding()
+
+                    Case Else
+
+                        Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
+
+                End Select
+
+            Else
+
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
 
             End If
 
@@ -4079,12 +4075,15 @@ Public Class ControladorBackend
                     With caracteristica_
 
                         If caracteristica_.Control IsNot Nothing Then ' Mediante control
+                            Try
 
-                            Dim check_ As TagWatcher =
-                              [In](caracteristica_, documentoElectronico_)
 
-                            If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+                                Dim check_ As TagWatcher = [In](caracteristica_, documentoElectronico_)
 
+                                If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+                            Catch ex As Exception
+                                Dim a = ex
+                            End Try
                         ElseIf caracteristica_.Valor IsNot Nothing Then 'Mediante valor directo
                             'Por el momento no soporta asignacion directa a otras propiedades como Text, eso solo puede suceder mediante control
                             'Buscaremos el repositorio del dato en el documento para enterarnos del tipo de dato que toca.

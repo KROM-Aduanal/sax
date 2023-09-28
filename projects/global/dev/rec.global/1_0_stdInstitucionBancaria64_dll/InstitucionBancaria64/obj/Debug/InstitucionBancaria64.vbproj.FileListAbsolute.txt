@@ -165,11 +165,13 @@ C:\SAX\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals\Rec.Globals.InstitucionBan
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.Resources.resources
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.InstitucionBancaria64.0.0.0.0.pdb
-C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll
-C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.InstitucionBancaria64.0.0.0.0.pdb
+C:\sax2.0\bin\Core\rec\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll
+C:\sax2.0\bin\Core\rec\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.pdb
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\InstitucionBancaria64.vbproj.AssemblyReference.cache
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.Resources.resources
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\InstitucionBancaria64.vbproj.GenerateResource.cache
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\InstitucionBancaria64.vbproj.CoreCompileInputs.cache
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll
 C:\SAX\projects\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\obj\Debug\Rec.Globals.InstitucionBancaria64.0.0.0.0.pdb
+C:\SAX\projects\global\lib\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll
+C:\SAX\projects\global\lib\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.pdb

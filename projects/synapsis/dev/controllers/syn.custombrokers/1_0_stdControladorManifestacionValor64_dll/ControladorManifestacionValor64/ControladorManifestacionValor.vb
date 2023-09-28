@@ -5,10 +5,9 @@ Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Bson.Serialization.IdGenerators
 Imports MongoDB.Driver
 Imports MongoDB.Driver.WriteConcern
-Imports Syn.CustomBrokers.Controllers
 Imports Syn.Documento
 Imports Syn.Documento.Componentes
-Imports Syn.CustomBrokers.Controllers.ControladorFacturaComercial
+Imports Syn.CustomBrokers.Controllers
 Imports Syn.Nucleo.RecursosComercioExterior
 Imports Syn.Nucleo.RecursosComercioExterior.SeccionesPedimento
 Imports Syn.Nucleo.RecursosComercioExterior.SeccionesManifestacionValor
@@ -27,8 +26,6 @@ Public Class ControladorManifestacionValor
     Private _organismo As Organismo
 
     Private _controladorFacturaComercial As IControladorFacturaComercial
-
-    'Private _manifestacionesValor As List(Of ConstructorManifestacionValor)
 
     Private _entorno As Int32
 
@@ -63,7 +60,7 @@ Public Class ControladorManifestacionValor
 
     End Sub
 
-    Public Sub Inicializa(ByVal entorno_ As Int32)
+    Private Sub Inicializa(ByVal entorno_ As Int32)
 
         _Estado = New TagWatcher
 
@@ -81,116 +78,158 @@ Public Class ControladorManifestacionValor
 
 #Region "Funciones"
 
-    Public Function Consultar(objectid_ As ObjectId) As TagWatcher Implements IControladorManifestacionValor.Consultar
-        Throw New NotImplementedException()
+    Public Function Consultar(Of T)(objectId_ As ObjectId) As TagWatcher _
+                                                Implements IControladorManifestacionValor.Consultar
+
+        With _Estado
+
+            If _entorno <> 0 Then
+
+                Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(Activator.CreateInstance(Of T)().GetType.Name)
+
+                Dim items_ = operacionesDB_.Aggregate().Match(Function(a) objectId_.Equals(a.Id)).ToList()
+
+                If items_.Count Then
+
+                    Dim item_ = items_(0)
+
+                    Dim manifestacionValor_ = item_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                    .SetOK()
+
+                    .ObjectReturned = DirectCast(CObj(manifestacionValor_), T)
+
+                Else
+
+                    .SetOKBut(Me, "No se encontró la manifestación de valor")
+
+                End If
+
+            Else
+
+                .SetOKBut(Me, "Entorno no puede ser 0")
+
+            End If
+
+            Return _Estado
+
+        End With
+
     End Function
 
-    Public Function Descargar(objectId_ As ObjectId,
-                              Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = IControladorManifestacionValor.TiposDocumento.Ambos) As FileStream _
-                              Implements IControladorManifestacionValor.Descargar
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function Descargar(ObjectIds_ As List(Of ObjectId), Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = 1) As FileStream Implements IControladorManifestacionValor.Descargar
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function Descargar(pedimentos_ As List(Of String), Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = 1) As FileStream Implements IControladorManifestacionValor.Descargar
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function Descargar(pedimentos As String, Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = 1) As FileStream Implements IControladorManifestacionValor.Descargar
-        Throw New NotImplementedException()
-    End Function
-
-    Public Function DescargarPDF(pedimentos As String, Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = 1) As List(Of String) Implements IControladorManifestacionValor.DescargarPDF
-
-        Dim manifestacionValor_ As DocumentoElectronico
-
-        Dim generaMV = New ConstructorManifestacionValorPDF()
-
-        Dim generaHC = New ConstructorManifestacionValorPDF()
+    Public Function RepresentacionImpresa(objectId_ As ObjectId,
+                              Optional tipoDocumento_ As IControladorManifestacionValor.TiposDocumento = IControladorManifestacionValor.TiposDocumento.Ambos) As List(Of String) _
+                              Implements IControladorManifestacionValor.RepresentacionImpresa
 
         Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(New ConstructorManifestacionValor().GetType.Name)
 
-        Dim filtro_ As BsonDocument = New BsonDocument().Add("_id", New ObjectId("64da6056c841cbc19e5f94ff"))
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) objectId_.Equals(a.Id)).ToList()
 
-        Dim items_ = operacionesDB_.Find(filtro_).ToList
+        If items_.Count > 0 Then
 
-        If items_.Count Then
+            Dim item_ = items_(0).Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
-            Dim item_ As OperacionGenerica = items_(0)
+            Return ConstruirPDF(item_, tipoDocumento_)
 
-            manifestacionValor_ = item_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+        End If
 
-            Return New List(Of String) From {generaHC.ImprimirEncabezadoMV(manifestacionValor_)}
+
+
+    End Function
+
+    Public Function RepresentacionImpresa(ObjectIds_ As List(Of ObjectId), Optional tipoDocumento_ As IControladorManifestacionValor.TiposDocumento = 1) As List(Of String) _
+                                                                                        Implements IControladorManifestacionValor.RepresentacionImpresa
+
+        Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(New ConstructorManifestacionValor().GetType.Name)
+
+        Dim representacionPDF_ As List(Of String) = New List(Of String)
+
+        operacionesDB_.Aggregate().Match(Function(a) ObjectIds_.Contains(a.Id)).ToList().
+            ForEach(Sub(item)
+
+                        item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Id = item.Id.ToString
+
+                        ManifestacionesValor.Add(New ConstructorManifestacionValor(True, item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente))
+
+                    End Sub)
+
+
+        For Each manifestacionValor_ As ConstructorManifestacionValor In ManifestacionesValor
+
+            representacionPDF_.AddRange(ConstruirPDF(manifestacionValor_, tipoDocumento_))
+
+        Next
+
+        Return representacionPDF_
+
+    End Function
+
+    Public Function RepresentacionImpresa(pedimentos_ As List(Of String), Optional tipoDocumento_ As IControladorManifestacionValor.TiposDocumento = 1) As List(Of String) _
+                                                                                                            Implements IControladorManifestacionValor.RepresentacionImpresa
+
+        Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(New ConstructorManifestacionValor().GetType.Name)
+
+        Dim representacionPDF_ As List(Of String) = New List(Of String)
+
+        operacionesDB_.Aggregate().Match(Function(a) pedimentos_.Contains(a.FolioOperacion)).ToList().
+            ForEach(Sub(item)
+
+                        item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Id = item.Id.ToString
+
+                        ManifestacionesValor.Add(New ConstructorManifestacionValor(True, item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente))
+
+                    End Sub)
+
+
+        For Each manifestacionValor_ As ConstructorManifestacionValor In ManifestacionesValor
+
+            representacionPDF_.AddRange(ConstruirPDF(manifestacionValor_, tipoDocumento_))
+
+        Next
+
+        Return representacionPDF_
+
+    End Function
+
+    Public Function RepresentacionImpresa(pedimento_ As String, Optional tipoDocumento_ As IControladorManifestacionValor.TiposDocumento = 1) As List(Of String) _
+                                                                                                            Implements IControladorManifestacionValor.RepresentacionImpresa
+
+        Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(New ConstructorManifestacionValor().GetType.Name)
+
+
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) pedimento_.Equals(a.FolioOperacion)).ToList()
+
+        If items_.Count > 0 Then
+
+            Dim item_ = items_(0).Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+            Return ConstruirPDF(item_, tipoDocumento_)
 
         End If
 
     End Function
-    Public Function Descarga(pedimentos As String, Optional tipoDocumento As IControladorManifestacionValor.TiposDocumento = 1) As List(Of String)
-        If pedimentos IsNot Nothing Then
-            Dim docElectronico_ = New DocumentoElectronico()
-            Dim constructorPedimento = New ConstructorManifestacionValorPDF()
 
-            constructorPedimento.ImprimirEncabezadoMV(docElectronico_)
-
-
-        End If
-    End Function
-
-    Public Function Generar(objectIdPedimento_ As ObjectId) As TagWatcher Implements IControladorManifestacionValor.Generar
+    Public Function Generar(objectIdPedimento_ As ObjectId, session_ As IClientSessionHandle) As TagWatcher _
+                                                        Implements IControladorManifestacionValor.Generar
 
         Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)((New ConstructorPedimentoNormal()).GetType.Name)
 
-        Dim filtro_ As BsonDocument = New BsonDocument().Add("_id", objectIdPedimento_)
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) objectIdPedimento_.Equals(a.Id)).ToList()
 
-        Dim items = operacionesDB_.Find(filtro_).ToList
+        If items_.Count Then
 
-        If items.Count Then
+            Dim item As OperacionGenerica = items_(0)
 
-            Dim item As OperacionGenerica = items(0)
+            _Estado = TraeDatosFactura(New List(Of ObjectId), item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
 
-            Dim _pedimento As DocumentoElectronico = item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-
-            Dim _FacturasIds = New List(Of ObjectId) From {New ObjectId("64e7cc2b4c203fa0dcb2124a"),
-                                                           New ObjectId("64e7cead4c203fa0dcb2124b"),
-                                                           New ObjectId("64f124d4323eecf4270209c5")}
-
-            _Estado = _controladorFacturaComercial.ListaCamposFacturaComercial(_FacturasIds,
-                                                                New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesFacturaComercial.SFAC1,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL, CA_TAX_ID, CA_RFC_CLIENTE,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL,
-                                                                                            CA_CALLE, CA_NUMERO_EXTERIOR, CA_NUMERO_INTERIOR, CA_CODIGO_POSTAL,
-                                                                                            CA_COLONIA, CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO,
-                                                                                            CA_CVE_ENTIDAD_FEDERATIVA, CA_ENTIDAD_FEDERATIVA,
-                                                                                            CA_CVE_PAIS, CA_PAIS, CA_NUMERO_FACTURA, CA_FECHA_FACTURA,
-                                                                                            CA_CVE_PAIS_FACTURACION, CA_PAIS_FACTURACION}},
-                                                                {SeccionesFacturaComercial.SFAC2,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL_PROVEEDOR, CA_TAX_ID_PROVEEDOR, CA_RFC_PROVEEDOR,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL, CA_CALLE, CA_NUMERO_EXTERIOR,
-                                                                                            CA_NUMERO_INTERIOR, CA_NUMERO_EXT_INT, CA_CODIGO_POSTAL, CA_COLONIA,
-                                                                                            CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO, CA_CVE_ENTIDAD_FEDERATIVA,
-                                                                                            CA_ENTIDAD_FEDERATIVA, CA_CVE_PAIS, CA_PAIS, CP_CVE_METODO_VALORACION,
-                                                                                            RecursosComercioExterior.CamposFacturaComercial.CA_CVE_VINCULACION}},
-                                                                {SeccionesFacturaComercial.SFAC5,
-                                                                New List(Of [Enum]) From {CA_FLETES, CA_MONEDA_FLETES, CA_SEGURO, CA_MONEDA_SEGUROS,
-                                                                                            CA_EMBALAJES, CA_MONEDA_EMBALAJES, CA_OTROS_INCREMENTABLES,
-                                                                                            CA_MONEDA_OTROS_INCREMENTABLES, CA_DESCUENTOS, CA_MONEDA_DESCUENTOS}}})
-
-            If _Estado.Status = TagWatcher.TypeStatus.Ok Then
-
-                Dim _facturasComercial As Dictionary(Of ObjectId, List(Of Nodo)) = _Estado.ObjectReturned
-
-                _Estado = Guardar(_facturasComercial, _pedimento)
-
-            ElseIf _Estado.Status = TagWatcher.TypeStatus.OkBut Then
+            If _Estado.Status = TagWatcher.TypeStatus.OkBut Then
 
                 _Estado.SetError(Me, "Fallé")
 
             ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
 
                 _Estado.SetError(Me, "Medio Fallé")
+
             End If
 
         End If
@@ -199,120 +238,57 @@ Public Class ControladorManifestacionValor
 
     End Function
 
-    Public Function Generar(objectIdPedimentos_ As List(Of ObjectId)) As TagWatcher _
-        Implements IControladorManifestacionValor.Generar
+    Public Function Generar(objectIdPedimentos_ As List(Of ObjectId), session_ As IClientSessionHandle) As TagWatcher _
+                                                            Implements IControladorManifestacionValor.Generar
 
         Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)((New ConstructorPedimentoNormal()).GetType.Name)
 
-        Dim filtro_ As BsonDocument = New BsonDocument().Add("_ids", objectIdPedimentos_(0))
-
-        Dim items_ = operacionesDB_.Find(filtro_).ToList
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) objectIdPedimentos_.Contains(a.Id)).ToList()
 
         If items_.Count Then
 
-            Dim item_ As OperacionGenerica = items_(0)
+            Dim item As OperacionGenerica = items_(0)
 
-            Dim pedimento_ As DocumentoElectronico = item_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+            _Estado = TraeDatosFactura(New List(Of ObjectId), item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
 
-            Dim FacturasIds_ = New List(Of ObjectId) From {New ObjectId("636d960d635a642f40780bff"),
-                                                           New ObjectId("6419c3805354a4068f25cdb8"),
-                                                           New ObjectId("6373d949af37871d9ef4deb0")}
+            If _Estado.Status = TagWatcher.TypeStatus.OkBut Then
 
-            _Estado = _controladorFacturaComercial.ListaCamposFacturaComercial(FacturasIds_,
-                                                                New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesFacturaComercial.SFAC1,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL, CA_TAX_ID, CA_RFC_CLIENTE,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL,
-                                                                                            CA_CALLE, CA_NUMERO_EXTERIOR, CA_NUMERO_INTERIOR, CA_CODIGO_POSTAL,
-                                                                                            CA_COLONIA, CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO,
-                                                                                            CA_CVE_ENTIDAD_FEDERATIVA, CA_ENTIDAD_FEDERATIVA,
-                                                                                            CA_CVE_PAIS, CA_PAIS, CA_NUMERO_FACTURA, CA_FECHA_FACTURA,
-                                                                                            CA_CVE_PAIS_FACTURACION, CA_PAIS_FACTURACION}},
-                                                                {SeccionesFacturaComercial.SFAC2,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL_PROVEEDOR, CA_TAX_ID_PROVEEDOR, CA_RFC_PROVEEDOR,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL, CA_CALLE, CA_NUMERO_EXTERIOR,
-                                                                                            CA_NUMERO_INTERIOR, CA_NUMERO_EXT_INT, CA_CODIGO_POSTAL, CA_COLONIA,
-                                                                                            CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO, CA_CVE_ENTIDAD_FEDERATIVA,
-                                                                                            CA_ENTIDAD_FEDERATIVA, CA_CVE_PAIS, CA_PAIS, CP_CVE_METODO_VALORACION,
-                                                                                            RecursosComercioExterior.CamposFacturaComercial.CA_CVE_VINCULACION}},
-                                                                {SeccionesFacturaComercial.SFAC5,
-                                                                New List(Of [Enum]) From {CA_FLETES, CA_MONEDA_FLETES, CA_SEGURO, CA_MONEDA_SEGUROS,
-                                                                                            CA_EMBALAJES, CA_MONEDA_EMBALAJES, CA_OTROS_INCREMENTABLES,
-                                                                                            CA_MONEDA_OTROS_INCREMENTABLES, CA_DESCUENTOS, CA_MONEDA_DESCUENTOS}}})
+                _Estado.SetError(Me, "Fallé")
 
-            If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+            ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
 
-                Dim _facturasComercial As Dictionary(Of ObjectId, List(Of Nodo)) = _Estado.ObjectReturned
-
-                _Estado = Guardar(_facturasComercial, pedimento_)
+                _Estado.SetError(Me, "Medio Fallé")
 
             End If
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkBut Then
-
-            _Estado.SetError(Me, "Fallé")
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
-
-            _Estado.SetError(Me, "Medio Fallé")
 
         End If
 
         Return _Estado
+
     End Function
 
-    Public Function Generar(pedimento_ As String) As TagWatcher Implements IControladorManifestacionValor.Generar
+    Public Function Generar(pedimento_ As String, session_ As IClientSessionHandle) As TagWatcher _
+                                        Implements IControladorManifestacionValor.Generar
 
         Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)((New ConstructorPedimentoNormal()).GetType.Name)
 
-        Dim filtro_ As BsonDocument = New BsonDocument().Add("FolioDocumento", pedimento_)
-
-        Dim items_ = operacionesDB_.Find(filtro_).ToList
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) pedimento_.Equals(a.FolioOperacion)).ToList()
 
         If items_.Count Then
-            Dim item_ As OperacionGenerica = items_(0)
 
-            Dim _pedimento As DocumentoElectronico = item_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+            Dim item As OperacionGenerica = items_(0)
 
-            Dim FacturasIds_ = New List(Of ObjectId) From {New ObjectId("636d960d635a642f40780bff"),
-                                                           New ObjectId("6419c3805354a4068f25cdb8"),
-                                                           New ObjectId("6373d949af37871d9ef4deb0")}
+            _Estado = TraeDatosFactura(New List(Of ObjectId), item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
 
-            _Estado = _controladorFacturaComercial.ListaCamposFacturaComercial(FacturasIds_,
-                                                                New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesFacturaComercial.SFAC1,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL, CA_TAX_ID, CA_RFC_CLIENTE,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL,
-                                                                                            CA_CALLE, CA_NUMERO_EXTERIOR, CA_NUMERO_INTERIOR, CA_CODIGO_POSTAL,
-                                                                                            CA_COLONIA, CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO,
-                                                                                            CA_CVE_ENTIDAD_FEDERATIVA, CA_ENTIDAD_FEDERATIVA,
-                                                                                            CA_CVE_PAIS, CA_PAIS, CA_NUMERO_FACTURA, CA_FECHA_FACTURA,
-                                                                                            CA_CVE_PAIS_FACTURACION, CA_PAIS_FACTURACION}},
-                                                                {SeccionesFacturaComercial.SFAC2,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL_PROVEEDOR, CA_TAX_ID_PROVEEDOR, CA_RFC_PROVEEDOR,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL, CA_CALLE, CA_NUMERO_EXTERIOR,
-                                                                                            CA_NUMERO_INTERIOR, CA_NUMERO_EXT_INT, CA_CODIGO_POSTAL, CA_COLONIA,
-                                                                                            CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO, CA_CVE_ENTIDAD_FEDERATIVA,
-                                                                                            CA_ENTIDAD_FEDERATIVA, CA_CVE_PAIS, CA_PAIS, CP_CVE_METODO_VALORACION,
-                                                                                            RecursosComercioExterior.CamposFacturaComercial.CA_CVE_VINCULACION}},
-                                                                {SeccionesFacturaComercial.SFAC5,
-                                                                New List(Of [Enum]) From {CA_FLETES, CA_MONEDA_FLETES, CA_SEGURO, CA_MONEDA_SEGUROS,
-                                                                                            CA_EMBALAJES, CA_MONEDA_EMBALAJES, CA_OTROS_INCREMENTABLES,
-                                                                                            CA_MONEDA_OTROS_INCREMENTABLES, CA_DESCUENTOS, CA_MONEDA_DESCUENTOS}}})
+            If _Estado.Status = TagWatcher.TypeStatus.OkBut Then
 
-            If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                _Estado.SetError(Me, "Fallé")
 
-                Dim _facturasComercial As Dictionary(Of ObjectId, List(Of Nodo)) = _Estado.ObjectReturned
+            ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
 
-                _Estado = Guardar(_facturasComercial, _pedimento)
+                _Estado.SetError(Me, "Medio Fallé")
 
             End If
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkBut Then
-
-            _Estado.SetError(Me, "Fallé")
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
-
-            _Estado.SetError(Me, "Medio Fallé")
 
         End If
 
@@ -320,59 +296,28 @@ Public Class ControladorManifestacionValor
 
     End Function
 
-    Public Function Generar(pedimentos_ As List(Of String)) As TagWatcher Implements IControladorManifestacionValor.Generar
+    Public Function Generar(pedimentos_ As List(Of String), session_ As IClientSessionHandle) As TagWatcher _
+                                                            Implements IControladorManifestacionValor.Generar
 
         Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)((New ConstructorPedimentoNormal()).GetType.Name)
 
-        Dim filtro_ As BsonDocument = New BsonDocument().Add("FolioDocumento", pedimentos_(0))
+        Dim items_ = operacionesDB_.Aggregate().Match(Function(a) pedimentos_.Contains(a.FolioOperacion)).ToList()
 
-        Dim items = operacionesDB_.Find(filtro_).ToList
+        If items_.Count Then
 
-        If items.Count Then
-            Dim item As OperacionGenerica = items(0)
+            Dim item As OperacionGenerica = items_(0)
 
-            Dim _pedimento As DocumentoElectronico = item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+            _Estado = TraeDatosFactura(New List(Of ObjectId), item.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
 
-            Dim _FacturasIds = New List(Of ObjectId) From {New ObjectId("636d960d635a642f40780bff"),
-                                                           New ObjectId("6419c3805354a4068f25cdb8"),
-                                                           New ObjectId("6373d949af37871d9ef4deb0")}
+            If _Estado.Status = TagWatcher.TypeStatus.OkBut Then
 
-            _Estado = _controladorFacturaComercial.ListaCamposFacturaComercial(_FacturasIds,
-                                                                New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesFacturaComercial.SFAC1,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL, CA_TAX_ID, CA_RFC_CLIENTE,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL,
-                                                                                            CA_CALLE, CA_NUMERO_EXTERIOR, CA_NUMERO_INTERIOR, CA_CODIGO_POSTAL,
-                                                                                            CA_COLONIA, CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO,
-                                                                                            CA_CVE_ENTIDAD_FEDERATIVA, CA_ENTIDAD_FEDERATIVA,
-                                                                                            CA_CVE_PAIS, CA_PAIS, CA_NUMERO_FACTURA, CA_FECHA_FACTURA,
-                                                                                            CA_CVE_PAIS_FACTURACION, CA_PAIS_FACTURACION}},
-                                                                {SeccionesFacturaComercial.SFAC2,
-                                                                New List(Of [Enum]) From {CA_RAZON_SOCIAL_PROVEEDOR, CA_TAX_ID_PROVEEDOR, CA_RFC_PROVEEDOR,
-                                                                                            Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL, CA_CALLE, CA_NUMERO_EXTERIOR,
-                                                                                            CA_NUMERO_INTERIOR, CA_NUMERO_EXT_INT, CA_CODIGO_POSTAL, CA_COLONIA,
-                                                                                            CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO, CA_CVE_ENTIDAD_FEDERATIVA,
-                                                                                            CA_ENTIDAD_FEDERATIVA, CA_CVE_PAIS, CA_PAIS, CP_CVE_METODO_VALORACION,
-                                                                                            RecursosComercioExterior.CamposFacturaComercial.CA_CVE_VINCULACION}},
-                                                                {SeccionesFacturaComercial.SFAC5,
-                                                                New List(Of [Enum]) From {CA_FLETES, CA_MONEDA_FLETES, CA_SEGURO, CA_MONEDA_SEGUROS,
-                                                                                            CA_EMBALAJES, CA_MONEDA_EMBALAJES, CA_OTROS_INCREMENTABLES,
-                                                                                            CA_MONEDA_OTROS_INCREMENTABLES, CA_DESCUENTOS, CA_MONEDA_DESCUENTOS}}})
+                _Estado.SetError(Me, "Fallé")
 
-            If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+            ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
 
-                Dim _facturasComercial As Dictionary(Of ObjectId, List(Of Nodo)) = _Estado.ObjectReturned
-
-                _Estado = Guardar(_facturasComercial, _pedimento)
+                _Estado.SetError(Me, "Medio Fallé")
 
             End If
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkBut Then
-
-            _Estado.SetError(Me, "Fallé")
-
-        ElseIf _Estado.Status = TagWatcher.TypeStatus.OkInfo Then
-
-            _Estado.SetError(Me, "Medio Fallé")
 
         End If
 
@@ -380,32 +325,18 @@ Public Class ControladorManifestacionValor
 
     End Function
 
-    Private Function Guardar(facturasComercial_ As Dictionary(Of ObjectId, List(Of Nodo)),
-                             pedimento_ As DocumentoElectronico) As TagWatcher
+    Private Function Guardar(Of T)(facturasComercial_ As Dictionary(Of ObjectId, List(Of Nodo)),
+                             pedimento_ As DocumentoElectronico, session_ As IClientSessionHandle) As TagWatcher
 
         Dim operacionesGenerica_ = New List(Of OperacionGenerica)
 
         Dim iterador_ As Integer = 0
 
-        Dim nombreCte_ As String = ""
+        For Each proveedor As String In facturasComercial_.Select(Function(pair) pair.Value(20)).Select(Function(nodo) DirectCast(nodo, Campo).Valor).Distinct()
 
-        For Each _facturaComercial As KeyValuePair(Of ObjectId, List(Of Nodo)) In facturasComercial_.OrderBy(Function(g) DirectCast(g.Value(20), Campo).Valor)
+            _ManifestacionesValor.Add(New ConstructorManifestacionValor())
 
-            If nombreCte_ <> DirectCast(_facturaComercial.Value(20), Campo).Valor Then
-
-                _ManifestacionesValor.Add(New ConstructorManifestacionValor())
-
-                If nombreCte_ <> "" Then
-
-                    operacionesGenerica_.Add(New OperacionGenerica(_ManifestacionesValor(iterador_)))
-
-                    iterador_ = iterador_ + 1
-
-                Else
-
-                    iterador_ = 0
-
-                End If
+            For Each _facturaComercial As KeyValuePair(Of ObjectId, List(Of Nodo)) In facturasComercial_.Where(Function(g) DirectCast(g.Value(20), Campo).Valor = proveedor)
 
                 With _ManifestacionesValor(iterador_)
 
@@ -423,72 +354,148 @@ Public Class ControladorManifestacionValor
 
                 End With
 
-                nombreCte_ = DirectCast(_facturaComercial.Value(20), Campo).Valor
+                For Each _campo As Nodo In _facturaComercial.Value
 
-            End If
+                    With _ManifestacionesValor(iterador_)
 
-            For Each _campo As Nodo In _facturaComercial.Value
+                        .Seccion(SMV2) = AsignaValor(.Seccion(SMV2), _campo)
 
-                With _ManifestacionesValor(iterador_)
+                        .Seccion(SMV3) = AsignaValor(.Seccion(SMV3), _campo)
 
-                    If .Seccion(SMV2).Attribute(DirectCast(_campo, Campo).IDUnico) IsNot Nothing Then
+                        .Seccion(SMV4) = AsignaValor(.Seccion(SMV4), _campo)
 
-                        .Seccion(SMV2).Attribute(DirectCast(_campo, Campo).IDUnico).Valor = DirectCast(_campo, Campo).Valor
+                        .Seccion(SMV5) = AcumulaValor(.Seccion(SMV5), _campo)
 
-                    End If
+                    End With
 
-                    If .Seccion(SMV3).Attribute(DirectCast(_campo, Campo).IDUnico) IsNot Nothing Then
-
-                        .Seccion(SMV3).Attribute(DirectCast(_campo, Campo).IDUnico).Valor = DirectCast(_campo, Campo).Valor
-
-                    End If
-
-                    If .Seccion(SMV4).Attribute(DirectCast(_campo, Campo).IDUnico) IsNot Nothing Then
-
-                        .Seccion(SMV4).Attribute(DirectCast(_campo, Campo).IDUnico).Valor = DirectCast(_campo, Campo).Valor
-
-                    End If
-
-                    If .Seccion(SMV5).Attribute(DirectCast(_campo, Campo).IDUnico) IsNot Nothing Then
-
-                        Select Case DirectCast(_campo, Campo).IDUnico
-
-                            Case CA_FLETES, CA_SEGURO, CA_EMBALAJES, CA_OTROS_INCREMENTABLES, CA_DESCUENTOS
-
-                                .Seccion(SMV5).Attribute(DirectCast(_campo, Campo).IDUnico).Valor += IIf(DirectCast(_campo, Campo).Valor Is Nothing, 0, DirectCast(_campo, Campo).Valor)
-
-                            Case Else
-
-                                .Seccion(SMV5).Attribute(DirectCast(_campo, Campo).IDUnico).Valor = DirectCast(_campo, Campo).Valor
-
-                        End Select
-
-                    End If
-
-                End With
+                Next
 
             Next
 
-        Next
+            operacionesGenerica_.Add(New OperacionGenerica(_ManifestacionesValor(iterador_)))
 
-        operacionesGenerica_.Add(New OperacionGenerica(_ManifestacionesValor(iterador_)))
+            iterador_ = iterador_ + 1
+
+        Next
 
         With _Estado
 
             Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With
                 {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of OperacionGenerica)((New ConstructorManifestacionValor).GetType.Name)
+                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of OperacionGenerica)(Activator.CreateInstance(Of T)().GetType.Name)
 
-                operationsDB_.InsertMany(operacionesGenerica_)
+                Dim result_ = operationsDB_.InsertManyAsync(session_, operacionesGenerica_)
 
-                .SetOK()
+                If Not result_.IsFaulted Then
+
+                    .SetOK()
+
+                Else
+
+                    .SetOKBut(Me, "No se pudo guardar la información")
+
+                End If
 
             End Using
 
         End With
 
         Return _Estado
+
+    End Function
+
+    Private Function TraeDatosFactura(FacturasIds_ As List(Of ObjectId), pedimento_ As DocumentoElectronico, session_ As IClientSessionHandle) As TagWatcher
+
+        FacturasIds_ = New List(Of ObjectId) From {New ObjectId("64e7cc2b4c203fa0dcb2124a"),
+                                                       New ObjectId("64e7cead4c203fa0dcb2124b")}
+
+        _Estado = _controladorFacturaComercial.ListaCamposFacturaComercial(FacturasIds_,
+                                                            New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesFacturaComercial.SFAC1,
+                                                            New List(Of [Enum]) From {CA_RAZON_SOCIAL, CA_TAX_ID, CA_RFC_CLIENTE,
+                                                                                        Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL,
+                                                                                        CA_CALLE, CA_NUMERO_EXTERIOR, CA_NUMERO_INTERIOR, CA_CODIGO_POSTAL,
+                                                                                        CA_COLONIA, CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO,
+                                                                                        CA_CVE_ENTIDAD_FEDERATIVA, CA_ENTIDAD_FEDERATIVA,
+                                                                                        CA_CVE_PAIS, CA_PAIS, CA_NUMERO_FACTURA, CA_FECHA_FACTURA,
+                                                                                        CA_CVE_PAIS_FACTURACION, CA_PAIS_FACTURACION}},
+                                                            {SeccionesFacturaComercial.SFAC2,
+                                                            New List(Of [Enum]) From {CA_RAZON_SOCIAL_PROVEEDOR, CA_TAX_ID_PROVEEDOR, CA_RFC_PROVEEDOR,
+                                                                                        Recursos.CamposDomicilio.CA_DOMICILIO_FISCAL, CA_CALLE, CA_NUMERO_EXTERIOR,
+                                                                                        CA_NUMERO_INTERIOR, CA_NUMERO_EXT_INT, CA_CODIGO_POSTAL, CA_COLONIA,
+                                                                                        CA_LOCALIDAD, CA_CIUDAD, CA_MUNICIPIO, CA_CVE_ENTIDAD_FEDERATIVA,
+                                                                                        CA_ENTIDAD_FEDERATIVA, CA_CVE_PAIS, CA_PAIS, CP_CVE_METODO_VALORACION,
+                                                                                        RecursosComercioExterior.CamposFacturaComercial.CA_CVE_VINCULACION}},
+                                                            {SeccionesFacturaComercial.SFAC5,
+                                                            New List(Of [Enum]) From {CA_FLETES, CA_MONEDA_FLETES, CA_SEGURO, CA_MONEDA_SEGUROS,
+                                                                                        CA_EMBALAJES, CA_MONEDA_EMBALAJES, CA_OTROS_INCREMENTABLES,
+                                                                                        CA_MONEDA_OTROS_INCREMENTABLES, CA_DESCUENTOS, CA_MONEDA_DESCUENTOS}}})
+
+        If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+
+            Dim _facturasComercial As Dictionary(Of ObjectId, List(Of Nodo)) = _Estado.ObjectReturned
+
+            _Estado = Guardar(Of ConstructorManifestacionValor)(_facturasComercial, pedimento_, session_)
+
+        End If
+
+        Return _Estado
+
+    End Function
+
+    Private Function ConstruirPDF(manifestacionValor_ As DocumentoElectronico,
+                                  tipoDocumento_ As IControladorManifestacionValor.TiposDocumento) As List(Of String)
+
+        Select Case tipoDocumento_
+
+            Case IControladorManifestacionValor.TiposDocumento.Ambos
+
+                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoMV(manifestacionValor_),
+                       New ConstructorManifestacionValorPDF().ImprimirEncabezadoHC(manifestacionValor_)}
+
+            Case IControladorManifestacionValor.TiposDocumento.MV
+
+                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoMV(manifestacionValor_)}
+
+            Case IControladorManifestacionValor.TiposDocumento.HC
+
+                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoHC(manifestacionValor_)}
+
+        End Select
+
+    End Function
+
+    Private Function AsignaValor(seccion_ As Seccion, nodo_ As Nodo) As Seccion
+
+        If seccion_.Attribute(DirectCast(nodo_, Campo).IDUnico) IsNot Nothing Then
+
+            seccion_.Attribute(DirectCast(nodo_, Campo).IDUnico).Valor = DirectCast(nodo_, Campo).Valor
+
+        End If
+
+        Return seccion_
+
+    End Function
+
+    Private Function AcumulaValor(seccion_ As Seccion, nodo_ As Nodo) As Seccion
+
+        If seccion_.Attribute(DirectCast(nodo_, Campo).IDUnico) IsNot Nothing Then
+
+            Select Case DirectCast(nodo_, Campo).IDUnico
+
+                Case CA_FLETES, CA_SEGURO, CA_EMBALAJES, CA_OTROS_INCREMENTABLES, CA_DESCUENTOS
+
+                    seccion_.Attribute(DirectCast(nodo_, Campo).IDUnico).Valor += IIf(DirectCast(nodo_, Campo).Valor Is Nothing, 0, DirectCast(nodo_, Campo).Valor)
+
+                Case Else
+
+                    seccion_.Attribute(DirectCast(nodo_, Campo).IDUnico).Valor = DirectCast(nodo_, Campo).Valor
+
+            End Select
+
+        End If
+
+        Return seccion_
 
     End Function
 
@@ -504,6 +511,4 @@ Public Class ControladorManifestacionValor
 
 End Class
 
-Friend Class Pedimento
-    Public Property Id As ObjectId
-End Class
+

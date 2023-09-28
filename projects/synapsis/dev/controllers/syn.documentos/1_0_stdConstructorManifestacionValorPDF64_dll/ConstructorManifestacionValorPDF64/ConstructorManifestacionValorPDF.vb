@@ -27,6 +27,8 @@ Imports iText.Kernel.Pdf.Extgstate
 Imports System.Runtime.CompilerServices
 Imports System.Threading
 Imports Syn.CustomBrokers.Controllers
+Imports Syn.Utils.Organismo
+Imports Syn.Utils
 
 Public Class ConstructorManifestacionValorPDF
 
@@ -839,7 +841,7 @@ Public Class ConstructorManifestacionValorPDF
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 2.0F, 0F).SetBorder(NO_BORDER).
                         SetHorizontalAlignment(HorizontalAlignment.LEFT))
 
-        _Nivel2.AddCell(New Cell().Add(New Paragraph(NumeroEnPalabras(valor_)).SetTextAlignment(TextAlignment.LEFT).
+        _Nivel2.AddCell(New Cell().Add(New Paragraph(NumeroLetras.ToCardinal(valor_)).SetTextAlignment(TextAlignment.LEFT).
                         SetFont(_arial).SetFontSize(7.0F)).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 2.0F, 5.0F).SetBorder(NO_BORDER))
 
         _Nivel1.AddCell(New Cell().Add(_Nivel2).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 10.0F, 0F).SetBorder(NO_BORDER))
@@ -2563,48 +2565,6 @@ Public Class ConstructorManifestacionValorPDF
             Return " "
         End Try
     End Function
-
-    Private Function NumeroEnPalabras(numero As Double) As String
-        Dim unidades() As String = {"Cero", "Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve"}
-        Dim especiales() As String = {"Diez", "Once", "Doce", "Trece", "Catorce", "Quince", "Dieciséis", "Diecisiete", "Dieciocho", "Diecinueve"}
-        Dim decenas() As String = {"", "", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta", "Noventa"}
-        Dim centenas() As String = {"", "Ciento", "Doscientos", "Trescientos", "Cuatrocientos", "Quinientos", "Seiscientos", "Setecientos", "Ochocientos", "Novecientos"}
-
-        If numero < 10 Then
-            Return unidades(numero)
-        ElseIf numero < 20 Then
-            Return especiales(numero - 10)
-        ElseIf numero < 100 Then
-            Dim decena As Integer = numero \ 10
-            Dim unidad As Integer = numero Mod 10
-            If unidad = 0 Then
-                Return decenas(decena)
-            Else
-                Return decenas(decena) & " y " & unidades(unidad)
-            End If
-        ElseIf numero < 1000 Then
-            Dim centena As Integer = numero \ 100
-            Dim restoCentena As Integer = numero Mod 100
-            If restoCentena = 0 Then
-                Return centenas(centena)
-            Else
-                Return centenas(centena) & " " & NumeroEnPalabras(restoCentena)
-            End If
-        ElseIf numero < 1000000 Then
-            Dim miles As Integer = numero \ 1000
-            Dim restoMiles As Integer = numero Mod 1000
-            If restoMiles = 0 Then
-                Return NumeroEnPalabras(miles) & " Mil"
-            Else
-                Return NumeroEnPalabras(miles) & " Mil " & NumeroEnPalabras(restoMiles)
-            End If
-        Else
-            ' Aquí puedes continuar con la lógica para números mayores
-            ' que un millón si es necesario.
-            Return "Número fuera de rango"
-        End If
-    End Function
-
 
 End Class
 
