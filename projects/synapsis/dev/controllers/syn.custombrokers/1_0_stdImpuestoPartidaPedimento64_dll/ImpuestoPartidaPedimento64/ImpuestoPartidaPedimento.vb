@@ -1,101 +1,137 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class ImpuestoPartidaPedimento
+    Inherits OperacionesPartidas
+
+#Region "Atributos"
+
+    Private _idImpuesto As Integer
+
+    Private _contribucion As Integer
+
+    Private _tasa As Double
+
+    Private _tipoTasa As Integer
+
+    Private _formaPago As Integer
+
+    Private _importe As Double
+
+    Private _archivado As Boolean
+
+    Private _estado As Integer
+
+#End Region
 
 #Region "Propiedades"
 
-    Property idImpuesto As Object
+    Property IdImpuesto As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _idImpuesto
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _idImpuesto = value
 
         End Set
 
     End Property
 
-    Property Contribucion As Object
+    Property Contribucion As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _contribucion
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _contribucion = value
 
         End Set
 
     End Property
 
-    Property Tasa As Object
+    Property Tasa As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _tasa
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _tasa = value
 
         End Set
 
     End Property
 
-    Property TipoTasa As Object
+    Property TipoTasa As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _tipoTasa
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _tipoTasa = value
 
         End Set
 
     End Property
 
-    Property FormaPago As Object
+    Property FormaPago As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _formaPago
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _formaPago = value
 
         End Set
 
     End Property
 
-    Property Importe As Object
+    Property Importe As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _importe
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _importe = value
+
+        End Set
+
+    End Property
+
+    Property Archivado As Boolean
+
+        Get
+
+            Return _archivado
+
+        End Get
+
+        Set(value As Boolean)
+
+            _archivado = value
 
         End Set
 
@@ -105,13 +141,13 @@ Public Class ImpuestoPartidaPedimento
 
         Get
 
-            Throw New NotImplementedException()
+            Return _estado
 
         End Get
 
         Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _estado = value
 
         End Set
 
@@ -121,19 +157,25 @@ Public Class ImpuestoPartidaPedimento
 
 #Region "Metodos"
 
-    Public Function AgregarContribucion() As TagWatcher
+    Public Overrides Function Agregar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function ActualizarContribucion() As TagWatcher
+    Public Overrides Function Actualizar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function EliminarContribucion() As TagWatcher
+    Public Overrides Function Eliminar() As TagWatcher
+
+        Throw New NotImplementedException()
+
+    End Function
+
+    Public Overrides Function Archivar() As TagWatcher
 
         Throw New NotImplementedException()
 

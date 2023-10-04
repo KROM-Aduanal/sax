@@ -1,37 +1,43 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class ItemFacturaComercialExtranjera
 
+#Region "Atributos"
+
+    Private _totalIncrementables As Double
+    Private _totalDecrementables As Double
+
+#End Region
+
 #Region "Propiedades"
 
-    Property TotalIncrementables As Object
+    Property TotalIncrementables As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _totalIncrementables
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _totalIncrementables = value
 
         End Set
 
     End Property
 
-    Property TotalDecrementables As Object
+    Property TotalDecrementables As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _totalDecrementables
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _totalDecrementables = value
 
         End Set
 

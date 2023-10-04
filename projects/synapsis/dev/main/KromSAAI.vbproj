@@ -528,6 +528,11 @@
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresav264.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.Controllers.ControladorMonedas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorMonedas64.0.0.0.0.dll</HintPath>
@@ -560,7 +565,7 @@
     </Reference>
     <Reference Include="Rec.Globals.InstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Monedas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -633,6 +638,11 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.CtrlProveedoresOperativos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.GeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.GeneradorPartidasPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Custombrokers.Controllers.IControladorAcuseValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.Custombrokers.Controllers.IControladorAcuseValor64.dll</HintPath>
@@ -646,6 +656,36 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IControladorManifestacionValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorManifestacionValor64.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Componentes.Campo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

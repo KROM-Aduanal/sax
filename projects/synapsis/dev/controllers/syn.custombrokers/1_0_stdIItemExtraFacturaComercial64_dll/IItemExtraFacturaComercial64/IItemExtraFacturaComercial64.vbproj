@@ -86,11 +86,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Empresa64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals\Rec.Globals.Empresa64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\global\lib\rec.globals\Rec.Globals.Empresa64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\global\lib\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -159,7 +159,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

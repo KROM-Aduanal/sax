@@ -34,6 +34,14 @@ Public Class CatalogControl
 
     Private _textJsondata As TextBox
 
+    Private _addButton As LinkButton
+
+    Private _cloneButton As LinkButton
+
+    Private _deleteButton As LinkButton
+
+    Private _findBar As TextBox
+
 #End Region
 
 #Region "Propiedades"
@@ -134,23 +142,60 @@ Public Class CatalogControl
 
     End Property
 
-    Public Property CanAdd As Boolean = True
+    Public Property CanAdd As Boolean
 
-    Public Property CanClone As Boolean = True
+        Get
 
-    Public Property CanDelete As Boolean = True
+            Return ViewState("CanAdd")
+
+        End Get
+
+        Set(value As Boolean)
+
+            ViewState("CanAdd") = value
+
+        End Set
+
+    End Property
+
+    Public Property CanClone As Boolean
+
+        Get
+
+            Return ViewState("CanClone")
+
+        End Get
+
+        Set(value As Boolean)
+
+            ViewState("CanClone") = value
+
+        End Set
+
+    End Property
+
+
+    Public Property CanDelete As Boolean
+
+        Get
+
+            Return ViewState("CanDelete")
+
+        End Get
+
+        Set(value As Boolean)
+
+            ViewState("CanDelete") = value
+
+        End Set
+
+    End Property
 
     Public Property Collapsed As Boolean
 
         Get
 
-            If ViewState("Collapsed") IsNot Nothing Then
-
-                Return ViewState("Collapsed")
-
-            End If
-
-            Return True
+            Return ViewState("Collapsed")
 
         End Get
 
@@ -221,9 +266,24 @@ Public Class CatalogControl
 
     End Property
 
+    Private Property _interaction As String
+
 #End Region
 
 #Region "Constructor"
+
+    Sub New()
+
+        Collapsed = True
+
+        CanAdd = True
+
+        CanClone = True
+
+        CanDelete = True
+
+    End Sub
+
 #End Region
 
 #Region "Eventos"
@@ -264,11 +324,9 @@ Public Class CatalogControl
 
     Private Sub CatalogCollapsed(ByVal source As Object, ByVal e As EventArgs)
 
-
         EnsureChildControls()
 
         Collapsed = Not Collapsed
-
 
     End Sub
 
@@ -393,6 +451,22 @@ Public Class CatalogControl
             DataRows.Add(catalogRow_.Properties)
 
         End If
+
+    End Sub
+
+    Public Sub EnabledToolBar(ByVal enabled_ As Boolean)
+
+        EnsureChildControls()
+
+        _interaction = IIf(enabled_ = False, " interaction-disabled", Nothing)
+
+        _addButton.Attributes.Add("class", "__add" & _interaction)
+
+        _cloneButton.Attributes.Add("class", "__clone" & _interaction)
+
+        _deleteButton.Attributes.Add("class", "__delete" & _interaction)
+
+        '_findBar.Attributes.Add("class", "__find" & interaction)
 
     End Sub
 
@@ -622,7 +696,7 @@ Public Class CatalogControl
 
                     _tbody.Controls.Add(New LiteralControl("           <td id='" & KeyField & "'>"))
 
-                    If CanDelete Or CanClone Or CanAdd Then
+                    If CanDelete Or CanClone Then
 
                         _tbody.Controls.Add(New LiteralControl("               <label class='wc-checkbox d-flex position-relative mb-3 ml-4' " & ForeColor.HtmlPropertyColor & ">"))
 
@@ -636,9 +710,9 @@ Public Class CatalogControl
 
                     _tbody.Controls.Add(New LiteralControl("           </td>"))
 
-                    End If
+                End If
 
-                    If _Columns.Count Then
+                If _Columns.Count Then
 
                     For Each column_ As Object In _Columns
 
@@ -656,7 +730,7 @@ Public Class CatalogControl
 
                                 With templateControl_
 
-                                    .Enabled = Enabled
+                                    .Enabled = column_.Enabled 'Enabled
 
                                     .ID = column_.ID
 
@@ -694,7 +768,7 @@ Public Class CatalogControl
 
                                 With templateControl_
 
-                                    .Enabled = Enabled
+                                    .Enabled = column_.Enabled 'Enabled
 
                                     .ID = column_.ID
 
@@ -714,7 +788,7 @@ Public Class CatalogControl
 
                                 With templateControl_
 
-                                    .Enabled = Enabled
+                                    .Enabled = column_.Enabled 'Enabled
 
                                     .ID = column_.ID
 
@@ -766,7 +840,7 @@ Public Class CatalogControl
 
                     If CanDelete Then
 
-                        _tbody.Controls.Add(New LiteralControl("	            <a href='' class='__quit'></a>"))
+                        _tbody.Controls.Add(New LiteralControl("	            <a href='' class='__quit" & _interaction & "'></a>"))
 
                     End If
 
@@ -913,6 +987,40 @@ Public Class CatalogControl
 
         End With
 
+        _addButton = New LinkButton
+
+        With _addButton
+
+            .Attributes.Add("class", "__add")
+
+        End With
+
+        _cloneButton = New LinkButton
+
+        With _cloneButton
+
+            .Attributes.Add("class", "__clone")
+
+        End With
+
+        _deleteButton = New LinkButton
+
+        With _deleteButton
+
+            .Attributes.Add("class", "__delete")
+
+        End With
+
+        _findBar = New TextBox
+
+        With _findBar
+
+            .Attributes.Add("class", "__find")
+
+            .Attributes.Add("placeholder", "Buscar")
+
+        End With
+
     End Sub
 
 
@@ -938,29 +1046,33 @@ Public Class CatalogControl
 
             If UserInteraction = True Then
 
-                Dim interaction_ = IIf(Enabled = False, " interaction-disabled", Nothing)
+                'Dim interaction_ = IIf(Enabled = False, " interaction-disabled", Nothing)
 
                 If CanAdd Then
 
-                    .Controls.Add(New LiteralControl("	<a href='' class='__add" & interaction_ & "'></a>"))
+                    '.Controls.Add(New LiteralControl("	<a href='' class='__add" & interaction_ & "'></a>"))
+                    .Controls.Add(_addButton)
 
                 End If
 
                 If CanClone Then
 
-                    .Controls.Add(New LiteralControl("	<a href='' class='__clone" & interaction_ & "'></a>"))
+                    '.Controls.Add(New LiteralControl("	<a href='' class='__clone" & interaction_ & "'></a>"))
+                    .Controls.Add(_cloneButton)
 
                 End If
 
                 If CanDelete Then
 
-                    .Controls.Add(New LiteralControl("    <a href='' class='__delete" & interaction_ & "'></a>"))
+                    '.Controls.Add(New LiteralControl("    <a href='' class='__delete" & interaction_ & "'></a>"))
+                    .Controls.Add(_deleteButton)
 
                 End If
 
             End If
 
-            .Controls.Add(New LiteralControl("    <input type='text' class='__find' placeholder='Buscar'/>"))
+            '.Controls.Add(New LiteralControl("    <input type='text' class='__find' placeholder='Buscar'/>"))
+            .Controls.Add(_findBar)
 
             .Controls.Add(New LiteralControl(" </div>"))
 

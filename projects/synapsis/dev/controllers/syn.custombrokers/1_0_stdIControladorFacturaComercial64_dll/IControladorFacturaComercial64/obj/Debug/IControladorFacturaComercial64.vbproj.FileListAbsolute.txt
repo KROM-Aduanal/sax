@@ -12,4 +12,3 @@ C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorFa
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorFacturaComercial64_dll\IControladorFacturaComercial64\obj\Debug\IControladorFacturaComercial64.vbproj.CoreCompileInputs.cache
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorFacturaComercial64_dll\IControladorFacturaComercial64\obj\Debug\Syn.CustomBrokers.Controllers.IControladorFacturaComercial64.0.0.0.0.dll
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorFacturaComercial64_dll\IControladorFacturaComercial64\obj\Debug\Syn.CustomBrokers.Controllers.IControladorFacturaComercial64.0.0.0.0.pdb
-C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorFacturaComercial64_dll\IControladorFacturaComercial64\obj\Debug\IControladorFacturaComercial64.vbproj.CopyComplete

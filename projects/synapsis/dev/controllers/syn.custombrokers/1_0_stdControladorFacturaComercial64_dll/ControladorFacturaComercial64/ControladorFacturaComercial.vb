@@ -63,6 +63,8 @@ Public Class ControladorFacturaComercial
 
     Private _entorno As Int32
 
+    Private _estado As TagWatcher
+
 #End Region
 
 #Region "Propiedades"
@@ -77,6 +79,19 @@ Public Class ControladorFacturaComercial
 
     Public Property Estado As TagWatcher _
         Implements IControladorFacturaComercial.Estado
+        Get
+
+            Return _estado
+
+        End Get
+
+        Set(value As TagWatcher)
+
+            _estado = value
+
+        End Set
+
+    End Property
 
     Public Property ModalidadTrabajo As IControladorFacturaComercial.Modalidades _
         Implements IControladorFacturaComercial.ModalidadTrabajo
@@ -211,7 +226,7 @@ Public Class ControladorFacturaComercial
                           ByVal entorno_ As Integer,
                           ByVal disponibilidadRecurso_ As IControladorFacturaComercial.Disponibilidades)
 
-        _Estado = New TagWatcher
+        _estado = New TagWatcher
 
         _ModalidadTrabajo = modalidadTrabajo_
 
@@ -223,15 +238,15 @@ Public Class ControladorFacturaComercial
 
         If factura_ IsNot Nothing Then
 
-            _Estado = ListaFacturas(factura_)
+            _estado = ListaFacturas(factura_)
 
-            If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+            If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                _FacturasComerciales = _Estado.ObjectReturned
+                _FacturasComerciales = _estado.ObjectReturned
 
             Else
 
-                _Estado.SetOKInfo(Me, "No existen facturas cargadas en batería")
+                _estado.SetOKInfo(Me, "No existen facturas cargadas en batería")
 
                 _FacturasComerciales = Nothing
 
@@ -309,7 +324,7 @@ Public Class ControladorFacturaComercial
     Public Sub CargaFacturas(documentoDigital_ As MemoryStream) _
         Implements IControladorFacturaComercial.CargaFacturas
 
-        _Estado.
+        _estado.
             SetError(Me, "Función aún no implementada")
 
     End Sub
@@ -317,7 +332,7 @@ Public Class ControladorFacturaComercial
     Public Sub CargaFacturas(documentoDigital_ As List(Of MemoryStream)) _
         Implements IControladorFacturaComercial.CargaFacturas
 
-        _Estado.
+        _estado.
             SetError(Me, "Función aún no implementada")
 
     End Sub
@@ -395,7 +410,7 @@ Public Class ControladorFacturaComercial
     Private Function ConsultaExterior(foliosFacturas_ As Object,
                                       tipoConsulta_ As Boolean) As TagWatcher
 
-        With _Estado
+        With _estado
 
             If _FacturasComerciales IsNot Nothing Then
 
@@ -514,7 +529,7 @@ Public Class ControladorFacturaComercial
 
             End Using
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -523,7 +538,7 @@ Public Class ControladorFacturaComercial
     Private Function ObtenerFacturas(idFacturas_ As List(Of ObjectId)) _
         As TagWatcher
 
-        With _Estado
+        With _estado
 
             Select Case _ModalidadTrabajo
 
@@ -574,11 +589,11 @@ Public Class ControladorFacturaComercial
 
                 Case IControladorFacturaComercial.Modalidades.Externo
 
-                    _Estado = ConsultaExterior(idFacturas_, True) 'True es para object
+                    _estado = ConsultaExterior(idFacturas_, True) 'True es para object
 
             End Select
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -587,7 +602,7 @@ Public Class ControladorFacturaComercial
     Private Function ObtenerFacturas(foliosFacturas_ As List(Of String)) _
                                       As TagWatcher
 
-        With _Estado
+        With _estado
 
             Select Case _ModalidadTrabajo
 
@@ -637,11 +652,11 @@ Public Class ControladorFacturaComercial
 
                 Case IControladorFacturaComercial.Modalidades.Externo
 
-                    _Estado = ConsultaExterior(foliosFacturas_, False)
+                    _estado = ConsultaExterior(foliosFacturas_, False)
 
             End Select
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -658,7 +673,7 @@ Public Class ControladorFacturaComercial
                                                           fechaMoneda_).ObjectReturned, Object)
         _listaFactoresMoneda = New Dictionary(Of String, Double)
 
-        With _Estado
+        With _estado
 
             If factorTipoCambio_.Count > 0 Then
 
@@ -861,7 +876,7 @@ Public Class ControladorFacturaComercial
 
         _listadoCampos = New Dictionary(Of ObjectId, Object)
 
-        With _Estado
+        With _estado
 
             If seccion_ = 4 Then
 
@@ -899,7 +914,7 @@ Public Class ControladorFacturaComercial
     Private Function ObtenerListaIconterms(ByRef _facturasComerciales As TagWatcher) _
         As TagWatcher
 
-        With _Estado
+        With _estado
 
             _listadoCampos = New Dictionary(Of ObjectId, Object)
 
@@ -911,7 +926,7 @@ Public Class ControladorFacturaComercial
 
             .ObjectReturned = _listadoCampos
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -920,7 +935,7 @@ Public Class ControladorFacturaComercial
     Private Function ObtenerListaIncrementables(ByVal _facturasComerciales As TagWatcher) _
                                                 As TagWatcher
 
-        With _Estado
+        With _estado
 
             _listadoCampos = New Dictionary(Of ObjectId, Object)
 
@@ -930,7 +945,7 @@ Public Class ControladorFacturaComercial
 
             .ObjectReturned = _listadoCampos
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -940,7 +955,7 @@ Public Class ControladorFacturaComercial
                                                 ByRef fechaMoneda_ As Date) _
                                                 As TagWatcher
 
-        With _Estado
+        With _estado
 
             _listaFacturas = DirectCast(facturasDisponibles_.ObjectReturned, List(Of ConstructorFacturaComercial))
 
@@ -985,7 +1000,7 @@ Public Class ControladorFacturaComercial
 
             .ObjectReturned = _listadoCampos
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -994,7 +1009,7 @@ Public Class ControladorFacturaComercial
     Private Function ObtenerPartidas(ByVal _facturasComerciales As TagWatcher) _
                                  As TagWatcher
 
-        With _Estado
+        With _estado
 
             _listadoCampos = New Dictionary(Of ObjectId, Object)
 
@@ -1004,7 +1019,7 @@ Public Class ControladorFacturaComercial
 
             .ObjectReturned = _listadoCampos
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1014,7 +1029,7 @@ Public Class ControladorFacturaComercial
                                         seccionesCampos_ As Dictionary(Of [Enum], List(Of [Enum]))) _
                                         As TagWatcher
 
-        With _Estado
+        With _estado
 
             Try
 
@@ -1053,7 +1068,7 @@ Public Class ControladorFacturaComercial
 
             End Try
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1063,7 +1078,7 @@ Public Class ControladorFacturaComercial
                                          seccionesCampos_ As Dictionary(Of [Enum], List(Of [Enum]))) _
                                          As TagWatcher
 
-        With _Estado
+        With _estado
 
             Try
                 _listadoValoresString = New Dictionary(Of String, List(Of Nodo))
@@ -1111,7 +1126,7 @@ Public Class ControladorFacturaComercial
                                                 ByRef fechaMoneda_ As Date) _
                                                 As TagWatcher
 
-        With _Estado
+        With _estado
 
             _listaFacturas = DirectCast(facturasDisponibles_.ObjectReturned, List(Of ConstructorFacturaComercial))
 
@@ -1143,17 +1158,17 @@ Public Class ControladorFacturaComercial
 
                         Else
 
-                            _Estado.SetError(Me, "No se encontró el factor moneda")
+                            _estado.SetError(Me, "No se encontró el factor moneda")
 
-                            Return _Estado
+                            Return _estado
 
                         End If
 
                     Else
 
-                        _Estado.SetError(Me, "Valores no encontrados en la sección actual")
+                        _estado.SetError(Me, "Valores no encontrados en la sección actual")
 
-                        Return _Estado
+                        Return _estado
 
                     End If
 
@@ -1161,11 +1176,11 @@ Public Class ControladorFacturaComercial
 
             Next
 
-            If _diccionarioValores.Count > 1 Then : .SetOK() : Else .SetOKBut(Me, "No se llenó la lista de valor dólares") : End If
+            If _diccionarioValores.Count >= 1 Then : .SetOK() : Else .SetOKBut(Me, "No se llenó la lista de valor dólares") : End If
 
             .ObjectReturned = _diccionarioValores
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1180,7 +1195,7 @@ Public Class ControladorFacturaComercial
                                               valoresAcuseValor_ As List(Of String)) As TagWatcher _
                                               Implements IControladorFacturaComercial.ActualizarDatosAcuseValor
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -1257,7 +1272,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1266,7 +1281,7 @@ Public Class ControladorFacturaComercial
     Public Function ListaFacturas(idFactura_ As ObjectId) As TagWatcher _
         Implements IControladorFacturaComercial.ListaFacturas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -1274,7 +1289,7 @@ Public Class ControladorFacturaComercial
 
                     _listaObjetos = New List(Of ObjectId) From {idFactura_}
 
-                    _Estado = ObtenerFacturas(_listaObjetos)
+                    _estado = ObtenerFacturas(_listaObjetos)
 
                 Else
 
@@ -1288,7 +1303,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1297,13 +1312,13 @@ Public Class ControladorFacturaComercial
     Public Function ListaFacturas(idsFacturas_ As List(Of ObjectId)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaFacturas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count > 0 Then
 
-                    _Estado = ObtenerFacturas(idsFacturas_)
+                    _estado = ObtenerFacturas(idsFacturas_)
 
                 Else
 
@@ -1317,7 +1332,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1326,13 +1341,13 @@ Public Class ControladorFacturaComercial
     Public Function ListaFacturas(folio_ As String) As TagWatcher _
         Implements IControladorFacturaComercial.ListaFacturas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folio_ IsNot Nothing Then
 
-                    _Estado = ObtenerFacturas(New List(Of String) From {folio_})
+                    _estado = ObtenerFacturas(New List(Of String) From {folio_})
 
                 Else
 
@@ -1346,7 +1361,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1355,13 +1370,13 @@ Public Class ControladorFacturaComercial
     Public Function ListaFacturas(folios_ As List(Of String)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaFacturas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folios_.Count <> 0 Then
 
-                    _Estado = ObtenerFacturas(folios_)
+                    _estado = ObtenerFacturas(folios_)
 
                 Else
 
@@ -1375,7 +1390,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1384,11 +1399,11 @@ Public Class ControladorFacturaComercial
     Public Function CargaFacturas(listaFacturas_ As List(Of ConstructorFacturaComercial)) As TagWatcher _
         Implements IControladorFacturaComercial.CargaFacturas
 
-        With _Estado
+        With _estado
 
             .SetOKBut(Me, "Función sin implementar")
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1397,7 +1412,7 @@ Public Class ControladorFacturaComercial
     Public Function FirmaDigital(Of T)(_id As ObjectId) As String _
         Implements IControladorFacturaComercial.FirmaDigital
 
-        With _Estado
+        With _estado
 
             .SetOKBut(Me, "Función sin implementar")
 
@@ -1410,7 +1425,7 @@ Public Class ControladorFacturaComercial
     Public Function FacturaDisponible(idFactura_ As ObjectId) As Boolean _
         Implements IControladorFacturaComercial.FacturaDisponible
 
-        With _Estado
+        With _estado
 
             .SetOKBut(Me, "Función sin implementar")
 
@@ -1423,7 +1438,7 @@ Public Class ControladorFacturaComercial
     Public Function FacturaDisponible(folioFactura_ As String) As Boolean _
         Implements IControladorFacturaComercial.FacturaDisponible
 
-        With _Estado
+        With _estado
 
             .SetOKBut(Me, "Función sin implementar")
 
@@ -1437,7 +1452,7 @@ Public Class ControladorFacturaComercial
     Function TotalIncrementables(fechaMoneda_ As Date) As TagWatcher _
         Implements IControladorFacturaComercial.TotalIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -1449,7 +1464,7 @@ Public Class ControladorFacturaComercial
 
                             .ObjectReturned = _FacturasComerciales
 
-                            _Estado = ObtenerTotalIncrementables(_Estado, fechaMoneda_)
+                            _estado = ObtenerTotalIncrementables(_estado, fechaMoneda_)
 
                         Else
 
@@ -1476,7 +1491,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1486,17 +1501,17 @@ Public Class ControladorFacturaComercial
                                  ByVal fechaMoneda_ As Date) As TagWatcher _
                                  Implements IControladorFacturaComercial.TotalIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ListaFacturas(idFactura_)
+                    _estado = ListaFacturas(idFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerTotalIncrementables(_Estado, fechaMoneda_)
+                        _estado = ObtenerTotalIncrementables(_estado, fechaMoneda_)
 
                     Else
 
@@ -1516,7 +1531,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1526,17 +1541,17 @@ Public Class ControladorFacturaComercial
                              ByVal fechaMoneda_ As Date) As TagWatcher _
                              Implements IControladorFacturaComercial.TotalIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ObtenerFacturas(idsFacturas_)
+                    _estado = ObtenerFacturas(idsFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerTotalIncrementables(_Estado, fechaMoneda_)
+                        _estado = ObtenerTotalIncrementables(_estado, fechaMoneda_)
 
                     Else
 
@@ -1556,7 +1571,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1566,17 +1581,17 @@ Public Class ControladorFacturaComercial
                              ByVal fechaMoneda_ As Date) As TagWatcher _
                              Implements IControladorFacturaComercial.TotalIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(folioFactura_)
+                    _estado = ListaFacturas(folioFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        Return ObtenerTotalIncrementables(_Estado, fechaMoneda_)
+                        Return ObtenerTotalIncrementables(_estado, fechaMoneda_)
 
                     Else
 
@@ -1596,7 +1611,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1606,17 +1621,17 @@ Public Class ControladorFacturaComercial
                              ByVal fechaMoneda_ As Date) As TagWatcher _
                              Implements IControladorFacturaComercial.TotalIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(foliosFacturas_)
+                    _estado = ListaFacturas(foliosFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        Return ObtenerTotalIncrementables(_Estado, fechaMoneda_)
+                        Return ObtenerTotalIncrementables(_estado, fechaMoneda_)
 
                     Else
 
@@ -1636,7 +1651,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1646,7 +1661,7 @@ Public Class ControladorFacturaComercial
     Function ListaIncrementables() As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -1658,7 +1673,7 @@ Public Class ControladorFacturaComercial
 
                             .ObjectReturned = _FacturasComerciales
 
-                            _Estado = ObtenerListaIncrementables(_Estado)
+                            _estado = ObtenerListaIncrementables(_estado)
 
                         Else
 
@@ -1684,7 +1699,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1693,17 +1708,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncrementables(ByVal idFactura_ As ObjectId) As TagWatcher _
                                  Implements IControladorFacturaComercial.ListaIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ListaFacturas(idFactura_)
+                    _estado = ListaFacturas(idFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIncrementables(_Estado)
+                        _estado = ObtenerListaIncrementables(_estado)
 
                     Else
 
@@ -1723,7 +1738,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1732,17 +1747,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncrementables(ByVal idsFacturas_ As List(Of ObjectId)) As TagWatcher _
                                 Implements IControladorFacturaComercial.ListaIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(idsFacturas_)
+                    _estado = ListaFacturas(idsFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIncrementables(_Estado)
+                        _estado = ObtenerListaIncrementables(_estado)
 
                     Else
 
@@ -1762,7 +1777,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1771,17 +1786,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncrementables(ByVal folioFactura_ As String) As TagWatcher _
                                  Implements IControladorFacturaComercial.ListaIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(folioFactura_)
+                    _estado = ListaFacturas(folioFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIncrementables(_Estado)
+                        _estado = ObtenerListaIncrementables(_estado)
 
                     Else
 
@@ -1801,7 +1816,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1810,17 +1825,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncrementables(ByVal foliosFacturas_ As List(Of String)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncrementables
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(foliosFacturas_)
+                    _estado = ListaFacturas(foliosFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        Return ObtenerListaIncrementables(_Estado)
+                        Return ObtenerListaIncrementables(_estado)
 
                     Else
 
@@ -1840,7 +1855,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1850,7 +1865,7 @@ Public Class ControladorFacturaComercial
     Function ListaIncoterms() As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncoterms
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -1862,7 +1877,7 @@ Public Class ControladorFacturaComercial
 
                             .ObjectReturned = _FacturasComerciales
 
-                            _Estado = ObtenerListaIconterms(_Estado)
+                            _estado = ObtenerListaIconterms(_estado)
 
                         Else
 
@@ -1888,7 +1903,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1897,17 +1912,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncoterms(ByVal idFactura_ As ObjectId) As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncoterms
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ListaFacturas(idFactura_)
+                    _estado = ListaFacturas(idFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIconterms(_Estado)
+                        _estado = ObtenerListaIconterms(_estado)
 
                     Else
 
@@ -1927,7 +1942,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1936,17 +1951,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncoterms(ByVal idsFacturas_ As List(Of ObjectId)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncoterms
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ObtenerFacturas(idsFacturas_)
+                    _estado = ObtenerFacturas(idsFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIconterms(_Estado)
+                        _estado = ObtenerListaIconterms(_estado)
 
                     Else
 
@@ -1966,7 +1981,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -1975,17 +1990,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncoterms(ByVal folioFactura_ As String) As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncoterms
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(folioFactura_)
+                    _estado = ListaFacturas(folioFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIconterms(_Estado)
+                        _estado = ObtenerListaIconterms(_estado)
 
                     Else
 
@@ -2005,7 +2020,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2014,17 +2029,17 @@ Public Class ControladorFacturaComercial
     Function ListaIncoterms(ByVal foliosFacturas_ As List(Of String)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaIncoterms
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(foliosFacturas_)
+                    _estado = ListaFacturas(foliosFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerListaIconterms(_Estado)
+                        _estado = ObtenerListaIconterms(_estado)
 
                     Else
 
@@ -2044,7 +2059,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2054,7 +2069,7 @@ Public Class ControladorFacturaComercial
     Function ListaPartidas() As TagWatcher _
         Implements IControladorFacturaComercial.ListaPartidas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -2066,7 +2081,7 @@ Public Class ControladorFacturaComercial
 
                             .ObjectReturned = _FacturasComerciales
 
-                            _Estado = ObtenerPartidas(_Estado)
+                            _estado = ObtenerPartidas(_estado)
 
                         Else
 
@@ -2092,7 +2107,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2101,17 +2116,17 @@ Public Class ControladorFacturaComercial
     Function ListaPartidas(ByVal idFactura_ As ObjectId) As TagWatcher _
         Implements IControladorFacturaComercial.ListaPartidas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ListaFacturas(idFactura_)
+                    _estado = ListaFacturas(idFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerPartidas(_Estado)
+                        _estado = ObtenerPartidas(_estado)
 
                     Else
 
@@ -2135,7 +2150,7 @@ Public Class ControladorFacturaComercial
 
         End With
 
-        Return _Estado
+        Return _estado
 
 
 
@@ -2144,17 +2159,17 @@ Public Class ControladorFacturaComercial
     Function ListaPartidas(ByVal idsFacturas_ As List(Of ObjectId)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaPartidas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(idsFacturas_)
+                    _estado = ListaFacturas(idsFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerPartidas(_Estado)
+                        _estado = ObtenerPartidas(_estado)
 
                     Else
 
@@ -2174,7 +2189,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2183,17 +2198,17 @@ Public Class ControladorFacturaComercial
     Function ListaPartidas(ByVal folioFactura_ As String) As TagWatcher _
         Implements IControladorFacturaComercial.ListaPartidas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(folioFactura_)
+                    _estado = ListaFacturas(folioFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerPartidas(_Estado)
+                        _estado = ObtenerPartidas(_estado)
 
                     Else
 
@@ -2215,24 +2230,24 @@ Public Class ControladorFacturaComercial
 
         End With
 
-        Return _Estado
+        Return _estado
 
     End Function
 
     Function ListaPartidas(ByVal foliosFacturas_ As List(Of String)) As TagWatcher _
         Implements IControladorFacturaComercial.ListaPartidas
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(foliosFacturas_)
+                    _estado = ListaFacturas(foliosFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerPartidas(_Estado)
+                        _estado = ObtenerPartidas(_estado)
 
                     Else
 
@@ -2252,7 +2267,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2264,13 +2279,13 @@ Public Class ControladorFacturaComercial
                                          As TagWatcher _
                                          Implements IControladorFacturaComercial.ListaCamposFacturaComercial
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ObtenerListaValores(New List(Of ObjectId) _
+                    _estado = ObtenerListaValores(New List(Of ObjectId) _
                                                   From {idFactura_},
                                                   seccionesCampos_)
 
@@ -2286,7 +2301,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2296,13 +2311,13 @@ Public Class ControladorFacturaComercial
                                          ByVal seccionesCampos_ As Dictionary(Of [Enum], List(Of [Enum]))) _
                                          As TagWatcher _
                                          Implements IControladorFacturaComercial.ListaCamposFacturaComercial
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ObtenerListaValores(idsFacturas_, seccionesCampos_)
+                    _estado = ObtenerListaValores(idsFacturas_, seccionesCampos_)
 
                 Else
 
@@ -2316,7 +2331,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2327,13 +2342,13 @@ Public Class ControladorFacturaComercial
                                                 As TagWatcher _
                                                 Implements IControladorFacturaComercial.ListaCamposFacturaComercial
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ObtenerListaValores(New List(Of String) _
+                    _estado = ObtenerListaValores(New List(Of String) _
                                                   From {folioFactura_},
                                                   seccionesCampos_)
 
@@ -2349,7 +2364,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2360,13 +2375,13 @@ Public Class ControladorFacturaComercial
                                                 As TagWatcher _
                                                 Implements IControladorFacturaComercial.ListaCamposFacturaComercial
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_.Count() > 0 Then
 
-                    _Estado = ObtenerListaValores(foliosFacturas_, seccionesCampos_)
+                    _estado = ObtenerListaValores(foliosFacturas_, seccionesCampos_)
 
                 Else
 
@@ -2390,7 +2405,7 @@ Public Class ControladorFacturaComercial
     Public Function ConsultaValorDolaresFactura(fechaMoneda_ As Date) As TagWatcher _
         Implements IControladorFacturaComercial.ConsultaValorDolaresFactura
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
@@ -2402,7 +2417,7 @@ Public Class ControladorFacturaComercial
 
                             .ObjectReturned = _FacturasComerciales
 
-                            _Estado = ObtenerValorDolaresFactura(_Estado, fechaMoneda_)
+                            _estado = ObtenerValorDolaresFactura(_estado, fechaMoneda_)
 
                         Else
 
@@ -2430,7 +2445,7 @@ Public Class ControladorFacturaComercial
 
         End With
 
-        Return _Estado
+        Return _estado
 
     End Function
 
@@ -2438,17 +2453,17 @@ Public Class ControladorFacturaComercial
                                                 fechaMoneda_ As Date) As TagWatcher _
                                                 Implements IControladorFacturaComercial.ConsultaValorDolaresFactura
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If Not idFactura_ = ObjectId.Empty Then
 
-                    _Estado = ListaFacturas(idFactura_)
+                    _estado = ListaFacturas(idFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerValorDolaresFactura(_Estado, fechaMoneda_)
+                        _estado = ObtenerValorDolaresFactura(_estado, fechaMoneda_)
 
                     Else
 
@@ -2468,7 +2483,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2478,17 +2493,17 @@ Public Class ControladorFacturaComercial
                                                 fechaMoneda_ As Date) As TagWatcher _
                                                 Implements IControladorFacturaComercial.ConsultaValorDolaresFactura
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If idsFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(idsFacturas_)
+                    _estado = ListaFacturas(idsFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerValorDolaresFactura(_Estado, fechaMoneda_)
+                        _estado = ObtenerValorDolaresFactura(_estado, fechaMoneda_)
 
                     Else
 
@@ -2508,7 +2523,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 
@@ -2518,17 +2533,17 @@ Public Class ControladorFacturaComercial
                                                 fechaMoneda_ As Date) As TagWatcher _
                                                 Implements IControladorFacturaComercial.ConsultaValorDolaresFactura
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If folioFactura_ IsNot Nothing Then
 
-                    _Estado = ListaFacturas(folioFactura_)
+                    _estado = ListaFacturas(folioFactura_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerValorDolaresFactura(_Estado, fechaMoneda_)
+                        _estado = ObtenerValorDolaresFactura(_estado, fechaMoneda_)
 
                     Else
 
@@ -2550,7 +2565,7 @@ Public Class ControladorFacturaComercial
 
         End With
 
-        Return _Estado
+        Return _estado
 
     End Function
 
@@ -2558,17 +2573,17 @@ Public Class ControladorFacturaComercial
                                                 fechaMoneda_ As Date) As TagWatcher _
                                                 Implements IControladorFacturaComercial.ConsultaValorDolaresFactura
 
-        With _Estado
+        With _estado
 
             If _entorno <> 0 Then
 
                 If foliosFacturas_.Count() > 0 Then
 
-                    _Estado = ListaFacturas(foliosFacturas_)
+                    _estado = ListaFacturas(foliosFacturas_)
 
-                    If _Estado.Status = TagWatcher.TypeStatus.Ok Then
+                    If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
-                        _Estado = ObtenerValorDolaresFactura(_Estado, fechaMoneda_)
+                        _estado = ObtenerValorDolaresFactura(_estado, fechaMoneda_)
 
                     Else
 
@@ -2588,7 +2603,7 @@ Public Class ControladorFacturaComercial
 
             End If
 
-            Return _Estado
+            Return _estado
 
         End With
 

@@ -4,6 +4,7 @@ Imports MongoDB.Bson
 Imports Syn.Documento
 Imports Syn.CustomBrokers.Controllers
 Imports System.IO
+Imports MongoDB.Driver
 
 Public Interface IControladorManifestacionValor
 
@@ -23,16 +24,15 @@ Public Interface IControladorManifestacionValor
 #End Region
 
 #Region "Funciones"
-    Function Consultar(ByVal objectid_ As ObjectId) As TagWatcher
-    Function Descargar(objectId_ As ObjectId, Optional ByVal tipoDocumento As TiposDocumento = 1) As FileStream
-    Function Descargar(ObjectIds_ As List(Of ObjectId), Optional ByVal tipoDocumento As TiposDocumento = 1) As FileStream
-    Function Descargar(pedimentos_ As List(Of String), Optional ByVal tipoDocumento As TiposDocumento = 1) As FileStream
-    Function Descargar(pedimentos As String, Optional ByVal tipoDocumento As TiposDocumento = 1) As FileStream
-    Function DescargarPDF(pedimentos As String, Optional ByVal tipoDocumento As TiposDocumento = 1) As List(Of String)
-    Function Generar(objectId_ As ObjectId) As TagWatcher
-    Function Generar(objectIds_ As List(Of ObjectId)) As TagWatcher
-    Function Generar(pedimento_ As String) As TagWatcher
-    Function Generar(pedimentos_ As List(Of String)) As TagWatcher
+    Function Consultar(Of T)(ByVal objectid_ As ObjectId) As TagWatcher
+    Function RepresentacionImpresa(objectId_ As ObjectId, Optional ByVal tipoDocumento As TiposDocumento = 1) As List(Of String)
+    Function RepresentacionImpresa(ObjectIds_ As List(Of ObjectId), Optional ByVal tipoDocumento As TiposDocumento = 1) As List(Of String)
+    Function RepresentacionImpresa(pedimentos_ As List(Of String), Optional ByVal tipoDocumento As TiposDocumento = 1) As List(Of String)
+    Function RepresentacionImpresa(pedimento_ As String, Optional ByVal tipoDocumento As TiposDocumento = 1) As List(Of String)
+    Function Generar(objectId_ As ObjectId, session_ As IClientSessionHandle) As TagWatcher
+    Function Generar(objectIds_ As List(Of ObjectId), session_ As IClientSessionHandle) As TagWatcher
+    Function Generar(pedimento_ As String, session_ As IClientSessionHandle) As TagWatcher
+    Function Generar(pedimentos_ As List(Of String), session_ As IClientSessionHandle) As TagWatcher
 
 #End Region
 

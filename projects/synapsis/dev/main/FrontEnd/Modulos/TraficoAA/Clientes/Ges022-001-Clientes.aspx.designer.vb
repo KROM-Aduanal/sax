@@ -41,6 +41,24 @@ Partial Public Class Ges022_001_Clientes
     Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
 
     '''<summary>
+    '''Control _fstest.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents _fstest As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control cv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cv As Global.Gsol.Web.Components.CollectionViewControl
+
+    '''<summary>
     '''Control _fsdatosgenerales.
     '''</summary>
     '''<remarks>

@@ -92,7 +92,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Utils.InformacionDocumento64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\global\lib\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

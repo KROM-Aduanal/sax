@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports gsol.krom
-Imports MongoDB.Bson
 Imports Syn.Documento.Componentes
 Imports Syn.Documento.Componentes.Campo.TiposDato
 Imports Syn.Nucleo.Recursos.CamposClientes
@@ -129,7 +128,7 @@ Namespace Syn.Documento
                                              Item(CamposClientes.CP_CLIENTE_EXTRANJERO, Entero),
                                              Item(CamposClientes.CP_CLIENTE_HABILITADO, Booleano),
                                              Item(CamposClientes.CP_ID_EMPRESA, IdObject),
- _
+                                                                                          _
                                              Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=250),
                                              Item(CamposDomicilio.CA_CALLE, Texto, longitud_:=80),
                                              Item(CamposDomicilio.CA_NUMERO_EXTERIOR, Texto, longitud_:=10),
@@ -169,7 +168,7 @@ Namespace Syn.Documento
                                              Item(CamposClientes.CP_NOMBRE_CONTACTO, Texto, longitud_:=250),
                                              Item(CamposClientes.CP_RFC_CONTACTO, Texto, longitud_:=13),
                                              Item(CamposClientes.CP_NOMBRE_PUESTO, Texto, longitud_:=100),
- _
+                                                                                                          _
                                              Item(CamposClientes.CP_INFO_CONTACTO, Texto, longitud_:=100),
                                              Item(CamposClientes.CP_TELEFONO1_CONTACTO, Texto, longitud_:=100),
                                              Item(CamposClientes.CP_MOVIL_CONTACTO, Texto, longitud_:=100),
@@ -190,8 +189,8 @@ Namespace Syn.Documento
                 Case SeccionesClientes.SCS5
 
                     Return New List(Of Nodo) From {
-                                             Item(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS, Texto, longitud_:=100),
-                                             Item(CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS, Texto, longitud_:=100),
+                                             Item(CamposClientes.CP_RUTA_ARCHIVO_SER_SELLOS, IdObject, longitud_:=100),
+                                             Item(CamposClientes.CP_RUTA_ARCHIVO_KEY_SELLOS, IdObject, longitud_:=100),
                                              Item(CamposClientes.CP_FECHA_VIGENCIA_SELLOS, Fecha),
                                              Item(CamposClientes.CP_CONTRASENIA_SELLOS, Texto, longitud_:=50),
                                              Item(CamposClientes.CP_CVE_WEB_SERVICES_SELLOS, Texto, longitud_:=50)

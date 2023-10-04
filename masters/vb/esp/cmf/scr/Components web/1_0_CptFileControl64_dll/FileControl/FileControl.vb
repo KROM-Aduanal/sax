@@ -191,6 +191,26 @@ Public Class FileControl
 
 #Region "Metodos"
 
+    Public Sub EnabledButton(ByVal enabled_ As Boolean)
+
+        EnsureChildControls()
+
+        If enabled_ = False Then
+
+            _uploadActionButton.Attributes.Add("class", "__upload disabled")
+
+            _deleteActionButton.Attributes.Add("class", "__delete disabled")
+
+        Else
+
+            _uploadActionButton.Attributes.Add("class", "__upload")
+
+            _deleteActionButton.Attributes.Add("class", "__delete")
+
+        End If
+
+    End Sub
+
     Private Function GetEnumDescription(Of TEnum)(enumObj_ As TEnum) As String
 
         Dim fi_ As FieldInfo = enumObj_.GetType().GetField(enumObj_.ToString())

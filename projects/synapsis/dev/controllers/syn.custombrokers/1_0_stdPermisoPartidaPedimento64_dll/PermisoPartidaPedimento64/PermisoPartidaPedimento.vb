@@ -1,101 +1,137 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class PermisoPartidaPedimento
+    Inherits OperacionesPartidas
+
+#Region "Atributos"
+
+    Private _idPermiso As Integer
+
+    Private _clave As String
+
+    Private _numero As String
+
+    Private _firmaDescargo As String
+
+    Private _valorComercialDolares As Double
+
+    Private _cantidadUMTC As Double
+
+    Private _archivado As Boolean
+
+    Private _estado As Integer
+
+#End Region
 
 #Region "Propiedades"
 
-    Property IdPermiso As Object
+    Property IdPermiso As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _idPermiso
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _idPermiso = value
 
         End Set
 
     End Property
 
-    Property Clave As Object
+    Property Clave As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _clave
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _clave = value
 
         End Set
 
     End Property
 
-    Property Numero As Object
+    Property Numero As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _numero
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _numero = value
 
         End Set
 
     End Property
 
-    Property FirmaDescargo As Object
+    Property FirmaDescargo As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _firmaDescargo
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _firmaDescargo = value
 
         End Set
 
     End Property
 
-    Property ValorComercialDolares As Object
+    Property ValorComercialDolares As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _valorComercialDolares
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _valorComercialDolares = value
 
         End Set
 
     End Property
 
-    Property CantidadUMTTC As Object
+    Property CantidadUMTC As Double
 
         Get
 
-            Throw New NotImplementedException()
+            Return _cantidadUMTC
 
         End Get
 
-        Set(value As Object)
+        Set(value As Double)
 
-            Throw New NotImplementedException()
+            _cantidadUMTC = value
+
+        End Set
+
+    End Property
+
+    Property Archivado As Boolean
+
+        Get
+
+            Return _archivado
+
+        End Get
+
+        Set(value As Boolean)
+
+            _archivado = value
 
         End Set
 
@@ -105,13 +141,13 @@ Public Class PermisoPartidaPedimento
 
         Get
 
-            Throw New NotImplementedException()
+            Return _estado
 
         End Get
 
         Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _estado = value
 
         End Set
 
@@ -121,19 +157,25 @@ Public Class PermisoPartidaPedimento
 
 #Region "Metodos"
 
-    Public Function AgregarPermiso() As TagWatcher
+    Public Overrides Function Agregar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function ActualizarPermiso() As TagWatcher
+    Public Overrides Function Actualizar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function EliminarPermiso() As TagWatcher
+    Public Overrides Function Eliminar() As TagWatcher
+
+        Throw New NotImplementedException()
+
+    End Function
+
+    Public Overrides Function Archivar() As TagWatcher
 
         Throw New NotImplementedException()
 

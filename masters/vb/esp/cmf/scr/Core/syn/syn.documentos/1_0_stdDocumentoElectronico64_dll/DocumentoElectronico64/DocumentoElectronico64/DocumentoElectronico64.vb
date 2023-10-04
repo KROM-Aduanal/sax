@@ -7,9 +7,20 @@ Imports Syn.Operaciones
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 Imports Wma.Exceptions
+Imports gsol.krom
 
 Namespace Syn.Documento
 
+    <BsonKnownTypes(GetType(EntidadDatosDocumento))>
+    <BsonKnownTypes(GetType(ConstructorCliente))>
+    <BsonKnownTypes(GetType(ConstructorProducto))>
+    <BsonKnownTypes(GetType(ConstructorReferencia))>
+    <BsonKnownTypes(GetType(ConstructorPedimentoNormal))>
+    <BsonKnownTypes(GetType(ConstructorProveedoresOperativos))>
+    <BsonKnownTypes(GetType(ConstructorRevalidacion))>
+    <BsonKnownTypes(GetType(ConstructorViajes))>
+    <BsonKnownTypes(GetType(ConstructorTIGIE))>
+    <BsonKnownTypes(GetType(ConstructorFacturaComercial))>
     <Serializable()>
     Public Class DocumentoElectronico
         Inherits Documento
@@ -630,7 +641,9 @@ Namespace Syn.Documento
                 If conCampos_ Then
 
                     .Nodos = ObtenerCamposSeccion(Convert.ToInt32(seccionEnum_))
+
                 Else
+
                     .Nodos = New List(Of Nodo)
 
                 End If

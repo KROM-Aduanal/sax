@@ -32,9 +32,13 @@ Public Interface IUIControl
     Property Label As String
     Property IdPermiso As Integer
     Property WorksWith As [Enum]
+
     Property ToolTipExpireTime As Integer
+
     Property ToolTipStatus As ToolTipTypeStatus
+
     Property ToolTipModality As ToolTipModalities
+
     Property ToolTipIsVisible As Boolean
 
 #End Region

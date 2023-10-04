@@ -196,7 +196,7 @@
                                                </div>
                                                <div class="col-xs-12 col-md-6 mt-3 p-0">
                                                     <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 mb-5">
-                                                          <GWC:InputControl runat="server" ID="ic_CantidadAcuseValor" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Real" Name="ic_CantidadAcuseValor" Label="Cantidad" OnTextChanged="ic_CantidadAcuseValor_TextChanged" />
+                                                          <GWC:InputControl runat="server" ID="ic_CantidadAcuseValor" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Real" Name="ic_CantidadAcuseValor" Label="Cantidad" />
                                                           <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="sc_UnidadAcuseValor" Name="sc_UnidadAcuseValor" SearchBarEnabled="true" LocalSearch="false" Label="Unidad A.V." OnTextChanged="sc_UnidadAcuseValor_TextChanged" OnClick="sc_UnidadAcuseValor_Click">
 
                                                           </GWC:SelectControl> 

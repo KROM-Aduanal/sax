@@ -1,37 +1,26 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class ItemExtraAutomoviles
 
+#Region "Atributos"
+
+    Private _kilometraje As Integer
+
+#End Region
+
 #Region "Propiedades"
-
-    Property NoIdentificadorVehicular As Object
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Object)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
 
     Property Kilometraje As Object
 
         Get
 
-            Throw New NotImplementedException()
+            Return _kilometraje
 
         End Get
 
         Set(value As Object)
 
-            Throw New NotImplementedException()
+            _kilometraje = value
 
         End Set
 
@@ -41,7 +30,7 @@ Public Class ItemExtraAutomoviles
 
 #Region "Metodos"
 
-    Public Function VerificaKilometraje() As TagWatcher
+    Private Function VerificaKilometraje() As TagWatcher
 
         Throw New NotImplementedException()
 

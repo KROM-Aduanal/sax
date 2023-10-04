@@ -6,4 +6,3 @@ C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFindboxControl64_dll\Findbox
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFindboxControl64_dll\FindboxControl\obj\Debug\Gsol.Web.Components.CptFindboxControl64.0.0.0.0.dll
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFindboxControl64_dll\FindboxControl\obj\Debug\Gsol.Web.Components.CptFindboxControl64.0.0.0.0.pdb
 C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFindboxControl64_dll\FindboxControl\obj\Debug\CptFindboxControl64.vbproj.AssemblyReference.cache
-C:\sax\masters\vb\esp\cmf\scr\Components web\1_0_CptFindboxControl64_dll\FindboxControl\obj\Debug\CptFindboxControl64.vbproj.CopyComplete

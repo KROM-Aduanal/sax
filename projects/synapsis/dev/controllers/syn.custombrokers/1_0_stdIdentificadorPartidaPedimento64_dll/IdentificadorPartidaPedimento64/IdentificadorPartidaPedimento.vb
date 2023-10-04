@@ -1,85 +1,135 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports Wma.Exceptions
 
 Public Class IdentificadorPartidaPedimento
+    Inherits OperacionesPartidas
+
+#Region "Atributos"
+
+    Private _idIdentificador As Integer
+
+    Private _identificador As String
+
+    Private _complemento1 As String
+
+    Private _complemento2 As String
+
+    Private _complemento3 As String
+
+    Private _archivado As Boolean
+
+    Private _estado As Integer
+
+#End Region
 
 #Region "Propiedades"
 
-    Property IdIdentificador As Object
+    Property IdIdentificador As Integer
 
         Get
 
-            Throw New NotImplementedException()
+            Return _idIdentificador
 
         End Get
 
-        Set(value As Object)
+        Set(value As Integer)
 
-            Throw New NotImplementedException()
+            _idIdentificador = value
 
         End Set
 
     End Property
 
-    Property Identificador As Object
+    Property Identificador As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _identificador
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _identificador = value
 
         End Set
 
     End Property
 
-    Property Complemento1 As Object
+    Property Complemento1 As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _complemento1
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _complemento1 = value
 
         End Set
 
     End Property
 
-    Property Complemento2 As Object
+    Property Complemento2 As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _complemento2
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _complemento2 = value
 
         End Set
 
     End Property
 
-    Property Complemento3 As Object
+    Property Complemento3 As String
 
         Get
 
-            Throw New NotImplementedException()
+            Return _complemento3
 
         End Get
 
-        Set(value As Object)
+        Set(value As String)
 
-            Throw New NotImplementedException()
+            _complemento3 = value
+
+        End Set
+
+    End Property
+
+    Property Archivado As Boolean
+
+        Get
+
+            Return _archivado
+
+        End Get
+
+        Set(value As Boolean)
+
+            _archivado = value
+
+        End Set
+
+    End Property
+
+    Property Estado As Integer
+
+        Get
+
+            Return _estado
+
+        End Get
+
+        Set(value As Integer)
+
+            _estado = value
 
         End Set
 
@@ -89,19 +139,25 @@ Public Class IdentificadorPartidaPedimento
 
 #Region "Metodos"
 
-    Public Function AgregarIdentificador() As TagWatcher
+    Public Overrides Function Agregar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function ActualizarIdentificador() As TagWatcher
+    Public Overrides Function Actualizar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function EliminarIdentificador() As TagWatcher
+    Public Overrides Function Eliminar() As TagWatcher
+
+        Throw New NotImplementedException()
+
+    End Function
+
+    Public Overrides Function Archivar() As TagWatcher
 
         Throw New NotImplementedException()
 

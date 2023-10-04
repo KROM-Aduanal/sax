@@ -1,51 +1,69 @@
-﻿
-Imports Wma.Exceptions
+﻿Imports MongoDB.Bson
 
 Public Interface IItemFacturaComercial
+    Inherits ICloneable, IDisposable
 
 #Region "Propiedades"
 
     Property SecuenciaItem As Integer
 
-    Property FacturaItem As Object
+    Property _idItemFactura As ObjectId
+
+    Property _idFacturaComercial As ObjectId
+
+    Property FolioFacturaComercial As String
 
     Property FraccionArancelaria As String
 
+    Property DescripcionFraccionArancelaria As String
+
     Property Nico As String
 
-    Property Vinculacion As Object
+    Property DescripcionNico As String
 
-    Property MetodoValoracion As Object
+    Property Vinculacion As Integer
 
-    Property UnidadMedidaComercial As Object
+    Property DescripcionVinculacion As String
 
-    Property PaisVentaCompra As Object
+    Property MetodoValoracion As Integer
 
-    Property PaisOrigenDestino As Object
+    Property DescripcionMetodoValoracion As String
 
-    Property PrecioUnitario As Object
+    Property UnidadMedidaComercial As Integer
 
-    Property CantidadUMC As Object
+    Property DescripcionUnidadMedidaComercial As String
 
-    Property UnidadMedidaTarifa As Object
+    Property PaisVendedor As String
 
-    Property CantidadUMT As Object
+    Property DescripcionPaisVendedor As String
+
+    Property PaisComprador As String
+
+    Property DescripcionPaisComprador As String
+
+    Property PaisOrigen As String
+
+    Property DescripcionPaisOrigen As String
+
+    Property PaisDestino As String
+
+    Property DescripcionPaisDestino As String
+
+    Property PrecioUnitario As Double
+
+    Property CantidadUMC As Double
+
+    Property UnidadMedidaTarifa As Integer
+
+    Property DescripcionUnidadMedidaTarifa As String
+
+    Property CantidadUMT As Double
 
     Property Descripcion As String
 
-    Property ValorMercancia As Object
+    Property ValorMercancia As Double
 
     Property Estado As Integer
-
-#End Region
-
-#Region "Metodos"
-
-    Function AgregarItemFactura() As TagWatcher
-
-    Function ActualizarItemFactura() As TagWatcher
-
-    Function EliminarItemFactura() As TagWatcher
 
 #End Region
 

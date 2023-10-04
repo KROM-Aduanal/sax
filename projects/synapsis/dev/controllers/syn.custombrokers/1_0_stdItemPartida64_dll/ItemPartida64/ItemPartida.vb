@@ -1,108 +1,154 @@
-﻿
+﻿Imports MongoDB.Bson
 Imports Wma.Exceptions
 
 Public Class ItemPartida
+    Inherits OperacionesPartidas
 
-#Region "Propiedades"
+#Region "Atributos"
 
-    Property idItemPatida As Object
+    Property _iditempartida As ObjectId
 
-        Get
+    Property secuenciaitempartida As Integer
 
-            Throw New NotImplementedException()
+    Property _iditemfactura As ObjectId 'Object Id del item de la factura no esta a nivel factura implementado
 
-        End Get
+    Property _idfacturacomercial As ObjectId
 
-        Set(value As Object)
+    Property _idpartidapedimento As ObjectId
 
-            Throw New NotImplementedException()
+    Property secuenciaitemfactura As Integer
 
-        End Set
+    Property secuenciapartidapedimento As Integer
 
-    End Property
+    Property fraccionarancelaria As String
 
-    Property FacturaItem As Object
+    Property descripcionfraccionarancelaria As String
 
-        Get
+    Property nico As String
 
-            Throw New NotImplementedException()
+    Property descripcionnico As String
 
-        End Get
+    Property unidadmedidacomercial As Integer
 
-        Set(value As Object)
+    Property descripcionunidadmedidacomercial As String
 
-            Throw New NotImplementedException()
+    Property unidadmedidatarifa As Integer
 
-        End Set
+    Property descripcionunidadmedidatarifa As String
 
-    End Property
+    Property cantidadcomercial As Double
 
-    Property SecuenciaItem As Integer
+    Property cantidadtarifa As Double
 
-        Get
+    Property paisvendedor As String
 
-            Throw New NotImplementedException()
+    Property descripcionpaisvendedor As String
 
-        End Get
+    Property paiscomprador As String
 
-        Set(value As Integer)
+    Property descripcionpaiscomprador As String
 
-            Throw New NotImplementedException()
+    Property paisorigen As String
 
-        End Set
+    Property descripcionpaisorigen As String
 
-    End Property
+    Property paisdestino As String
 
-    Property SecuenciaPartida As Integer
+    Property descripcionpaisdestino As String
 
-        Get
+    Property preciounitario As Double
 
-            Throw New NotImplementedException()
+    Property valormercancia As Double
 
-        End Get
+    Property codigoproducto As String
 
-        Set(value As Integer)
+    Property secuenciaproducto As Integer
 
-            Throw New NotImplementedException()
+    Property archivado As Boolean
 
-        End Set
-
-    End Property
-
-    Property Estado As Integer
-
-        Get
-
-            Throw New NotImplementedException()
-
-        End Get
-
-        Set(value As Integer)
-
-            Throw New NotImplementedException()
-
-        End Set
-
-    End Property
+    Property estado As Integer
 
 #End Region
 
 #Region "Metodos"
 
-    Public Function AgregarItemPartidaAsociado() As TagWatcher
+    Public Overloads Function Agregar(ByVal itemFactura_ As ItemFacturaComercial,
+                                      ByVal partida_ As PartidaPedimento,
+                                      Optional ByVal secuenciaPartida_ As Integer = 0) _
+                                      As TagWatcher
+
+        Dim tagwatcher_ As New TagWatcher
+
+        If itemFactura_ IsNot Nothing And partida_ IsNot Nothing Then
+
+            Dim itemPartida_ As New ItemPartida With {
+                        ._iditempartida = ObjectId.GenerateNewId,
+                        ._idpartidapedimento = partida_.idPartidaPedimento,
+                        ._idfacturacomercial = itemFactura_.idFacturaComercial,
+                        ._iditemfactura = itemFactura_.idItemFactura,
+                        .secuenciaitemfactura = itemFactura_.SecuenciaItem,
+                        .secuenciapartidapedimento = secuenciaPartida_,
+                        .fraccionarancelaria = itemFactura_.FraccionArancelaria,
+                        .descripcionfraccionarancelaria = itemFactura_.DescripcionFraccionArancelaria,
+                        .nico = itemFactura_.Nico,
+                        .descripcionnico = itemFactura_.DescripcionNico,
+                        .unidadmedidacomercial = partida_.UnidadMedidaComercial,
+                        .cantidadcomercial = itemFactura_.CantidadUMC,
+                        .descripcionunidadmedidacomercial = partida_.DescripcionUnidadMedidaComercial,
+                        .cantidadtarifa = itemFactura_.CantidadUMT,
+                        .unidadmedidatarifa = partida_.UnidadMedidaTarifa,
+                        .descripcionunidadmedidatarifa = partida_.DescripcionUnidadMedidaTarifa,
+                        .paisvendedor = itemFactura_.PaisVendedor,
+                        .descripcionpaisvendedor = itemFactura_.DescripcionPaisVendedor,
+                        .paiscomprador = itemFactura_.PaisComprador,
+                        .descripcionpaiscomprador = itemFactura_.DescripcionPaisComprador,
+                        .paisorigen = itemFactura_.PaisOrigen,
+                        .descripcionpaisorigen = itemFactura_.DescripcionPaisOrigen,
+                        .paisdestino = itemFactura_.PaisDestino,
+                        .descripcionpaisdestino = itemFactura_.DescripcionPaisDestino,
+                        .preciounitario = itemFactura_.PrecioUnitario,
+                        .valormercancia = itemFactura_.ValorMercancia,
+                        .codigoproducto = itemFactura_.CodigoProducto,
+                        .secuenciaproducto = itemFactura_.SecuenciaProducto,
+                        .archivado = False,
+                        .estado = 1
+            }
+
+            '_itempartida.SecuenciaProducto = 'Debe venir de FC pero no se tiene implementado
+
+            tagwatcher_.ObjectReturned = itemPartida_
+
+            tagwatcher_.SetOK()
+
+        Else
+
+            tagwatcher_.SetError(Me, "La información está incompleta para asociar el item con la partida.")
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
+    Public Overrides Function Agregar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-
-    Public Function EliminarItemPartidaAsociado() As TagWatcher
+    Public Overrides Function Actualizar() As TagWatcher
 
         Throw New NotImplementedException()
 
     End Function
 
-    Public Function ActualizarItemPartidaAsociado() As TagWatcher
+    Public Overrides Function Eliminar() As TagWatcher
+
+        Throw New NotImplementedException()
+
+    End Function
+
+    Public Overrides Function Archivar() As TagWatcher
 
         Throw New NotImplementedException()
 

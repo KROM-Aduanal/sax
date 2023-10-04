@@ -28,21 +28,21 @@ Public Interface IControladorFacturaComercial : Inherits IDisposable
 #Region "Propiedades"
     Property FacturasComerciales As List(Of ConstructorFacturaComercial)
 
-        ReadOnly Property Documento As DocumentoElectronico
+    ReadOnly Property Documento As DocumentoElectronico
 
-        ReadOnly Property Documentos As List(Of DocumentoElectronico)
+    ReadOnly Property Documentos As List(Of DocumentoElectronico)
 
-        WriteOnly Property Estado As TagWatcher
+    Property Estado As TagWatcher
 
-        Property ModalidadTrabajo As Modalidades
+    Property ModalidadTrabajo As Modalidades
 
-        WriteOnly Property ConservarFacturas As Boolean
+    WriteOnly Property ConservarFacturas As Boolean
 
-        Property Entorno As Integer
+    Property Entorno As Integer
 
-        Property DisponibilidadRecurso As Disponibilidades
+    Property DisponibilidadRecurso As Disponibilidades
 
-        ReadOnly Property FactorConfiabilidadIA As Double
+    ReadOnly Property FactorConfiabilidadIA As Double
 #End Region
 
 #Region "Métodos"

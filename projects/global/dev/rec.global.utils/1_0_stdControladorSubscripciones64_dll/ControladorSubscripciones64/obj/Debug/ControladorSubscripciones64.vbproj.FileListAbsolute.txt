@@ -14,6 +14,14 @@ C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscr
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.CoreCompileInputs.cache
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll
 C:\SAX\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.pdb
+C:\saxunion\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.pdb
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.AssemblyReference.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.Resources.resources
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.GenerateResource.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.CoreCompileInputs.cache
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll
+C:\saxunion\masters\vb\esp\cmf\scr\Core\rec\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.pdb
 C:\SAX\projects\global\dev\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.AssemblyReference.cache
 C:\SAX\projects\global\dev\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\Rec.Globals.Utils.Resources.resources
 C:\SAX\projects\global\dev\rec.global.utils\1_0_stdControladorSubscripciones64_dll\ControladorSubscripciones64\obj\Debug\ControladorSubscripciones64.vbproj.GenerateResource.cache

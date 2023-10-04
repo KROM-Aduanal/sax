@@ -1,4 +1,5 @@
-﻿Imports System.Security.Permissions
+﻿Imports System.ComponentModel
+Imports System.Security.Permissions
 Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.HtmlControls
@@ -10,6 +11,7 @@ AspNetHostingPermission(SecurityAction.Demand,
     Level:=AspNetHostingPermissionLevel.Minimal),
 AspNetHostingPermission(SecurityAction.InheritanceDemand,
     Level:=AspNetHostingPermissionLevel.Minimal),
+    DefaultEvent("TextChanged"),
 ToolboxData("<{0}:Register runat=""server""> </{0}:Register>")
 >
 Public Class InputControl
@@ -53,9 +55,15 @@ Public Class InputControl
 
     Private _unlokedControl As HtmlGenericControl
 
+    Private _tooltipControlText As TextBox
+
 #End Region
 
 #Region "Propiedades"
+
+    Private Shared ReadOnly EventTextChanged As New Object()
+
+    Private Shared ReadOnly EventCheckedChange As New Object()
 
     Public Property TextAlign As InputTextAlign = InputTextAlign.Left
 
@@ -137,7 +145,95 @@ Public Class InputControl
 #Region "Constructor"
 #End Region
 
+#Region "Eventos"
+
+    Public Custom Event TextChanged As EventHandler
+
+        AddHandler(ByVal value As EventHandler)
+
+            Events.AddHandler(EventTextChanged, value)
+
+        End AddHandler
+
+        RemoveHandler(ByVal value As EventHandler)
+
+            Events.RemoveHandler(EventTextChanged, value)
+
+        End RemoveHandler
+
+        RaiseEvent(ByVal sender As Object, ByVal e As System.EventArgs)
+
+            CType(Events(EventTextChanged), EventHandler).Invoke(sender, e)
+
+        End RaiseEvent
+
+    End Event
+
+    Protected Overridable Sub OnTextChanged(ByVal e As EventArgs)
+
+        Dim submitHandler As EventHandler = CType(Events(EventTextChanged), EventHandler)
+
+        If submitHandler IsNot Nothing Then
+
+            submitHandler(Me, e)
+
+        End If
+
+    End Sub
+
+    Public Custom Event CheckedChanged As EventHandler
+
+        AddHandler(ByVal value As EventHandler)
+
+            Events.AddHandler(EventCheckedChange, value)
+
+        End AddHandler
+
+        RemoveHandler(ByVal value As EventHandler)
+
+            Events.RemoveHandler(EventCheckedChange, value)
+
+        End RemoveHandler
+
+        RaiseEvent(ByVal sender As Object, ByVal e As System.EventArgs)
+
+            CType(Events(EventCheckedChange), EventHandler).Invoke(sender, e)
+
+        End RaiseEvent
+
+    End Event
+
+    Protected Overridable Sub OnCheckedChanged(ByVal e As EventArgs)
+
+        Dim submitHandler As EventHandler = CType(Events(EventCheckedChange), EventHandler)
+
+        If submitHandler IsNot Nothing Then
+
+            submitHandler(Me, e)
+
+        End If
+
+    End Sub
+
+#End Region
+
 #Region "Metodos"
+
+    Private Sub InputSelected(ByVal source As Object, ByVal e As EventArgs)
+
+        EnsureChildControls()
+
+        OnCheckedChanged(EventArgs.Empty)
+
+    End Sub
+
+    Private Sub TextInputChanged(ByVal source As Object, ByVal e As EventArgs)
+
+        EnsureChildControls()
+
+        OnTextChanged(EventArgs.Empty)
+
+    End Sub
 
     Private Sub RenderTextField(ByRef component_ As HtmlGenericControl)
 
@@ -154,8 +250,6 @@ Public Class InputControl
             .ID = ID
 
             .Text = Value
-
-            .Attributes.Add("tooltip-sttings", GetToolTipSetting())
 
             .Attributes.Add("is", "wc-input")
 
@@ -227,7 +321,11 @@ Public Class InputControl
 
             .Attributes.Add("autocomplete", "off")
 
+            .AutoPostBack = True
+
         End With
+
+        AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
 
         With component_
 
@@ -244,6 +342,8 @@ Public Class InputControl
             .Controls.Add(New LiteralControl("		<span>" & Label & "</span>"))
 
             .Controls.Add(New LiteralControl("	</label>"))
+
+            .Controls.Add(_tooltipControlText)
 
             .Controls.Add(New LiteralControl("</div>"))
 
@@ -289,7 +389,11 @@ Public Class InputControl
 
             .Attributes.Add("placeholder", Label)
 
+            .AutoPostBack = True
+
         End With
+
+        AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
 
         With component_
 
@@ -350,7 +454,11 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
+            .AutoPostBack = True
+
         End With
+
+        AddHandler DirectCast(_inputElement, CheckBox).CheckedChanged, AddressOf InputSelected
 
         With component_
 
@@ -382,7 +490,11 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
+            .AutoPostBack = True
+
         End With
+
+        AddHandler DirectCast(_inputElement, CheckBox).CheckedChanged, AddressOf InputSelected
 
         With component_
 
@@ -409,6 +521,16 @@ Public Class InputControl
 #Region "Renderizado"
 
     Protected Overrides Sub CreateChildControls()
+
+        _tooltipControlText = New TextBox
+
+        With _tooltipControlText
+
+            .Attributes.Add("class", "__tooltip d-none")
+
+            .Attributes.Add("is", "wc-tooltip")
+
+        End With
 
         Dim component_ = New HtmlGenericControl("div")
 
@@ -449,6 +571,8 @@ Public Class InputControl
             _unlokedControl.Controls.Add(SetLockedControl())
 
         End If
+
+        GetToolTipSetting(_tooltipControlText)
 
         Me.RenderContents(component_)
 
