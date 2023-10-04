@@ -43,7 +43,7 @@ Public Class ControladorTIGIE
 #Region "Funciones"
     'https://stackoverflow.com/questions/60142898/unable-to-cast-object-of-type-mongodb-bson-bsonstring-to-type-mongodb-bson-bs
     'Match(Function(e) e.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento.Contains(texto_)).
-    'ToEnumerable().Where(Function(e) e.Fraccion.Contains(texto_)).ToList()
+    'ToEnumerable().Where(Function(e) e.Fraccion.Contains(texto_)).ToList() nbjjdbvjdvj
 
     Public Function Prueba() As List(Of Object)
 
