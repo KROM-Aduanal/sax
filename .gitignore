@@ -1,0 +1,12 @@
+# User-specific files
+*.suo
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!?*.[Cc]ache/
+sax.projects*.json
+sax.settings*.json
+synapsis.modules*.json
+synapsis.settings*.json
