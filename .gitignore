@@ -10,3 +10,4 @@ sax.projects.json
 sax.settings.json
 synapsis.modules.json
 synapsis.settings.json
+*.vsidx

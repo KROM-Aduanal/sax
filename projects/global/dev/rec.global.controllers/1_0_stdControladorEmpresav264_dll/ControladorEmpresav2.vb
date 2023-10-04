@@ -1575,7 +1575,6 @@ Namespace Rec.Globals.Controllers
 
                     End If
 
-
                 Else
 
                     .SetOKBut(Me, "No se envío una clave de empresa válida")
@@ -1595,7 +1594,6 @@ Namespace Rec.Globals.Controllers
                                         Implements IControladorEmpresas64.BuscarDomicilio
 
             With Estado
-
 
                 If cveEmpresa_ <> 0 And
                     cvePais_ <> 0 And
