@@ -138,15 +138,15 @@
                                 <GWC:FieldsetControl runat="server">
                                     <ListControls>
                                         <GWC:CatalogControl runat="server" ID="cat_tlcan" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Paises" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Sector" Label="Sector"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Arancel" Label="Arancel"/>
-                                                <%--<GWC:InputControl runat="server" ID="c1_txt_Preferencia" Label="Preferencia"/>--%>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Observacion" Label="Observación"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Publicacion" Label="Publicación"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_EntradaVigor" Label="Entrada en vigor"/>
-                                            </Columns>
+                                                <Columns>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_Paises" Label="Paises"/>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_Sector" Label="Sector"/>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_Arancel" Label="Arancel"/>
+                                                    <%--<GWC:InputControl runat="server" ID="c1_txt_Preferencia" Label="Preferencia"/>--%>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_Observacion" Label="Observación"/>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_Publicacion" Label="Publicación"/>
+                                                    <GWC:InputControl runat="server" ID="c1_txt_EntradaVigor" Label="Entrada en vigor"/>
+                                                </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>
                                 </GWC:FieldsetControl>
@@ -318,7 +318,7 @@
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Normas IsNot Nothing %>
                                 <% For Each row As NormaItem In Normas %>
-                            
+                                    <% If row.FechaFinVigencia >= DateTime.Now %>
                                     <div class="fieldset col-xs-12">
                                         <div class="col-xs-12 col-md-6">
                                             <gwc-label Bold="True" Text="<%=row.NOM%>" Detail="NOM:" CssClass="col-xs-12"></gwc-label>
@@ -328,10 +328,10 @@
                                             <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
                                             <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
                                             <gwc-label Text="" Detail="Dato omitido o inexacto:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
                                         </div>                         
                                     </div> 
-
+                                    
+                                <% End If %>
                                 <% Next  %>
                                 <% End If %>
                                 </asp:panel>
@@ -399,14 +399,14 @@
                             
                                     <div class="fieldset col-xs-12">
                                         <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.Sector%>" Detail="Sector:" CssClass="col-xs-12"></gwc-label>
+                                            <gwc-label Bold="True" Text="<%=row.Clave%>" Detail="Sector:" CssClass="col-xs-12"></gwc-label>
                                             <gwc-label Text="" Detail="Anexo:" CssClass="col-xs-12"></gwc-label>
                                             <gwc-label Text="" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
                                         </div>
                                         <div class="col-xs-12 col-md-6">
                                             <gwc-label Text="" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
                                             <gwc-label Text="" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.Notas%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
+                                            <gwc-label Text="<%=row.Encabezado%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
                                         </div>                         
                                     </div> 
 

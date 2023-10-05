@@ -581,44 +581,47 @@ Public Class ControladorTIGIE
         End With
 
     End Function
-    Public Function TraeDatosFraccion(id_ As ObjectId,
-                                      Optional tipoOperacion_ As IControladorTIGIE.TipoOperacion = IControladorTIGIE.TipoOperacion.Importacion,
-                                      Optional pais_ As String = Nothing) As TagWatcher _
-                                      Implements IControladorTIGIE.TraeDatosFraccion
 
-        Dim seccionesCampos_ = New Dictionary(Of [Enum], List(Of [Enum])) From {{SeccionesTarifaArancelaria.TIGIE1,
-                                                                                New List(Of [Enum]) From {CA_NUMERO_FRACCION_ARANCELARIA, CA_NUMERO_NICO, CA_FRACCION_ARANCELARIA}},
-                                                                                {SeccionesTarifaArancelaria.TIGIE2, Nothing}
-                                                                               }
+    Public Function TraeDatosFraccion(Of T)(fracciones_ As List(Of String),
+                                      tipoOperacion_ As IControladorTIGIE.TipoOperacion,
+                                      pais_ As String,
+                                      fecha_ As Date) As TagWatcher _
+        Implements IControladorTIGIE.TraeDatosFraccion
+
+        Dim vehiculoFracciones_ = New Dictionary(Of String, Object)
 
         With _Estado
 
+            Dim operacionesDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(Activator.CreateInstance(Of T)().GetType.Name)
 
-            If Not id_ = ObjectId.Empty Then
-                'using
-                _Estado = ObtenerListaValores(New List(Of ObjectId) From {id_},
-                                                seccionesCampos_)
+            Dim items_ = operacionesDB_.Aggregate().Match(Function(a) fracciones_.Contains(a.FolioOperacion)).ToList()
+
+            If items_.Count Then
+
+                For Each item_ In items_
+
+                    Dim constructorTigie_ = item_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                    .SetOK()
+
+                    Dim result = GenerarVehiculo(constructorTigie_, tipoOperacion_, pais_, fecha_)
+
+                    vehiculoFracciones_.Add(item_.FolioOperacion, result)
+
+                Next
+
+                .ObjectReturned = vehiculoFracciones_
 
             Else
 
-                .SetOKBut(Me, "Facturas no disponibles en batería")
+                .SetOKBut(Me, "No se encontró la fracción")
 
             End If
-
 
 
             Return _Estado
 
         End With
-
-    End Function
-
-    Public Function TraeDatosFraccion(fraccion_ As String,
-                                      Optional tipoOperacion_ As IControladorTIGIE.TipoOperacion = IControladorTIGIE.TipoOperacion.Importacion,
-                                      Optional pais_ As String = Nothing) As TagWatcher _
-                                      Implements IControladorTIGIE.TraeDatosFraccion
-
-        Throw New NotImplementedException()
 
     End Function
 
@@ -827,162 +830,6 @@ Public Class ControladorTIGIE
         Next
 
         Return dataPadrones_
-
-    End Function
-
-    Private Function ObtenerListaValores(idsFracciones_ As List(Of ObjectId),
-                                        seccionesCampos_ As Dictionary(Of [Enum], List(Of [Enum]))) _
-                                        As TagWatcher
-
-        With _Estado
-
-            Try
-
-                Dim listadoValoresObject_ = New Dictionary(Of ObjectId, List(Of Nodo))
-
-                Dim diccionarioValoresObjectId_ As New Dictionary(Of ObjectId, List(Of Nodo))
-
-                Dim _rOrganismo = New Organismo  'constructor 
-
-                listadoValoresObject_ = _rOrganismo.ObtenerCamposSeccionExterior(idsFracciones_,
-                                                                                New ConstructorTIGIE,
-                                                                                seccionesCampos_)
-
-                If listadoValoresObject_.Count > 0 Then
-
-                    For Each listaValor_ In listadoValoresObject_
-
-                        diccionarioValoresObjectId_.Add(listaValor_.Key, listaValor_.Value)
-
-                    Next
-
-                Else
-
-                    .SetError(Me, "No se encontraron campos en el listado de fracciones")
-
-                End If
-
-                If diccionarioValoresObjectId_.Count > 0 Then : .SetOK() : Else .SetOKBut(Me, "No se llenó la lista de valores") : End If
-
-                Dim fraccion_ = New Fraccion  'atributo de clase
-
-                fraccion_.impuestos = New List(Of String)
-
-                fraccion_.unidadMedida = "Unidad Medida"
-
-                fraccion_.tratados = New List(Of String)
-
-                fraccion_.normas = New List(Of String)
-
-                fraccion_.anexos = New List(Of String)
-
-                For Each tarifa_ As KeyValuePair(Of ObjectId, List(Of Nodo)) In diccionarioValoresObjectId_
-
-                    For Each nodo_ As Nodo In tarifa_.Value
-
-                        Select Case nodo_.DescripcionTipoNodo
-
-                            Case "Campo"
-
-                                fraccion_.fraccion &= DirectCast(nodo_, Campo).Valor
-
-                            Case Else
-
-                                fraccion_.unidadMedida &= "|" & nodo_.Attribute(CA_CLAVE_UNIDAD_MEDIDA).Valor & "|" & nodo_.Attribute(CA_UNIDAD_MEDIDA).Valor
-
-                                For Each impuesto_ As Nodo In nodo_.Seccion(TIGIE19).Nodos
-
-                                    fraccion_.impuestos.Add(impuesto_.Attribute(CA_NOMBRE_IMPUESTO).Valor & "|%|" &
-                                                            impuesto_.Attribute(CA_VALOR_IMPUESTO).Valor)
-
-                                Next
-
-                                For Each permiso_ As Nodo In nodo_.Seccion(TIGIE13).Nodos
-
-                                    If permiso_.Attribute(CA_FECHA_FIN).Valor > Now() Then
-
-                                        fraccion_.permiso = "Permiso|" & permiso_.Attribute(CamposTarifaArancelaria.CA_CLAVE).Valor & "|" &
-                                                            permiso_.Attribute(CA_ACOTACION).Valor
-
-                                    End If
-
-                                Next
-
-                                For Each tratado_ As Nodo In nodo_.Seccion(TIGIE6).Nodos
-
-                                    For Each pais_ As Nodo In tratado_.Seccion(TIGIE7).Nodos
-
-                                        If pais_.Attribute(CA_FECHA_FIN).Valor > Now() Then
-
-                                            If pais_.Attribute(CA_PAIS).Valor.ToString.Contains("CHILE") Then
-
-                                                fraccion_.tratados.Add(IIf(tratado_.Attribute(CA_NOMBRE_CORTO_TRATADO).Valor IsNot Nothing,
-                                                                           tratado_.Attribute(CA_NOMBRE_CORTO_TRATADO).Valor, "") & "|%|" &
-                                                                       pais_.Attribute(CA_ARANCEL).Valor & "|" &
-                                                                       pais_.Attribute(CA_CLAVE_IDENTIFICADOR).Valor)
-
-                                            End If
-
-                                        End If
-
-                                    Next
-
-                                Next
-
-                                Dim cadena_ As String
-
-                                For Each normas_ As Nodo In nodo_.Seccion(TIGIE14).Nodos
-
-                                    If normas_.Attribute(CA_FECHA_FIN).Valor > Now() Then
-
-                                        cadena_ = ""
-
-                                        For Each identificador_ As Nodo In normas_.Seccion(TIGIE20).Nodos
-
-                                            If cadena_ = "" Then
-
-                                                cadena_ &= identificador_.Attribute(CA_CLAVE_IDENTIFICADOR).Valor
-
-                                            Else
-
-                                                cadena_ &= ", " & identificador_.Attribute(CA_CLAVE_IDENTIFICADOR).Valor
-
-                                            End If
-
-                                        Next
-
-                                        fraccion_.normas.Add("Norma|" & cadena_ & "|" & normas_.Attribute(CA_NORMA).Valor)
-
-                                    End If
-
-                                Next
-
-                                For Each anexo_ As Nodo In nodo_.Seccion(TIGIE15).Nodos
-
-                                    fraccion_.anexos.Add(anexo_.Attribute(CA_NOMBRE).Valor)
-
-                                Next
-
-                        End Select
-
-                    Next
-
-                Next
-
-
-
-                .ObjectReturned = fraccion_
-
-
-            Catch ex As Exception
-
-                .SetError(Me, ex.Message)
-
-            End Try
-
-            Return _Estado
-
-        End With
 
     End Function
 
@@ -1413,17 +1260,6 @@ Public Structure PadronItem
     Public Property Clave As String
     Public Property SubClave As String
     Public Property Encabezado As String
-
-End Structure
-Public Structure Fraccion
-    Public Property fraccion As String
-    Public Property unidadMedida As String
-    Public Property impuestos As List(Of String)
-    Public Property tratados As List(Of String)
-    Public Property permiso As String
-    Public Property anexos As List(Of String)
-    Public Property normas As List(Of String)
-    Public Property cupo As String
 
 End Structure
 Public Structure VehiculoFraccion

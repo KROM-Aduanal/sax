@@ -40,12 +40,11 @@ Public Interface IControladorTIGIE
                         Optional ByVal tipoOperacion_ As TipoOperacion = TipoOperacion.Importacion,
                         Optional ByVal fecha_ As Date = Nothing,
                         Optional ByVal pais_ As String = Nothing) As TagWatcher
-    Function TraeDatosFraccion(ByVal id_ As ObjectId,
-                               Optional ByVal tipoOperacion_ As TipoOperacion = TipoOperacion.Importacion,
-                               Optional ByVal pais_ As String = Nothing) As TagWatcher
-    Function TraeDatosFraccion(ByVal fraccion_ As String, Optional ByVal tipoOperacion_ As TipoOperacion = TipoOperacion.Importacion,
-                               Optional ByVal pais_ As String = Nothing) As TagWatcher
     Function TraeDatosFraccion(Of T)(fraccion_ As String,
+                                      tipoOperacion_ As IControladorTIGIE.TipoOperacion,
+                                      pais_ As String,
+                                      fecha_ As Date) As TagWatcher
+    Function TraeDatosFraccion(Of T)(fracciones_ As List(Of String),
                                       tipoOperacion_ As IControladorTIGIE.TipoOperacion,
                                       pais_ As String,
                                       fecha_ As Date) As TagWatcher

@@ -105,7 +105,7 @@ Public Class Ges022_001_TarifaArancelaria
             Session("catTLCAN") = Nothing
             Session("catTLCUE") = Nothing
 
-            '_fsCupo.Visible = False
+            '_fsCupo.Visible = False   
             _fsImpuestoEspecial.Visible = False
             _fsCuotasCompensatorias.Visible = False
             _fsPreciosEstimados.Visible = False
@@ -175,12 +175,12 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Overrides Sub BotoneraClicNuevo()
 
-        'ClonarTarifaSysExpert()
-        _tarifaArancelaria = New ControladorTIGIE()
+        ClonarTarifaSysExpert()
+        '_tarifaArancelaria = New ControladorTIGIE()
 
-        Dim estado_ = _tarifaArancelaria.TraeDatosFraccion(Of ConstructorTIGIE)("3304910100", IControladorTIGIE.TipoOperacion.Importacion, "CHILE", DateTime.Now.Date)
+        'Dim estado_ = _tarifaArancelaria.TraeDatosFraccion(Of ConstructorTIGIE)("3304910100", IControladorTIGIE.TipoOperacion.Importacion, "CHILE", DateTime.Now.Date)
 
-        Dim x = estado_.Status
+        'Dim x = estado_.Status
 
     End Sub
 
@@ -610,8 +610,8 @@ Public Class Ges022_001_TarifaArancelaria
 
                 Dim padron_ = New PadronItem
 
-                padron_.Sector = .Attribute(CA_SECTOR).Valor
-                padron_.Notas = .Attribute(CA_DESCRIPCION).Valor
+                padron_.Clave = .Attribute(CA_SECTOR).Valor
+                padron_.Encabezado = .Attribute(CA_DESCRIPCION).Valor
 
                 dataPadrones_.Add(padron_)
 
@@ -643,13 +643,13 @@ Public Class Ges022_001_TarifaArancelaria
         'exportare la lista de las fracciones para ejecutar un loop de esas una a una e ir cargado los datos desde mi db local, hay que cargar una copia que me dara rosa de sysexpert
         'VTIGIE_Nico_Fraccion_Relacion  de aqui jalare las id de fraccion para ejecutar el query uno a uno
 
-        Dim fracciones As DataTable = ConsultaLibre("select top(10) * from [SysExpert].[dbo].[VTIGIE_Nico_Fraccion_Relacion]")
+        Dim fracciones As DataTable = ConsultaLibre("select * from [SysExpert].[dbo].[TIGIE] where idFraccion in (26492)")
 
         For Each row As DataRow In fracciones.Rows
 
             Dim query = My.Computer.FileSystem.ReadAllText("C:\temp\test.txt")
 
-            query = query.Replace("{{idFraccion}}", row.Item("idFraccion"))
+            'query = query.Replace("{{idFraccion}}", row.Item("idFraccion"))
             'query = query.Replace("{{idFraccion}}", "10789")
 
             Dim data = XMLDecode(Of List(Of NicoItem))("TIGIE", queryString:=query)
@@ -660,9 +660,9 @@ Public Class Ges022_001_TarifaArancelaria
 
             With doc_
 
-                .FolioDocumento = nico.Importacion.Fraccion
+                .FolioDocumento = nico.Importacion.Fraccion.Replace(".", "")
 
-                .FolioOperacion = nico.Nico
+                .FolioOperacion = nico.Importacion.Fraccion.Replace(".", "") & nico.Nico
 
                 .IdCliente = 0
 
@@ -683,6 +683,8 @@ Public Class Ges022_001_TarifaArancelaria
                     'Unidad de Medida [tiene datos extras]
                     If nico.Importacion.UnidadesDeMedida IsNot Nothing Then
                         .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.Unidad
+                        .Attribute(CA_UNIDAD_MEDIDA_CORTO).Valor = nico.Importacion.UnidadesDeMedida.Value.ClaveUnidad
+                        .Attribute(CA_CLAVE_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.idUnidad
                     End If
                     'Impuestos
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
@@ -695,6 +697,8 @@ Public Class Ges022_001_TarifaArancelaria
 
                                 With .Partida(doc_)
                                     .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
+                                    .Attribute(CA_NOMBRE_IMPUESTO_CORTO).Valor = impuesto.ClaveContribucion
+                                    .Attribute(CA_TIPO_TASA).Valor = impuesto.idTipoTasa
                                     .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
                                     .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
                                     .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
@@ -716,17 +720,21 @@ Public Class Ges022_001_TarifaArancelaria
 
                             If tratados.Count > 0 Then
 
-                                Dim listTratados As New Dictionary(Of String, List(Of TratadoItem))
+                                Dim listTratados = New Dictionary(Of String, List(Of TratadoItem))
 
                                 For Each tratado As TratadoItem In tratados
 
-                                    If listTratados.ContainsKey(tratado.ClaveTratado) Then
+                                    If listTratados.ContainsKey(IIf(tratado.ClaveTratado IsNot Nothing, tratado.ClaveTratado, "")) Then
 
                                         listTratados(tratado.ClaveTratado).Add(tratado)
 
                                     Else
 
-                                        listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
+                                        If IIf(tratado.ClaveTratado IsNot Nothing, tratado.ClaveTratado, "") <> "" Then
+
+                                            listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
+
+                                        End If
 
                                     End If
 
@@ -746,11 +754,15 @@ Public Class Ges022_001_TarifaArancelaria
 
                                                     .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
                                                     .Attribute(CA_ARANCEL).Valor = t.Tasa
-                                                    .Attribute(CA_PREFERENCIA).Valor = t.Tasa
+                                                    .Attribute(CA_TIPO_TASA).Valor = t.idTipoTasa
                                                     .Attribute(CA_OBSERVACION).Valor = t.Nota
                                                     .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
                                                     .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
                                                     .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
+                                                    .Attribute(CA_CLAVE_IDENTIFICADOR).Valor = t.ClaveIdentificador
+                                                    .Attribute(CA_IDENTIFICADOR).Valor = t.Identificador
+                                                    .Attribute(CP_IDNOTA).Valor = t.idNota
+                                                    .Attribute(CP_NOTA).Valor = t.Nota
 
                                                 End With
 
@@ -860,6 +872,12 @@ Public Class Ges022_001_TarifaArancelaria
 
                         End With
                         'Normas
+
+                        Dim identificadores_ As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
+                                        {"PB", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en domicilio particular. Comp3:No asentar datos."},
+                                        {"PA", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en el Almacén General de Depósito. Comp3:No asentar datos."},
+                                        {"EN", "Declarar la clave de excepción válida conforme a las siguientes opciones: Comp2:Declarar la NOM que se exceptúa. Comp3:Numeral de la NOM que exceptúa, cuando en el complemento 1 se declare la clave ENOM."}}
+
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
 
                             Dim normas = nico.Importacion.Normas
@@ -874,6 +892,21 @@ Public Class Ges022_001_TarifaArancelaria
                                         .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
                                         .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
                                         .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
+                                        With .Seccion(SeccionesTarifaArancelaria.TIGIE20)
+
+                                            For Each kvp As KeyValuePair(Of String, String) In identificadores_
+
+                                                With .Partida(doc_)
+
+                                                    .Attribute(CA_CLAVE_IDENTIFICADOR).Valor = kvp.Key
+
+                                                    .Attribute(CA_IDENTIFICADOR).Valor = kvp.Value
+
+                                                End With
+
+                                            Next
+
+                                        End With
                                     End With
 
                                 Next
@@ -894,8 +927,8 @@ Public Class Ges022_001_TarifaArancelaria
                                 For Each padron As PadronItem In padrones
 
                                     With .Partida(doc_)
-                                        .Attribute(CA_SECTOR).Valor = padron.Sector
-                                        .Attribute(CA_DESCRIPCION).Valor = padron.Notas
+                                        .Attribute(CA_SECTOR).Valor = padron.Clave
+                                        .Attribute(CA_DESCRIPCION).Valor = padron.Encabezado
                                     End With
 
                                 Next
@@ -912,7 +945,9 @@ Public Class Ges022_001_TarifaArancelaria
 
                     'Unidad de Medida [tiene datos extras]
                     If nico.Exportacion.UnidadesDeMedida IsNot Nothing Then
-                        .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Exportacion.UnidadesDeMedida.Value.Unidad
+                        .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.Unidad
+                        .Attribute(CA_UNIDAD_MEDIDA_CORTO).Valor = nico.Importacion.UnidadesDeMedida.Value.ClaveUnidad
+                        .Attribute(CA_CLAVE_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.idUnidad
                     End If
                     'Impuestos
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
@@ -925,6 +960,8 @@ Public Class Ges022_001_TarifaArancelaria
 
                                 With .Partida(doc_)
                                     .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
+                                    .Attribute(CA_NOMBRE_IMPUESTO_CORTO).Valor = impuesto.ClaveContribucion
+                                    .Attribute(CA_TIPO_TASA).Valor = impuesto.idTipoTasa
                                     .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
                                     .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
                                     .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
@@ -976,11 +1013,15 @@ Public Class Ges022_001_TarifaArancelaria
 
                                                     .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
                                                     .Attribute(CA_ARANCEL).Valor = t.Tasa
-                                                    .Attribute(CA_PREFERENCIA).Valor = t.Tasa
+                                                    .Attribute(CA_TIPO_TASA).Valor = t.idTipoTasa
                                                     .Attribute(CA_OBSERVACION).Valor = t.Nota
                                                     .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
                                                     .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
                                                     .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
+                                                    .Attribute(CA_CLAVE_IDENTIFICADOR).Valor = t.ClaveIdentificador
+                                                    .Attribute(CA_IDENTIFICADOR).Valor = t.Identificador
+                                                    .Attribute(CP_IDNOTA).Valor = t.idNota
+                                                    .Attribute(CP_NOTA).Valor = t.Nota
 
                                                 End With
 
@@ -1090,9 +1131,14 @@ Public Class Ges022_001_TarifaArancelaria
 
                         End With
                         'Normas
+                        Dim identificadores_ As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
+                                        {"PB", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en domicilio particular. Comp3:No asentar datos."},
+                                        {"PA", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en el Almacén General de Depósito. Comp3:No asentar datos."},
+                                        {"EN", "Declarar la clave de excepción válida conforme a las siguientes opciones: Comp2:Declarar la NOM que se exceptúa. Comp3:Numeral de la NOM que exceptúa, cuando en el complemento 1 se declare la clave ENOM."}}
+
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
 
-                            Dim normas = nico.Exportacion.Normas
+                            Dim normas = nico.Importacion.Normas
 
                             If normas.Count > 0 Then
 
@@ -1104,6 +1150,21 @@ Public Class Ges022_001_TarifaArancelaria
                                         .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
                                         .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
                                         .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
+                                        With .Seccion(SeccionesTarifaArancelaria.TIGIE20)
+
+                                            For Each kvp As KeyValuePair(Of String, String) In identificadores_
+
+                                                With .Partida(doc_)
+
+                                                    .Attribute(CA_CLAVE_IDENTIFICADOR).Valor = kvp.Key
+
+                                                    .Attribute(CA_IDENTIFICADOR).Valor = kvp.Value
+
+                                                End With
+
+                                            Next
+
+                                        End With
                                     End With
 
                                 Next
@@ -1124,8 +1185,28 @@ Public Class Ges022_001_TarifaArancelaria
                                 For Each padron As PadronItem In padrones
 
                                     With .Partida(doc_)
-                                        .Attribute(CA_SECTOR).Valor = padron.Sector
-                                        .Attribute(CA_DESCRIPCION).Valor = padron.Notas
+                                        .Attribute(CA_SECTOR).Valor = padron.Clave
+                                        .Attribute(CA_DESCRIPCION).Valor = padron.Encabezado
+                                    End With
+
+                                Next
+
+                            End If
+
+                        End With
+
+                        With .Seccion(SeccionesTarifaArancelaria.TIGIE15)
+
+                            Dim anexos_ = nico.Exportacion.Anexos
+
+                            If anexos_.Count > 0 Then
+
+                                For Each anexo_ As AnexosItem In anexos_
+
+                                    With .Partida(doc_)
+                                        .Attribute(CA_NUMERO).Valor = anexo_.idTIGIEAnexo
+                                        .Attribute(CA_NOMBRE).Valor = anexo_.Clave
+                                        .Attribute(CA_DESCRIPCION).Valor = anexo_.Encabezado
                                     End With
 
                                 Next
@@ -1204,6 +1285,7 @@ Public Class Ges022_001_TarifaArancelaria
 
 End Class
 
+
 <Serializable(), XmlRoot("NicoItem")>
 Public Structure NicoItem
     <XmlElement("Nico")>
@@ -1258,6 +1340,8 @@ Public Structure Importacion
     Public Property IEPS As List(Of IepsItem?)
     <XmlArray("PadronSectorial", IsNullable:=True)>
     Public Property PadronSectorial As List(Of PadronItem?)
+    <XmlArray("Anexos", IsNullable:=True)>
+    Public Property Anexos As List(Of AnexosItem?)
 End Structure
 
 <Serializable(), XmlRoot("Exportacion")>
@@ -1296,6 +1380,8 @@ Public Structure Exportacion
     Public Property IEPS As List(Of IepsItem?)
     <XmlArray("PadronSectorial", IsNullable:=True)>
     Public Property PadronSectorial As List(Of PadronItem?)
+    <XmlArray("Anexos", IsNullable:=True)>
+    Public Property Anexos As List(Of AnexosItem?)
 End Structure
 
 <Serializable(), XmlRoot("UnidadesDeMedida")>
@@ -1514,12 +1600,28 @@ End Structure
 
 <Serializable(), XmlRoot("PadronItem")>
 Public Structure PadronItem
-    <XmlElement("idTIGIEAnexo10")>
-    Public Property idTIGIEAnexo10 As String
+    <XmlElement("idTIGIEAnexo")>
+    Public Property idTIGIEAnexo As String
     <XmlElement("idFraccion")>
     Public Property idFraccion As String
-    <XmlElement("Sector")>
-    Public Property Sector As String
-    <XmlElement("Notas")>
-    Public Property Notas As String
+    <XmlElement("Clave")>
+    Public Property Clave As String
+    <XmlElement("SubClave")>
+    Public Property SubClave As String
+    <XmlElement("Encabezado")>
+    Public Property Encabezado As String
+End Structure
+
+<Serializable(), XmlRoot("Anexos")>
+Public Structure AnexosItem
+    <XmlElement("idTIGIEAnexo")>
+    Public Property idTIGIEAnexo As String
+    <XmlElement("idFraccion")>
+    Public Property idFraccion As String
+    <XmlElement("Clave")>
+    Public Property Clave As String
+    <XmlElement("SubClave")>
+    Public Property SubClave As String
+    <XmlElement("Encabezado")>
+    Public Property Encabezado As String
 End Structure
