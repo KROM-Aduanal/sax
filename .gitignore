@@ -82,3 +82,4 @@ synapsis.settings*.json
 /projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/ConstructorTIGIE64.vbproj.CoreCompileInputs.cache
 /projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/ConstructorTIGIE64.vbproj.GenerateResource.cache
 /projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.vsidx
