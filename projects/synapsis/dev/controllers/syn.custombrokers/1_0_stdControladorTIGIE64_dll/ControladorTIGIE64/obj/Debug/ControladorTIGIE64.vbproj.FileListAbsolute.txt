@@ -16,3 +16,4 @@ C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorTIG
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorTIGIE64_dll\ControladorTIGIE64\obj\Debug\ControladorTIGIE64.vbproj.CoreCompileInputs.cache
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorTIGIE64_dll\ControladorTIGIE64\obj\Debug\Rec.Globals.Controllers.ControladorTIGIE64.0.0.0.0.dll
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorTIGIE64_dll\ControladorTIGIE64\obj\Debug\Rec.Globals.Controllers.ControladorTIGIE64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorTIGIE64_dll\ControladorTIGIE64\obj\Debug\ControladorTIGIE64.vbproj.CopyComplete
