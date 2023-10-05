@@ -1,0 +1,12 @@
+C:\SAX\projects\synapsis\libs\bin\controllers\snappy32.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\snappy64.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\libzstd.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\mongocrypt.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.dll
+C:\SAX\projects\synapsis\libs\bin\controllers\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.pdb
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\IControladorTIGIE64.vbproj.AssemblyReference.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\IControladorTIGIE64.vbproj.GenerateResource.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\IControladorTIGIE64.vbproj.CoreCompileInputs.cache
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.dll
+C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorTIGIE64_dll\IControladorTIGIE64\obj\Debug\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.pdb
