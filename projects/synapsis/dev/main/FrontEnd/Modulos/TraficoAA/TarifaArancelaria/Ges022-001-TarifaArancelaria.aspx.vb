@@ -57,6 +57,8 @@ Public Class Ges022_001_TarifaArancelaria
 
     Private _tipoObjeto As Type
 
+    Private _tarifaArancelaria As IControladorTIGIE
+
     Public Property Tratados As List(Of List(Of TratadoItem))
 
     'Public Property Cupos As List(Of CupoItem)
@@ -174,6 +176,11 @@ Public Class Ges022_001_TarifaArancelaria
     Public Overrides Sub BotoneraClicNuevo()
 
         'ClonarTarifaSysExpert()
+        _tarifaArancelaria = New ControladorTIGIE()
+
+        Dim estado_ = _tarifaArancelaria.TraeDatosFraccion(Of ConstructorTIGIE)("3304910100", IControladorTIGIE.TipoOperacion.Importacion, "CHILE", DateTime.Now.Date)
+
+        Dim x = estado_.Status
 
     End Sub
 

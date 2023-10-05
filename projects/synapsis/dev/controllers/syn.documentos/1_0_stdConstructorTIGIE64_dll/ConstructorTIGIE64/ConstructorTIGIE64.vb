@@ -149,6 +149,7 @@ Namespace Syn.Documento
                                              Item(CamposTarifaArancelaria.CA_FECHA_PUBLICACION, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha),
+                                             Item(CamposTarifaArancelaria.CP_ID_HISTORICO, Texto, longitud_:=255),
                                              Item(CamposTarifaArancelaria.PA_ACTUALIZACION, Fecha)
                               }
 
@@ -156,7 +157,9 @@ Namespace Syn.Documento
                 Case SeccionesTarifaArancelaria.TIGIE2
                     Return New List(Of Nodo) From {
                                              Item(CamposTarifaArancelaria.CA_UNIDAD_MEDIDA, Texto, longitud_:=30),
-                                             Item(SeccionesTarifaArancelaria.TIGIE19, True),
+                                             Item(CamposTarifaArancelaria.CA_UNIDAD_MEDIDA_CORTO, Texto, longitud_:=10),
+                                             Item(CamposTarifaArancelaria.CA_CLAVE_UNIDAD_MEDIDA, Texto, longitud_:=30),
+                                             Item(SeccionesTarifaArancelaria.TIGIE19, False),
                                              Item(SeccionesTarifaArancelaria.TIGIE4, True),
                                              Item(SeccionesTarifaArancelaria.TIGIE5, True)
                               }
@@ -166,7 +169,9 @@ Namespace Syn.Documento
                 Case SeccionesTarifaArancelaria.TIGIE3
                     Return New List(Of Nodo) From {
                                              Item(CamposTarifaArancelaria.CA_UNIDAD_MEDIDA, Texto, longitud_:=30),
-                                             Item(SeccionesTarifaArancelaria.TIGIE19, True),
+                                             Item(CamposTarifaArancelaria.CA_UNIDAD_MEDIDA_CORTO, Texto, longitud_:=10),
+                                             Item(CamposTarifaArancelaria.CA_CLAVE_UNIDAD_MEDIDA, Texto, longitud_:=30),
+                                             Item(SeccionesTarifaArancelaria.TIGIE19, False),
                                              Item(SeccionesTarifaArancelaria.TIGIE4, True),
                                              Item(SeccionesTarifaArancelaria.TIGIE5, True)
                               }
@@ -175,6 +180,8 @@ Namespace Syn.Documento
                 Case SeccionesTarifaArancelaria.TIGIE19
                     Return New List(Of Nodo) From {
                                              Item(CamposTarifaArancelaria.CA_NOMBRE_IMPUESTO, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_NOMBRE_IMPUESTO_CORTO, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_TIPO_TASA, Texto, longitud_:=150),
                                              Item(CamposTarifaArancelaria.CA_VALOR_IMPUESTO, Texto, longitud_:=20),
                                              Item(CamposTarifaArancelaria.CA_FECHA_PUBLICACION, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
@@ -184,44 +191,61 @@ Namespace Syn.Documento
                 'Regulaciones arancelarias
                 Case SeccionesTarifaArancelaria.TIGIE4
                     Return New List(Of Nodo) From {
-                                             Item(SeccionesTarifaArancelaria.TIGIE6, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE8, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE9, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE10, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE11, True)
+                                             Item(SeccionesTarifaArancelaria.TIGIE6, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE8, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE9, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE10, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE11, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE22, False)
                               }
 
                 'Regulaciones no arancelarias
                 Case SeccionesTarifaArancelaria.TIGIE5
                     Return New List(Of Nodo) From {
-                                             Item(SeccionesTarifaArancelaria.TIGIE13, True), '12
-                                             Item(SeccionesTarifaArancelaria.TIGIE14, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE15, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE16, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE17, True),
-                                             Item(SeccionesTarifaArancelaria.TIGIE18, True)
+                                             Item(SeccionesTarifaArancelaria.TIGIE13, False), '12
+                                             Item(SeccionesTarifaArancelaria.TIGIE14, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE15, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE16, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE17, False),
+                                             Item(SeccionesTarifaArancelaria.TIGIE18, False)
                               }
 
 
                 'Tratados comerciales
                 Case SeccionesTarifaArancelaria.TIGIE6
                     Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CA_ID_TRATADO, Texto, longitud_:=75),
                                              Item(CamposTarifaArancelaria.CA_NOMBRE_TRATADO, Texto, longitud_:=150),
                                              Item(CamposTarifaArancelaria.CA_NOMBRE_CORTO_TRATADO, Texto, longitud_:=75),
-                                             Item(SeccionesTarifaArancelaria.TIGIE7, True)
+                                             Item(SeccionesTarifaArancelaria.TIGIE7, False)
                               }
 
                 'Paises afiliados
                 Case SeccionesTarifaArancelaria.TIGIE7
                     Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CP_ID, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_ID_PAIS, Texto, longitud_:=50),
                                              Item(CamposTarifaArancelaria.CA_PAIS, Texto, longitud_:=50),
                                              Item(CamposTarifaArancelaria.CA_SECTOR, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_TIPO_TASA, Texto, longitud_:=150),
                                              Item(CamposTarifaArancelaria.CA_ARANCEL, Texto, longitud_:=50),
-                                             Item(CamposTarifaArancelaria.CA_PREFERENCIA, Texto, longitud_:=75),
+                                             Item(SeccionesTarifaArancelaria.TIGIE21, False),
                                              Item(CamposTarifaArancelaria.CA_OBSERVACION, Texto, longitud_:=150),
                                              Item(CamposTarifaArancelaria.CA_FECHA_PUBLICACION, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
-                                             Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha)
+                                             Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha),
+                                             Item(CamposTarifaArancelaria.CA_CLAVE_IDENTIFICADOR, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_IDENTIFICADOR, Texto, longitud_:=150),
+                                             Item(CamposTarifaArancelaria.CP_IDNOTA, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CP_NOTA, Texto, longitud_:=150)
+                              }
+
+                'Preferencia
+                Case SeccionesTarifaArancelaria.TIGIE21
+                    Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CP_NOMBRE_PREFERENCIA, Texto, longitud_:=75),
+                                             Item(CamposTarifaArancelaria.CA_TIPO_TASA, Texto, longitud_:=150),
+                                             Item(CamposTarifaArancelaria.CP_VALOR, Texto, longitud_:=75)
                               }
 
                 'Cupos arancel
@@ -277,14 +301,6 @@ Namespace Syn.Documento
                                              Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha)
                               }
 
-                'Permisos institucionales
-                'Case SeccionesTarifaArancelaria.TIGIE12
-                '    Return New List(Of Nodo) From {
-                '                             Item(CamposTarifaArancelaria.CA_NOMBRE_INSTITUCION, Texto, longitud_:=100),
-                '                             Item(CamposTarifaArancelaria.CA_NOMBRE_CORTO_INSTITUCION, Texto, longitud_:=50),
-                '                             Item(SeccionesTarifaArancelaria.TIGIE13)
-                '              }
-
                 'Permisos
                 Case SeccionesTarifaArancelaria.TIGIE13
                     Return New List(Of Nodo) From {
@@ -305,7 +321,8 @@ Namespace Syn.Documento
                                              Item(CamposTarifaArancelaria.CA_ACOTACION, Texto, longitud_:=150),
                                              Item(CamposTarifaArancelaria.CA_FECHA_PUBLICACION, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
-                                             Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha)
+                                             Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha),
+                                             Item(SeccionesTarifaArancelaria.TIGIE20, False)
                               }
 
                 'Anexos
@@ -357,6 +374,36 @@ Namespace Syn.Documento
                                              Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
                                              Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha)
                               }
+
+                'Identificadores
+                Case SeccionesTarifaArancelaria.TIGIE20
+                    Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CA_CLAVE_IDENTIFICADOR, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_IDENTIFICADOR, Texto, longitud_:=150)
+                              }
+
+                     'ALADIS
+                Case SeccionesTarifaArancelaria.TIGIE22
+                    Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CA_NUMERO_ALADI, Texto, longitud_:=75),
+                                             Item(CamposTarifaArancelaria.CA_NOMBRE_ALADI, Texto, longitud_:=150),
+                                             Item(SeccionesTarifaArancelaria.TIGIE23, False)
+                              }
+
+                'Paises afiliados ALADIS
+                Case SeccionesTarifaArancelaria.TIGIE23
+                    Return New List(Of Nodo) From {
+                                             Item(CamposTarifaArancelaria.CP_ID, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_ID_PAIS, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_PAIS, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CP_DESCUENTO, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_CLAVE_IDENTIFICADOR, Texto, longitud_:=50),
+                                             Item(CamposTarifaArancelaria.CA_IDENTIFICADOR, Texto, longitud_:=150),
+                                             Item(CamposTarifaArancelaria.CA_FECHA_PUBLICACION, Fecha),
+                                             Item(CamposTarifaArancelaria.CA_FECHA_ENTRADA_VIGOR, Fecha),
+                                             Item(CamposTarifaArancelaria.CA_FECHA_FIN, Fecha),
+                                             Item(CamposTarifaArancelaria.CP_ID_HISTORICO, Texto, longitud_:=150)
+                             }
 
                 Case Else
 
