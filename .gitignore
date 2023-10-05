@@ -1,6 +1,7 @@
 # User-specific files
 *.suo
-
+*.cache
+*.vsidx
 # Visual Studio cache files
 # files ending in .cache can be ignored
 *.[Cc]ache
@@ -10,76 +11,7 @@ sax.projects*.json
 sax.settings*.json
 synapsis.modules*.json
 synapsis.settings*.json
-*.cache
-/masters/vb/esp/cmf/scr/Components/1_0_staExcelAppReports64_dll/ExcelApplicationReports64/ExcelApplicationReports64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components/1_0_staExcelAppReports64_dll/ExcelApplicationReports64/ExcelApplicationReports64/obj/Debug/ExcelApplicationReports64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components/1_0_stdDesktopReport64_dll/DesktopReports64/DesktopReports64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components/1_0_stdDesktopReport64_dll/DesktopReports64/DesktopReports64/obj/Debug/DesktopReports64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptButtonbarControl64_dll/ButtonbarControl/obj/Debug/CptButtonbarControl64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptButtonbarControl64_dll/ButtonbarControl/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptButtonControl64_dll/ButtonControl/obj/Debug/CptButtonControl64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptButtonControl64_dll/ButtonControl/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptCatalogControl64_dll/CatalogControl/obj/Debug/CptCatalogControl64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptCatalogControl64_dll/CatalogControl/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptCollectionViewControl64_dll/CollectionViewControl/obj/Debug/CptCollectionViewControl64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptCollectionViewControl64_dll/CollectionViewControl/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptDualityBarControl64_dll/DualityBarControl/obj/Debug/CptDualityBarControl64.vbproj.AssemblyReference.cache
-/masters/vb/esp/cmf/scr/Components web/1_0_CptDualityBarControl64_dll/DualityBarControl/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/global/dev/rec.global.controllers/1_0_stdControladorMonedas64_dll/ControladorMonedas64/obj/Debug/ControladorMonedas64.vbproj.AssemblyReference.cache
-/projects/global/dev/rec.global.controllers/1_0_stdControladorMonedas64_dll/ControladorMonedas64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdPartidaPedimento64_dll/PartidaPedimento64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdPartidaPedimento64_dll/PartidaPedimento64/obj/Debug/PartidaPedimento64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdPermisoPartidaPedimento64_dll/PermisoPartidaPedimento64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdPermisoPartidaPedimento64_dll/PermisoPartidaPedimento64/obj/Debug/PermisoPartidaPedimento64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdValidador64_dll/Validador64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdValidador64_dll/Validador64/obj/Debug/Validador64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorAcuseValor64_dll/ConstructorAcuseValor64/obj/Debug/ConstructorAcuseValor64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorAcuseValor64_dll/ConstructorAcuseValor64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorCliente64_dll/ConstructorCliente64/obj/Debug/ConstructorCliente64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorCliente64_dll/ConstructorCliente64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorFacturaComercial64_dll/ConstructorFacturaComercial64/obj/Debug/ConstructorFacturaComercial64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorFacturaComercial64_dll/ConstructorFacturaComercial64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValor64_dll/ConstructorManifestacionValor64/obj/Debug/ConstructorManifestacionValor64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValor64_dll/ConstructorManifestacionValor64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValorPDF64_dll/ConstructorManifestacionValorPDF64/obj/Debug/ConstructorManifestacionValorPDF64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValorPDF64_dll/ConstructorManifestacionValorPDF64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoNormal64_dll/ConstructorPedimentoNormal64/ConstructorPedimentoNormal64/obj/Debug/ConstructorPedimentoNormal64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoNormal64_dll/ConstructorPedimentoNormal64/ConstructorPedimentoNormal64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoNormalPDF64_dll/ConstructorPedimentoNormalPDF64/obj/Debug/ConstructorPedimentoNormalPDF64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoNormalPDF64_dll/ConstructorPedimentoNormalPDF64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoPDF64_dll/ConstructorPedimentoPDF64/obj/Debug/ConstructorPedimentoPDF64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoPDF64_dll/ConstructorPedimentoPDF64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorProducto64_dll/ConstructorProducto64/obj/Debug/ConstructorProducto64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorProducto64_dll/ConstructorProducto64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorProveedorOperativo64_dll/ConstructorProveedorOperativo64/obj/Debug/ConstructorProveedorOperativo64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorProveedorOperativo64_dll/ConstructorProveedorOperativo64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorReferencia64_dll/ConstructorReferencia64/obj/Debug/ConstructorReferencia64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorReferencia64_dll/ConstructorReferencia64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.nucleo/1_0_stdRecursosComercioExterior64_dll/RecursosComercioExterior64/RecursosComercioExterior64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/controllers/syn.nucleo/1_0_stdRecursosComercioExterior64_dll/RecursosComercioExterior64/RecursosComercioExterior64/obj/Debug/RecursosComercioExterior64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/web.controllers/ControladorWeb64/obj/Debug/ControladorWeb64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/web.controllers/ControladorWeb64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/052286c1-4c5c-4150-9bf5-b100643ddd8b.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/66cc48b2-a50f-4552-b150-6314283399d9.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/71be2a95-2177-4924-b7aa-0dfdcc49b514.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/9d92290d-c04a-4990-9855-18fd44d30b1c.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/a2b90f0d-dfd0-4d44-af53-52ba5e842078.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/bdd5cacc-c996-48f4-9ad0-4d8fa13fe6a1.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/d4e832d5-22a8-409b-8c94-c6c77623e4e9.vsidx
-/projects/synapsis/dev/main/.vs/KromSAAI/FileContentIndex/e2b1b91f-56ed-4a05-8ec4-f4344b9ec402.vsidx
-/projects/synapsis/dev/main/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/main/obj/Debug/KromSAAI.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/modules/LogIn64/LogIn64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/modules/LogIn64/LogIn64/obj/Debug/LogIn64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/modules/PaginaMaestra64/Ges025PaginaMaestra64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/projects/synapsis/dev/modules/PaginaMaestra64/Ges025PaginaMaestra64/obj/Debug/Ges025PaginaMaestra64.vbproj.AssemblyReference.cache
+
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/fileList.bin
-/projects/synapsis/dev/controllers/syn.nucleo/1_0_stdRecursosComercioExterior64_dll/RecursosComercioExterior64/RecursosComercioExterior64/obj/Debug/RecursosComercioExterior64.vbproj.GenerateResource.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorTIGIE64_dll/ControladorTIGIE64/obj/Debug/ControladorTIGIE64.vbproj.CoreCompileInputs.cache
-/projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorTIGIE64_dll/ControladorTIGIE64/obj/Debug/ControladorTIGIE64.vbproj.GenerateResource.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/ConstructorTIGIE64.vbproj.AssemblyReference.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/ConstructorTIGIE64.vbproj.CoreCompileInputs.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/ConstructorTIGIE64.vbproj.GenerateResource.cache
-/projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorTIGIE64_dll/ConstructorTIGIE64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-*.vsidx
+
