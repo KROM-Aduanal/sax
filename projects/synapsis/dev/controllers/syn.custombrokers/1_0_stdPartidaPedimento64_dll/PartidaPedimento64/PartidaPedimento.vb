@@ -814,7 +814,8 @@ Public Class PartidaPedimento
                         .DescripcionVinculacion = itemFactura_.DescripcionVinculacion,
                         .Modelo = itemFactura_.Modelo,
                         .Descripcion = itemFactura_.Descripcion,
-                        .Marca = itemFactura_.Marca
+                        .Marca = itemFactura_.Marca,
+                        .ValorAgregado = itemFactura_.ValorAgregado
                     }
 
             'partida_.CodigoProducto = _itemfactura.CodigoProducto

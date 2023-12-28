@@ -78,6 +78,8 @@ Public Class ItemFacturaComercial
 
     Private _kilometraje As Integer
 
+    Private _valoragregado As Integer
+
     Private _estado As Integer
 
     Private _tagwatcher As TagWatcher
@@ -676,6 +678,22 @@ Public Class ItemFacturaComercial
 
     End Property
 
+    Public Property ValorAgregado As Integer
+
+        Get
+
+            Return _valoragregado
+
+        End Get
+
+        Set(value As Integer)
+
+            _valoragregado = value
+
+        End Set
+
+    End Property
+
     Public Property IItemExtraFacturaComercial_Estado As Integer Implements IItemExtraFacturaComercial.Estado
 
         Get
@@ -783,6 +801,8 @@ Public Class ItemFacturaComercial
                         item_.ValorMercancia = .Attribute(CA_VALOR_MERCANCIA_PARTIDA).Valor
                         item_.Modelo = .Attribute(CA_MODELO_PARTIDA).Valor
                         item_.Marca = .Attribute(CA_MARCA_PARTIDA).Valor
+                        item_.ValorAgregado = 10
+                        'item_.ValorAgregado = .Attribute(CA_VALOR_AGREGADO).Valor 'No se tiene agregado actualmente en FC
                         'item_.SecuenciaProducto = .Attribute(CA_SECUENCIA_PRODUCTO).Valor 'No se tiene agregado actualmente en FC
                         'item_.Submodelo = .Attribute(CA_SUBMODELO_PARTIDA).Valor
 

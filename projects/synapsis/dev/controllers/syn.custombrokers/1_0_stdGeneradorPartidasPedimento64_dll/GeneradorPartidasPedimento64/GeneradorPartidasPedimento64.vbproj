@@ -74,6 +74,16 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Driver.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Controllers.ControladorTIGIE64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Rec.Globals.Controllers.ControladorTIGIE64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sax.SaxStatements64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\Sax.SaxStatements64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -88,6 +98,11 @@
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorFacturaComercial64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IdentificadorPartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0.dll</HintPath>
@@ -96,6 +111,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ImpuestoPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ImpuestoPartidaPedimento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -128,6 +148,11 @@
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PermisoPartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Componentes.Campo64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -143,6 +168,11 @@
     <Reference Include="Syn.Documento.ConstructorFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.ConstructorTIGIE64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.Documento.ConstructorTIGIE64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Documento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

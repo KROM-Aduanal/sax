@@ -16,7 +16,8 @@ Public Interface IGeneradorPartidasPedimento
         TasaTipoTasa = 5
         MetodoValoracionVinculacion = 6
         ValorAgregado = 7
-        SinAgrupacion = 8
+        PrecioUnitario = 8
+        SinAgrupacion = 9
 
     End Enum
 
