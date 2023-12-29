@@ -31,7 +31,7 @@ Imports Rec.Globals
 #End Region
 
 Public Class Ges022_001_MetaforaPedimento
-    Inherits ClaseSinNombre
+    Inherits ControladorBackend
 
 #Region "████████████████████████████████████████   Atributos locales  ██████████████████████████████████████"
     '    ██                                                                                                ██
@@ -40,8 +40,21 @@ Public Class Ges022_001_MetaforaPedimento
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
+    Protected Enum TipoFijo
+        SinDefinir = 0
+        Prefijo = 1
+        Sufijo = 2
+        Completo = 3
+    End Enum
+
+    Protected Enum TipoSecuencia
+        SinDefinir = 0
+        Referencia = 1
+        Pedimento = 2
+    End Enum
 
 #End Region
+
 
 #Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
     '    ██                                                                                                ██
@@ -137,7 +150,7 @@ Public Class Ges022_001_MetaforaPedimento
         [Set](icAcuseValidación, CA_ACUSE_ELECTRONICO_VALIDACION)
         [Set](icArchivoPago, CA_ARCHIVO_PAGO)
         [Set](icAcusetaPago, CA_ACUSE_ELECTRONICO_PAGO)
-        [Set](scValidacionAduanaDespacho, CA_ADUANA_DESPACHO)
+        [Set](scValidacionAduanaDespacho, CA_CLAVE_SAD)
         [Set](icMarcasNumeros, CA_MARCAS_NUMEROS_TOTAL_BULTOS)
         [Set](icCertificacion, CA_CERTIFICACION)
         [Set](icFechaValidacion, CA_FECHA_VALIDACION)
@@ -250,7 +263,7 @@ Public Class Ges022_001_MetaforaPedimento
         ' ** * ** * CuentasAduaneras * ** * **
         [Set](scCuentaAduanera, CA_CVE_CUENTA_ADUANERA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](scTipoCuentaAduanera, CA_CVE_TIPO_GARANTIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](scInstitucionEmisora, CA_NOMBRE_INSTITUCION_EMISORA_CUENTA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scInstitucionEmisora, CA_INSTITUCION_EMISORA_GARANTIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icNumeroCOntratoCuentaAduanera, CA_NUMERO_CONTRATO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icFolioConstanciaCuentaAduanera, CA_FOLIO_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icImporteCuentaAduanera, CA_IMPORTE_TOTAL_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
@@ -461,7 +474,7 @@ Public Class Ges022_001_MetaforaPedimento
 
             Dim documentoElectronico_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
-            Dim generador_ As IGeneradorPartidasPedimento = New GeneradorPartidasPedimento(Statements.GetOfficeOnline()._id, listafactura_, documentoElectronico_)
+            Dim generador_ As IGeneradorPartidasPedimento = New GeneradorPartidasPedimento(Statements.GetOfficeOnline()._id, listafactura_, documentoElectronico_, OperacionGenerica.Id)
             Dim lista_ As List(Of IGeneradorPartidasPedimento.TipoAgrupaciones) = generador_.GeneraOpcionesAgrupacion(generador_.ItemsFacturaComercial)
 
             Dim agrupaciones_ = generador_.AgruparItemsFacturaPor(lista_(0), generador_.ItemsFacturaComercial)
@@ -534,6 +547,42 @@ Public Class Ges022_001_MetaforaPedimento
 
     'EVENTOS PARA MODIFICACIÓN DE DATOS
 
+    Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        Dim tagwatcher_ As TagWatcher
+
+        '     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+        If session_ IsNot Nothing Then
+
+            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+
+            If GetVars("_informacionAgrupacion") IsNot Nothing Then
+
+                Dim generador_ As IGeneradorPartidasPedimento = New GeneradorPartidasPedimento(Statements.GetOfficeOnline()._id, session_)
+
+                tagwatcher_ = generador_.GuardarInformacionAgrupaciones(session_, GetVars("_informacionAgrupacion"))
+
+            Else
+
+                tagwatcher_ = New TagWatcher
+
+                tagwatcher_.SetOK()
+
+            End If
+
+        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
+
+            tagwatcher_ = New TagWatcher
+
+            tagwatcher_.SetOK()
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
     Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
         'LimpiaFormatos()
@@ -590,56 +639,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-    Private Sub LimpiaFormatos()
-
-        ' ** * ** * Generales * ** * **
-        icTipoCambio.Value = icTipoCambio.Value.Replace("$", "")
-        icValorDolares.Value = icValorDolares.Value.Replace("$", "")
-        icValorAduana.Value = icValorAduana.Value.Replace("$", "")
-        icPrecioPagado.Value = icPrecioPagado.Value.Replace("$", "")
-        ' ** * ** * Generales * ** * **
-
-        ' ** * ** * Datos del importador/exportador * ** * **
-        icValorSeguros.Value = icValorSeguros.Value.Replace("$", "")
-        icSeguros.Value = icSeguros.Value.Replace("$", "")
-        icFletes.Value = icFletes.Value.Replace("$", "")
-        icEmbalajes.Value = icEmbalajes.Value.Replace("$", "")
-        icOtrosIncrementables.Value = icOtrosIncrementables.Value.Replace("$", "")
-
-        icTransporteDec.Value = icTransporteDec.Value.Replace("$", "")
-        icSegurosDec.Value = icSegurosDec.Value.Replace("$", "")
-        icCargaDec.Value = icCargaDec.Value.Replace("$", "")
-        icDescargaDec.Value = icDescargaDec.Value.Replace("$", "")
-        icOtrosDec.Value = icOtrosDec.Value.Replace("$", "")
-        ' ** * ** * Datos del importador/exportador * ** * **
-
-        ' ** * ** * DatosProveedoresImpo * ** * **
-        icMontoFacturaProveedor.Value = icMontoFacturaProveedor.Value.Replace("$", "")
-        icMontoFacturaUSDProveedor.Value = icMontoFacturaUSDProveedor.Value.Replace("$", "")
-        ' ** * ** * DatosProveedoresImpo * ** * **
-
-        ' ** * ** * CuadroLiquidacion * ** * **
-        icCuadroLiquidacionEfectivo.Value = icCuadroLiquidacionEfectivo.Value.Replace("$", "")
-        icCuadroLiquidacionOtros.Value = icCuadroLiquidacionOtros.Value.Replace("$", "")
-        icCuadroLiquidacionTotal.Value = icCuadroLiquidacionTotal.Value.Replace("$", "")
-        ' ** * ** * CuadroLiquidacion * ** * **
-
-        ' ** * ** * CuentasAduaneras * ** * **
-        icImporteCuentaAduanera.Value = icImporteCuentaAduanera.Value.Replace("$", "")
-        icPrecioEstimadoCuentaAduanera.Value = icPrecioEstimadoCuentaAduanera.Value.Replace("$", "")
-        icValorUnitario.Value = icValorUnitario.Value.Replace("$", "")
-        ' ** * ** * CuentasAduaneras * ** * **
-
-        ' ** * ** * Partidas * ** * **
-        icPartidaValorAduana.Value = icPartidaValorAduana.Value.Replace("$", "")
-        icPartidaPrecioPagado.Value = icPartidaPrecioPagado.Value.Replace("$", "")
-        icPartidaPrecioUnitario.Value = icPartidaPrecioUnitario.Value.Replace("$", "")
-        icPartidaValorAgregado.Value = icPartidaValorAgregado.Value.Replace("$", "")
-        ' ** * ** * Partidas * ** * **
-
-        icLineaCapturaImporte.Value = icLineaCapturaImporte.Value.Replace("$", "")
-
-    End Sub
 
 #End Region
 
@@ -670,6 +669,8 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
+
+
 #End Region
 
 #Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
@@ -697,7 +698,9 @@ Public Class Ges022_001_MetaforaPedimento
     End Sub
 
     Protected Sub sc_Patente_Click(sender As Object, e As EventArgs)
+
         scPatente.DataSource = CargaPatente()
+
     End Sub
 
     Public Function ConsultaPedimentito(ByVal FolioOper_ As String) As DocumentoElectronico
@@ -751,16 +754,6 @@ Public Class Ges022_001_MetaforaPedimento
             End Using
 
         End If
-
-
-
-        'constructorPedimento.CrearArchivo(docElectronico)
-
-        'Using _entidadDatos As IEntidadDatos =
-        '            New ConstructorImpresionDocumento(TiposDocumentoDigital.PedimentoNormalPDF,
-        '                                            True, docElectronico)
-
-        'End Using
 
     End Sub
 
@@ -959,6 +952,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
+
     Protected Sub swcTipoOperacion_CheckedChanged(sender As Object, e As EventArgs)
 
         If swcTipoOperacion.Checked = True Then
@@ -973,7 +967,10 @@ Public Class Ges022_001_MetaforaPedimento
             icPartidaValorUSd.Visible = False
             lbValorAduana.Visible = True
             lbValorUsd.Visible = False
-
+            icValorAduana.Visible = True
+            pcIncrementables.Visible = True
+            pcDecrementables.Visible = True
+            fscDestinatarios.Visible = False
         Else
             'expo
             icFechaEntrada.Visible = False
@@ -986,46 +983,14 @@ Public Class Ges022_001_MetaforaPedimento
             icPartidaValorUSd.Visible = True
             lbValorAduana.Visible = False
             lbValorUsd.Visible = True
-
+            icValorAduana.Visible = False
+            pcIncrementables.Visible = False
+            pcDecrementables.Visible = False
+            fscDestinatarios.Visible = True
         End If
 
     End Sub
 
-    Protected Sub icFecha_TextChanged(sender As Object, e As EventArgs)
-
-        Dim _icontroladorMonedas = New ControladorMonedas
-
-        Dim factorTipoCambio_ = _icontroladorMonedas.ObtenerFactorTipodeCambio("MXN", Date.Parse(sender.Value))
-
-        If factorTipoCambio_.Status = TypeStatus.Ok Then
-
-            Dim tcvalor As tipodecambioreciente = factorTipoCambio_.ObjectReturned(1)
-
-            icTipoCambio.Value = tcvalor.tipocambio
-
-        End If
-
-    End Sub
-
-#End Region
-
-End Class
-
-Public MustInherit Class ClaseSinNombre
-    Inherits ControladorBackend
-
-    Protected Enum TipoFijo
-        SinDefinir = 0
-        Prefijo = 1
-        Sufijo = 2
-        Completo = 3
-    End Enum
-
-    Protected Enum TipoSecuencia
-        SinDefinir = 0
-        Referencia = 1
-        Pedimento = 2
-    End Enum
 
     Protected Sub InicializaPrefijo(ByVal tipoReferencia_ As SelectControl, ByVal prefijo_ As SelectControl)
 
@@ -1155,5 +1120,53 @@ Public MustInherit Class ClaseSinNombre
         Return Nothing
 
     End Function
+
+    Protected Sub icFecha_TextChanged(sender As Object, e As EventArgs)
+
+        Dim _icontroladorMonedas = New ControladorMonedas
+
+        Dim factorTipoCambio_ = _icontroladorMonedas.ObtenerFactorTipodeCambio("MXN", Date.Parse(sender.Value))
+
+        If factorTipoCambio_.Status = TypeStatus.Ok Then
+
+            Dim tcvalor As tipodecambioreciente = factorTipoCambio_.ObjectReturned(1)
+
+            icTipoCambio.Value = tcvalor.tipocambio
+
+        End If
+
+    End Sub
+
+    Protected Sub scFacturaProveedor_TextChanged(sender As Object, e As EventArgs)
+
+        scFacturaProveedor.DataSource = New List(Of SelectOption) From {
+            New SelectOption With {.Value = 1, .Text = "9A351011-707E-4114-82B"},
+            New SelectOption With {.Value = 2, .Text = "9A351011-707E-4115-82B"},
+            New SelectOption With {.Value = 3, .Text = "9A351011-707E-4116-82B"}
+        }
+
+    End Sub
+
+    Protected Sub ccFacturas_RowChanged(row_ As Object, e As EventArgs)
+
+        row_.Item(icIncontermProveedor.ID) = "Holis Bolis"
+
+    End Sub
+
+    Protected Sub scClavePedimento_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        If scClavePedimento.Value = "13" Then
+
+            fscRectificaciones.Visible = True
+
+        Else
+
+            fscRectificaciones.Visible = False
+
+        End If
+
+    End Sub
+
+#End Region
 
 End Class

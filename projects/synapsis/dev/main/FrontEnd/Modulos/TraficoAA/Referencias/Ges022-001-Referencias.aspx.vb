@@ -21,6 +21,8 @@ Imports Rec.Globals.Utils
 Imports Rec.Globals.Controllers.ControladorRecursosAduanales
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 Imports Syn.CustomBrokers.Controllers
+Imports Syn.Documento.Componentes
+Imports gsol.Web.Components
 
 #End Region
 
@@ -129,6 +131,8 @@ Public Class Ges022_001_Referencia
         scTipoDocumento.Enabled = False
         scEjecutivoCuenta.Enabled = False
 
+        PreparaBotonera(FormControl.ButtonbarModality.Draft)
+
 
     End Sub
 
@@ -158,14 +162,23 @@ Public Class Ges022_001_Referencia
         [Set](scDestinoMercancia, CP_DESTINO_MERCANCIA)
         [Set](scEjecutivoCuenta, CP_EJECUTIVO_CUENTA)
 
+        fbcCliente.Signature = "holicrayoli"
+
         [Set](fbcCliente, CamposReferencia.CP_ID_IOE)
         [Set](fbcCliente, CamposReferencia.CA_RAZON_SOCIAL_IOE, propiedadDelControl_:=PropiedadesControl.Text)
+
+        [Set](fbcCliente, CamposReferencia.CP_ID_IOE, propiedadDelControl_:=PropiedadesControl.Signature, asignarA_:=TiposAsignacion.ValorFirma)
+
+
+
         [Set](icRFC, CamposReferencia.CA_RFC_DEL_IOE)
         [Set](icCURP, CamposReferencia.CA_CURP_DEL_IOE)
         [Set](icRFCFacturacion, CamposReferencia.CP_RFC_FACTURACION_IOE)
         [Set](icBancoPago, CamposReferencia.CA_BANCO_PAGO_IOE)
 
         [Set](icNumero, CamposReferencia.CP_DESCRIPCION_DETALLE)
+        '[Set](icNumero, CamposReferencia.CP_DESCRIPCION_DETALLE, propiedadDelControl_:=PropiedadesControl.Signature, asignarA_:=TiposAsignacion.ValorFirma)
+
         [Set](scTipoDato, CamposReferencia.CP_TIPO_DETALLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](ccCDetallesliente, Nothing, seccion_:=SeccionesReferencias.SREF3)
 
@@ -257,6 +270,8 @@ Public Class Ges022_001_Referencia
     'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
     Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
+
+
     End Sub
 
 
@@ -300,6 +315,8 @@ Public Class Ges022_001_Referencia
     End Function
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
+
+
 
     End Sub
 

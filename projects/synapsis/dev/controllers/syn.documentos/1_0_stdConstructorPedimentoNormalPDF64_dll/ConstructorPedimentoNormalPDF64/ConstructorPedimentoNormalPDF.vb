@@ -3531,7 +3531,7 @@ Namespace Syn.Documento
                                         }
                                      },
                                     New Celda With {
-                                        .Contenido = documento_.Attribute(CA_ADUANA_DESPACHO).Valor,
+                                        .Contenido = documento_.Attribute(CA_CLAVE_SAD).Valor,
                                         .EstiloCelda = New Estilos With {
                                             .AlineacionTexto = Alineaciones.AlIzquierdo,
                                             .Borde = Bordes.SinBordes,

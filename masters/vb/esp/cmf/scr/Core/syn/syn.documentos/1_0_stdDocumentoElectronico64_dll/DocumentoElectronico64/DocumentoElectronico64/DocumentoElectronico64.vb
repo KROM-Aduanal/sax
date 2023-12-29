@@ -58,6 +58,8 @@ Namespace Syn.Documento
 
         Protected _operacionesNodo As OperacionesNodos
 
+        Protected _metadatos As List(Of CampoGenerico)
+
         ' Private _operacionesNodo As OperacionesNodos
 
         <NonSerialized>
@@ -68,6 +70,9 @@ Namespace Syn.Documento
 
         <NonSerialized>
         Private _relatedFields As List(Of relatedfield)
+
+        <NonSerialized>
+        Private _documentosasociados As List(Of DocumentoAsociado)
 
 #End Region
 
@@ -91,6 +96,16 @@ Namespace Syn.Documento
             End Get
             Set(value As List(Of subscriptionsgroup))
                 _suscriptions = value
+            End Set
+        End Property
+
+        <BsonIgnore>
+        Public Property DocumentosAsociados As List(Of DocumentoAsociado)
+            Get
+                Return _documentosasociados
+            End Get
+            Set(value As List(Of DocumentoAsociado))
+                _documentosasociados = value
             End Set
         End Property
 
@@ -198,6 +213,24 @@ Namespace Syn.Documento
 
         End Property
 
+
+        <BsonElement("Metadatos")>
+        <BsonIgnoreIfDefault>
+        Public Property Metadatos As List(Of CampoGenerico)
+
+            Get
+
+                Return _metadatos
+
+            End Get
+
+            Set(value As List(Of CampoGenerico))
+
+                _metadatos = value
+
+            End Set
+
+        End Property
 #End Region
 
 #Region "Builders"
@@ -227,7 +260,7 @@ Namespace Syn.Documento
                 ByVal idCliente_ As Int32, ByVal idCorporativo_ As Int32, ByVal nombreCorporativoEmpresarial_ As String, ByVal idSucursal_ As Int32,
                 ByVal localidad_ As String, ByVal nombreSucursal_ As String, ByVal aduanaSeccion_ As String, ByVal relacionInterna_ As String,
                 ByVal Id_ As String, ByVal idDocumento_ As Int32, ByVal folioDocumento_ As String, ByVal fechaCreacion_ As Date, ByVal usuarioGenerador_ As String,
-                ByVal estatusDocumento_ As Int32, ByVal documento_ As EstructuraDocumento) ', ByVal listaSecciones_ As List(Of String))
+                ByVal estatusDocumento_ As Int32, ByVal documento_ As EstructuraDocumento, Optional ByVal metadatos_ As List(Of CampoGenerico) = Nothing) ', ByVal listaSecciones_ As List(Of String))
 
             _folioOperacion = referencia_
 
@@ -266,6 +299,8 @@ Namespace Syn.Documento
             _estructuraDocumento = documento_
 
             _operacionesNodo = New OperacionesNodos()
+
+            Metadatos = metadatos_
 
         End Sub
 
@@ -352,7 +387,8 @@ Namespace Syn.Documento
                         ByVal folioOperacion_ As String,
                         ByVal idCliente_ As Integer,
                         ByVal nombreCliente_ As String,
-                        ByVal tipoDocumento_ As TiposDocumentoElectronico)
+                        ByVal tipoDocumento_ As TiposDocumentoElectronico,
+                        Optional ByVal metadatos_ As List(Of CampoGenerico) = Nothing)
 
             _tagWatcher = New TagWatcher
 
@@ -373,6 +409,8 @@ Namespace Syn.Documento
             FechaCreacion = Now()
 
             TipoDocumentoElectronico = tipoDocumento_
+
+            Metadatos = metadatos_
 
             Dim ensamblador_ As EnsambladorDocumentos = New EnsambladorDocumentos
 
@@ -604,6 +642,7 @@ Namespace Syn.Documento
 
 #Region "Functions"
 
+
         '************* Refactory *****************
         Public Overridable Sub ConstruyeSeccion(ByVal seccionEnum_ As [Enum],
                                     ByVal tipoBloque_ As TiposBloque,
@@ -661,10 +700,11 @@ Namespace Syn.Documento
                                         Optional ByVal longitud_ As Int32? = 10,
                                         Optional ByVal cantidadEnteros_ As Int32? = 0,
                                         Optional ByVal cantidadDecimales_ As Int32? = 0,
-                                        Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir) As NodoGenerico
+                                        Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir,
+                                        Optional ByVal useAsMetadata_ As Boolean = False) As NodoGenerico
 
 
-            Return New NodoGenerico With {.Nodos = EnsamblarCampo(campoEnum_, tipoDato_, longitud_, cantidadEnteros_, cantidadDecimales_, tipoRedondeo_)}
+            Return New NodoGenerico With {.Nodos = EnsamblarCampo(campoEnum_, tipoDato_, longitud_, cantidadEnteros_, cantidadDecimales_, tipoRedondeo_, useAsMetadata_)}
 
         End Function
 
@@ -681,27 +721,28 @@ Namespace Syn.Documento
                                         Optional ByVal longitud_ As Int32 = 10,
                                         Optional ByVal cantidadEnteros_ As Int32 = 0,
                                         Optional ByVal cantidadDecimales_ As Int32 = 0,
-                                        Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir) As CampoGenerico
+                                        Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir,
+                                        Optional ByVal useAsMetadata_ As Boolean = False) As CampoGenerico
 
             Select Case tipo_
 
                 Case Entero
-                    Return New CampoGenerico(New CampoEntero()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .CantidadEnteros = cantidadEnteros_}
+                    Return New CampoGenerico(New CampoEntero()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .CantidadEnteros = cantidadEnteros_, .UseAsMetadata = useAsMetadata_}
 
                 Case Booleano
-                    Return New CampoGenerico(New CampoEntero()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_}
+                    Return New CampoGenerico(New CampoEntero()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .UseAsMetadata = useAsMetadata_}
 
                 Case Fecha
-                    Return New CampoGenerico(New CampoFecha()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_}
+                    Return New CampoGenerico(New CampoFecha()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .UseAsMetadata = useAsMetadata_}
 
                 Case Real
-                    Return New CampoGenerico(New CampoReal()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .CantidadEnteros = cantidadEnteros_, .CantidadDecimales = cantidadDecimales_, .TipoRedondeo = tipoRedondeo_}
+                    Return New CampoGenerico(New CampoReal()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .CantidadEnteros = cantidadEnteros_, .CantidadDecimales = cantidadDecimales_, .TipoRedondeo = tipoRedondeo_, .UseAsMetadata = useAsMetadata_}
 
                 Case Texto
-                    Return New CampoGenerico(New CampoTexto()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .Longitud = longitud_}
+                    Return New CampoGenerico(New CampoTexto()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .Longitud = longitud_, .UseAsMetadata = useAsMetadata_}
 
                 Case IdObject
-                    Return New CampoGenerico(New CampoTexto()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_}
+                    Return New CampoGenerico(New CampoTexto()) With {.CampoGenerico = campoEnum_, .TipoDato = tipo_, .UseAsMetadata = useAsMetadata_}
 
             End Select
 
@@ -733,9 +774,10 @@ Namespace Syn.Documento
                                                    Optional ByVal longitud_ As Int32? = 10,
                                                    Optional ByVal cantidadEnteros_ As Int32? = 0,
                                                    Optional ByVal cantidadDecimales_ As Int32? = 0,
-                                                   Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir) As List(Of Nodo)
+                                                   Optional ByVal tipoRedondeo_ As Syn.Documento.Componentes.Campo.TiposRedondeos = Syn.Documento.Componentes.Campo.TiposRedondeos.SinDefinir,
+                                                   Optional ByVal useAsMetadata_ As Boolean = False) As List(Of Nodo)
 
-            Dim campoDocumento_ = Def(campoEnum_, tipo_, longitud_, cantidadEnteros_, cantidadDecimales_, tipoRedondeo_)
+            Dim campoDocumento_ = Def(campoEnum_, tipo_, longitud_, cantidadEnteros_, cantidadDecimales_, tipoRedondeo_, useAsMetadata_)
 
             Dim nodos_ = New List(Of Nodo)
 

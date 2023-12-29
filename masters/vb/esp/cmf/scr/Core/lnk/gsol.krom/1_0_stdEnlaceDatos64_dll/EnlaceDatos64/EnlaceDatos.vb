@@ -12,6 +12,8 @@ Imports System.Threading.Tasks
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions.TagWatcher
+Imports Rec.Globals.Utils
+Imports Syn.Utils
 
 Namespace gsol.krom
     Public Class EnlaceDatos
@@ -408,6 +410,52 @@ Namespace gsol.krom
             Return _tagWatcher
 
         End Function
+
+
+        Public Sub PreparaMetaDatos(ByRef documentoOriginal_ As DocumentoElectronico)
+
+            Dim operacionNodoNoSQL_ = New OperacionesNodosNoSQL(_espacioTrabajo)
+
+            Dim listaCampos_ As New List(Of CampoGenerico)
+
+            For Each parDatos_ As KeyValuePair(Of String, List(Of Nodo)) In documentoOriginal_.EstructuraDocumento.Parts
+
+                For Each parts_ As Nodo In parDatos_.Value
+
+                    Dim listaCamposHijo_ As New List(Of CampoGenerico)
+
+                    If Not IsNothing(parts_.Nodos) Then
+
+                        listaCamposHijo_ = operacionNodoNoSQL_.PreparaMetaDatos(parts_.Nodos)
+
+                        If Not IsNothing(listaCamposHijo_) Then
+
+                            If listaCamposHijo_.Count > 0 Then
+
+                                For Each campo_ As CampoGenerico In listaCamposHijo_
+
+                                    listaCampos_.Add(campo_)
+
+                                Next
+
+                            End If
+
+                        End If
+
+                    End If
+
+                Next
+
+            Next
+
+            If listaCampos_.Count > 0 Then
+
+                documentoOriginal_.Metadatos = listaCampos_
+
+            End If
+
+        End Sub
+
         Public Async Function AgregarDatosDocumento(ByVal objetoDatos_ As DocumentoElectronico,
                                                     Optional ByVal espacioTrabajo_ As IEspacioTrabajo = Nothing,
                                                     Optional ByVal session_ As IClientSessionHandle = Nothing) As Threading.Tasks.Task(Of TagWatcher) _
@@ -437,6 +485,9 @@ Namespace gsol.krom
                 _dimension = IEnlaceDatos.TiposDimension.SinDefinir
 
                 If Not _espacioTrabajo Is Nothing Then
+
+                    'Asignar metadatos
+                    PreparaMetaDatos(objetoDatos_)
 
                     _tagWatcher = Await .ProduceTransaccionDocumento(objetoDatos_,
                                                       _modalidadConsulta,
@@ -506,6 +557,74 @@ Namespace gsol.krom
             End With
 
             Return _tagWatcher
+
+        End Function
+
+        Public Function NotificarSubscriptores(ByVal recurso_ As String,
+                                               ByVal iddocumento_ As ObjectId,
+                                               ByVal documentoelectronico_ As DocumentoElectronico,
+                                               Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.NotificarSubscriptores
+
+            Dim tagwacher_ As New TagWatcher
+
+            Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
+
+                With controladorSubscripciones_
+
+                    If .LeerSuscriptores(recurso_, iddocumento_).Count Then
+
+                        tagwacher_ = .DifusionDatos(documentoelectronico_, session_)
+
+                    Else
+
+                        tagwacher_ = New TagWatcher(1)
+
+                    End If
+
+                End With
+
+            End Using
+
+            Return tagwacher_
+
+        End Function
+
+        Public Function EliminarSuscripciones(ByVal iddocumento_ As ObjectId,
+                                              ByVal subscriptionsgroup_ As List(Of subscriptionsgroup),
+                                              Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.EliminarSuscripciones
+
+            For Each subscriptionsgroup As subscriptionsgroup In subscriptionsgroup_
+
+                Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
+
+                    With controladorSubscripciones_
+
+                        If Not .EliminarSuscripciones(subscriptionsgroup.toresource, iddocumento_, session_).Status = TypeStatus.Ok Then
+
+                            Return New TagWatcher(0)
+
+                        End If
+
+                    End With
+
+                End Using
+
+            Next
+
+            Return New TagWatcher(1)
+
+        End Function
+
+        Public Function FirmarDocumento(ByVal recurso_ As String,
+                                        ByVal iddocumento_ As ObjectId,
+                                        ByVal claveusuario_ As String,
+                                        Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.FirmarDocumento
+
+            Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
+
+                Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
+
+            End Using
 
         End Function
 

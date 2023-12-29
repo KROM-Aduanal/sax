@@ -9,6 +9,7 @@ Namespace gsol.seguridad
             SHA1 = 0
             MD5 = 1
             Base64 = 2
+            AES = 3
         End Enum
 
         Enum TipoComportamientoCodigo

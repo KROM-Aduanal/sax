@@ -89,10 +89,7 @@ Public Class Ges022_001_Clientes
         End If
 
 
-
     End Sub
-
-
 
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
@@ -247,6 +244,7 @@ Public Class Ges022_001_Clientes
     End Sub
 
     'EVENTOS PARA LA INSERCIÓN DE DATOS
+
     Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
         Dim tagwatcher_ As TagWatcher
@@ -973,6 +971,8 @@ Public Class Ges022_001_Clientes
         End With
 
     End Sub
+
+
 
 #End Region
 

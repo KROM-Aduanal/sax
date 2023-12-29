@@ -309,7 +309,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("COMPL. IDENTIFICADOR 3.")> CA_COMPLEMENTO_3 = 90
             <EnumMember> <Description("TIPO CUENTA.")> CA_CVE_CUENTA_ADUANERA = 91
             <EnumMember> <Description("CLAVE DE GARANTIA.")> CA_CVE_TIPO_GARANTIA = 92
-            <EnumMember> <Description("INSTITUCION EMISORA.")> CA_NOMBRE_INSTITUCION_EMISORA_CUENTA = 93
+            <EnumMember> <Description("INSTITUCION EMISORA.")> CA_INSTITUCION_EMISORA_GARANTIA = 93
             <EnumMember> <Description("NUMERO DE CONTRATO.")> CA_NUMERO_CONTRATO = 94
             <EnumMember> <Description("FOLIO CONSTANCIA.")> CA_FOLIO_CONSTANCIA = 95
             <EnumMember> <Description("TOTAL DEPOSITO.")> CA_IMPORTE_TOTAL_CONSTANCIA = 96
@@ -470,10 +470,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("CLAVE CONCEPTO NIVEL PEDIMENTO")> CA_CVE_CONCEPTO_NIVEL_PEDIMENTO = 245
             <EnumMember> <Description("CLAVE CONTRIBUCION A NIVEL PARTIDA")> CA_CVE_CONTRIBUCION_NIVEL_PARTIDA = 246
             <EnumMember> <Description("NUMERO DE ACUSE DE VALOR")> CA_NUMERO_ACUSE_DE_VALOR = 247
-            <EnumMember> <Description("CLAVE INSTITUCION EMISORA CUENTA ADUANERA PEDIMENTO")> CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PEDIMENTO = 248
             <EnumMember> <Description("CLAVE VINCULACION")> CA_CVE_VINCULACION = 249
-            <EnumMember> <Description("CLAVE INSTITUCION EMISORA CUENTA ADUANERA PARTIDA")> CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PARTIDA = 250
-            <EnumMember> <Description("ADUANA DE DESPACHO")> CA_ADUANA_DESPACHO = 251
             <EnumMember> <Description("NUMERO DE PEDIMENTO ORIGINAL 7 DIGITOS")> CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS = 252
             <EnumMember> <Description("ANIO VALIDACION 2 DIGITOS ORIGINAL")> CA_ANIO_VALIDACION_2_ORIGINAL = 253
             <EnumMember> <Description("ANIO VALIDACION ORIGINAL")> CA_ANIO_VALIDACION_ORIGINAL = 254

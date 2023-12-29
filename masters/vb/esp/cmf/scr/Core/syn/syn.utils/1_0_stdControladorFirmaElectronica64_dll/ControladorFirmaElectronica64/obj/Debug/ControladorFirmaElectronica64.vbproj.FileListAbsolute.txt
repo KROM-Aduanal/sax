@@ -1,0 +1,16 @@
+C:\sax\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorFirmaElectronica64.0.0.0.0.dll
+C:\sax\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorFirmaElectronica64.0.0.0.0.pdb
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.AssemblyReference.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.GenerateResource.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Rec.Globals.Controllers.ControladorFirmaElectronica64.0.0.0.0.dll
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Rec.Globals.Controllers.ControladorFirmaElectronica64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.ControladorFirmaElectronica64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.ControladorFirmaElectronica64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Syn.Utils.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\ControladorFirmaElectronica64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Syn.Utils.ControladorFirmaElectronica64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\obj\Debug\Syn.Utils.ControladorFirmaElectronica64.0.0.0.0.pdb
