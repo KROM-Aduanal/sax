@@ -170,21 +170,23 @@ Public Class GeneradorPartidasPedimento
 
         _estado = ProcesarItemsFactura(facturasComerciales_)
 
-        If _pedimentoDocumento.Seccion(1).Campo(2).Valor = 1 Then
+        _informacionAgrupacion.tipooperacion = _pedimentoDocumento.Attribute(CA_TIPO_OPERACION).Valor
+
+        If _informacionAgrupacion.tipooperacion = 1 Then
+
             'importaciones
             'Después que se tenga mejorada la interfaz se debe ajustar para revisar el componente o algún otro campo
-            _tieneCuentasAduaneras = IIf(_pedimentoDocumento.Seccion(19).CantidadPartidas > 0, True, False)
-            _informacionAgrupacion.tipooperacion = _pedimentoDocumento.Seccion(1).Campo(2).Valor
+            _tieneCuentasAduaneras = IIf(_pedimentoDocumento.Seccion(SeccionesPedimento.ANS19).CantidadPartidas > 0, True, False)
 
         Else
+
             'Exportaciones
-            _informacionAgrupacion.tipooperacion = _pedimentoDocumento.Seccion(1).Campo(2).Valor
             'Se revisa si tiene descargos porque aplica a empresas IMMEX (hasta el momento es lo mejor que se aproxima)
-            'Se sugiere poner algo a nivel cliente (exportador para determinar si es o no IMMEx)
-            _esIMMEX = IIf(_pedimentoDocumento.Seccion(20).CantidadPartidas > 0, True, False)
+            'Se sugiere revisar el identificador general "IM" Para detectar si es o no IMMEX
+            _esIMMEX = IIf(_pedimentoDocumento.Seccion(SeccionesPedimento.ANS20).CantidadPartidas > 0, True, False)
 
             'Se valida que sea una operación de retorno para aplicar valor agregado
-            _esRetorno = IIf(_pedimentoDocumento.Seccion(1).Campo(3).Valor = "RT", True, False)
+            _esRetorno = IIf(_pedimentoDocumento.Attribute(CA_CVE_PEDIMENTO).Valor = 32, True, False)
 
         End If
 
@@ -243,7 +245,7 @@ Public Class GeneradorPartidasPedimento
 
                     Else
 
-                        _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: FraccionNico, no se cumple con lo solicitado.")
+                        _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: FraccionNico, no se cumple con lo solicitado.")
 
                     End If
 
@@ -259,9 +261,9 @@ Public Class GeneradorPartidasPedimento
 
                         listaCampos_.Add(iItemFacturaComercial_.UnidadMedidaComercial)
 
-                        If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario) Then
+                        If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado) Then
 
-                            _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario)
+                            _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado)
 
                         End If
 
@@ -269,7 +271,7 @@ Public Class GeneradorPartidasPedimento
 
                     Else
 
-                        _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: UMCPRecioUnitario, no se cumple con lo solicitado.")
+                        _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: UMCPrecioUnitarioPromedio, no se cumple con lo solicitado.")
 
                     End If
 
@@ -300,7 +302,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
 
 
                         End If
@@ -337,7 +339,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetOKInfo(Me, "No se cuenta con Precio unitario disponible para precios estimados.")
+                            _estado.SetOKBut(Me, "No se cuenta con Precio unitario disponible para precios estimados.")
 
                         End If
 
@@ -378,7 +380,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: MetodoValoracionVinculacion, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: MetodoValoracionVinculacion, no se cumple con lo solicitado.")
 
 
                         End If
@@ -410,7 +412,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
 
 
                         End If
@@ -631,7 +633,7 @@ Public Class GeneradorPartidasPedimento
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.FraccionNico
 
 
-                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario
+                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.PaisVentaCompraOrigenDestino
@@ -647,6 +649,9 @@ Public Class GeneradorPartidasPedimento
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.ValorAgregado
+
+
+                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.SinAgrupacion
@@ -827,21 +832,22 @@ Public Class GeneradorPartidasPedimento
     Private Function ProcesarEntradas(ByVal agrupacionSeleccionada_ As IGeneradorPartidasPedimento.TipoAgrupaciones) As InformacionAgrupacion
 
         _informacionAgrupacion = New InformacionAgrupacion With {
+            .tipooperacion = _pedimentoDocumento.Attribute(CA_TIPO_OPERACION).Valor,
             ._id = ObjectId.GenerateNewId(),
             ._idpedimento = _idPedimentoModulo, 'Actualmente no se tiene valor en el campo y se decidio traerlo antes por si aplica 
             .agrupacionseleccionada = agrupacionSeleccionada_,
-            .fechatipocambio = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_ENTRADA).Valor, _pedimentoDocumento.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_PRESENTACION).Valor),
-            .tipocambio = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_TIPO_CAMBIO).Valor,
+            .fechatipocambio = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Attribute(CA_FECHA_ENTRADA).Valor, _pedimentoDocumento.Attribute(CA_FECHA_PRESENTACION).Valor),
+            .tipocambio = _pedimentoDocumento.Attribute(CA_TIPO_CAMBIO).Valor,
             .fechageneracionagrupacion = Date.Now,
             .pedimento = New DatosPedimento With {
-                .numeropedimentocompleto = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_NUMERO_PEDIMENTO_COMPLETO).Valor,
-                .aduanaseccion = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_CLAVE_SAD).Valor,
-                .anio = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_ANIO_VALIDACION).ValorPresentacion,
-                .patente = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS44).Campo(CA_PATENTE).Valor,
-                .cvepedimento = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_CVE_PEDIMENTO).Valor,
-                .regimen = _pedimentoDocumento.Seccion(SeccionesPedimento.ANS1).Campo(CA_REGIMEN).Valor,
-                .fechaentrada = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_ENTRADA).Valor, Nothing),
-                .fechapresentacion = IIf(_informacionAgrupacion.tipooperacion = 2, _pedimentoDocumento.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_PRESENTACION).Valor, Nothing)
+                .numeropedimentocompleto = _pedimentoDocumento.Attribute(CA_NUMERO_PEDIMENTO_COMPLETO).Valor,
+                .aduanaseccion = _pedimentoDocumento.Attribute(CA_CLAVE_SAD).Valor,
+                .anio = _pedimentoDocumento.Attribute(CA_ANIO_VALIDACION).ValorPresentacion,
+                .patente = _pedimentoDocumento.Attribute(CA_PATENTE).Valor,
+                .cvepedimento = _pedimentoDocumento.Attribute(CA_CVE_PEDIMENTO).Valor,
+                .regimen = _pedimentoDocumento.Attribute(CA_REGIMEN).Valor,
+                .fechaentrada = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Attribute(CA_FECHA_ENTRADA).Valor, Nothing),
+                .fechapresentacion = IIf(_informacionAgrupacion.tipooperacion = 2, _pedimentoDocumento.Attribute(CA_FECHA_PRESENTACION).Valor, Nothing)
             },
             .archivado = False,
             .estado = 1
@@ -959,7 +965,7 @@ Public Class GeneradorPartidasPedimento
         Dim items_ As IEnumerable(Of ItemPartida)
         Dim sumaUMC_ As Double = 0
         Dim sumaUMT_ As Double = 0
-        Dim sumaPU_ As Double = 0
+        Dim sumaVA_ As Double = 0
         Dim precioPagado_ As Double = 0
         Dim sumaMercancia_ As Double = 0
         Dim factormonedaFC_ As Double = 0
@@ -1086,6 +1092,24 @@ Public Class GeneradorPartidasPedimento
 
                         End If
 
+                        'Suma del Valor agregado
+                        If _esIMMEX = True And _esRetorno = True Then
+
+                            sumaVA_ = Aggregate asociados_ In items_
+                                        Into Sum(asociados_.valoragregado)
+
+                            If sumaVA_ > 0 Then
+
+                                partida_.ValorAgregado = sumaVA_
+
+                            Else
+
+                                _estado.SetOKInfo(Me, "Es apta para valor agregado pero no tiene.")
+
+                            End If
+
+                        End If
+
                     ElseIf _informacionAgrupacion.tipooperacion = 1 Then
 
                         'Importaciones
@@ -1139,6 +1163,14 @@ Public Class GeneradorPartidasPedimento
                         Else
 
                             _estado.SetError(Me, "Ha ocurrido un detalle: No se obtuvo el valor aduanal correctamente.")
+
+                        End If
+
+                        'Si tiene precios estimados o precios de referencia se debe sacar el precio unitario en USD 
+                        'Por sugerencia de Juridico (Jovana) se saca con el valor aduanal entre el tipo de cambio (recordando que aquí ya se incluyen incrementables)
+                        If _tieneCuentasAduaneras = True Or _tieneCuotaCompensatoria = True Then
+
+                            partida_.PrecioUnitarioUSD = partida_.ValorAduanal / _informacionAgrupacion.tipocambio
 
                         End If
 
@@ -1425,7 +1457,6 @@ Public Class GeneradorPartidasPedimento
             'Para las Unidades medidas lo que se pueda convertir hacerlo y sino indicar que se debe hacer la conversión
             'Considerar que esto se hace por producto así que aunque este requerido puede no aplicar
             'Se van a colocar pero al final el usuario tiene la ultima palabra dependiendo de las características del producto
-            'Conversión a dolares del PU
 
             For Each _cuotacompensatoriadisponible In _fraccionarancelaria.regulacionesArancelarias.cuotasCompensatorias
 

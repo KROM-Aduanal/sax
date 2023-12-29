@@ -678,7 +678,7 @@ Public Class ItemFacturaComercial
 
     End Property
 
-    Public Property ValorAgregado As Integer
+    Public Property ValorAgregado As Integer Implements IItemFacturaComercial.ValorAgregado
 
         Get
 
@@ -767,11 +767,11 @@ Public Class ItemFacturaComercial
                         Dim item_ As New ItemFacturaComercial With {
                             .idFacturaComercial = New ObjectId(constructorFacturaComercial_.Id),
                             .FolioFacturaComercial = constructorFacturaComercial_.FolioDocumento,
-                            .PaisVendedor = Mid(constructorFacturaComercial_.Seccion(SeccionesFacturaComercial.SFAC1).Campo(CA_PAIS_FACTURACION).Valor, 1, 3),
-                            .DescripcionPaisVendedor = constructorFacturaComercial_.Seccion(SeccionesFacturaComercial.SFAC1).Campo(CA_PAIS_FACTURACION).Valor,
-                            .PaisComprador = Mid(constructorFacturaComercial_.Seccion(SeccionesFacturaComercial.SFAC1).Campo(CA_PAIS_FACTURACION).Valor, 1, 3),
-                            .DescripcionPaisComprador = constructorFacturaComercial_.Seccion(SeccionesFacturaComercial.SFAC1).Campo(CA_PAIS_FACTURACION).Valor,
-                            .Vinculacion = constructorFacturaComercial_.Seccion(SeccionesFacturaComercial.SFAC2).Campo(CA_CVE_VINCULACION).Valor,
+                            .PaisVendedor = Mid(constructorFacturaComercial_.Attribute(CA_PAIS_FACTURACION).Valor, 1, 3),
+                            .DescripcionPaisVendedor = constructorFacturaComercial_.Attribute(CA_PAIS_FACTURACION).Valor,
+                            .PaisComprador = Mid(constructorFacturaComercial_.Attribute(CA_PAIS_FACTURACION).Valor, 1, 3),
+                            .DescripcionPaisComprador = constructorFacturaComercial_.Attribute(CA_PAIS_FACTURACION).Valor,
+                            .Vinculacion = constructorFacturaComercial_.Attribute(CA_CVE_VINCULACION).Valor,
                             .Estado = 1
                         }
                         'item_.idItemFactura = .Attribute() No se encuentra actualmente implementado a nivel de factura comercial
@@ -802,6 +802,7 @@ Public Class ItemFacturaComercial
                         item_.Modelo = .Attribute(CA_MODELO_PARTIDA).Valor
                         item_.Marca = .Attribute(CA_MARCA_PARTIDA).Valor
                         item_.ValorAgregado = 10
+                        'La líne 804 es de prueba para considerar valor agregado eliminar sino se requiere o no se usara
                         'item_.ValorAgregado = .Attribute(CA_VALOR_AGREGADO).Valor 'No se tiene agregado actualmente en FC
                         'item_.SecuenciaProducto = .Attribute(CA_SECUENCIA_PRODUCTO).Valor 'No se tiene agregado actualmente en FC
                         'item_.Submodelo = .Attribute(CA_SUBMODELO_PARTIDA).Valor

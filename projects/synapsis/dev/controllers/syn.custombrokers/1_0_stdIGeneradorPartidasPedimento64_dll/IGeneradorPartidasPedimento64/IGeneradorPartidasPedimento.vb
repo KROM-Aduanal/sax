@@ -10,7 +10,7 @@ Public Interface IGeneradorPartidasPedimento
 
         SinDefinir = 0
         FraccionNico = 1
-        UMCPRecioUnitario = 2
+        UMCPrecioUnitarioCalculado = 2
         PaisVentaCompraOrigenDestino = 3
         ContribucionFormaPago = 4
         TasaTipoTasa = 5
