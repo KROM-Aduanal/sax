@@ -7407,7 +7407,7 @@ Namespace Syn.Documento
 
         Public Function ImpresionEncabezado(ByVal doc_ As DocumentoElectronico) As String
 
-            Return _ControladorPedimentoPDF.ImprimirEncabezadoPedimentoNormal(_documentoElectronico)
+            Return _ControladorPedimentoPDF.ImprimirPedimentoNormal(_documentoElectronico)
 
         End Function
 

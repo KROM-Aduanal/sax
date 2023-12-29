@@ -37,17 +37,18 @@ Public Interface IControladorTIGIE
     Function EnlistarFracciones(ByVal texto_ As String) As TagWatcher
     Function EnlistarNicosFraccion(ByVal fraccion_ As String) As TagWatcher
     Function BuscarNico(ByVal id_ As ObjectId,
-                        Optional ByVal tipoOperacion_ As TipoOperacion = TipoOperacion.Importacion,
-                        Optional ByVal fecha_ As Date = Nothing,
-                        Optional ByVal pais_ As String = Nothing) As TagWatcher
-    Function TraeDatosFraccion(Of T)(fraccion_ As String,
-                                      tipoOperacion_ As IControladorTIGIE.TipoOperacion,
-                                      pais_ As String,
-                                      fecha_ As Date) As TagWatcher
-    Function TraeDatosFraccion(Of T)(fracciones_ As List(Of String),
-                                      tipoOperacion_ As IControladorTIGIE.TipoOperacion,
-                                      pais_ As String,
-                                      fecha_ As Date) As TagWatcher
+                        Optional ByVal operationType_ As TipoOperacion = TipoOperacion.Importacion,
+                        Optional ByVal date_ As Date = Nothing,
+                        Optional ByVal country_ As String = Nothing) As TagWatcher
+    Function GetHsCode(Of T)(hsCode As String,
+                                      operationType_ As IControladorTIGIE.TipoOperacion,
+                                      country_ As String,
+                                      Optional ByVal date_ As Date = Nothing) As TagWatcher
+
+    Function GetHsCode(Of T)(hsCodes As List(Of String),
+                                      operationType_ As IControladorTIGIE.TipoOperacion,
+                                      country_ As String,
+                                       Optional ByVal date_ As Date = Nothing) As TagWatcher
 
 
 #End Region

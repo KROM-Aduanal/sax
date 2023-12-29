@@ -77,6 +77,9 @@
                     <GWC:ButtonItem Text="Descargar"/>
                     <GWC:ButtonItem Text="Imprimir"/>
                     <GWC:ButtonItem Text="Mandar por Correo"/>
+                    <GWC:ButtonItem Text="Imprimir Pedimento"/>
+                    <GWC:ButtonItem Text="Imprimir MV"/>
+                    <GWC:ButtonItem Text="Generar MV"/>
                 </DropdownButtons>
             </Buttonbar>      
             <Fieldsets>

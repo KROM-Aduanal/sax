@@ -245,7 +245,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CampoReal64", "..\..\..\..\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KromComponentes64", "..\..\..\..\masters\vb\esp\cmf\scr\Core\web\1_0_stdKromComponentes64_dll\KromComponentes64\KromComponentes64.vbproj", "{F43C84C5-BEC0-4E30-A614-63981771FAFC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorPDF64", "..\controllers\syn.custombrokers\1_0_stdControladorPDF64_dll\ControladorPDF64\ControladorPDF64.vbproj", "{9A1D4CF1-5055-4134-AD14-E2151D1021BB}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Itext7Handler", "..\controllers\syn.custombrokers\1_0_stdControladorPDF64_dll\ControladorPDF64\Itext7Handler.vbproj", "{9A1D4CF1-5055-4134-AD14-E2151D1021BB}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorManifestacionValor64", "..\controllers\syn.documentos\1_0_stdConstructorManifestacionValor64_dll\ConstructorManifestacionValor64\ConstructorManifestacionValor64.vbproj", "{C7BBD082-4595-4343-939C-5B041F59BEC1}"
 EndProject

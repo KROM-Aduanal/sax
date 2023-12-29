@@ -6,6 +6,7 @@ Imports MongoDB.Bson.Serialization.IdGenerators
 Imports MongoDB.Driver
 Imports MongoDB.Driver.WriteConcern
 Imports Syn.Documento
+Imports Syn.Documento.ConstructorManifestacionValor
 Imports Syn.Documento.Componentes
 Imports Syn.CustomBrokers.Controllers
 Imports Syn.Nucleo.RecursosComercioExterior
@@ -340,10 +341,10 @@ Public Class ControladorManifestacionValor
 
                 With _ManifestacionesValor(iterador_)
 
-                    .Seccion(SMV4).Attribute(CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO).Valor =
-                                                        pedimento_.Seccion(ANS1).Attribute(CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO).Valor
+                    .Seccion(SMV4).Attribute(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO).Valor =
+                                                        pedimento_.Seccion(ANS1).Attribute(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO).Valor
 
-                    .Seccion(SMV4).Attribute(CamposPedimento.CA_FECHA_PEDIM_ORIGINAL).Valor =
+                    .Seccion(SMV4).Attribute(CamposPedimento.CA_FECHA_PEDIMENTO_ORIGINAL).Valor =
                                                         pedimento_.Seccion(ANS14).Attribute(CamposPedimento.CA_FECHA_ENTRADA).Valor
 
                     .FolioDocumento = "PRUEBA" + iterador_.ToString()

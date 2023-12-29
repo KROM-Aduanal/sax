@@ -15,3 +15,13 @@ synapsis.settings*.json
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/fileList.bin
 
+masters/vb/esp/cmf/scr/Components web/1_0_CptSelectControl64_dll/SelectControl/obj/Debug/CptSelectControl64.vbproj.GenerateResource.cache
+*.dll
+masters/vb/esp/cmf/scr/Components web/1_0_CptSelectControl64_dll/SelectControl/obj/Debug/Gsol.Web.Components.CptSelectControl64.0.0.0.0.dll
+masters/vb/esp/cmf/scr/Components web/1_0_CptSelectControl64_dll/SelectControl/obj/Debug/Gsol.Web.Components.CptSelectControl64.0.0.0.0.pdb
+masters/vb/esp/cmf/scr/Components web/1_0_CptUIControlDataConnection64_dll/IUIControlDataConnection/IUIControl/obj/Debug/Gsol.Web.Components.UIControlDataConnection64.0.0.0.0.dll
+masters/vb/esp/cmf/scr/Components web/1_0_CptUIControlDataConnection64_dll/IUIControlDataConnection/IUIControl/obj/Debug/Gsol.Web.Components.UIControlDataConnection64.0.0.0.0.pdb
+masters/vb/esp/cmf/scr/Components web/1_0_CptUIControlDataConnection64_dll/IUIControlDataConnection/IUIControl/obj/Debug/UIControlDataConnection64.vbproj.GenerateResource.cache
+masters/vb/esp/cmf/scr/Core/web/1_0_stdControladorBackend64_dll/ControladorBackend64/obj/Debug/ControladorBackend64.vbproj.GenerateResource.cache
+masters/vb/esp/cmf/scr/Core/web/1_0_stdControladorBackend64_dll/ControladorBackend64/obj/Debug/Sax.Web.ControladorBackend64.0.0.0.0.dll
+masters/vb/esp/cmf/scr/Core/web/1_0_stdControladorBackend64_dll/ControladorBackend64/obj/Debug/Sax.Web.ControladorBackend64.0.0.0.0.pdb

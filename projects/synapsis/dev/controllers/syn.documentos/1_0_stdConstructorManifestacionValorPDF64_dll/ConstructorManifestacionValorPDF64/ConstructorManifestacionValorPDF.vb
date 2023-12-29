@@ -63,7 +63,7 @@ Public Class ConstructorManifestacionValorPDF
 
     Private _celdas2 As Dictionary(Of String, Dictionary(Of String, List(Of Int64)))
 
-    Private _controladorPDF As ControladorPDF
+    Private _controladorPDF As Itext7Handler
 
     Private _Nivel1 As Table
 
@@ -104,7 +104,7 @@ Public Class ConstructorManifestacionValorPDF
 
         _watermark = New Image(ImageDataFactory.Create("C:/temp/PROFORMA.png"))
 
-        _controladorPDF = New ControladorPDF(_arialBold, _arial, _watermark, _estiloSinBordes)
+        _controladorPDF = New Itext7Handler(_arialBold, _arial, _watermark, _estiloSinBordes)
 
     End Sub
 
@@ -551,8 +551,8 @@ Public Class ConstructorManifestacionValorPDF
 
             '------------------
 
-            Dim fechaFactura_ As DateTime = IIf(documento_.Seccion(SMV4).Attribute(CA_FECHA_FACTURA).Valor IsNot Nothing,
-                                                documento_.Seccion(SMV4).Attribute(CA_FECHA_FACTURA).Valor, New DateTime(2023, 3, 10))
+            Dim fechaFactura_ As DateTime = IIf(documento_.Seccion(SMV4).Attribute(CamposFacturaComercial.CA_FECHA_FACTURA).Valor IsNot Nothing,
+                                                documento_.Seccion(SMV4).Attribute(CamposFacturaComercial.CA_FECHA_FACTURA).Valor, New DateTime(2023, 3, 10))
 
             _celdas = New Dictionary(Of String, String) From {{"VACIO", " "},
                                                               {"VACIO ", fechaFactura_.Day.ToString},

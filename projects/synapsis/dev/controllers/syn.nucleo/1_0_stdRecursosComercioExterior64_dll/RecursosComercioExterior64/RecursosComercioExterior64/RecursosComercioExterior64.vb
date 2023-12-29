@@ -1011,6 +1011,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Unidad de medida nombre corto")> CA_NUMERO_ALADI = 10164
             <EnumMember> <Description("impuesto siglas")> CA_NOMBRE_ALADI = 10165
             <EnumMember> <Description("impuesto siglas")> CP_DESCUENTO = 10166
+            <EnumMember> <Description("Nombre corto del país")> CP_NOMBRECORTO_PAIS = 10167
         End Enum
 
         Public Enum CamposManifestacionValor

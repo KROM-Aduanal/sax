@@ -14,13 +14,11 @@ Imports iText.Layout.Borders
 Imports iText.IO.Image
 
 
-Public Class ControladorPDF
+Public Class Itext7Handler
 
     Private _Nivel1 As Table
 
     Private _tablalayout As Table
-
-    Private _layout As Table
 
     Private _arialBold As PdfFont
 

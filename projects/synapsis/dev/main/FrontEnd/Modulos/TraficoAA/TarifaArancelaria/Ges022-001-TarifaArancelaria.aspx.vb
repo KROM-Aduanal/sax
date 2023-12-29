@@ -36,6 +36,8 @@ Imports Syn.Nucleo.RecursosComercioExterior.CamposTarifaArancelaria
 Imports System.Xml.Serialization
 Imports gsol
 Imports System.IO
+Imports Syn.CustomBrokers.Controllers
+
 
 #End Region
 
@@ -59,6 +61,8 @@ Public Class Ges022_001_TarifaArancelaria
 
     Private _tarifaArancelaria As IControladorTIGIE
 
+    Dim _manifestacionValor As IControladorManifestacionValor
+
     Public Property Tratados As List(Of List(Of TratadoItem))
 
     'Public Property Cupos As List(Of CupoItem)
@@ -68,8 +72,8 @@ Public Class Ges022_001_TarifaArancelaria
     Public Property Permisos As List(Of PermisoItem)
     Public Property Normas As List(Of NormaItem)
     'Public Property Anexos As List(Of AnexoItem)
-    'Public Property Embargos As List(Of EmbargoItem)
-    'Public Property CuposMinimos As List(Of CupoMinimoItem)
+    'Public Property embargo As List(Of EmbargoItem)
+    'Public Property cupoMinimo As List(Of CupoMinimoItem)
     Public Property Padrones As List(Of PadronItem)
 
 #End Region
@@ -175,12 +179,16 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Overrides Sub BotoneraClicNuevo()
 
-        ClonarTarifaSysExpert()
-        '_tarifaArancelaria = New ControladorTIGIE()
+        'ClonarTarifaSysExpert()
 
-        'Dim estado_ = _tarifaArancelaria.TraeDatosFraccion(Of ConstructorTIGIE)("3304910100", IControladorTIGIE.TipoOperacion.Importacion, "CHILE", DateTime.Now.Date)
+        _tarifaArancelaria = New ControladorTIGIE()
 
-        'Dim x = estado_.Status
+        Dim fracciones_ = New List(Of String) From {"4901100100", "8716809901", "9031809901"} '3304910100", "8716809901", "2201900100", "4901100100", "4415200299", "9031809901", "3923299199", "8466939901", "3307200100", "3401300100"}
+
+        Dim estado_ = _tarifaArancelaria.GetHsCode(Of ConstructorTIGIE)("9031809901", IControladorTIGIE.TipoOperacion.Importacion, "BOL", DateTime.Now.Date)
+
+        Dim fracc = estado_.ObjectReturned
+
 
     End Sub
 
@@ -201,6 +209,95 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
 
+        Select Case IndexSelected_
+            Case 10
+
+                Dim docElectronico_ As DocumentoElectronico = Nothing
+
+                Dim FolioOperacion_ = "RKU21-00014"
+
+                Using enlaceDatos_ As IEnlaceDatos =
+                    New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
+
+                    'enlaceDatos_.EspacioTrabajo.DivisionEmpresarial =
+
+                    Dim operacionesDB_ = enlaceDatos_.GetMongoCollection(Of OperacionGenerica)(New ConstructorPedimentoNormal().GetType.Name)
+
+                    Dim filtro_ As BsonDocument = New BsonDocument().Add("FolioOperacion", FolioOperacion_)
+
+                    Dim resultadoDocumentos_ = operacionesDB_.Find(filtro_).ToList
+
+                    If resultadoDocumentos_.Count Then
+
+                        Dim operacionGenerica_ As OperacionGenerica = resultadoDocumentos_(0)
+
+                        docElectronico_ = operacionGenerica_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                    End If
+
+                End Using
+
+                If docElectronico_ IsNot Nothing Then
+
+                    Dim constructorPedimento As New ConstructorPedimentoPDF
+
+                    Dim pdfstring = "data:Application/pdf;base64, " & constructorPedimento.ImprimirPedimentoNormal(docElectronico_)
+
+                    ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "')", True)
+
+                End If
+
+            Case 11
+
+                Dim tiposDocumento_ = IControladorManifestacionValor.TiposDocumento.HC
+
+                _manifestacionValor = New ControladorManifestacionValor(1)
+
+                Dim FolioOperacion_ = "RKU21-00014"
+
+                Dim manifestacionesValor_ = _manifestacionValor.RepresentacionImpresa(New ObjectId("657896d4e33944341afe02f9"), tiposDocumento_)
+
+                Dim pdfstring_ = "data:Application/pdf;base64, " + manifestacionesValor_(0)
+
+                Select Case tiposDocumento_
+
+                    Case IControladorManifestacionValor.TiposDocumento.MV
+
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring_ & "','" & FolioOperacion_ & "MV" & "')", True)
+
+                    Case IControladorManifestacionValor.TiposDocumento.HC
+
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring_ & "','" & FolioOperacion_ & "HC" & "')", True)
+
+                    Case IControladorManifestacionValor.TiposDocumento.Ambos
+
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring_ & "','" & FolioOperacion_ & "MV" & "')", True)
+
+                        Dim pdfstring_2 = "data:Application/pdf;base64, " + manifestacionesValor_(1)
+
+                        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring_2 & "','" & FolioOperacion_ & "HC" & "')", True)
+
+                End Select
+
+            Case 12
+
+                _manifestacionValor = New ControladorManifestacionValor(1)
+
+                Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+                Dim tagWatcher = _manifestacionValor.Generar(New ObjectId("62a3751a7828c19ed414f687"), iEnlace_.GetMongoClient().StartSession)
+
+                If tagWatcher.Status = TypeStatus.Ok Then
+
+                    DisplayMessage(tagWatcher.LastMessage, StatusMessage.Success)
+
+                Else
+
+                    DisplayMessage(tagWatcher.LastMessage, StatusMessage.Info)
+
+                End If
+
+        End Select
 
     End Sub
 
@@ -388,7 +485,7 @@ Public Class Ges022_001_TarifaArancelaria
         'documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_FIN).Valor
 
         'txt_FranjaRegionFonteriza
-        'Impuestos
+        'impuesto
         Dim impuestos = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE19)
 
         For indice_ As Int32 = 1 To impuestos.CantidadPartidas
@@ -412,7 +509,7 @@ Public Class Ges022_001_TarifaArancelaria
         'Unidad de medida
         txt_UnidadMedida.Value = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Attribute(CA_UNIDAD_MEDIDA).Valor
 
-        'Tratados
+        'tratado
         Dim tratados = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Seccion(SeccionesTarifaArancelaria.TIGIE4).Seccion(SeccionesTarifaArancelaria.TIGIE6)
 
         Dim catTLCAN As New List(Of Dictionary(Of String, String))
@@ -548,7 +645,7 @@ Public Class Ges022_001_TarifaArancelaria
 
         Session("Precios") = dataPrecios_
 
-        'Permisos
+        'permisos
         Dim dataPermisos_ As New List(Of PermisoItem)
         Dim permisos_ = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Seccion(SeccionesTarifaArancelaria.TIGIE5).Seccion(SeccionesTarifaArancelaria.TIGIE13)
 
@@ -573,7 +670,7 @@ Public Class Ges022_001_TarifaArancelaria
 
         Session("Permisos") = dataPermisos_
 
-        'Normas
+        'norma
         Dim dataNorms_ As New List(Of NormaItem)
         Dim normas_ = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Seccion(SeccionesTarifaArancelaria.TIGIE5).Seccion(SeccionesTarifaArancelaria.TIGIE14)
 
@@ -598,7 +695,7 @@ Public Class Ges022_001_TarifaArancelaria
         Session("Normas") = dataNorms_
 
         'Anexos
-        'Embargos
+        'embargo
         'Cupos Mínimos
         'Padrones
         Dim dataPadrones_ As New List(Of PadronItem)
@@ -686,7 +783,7 @@ Public Class Ges022_001_TarifaArancelaria
                         .Attribute(CA_UNIDAD_MEDIDA_CORTO).Valor = nico.Importacion.UnidadesDeMedida.Value.ClaveUnidad
                         .Attribute(CA_CLAVE_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.idUnidad
                     End If
-                    'Impuestos
+                    'impuesto
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
 
                         Dim impuestos = nico.Importacion.Impuestos
@@ -713,7 +810,7 @@ Public Class Ges022_001_TarifaArancelaria
                     'Regulaciones Arancelarias
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
 
-                        'Tratados
+                        'tratado
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
 
                             Dim tratados = nico.Importacion.Tratados
@@ -763,6 +860,7 @@ Public Class Ges022_001_TarifaArancelaria
                                                     .Attribute(CA_IDENTIFICADOR).Valor = t.Identificador
                                                     .Attribute(CP_IDNOTA).Valor = t.idNota
                                                     .Attribute(CP_NOTA).Valor = t.Nota
+                                                    .Attribute(CP_NOMBRECORTO_PAIS).Valor = t.NombreCorto
 
                                                 End With
 
@@ -802,22 +900,33 @@ Public Class Ges022_001_TarifaArancelaria
 
                             Dim cuotas = nico.Importacion.CuotasCompensatorias
 
-                            If cuotas.Count > 0 Then
+                            If cuotas.Count = 0 Then
 
                                 For Each cuota As CuotaItem In cuotas
 
                                     With .Partida(doc_)
-                                        .Attribute(CA_EMPRESA).Valor = cuota.NombreEmpresa
-                                        .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = cuota.NombrePais
-                                        .Attribute(CA_CUOTA).Valor = cuota.Tasa
-                                        .Attribute(CA_TIPO).Valor = cuota.TipoCuota
-                                        .Attribute(CA_ACOTACION).Valor = cuota.Nota
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = cuota.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = cuota.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = cuota.FechaFinVigencia
+                                        .Attribute(CA_EMPRESA).Valor = "Prueba" 'cuota.NombreEmpresa
+                                        .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = "DEU" 'cuota.NombrePais
+                                        .Attribute(CA_CUOTA).Valor = 11 'cuota.Tasa
+                                        .Attribute(CA_TIPO).Valor = 1 'cuota.TipoCuota
+                                        .Attribute(CA_ACOTACION).Valor = "Prueba de cuota " 'cuota.Nota
+                                        .Attribute(CA_FECHA_PUBLICACION).Valor = Date.Now ' cuota.FechaPublicacion
+                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = Date.Now '  cuota.FechaInicioVigencia
+                                        .Attribute(CA_FECHA_FIN).Valor = Date.Now.AddYears(50) '  cuota.FechaFinVigencia
                                     End With
 
                                 Next
+
+                                With .Partida(doc_)
+                                    .Attribute(CA_EMPRESA).Valor = "Prueba" 'cuota.NombreEmpresa
+                                    .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = "DEU" 'cuota.NombrePais
+                                    .Attribute(CA_CUOTA).Valor = 11 'cuota.Tasa
+                                    .Attribute(CA_TIPO).Valor = 1 'cuota.TipoCuota
+                                    .Attribute(CA_ACOTACION).Valor = "Prueba de cuota " 'cuota.Nota
+                                    .Attribute(CA_FECHA_PUBLICACION).Valor = Date.Now ' cuota.FechaPublicacion
+                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = Date.Now '  cuota.FechaInicioVigencia
+                                    .Attribute(CA_FECHA_FIN).Valor = Date.Now.AddYears(50) '  cuota.FechaFinVigencia
+                                End With
 
                             End If
 
@@ -848,7 +957,7 @@ Public Class Ges022_001_TarifaArancelaria
                     End With
                     'Regulaciones no Arancelarias
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
-                        'Permisos
+                        'permisos
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
 
                             Dim permisos = nico.Importacion.Permisos
@@ -871,7 +980,7 @@ Public Class Ges022_001_TarifaArancelaria
                             End If
 
                         End With
-                        'Normas
+                        'norma
 
                         Dim identificadores_ As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
                                         {"PB", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en domicilio particular. Comp3:No asentar datos."},
@@ -915,7 +1024,7 @@ Public Class Ges022_001_TarifaArancelaria
 
                         End With
                         'Anexos [todo esta metido en un campo y una sola tabla]
-                        'Embargos [todo esta metido en un campo y una sola tabla]
+                        'embargo [todo esta metido en un campo y una sola tabla]
                         'Cupos Mínimos [sin tablas]
                         'Padron Sectoreal
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
@@ -949,7 +1058,7 @@ Public Class Ges022_001_TarifaArancelaria
                         .Attribute(CA_UNIDAD_MEDIDA_CORTO).Valor = nico.Importacion.UnidadesDeMedida.Value.ClaveUnidad
                         .Attribute(CA_CLAVE_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.idUnidad
                     End If
-                    'Impuestos
+                    'impuesto
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
 
                         Dim impuestos = nico.Exportacion.Impuestos
@@ -976,7 +1085,7 @@ Public Class Ges022_001_TarifaArancelaria
                     'Regulaciones Arancelarias
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
 
-                        'Tratados
+                        'tratado
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
 
                             Dim tratados = nico.Exportacion.Tratados
@@ -1107,7 +1216,7 @@ Public Class Ges022_001_TarifaArancelaria
                     End With
                     'Regulaciones no Arancelarias
                     With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
-                        'Permisos
+                        'permisos
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
 
                             Dim permisos = nico.Exportacion.Permisos
@@ -1130,7 +1239,7 @@ Public Class Ges022_001_TarifaArancelaria
                             End If
 
                         End With
-                        'Normas
+                        'norma
                         Dim identificadores_ As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
                                         {"PB", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en domicilio particular. Comp3:No asentar datos."},
                                         {"PA", "Declarar clave o código de la NOM cuyo cumplimiento se verificará en el Almacén General de Depósito. Comp3:No asentar datos."},
@@ -1173,7 +1282,7 @@ Public Class Ges022_001_TarifaArancelaria
 
                         End With
                         'Anexos [todo esta metido en un campo y una sola tabla]
-                        'Embargos [todo esta metido en un campo y una sola tabla]
+                        'embargo [todo esta metido en un campo y una sola tabla]
                         'Cupos Mínimos [sin tablas]
                         'Padron Sectoreal
                         With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
@@ -1454,6 +1563,8 @@ Public Structure TratadoItem
     Public Property idNota As String
     <XmlElement("Nota")>
     Public Property Nota As String
+    <XmlElement("NombreCorto")>
+    Public Property NombreCorto As String
     <XmlElement("FechaPublicacion")>
     Public Property FechaPublicacion As String
     <XmlElement("FechaIncioVigencia")>

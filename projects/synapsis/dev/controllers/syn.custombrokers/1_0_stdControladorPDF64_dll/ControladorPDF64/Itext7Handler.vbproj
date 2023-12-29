@@ -7,7 +7,7 @@
     <ProjectGuid>{9A1D4CF1-5055-4134-AD14-E2151D1021BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Syn.CustomBrokers.Controllers</RootNamespace>
-    <AssemblyName>Syn.CustomBrokers.Controllers.ControladorPDF64.0.0.0.0</AssemblyName>
+    <AssemblyName>Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -229,7 +229,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControladorPDF.vb" />
+    <Compile Include="Itext7Handler.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
