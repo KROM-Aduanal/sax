@@ -1,0 +1,10 @@
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.Habitacion64.0.0.0.0.dll
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.Habitacion64.0.0.0.0.pdb
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.Habitacion64.0.0.0.0.xml
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Habitacion64.vbproj.AssemblyReference.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Habitacion64.Resources.resources
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Habitacion64.vbproj.GenerateResource.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Habitacion64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Syn.Validador.Habitacion64.0.0.0.0.dll
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Syn.Validador.Habitacion64.0.0.0.0.xml
+C:\sax\projects\services\dev\syn.validador\1_0_stdhabitacion64_dll\Habitacion64\obj\Debug\Syn.Validador.Habitacion64.0.0.0.0.pdb

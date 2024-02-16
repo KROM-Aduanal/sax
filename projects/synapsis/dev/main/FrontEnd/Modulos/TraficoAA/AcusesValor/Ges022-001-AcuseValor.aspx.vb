@@ -15,6 +15,8 @@ Imports Syn.Nucleo.RecursosComercioExterior.CamposAcuseValor
 Imports Syn.Nucleo.RecursosComercioExterior.CamposFacturaComercial
 Imports Syn.Operaciones
 Imports Syn.Utils
+Imports Cube.Interpreters
+Imports Cube.Validators
 Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
@@ -40,6 +42,8 @@ Public Class Ges022_001_AcuseValor
     Private _organismo As New Syn.Utils.Organismo
 
     Private _controladorUnidadesMedida As New ControladorUnidadesMedida
+
+    Private _ctrlInterprete As IMathematicalInterpreter
 
     Private _sistema As New Syn.Utils.Organismo
 #End Region
@@ -149,6 +153,8 @@ Public Class Ges022_001_AcuseValor
         _icontroladorMonedas = New ControladorMonedas
 
         _controladorProveedor = New CtrlProveedoresOperativos
+
+
 
         SetVars("_AcuseValorFindBar", Nothing)
 
@@ -302,6 +308,11 @@ Public Class Ges022_001_AcuseValor
         sc_TipoDocumento.Value = "1"
 
         icFechaExpedicion.Value = DateTime.UtcNow.Date.ToString("yyyy-MM-dd")
+
+        _ctrlInterprete = New MathematicalInterpreterNCalc
+
+
+        SetVars("cabulidad", _ctrlInterprete)
 
         SetVars("_sc_tipomoneda", sc_TipoMoneda)
 
@@ -981,66 +992,71 @@ Public Class Ges022_001_AcuseValor
         'End If
         'Dim Allgo = _ControladorMonedas.ObtenerFactorTipodeCambio("USD", Date.Parse("26/06/2023")).ObjectReturned
         'MsgBox("AHH")
-        Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
 
-        'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
-        '                                    "BBVA".ToUpper}, {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSOBUSCAACTUALIZA,
-        '                                    "012"}, {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALBUSCAACTUALIZA, "BANCOMER"},
-        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
-        '                                     IControladorInstitucionBancaria.Modalidades.Externo)
-        'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
-        '                                     IControladorInstitucionBancaria.Modalidades.Externo)
-        'MsgBox(Algo.LastMessage)
-        Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
-                                                             ._idinstitucionbancaria = 1,
-                                                             ._idempresa = ObjectId.GenerateNewId,
-                                                             ._iddomicilio = ObjectId.GenerateNewId,
-                                                             .uso = New List(Of UsoIdentificador) From
-                                                                            {New UsoIdentificador With {.clave = "49992",
-                                                                                                       .info = "Banxico"},
-                                                                            New UsoIdentificador With {.clave = "992",
-                                                                                                        .info = "SAT"}},
-                                                             .otrosaliasinstitucion = New List(Of AliasBancos) From
-                                                                                     {New AliasBancos With {.tipoalias = "Comercial",
-                                                                                                            .valor = "CITIBANAMEX"},
-                                                                                     New AliasBancos With {.tipoalias = "Corto",
-                                                                                                            .valor = "BANAMEX"},
-                                                                                     New AliasBancos With {.tipoalias = "Siglas",
-                                                                                                            .valor = "BNM"},
-                                                                                     New AliasBancos With {.tipoalias = "Abreviatura",
-                                                                                                            .valor = "BANX"}
-                                                                                                            },
-                                                             .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
-                                                             .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
-                                                             .metadatos = New List(Of AliasBancos) From
-                                                                                     {New AliasBancos With {.tipoalias = "Pece",
-                                                                                                            .valor = "SI"}
-                                                                                                            },
-                                                             .tipobanco = TiposBanco.Nacional,
-                                                             .estado = 1,
-                                                             .archivado = False
-                                                                }
 
-        'Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
-        '                                    "BBVA Bancomer, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer".ToUpper},
-        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSONUEVO,
-        '                                    New List(Of UsoIdentificador) From
-        '                                                                    {New UsoIdentificador With {.clave = "400012",
+
+
+
+        'Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
+
+        ''Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
+        ''                                    "BBVA".ToUpper}, {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSOBUSCAACTUALIZA,
+        ''                                    "012"}, {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALBUSCAACTUALIZA, "BANCOMER"},
+        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
+        ''                                     IControladorInstitucionBancaria.Modalidades.Externo)
+        ''Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
+        ''                                     IControladorInstitucionBancaria.Modalidades.Externo)
+        ''MsgBox(Algo.LastMessage)
+        'Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
+        '                                                     ._idinstitucionbancaria = 1,
+        '                                                     ._idempresa = ObjectId.GenerateNewId,
+        '                                                     ._iddomicilio = ObjectId.GenerateNewId,
+        '                                                     .uso = New List(Of UsoIdentificador) From
+        '                                                                    {New UsoIdentificador With {.clave = "49992",
         '                                                                                               .info = "Banxico"},
-        '                                                                    New UsoIdentificador With {.clave = "012",
-        '                                                                                                .info = "SAT"}}},
-        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALNUEVO,
-        '                                    New AliasBancos With {.tipoalias = "Abreviatura", .valor = "BBVA"}},
-        '                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.DOMICILIOFISCAL,
-        '                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
-        '                                    })
+        '                                                                    New UsoIdentificador With {.clave = "992",
+        '                                                                                                .info = "SAT"}},
+        '                                                     .otrosaliasinstitucion = New List(Of AliasBancos) From
+        '                                                                             {New AliasBancos With {.tipoalias = "Comercial",
+        '                                                                                                    .valor = "CITIBANAMEX"},
+        '                                                                             New AliasBancos With {.tipoalias = "Corto",
+        '                                                                                                    .valor = "BANAMEX"},
+        '                                                                             New AliasBancos With {.tipoalias = "Siglas",
+        '                                                                                                    .valor = "BNM"},
+        '                                                                             New AliasBancos With {.tipoalias = "Abreviatura",
+        '                                                                                                    .valor = "BANX"}
+        '                                                                                                    },
+        '                                                     .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
+        '                                                     .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
+        '                                                     .metadatos = New List(Of AliasBancos) From
+        '                                                                             {New AliasBancos With {.tipoalias = "Pece",
+        '                                                                                                    .valor = "SI"}
+        '                                                                                                    },
+        '                                                     .tipobanco = TiposBanco.Nacional,
+        '                                                     .estado = 1,
+        '                                                     .archivado = False
+        '                                                        }
 
-        Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
+        ''Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
+        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
+        ''                                    "BBVA Bancomer, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer".ToUpper},
+        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSONUEVO,
+        ''                                    New List(Of UsoIdentificador) From
+        ''                                                                    {New UsoIdentificador With {.clave = "400012",
+        ''                                                                                               .info = "Banxico"},
+        ''                                                                    New UsoIdentificador With {.clave = "012",
+        ''                                                                                                .info = "SAT"}}},
+        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALNUEVO,
+        ''                                    New AliasBancos With {.tipoalias = "Abreviatura", .valor = "BBVA"}},
+        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.DOMICILIOFISCAL,
+        ''                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
+        ''                                    })
 
-        Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
+        'Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
+
+        'Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
 
         'Dim seccionFac_ = SeccionesFacturaComercial.SFAC4
 
@@ -1061,7 +1077,7 @@ Public Class Ges022_001_AcuseValor
         'Dim listaValores = _ControladorFactura.ListaCamposFacturaComercial("0155524864", secciones_)
 
         'Dim Algo = _ControladorMonedas.TiposdeCambio(0)
-        'Dim Algo3 = _ControladorMonedas.FactoresCambioRecientes(0)
+        'Dim Algo3 = _icontroladorMonedas.ObtenerFactorCambio("MXP")
 
         If Not Checallenado() Then
 
@@ -1091,38 +1107,38 @@ Public Class Ges022_001_AcuseValor
 
                 Dim resultado_ As Dictionary(Of String, List(Of Nodo)) = tagwatcher_.ObjectReturned
 
-
                 If resultado_ IsNot Nothing Then
+                    If resultado_(dbc_NumFacturaAcuseValor.Value.ToString).Count > 0 Then
 
-                    Dim listaResultado_ = resultado_(dbc_NumFacturaAcuseValor.Value.ToString)
+                        Dim listaResultado_ = resultado_(dbc_NumFacturaAcuseValor.Value.ToString)
 
-                    ' icFechaExpedicion.Value = Date.Parse(listaResultado_("CA_FECHA_FACTURA")("Valor")).ToString("yyyy-MM-dd")
+                        ' icFechaExpedicion.Value = Date.Parse(listaResultado_("CA_FECHA_FACTURA")("Valor")).ToString("yyyy-MM-dd")
 
-                    icFechaExpedicion.Value = Date.Parse(DirectCast(listaResultado_.Item(1), Campo).Valor).ToString("yyyy-MM-dd")
+                        icFechaExpedicion.Value = Date.Parse(DirectCast(listaResultado_.Item(1), Campo).Valor).ToString("yyyy-MM-dd")
 
-                    '                    If listaResultado_("CP_TIPO_OPERACION")("Valor") = "Importación" Then
-                    If DirectCast(listaResultado_.Item(2), Campo).Valor = "Importación" Then
+                        '                    If listaResultado_("CP_TIPO_OPERACION")("Valor") = "Importación" Then
+                        If DirectCast(listaResultado_.Item(2), Campo).Valor = "Importación" Then
 
-                        swc_TipoOperacion.Checked = True
+                            swc_TipoOperacion.Checked = True
 
-                    Else
+                        Else
 
-                        swc_TipoOperacion.Checked = False
+                            swc_TipoOperacion.Checked = False
 
-                    End If
+                        End If
 
-                    Dim idFactura_ = DirectCast(listaResultado_.Item(13), Campo).ValorPresentacion
+                        Dim idFactura_ = DirectCast(listaResultado_.Item(13), Campo).ValorPresentacion
 
-                    SetVars("IDS", idFactura_)
+                        SetVars("IDS", idFactura_)
 
-                    Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(6), Campo).Valor)
+                        Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(6), Campo).Valor)
 
-                    sc_TipoMoneda.DataSource.RemoveAll(Function(ch) ch.Value <> "")
+                        sc_TipoMoneda.DataSource.RemoveAll(Function(ch) ch.Value <> "")
 
-                    Dim monedas_ = _icontroladorMonedas.BuscarMonedas(New List(Of String),
+                        Dim monedas_ = _icontroladorMonedas.BuscarMonedas(New List(Of String),
                                                                      New List(Of ObjectId) From {idMoneda}, "cveAcuseValor")
 
-                    sc_TipoMoneda.DataSource = _organismo.
+                        sc_TipoMoneda.DataSource = _organismo.
                                                ObtenerSelectOption(sc_TipoMoneda,
                                                                    monedas_.
                                                                    Select(Of ValorProvisionalOption)(Function(chi) New ValorProvisionalOption With {
@@ -1131,57 +1147,59 @@ Public Class Ges022_001_AcuseValor
                                             chi.aliasmoneda.Find(Function(ef) ef.Clave = "cveAcuseValor").Valor
                                            }).ToList)
 
-                    If sc_TipoMoneda.DataSource.Count > 0 Then
+                        If sc_TipoMoneda.DataSource.Count > 0 Then
 
-                        sc_TipoMoneda.Value = idMoneda.ToString
+                            sc_TipoMoneda.Value = idMoneda.ToString
 
-                    End If
+                        End If
 
-                    SetVars("_Monedas", monedas_)
+                        SetVars("_Monedas", monedas_)
 
-                    If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
+                        If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
 
-                        swc_Subdivision.Checked = True
+                            swc_Subdivision.Checked = True
 
-                    Else
-
-                        swc_Subdivision.Checked = False
-
-                    End If
-
-                    Dim identificacionPersona_, tipoIdentificador_ As String
-
-                    If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
-
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
-
-                        tipoIdentificador_ = "TAXID"
-
-                    Else
-
-                        If DirectCast(listaResultado_.Item(11), Campo).Valor IsNot Nothing Then
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
-
-                            tipoIdentificador_ = "RFC"
                         Else
 
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
+                            swc_Subdivision.Checked = False
 
-                            tipoIdentificador_ = "RAZONSOCIAL"
+                        End If
 
-                            Dim iindiceaux_ As Int32 = identificacionPersona_.IndexOf("|")
+                        Dim identificacionPersona_, tipoIdentificador_ As String
 
-                            If iindiceaux_ > 0 Then
+                        If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
 
-                                identificacionPersona_ = identificacionPersona_.Substring(0, iindiceaux_ - 1)
+                            identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
 
+                            tipoIdentificador_ = "TAXID"
+
+                        Else
+
+                            If DirectCast(listaResultado_.Item(11), Campo).Valor IsNot Nothing Then
+                                identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
+
+                                tipoIdentificador_ = "RFC"
                             Else
 
-                                iindiceaux_ = identificacionPersona_.LastIndexOf("-")
+                                identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
+
+                                tipoIdentificador_ = "RAZONSOCIAL"
+
+                                Dim iindiceaux_ As Int32 = identificacionPersona_.IndexOf("|")
 
                                 If iindiceaux_ > 0 Then
 
                                     identificacionPersona_ = identificacionPersona_.Substring(0, iindiceaux_ - 1)
+
+                                Else
+
+                                    iindiceaux_ = identificacionPersona_.LastIndexOf("-")
+
+                                    If iindiceaux_ > 0 Then
+
+                                        identificacionPersona_ = identificacionPersona_.Substring(0, iindiceaux_ - 1)
+
+                                    End If
 
                                 End If
 
@@ -1189,30 +1207,28 @@ Public Class Ges022_001_AcuseValor
 
                         End If
 
-                    End If
+                        If identificacionPersona_ <> "" Then
 
-                    If identificacionPersona_ <> "" Then
+                            Dim proveedorAcuseValor_ = _controladorProveedor.BuscarProveedor(identificacionPersona_, tipoIdentificador_)
 
-                        Dim proveedorAcuseValor_ = _controladorProveedor.BuscarProveedor(identificacionPersona_, tipoIdentificador_)
+                            If proveedorAcuseValor_ IsNot Nothing Then
 
-                        If proveedorAcuseValor_ IsNot Nothing Then
+                                fbc_Proveedor.Value = proveedorAcuseValor_.Id.ToString
 
-                            fbc_Proveedor.Value = proveedorAcuseValor_.Id.ToString
-
-                            fbc_Proveedor.Text = proveedorAcuseValor_.NombreCliente & " | " & proveedorAcuseValor_.FolioDocumento
-
-                            If proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
-                                Campo(CamposDomicilio.CA_DOMICILIO_FISCAL) IsNot Nothing Then
+                                fbc_Proveedor.Text = proveedorAcuseValor_.NombreCliente & " | " & proveedorAcuseValor_.FolioDocumento
 
                                 If proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                Campo(CamposDomicilio.CA_DOMICILIO_FISCAL) IsNot Nothing Then
+
+                                    If proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
                                     Campo(CamposDomicilio.CA_DOMICILIO_FISCAL).ValorPresentacion <> "" Then
 
-                                    ic_DireccionProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                        ic_DireccionProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
                                                                   Campo(CamposDomicilio.CA_DOMICILIO_FISCAL).ValorPresentacion
 
-                                Else
+                                    Else
 
-                                    ic_DireccionProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                        ic_DireccionProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
                                                                   Campo(CamposDomicilio.CA_CALLE).Valor &
                                                                   " #" &
                                                                   proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
@@ -1227,387 +1243,396 @@ Public Class Ges022_001_AcuseValor
                                                                  proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
                                                                  Campo(CamposDomicilio.CA_PAIS).Valor
 
-                                End If
-
-                                If tipoIdentificador_ = "RAZONSOCIAL" Then
-
-                                    If proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
-                                        Campo(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR).Valor IsNot Nothing Then
-
-                                        ic_IDFiscalProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
-                                                                     Campo(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR).Valor
-
-                                    Else
-                                        ic_IDFiscalProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
-                                                                     Campo(CamposProveedorOperativo.CA_RFC_PROVEEDOR).Valor
-
                                     End If
 
-                                Else
+                                    If tipoIdentificador_ = "RAZONSOCIAL" Then
 
-                                    ic_IDFiscalProveedor.Value = identificacionPersona_
+                                        If proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                        Campo(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR).Valor IsNot Nothing Then
+
+                                            ic_IDFiscalProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                                                     Campo(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR).Valor
+
+                                        Else
+                                            ic_IDFiscalProveedor.Value = proveedorAcuseValor_.Seccion(SeccionesProvedorOperativo.SPRO2).
+                                                                     Campo(CamposProveedorOperativo.CA_RFC_PROVEEDOR).Valor
+
+                                        End If
+
+                                    Else
+
+                                        ic_IDFiscalProveedor.Value = identificacionPersona_
+
+                                    End If
 
                                 End If
 
                             End If
 
+                            SetVars("_ProveedorAcuseValor", proveedorAcuseValor_)
+
                         End If
 
-                        SetVars("_ProveedorAcuseValor", proveedorAcuseValor_)
+                        If DirectCast(listaResultado_.Item(4), Campo).Valor IsNot Nothing Then
 
-                    End If
+                            identificacionPersona_ = DirectCast(listaResultado_.Item(4), Campo).Valor.ToString
 
-                    If DirectCast(listaResultado_.Item(4), Campo).Valor IsNot Nothing Then
-
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(4), Campo).Valor.ToString
-
-                        tipoIdentificador_ = "TAXID"
-
-                    Else
-
-                        If DirectCast(listaResultado_.Item(5), Campo).Valor IsNot Nothing Then
-
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(5), Campo).Valor.ToString
-
-                            tipoIdentificador_ = "RFC"
+                            tipoIdentificador_ = "TAXID"
 
                         Else
 
+                            If DirectCast(listaResultado_.Item(5), Campo).Valor IsNot Nothing Then
 
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(3), Campo).Valor.ToString
+                                identificacionPersona_ = DirectCast(listaResultado_.Item(5), Campo).Valor.ToString
 
-                            tipoIdentificador_ = "RAZONSOCIAL"
-
-                            Dim iindiceAux_ As Int32 = identificacionPersona_.IndexOf("|")
-
-                            If iindiceAux_ > 0 Then
-
-                                identificacionPersona_ = identificacionPersona_.Substring(0, iindiceAux_ - 1)
+                                tipoIdentificador_ = "RFC"
 
                             Else
 
-                                iindiceAux_ = identificacionPersona_.LastIndexOf("-")
+
+                                identificacionPersona_ = DirectCast(listaResultado_.Item(3), Campo).Valor.ToString
+
+                                tipoIdentificador_ = "RAZONSOCIAL"
+
+                                Dim iindiceAux_ As Int32 = identificacionPersona_.IndexOf("|")
 
                                 If iindiceAux_ > 0 Then
 
                                     identificacionPersona_ = identificacionPersona_.Substring(0, iindiceAux_ - 1)
 
+                                Else
+
+                                    iindiceAux_ = identificacionPersona_.LastIndexOf("-")
+
+                                    If iindiceAux_ > 0 Then
+
+                                        identificacionPersona_ = identificacionPersona_.Substring(0, iindiceAux_ - 1)
+
+                                    End If
+
                                 End If
 
                             End If
 
                         End If
 
-                    End If
+                        If identificacionPersona_ <> "" Then
 
-                    If identificacionPersona_ <> "" Then
-
-                        Dim clienteAcuseValor_ As ConstructorCliente = _icontroladorEmpresa.BuscarCliente(identificacionPersona_,
+                            Dim clienteAcuseValor_ As ConstructorCliente = _icontroladorEmpresa.BuscarCliente(identificacionPersona_,
                                                                                                          tipoIdentificador_)
 
-                        With clienteAcuseValor_
+                            With clienteAcuseValor_
 
-                            If tipoIdentificador_ = "RAZONSOCIAL" Then
-
-                                ic_IDFiscalDestinatario.Value = clienteAcuseValor_.Seccion(SeccionesClientes.SCS1).
-                                                                                   Attribute(CamposClientes.CA_TAX_ID).Valor
-
-                                If ic_IDFiscalDestinatario.Value = "" Then
+                                If tipoIdentificador_ = "RAZONSOCIAL" Then
 
                                     ic_IDFiscalDestinatario.Value = clienteAcuseValor_.Seccion(SeccionesClientes.SCS1).
+                                                                                   Attribute(CamposClientes.CA_TAX_ID).Valor
+
+                                    If ic_IDFiscalDestinatario.Value = "" Then
+
+                                        ic_IDFiscalDestinatario.Value = clienteAcuseValor_.Seccion(SeccionesClientes.SCS1).
                                                                                        Attribute(CamposClientes.CA_RFC_CLIENTE).Valor
+
+                                    End If
+
+                                Else
+
+                                    ic_IDFiscalDestinatario.Value = identificacionPersona_
 
                                 End If
 
-                            Else
+                                fbc_Destinatario.Value = .Id
 
-                                ic_IDFiscalDestinatario.Value = identificacionPersona_
+                                fbc_Destinatario.Text = .NombreCliente & " | " & .FolioDocumento
 
-                            End If
-
-                            fbc_Destinatario.Value = .Id
-
-                            fbc_Destinatario.Text = .NombreCliente & " | " & .FolioDocumento
-
-                            ic_DireccionDestinatario.Value = .Seccion(SeccionesClientes.SCS1).
+                                ic_DireccionDestinatario.Value = .Seccion(SeccionesClientes.SCS1).
                                                               Campo(CamposDomicilio.CA_DOMICILIO_FISCAL).Valor
 
-                            sc_SelloCliente.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = clienteAcuseValor_.Id,
+                                sc_SelloCliente.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = clienteAcuseValor_.Id,
                                                                                                                 .Text = ic_IDFiscalDestinatario.Value.ToString},
                                                                                          New SelectOption With {.Value = "0", .Text = "AGENTE ADUANAL"}}
 
-                            sc_SelloCliente.Value = .Id
+                                sc_SelloCliente.Value = .Id
 
-                            Dim clientetemporal_ = .Seccion(SeccionesClientes.SCS2).Campo(CamposClientes.CP_CVE_PATENTE_ADUANAL)
+                                Dim clientetemporal_ = .Seccion(SeccionesClientes.SCS2).Campo(CamposClientes.CP_CVE_PATENTE_ADUANAL)
 
-                            Dim patenteaduanal_ As String
+                                Dim patenteaduanal_ As String
 
-                            If clientetemporal_ Is Nothing Then
-
-                                patenteaduanal_ = ""
-
-                            Else
-
-                                If clientetemporal_.Valor Is Nothing Then
+                                If clientetemporal_ Is Nothing Then
 
                                     patenteaduanal_ = ""
 
                                 Else
 
-                                    patenteaduanal_ = clientetemporal_.Valor
+                                    If clientetemporal_.Valor Is Nothing Then
+
+                                        patenteaduanal_ = ""
+
+                                    Else
+
+                                        patenteaduanal_ = clientetemporal_.Valor
+
+                                    End If
 
                                 End If
 
-                            End If
+                                If patenteaduanal_ <> "" Then
 
-                            If patenteaduanal_ <> "" Then
-
-                                ic_PatenteAduanal.Value = .Seccion(SeccionesClientes.SCS2).
+                                    ic_PatenteAduanal.Value = .Seccion(SeccionesClientes.SCS2).
                                                           Campo(CamposClientes.CP_CVE_PATENTE_ADUANAL).ValorPresentacion
 
-                            Else
+                                Else
 
-                                ic_PatenteAduanal.Value = "3921 | LUIS ENRIQUE DE LA CRUZ REYES"
+                                    ic_PatenteAduanal.Value = "3921 | LUIS ENRIQUE DE LA CRUZ REYES"
 
-                            End If
+                                End If
 
-                        End With
+                            End With
 
-                        SetVars("_ClienteAcuseValor", clienteAcuseValor_)
+                            SetVars("_ClienteAcuseValor", clienteAcuseValor_)
 
-                    End If
+                        End If
 
-                    Dim partidasFactura_ = listaResultado_.Item(12)
+                        Dim partidasFactura_ = listaResultado_.Item(12)
 
-                    Dim pillboxControl_ As PillboxControl = DirectCast(pb_PartidasAcuseValor, PillboxControl)
+                        Dim pillboxControl_ As PillboxControl = DirectCast(pb_PartidasAcuseValor, PillboxControl)
 
-                    pillboxControl_.ClearRows()
+                        pillboxControl_.ClearRows()
 
-                    Dim unidadesT_ As New List(Of UnidadMedida)
+                        Dim unidadesT_ As New List(Of UnidadMedida)
 
-                    Dim indice_ = 0
+                        Dim indice_ = 0
 
-                    For Each partidaFactura_ In partidasFactura_.Nodos
+                        For Each partidaFactura_ In partidasFactura_.Nodos
 
-                        pillboxControl_.SetPillbox(Sub(pillbox_ As PillBox)
+                            pillboxControl_.SetPillbox(Sub(pillbox_ As PillBox)
 
-                                                       Dim descripcionesAcuseValor_ As String = ""
+                                                           Dim descripcionesAcuseValor_ As String = ""
 
-                                                       Dim cantidadAcuseValor_ As String = ""
+                                                           Dim cantidadAcuseValor_ As String = ""
 
-                                                       Dim precioUnitario_ As String = ""
+                                                           Dim precioUnitario_ As String = ""
 
-                                                       Dim total_ As String = ""
+                                                           Dim total_ As String = ""
 
-                                                       Dim totalDolares_ As String = ""
+                                                           Dim totalDolares_ As String = ""
 
-                                                       Dim monedaFactura_ As String = ""
+                                                           Dim monedaFactura_ As String = ""
 
-                                                       Dim marca_ As String = ""
+                                                           Dim marca_ As String = ""
 
-                                                       Dim modelo_ As String = ""
+                                                           Dim modelo_ As String = ""
 
-                                                       Dim subModelo_ As String = ""
+                                                           Dim subModelo_ As String = ""
 
-                                                       Dim numeroSerie_ As String = ""
+                                                           Dim numeroSerie_ As String = ""
 
-                                                       Dim unidades_ As New List(Of UnidadMedida)
+                                                           Dim unidades_ As New List(Of UnidadMedida)
 
-                                                       pillbox_.SetIndice(pillboxControl_.KeyField,
+                                                           pillbox_.SetIndice(pillboxControl_.KeyField,
                                                                           indice_)
 
-                                                       pillbox_.SetFiled(False)
-                                                       ' If indice_ + 1 = 0 Then
+                                                           pillbox_.SetFiled(False)
+                                                           ' If indice_ + 1 = 0 Then
 
-                                                       If DirectCast(partidaFactura_.Nodos(12).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                           If DirectCast(partidaFactura_.Nodos(12).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           descripcionesAcuseValor_ = DirectCast(partidaFactura_.
+                                                               descripcionesAcuseValor_ = DirectCast(partidaFactura_.
                                                                                                  Nodos(12).
                                                                                                  Nodos(0),
                                                                                                  Campo).Valor
 
-                                                       End If
+                                                           End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(14).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                           If DirectCast(partidaFactura_.Nodos(14).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           cantidadAcuseValor_ = DirectCast(partidaFactura_.
+                                                               cantidadAcuseValor_ = DirectCast(partidaFactura_.
                                                                                             Nodos(14).
                                                                                             Nodos(0),
                                                                                             Campo).Valor
 
-                                                       End If
+                                                           End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                           If DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           precioUnitario_ = DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           total_ = DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE((DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).ValorPresentacion),, 1)
-
-                                                       Else
-
-                                                           unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE("PIEZA",, 1)
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(22).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           numeroSerie_ = DirectCast(partidaFactura_.Nodos(indice_ - 1).Nodos(22).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           marca_ = DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           modelo_ = DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           subModelo_ = DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       sc_MonedaPrecioUnitarioPartida.DataSource = sc_TipoMoneda.DataSource
-
-                                                       If sc_MonedaPrecioUnitarioPartida.DataSource.Count > 0 Then
-
-                                                           sc_MonedaPrecioUnitarioPartida.Value = sc_TipoMoneda.Value
-
-                                                           monedaFactura_ = sc_MonedaPrecioUnitarioPartida.Text
-
-                                                       Else
-
-                                                           sc_MonedaPrecioUnitarioPartida.DataSource = New List(Of SelectOption) From
-                                                                                                          {New SelectOption With {.Value = "",
-                                                                                                                                  .Text = ""}}
-                                                       End If
-
-                                                       If cantidadAcuseValor_ <> "" And precioUnitario_ <> "" Then
-
-                                                           If total_ = "" Then
-
-                                                               total_ = Convert.ToString(Convert.ToDouble(cantidadAcuseValor_) *
-                                                                                         Convert.ToDouble(precioUnitario_))
+                                                               precioUnitario_ = DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor
 
                                                            End If
 
-                                                           totalDolares_ = Convert.ToString(Convert.ToDouble(total_) *
+                                                           If DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               total_ = DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor
+
+                                                           End If
+
+                                                           If DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE((DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).ValorPresentacion),, 1)
+
+                                                           Else
+
+                                                               unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE("PIEZA",, 1)
+
+                                                           End If
+
+                                                           If DirectCast(partidaFactura_.Nodos(22).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               numeroSerie_ = DirectCast(partidaFactura_.Nodos(indice_ - 1).Nodos(22).Nodos(0), Campo).Valor
+
+                                                           End If
+
+                                                           If DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               marca_ = DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor
+
+                                                           End If
+
+                                                           If DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               modelo_ = DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor
+
+                                                           End If
+
+                                                           If DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                               subModelo_ = DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor
+
+                                                           End If
+
+                                                           sc_MonedaPrecioUnitarioPartida.DataSource = sc_TipoMoneda.DataSource
+
+                                                           If sc_MonedaPrecioUnitarioPartida.DataSource.Count > 0 Then
+
+                                                               sc_MonedaPrecioUnitarioPartida.Value = sc_TipoMoneda.Value
+
+                                                               monedaFactura_ = sc_MonedaPrecioUnitarioPartida.Text
+
+                                                           Else
+
+                                                               sc_MonedaPrecioUnitarioPartida.DataSource = New List(Of SelectOption) From
+                                                                                                          {New SelectOption With {.Value = "",
+                                                                                                                                  .Text = ""}}
+                                                           End If
+
+                                                           If cantidadAcuseValor_ <> "" And precioUnitario_ <> "" Then
+
+                                                               If total_ = "" Then
+
+                                                                   total_ = Convert.ToString(Convert.ToDouble(cantidadAcuseValor_) *
+                                                                                         Convert.ToDouble(precioUnitario_))
+
+                                                               End If
+
+                                                               totalDolares_ = Convert.ToString(Convert.ToDouble(total_) *
                                                                                                 _icontroladorMonedas.
                                                                                                 Monedas.
                                                                                                 Find(Function(se) se._id.ToString = sc_MonedaPrecioUnitarioPartida.Value.ToString).
                                                                                                 factoresmoneda(0).valordefault)
 
-                                                       End If
+                                                           End If
 
-                                                       pillbox_.SetControlValue(ic_DescripcionAcuseValor, descripcionesAcuseValor_)
+                                                           pillbox_.SetControlValue(ic_DescripcionAcuseValor, descripcionesAcuseValor_)
 
-                                                       pillbox_.SetControlValue(ic_CantidadAcuseValor, cantidadAcuseValor_)
+                                                           pillbox_.SetControlValue(ic_CantidadAcuseValor, cantidadAcuseValor_)
 
-                                                       pillbox_.SetControlValue(ic_PrecioUnitarioAcuseValor, precioUnitario_)
+                                                           pillbox_.SetControlValue(ic_PrecioUnitarioAcuseValor, precioUnitario_)
 
-                                                       pillbox_.SetControlValue(ic_ValorFacturaPartida, total_)
+                                                           pillbox_.SetControlValue(ic_ValorFacturaPartida, total_)
 
-                                                       pillbox_.SetControlValue(ic_ValorDolaresPartida, totalDolares_)
+                                                           pillbox_.SetControlValue(ic_ValorDolaresPartida, totalDolares_)
 
-                                                       pillbox_.SetControlValue(sc_MonedaPrecioUnitarioPartida,
+                                                           pillbox_.SetControlValue(sc_MonedaPrecioUnitarioPartida,
                                                                                     New SelectOption With {.Value = sc_MonedaPrecioUnitarioPartida.Value,
                                                                                                            .Text = sc_MonedaPrecioUnitarioPartida.Text})
 
-                                                       If unidades_.Count = 0 Then
+                                                           If unidades_.Count = 0 Then
 
-                                                           unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE("PIEZA", 1)
+                                                               unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE("PIEZA", 1)
 
-                                                       End If
+                                                           End If
 
-                                                       unidades_ = unidades_.Union(unidadesT_).ToList
+                                                           unidades_ = unidades_.Union(unidadesT_).ToList
 
-                                                       unidadesT_ = unidades_
+                                                           unidadesT_ = unidades_
 
-                                                       Dim ltselecoption_ = New List(Of SelectOption)
+                                                           Dim ltselecoption_ = New List(Of SelectOption)
 
-                                                       For Each ltunidad_ In unidades_
+                                                           For Each ltunidad_ In unidades_
 
-                                                           ltselecoption_.Add(New SelectOption With {.Value = ltunidad_._id.ToString,
+                                                               ltselecoption_.Add(New SelectOption With {.Value = ltunidad_._id.ToString,
                                                                                                          .Text = ltunidad_.nombreoficialesp.ToUpper})
 
-                                                       Next
+                                                           Next
 
-                                                       sc_UnidadAcuseValor.DataSource = ltselecoption_
+                                                           sc_UnidadAcuseValor.DataSource = ltselecoption_
 
-                                                       sc_UnidadAcuseValor.Value = unidades_(0)._id.ToString
+                                                           sc_UnidadAcuseValor.Value = unidades_(0)._id.ToString
 
-                                                       pillbox_.SetControlValue(sc_UnidadAcuseValor,
+                                                           pillbox_.SetControlValue(sc_UnidadAcuseValor,
                                                                                     New SelectOption With {.Value = sc_UnidadAcuseValor.Value,
                                                                                                            .Text = sc_UnidadAcuseValor.Text})
 
-                                                       pillbox_.SetControlValue(ic_NumeroSerieAcuseValor, numeroSerie_)
+                                                           pillbox_.SetControlValue(ic_NumeroSerieAcuseValor, numeroSerie_)
 
-                                                       pillbox_.SetControlValue(ic_MarcaAcuseValor, marca_)
+                                                           pillbox_.SetControlValue(ic_MarcaAcuseValor, marca_)
 
-                                                       pillbox_.SetControlValue(ic_ModeloAcuseValor, modelo_)
+                                                           pillbox_.SetControlValue(ic_ModeloAcuseValor, modelo_)
 
-                                                       pillbox_.SetControlValue(ic_SubmodeloAcuseValor, subModelo_)
+                                                           pillbox_.SetControlValue(ic_SubmodeloAcuseValor, subModelo_)
 
-                                                   End Sub)
+                                                       End Sub)
 
-                        indice_ += 1
-                    Next
+                            indice_ += 1
+                        Next
 
-                    pb_PartidasAcuseValor = pillboxControl_
+                        pb_PartidasAcuseValor = pillboxControl_
 
-                    pb_PartidasAcuseValor.PillBoxDataBinding()
+                        pb_PartidasAcuseValor.PillBoxDataBinding()
 
-                    Dim datos = New List(Of Dictionary(Of String, Object))
+                        Dim datos = New List(Of Dictionary(Of String, Object))
 
-                    Dim identidad_ As Int32 = 1
+                        Dim identidad_ As Int32 = 1
 
 
-                    pb_PartidasAcuseValor.DataSource.ToList().ForEach(Sub(c As Dictionary(Of String, Object))
+                        pb_PartidasAcuseValor.DataSource.ToList().ForEach(Sub(c As Dictionary(Of String, Object))
 
-                                                                          c.Item(pb_PartidasAcuseValor.KeyField) = 0
+                                                                              c.Item(pb_PartidasAcuseValor.KeyField) = 0
 
-                                                                          c.Add("identidad", Str(identidad_))
+                                                                              c.Add("identidad", Str(identidad_))
 
-                                                                          c.Add("estado", 1)
+                                                                              c.Add("estado", 1)
 
-                                                                          datos.Add(c)
+                                                                              datos.Add(c)
 
-                                                                          identidad_ = identidad_ + 1
+                                                                              identidad_ = identidad_ + 1
 
-                                                                      End Sub)
+                                                                          End Sub)
 
-                    pb_PartidasAcuseValor.DataSource = datos
-                    ' SetVars("SetFill_", True)
-                    ' Dim Smensajillo As String = "Factura  cargada " & dbc_NumFacturaAcuseValor.Value.ToString & " satisfactoriamente"
-                    ' MsgBox()
+                        pb_PartidasAcuseValor.DataSource = datos
+                        ' SetVars("SetFill_", True)
+                        ' Dim Smensajillo As String = "Factura  cargada " & dbc_NumFacturaAcuseValor.Value.ToString & " satisfactoriamente"
+                        ' MsgBox()
 
-                    MostrarFactor()
+                        MostrarFactor()
 
-                    BloqueaObligatoriosFactura()
+                        BloqueaObligatoriosFactura()
 
-                    DisplayMessage("Factura  " &
+                        DisplayMessage("Factura  " &
                                    Chr(34) &
                                    dbc_NumFacturaAcuseValor.Value.ToString &
                                    Chr(34) &
                                    " cargada satisfactoriamente",
                                    StatusMessage.Info)
 
+                    Else
+
+                        DisplayMessage("No se encontró un Documento con Folio " &
+                                   Chr(34) &
+                                   dbc_NumFacturaAcuseValor.Value.ToString &
+                                   Chr(34),
+                                   StatusMessage.Fail)
+
+                    End If
                 Else
 
                     DisplayMessage("No se encontró un Documento con Folio " &
@@ -1617,7 +1642,6 @@ Public Class Ges022_001_AcuseValor
                                    StatusMessage.Fail)
 
                 End If
-
             Else
 
                 DisplayMessage("Falta especificar el Folio del Documento",

@@ -27,3 +27,9 @@ D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdI
 D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\ICifrado.vbproj.CoreCompileInputs.cache
 D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.dll
 D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.pdb
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Seguridad.ICifrado.1.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\ICifrado.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\ICifrado.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\ICifrado.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdICifrado_dll\ICifrado\ICifrado\obj\Debug\Gsol.Seguridad.ICifrado.1.0.0.0.dll

@@ -197,12 +197,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Documento.Componentes.Partida64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.Documento.Componentes.Partida64.0.0.0.0.dll</HintPath>
+    <Reference Include="Syn.Documento.Componentes.Partida64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Partida64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Componentes.PartidaGenerica64.0.0.0.0">

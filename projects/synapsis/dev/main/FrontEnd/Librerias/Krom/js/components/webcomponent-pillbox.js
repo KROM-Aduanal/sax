@@ -110,8 +110,6 @@ export class WCPillbox extends HTMLDivElement {
 
             });
 
-            console.log(json_)
-            
             this._jsonString.value = JSON.stringify(json_);
             
         } catch (e) {

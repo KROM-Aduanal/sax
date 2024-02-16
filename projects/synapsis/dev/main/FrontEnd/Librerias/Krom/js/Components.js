@@ -74,20 +74,20 @@ $(document).on('click', 'legend label', function (e) {
 });
 
 //DOBLE SUBMIT CONTROLLER
-$('button, input:submit','#form1').click(e => e.target.disabled = true);
+$('button, input:submit', '#form1').click(e => e.target.disabled = true);
 
 //DATEPICKER
 $(document).on('focusin', '.datepicker', function () {
     $(this).datepicker({
         autoclose: true, format: 'yyyy-mm-dd',
     });
-}).on('changeDate','.datepicker', function (e) {
+}).on('changeDate', '.datepicker', function (e) {
     this.dispatchEvent(new Event('change'));
 });
 
 //TIMEPICKER
 $(document).on('focusin', '.timepicker', function () {
-	$(this).timepicker({ showInputs: false });
+    $(this).timepicker({ showInputs: false });
 }).on('change', '.timepicker', function (e) {
     this.dispatchEvent(new Event('change'));
 });
@@ -107,7 +107,7 @@ $(document).on('propertychange input', '.numeric', function () {
 $(document).on('keypress', '.real', function (evt) {
 
     var input = $(this).get(0);
-    
+
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode == 46) {
         //Check if the text already contains the . character
@@ -242,8 +242,6 @@ $(document).click((event) => {
     }
 });
 
-
-
 $('body').on('click', '.__down', function (e) {
 
     const component = e.target.closest('.wc-collectionview') || false;
@@ -295,7 +293,7 @@ $('body').on('change', '.wc-collectionview input[id], .wc-collectionview textare
 
 });
 
-window.onSelectChange = (e) => {
+window.onSelectChange = (e, evt) => {
 
     const component = e.closest('.wc-collectionview') || false;
 
@@ -303,8 +301,12 @@ window.onSelectChange = (e) => {
 
         OnCollectionViewControlChanged(e);
 
+    } else {
+
+        evt.preventDefault();
+
     }
-    
+
 };
 
 function OnCollectionViewControlChanged(e) {
@@ -347,10 +349,10 @@ function OnCollectionViewControlChanged(e) {
 
 }
 
-window.onCatalogChange = (e) => OnCatalogControlChange(e); 
+window.onCatalogChange = (e) => OnCatalogControlChange(e);
 
 function OnCatalogControlChange(e) {
-    
+
     const collection = e.closest('.wc-collectionview') || false;
 
     if (collection) {

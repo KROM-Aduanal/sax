@@ -84,7 +84,7 @@ Public Class FieldsetControl
 
         With _legend
 
-            Dim legendText_ = If(_Detail Is Nothing, Label, _Detail)
+            Dim legendText_ = If(Detail Is Nothing, Label, Detail)
 
             .Controls.Add(New LiteralControl(legendText_))
 

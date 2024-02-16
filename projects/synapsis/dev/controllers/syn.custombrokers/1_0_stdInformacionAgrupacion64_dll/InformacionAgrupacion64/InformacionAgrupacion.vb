@@ -27,7 +27,7 @@ Public Class InformacionAgrupacion
 
     Property itemsasociados As List(Of ItemPartida)
 
-    Property firmadigital As String
+    Property firmaelectronica As String
 
     Property archivado As Boolean
 
@@ -89,7 +89,7 @@ Public Class DocumentoAsociado
 
     Property idcoleccion As String
 
-    Property firmadigital As String
+    Property firmaelectronica As String
 
     Property metadatos As IMetadatos
 

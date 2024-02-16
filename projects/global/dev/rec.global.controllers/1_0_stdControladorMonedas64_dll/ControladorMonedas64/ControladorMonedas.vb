@@ -164,11 +164,20 @@ Public Class ControladorMonedas
 
             If token_.Length <= 3 Then
 
-                aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "', Clave:'" & formato_ & "'}}},"
+
+                If formato_ = "cvedefault" Then
+
+                    aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "'}}},"
+
+                Else
+                    aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "', Clave:'" & formato_ & "'}}},"
+
+                End If
+
 
             End If
 
-            aliasmonedas_ = aliasmonedas_ & "{$and:[{$or:[" & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaesp", "", "", "") & "," & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaing", "", "", "") & "]},{'aliasmoneda':{$elemMatch:{Valor:{$ne:''}, Clave:'" & formato_ & "'}}}]},"
+                aliasmonedas_ = aliasmonedas_ & "{$and:[{$or:[" & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaesp", "", "", "") & "," & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaing", "", "", "") & "]},{'aliasmoneda':{$elemMatch:{Valor:{$ne:''}, Clave:'" & formato_ & "'}}}]},"
 
             If tokenId_ <> Nothing Then
 

@@ -1,0 +1,10 @@
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.ItemReport64.0.0.0.0.dll
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.ItemReport64.0.0.0.0.pdb
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.ItemReport64.0.0.0.0.xml
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\ItemReport64.vbproj.AssemblyReference.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\Syn.Validador.Resources.resources
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\ItemReport64.vbproj.GenerateResource.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\ItemReport64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\Syn.Validador.ItemReport64.0.0.0.0.dll
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\Syn.Validador.ItemReport64.0.0.0.0.xml
+C:\sax\projects\services\dev\syn.validador\1_0_stdItemReport64_dll\ItemReport64\obj\Debug\Syn.Validador.ItemReport64.0.0.0.0.pdb

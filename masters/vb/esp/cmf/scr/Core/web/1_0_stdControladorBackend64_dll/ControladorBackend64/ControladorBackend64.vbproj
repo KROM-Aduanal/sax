@@ -203,10 +203,6 @@
       <HintPath>..\..\..\..\..\..\sax2.0\bin\Foreign\MongoDB.Driver.Legacy.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\..\..\projects\global\lib\rec.globals.utils\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\..\..\projects\global\lib\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
       <Private>False</Private>

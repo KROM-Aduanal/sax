@@ -1,0 +1,8 @@
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.CubeReport64.0.0.0.0.dll
+C:\sax\projects\services\lib\syn.validador\Syn.Validador.CubeReport64.0.0.0.0.pdb
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\CubeReport64.vbproj.AssemblyReference.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\Syn.Validador.Resources.resources
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\CubeReport64.vbproj.GenerateResource.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\CubeReport64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\Syn.Validador.CubeReport64.0.0.0.0.dll
+C:\sax\projects\services\dev\syn.validador\1_0_stdCubeReport64_dll\CubeReport64\obj\Debug\Syn.Validador.CubeReport64.0.0.0.0.pdb

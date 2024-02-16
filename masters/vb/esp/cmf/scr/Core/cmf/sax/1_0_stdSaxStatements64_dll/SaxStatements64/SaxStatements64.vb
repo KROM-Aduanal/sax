@@ -656,6 +656,8 @@ Namespace Sax
 
             Dim listRoles_ As List(Of Sax.rol)
 
+
+
             Select Case typedb_
 
                 Case "sql"
@@ -665,6 +667,8 @@ Namespace Sax
                         Case "mssql"
 
                             With GetSettings(settingsType_)
+
+
 
                                 If Not .servers Is Nothing Then
 

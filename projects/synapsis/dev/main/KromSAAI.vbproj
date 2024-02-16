@@ -50,6 +50,36 @@
     <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.interpreters\Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Interpreters.MathematicalInterpreterNCalc64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.interpreters\Cube.Interpreters.MathematicalInterpreterNCalc64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.ValidatorReport64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube\Cube.ValidatorReport64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.CubeController64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.CubeController64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.ICubeController64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.ICubeController64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.Room64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.Room64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DnsClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\DnsClient.dll</HintPath>
@@ -503,6 +533,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Libmongocrypt.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NCalc, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\packages\NCalcSync.3.8.0\lib\net461\NCalc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\netstandard.dll</HintPath>
@@ -693,6 +728,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.CampoGenerico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoGenerico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
@@ -778,6 +818,11 @@
     <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.EstructuraDocumento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.EstructuraDocumento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.OperacionGenerica64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -1524,6 +1569,7 @@
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-pillbox.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-select.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-table.js" />
+    <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-tooltip.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\Dialogs.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\KromComponentes.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\Prototypes.js" />
@@ -1568,6 +1614,7 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\Ges022-001-Clientes.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\respaldopbm.txt" />
     <Content Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
@@ -1952,6 +1999,13 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx.vb">
       <DependentUpon>Ges003-001-Consultas.Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.designer.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">

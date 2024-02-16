@@ -198,6 +198,25 @@ Public Class SelectControl
 
     End Property
 
+    Public Overrides Property Signature As String
+
+        Get
+
+            EnsureChildControls()
+
+            Return LocalStorage.FirstOrDefault(Function(e) e.Value = _selectControl.SelectedValue).Signature
+
+        End Get
+
+        Set(value As String)
+
+            MyBase.Signature = value
+
+        End Set
+
+    End Property
+
+
     Public ReadOnly Property SuggestedText As String
 
         Get

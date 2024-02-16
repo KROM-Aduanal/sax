@@ -10,7 +10,6 @@ Imports System.Windows
 Imports MongoDB.Driver.Linq.Processors
 Imports MongoDB.Bson.Serialization
 Imports System.Xml
-Imports Newtonsoft.Json
 
 Public Class ControladorInstitucionBancaria
     Implements IControladorInstitucionBancaria, ICloneable, IDisposable

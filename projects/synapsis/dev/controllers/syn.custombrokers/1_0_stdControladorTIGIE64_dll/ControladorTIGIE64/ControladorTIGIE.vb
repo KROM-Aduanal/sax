@@ -44,77 +44,7 @@ Public Class ControladorTIGIE
     'https://stackoverflow.com/questions/60142898/unable-to-cast-object-of-type-mongodb-bson-bsonstring-to-type-mongodb-bson-bs
     'Match(Function(e) e.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento.Contains(texto_)).
     'ToEnumerable().Where(Function(e) e.Fraccion.Contains(texto_)).ToList()
-
-    Public Function Prueba() As List(Of Object)
-
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
-                   {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
-
-            Using _entidadDatos As IEntidadDatos = New ConstructorCliente()
-
-                Dim documentoElectronico_ As DocumentoElectronico = _entidadDatos
-
-                Dim collection = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(documentoElectronico_.GetType.Name)
-
-                Dim results = collection.Aggregate().
-                                         Project(Function(e) New With {
-                                            Key .Id = e.Id,
-                                            Key .Fuente = e.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-                                         }).
-                                         Project(Function(e) New With {
-                                            Key .Id = e.Id,
-                                            Key .Seccion = e.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos,
-                                            Key .Fecha = e.Fuente.FechaCreacion,
-                                            Key .FolioDocumento = e.Fuente.FolioDocumento,
-                                            Key .UsuarioGenerador = e.Fuente.UsuarioGenerador
-                                         }).
-                                         Project(Function(e) New With {
-                                            Key .Id = e.Id,
-                                            Key .RazonSocial = DirectCast(e.Seccion(1).Nodos(0), Campo).Valor,
-                                            Key .CURP = DirectCast(e.Seccion(5).Nodos(0), Campo).Valor,
-                                            Key .Domicilio = DirectCast(e.Seccion(10).Nodos(0), Campo).Valor,
-                                            Key .Fecha = e.Fecha,
-                                            Key .FolioDocumento = e.FolioDocumento,
-                                            Key .UsuarioGenerador = e.UsuarioGenerador
-                                         }).
-                                         ToList()
-
-
-                Dim listaFracciones As New List(Of Object)
-                Dim i = 1
-                results.AsEnumerable.ToList().ForEach(Sub(x)
-
-                                                          listaFracciones.Add(New Dictionary(Of String, Object) From {
-                                                            {"Id", x.Id},
-                                                            {"RazonSocial", x.RazonSocial},
-                                                            {"CURP", x.CURP},
-                                                            {"Domicilio", x.Domicilio},
-                                                            {"Fecha", x.Fecha},
-                                                            {"FolioDocumento", x.FolioDocumento},
-                                                            {"UsuarioGenerador", x.UsuarioGenerador},
-                                                            {"archivado", False},
-                                                            {"borrado", False},
-                                                            {"editando", False},
-                                                            {"calapsado", True},
-                                                            {"indice", i}
-                                                          })
-
-
-                                                          i = i + 1
-
-                                                      End Sub)
-
-                Return listaFracciones
-
-            End Using
-
-        End Using
-
-
-        Return Nothing
-
-    End Function
-
+    'BsonDocument.Parse("{'Fraccion':ObjectId(" & Chr(34) & fraccion_ & Chr(34) & ")}")
     Public Function EnlistarFracciones(ByVal texto_ As String) As TagWatcher
 
         'Match(BsonDocument.Parse("{$text:{$search:" & q & "}}")).
@@ -187,222 +117,43 @@ Public Class ControladorTIGIE
 
     End Function
 
-    'Public Function EnlistarFracciones(ByVal texto_ As String) As List(Of FraccionArancelaria)
-
-    '    Dim tiggie_ As New ConstructorTIGIE()
+    'agrege ref de campogenerico y campo texto
+    'Public Function prueba()
+    '    'Dim cosa = New List(Of CampoTexto)
+    '    'Dim b = cosa.Where(Function(e) e.IDUnico = 1).AsEnumerable.ToList.FirstOrDefault
 
     '    Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
     '                {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
-    '        Using _entidadDatos As IEntidadDatos = tiggie_
+    '        Using _entidadDatos As IEntidadDatos = New ConstructorFacturaComercial()
 
     '            Dim documentoElectronico_ As DocumentoElectronico = _entidadDatos
 
-    '            Dim operacionesNodo_ = New OperacionesNodos
+    '            Dim collection = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(documentoElectronico_.GetType.Name)
 
-    '            operacionesNodo_.CrearPartidasDocumentoElectronico(documentoElectronico_)
+    '            Dim results = collection.Aggregate().
+    '                                     Project(Function(e) New With {
+    '                                        Key .Id = e.Id,
+    '                                        Key .Fuente = e.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+    '                                     }).
+    '                                     Project(Function(e) New With {
+    '                                        Key .Id = e.Id,
+    '                                        Key .algo = e.Fuente.Metadatos.Where(Function(e) e.IDUnico = 1).AsEnumerable.ToList.FirstOrDefault.Valor
+    '                                     }).
+    '                                     ToList()
 
-    '            Dim numeroFraccion_ = operacionesNodo_.ObtenerRutaCampo(documentoElectronico_, 1, 10101)
+    '            results.AsEnumerable.ToList().ForEach(Sub(x)
 
-    '            Dim descripcionFraccion_ = operacionesNodo_.ObtenerRutaCampo(documentoElectronico_, 1, 10103)
+    '                                                      Dim b = x
 
-    '            Dim pipeline_ As New List(Of BsonDocument)
+    '                                                  End Sub)
 
-    '            Dim raiz_ As New BsonDocument() From {
-    '                    {
-    '                        "$addFields", New BsonDocument From {
-    '                        {"Nico", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Documento.Parts.Encabezado.Nodos.Nodos.Nodos"},
-    '                                {"Documento", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Documento.Parts.Encabezado"}
-    '                        }
-    '                    }
-    '            }
 
-    '            Dim plancharDatosRai2z_ = New BsonDocument From {
-    '            {
-    '                    "$unwind", New BsonDocument From {
-    '                                {"path", "$Nico"},
-    '                                {"preserveNullAndEmptyArrays", True}
-    '                    }
-    '                }
-    '            }
-    '            Dim plancharDatosRaiz_ = New BsonDocument From {
-    '            {
-    '                    "$unwind", New BsonDocument From {
-    '                                {"path", "$Documento"},
-    '                                {"preserveNullAndEmptyArrays", True}
-    '                    }
-    '                }
-    '            }
-
-    '            pipeline_.Add(raiz_)
-
-    '            pipeline_.Add(plancharDatosRaiz_)
-    '            pipeline_.Add(plancharDatosRai2z_)
-
-    '            Dim partsNumeroFraccion_ As String() = numeroFraccion_.Split(".")
-
-    '            partsNumeroFraccion_ = partsNumeroFraccion_.Skip(1).ToArray
-
-    '            Dim indice_ = 1
-
-    '            For Each rutaActual_ As String In partsNumeroFraccion_
-
-    '                Dim agregarCampo_ = New BsonDocument From {
-    '                    {
-    '                        "$addFields", New BsonDocument From {
-    '                                    {"Nodo" & indice_, If(indice_ = 1, "$Documento.Nodos", "$Nodo" & (indice_ - 1) & ".Nodos")}
-    '                        }
-    '                    }
-    '                }
-
-    '                Dim plancharDatos_ = New BsonDocument From {
-    '                {
-    '                        "$unwind", New BsonDocument From {
-    '                                    {"path", "$Nodo" & indice_.ToString()},
-    '                                    {"preserveNullAndEmptyArrays", True}
-    '                        }
-    '                    }
-    '                }
-
-    '                pipeline_.Add(agregarCampo_)
-
-    '                pipeline_.Add(plancharDatos_)
-
-    '                If indice_ <partsNumeroFraccion_.Count Then
-
-    '                    indice_ += 1
-
-    '                End If
-
-    '            Next
-
-    '            Dim indice2_ = 1
-
-    '            Dim partsDescripcionFraccion_ As String() = descripcionFraccion_.Split(".")
-
-    '            partsDescripcionFraccion_ = partsDescripcionFraccion_.Skip(1).ToArray
-
-    '            For Each rutaActual_ As String In partsDescripcionFraccion_
-
-    '                Dim agregarCampo_ = New BsonDocument From {
-    '                    {
-    '                        "$addFields", New BsonDocument From {
-    '                                    {"Nodob" & indice2_, If(indice2_ = 1, "$Documento.Nodos", "$Nodob" & (indice2_ - 1) & ".Nodos")}
-    '                        }
-    '                    }
-    '                }
-
-    '                Dim plancharDatos_ = New BsonDocument From {
-    '                {
-    '                        "$unwind", New BsonDocument From {
-    '                                    {"path", "$Nodob" & indice2_.ToString()},
-    '                                    {"preserveNullAndEmptyArrays", True}
-    '                        }
-    '                    }
-    '                }
-
-    '                pipeline_.Add(agregarCampo_)
-
-    '                pipeline_.Add(plancharDatos_)
-
-    '                If indice2_ < partsDescripcionFraccion_.Count Then
-
-    '                    indice2_ += 1
-
-    '                End If
-
-    '            Next
-
-    '            Dim condicionesConsulta_ = New BsonDocument From {
-    '                {
-    '                    "$match", New BsonDocument From {
-    '                                {"estado", 1},
-    '                                {"Nodo" & indice_ & ".IDUnico", 10101},
-    '                                {"Nodob" & indice2_ & ".IDUnico", 10103},
-    '                                {"$or", New BsonArray From {
-    '                                             New BsonDocument From {
-    '                                                 {"Nodo" & indice_ & ".Valor", New BsonDocument From {
-    '                                                            {"$regex", texto_},
-    '                                                            {"$options", "i"}
-    '                                                        }
-    '                                                 }
-    '                                            }, New BsonDocument From {
-    '                                                 {"Nodob" & indice2_ & ".Valor", New BsonDocument From {
-    '                                                            {"$regex", texto_},
-    '                                                            {"$options", "i"}
-    '                                                        }
-    '                                                 }
-    '                                            }
-    '                                        }
-    '                                }
-    '                    }
-    '                }
-    '            }
-
-    '            Dim camposConsulta_ = New BsonDocument From {
-    '                {
-    '                    "$project", New BsonDocument From {
-    '                                {"_id", 1},
-    '                                {
-    '                                    "NumeroFraccion", "$Nodo" & indice_.ToString() & ".Valor"
-    '                                },
-    '                                {
-    '                                    "DescripcionFraccion", "$Nodob" & indice2_.ToString() & ".Valor"
-    '                                }
-    '                    }
-    '                }
-    '            }
-
-    '            pipeline_.Add(condicionesConsulta_)
-
-    '            pipeline_.Add(camposConsulta_)
-
-    '            Dim limiteRegistros_ = New BsonDocument From {
-    '                {
-    '                    "$limit", 1000
-    '                }
-    '            }
-
-    '            pipeline_.Add(limiteRegistros_)
-
-    '            Dim status_ As New TagWatcher
-
-    '            Dim operacionesDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(documentoElectronico_.GetType.Name)
-
-    '            Try
-
-    '                Dim objectResult_ = operacionesDB_.Aggregate(Of BsonDocument)(pipeline_).ToList
-
-    '                Dim listaResultados_ = New List(Of Object)
-
-    '                For Each stat As BsonDocument In objectResult_
-
-    '                    listaResultados_.Add(New Dictionary(Of Object, Object) From {
-    '                        {"ID", stat.GetElement("_id").Value.ToString},
-    '                        {"NumeroFraccion", stat.GetElement("NumeroFraccion").Value.ToString},
-    '                        {"DescripcionFraccion", stat.GetElement("DescripcionFraccion").Value.ToString}
-    '                    })
-
-    '                Next
-
-    '                status_.SetOK()
-
-    '                status_.ObjectReturned = listaResultados_
-
-    '            Catch e As Exception
-
-    '                status_.SetError(Me, "Error writing to MongoDB: " & e.Message)
-
-    '            End Try
-
-    '            'Return status_
 
     '        End Using
 
     '    End Using
 
-    '    Return Nothing
-    '    'preallocated
     'End Function
 
     Public Function EnlistarNicosFraccion(ByVal fraccion_ As String) As TagWatcher
@@ -435,9 +186,9 @@ Public Class ControladorTIGIE
                                             Key .FechaInicioVigencia = DirectCast(e.Seccion(12).Nodos(0), Campo).Valor,
                                             Key .FechaFinVigencia = DirectCast(e.Seccion(13).Nodos(0), Campo).Valor
                                          }).
-                                         Match(BsonDocument.Parse("{'Fraccion':" & Chr(34) & fraccion_ & Chr(34) & "}")).
+                                         Match(Function(e) e.Fraccion.Equals(fraccion_)).
                                          ToList()
-
+                'Match(BsonDocument.Parse("{'Fraccion':" & Chr(34) & fraccion_ & Chr(34) & "}")).
                 Dim listaNicosFraccion As New List(Of NicoFraccionArancelaria)
 
                 results.AsEnumerable.ToList().ForEach(Sub(x)

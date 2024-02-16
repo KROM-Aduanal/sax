@@ -1,0 +1,8 @@
+C:\sax\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorFirmaDigital64.0.0.0.0.dll
+C:\sax\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorFirmaDigital64.0.0.0.0.pdb
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\ControladorFirmaDigital64.vbproj.AssemblyReference.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\Rec.Globals.Controllers.Resources.resources
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\ControladorFirmaDigital64.vbproj.GenerateResource.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\ControladorFirmaDigital64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\Rec.Globals.Controllers.ControladorFirmaDigital64.0.0.0.0.dll
+C:\sax\projects\global\dev\rec.global.controllers\1_0_stdControladorFirmaDigital64_dll\ControladorFirmaDigital64\obj\Debug\Rec.Globals.Controllers.ControladorFirmaDigital64.0.0.0.0.pdb

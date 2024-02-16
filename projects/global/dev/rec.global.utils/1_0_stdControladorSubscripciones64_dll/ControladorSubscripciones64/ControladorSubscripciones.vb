@@ -345,8 +345,6 @@ Public Class ControladorSubscripciones
 
                 Next
 
-                .Add(Builders(Of OperacionGenerica).Update.Set(Of Object)("FirmaDigital", GenerarFirmaDigital()))
-
             End With
 
             Dim collectionName_ As String = Nothing : Dim databaseName_ As String = Nothing
@@ -410,60 +408,6 @@ Public Class ControladorSubscripciones
         Next
 
         Return Estado
-
-    End Function
-
-
-    'J. Oropeza: es posible este método se mueva a organismo ya que su funcionalidad es muy genérica y sera muy utilizada desde diversos puntos
-    Public Function FirmaDigital(Of T)(ByVal id_ As Object) As TagWatcher
-
-        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
-
-            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of OperacionGenerica)(GetType(T).Name)
-
-            Dim filter_ = Builders(Of OperacionGenerica).Filter.Eq(Of Object)("_id", id_)
-
-            Dim setStructureOfSubs_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaDigital, GenerarFirmaDigital())
-
-            Dim result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_).Result
-
-            If result_.ModifiedCount > 0 Then
-
-                Estado.SetOK()
-
-            Else
-
-                Estado.SetOKInfo(Me, "Elemento no encontrado.")
-
-            End If
-
-            Return Estado
-
-        End Using
-
-    End Function
-
-    Private Function GenerarFirmaDigital() As String
-
-        Dim sha_ As New SHA1CryptoServiceProvider
-
-        Dim bytesToHash_() As Byte
-
-        Dim espacioTrabajo_ = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")
-
-        bytesToHash_ = System.Text.Encoding.ASCII.GetBytes(espacioTrabajo_.MisCredenciales.ClaveUsuario & Date.Now.ToString)
-
-        bytesToHash_ = sha_.ComputeHash(bytesToHash_)
-
-        Dim signature_ As String = ""
-
-        For Each byte_ As Byte In bytesToHash_
-
-            signature_ += byte_.ToString("x2")
-
-        Next
-
-        Return signature_
 
     End Function
 
