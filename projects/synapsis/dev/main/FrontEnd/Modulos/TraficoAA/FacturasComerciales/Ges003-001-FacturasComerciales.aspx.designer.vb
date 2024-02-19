@@ -176,13 +176,13 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents scMonedaMercancia As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control fbcOrdenCompra.
+    '''Control icReferenciaCliente.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbcOrdenCompra As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents icReferenciaCliente As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icSerieFolioFactura.
@@ -678,85 +678,4 @@ Partial Public Class Ges003_001_FacturasComerciales
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents scMonedaDescuentos As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control fscSubdivision.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fscSubdivision As Global.Gsol.Web.Components.FieldsetControl
-
-    '''<summary>
-    '''Control catSubdivision.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents catSubdivision As Global.Gsol.Web.Components.CatalogControl
-
-    '''<summary>
-    '''Control scNumeroParte.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scNumeroParte As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scDescripcion.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scDescripcion As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control swcParcialidades.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcParcialidades As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control icParcialidades.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icParcialidades As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icCantidadOriginal.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icCantidadOriginal As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icCantidadParcial.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icCantidadParcial As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icReferencia.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icReferencia As Global.Gsol.Web.Components.InputControl
 End Class

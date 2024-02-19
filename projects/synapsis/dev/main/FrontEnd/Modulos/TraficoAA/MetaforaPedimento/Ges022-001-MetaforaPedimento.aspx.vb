@@ -207,18 +207,22 @@ Public Class Ges022_001_MetaforaPedimento
         ' ** * ** * LineaCaptura * ** * **
 
         ' ** * ** * DatosProveedoresImpo * ** * **
-        '[Set](ic_IdFiscalProveedor, CA_ID_FISCAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_NombreProveedor, CA_NOMBRE_DEN_RAZON_SOC_POC, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_DocimilioProveedor, CA_DOMICILIO_POC, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](pb_Proveedores, Nothing, seccion_:=SeccionesPedimento.ANS10)
+        [Set](icIdFiscalProveedor, CA_ID_FISCAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](icNombreProveedor, CA_NOMBRE_DEN_RAZON_SOC_POC, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](fbxProveedor, CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](fbxProveedor, CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC, propiedadDelControl_:=PropiedadesControl.Ninguno, asignarA_:=TiposAsignacion.ValorPresentacion)
+        [Set](icDocimilioProveedor, CA_DOMICILIO_POC, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](icFacturaProveedor, CA_CFDI_FACTURA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scFacturaProveedor, CA_CFDI_FACTURA, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-        '[Set](ic_FacturaProveedor, CA_CFDI_O_FACT, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_FechaFacturaProveedor, CA_FECHA_FACT, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_IncontermProveedor, CA_INCOTERM, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](sc_FactorMonedaProveedor, CA_FACTOR_MONEDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_MontoFacturaProveedor, CA_MONTO_MONEDA_FACT, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](ic_MontoFacturaUSDProveedor, CA_MONTO_USD, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        '[Set](CatalogoFacturas, Nothing, seccion_:=SeccionesPedimento.ANS13)
+        [Set](icFechaFacturaProveedor, CA_FECHA_FACTURA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icIncontermProveedor, CA_INCOTERM, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scFactorMonedaProveedor, CA_FACTOR_MONEDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icMontoFacturaProveedor, CA_MONTO_MONEDA_FACTURA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icMontoFacturaUSDProveedor, CA_MONTO_USD, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccFacturas, Nothing, seccion_:=SeccionesPedimento.ANS13, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](pbcProveedores, Nothing, seccion_:=SeccionesPedimento.ANS10)
         ' ** * ** * DatosProveedoresImpo * ** * **
 
         ' ** * ** * Destinatarios * ** * **
@@ -463,13 +467,11 @@ Public Class Ges022_001_MetaforaPedimento
             'MANDAR UNA LISTA
             'RKU23 - 402
             Dim listaObjectID = New List(Of ObjectId) From {
-                New ObjectId("64e7cc2b4c203fa0dcb2124a"),
-                New ObjectId("64e7cead4c203fa0dcb2124b")
+                New ObjectId("658492a31e051f4771122bd8")
             }
             Dim factura_ As IControladorFacturaComercial = New ControladorFacturaComercial(listaObjectID, IControladorFacturaComercial.Modalidades.Externo, 1)
             Dim listafactura_ = New List(Of DocumentoElectronico) From {
-                factura_.FacturasComerciales(0),
-                factura_.FacturasComerciales(1)
+                factura_.FacturasComerciales(0)
             }
 
             Dim documentoElectronico_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
@@ -703,7 +705,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-    Public Function ConsultaPedimentito(ByVal FolioOper_ As String) As DocumentoElectronico
+    Public Function ConsultaPedimento(ByVal FolioOper_ As String) As DocumentoElectronico
 
         Using enlaceDatos_ As IEnlaceDatos =
             New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
@@ -734,7 +736,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Sub ImprimirPedimentoNormal(ByVal FolioOperacion_ As String)
 
-        Dim docElectronico_ As DocumentoElectronico = ConsultaPedimentito(FolioOperacion_)
+        Dim docElectronico_ As DocumentoElectronico = ConsultaPedimento(FolioOperacion_)
 
         If docElectronico_ IsNot Nothing Then
 
@@ -1137,19 +1139,19 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-    Protected Sub scFacturaProveedor_TextChanged(sender As Object, e As EventArgs)
-
-        scFacturaProveedor.DataSource = New List(Of SelectOption) From {
-            New SelectOption With {.Value = 1, .Text = "9A351011-707E-4114-82B"},
-            New SelectOption With {.Value = 2, .Text = "9A351011-707E-4115-82B"},
-            New SelectOption With {.Value = 3, .Text = "9A351011-707E-4116-82B"}
-        }
-
-    End Sub
-
     Protected Sub ccFacturas_RowChanged(row_ As Object, e As EventArgs)
 
-        row_.Item(icIncontermProveedor.ID) = "Holis Bolis"
+        Dim facturasInfo_ As List(Of Dictionary(Of String, String)) = GetVars("facturasInfo_")
+
+        Dim id_ As String = row_.Item("scFacturaProveedor").Item("Value")
+
+        Dim factura_ = facturasInfo_.Where(Function(f) f.ContainsKey("id") AndAlso f.Item("id").ToString = id_).ToList().First
+
+        row_.Item(icFechaFacturaProveedor.ID) = factura_.Item("fechaFactura")
+        row_.Item(icIncontermProveedor.ID) = factura_.Item("incoterm")
+        row_.Item(scFactorMonedaProveedor.ID) = New Dictionary(Of String, String) From {{"Value", factura_.Item("monedaValor")}, {"Text", factura_.Item("monedaValorPresentacion")}}
+        row_.Item(icMontoFacturaProveedor.ID) = factura_.Item("valorFactura")
+        row_.Item(icMontoFacturaUSDProveedor.ID) = factura_.Item("valorMercancia")
 
     End Sub
 
@@ -1166,6 +1168,74 @@ Public Class Ges022_001_MetaforaPedimento
         End If
 
     End Sub
+
+    Protected Sub fbxProveedor_TextChanged(sender As Object, e As EventArgs)
+
+        Dim controlador_ As New ControladorBusqueda(Of ConstructorProveedoresOperativos)
+
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbxProveedor.Text, New Filtro With {.IdSeccion = SeccionesProvedorOperativo.SPRO1, .IdCampo = CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR})
+
+        fbxProveedor.DataSource = lista_
+
+    End Sub
+
+    Protected Sub scFacturaProveedor_Click(sender As Object, e As EventArgs)
+
+        Dim operacion_ = IIf(swcTipoOperacion.Checked = True, IControladorFacturaComercial.TipoOperaciones.Importacion, IControladorFacturaComercial.TipoOperaciones.Exportacion)
+
+        Dim _icontroladorFacturaComercial = New ControladorFacturaComercial(1, True, operacion_)
+
+        If fbxProveedor.Value IsNot Nothing And fbcCliente.Value IsNot Nothing Then
+
+            Dim idProveedor_ = New ObjectId(fbxProveedor.Value)
+
+            Dim idCliente_ = New ObjectId(fbcCliente.Value)
+
+            Dim estado_ = _icontroladorFacturaComercial.ListaFacturasProveedor(idProveedor_, idCliente_)
+
+            If estado_.Status = TypeStatus.Ok Then
+
+                Dim listaFacturas_ As List(Of ConstructorFacturaComercial) = estado_.ObjectReturned
+
+                Dim dataSource_ As New List(Of SelectOption)
+
+                Dim facturasInfo_ As New List(Of Dictionary(Of String, String))
+
+                For Each facturaComercial_ In listaFacturas_
+
+                    Dim seccion_ = facturaComercial_.Seccion(SeccionesFacturaComercial.SFAC1)
+
+                    dataSource_.Add(New SelectOption With {
+                        .Value = facturaComercial_.Id,
+                        .Text = seccion_.Attribute(CamposFacturaComercial.CA_NUMERO_FACTURA).Valor
+                        }
+                    )
+
+                    facturasInfo_.Add(
+                        New Dictionary(Of String, String) From {
+                            {"id", facturaComercial_.Id},
+                            {"numeroFactura", seccion_.Attribute(CamposFacturaComercial.CA_NUMERO_FACTURA).Valor},
+                            {"fechaFactura", seccion_.Attribute(CamposFacturaComercial.CA_FECHA_FACTURA).Valor},
+                            {"incoterm", seccion_.Attribute(CamposFacturaComercial.CA_CVE_INCOTERM).ValorPresentacion},
+                            {"monedaValor", seccion_.Attribute(CamposFacturaComercial.CA_MONEDA_FACTURACION).Valor},
+                            {"monedaValorPresentacion", seccion_.Attribute(CamposFacturaComercial.CA_MONEDA_FACTURACION).ValorPresentacion},
+                            {"valorFactura", seccion_.Attribute(CamposFacturaComercial.CP_VALOR_FACTURA).Valor},
+                            {"valorMercancia", seccion_.Attribute(CamposFacturaComercial.CP_VALOR_MERCANCIA).Valor}
+                        }
+                    )
+
+                Next
+
+                scFacturaProveedor.DataSource = dataSource_
+
+                SetVars("facturasInfo_", facturasInfo_)
+
+            End If
+
+        End If
+
+    End Sub
+
 
 #End Region
 

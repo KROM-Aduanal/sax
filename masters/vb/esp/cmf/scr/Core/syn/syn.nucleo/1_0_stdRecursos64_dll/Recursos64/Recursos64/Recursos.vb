@@ -146,6 +146,11 @@ Namespace Syn.Nucleo
 
             <EnumMember> <Description("Estatus del pago")> CP_ACTIVO_PAGO = 2058
 
+            <EnumMember> <Description("ObjectID del cliente")> CP_OBJECTID_CLIENTE = 2059
+            <EnumMember> <Description("Clave del cliente")> CP_CVE_CLIENTE = 2060
+
+
+
             'CP_ACTIVO_PAGO
 
 

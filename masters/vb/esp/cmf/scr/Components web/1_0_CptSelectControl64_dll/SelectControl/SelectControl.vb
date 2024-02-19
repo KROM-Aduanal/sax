@@ -204,7 +204,21 @@ Public Class SelectControl
 
             EnsureChildControls()
 
-            Return LocalStorage.FirstOrDefault(Function(e) e.Value = _selectControl.SelectedValue).Signature
+            Dim data_ = LocalStorage
+
+            If data_ IsNot Nothing Then
+
+                Dim item_ = data_.FirstOrDefault(Function(e) e.Value = _selectControl.SelectedValue)
+
+                If item_ IsNot Nothing Then
+
+                    Return item_.Signature
+
+                End If
+
+            End If
+
+            Return Nothing
 
         End Get
 

@@ -105,8 +105,9 @@
                             <GWC:SelectControl runat="server" CssClass="col-xs-4 col-md-4 p-0" ID="scMonedaMercancia" SearchBarEnabled="true" LocalSearch="false" Label="Moneda" OnTextChanged="CargaMoneda_TextChanged" OnClick="SeleccionarMoneda_Click">
                             </GWC:SelectControl>
                         </asp:Panel>
-                        <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mt-1 mb-5" ID="fbcOrdenCompra" Label="Orden de compra" HasDetails="false" />
-                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mt-1 mb-5" ID="icSerieFolioFactura" Type="Text" Name="icSerieFolioFactura" Label="Serie/folio de la factura" />
+       
+                        <GWC:InputControl runat="server" CssClass="col-xs-3 col-md-3 mt-1 mb-5" ID="icReferenciaCliente" Type="Text" Name="icReferenciaCliente" Label="Referencia cliente" />
+                        <GWC:InputControl runat="server" CssClass="col-xs-3 col-md-3 mt-1 mb-5" ID="icSerieFolioFactura" Type="Text" Name="icSerieFolioFactura" Label="Serie/folio de la factura" />
 
                     </ListControls>
                 </GWC:FieldsetControl>
@@ -256,25 +257,6 @@
 
                     </ListControls>
                 </GWC:FieldsetControl>
-
-                <GWC:FieldsetControl runat="server" ID="fscSubdivision" Label="Subdivisión" Visible="true">
-                    <ListControls>
-
-                        <GWC:CatalogControl ID="catSubdivision" runat="server" KeyField="Catalogo_Subdivision">
-                            <Columns>
-                                <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-12" ID="scNumeroParte" Label="Número de parte/alias" KeyField="" DisplayField="" />
-                                <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-12" ID="scDescripcion" Label="Descripción" KeyField="" DisplayField="" />
-                                <GWC:SwitchControl runat="server" ID="swcParcialidades" CssClass="col-xs-12 col-md-12" Label="Parcialidades" OnText="Sí" OffText="No" />
-                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12" Type="Text" ID="icParcialidades" Format="Numeric" Label="Dividir en" />
-                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12" Type="Text" ID="icCantidadOriginal" Format="Real" Label="Cantidad original" />
-                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12" Type="Text" ID="icCantidadParcial" Format="Real" Label="Cantidad parcial" />
-                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12" Type="Text" ID="icReferencia" Label="Referencia" />
-                            </Columns>
-                        </GWC:CatalogControl>
-
-                    </ListControls>
-                </GWC:FieldsetControl>
-
             </Fieldsets>
         </GWC:FormControl>
     </div>

@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Reflection
 Imports System.Security.Permissions
 Imports System.Web
 Imports System.Web.UI
@@ -325,7 +326,11 @@ Public Class InputControl
 
         End With
 
+        'If ValidarEventoAsignado(_inputElement) = True Then
+
         AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
+
+        'End If
 
         With component_
 
@@ -352,6 +357,26 @@ Public Class InputControl
         SetInputRules(_validationsElements)
 
     End Sub
+
+    'Private Function ValidarEventoAsignado(ByRef control_ As Object) As Boolean
+
+    '    Dim eventInfo As EventInfo = control_.GetType().GetEvent("TextChanged")
+
+    '    If eventInfo IsNot Nothing Then
+
+    '        Dim handlers() = DirectCast(control_.[GetType]().GetField("EVENT_TEXTCHANGED", BindingFlags.NonPublic Or BindingFlags.Static).GetValue(Nothing), MulticastDelegate())
+
+    '        If handlers IsNot Nothing AndAlso handlers.Length > 0 Then
+
+    '            Return True
+
+    '        End If
+
+    '    End If
+
+    '    Return False
+
+    'End Function
 
     Private Sub RenderTextAreaField(ByRef component_ As HtmlGenericControl)
 
@@ -440,7 +465,6 @@ Public Class InputControl
             .Controls.Add(New LiteralControl("</div>"))
 
         End With
-
 
     End Sub
 

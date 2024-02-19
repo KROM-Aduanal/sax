@@ -809,6 +809,8 @@ Namespace gsol.basededatos
 
                 _command.Dispose()
 
+                _datadapter = Nothing
+
                 _conexion.Close()
 
                 _conexion.Dispose()
@@ -1020,6 +1022,7 @@ Namespace gsol.basededatos
 
                     ejecucion_ = False
 
+
                     _command.CommandText = _sentencia
 
                     _datadapter.SelectCommand = _command
@@ -1215,6 +1218,16 @@ Namespace gsol.basededatos
 
                     ejecucion_ = True
 
+
+                    '_conexion = New MySqlConnection
+                    '_datadapter = New MySqlDataAdapter
+                    '_command = New MySql.Data.MySqlClient.MySqlCommand
+
+                    'Using _datadapter = New Odbc.OdbcDataAdapter
+
+
+
+                    'End Using
 
 
                     ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::

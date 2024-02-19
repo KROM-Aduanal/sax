@@ -57,7 +57,6 @@ Namespace Syn.Operaciones
 
                 Select Case nodo_.TipoNodo
 
-
                     Case TiposNodo.Campo
 
                         Dim campoNuevo_ = CType(nodo_, CampoGenerico)
@@ -67,6 +66,7 @@ Namespace Syn.Operaciones
                             listaCampos_.Add(campoNuevo_)
 
                         End If
+
                     Case Else
 
                         If nodo_.Nodos IsNot Nothing Then

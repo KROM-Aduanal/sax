@@ -100,7 +100,7 @@ Namespace Syn.Documento
             'Datos del proveedor o comprador
             ConstruyeSeccion(seccionEnum_:=SeccionesPedimento.ANS10,
                              tipoBloque_:=TiposBloque.Cuerpo,
-                             conCampos_:=True)
+                             conCampos_:=False)
 
             'Datos del destinatario
             ConstruyeSeccion(seccionEnum_:=SeccionesPedimento.ANS11,
@@ -451,6 +451,8 @@ Namespace Syn.Documento
                         ' Datos del proveedor o comprador
                 Case SeccionesPedimento.ANS10
 
+
+
                     Return New List(Of Nodo) From {
                                Item(CA_ID_FISCAL_PROVEEDOR, Texto, longitud_:=30),
                                Item(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC, Texto, longitud_:=120),
@@ -466,7 +468,7 @@ Namespace Syn.Documento
                                Item(CA_ENTIDAD_FEDERATIVA_POC, Texto, longitud_:=3),
                                Item(CA_PAIS_POC, Texto, 3),
                                                            _
-                               Item(SeccionesPedimento.ANS13, True),
+                               Item(SeccionesPedimento.ANS13, False),
                                Item(CamposGlobales.CP_IDENTITY, Entero)
                          }
 

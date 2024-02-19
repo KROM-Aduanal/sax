@@ -9,6 +9,7 @@ Imports Rec.Globals.Utils
 Imports Sax.Web
 Imports Syn.CustomBrokers.Controllers
 Imports Syn.Documento
+Imports Syn.Documento.Componentes
 Imports Syn.Documento.Componentes.Campo
 Imports Syn.Nucleo.Recursos.CamposClientes
 Imports Syn.Nucleo.RecursosComercioExterior
@@ -18,6 +19,7 @@ Imports Syn.Operaciones
 Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
+Imports SharpCompress.Common
 
 Public Class Ges003_001_FacturasComerciales
     Inherits ControladorBackend
@@ -28,7 +30,7 @@ Public Class Ges003_001_FacturasComerciales
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-    Private _monedas As Object
+    Private _monedas As IControladorMonedas
 
     Private _pais As Pais
 
@@ -38,7 +40,9 @@ Public Class Ges003_001_FacturasComerciales
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _icontroladorEmpresas64 As IControladorEmpresas64
+    Private _tagwatcher As TagWatcher
+
+    'Private _icontroladorEmpresas64 As IControladorEmpresas
 
 #End Region
 
@@ -73,8 +77,6 @@ Public Class Ges003_001_FacturasComerciales
 
         fbcIncoterm.DataEntity = New krom.Anexo22()
 
-
-
         ' Datos del proveedor
 
         scMetodoValoracion.DataEntity = New krom.Anexo22()
@@ -108,6 +110,7 @@ Public Class Ges003_001_FacturasComerciales
     Public Overrides Sub BotoneraClicEditar()
 
         PreparaTarjetero(PillboxControl.ToolbarModality.Advanced, pbPartidas)
+
         Habilitar()
 
     End Sub
@@ -115,11 +118,9 @@ Public Class Ges003_001_FacturasComerciales
     Public Overrides Sub BotoneraClicBorrar()
 
 
-
     End Sub
 
     Public Overrides Sub BotoneraClicOtros(ByVal IndexSelected_ As Integer)
-
 
 
     End Sub
@@ -132,13 +133,18 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CA_NUMERO_FACTURA, Texto, longitud_:=40)
         [Set](dbcNumFacturaCOVE, CA_NUMERO_FACTURA, propiedadDelControl_:=PropiedadesControl.Valor)
         '                                     Item(CamposCOVE.CA_NUMERO_COVE, Texto, longitud_:=40)
-        [Set](dbcNumFacturaCOVE, CA_NUMERO_AcuseValor, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](dbcNumFacturaCOVE, CA_NUMERO_ACUSEVALOR, propiedadDelControl_:=PropiedadesControl.ValueDetail)
         '                                     Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha)
         [Set](icFechaFactura, CA_FECHA_FACTURA)
         '                                     Item(CamposCOVE.CA_FECHA_COVE, Fecha)
-        [Set](icFechaCOVE, CA_FECHA_AcuseValor)
+        [Set](icFechaCOVE, CA_FECHA_ACUSEVALOR)
         '                                     Item(CamposClientes.CA_RAZON_SOCIAL, Texto, longitud_:=120)
-        [Set](fbcCliente, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
+        'Item(CamposClientes.CP_OBJECTID_CLIENTE, IdObject)
+        'Item(CamposClientes.CP_CVE_CLIENTE, Entero)
+        [Set](fbcCliente, CamposClientes.CP_OBJECTID_CLIENTE)
+        ' [Set](, CamposClientes.CP_CVE_CLIENTE)
+        [Set](fbcCliente, CA_RAZON_SOCIAL)
+        [Set](fbcCliente, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
         '                                     Item(CamposClientes.CA_TAX_ID, Texto, longitud_:=11)
         '                                     Item(CamposClientes.CA_RFC_CLIENTE, Texto, longitud_:=13)
         '                                     Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=450)
@@ -161,8 +167,12 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CA_PAIS_FACTURACION, Texto, longitud_:=80)
         [Set](fbcPais, CA_PAIS_FACTURACION, propiedadDelControl_:=PropiedadesControl.Text)
         '                                     Item(CamposFacturaComercial.CP_TIPO_OPERACION, Texto, longitud_:=11)
-        [Set](IIf(swcTipoOperacion.Checked, "Importación", "Exportación"), CamposFacturaComercial.CP_TIPO_OPERACION)
-        '                                     Item(CamposFacturaComercial.CA_CVE_INCOTERM, Texto, longitud_:=3)
+
+
+
+        [Set](IIf(swcTipoOperacion.Checked, 1, 2), CamposFacturaComercial.CP_TIPO_OPERACION, tipoDato_:=TiposDato.Texto)
+        'Item(CamposFacturaComercial.CA_CVE_INCOTERM, Texto, longitud_:=3)
+
         [Set](fbcIncoterm, CA_CVE_INCOTERM)
 
         [Set](fbcIncoterm, CA_CVE_INCOTERM, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
@@ -183,12 +193,15 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CP_SERIE_FOLIO_FACTURA, Texto, longitud_:=100)
         [Set](icSerieFolioFactura, CP_SERIE_FOLIO_FACTURA)
         '                                     Item(CamposFacturaComercial.CP_ORDEN_COMPRA, Texto, longitud_:=60)
-        [Set](fbcOrdenCompra, CP_ORDEN_COMPRA, propiedadDelControl_:=PropiedadesControl.Text)
+        '[Set](fbcOrdenCompra, CP_ORDEN_COMPRA, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](icReferenciaCliente, CP_REFERENCIA_CLIENTE)
 
         'Datos del proveedor
         'Case SeccionesFacturaComercial.SFAC2
         '                                     Item(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, Texto, longitud_:=120)
-        [Set](fbcProveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](fbcProveedor, CamposProveedorOperativo.CP_ID_PROVEEDOR)
+        [Set](fbcProveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR)
+        [Set](fbcProveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
         '                                     Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=450)
         [Set](scDomiciliosProveedor, CamposDomicilio.CA_DOMICILIO_FISCAL)
         '                                     Item(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR, Texto, longitud_:=11)
@@ -218,7 +231,9 @@ Public Class Ges003_001_FacturasComerciales
         'Datos del destinatario
         'Case SeccionesFacturaComercial.SFAC3
         '                                     Item(CamposDestinatario.CA_RAZON_SOCIAL, Texto, longitud_:=120)
-        [Set](fbcDestinatario, CamposDestinatario.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](fbcDestinatario, CamposDestinatario.CP_ID_DESTINATARIO)
+        [Set](fbcDestinatario, CamposDestinatario.CA_RAZON_SOCIAL)
+        [Set](fbcDestinatario, CamposDestinatario.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text, asignarA_:=TiposAsignacion.ValorPresentacion)
         '                                     Item(CamposDestinatario.CA_TAX_ID, Texto, longitud_:=11)
         '                                     Item(CamposDestinatario.CA_RFC_DESTINATARIO, Texto, longitud_:=13)
         '                                     Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=450)
@@ -245,6 +260,9 @@ Public Class Ges003_001_FacturasComerciales
 
         End If
         '                                     Item(CamposFacturaComercial.CA_NUMERO_PARTE_PARTIDA, Texto, longitud_:=20)
+
+        [Set](fbcProducto, CP_OBJECTID_PRODUCTOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
         [Set](fbcProducto, CA_NUMERO_PARTE_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         '                                     Item(CamposFacturaComercial.CA_VALOR_FACTURA_PARTIDA, Real, cantidadEnteros_:=18, cantidadDecimales_:=5)
         [Set](icValorfacturaPartida, CA_VALOR_FACTURA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Ninguno)
@@ -383,25 +401,57 @@ Public Class Ges003_001_FacturasComerciales
 
         Dim sec_ As Int32 = 0
 
+        Dim objectIdFactura_ As ObjectId = Nothing
+
         Select Case respuesta_.Status
 
             Case TypeStatus.Ok
 
                 sec_ = respuesta_.ObjectReturned.sec
 
+                objectIdFactura_ = respuesta_.ObjectReturned._id
+
             Case Else
 
         End Select
 
+
+        If swcTipoOperacion.Checked Then
+
+            [Set](swcTipoOperacion, CamposFacturaComercial.CP_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.OnText, asignarA_:=TiposAsignacion.ValorPresentacion)
+
+        Else
+
+            [Set](swcTipoOperacion, CamposFacturaComercial.CP_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.OffText, asignarA_:=TiposAsignacion.ValorPresentacion)
+
+        End If
+
+
         With documentoElectronico_
+
+            Dim secPropietario_ = fbcCliente.Text.Split("|")
+
+            .Id = objectIdFactura_.ToString
 
             .FolioDocumento = dbcNumFacturaCOVE.Value
 
             .FolioOperacion = sec_
 
-            .IdCliente = 0
+            .TipoPropietario = "Cliente"
 
-            .NombreCliente = fbcCliente.Text
+            .NombrePropietario = fbcCliente.Text
+
+            'Lo woa ser asi, pero asi no es :V necesitamos que el dato venga desde un controlador
+            'ficticio en mi mente de cliente :V
+
+            .IdPropietario = secPropietario_(1).Trim
+
+            .ObjectIdPropietario = ObjectId.Parse(fbcCliente.Value)
+
+            .Metadatos = New List(Of CampoGenerico) _
+                         From {(.Attribute(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR)),
+                               (.Attribute(CamposFacturaComercial.CP_TIPO_OPERACION))
+                             }
 
         End With
 
@@ -534,6 +584,16 @@ Public Class Ges003_001_FacturasComerciales
     Protected Sub fbcCliente_Click(sender As Object, e As EventArgs)
 
         'aquí no se que va tal vez la preparación de los datos internos a guardar del cliente
+        'aqui woa a llenar el objectID
+        'aqui woa a llenar la clave del cliente
+        'aqui woa a llenar la razon social del cliente
+
+        'No hay controlador de cliente :(
+        'pss hora lo woa a llenar de mientras con lo que tengo a la mano :(
+
+        'DisplayMessage("Cliente cargado", StatusMessage.Info)
+
+
 
     End Sub
 
@@ -587,40 +647,51 @@ Public Class Ges003_001_FacturasComerciales
 
     Protected Sub fbcProveedor_Click(sender As Object, e As EventArgs)
 
-        _controladorProveedor = New CtrlProveedoresOperativos()
+        If Not String.IsNullOrWhiteSpace(sender.Value.ToString) Then
 
-        _controladorProveedor._tipoOperacion = IIf(swcTipoOperacion.Checked,
+            _controladorProveedor = New CtrlProveedoresOperativos()
+
+            _controladorProveedor._tipoOperacion = IIf(swcTipoOperacion.Checked,
                                                    CtrlProveedoresOperativos.TipoOperacion.Importacion, CtrlProveedoresOperativos.TipoOperacion.Exportacion)
 
-        Dim tagwatcher_ = _controladorProveedor.BuscarProveedor(New ObjectId(sender.Value.ToString))
+            Dim tagwatcher_ = _controladorProveedor.BuscarProveedor(New ObjectId(sender.Value.ToString))
 
-        SetVars("_proveedor", tagwatcher_)
+            SetVars("_proveedor", tagwatcher_)
 
-        'Aquí buscamos al proveedor y su dirección
-        Select Case sender.ID
-            Case "fbcProveedor"
+            'Aquí buscamos al proveedor y su dirección
+            Select Case sender.ID
+                Case "fbcProveedor"
 
-                scDomiciliosProveedor.DataSource = _controladorProveedor.BuscarDomicilios(tagwatcher_.ObjectReturned.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
+                    scDomiciliosProveedor.DataSource = _controladorProveedor.BuscarDomicilios(tagwatcher_.ObjectReturned.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
 
-            Case "fbcProveedorCertificado"
+                Case "fbcProveedorCertificado"
 
 
-            Case "fbcDestinatario"
+                Case "fbcDestinatario"
 
-                Dim domicilio_ = _controladorProveedor.BuscarDomicilios(tagwatcher_.ObjectReturned.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
+                    Dim domicilio_ = _controladorProveedor.BuscarDomicilios(tagwatcher_.ObjectReturned.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
 
-                If domicilio_ IsNot Nothing Then
+                    If domicilio_ IsNot Nothing Then
 
-                    Dim domicilio As String = Mid(domicilio_(0).Text, InStrRev(domicilio_(0).Text, "|") + 2,
+                        Dim domicilio As String = Mid(domicilio_(0).Text, InStrRev(domicilio_(0).Text, "|") + 2,
                                                   domicilio_(0).Text.ToString().Length - InStrRev(domicilio_(0).Text, "|"))
 
-                    icDomicilioDestinario.Value = domicilio
+                        icDomicilioDestinario.Value = domicilio
 
-                End If
+                    End If
 
-            Case Else
+                Case Else
 
-        End Select
+            End Select
+
+            'Aqui woa llenar datos del proveedor como su:
+            'object id
+            'clave
+            'razon social sola
+
+        End If
+
+
 
     End Sub
 
@@ -681,6 +752,7 @@ Public Class Ges003_001_FacturasComerciales
         icModelo.Enabled = True
         icSubmodelo.Enabled = True
         icKilometraje.Enabled = True
+        swcTipoOperacion.Checked = True
 
     End Sub
 
@@ -700,101 +772,15 @@ Public Class Ges003_001_FacturasComerciales
 
     Protected Sub dbcNumFacturaCOVE_Click(sender As Object, e As EventArgs)
 
+        dbcNumFacturaCOVE.ValueDetail = "MANÁ"
 
-        dbcNumFacturaCOVE.ValueDetail = "COVE"
+        'Dim _espacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")
 
-        ''Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Internacional
+        '_icontroladorEmpresas64 = New ControladorEmpresas(_espacioTrabajo)
 
-        ''Dim taxids_ As New TaxId64 _
-        ''              With
-        ''              {
-        ''               .idtaxid = ObjectId.GenerateNewId,
-        ''               .sec = 1,
-        ''               .taxid = "TAXID000002",
-        ''               .estado = 1,
-        ''               .archivado = False
-        ''              }
+        '_icontroladorEmpresas64.PaisEmpresa = "PAN"
 
-        ''Dim bus_ As New Bus64 _
-        ''           With
-        ''           {
-        ''               .idunidadnegocio = ObjectId.GenerateNewId,
-        ''               .sec = 1,
-        ''               .unidadnegocio = "unidadPrueba",
-        ''               .estado = 1,
-        ''               .archivado = False
-        ''           }
-
-        ''Dim domicilios_ As New Domicilio64 _
-        ''                  With
-        ''                  {
-        ''                   ._iddomicilio = ObjectId.GenerateNewId,
-        ''                   .sec = 1,
-        ''                   .calle = "2-chome",
-        ''                   .numeroexterior = "14 - 21",
-        ''                   .numerointerior = "s/N",
-        ''                   .ciudad = "Shinyokohama",
-        ''                   .colonia = Nothing,
-        ''                   .codigopostal = "222-0033",
-        ''                   .entidadfederativa = "Kanagawa",
-        ''                   .pais = "Japón",
-        ''                   .estado = 1,
-        ''                   .archivado = False
-        ''                  }
-
-
-        ''Dim contactosList_ As New Contacto64 _
-        ''                      With
-        ''                      {
-        ''                        .idcontacto = ObjectId.GenerateNewId,
-        ''                        .sec = 1,
-        ''                        .nombrecompleto = "Pedro Bautista Méndez",
-        ''                        .correoelectronico = "pedro.bautista@correo.com",
-        ''                        .telefono = "2291410473",
-        ''                        .estado = 1,
-        ''                        .archivado = False
-        ''                      }
-
-        ''Dim empresaInternacional_ As IEmpresaInternacional64 = New EmpresaInternacional64 _
-        ''                                                  With
-        ''                                                  {
-        ''                                                   ._id = ObjectId.GenerateNewId,
-        ''                                                   ._idempresa = 4,
-        ''                                                   .razonsocial = "DIGIMÓN DIGITAL MONSTERS",
-        ''                                                   .razonsocialcorto = "DIGIMÓN",
-        ''                                                   .abreviatura = "DIGIMÓN",
-        ''                                                   .nombrecomercial = "MOUNSTROUS DIGITALES",
-        ''                                                   .idpais = ObjectId.GenerateNewId,
-        ''                                                   .pais = "JAPÓN",
-        ''                                                   .domicilios = Nothing,
-        ''                                                   .girocomercial = "FRANQUICIAS KIDS",
-        ''                                                   ._idgrupocomercial = Nothing,
-        ''                                                   .contactos = Nothing,
-        ''                                                   .taxids = New List(Of TaxId64) From {taxids_},
-        ''                                                   ._idbu = Nothing,
-        ''                                                   .bu = Nothing,
-        ''                                                   .bus = Nothing,
-        ''                                                   .abierto = True,
-        ''                                                   .estado = 1,
-        ''                                                   .archivado = False
-        ''                                                  }
-
-
-        ''_icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
-
-        ''Dim pruebaInternacional = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
-
-        ''Dim actualizarEmpresaInternacional = _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
-
-
-
-        ''Dim pruebaInternacional = _icontroladorEmpresas64.BuscarEmpresas(New ObjectId("65088d535d1a7b075900cbb3"))
-
-        '' Dim prueba = _icontroladorEmpresas64.NuevaEmpresa(empresaInternacional_)
-
-        '' _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
-
-        'Dim domicilio_ As New Domicilio64 _
+        'Dim domicilio_ As New Domicilio _
         '                  With
         '                  {
         '                   ._iddomicilio = ObjectId.GenerateNewId,
@@ -806,79 +792,181 @@ Public Class Ges003_001_FacturasComerciales
         '                   .colonia = "Lomas 4",
         '                   .codigopostal = "91809",
         '                   .entidadfederativa = "Veracruz",
-        '                   .pais = "México",
+        '                   .pais = "Mex",
         '                   .estado = 1,
         '                   .archivado = False
         '                  }
 
+        'Dim listaDomicilio_ = New PaisDomicilio With {.domicilios = New List(Of Domicilio) From {domicilio_}}
 
-
-        'Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Nacional
-
-        'Dim rfcsList As New Rfc64 _
-        '                With
-        '                {
-        '                    .idrfc = New ObjectId("650b7977cf6dbc89f4a2d5cc"),
-        '                    .sec = 1,
-        '                    .rfc = "ERI660315SX5",
-        '                    .estado = 1,
-        '                    .archivado = False
-        '                }
-
-        'Dim curpList As New Curp64 _
-        '                With
-        '                {
-        '                    .idcurp = ObjectId.GenerateNewId,
-        '                    .sec = 1,
-        '                    .curp = "RARR920216MVZMSS01",
-        '                    .estado = 1,
-        '                    .archivado = False
-        '                }
-
-        'Dim regimenFiscal_ As New RegimenFiscal64 _
-        '                      With
-        '                      {
-        '                        .idregimenfiscal = New ObjectId("650b810e6c54a773816c886c"),
-        '                        ._sec = 1,
-        '                        .regimenfiscal = "Contribuyente",
-        '                        .estado = 1,
-        '                        .archivado = False
-        '                      }
-
-
-        'Dim empresaNacional_ As IEmpresaNacional64 = New EmpresaNacional64 _
+        'Dim empresaNacional_ As IEmpresaNacional = New EmpresaNacional _
         '                                            With
         '                                            {
-        '                                                 ._id = New ObjectId("650b86da85e44844fdd7c5d7"),
-        '                                                 ._idempresa = 2,
-        '                                                 ._idempresakb = Nothing,
-        '                                                 .razonsocial = "Fomento Económico Mexicano SA DE CV",
-        '                                                 .razonsocialcorto = "FEMSA MANÁ",
-        '                                                 .abreviatura = "FEMSA",
-        '                                                 .nombrecomercial = "FEMSA SA",
-        '                                                 .domicilios = New List(Of Domicilio64) From {domicilio_},
+        '                                                 .razonsocial = "PINTURAS COMEX SA DE CV",
+        '                                                 .razonsocialcorto = "PINTURAS COMEX",
+        '                                                 .abreviatura = "COMEX",
+        '                                                 .nombrecomercial = "COMEX",
+        '                                                 .paisesdomicilios = New List(Of PaisDomicilio) From {New PaisDomicilio _
+        '                                                                     With {.domicilios =
+        '                                                                     New List(Of Domicilio) _
+        '                                                                     From {New Domicilio With
+        '                                                                           {
+        '                                                                           .calle = "SAN NICOLAS",
+        '                                                                           .numeroexterior = 142,
+        '                                                                           .numerointerior = "142B",
+        '                                                                           .ciudad = "VERACRUZ",
+        '                                                                           .colonia = "CENTRO",
+        '                                                                           .codigopostal = "91700",
+        '                                                                           .entidadfederativa = "VEV",
+        '                                                                           .pais = "MEX",
+        '                                                                           .estado = 1,
+        '                                                                           .archivado = False}}}},
         '                                                 .girocomercial = Nothing,
         '                                                 ._idgrupocomercial = Nothing,
-        '                                                 .contactos = Nothing,
-        '                                                 ._idrfc = rfcsList.idrfc,
-        '                                                 .rfc = rfcsList.rfc,
-        '                                                 .rfcs = New List(Of Rfc64) From {rfcsList},
-        '                                                 ._idcurp = curpList.idcurp,
-        '                                                 .curp = curpList.curp,
-        '                                                 .curps = New List(Of Curp64) From {curpList},
-        '                                                 .regimenfiscal = New List(Of RegimenFiscal64) From {regimenFiscal_},
-        '                                                 .tipopersona = IEmpresaNacional64.TiposPersona64.Fisica,
-        '                                                 .archivado = False,
-        '                                                 .estado = 1,
-        '                                                 .abierto = True
+        '                                                 .contactos = New List(Of Contacto),
+        '                                                 .rfc = "CO34523454",
+        '                                                 .rfcs = New List(Of Rfc),
+        '                                                 .curp = "COM3452345",
+        '                                                 .curps = New List(Of Curp),
+        '                                                 .regimenesfiscales = New List(Of RegimenFiscal),
+        '                                                 .tipopersona = IEmpresaNacional.TiposPersona.Fisica
+        '                                            }
+
+
+        'Dim empresaNacionalMod_ As IEmpresaNacional = New EmpresaNacional _
+        '                                            With
+        '                                            {
+        '                                                ._idempresa = 2,
+        '                                                 .razonsocial = "PINTURAS COMEX SA DE CV",
+        '                                                 .razonsocialcorto = "PINTURAS COMEX",
+        '                                                 .abreviatura = "COMEX",
+        '                                                 .nombrecomercial = "COMEX",
+        '                                                 .paisesdomicilios = New List(Of PaisDomicilio) From {New PaisDomicilio _
+        '                                                                     With {.domicilios =
+        '                                                                     New List(Of Domicilio) _
+        '                                                                     From {New Domicilio With
+        '                                                                           {
+        '                                                                           .calle = "Plata",
+        '                                                                           .numeroexterior = 23,
+        '                                                                           .numerointerior = "s/n",
+        '                                                                           .ciudad = "Veracruz",
+        '                                                                           .colonia = "Lomas 3",
+        '                                                                           .codigopostal = "91809",
+        '                                                                           .entidadfederativa = "Veracruz",
+        '                                                                           .pais = "MEX",
+        '                                                                           .estado = 1,
+        '                                                                           .archivado = False}}}},
+        '                                                 .girocomercial = Nothing,
+        '                                                 ._idgrupocomercial = Nothing,
+        '                                                 .contactos = New List(Of Contacto),
+        '                                                 .rfc = "RARR920216M43",
+        '                                                 .rfcs = New List(Of Rfc) From {New Rfc _
+        '                                                         With {
+        '                                                                .idrfc = New ObjectId("65821307ff5b912d8c92750a"),
+        '                                                                .sec = 1,
+        '                                                                .rfc = "CO34523454"
+        '                                                              }},
+        '                                                 .curp = "RARR920216MVZMSS01",
+        '                                                 .curps = New List(Of Curp) From {New Curp _
+        '                                                          With {.idcurp = New ObjectId("65821307ff5b912d8c927509"),
+        '                                                                .sec = 1,
+        '                                                                .curp = "COM3452345"}},
+        '                                                 .regimenesfiscales = New List(Of RegimenFiscal),
+        '                                                 .tipopersona = IEmpresaNacional.TiposPersona.Fisica,
+        '                                                 .esNuevoDomicilio = True
+        '                                            }
+
+
+
+
+        'Dim empresaInternacional_ As IEmpresaInternacional = New EmpresaInternacional _
+        '                                            With
+        '                                            {
+        '                                                 .razonsocial = "PINTURAS COMEX SA DE CV",
+        '                                                 .razonsocialcorto = "PINTURAS COMEX",
+        '                                                 .abreviatura = "COMEX",
+        '                                                 .nombrecomercial = "COMEX",
+        '                                                 .paisesdomicilios = New List(Of PaisDomicilio) From {New PaisDomicilio _
+        '                                                                     With {.domicilios =
+        '                                                                     New List(Of Domicilio) _
+        '                                                                     From {New Domicilio With
+        '                                                                           {.calle = "SAN NICOLAS",
+        '                                                                           .numeroexterior = 142,
+        '                                                                           .numerointerior = "142B",
+        '                                                                           .ciudad = "VERACRUZ",
+        '                                                                           .colonia = "CENTRO",
+        '                                                                           .codigopostal = "91700",
+        '                                                                           .entidadfederativa = "VEV",
+        '                                                                           .pais = "MEX"}}}},
+        '                                                 .girocomercial = Nothing,
+        '                                                 ._idgrupocomercial = Nothing,
+        '                                                 .contactos = New List(Of Contacto),
+        '                                                 .bu = Nothing,
+        '                                                 .bus = New List(Of Bus),
+        '                                                 .taxids = New List(Of TaxId) _
+        '                                                           From {New TaxId _
+        '                                                           With {.taxid = "TAXID00001"}},
+        '                                                 ._idbu = Nothing
+        '                                            }
+
+        'Dim empresaInternacionalMod_ As IEmpresaInternacional = New EmpresaInternacional _
+        '                                            With
+        '                                            {
+        '                                                 .razonsocial = "Fomento Económico Extranjero",
+        '                                                 .razonsocialcorto = "FEMSA",
+        '                                                 .abreviatura = "FEM",
+        '                                                 .nombrecomercial = "FEMSA",
+        '                                                 .paisesdomicilios = New List(Of PaisDomicilio) From {New PaisDomicilio _
+        '                                                                     With {.domicilios =
+        '                                                                     New List(Of Domicilio) _
+        '                                                                     From {New Domicilio With
+        '                                                                           {
+        '                                                                           ._iddomicilio = New ObjectId("657a26e39e5d9c0553c968bb"),
+        '                                                                           .sec = 2,
+        '                                                                           .calle = "USD",
+        '                                                                           .numeroexterior = 5,
+        '                                                                           .numerointerior = "",
+        '                                                                           .ciudad = "PHOENIX",
+        '                                                                           .colonia = "",
+        '                                                                           .codigopostal = "99000",
+        '                                                                           .entidadfederativa = "ARIZONA",
+        '                                                                           .pais = "USA"}}}},
+        '                                                 .girocomercial = Nothing,
+        '                                                 ._idgrupocomercial = Nothing,
+        '                                                 .contactos = New List(Of Contacto),
+        '                                                 .bu = Nothing,
+        '                                                 .bus = New List(Of Bus),
+        '                                                 .taxids = New List(Of TaxId) _
+        '                                                           From {New TaxId _
+        '                                                           With {.taxid = "TAXID1234"}},
+        '                                                 ._idbu = Nothing,
+        '                                                 .esNuevoDomicilio = True
         '                                            }
 
 
         '_icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
 
-        '' Dim pruebaEmpresaNacional = _icontroladorEmpresas64.NuevaEmpresa(empresaNacional_)
+        'Dim pruebaEmpresaNacional = _icontroladorEmpresas64.Agregar(empresaNacional_)
 
         'Dim pruebaNacionalActualizar = _icontroladorEmpresas64.ActualizaEmpresa(empresaNacional_)
+
+        'Dim pruebaEmpresaInternacional = _icontroladorEmpresas64.Agregar(empresaInternacional_)
+
+        'Dim pruebaModificarEmpresaNacional = _icontroladorEmpresas64.Modificar(empresaNacionalMod_)
+
+        'Dim pruebaModificarEmpresaInternacional_ = _icontroladorEmpresas64.Modificar(empresaInternacionalMod_)
+
+        '_icontroladorEmpresas64 = New ControladorEmpresas(_espacioTrabajo, IControladorEmpresas.TiposEmpresas.Nacional)
+
+        'Dim buscarEmpresa = _icontroladorEmpresas64.Consultar("Fomento Económico")
+
+        'Dim empresasArchivadas_ = New List(Of ObjectId) From {New ObjectId("65789907dc3cce59880c2444"),
+        '                                                      New ObjectId("657c745bff0f6b8416fdd9ba")}
+
+        'Dim domiciliosArchivados_ = New List(Of ObjectId) From {New ObjectId("65779e173940b2ee24e411f0"),
+        '                                                        New ObjectId("6579e312643eb14bf8f0b9ca")}
+
+        'Dim pruebaArchivarEmpresa_ = _icontroladorEmpresas64.ArchivarDomicilios(New ObjectId("65779e1c3940b2ee24e411f1"), domiciliosArchivados_)
 
         DisplayMessage("Maná 2024", StatusMessage.Info)
 
@@ -1057,7 +1145,9 @@ Public Class Ges003_001_FacturasComerciales
 
     End Sub
 
-    Sub CargaUnidades(ByRef control_ As SelectControl, ByVal tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad, Optional ByVal top_ As Int32 = 0)
+    Sub CargaUnidades(ByRef control_ As SelectControl,
+                      ByVal tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad,
+                      Optional ByVal top_ As Int32 = 0)
 
         Dim lista_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(tipoUnidad_, control_.SuggestedText, top_)
 

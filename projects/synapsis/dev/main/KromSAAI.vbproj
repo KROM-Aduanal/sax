@@ -478,6 +478,10 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson, Version=2.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Bson.dll</HintPath>
@@ -698,6 +702,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoGenerico64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
@@ -805,6 +814,11 @@
       <HintPath>..\..\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Operaciones.Secuencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.Secuencia64.0.0.0.0.dll</HintPath>
@@ -828,12 +842,21 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -858,6 +881,22 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -2114,8 +2153,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\MongoDB.Libmongocrypt.1.2.1\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MongoDB.Libmongocrypt.1.2.1\build\MongoDB.Libmongocrypt.targets'))" />
     <Error Condition="!Exists('packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets'))" />
+    <Error Condition="!Exists('packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
   </Target>
   <Import Project="packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets" Condition="Exists('packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" />
+  <Import Project="packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -12,6 +12,7 @@ Public Class CtrlProveedoresOperativos
 
 #Region "Enums"
 
+    'Esto se debe ir a organismo u algun lado global
     Public Enum TipoOperacion
 
         Importacion = 1
@@ -83,31 +84,33 @@ Public Class CtrlProveedoresOperativos
 
         Dim tagwacher_ As New TagWatcher
 
-        Select Case _tipoOperacion
+        'PENDIENTE ESTE CASE HASTA CREAR LA INTERFAZ CORRESPONDIENTE, ES SOLO PARA QUE PUEDA FUNCIONAR EL MODULO DE FACTURA COMERCIAL
 
-            Case TipoOperacion.Exportacion
+        'Select Case _tipoOperacion
 
-                Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
+        '    Case TipoOperacion.Exportacion
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
                     {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
-                    Using _entidadDatos As IEntidadDatos = provedororOperativo_
+            Using _entidadDatos As IEntidadDatos = provedororOperativo_
 
-                        Dim documentoElectronico_ As DocumentoElectronico = _entidadDatos
+                Dim documentoElectronico_ As DocumentoElectronico = _entidadDatos
 
-                        tagwacher_ = _enlaceDatos.BusquedaGeneralDocumento(documentoElectronico_,
+                tagwacher_ = _enlaceDatos.BusquedaGeneralDocumento(documentoElectronico_,
                                                                             1,
                                                                             5003,
                                                                             razonSocial_)
 
-                        Return tagwacher_.ObjectReturned
+                Return tagwacher_.ObjectReturned
 
-                    End Using
+            End Using
 
-                End Using
+        End Using
 
-            Case TipoOperacion.Importacion
+        '    Case TipoOperacion.Importacion
 
-        End Select
+        'End Select
 
         Return tagwacher_
 
@@ -121,46 +124,55 @@ Public Class CtrlProveedoresOperativos
 
         Dim tipo_ As String = GetType(ConstructorProveedoresOperativos).Name
 
-        Select Case _tipoOperacion
 
-            Case TipoOperacion.Exportacion
+        'PENDIENTE ESTE CASE HASTA CREAR LA INTERFAZ CORRESPONDIENTE, ES SOLO PARA QUE PUEDA FUNCIONAR EL MODULO DE FACTURA COMERCIAL
 
-                If objectId_ <> Nothing Then
+        'Select Case _tipoOperacion
 
-                    Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos With
+        '    Case TipoOperacion.Exportacion
+
+        If objectId_ <> Nothing Then
+
+            Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos With
                         {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
-                        Dim operacionesDB_ = enlaceDatos_.GetMongoCollection(Of OperacionGenerica)(tipo_)
+                Dim operacionesDB_ = enlaceDatos_.GetMongoCollection(Of OperacionGenerica)(tipo_)
 
-                        Dim resultadoDocumentos_ As New List(Of OperacionGenerica)
+                Dim resultadoDocumentos_ As New List(Of OperacionGenerica)
 
-                        Dim filtro_ = Builders(Of OperacionGenerica).Filter.Eq(Function(x) x.Id, objectId_)
+                Dim filtro_ = Builders(Of OperacionGenerica).Filter.Eq(Function(x) x.Id, objectId_)
 
-                        resultadoDocumentos_ = operacionesDB_.Find(filtro_).Limit(1).ToList
+                resultadoDocumentos_ = operacionesDB_.Find(filtro_).Limit(1).ToList
 
-                        If resultadoDocumentos_.Count Then
+                'resultadoDocumentos_ = operacionesDB_.Aggregate().
+                '                                      Project(Function(d)_
+                '                                              New With {
+                '                                                        Key._id = d.,
+                '                                                        Key.cveISO3 = e.cveISO3})
 
-                            Dim operacionGenerica_ As OperacionGenerica = resultadoDocumentos_(0)
+                If resultadoDocumentos_.Count Then
 
-                            Return New TagWatcher(1) With {.ObjectReturned = operacionGenerica_}
+                    Dim operacionGenerica_ As OperacionGenerica = resultadoDocumentos_(0)
 
-                        Else
-
-                            Return New TagWatcher(0, Me, "No se encontró ningún valor para esta consulta")
-
-                        End If
-
-                    End Using
+                    Return New TagWatcher(1) With {.ObjectReturned = operacionGenerica_}
 
                 Else
 
+                    Return New TagWatcher(0, Me, "No se encontró ningún valor para esta consulta")
 
                 End If
 
+            End Using
 
-            Case TipoOperacion.Importacion
+        Else
 
-        End Select
+
+        End If
+
+
+        '    Case TipoOperacion.Importacion
+
+        'End Select
 
         Return New TagWatcher(0, Me, "Sin resultados")
 
@@ -188,9 +200,15 @@ Public Class CtrlProveedoresOperativos
                                 .Attribute(CamposDomicilio.CA_CALLE).Valor & " COL." &
                                 .Attribute(CamposDomicilio.CA_COLONIA).Valor & ", " &
                                 .Attribute(CamposDomicilio.CA_ENTIDAD_FEDERATIVA).Valor & ", " &
-                                .Attribute(CamposDomicilio.CA_PAIS).Valor
+                                .Attribute(CamposDomicilio.CA_PAIS).ValorPresentacion
 
                             Dim id_ = .Attribute(CamposProveedorOperativo.CA_RFC_PROVEEDOR).Valor
+
+                            If id_ Is Nothing Then
+
+                                id_ = .Attribute(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR).Valor
+
+                            End If
 
                             Dim dataSourceItem_ = New SelectOption With {
                                 .Text = domicilio_,
@@ -358,105 +376,6 @@ Public Class CtrlProveedoresOperativos
         End If
 
         Return listaProveedoresComponente_
-
-    End Function
-
-    Public Function BuscarProveedores1(ByVal token_ As String, btipooperacion_ As Boolean) As List(Of SelectOption)
-        Dim listaProveedores_ As New List(Of SelectOption)
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
-                   {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
-
-            Dim CtrlRecursosGenerales_ As New Organismo
-            Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorProveedoresOperativos).Name)
-
-            Dim itipooperacion_ As Integer
-            If btipooperacion_ Then
-                itipooperacion_ = 1
-            Else
-                itipooperacion_ = 2
-            End If
-
-            operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .razonsocial = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.NombreCliente,
-                                          Key .foliodocumentos = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento,
-                                          Key .tipouso = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(4).Nodos(0), Campo).Valor
-              }).Match(BsonDocument.Parse(CtrlRecursosGenerales_.SeparacionPalabras(token_, "razonsocial", "tipouso", itipooperacion_.ToString, ""))).
-                ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
-                                                           listaProveedores_.Add(New SelectOption With {
-                                                                          .Value = estatus_.IDS.ToString,
-                                                                          .Text = estatus_.razonsocial & " | " & estatus_.foliodocumentos
-                                                           })
-                                                       End Sub)
-
-        End Using
-        Return listaProveedores_
-
-
-    End Function
-
-    Public Function BuscarProveedor(ByVal token_ As String, ByRef stipoidentificador_ As String) As ConstructorProveedoresOperativos
-        Dim ConstructorProveedoresOperativos_ As New ConstructorProveedoresOperativos
-        'MsgBox(token_ & ":::" & tipopersona_ & ":::" & stipoidentificador_)
-        'Dim documentopersonas_ As New DocumentoPersona
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
-               {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
-            Dim operationsDB_ As IMongoCollection(Of OperacionGenerica)
-            operationsDB_ = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorProveedoresOperativos).Name)
-            If stipoidentificador_ = "ID" Then
-                operationsDB_.Aggregate().Project(Function(ch) New With {
-                                      Key .IDS = ch.Id,
-                                      Key .DocumentoProveedor = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-                                }).Match(Function(e) e.IDS = New ObjectId(token_)).
-                                 ToList().ForEach(Sub(estatus_)
-                                                      ConstructorProveedoresOperativos_ = New ConstructorProveedoresOperativos(True, estatus_.DocumentoProveedor) _
-                                                                                              With {.Id = estatus_.IDS.ToString}
-                                                  End Sub)
-            Else
-
-                If stipoidentificador_ = "TAXID" Then
-                    operationsDB_.Aggregate().Project(Function(ch) New With {
-                                      Key .IDS = ch.Id,
-                                      Key .DocumentoProveedor = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                      Key .TaxId = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Cuerpo")(0).Nodos(0).Nodos(0).Nodos(2).Nodos(0), Campo).Valor
-          }).Match(Function(e) e.TaxId.Equals(token_)).
-            ToList().ForEach(Sub(estatus_)
-                                 ConstructorProveedoresOperativos_ = New ConstructorProveedoresOperativos(True, estatus_.DocumentoProveedor) _
-                                                                                              With {.Id = estatus_.IDS.ToString}
-                             End Sub)
-                Else
-                    If stipoidentificador_ = "RFC" Then
-
-                        operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .DocumentoProveedor = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                          Key .RFC = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Cuerpo")(0).Nodos(0).Nodos(0).Nodos(1).Nodos(0), Campo).Valor
-                                          }).Match(Function(e) e.RFC.Equals(token_)).
-                ToList().ForEach(Sub(estatus_)
-                                     ConstructorProveedoresOperativos_ = New ConstructorProveedoresOperativos(True, estatus_.DocumentoProveedor) _
-                                                                                              With {.Id = estatus_.IDS.ToString}
-                                 End Sub)
-                    Else
-
-                        operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .DocumentoProveedor = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                          Key .RazonSocial = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.NombreCliente
-              }).Match(Function(e) e.RazonSocial.Equals(token_)).
-                ToList().ForEach(Sub(estatus_)
-                                     ConstructorProveedoresOperativos_ = New ConstructorProveedoresOperativos(True, estatus_.DocumentoProveedor) _
-                                                                                              With {.Id = estatus_.IDS.ToString}
-                                 End Sub)
-                    End If
-
-                End If
-
-            End If
-
-        End Using
-        Return ConstructorProveedoresOperativos_
-
-
 
     End Function
 

@@ -12,6 +12,12 @@ Imports Sax.Web
 Imports Sax.Web.ControladorBackend.Datos
 Imports Sax.Web.ControladorBackend.Cookies
 
+
+
+Imports System.Net
+Imports IdentityModel.Client
+Imports System.Threading.Tasks
+
 'This is a comment
 Public Class LogIn
     Inherits Syn.Utils.Organismo
@@ -269,7 +275,48 @@ Public Class LogIn
 
         End If
 
+        cosa()
+
     End Sub
+
+    Sub cosa()
+        'https://stackoverflow.com/questions/62265718/using-identitymodel-in-vb-net-for-openid-connect-authentication
+
+        If Request.QueryString("d") IsNot Nothing Then
+
+            Dim request As TokenRequest = New TokenRequest
+            request.Address = "https://localhost:5001/connect/token"
+            request.GrantType = "custom"
+            request.ClientId = "synapsis"
+
+            'request.Parameters.Add("parameter1", "value1")
+            'request.Parameters.Add("parameter2", "value2")
+
+            Dim a = AsyncCall(request)
+
+        End If
+
+    End Sub
+
+
+    Function AsyncCall(rqst As TokenRequest) As TokenResponse
+        Try
+
+            Dim client As Http.HttpClient = New Http.HttpClient()
+
+            'ServicePointManager.Expect100Continue = True
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+            Dim response As TokenResponse = client.RequestTokenAsync(rqst).Result
+
+            Return response
+        Catch ex As Exception
+            Dim e = ex
+        End Try
+
+    End Function
+
+
 
     Private Shared Function EnviarCorreo(ByVal destinatarios_ As List(Of String),
                                          ByVal subject_ As String,

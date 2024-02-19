@@ -1,0 +1,8 @@
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPrevalidadorEstandar64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPrevalidadorEstandar64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\IPrevalidadorEstandar64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\IPrevalidadorEstandar64.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\IPrevalidadorEstandar64.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\Syn.CustomBrokers.Controllers.IPrevalidadorEstandar64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIPrevalidadorEstandar64_dll\IPrevalidadorEstandar64\obj\Debug\Syn.CustomBrokers.Controllers.IPrevalidadorEstandar64.0.0.0.0.pdb

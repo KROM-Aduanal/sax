@@ -181,6 +181,10 @@
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.ConstructorManifestacionValor64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorManifestacionValor64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll</HintPath>

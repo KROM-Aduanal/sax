@@ -70,7 +70,7 @@
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_tipoPersona" label="Tipo Persona" OnText="M" OffText="F" Checked="true"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_Habilitado" label="Habilitado" OnText="Sí" OffText="No" OnCheckedChanged="s_Habilitado_CheckedChanged"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_Extranjero" label="Extranjero" OnText="Sí" OffText="No" OnCheckedChanged="CambioTipoEmpresa"/>
-                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_RFC" Label="RFC" Rules="required|maxlegth[16]" ToolTip="¡Hola soy un ToolTip!"/>
+                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_RFC" Label="RFC" Rules="required|maxlegth[16]" ToolTip="¡Hola soy un ToolTip!" OnCheckedChanged="scPatentePago_Click"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_CURP" Label="Curp" Rules="required|maxlegth[18]"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_TaxID" Label="Tax Number" Visible="false" />
 

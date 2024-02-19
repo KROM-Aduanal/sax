@@ -538,7 +538,7 @@
 
                                     <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 p-0">
 
-                                        <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial"/>
+                                        <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial" OnTextChanged="fbxProveedor_TextChanged"/>
 
                                         <GWC:InputControl runat="server" CssClass="col-md-12 mt-4 mb-5" Type="Text" ID="icIdFiscalProveedor" Label="ID Fiscal" Enabled="false" />
 
@@ -557,7 +557,7 @@
 
                                             <Columns>
 
-                                                <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" LocalSearch="false" OnTextChanged="scFacturaProveedor_TextChanged"/>
+                                                <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" OnClick="scFacturaProveedor_Click"/>
 
                                                 <GWC:InputControl runat="server" Type="Text" ID="icFechaFacturaProveedor" Label="Fecha" Format="Calendar" Enabled="false"/>
 

@@ -1711,6 +1711,8 @@ Public Class ControladorBackend
 
                     BotoneraClicPublicar()
 
+
+
                 End If
 
             Case 3 'Seguir Editando
@@ -4128,7 +4130,74 @@ Public Class ControladorBackend
 
                 Procesamiento(documentoElectronico_, tipoFlujo_)
 
+                'Preparación de documentos asociados
+                ProcesarDocumentosAsociados(documentoElectronico_)
+
         End Select
+
+    End Sub
+
+    Private Sub ProcesarDocumentosAsociados(ByRef documentoElectronico_ As DocumentoElectronico)
+
+        With documentoElectronico_
+
+            If .DocumentosAsociados IsNot Nothing Then
+
+                If .DocumentosAsociados.Count Then
+
+                    Dim listaDocumentosAsociados_ As New List(Of DocumentoAsociado)
+
+                    For Each documentosasociado_ As DocumentoAsociado In .DocumentosAsociados
+
+                        If documentosasociado_.idsection = 0 Then
+
+                            Dim campo_ As Componentes.Campo = .Campo(documentosasociado_.idcampo)
+
+                            AntesGuardarDocumentoAsociado(documentosasociado_, documentoElectronico_)
+
+                            listaDocumentosAsociados_.Add(New DocumentoAsociado With {
+                                                             ._iddocumentoasociado = campo_.Valor,
+                                                             .idcoleccion = documentosasociado_.idcoleccion,
+                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+                                                             .firmaelectronica = campo_.ValorFirma,
+                                                             .metadatos = documentosasociado_.metadatos
+                                                         })
+
+                        Else
+
+                            Dim seccion_ As Componentes.Seccion = .Seccion(documentosasociado_.idsection)
+
+                            For indice_ As Int32 = 1 To seccion_.CantidadPartidas
+
+                                Dim partida_ As Componentes.Partida = seccion_.Partida(indice_)
+
+                                AntesGuardarDocumentoAsociado(documentosasociado_, documentoElectronico_)
+
+                                listaDocumentosAsociados_.Add(New DocumentoAsociado With {
+                                                             ._iddocumentoasociado = partida_.Attribute(documentosasociado_.idcampo).Valor,
+                                                             .idcoleccion = documentosasociado_.idcoleccion,
+                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+                                                             .firmaelectronica = partida_.Attribute(documentosasociado_.idcampo).ValorFirma,
+                                                             .metadatos = documentosasociado_.metadatos
+                                                         })
+
+                            Next
+
+                        End If
+
+                    Next
+
+                    .DocumentosAsociados = listaDocumentosAsociados_
+
+                End If
+
+            End If
+
+        End With
+
+    End Sub
+
+    Public Overridable Sub AntesGuardarDocumentoAsociado(ByRef documentoasociado_ As DocumentoAsociado, ByRef documentoelectronico_ As DocumentoElectronico)
 
     End Sub
 

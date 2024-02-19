@@ -1193,7 +1193,7 @@ Public Class Ges022_001_AcuseValor
 
                     If identificacionPersona_ <> "" Then
 
-                        Dim proveedorAcuseValor_ = _controladorProveedor.BuscarProveedor(identificacionPersona_, tipoIdentificador_)
+                        Dim proveedorAcuseValor_ = _controladorProveedor.BuscarProveedor() 'identificacionPersona_, tipoIdentificador_
 
                         If proveedorAcuseValor_ IsNot Nothing Then
 
@@ -1804,7 +1804,7 @@ Public Class Ges022_001_AcuseValor
 
     Protected Sub fbc_Proveedor_TextChanged(sender As Object, e As EventArgs)
 
-        Dim lista_ = _controladorProveedor.BuscarProveedores1(sender.Text,
+        Dim lista_ = _controladorProveedor.BuscarProveedores(sender.Text,
                                                               swc_TipoOperacion.Checked)
 
         sender.DataSource = lista_
@@ -1819,8 +1819,7 @@ Public Class Ges022_001_AcuseValor
 
                 Case "fbc_Proveedor"
 
-                    Dim documentoProveedor_ = _controladorProveedor.BuscarProveedor(sender.Value.ToString,
-                                                                                    "ID")
+                    Dim documentoProveedor_ = _controladorProveedor.BuscarProveedor(sender.Value) ', "ID"
 
                     SetVars("_ProveedorAcuseValor", documentoProveedor_)
 

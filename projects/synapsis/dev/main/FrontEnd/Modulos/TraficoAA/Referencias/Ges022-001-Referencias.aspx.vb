@@ -81,6 +81,19 @@ Public Class Ges022_001_Referencia
         scEjecutivoCuenta.FreeClauses = " and i_Cve_DivisionMiEmpresa = " & Statements.GetOfficeOnline()._id
 
         'End If
+
+    End Sub
+
+    'metodo para los metadatos y este de antes de guardar validar con tagwacher para considera añadirlo o no
+    Public Overrides Sub AntesGuardarDocumentoAsociado(ByRef documentoasociado_ As DocumentoAsociado,
+                                                       ByRef documentoelectronico_ As DocumentoElectronico)
+
+        Dim metadatos_ = New List(Of CampoGenerico)
+
+        metadatos_.Add(documentoelectronico_.Campo(1120))
+
+        documentoasociado_.metadatos = metadatos_
+
     End Sub
 
     Public Overrides Sub BotoneraClicNuevo()

@@ -6,3 +6,4 @@ C:\Sax\projects\synapsis\dev\modules\LogIn64\LogIn64\obj\Debug\LogIn64.vbproj.Ge
 C:\Sax\projects\synapsis\dev\modules\LogIn64\LogIn64\obj\Debug\LogIn64.vbproj.CoreCompileInputs.cache
 C:\Sax\projects\synapsis\dev\modules\LogIn64\LogIn64\obj\Debug\Gsol.Web.Modulos.LogIn.LogIng64.0.0.0.0.dll
 C:\Sax\projects\synapsis\dev\modules\LogIn64\LogIn64\obj\Debug\Gsol.Web.Modulos.LogIn.LogIng64.0.0.0.0.pdb
+C:\sax\projects\synapsis\libs\bin\modules\Gsol.Web.Modulos.LogIn.LogIng64.0.0.0.0.dll.config

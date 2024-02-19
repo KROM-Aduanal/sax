@@ -8,6 +8,7 @@ Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 Imports Wma.Exceptions
 Imports gsol.krom
+Imports MongoDB.Bson
 
 Namespace Syn.Documento
 
@@ -21,6 +22,7 @@ Namespace Syn.Documento
     <BsonKnownTypes(GetType(ConstructorViajes))>
     <BsonKnownTypes(GetType(ConstructorTIGIE))>
     <BsonKnownTypes(GetType(ConstructorFacturaComercial))>
+    <BsonKnownTypes(GetType(ConstructorManifestacionValor))>
     <Serializable()>
     Public Class DocumentoElectronico
         Inherits Documento
@@ -57,6 +59,14 @@ Namespace Syn.Documento
         Private disposedValue As Boolean
 
         Protected _operacionesNodo As OperacionesNodos
+
+        Private _tipoPropietario As String
+
+        Private _nombrePropietario As String
+
+        Private _idPropietario As Int32
+
+        Private _objectIdPropietario As ObjectId
 
         Protected _metadatos As List(Of CampoGenerico)
 
@@ -153,6 +163,75 @@ Namespace Syn.Documento
             Set(value As Integer)
                 _idCliente = value
             End Set
+        End Property
+
+
+        <BsonElement("TipoPropietario")>
+        Public Property TipoPropietario As String
+
+            Get
+
+                Return _tipoPropietario
+
+            End Get
+
+            Set(value As String)
+
+                _tipoPropietario = value
+
+            End Set
+
+        End Property
+
+        <BsonElement("NombrePropietario")>
+        Public Property NombrePropietario As String
+
+            Get
+
+                Return _nombrePropietario
+
+            End Get
+
+            Set(value As String)
+
+                _nombrePropietario = value
+
+            End Set
+
+        End Property
+
+        <BsonElement("IdPropietario")>
+        Public Property IdPropietario As Int32
+
+            Get
+
+                Return _idPropietario
+
+            End Get
+
+            Set(value As Int32)
+
+                _idPropietario = value
+
+            End Set
+
+        End Property
+
+        <BsonElement("ObjectIdPropietario")>
+        Public Property ObjectIdPropietario As ObjectId
+
+            Get
+
+                Return _objectIdPropietario
+
+            End Get
+
+            Set(value As ObjectId)
+
+                _objectIdPropietario = value
+
+            End Set
+
         End Property
 
         Public Property Seccion(ByVal claveSeccion_ As Integer) As Seccion
@@ -260,7 +339,7 @@ Namespace Syn.Documento
                 ByVal idCliente_ As Int32, ByVal idCorporativo_ As Int32, ByVal nombreCorporativoEmpresarial_ As String, ByVal idSucursal_ As Int32,
                 ByVal localidad_ As String, ByVal nombreSucursal_ As String, ByVal aduanaSeccion_ As String, ByVal relacionInterna_ As String,
                 ByVal Id_ As String, ByVal idDocumento_ As Int32, ByVal folioDocumento_ As String, ByVal fechaCreacion_ As Date, ByVal usuarioGenerador_ As String,
-                ByVal estatusDocumento_ As Int32, ByVal documento_ As EstructuraDocumento, Optional ByVal metadatos_ As List(Of CampoGenerico) = Nothing) ', ByVal listaSecciones_ As List(Of String))
+                ByVal estatusDocumento_ As Int32, ByVal documento_ As EstructuraDocumento) ', ByVal listaSecciones_ As List(Of String))
 
             _folioOperacion = referencia_
 
@@ -300,7 +379,58 @@ Namespace Syn.Documento
 
             _operacionesNodo = New OperacionesNodos()
 
-            Metadatos = metadatos_
+
+        End Sub
+
+        Sub New(ByVal referencia_ As String, ByVal tipoDocumentoElectronico_ As TiposDocumentoElectronico, ByVal tipoPropietario_ As String,
+                ByVal nombrePropietario_ As String, ByVal objectIdPropietario_ As ObjectId, ByVal idPropietario_ As Int32, ByVal metadatos_ As List(Of CampoGenerico),
+                ByVal idCorporativo_ As Int32, ByVal nombreCorporativoEmpresarial_ As String, ByVal idSucursal_ As Int32, ByVal localidad_ As String, ByVal nombreSucursal_ As String,
+                ByVal aduanaSeccion_ As String, ByVal relacionInterna_ As String, ByVal Id_ As String, ByVal idDocumento_ As Int32, ByVal folioDocumento_ As String,
+                ByVal fechaCreacion_ As Date, ByVal usuarioGenerador_ As String, ByVal estatusDocumento_ As Int32, ByVal documento_ As EstructuraDocumento)
+
+            _folioOperacion = referencia_
+
+            _tipoDocumentoElectronico = tipoDocumentoElectronico_
+
+            _tipoPropietario = tipoPropietario_
+
+            _nombrePropietario = nombrePropietario_
+
+            _objectIdPropietario = objectIdPropietario_
+
+            _idPropietario = idPropietario_
+
+            _idCorporativo = idCorporativo_
+
+            _metadatos = metadatos_
+
+            _nombreCorporativoEmpresarial = nombreCorporativoEmpresarial_
+
+            _idSucursal = idSucursal_
+
+            _localidad = localidad_
+
+            _nombreSucursal = nombreSucursal_
+
+            _Aduanaseccion = aduanaSeccion_
+
+            _relacionInterna = relacionInterna_
+
+            Id = Id_
+
+            IdDocumento = idDocumento_
+
+            FolioDocumento = folioDocumento_
+
+            FechaCreacion = fechaCreacion_
+
+            UsuarioGenerador = usuarioGenerador_
+
+            EstatusDocumento = estatusDocumento_
+
+            _estructuraDocumento = documento_
+
+            _operacionesNodo = New OperacionesNodos()
 
         End Sub
 
@@ -383,12 +513,12 @@ Namespace Syn.Documento
 
         End Sub
 
+
         Public Sub Inicializa(ByVal folioDocumento_ As String,
                         ByVal folioOperacion_ As String,
                         ByVal idCliente_ As Integer,
                         ByVal nombreCliente_ As String,
-                        ByVal tipoDocumento_ As TiposDocumentoElectronico,
-                        Optional ByVal metadatos_ As List(Of CampoGenerico) = Nothing)
+                        ByVal tipoDocumento_ As TiposDocumentoElectronico)
 
             _tagWatcher = New TagWatcher
 
@@ -400,9 +530,9 @@ Namespace Syn.Documento
 
             FolioOperacion = folioOperacion_
 
-            IdCliente = idCliente_
+            IdCliente = idCliente_ 'Campo obsoletos
 
-            NombreCliente = nombreCliente_
+            NombreCliente = nombreCliente_ 'Campo obsoleto
 
             EstatusDocumento = "1"
 
@@ -410,7 +540,47 @@ Namespace Syn.Documento
 
             TipoDocumentoElectronico = tipoDocumento_
 
+            Dim ensamblador_ As EnsambladorDocumentos = New EnsambladorDocumentos
+
+            'Autoconstruccion
+            ensamblador_.Construye(Me)
+
+        End Sub
+
+        Public Sub Inicializa(ByVal folioDocumento_ As String,
+                              ByVal folioOperacion_ As String,
+                              ByVal tipoPropietario_ As String,
+                              ByVal nombrePropietario_ As String,
+                              ByVal idPropietario_ As Integer,
+                              ByVal objectIdPropietario_ As ObjectId,
+                              ByVal metadatos_ As List(Of CampoGenerico),
+                              ByVal tipoDocumento_ As TiposDocumentoElectronico)
+
+            _tagWatcher = New TagWatcher
+
+            _operacionesNodo = New OperacionesNodos()
+
+            _estructuraDocumento = New EstructuraDocumento(TipoDocumentoElectronico.ToString)
+
+            FolioDocumento = folioDocumento_
+
+            FolioOperacion = folioOperacion_
+
+            TipoPropietario = tipoPropietario_
+
+            IdPropietario = idPropietario_
+
+            ObjectIdPropietario = objectIdPropietario_
+
             Metadatos = metadatos_
+
+            NombrePropietario = nombrePropietario_
+
+            EstatusDocumento = "1"
+
+            FechaCreacion = Now()
+
+            TipoDocumentoElectronico = tipoDocumento_
 
             Dim ensamblador_ As EnsambladorDocumentos = New EnsambladorDocumentos
 
@@ -544,6 +714,16 @@ Namespace Syn.Documento
                     .TipoDocumentoElectronico = Nothing
 
                     .UsuarioGenerador = Nothing
+
+                    .TipoPropietario = Nothing
+
+                    .NombrePropietario = Nothing
+
+                    .IdPropietario = Nothing
+
+                    .ObjectIdPropietario = Nothing
+
+                    .Metadatos = Nothing
 
                 End With
 
