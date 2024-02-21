@@ -54,6 +54,7 @@ Namespace Syn.Documento
 
         Public Sub ConfiguracionDocumentosAsociados()
 
+<<<<<<< HEAD
             'DocumentosAsociados =
             '    New List(Of DocumentoAsociado) _
             '    From {
@@ -65,16 +66,36 @@ Namespace Syn.Documento
             '        }
             '    }
 
+=======
+>>>>>>> develop
             DocumentosAsociados =
                 New List(Of DocumentoAsociado) _
                 From {
                     New DocumentoAsociado With {
                     .idcoleccion = "Glo007Clientes",
                     .identificadorrecurso = "ConstructorCliente",
+<<<<<<< HEAD
                     .idcampo = CamposReferencia.CP_ID_IOE
                     }
                 }
 
+=======
+                    .idcampo = CamposReferencia.CP_DESCRIPCION_DETALLE,
+                    .idsection = SeccionesReferencias.SREF3
+                    }
+                }
+
+            'DocumentosAsociados =
+            '    New List(Of DocumentoAsociado) _
+            '    From {
+            '        New DocumentoAsociado With {
+            '        .idcoleccion = "Glo007Clientes",
+            '        .identificadorrecurso = "ConstructorCliente",
+            '        .idcampo = CamposReferencia.CP_ID_IOE
+            '        }
+            '    }
+
+>>>>>>> develop
         End Sub
 
         Public Sub ConfiguracionNotificaciones()

@@ -425,7 +425,11 @@
 
                     <ListControls>
 
+<<<<<<< HEAD
                         <GWC:CatalogControl ID="ccCuadroLiquidacion" runat="server" KeyField="Catalogo_liquidacion" CssClass="w-100 bold" CanClone="false" CanDelete="false">
+=======
+                        <GWC:CatalogControl ID="ccCuadroLiquidacion" runat="server" KeyField="Catalogo_liquidacion" CssClass="w-100 bold" UserInteraction="false">
+>>>>>>> develop
 
                             <Columns>
 
@@ -461,7 +465,11 @@
 
                 </GWC:FieldsetControl>
 
+<<<<<<< HEAD
                 <GWC:FieldsetControl runat="server" ID="fscCetificacion" Detail="Certificación" Label="Certificación" Enabled="false">
+=======
+                <GWC:FieldsetControl runat="server" ID="fscCetificacion" Detail="Certificación" Label="Certificación" Visible="false">
+>>>>>>> develop
 
                     <ListControls>
 
@@ -538,7 +546,11 @@
 
                                     <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 p-0">
 
+<<<<<<< HEAD
                                         <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial"/>
+=======
+                                        <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial" OnTextChanged="fbxProveedor_TextChanged"/>
+>>>>>>> develop
 
                                         <GWC:InputControl runat="server" CssClass="col-md-12 mt-4 mb-5" Type="Text" ID="icIdFiscalProveedor" Label="ID Fiscal" Enabled="false" />
 
@@ -557,7 +569,11 @@
 
                                             <Columns>
 
+<<<<<<< HEAD
                                                 <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" LocalSearch="false" OnTextChanged="scFacturaProveedor_TextChanged"/>
+=======
+                                                <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" OnClick="scFacturaProveedor_Click"/>
+>>>>>>> develop
 
                                                 <GWC:InputControl runat="server" Type="Text" ID="icFechaFacturaProveedor" Label="Fecha" Format="Calendar" Enabled="false"/>
 
@@ -847,9 +863,7 @@
 
                     <ListControls>
 
-                        <%--<GWC:ToolbarControl runat="server" CssClass="col-auto ml-auto mb-5" ID="tbcDatosTransporte" ShowTitles="true" OnClick="tbc_DatosTransporte_Click" OnCheckedChanged="tbc_DatosTransporte_CheckedChanged" />--%>
-
-                        <%--<GWC:PillboxControl runat="server" ID="pbcDatosTransporte" CssClass="col-md-12" KeyField="i_Cve_PbTransporte" >
+                        <GWC:PillboxControl runat="server" ID="pbcDatosTransporte" CssClass="col-md-12" KeyField="i_Cve_PbTransporte" >
 
                             <ListControls>
 
@@ -861,27 +875,29 @@
 
                                         <GWC:SelectControl runat="server" CssClass="col-md-12 mb-5" ID="scPaisTransporte" Label="País" KeyField="t_ClaveSAAIM3" DisplayField="t_Pais" Dimension="Vt022PaisesA04" />
 
+                                        <GWC:SelectControl runat="server" CssClass="col-md-12 mb-5" ID="scTransportista" Label="Transportista">
+                                            <Options>
+                                                <GWC:SelectOption Text="Auto Express Hércules, S.A. de C.V." Value="1" />
+                                                <GWC:SelectOption Text="Fletes Sotelo, S.A. de C.V." Value="1" />
+                                            </Options>
+                                        </GWC:SelectControl>
+
+                                    </div>
+                                    <div class="col-xs-12 col-md-6 mt-5 p-0">
+
+                                        <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5" Type="Text" ID="icTransportistaRfc" Label="RFC" />
+
+                                        <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5" Type="Text" ID="icTransportistaCurp" Label="CURP" />
+
+                                        <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5" Type="Text" ID="icTransportistaDomicilio" Label="Domicilio" />
+
                                     </div>
 
                                 </asp:Panel>
 
                             </ListControls>
 
-                        </GWC:PillboxControl>--%>
-
-                         <GWC:CatalogControl ID="ccCandados" runat="server" KeyField="Catalogo_candados" CssClass="w-100">
-
-                                    <Columns>
-
-                                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icNumeroCandado" Label="Candado" />
-
-                                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCandadoPrimeraRevisión" Label="Primera revisión" />
-
-                                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCandadoSegundaRevision" Label="Segunda revisión" />
-
-                                    </Columns>
-
-                                </GWC:CatalogControl>
+                        </GWC:PillboxControl>
 
                         <%--ESTOS CAMPOS NO APARECEN EN LA METAFORA DEL mockflow---%>
                         <%--<GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="CA_NOMBRE_RAZON_SOC_TRANSP" Label="Transportista">
@@ -906,8 +922,30 @@
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-8 mb-5" Type="Text" ID="CA_DOMICILIO_TRANSP" Label="Domicilio" />
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-8 mb-5" Type="Text" ID="CA_ID_TRANSPORT" Label="Identificación" />--%>
+
                     </ListControls>
 
+                </GWC:FieldsetControl>
+
+                <GWC:FieldsetControl runat="server" ID="fsDatosCandados" Detail="Candados" Label="Candados">
+                    <ListControls>
+
+                        <GWC:CatalogControl ID="ccCandados" runat="server" KeyField="Catalogo_candados" CssClass="w-100">
+
+                            <Columns>
+
+                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icNumeroCandado" Label="Candado" />
+
+                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCandadoPrimeraRevisión" Label="Primera revisión" />
+
+                                <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCandadoSegundaRevision" Label="Segunda revisión" />
+
+                            </Columns>
+
+                        </GWC:CatalogControl>
+
+                    </ListControls>
+                    
                 </GWC:FieldsetControl>
 
                 <GWC:FieldsetControl runat="server" ID="fscGuias" Detail="Guias, manifiestos / conocimientos de embarque" Label="Guías">

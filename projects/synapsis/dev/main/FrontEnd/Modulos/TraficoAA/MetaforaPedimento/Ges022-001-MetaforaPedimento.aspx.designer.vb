@@ -995,6 +995,78 @@ Partial Public Class Ges022_001_MetaforaPedimento
     Protected WithEvents fscDatosTransporte As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control pbcDatosTransporte.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pbcDatosTransporte As Global.Gsol.Web.Components.PillboxControl
+
+    '''<summary>
+    '''Control icIDTransporte.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icIDTransporte As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scPaisTransporte.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPaisTransporte As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTransportista.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTransportista As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icTransportistaRfc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icTransportistaRfc As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icTransportistaCurp.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icTransportistaCurp As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icTransportistaDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icTransportistaDomicilio As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control fsDatosCandados.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fsDatosCandados As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
     '''Control ccCandados.
     '''</summary>
     '''<remarks>

@@ -715,6 +715,16 @@ Namespace Syn.Documento
 
                     .UsuarioGenerador = Nothing
 
+                    .TipoPropietario = Nothing
+
+                    .NombrePropietario = Nothing
+
+                    .IdPropietario = Nothing
+
+                    .ObjectIdPropietario = Nothing
+
+                    .Metadatos = Nothing
+
                 End With
 
             End If

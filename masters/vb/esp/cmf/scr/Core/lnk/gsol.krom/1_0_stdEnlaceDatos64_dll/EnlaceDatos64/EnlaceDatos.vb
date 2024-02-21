@@ -622,7 +622,11 @@ Namespace gsol.krom
 
             Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
 
+<<<<<<< HEAD
                 Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_)
+=======
+                Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
+>>>>>>> develop
 
             End Using
 
@@ -672,7 +676,7 @@ Namespace gsol.krom
                     Dim listaActualizacionesHijo_ As New List(Of DocumentoElectronicoObjetoActualizador)
 
                     If Not IsNothing(parts_.Nodos) Then
-                        Dim a = parts_.Nodos.GetType.ToString
+
                         listaActualizacionesHijo_ = operacionNodoNoSQL_.AnalizaDiferenciasNodos(nodosNuevo_:=parts_.Nodos,
                                                                                                 nodosOriginal_:=documentoOriginal_.EstructuraDocumento.Parts(parDatos_.Key.ToString)(contadorNodos_).Nodos)
 
@@ -703,6 +707,25 @@ Namespace gsol.krom
                 Next
 
             Next
+
+            'test
+            'movi acuse de valor un par de metodos, revisar con sergio porque chayo me paso su controlador de factura
+            If Not documentoOriginal_.DocumentosAsociados Is Nothing Then
+
+                If documentoOriginal_.DocumentosAsociados.Equals(documentoNuevo_.DocumentosAsociados) = False Then
+
+                    listaActualizaciones_.Add(New DocumentoElectronicoObjetoActualizador With {
+                        .RutaActualizacion = "Borrador.Folder.DocumentosAsociados",
+                        .Valor = documentoNuevo_.DocumentosAsociados,
+                        .TipoDato = Componentes.Campo.TiposDato.Documento,
+                        .PropiedadActualizar = Nothing,
+                        .TipoNodo = TiposNodo.SinDefinir
+                    })
+
+                End If
+
+            End If
+
 
             Return listaActualizaciones_
 
@@ -805,18 +828,27 @@ Namespace gsol.krom
 
                             Case Componentes.Campo.TiposDato.Documento
 
-                                Dim aux_ As PartidaGenerica = Nothing
+                                'Dim aux_ As Object = CType(actualizacion_.Valor, Object)
 
                                 Select Case actualizacion_.TipoNodo
+
                                     Case TiposNodo.Partida
 
-                                        aux_ = CType(actualizacion_.Valor, PartidaGenerica)
+                                        Dim aux_ As PartidaGenerica = CType(actualizacion_.Valor, PartidaGenerica)
+
+                                        .Add(Builders(Of T).Update.Set(Of PartidaGenerica)(actualizacion_.RutaActualizacion, aux_))
 
                                     Case TiposNodo.Seccion
 
+                                    Case TiposNodo.SinDefinir
+
+                                        Dim aux_ As List(Of DocumentoAsociado) = CType(actualizacion_.Valor, List(Of DocumentoAsociado))
+
+                                        .Add(Builders(Of T).Update.Set(Of List(Of DocumentoAsociado))(actualizacion_.RutaActualizacion, aux_))
+
                                 End Select
 
-                                .Add(Builders(Of T).Update.Set(Of PartidaGenerica)(actualizacion_.RutaActualizacion, aux_))
+                                '.Add(Builders(Of T).Update.Set(Of Object)(actualizacion_.RutaActualizacion, aux_))
 
                             Case Componentes.Campo.TiposDato.SinDefinir
 

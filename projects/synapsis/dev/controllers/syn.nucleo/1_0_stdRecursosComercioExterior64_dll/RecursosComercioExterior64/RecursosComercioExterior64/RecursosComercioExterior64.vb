@@ -84,7 +84,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Datos del destinatario")> SFAC3 = 3
             <EnumMember> <Description("Partidas")> SFAC4 = 4
             <EnumMember> <Description("Incrementables")> SFAC5 = 5
-            <EnumMember> <Description("Subdivisión")> SFAC6 = 6
+            '<EnumMember> <Description("Subdivisión")> SFAC6 = 6
             'Se comenta para que un futuro se pueda dividir la forma de guardar los item de la factura (si es que es optimo)
             '<EnumMember> <Description("Partida - factura")> SFAC7 = 7
             '<EnumMember> <Description("Partida - clasificación")> SFAC8 = 8
@@ -779,6 +779,13 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Moneda descuentos")> CA_MONEDA_DESCUENTOS = 3056
             <EnumMember> <Description("Orden de compra partida")> CP_ORDEN_COMPRA_PARTIDA = 3057
             <EnumMember> <Description("Moneda precio unitario")> CP_MONEDA_PRECIO_UNITARIO = 3058
+            <EnumMember> <Description("Referencia de cliente")> CP_REFERENCIA_CLIENTE = 3059
+
+            <EnumMember> <Description("ObjectId Factura Comercial")> CP_OBJECTID_FACTURA = 3060
+
+            <EnumMember> <Description("ObjectId Productos")> CP_OBJECTID_PRODUCTOS = 3061
+
+            <EnumMember> <Description("ObjectId Fraccion")> CP_OBJECTID_FRACCION = 3062
 
         End Enum
 
@@ -853,6 +860,9 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Termino de facturación (INCOTERM)")> CP_INCOTERM = 5030
 
             <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 5031
+            <EnumMember> <Description("ObjectID Proveedor")> CP_ID_PROVEEDOR = 5032
+            <EnumMember> <Description("Tipo Persona")> CP_TIPO_PERSONA_PROVEEDOR = 5033
+            <EnumMember> <Description("Destinatario")> CP_DESTINATARIO_PROVEEDOR = 5034
 
 
         End Enum
@@ -866,6 +876,10 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("RFC")> CA_RFC_DESTINATARIO = 6003
 
             <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 6004
+            <EnumMember> <Description("Identificador de empresa")> CP_CVE_EMPRESA = 6005
+
+            <EnumMember> <Description("ObjectID Destinatario")> CP_ID_DESTINATARIO = 6006
+            <EnumMember> <Description("Clave Destinatario")> CP_CVE_DESTINATARIO = 6007
 
         End Enum
 
@@ -933,6 +947,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Descripcion COVE")> CP_DESCRIPCION_COVE = 9014
             <EnumMember> <Description("Fecha Modificacion")> CP_FECHA_MODIFICACION = 9015
             <EnumMember> <Description("Fecha Modificacion")> CP_TIPO_ALIAS = 9016
+            <EnumMember> <Description("ObjectId Producto")> CP_OBJECTID_PRODUCTO = 9017
         End Enum
 
         Public Enum CamposTarifaArancelaria

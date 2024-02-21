@@ -13,6 +13,15 @@ Public Class ControladorFirmaElectronica
     Implements IDisposable
 
 #Region "Enums"
+<<<<<<< HEAD
+=======
+
+    Enum AccionesFirma
+        Firmar = 1
+        FirmarPublicar = 2
+    End Enum
+
+>>>>>>> develop
 #End Region
 
 #Region "Atributos"
@@ -75,6 +84,10 @@ Public Class ControladorFirmaElectronica
 
     Public Function FirmarDocumento(Of T)(ByVal iddocumento_ As ObjectId,
                                           ByVal claveusuario_ As Int32,
+<<<<<<< HEAD
+=======
+                                          Optional ByVal accionFirma_ As AccionesFirma = AccionesFirma.FirmarPublicar,
+>>>>>>> develop
                                           Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
@@ -85,8 +98,22 @@ Public Class ControladorFirmaElectronica
 
             _filtro = Builders(Of OperacionGenerica).Filter.Eq(Of ObjectId)("_id", iddocumento_)
 
+<<<<<<< HEAD
             Dim estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_).
                                                                              Set(Function(x) x.Publicado, True)
+=======
+            Dim estructuraOperacion_ As UpdateDefinition(Of OperacionGenerica)
+
+            If accionFirma_ = AccionesFirma.FirmarPublicar Then
+
+                estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_).
+                                                                             Set(Function(x) x.Publicado, True)
+            Else
+
+                estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_)
+
+            End If
+>>>>>>> develop
 
             If session_ IsNot Nothing Then
 
@@ -123,6 +150,10 @@ Public Class ControladorFirmaElectronica
     Public Function FirmarDocumento(ByVal recurso_ As String,
                                     ByVal iddocumento_ As ObjectId,
                                     ByVal claveusuario_ As Int32,
+<<<<<<< HEAD
+=======
+                                    Optional ByVal accionFirma_ As AccionesFirma = AccionesFirma.FirmarPublicar,
+>>>>>>> develop
                                     Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
@@ -133,8 +164,22 @@ Public Class ControladorFirmaElectronica
 
             _filtro = Builders(Of OperacionGenerica).Filter.Eq(Of ObjectId)("_id", iddocumento_)
 
+<<<<<<< HEAD
             Dim estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_).
                                                                              Set(Function(x) x.Publicado, True)
+=======
+            Dim estructuraOperacion_ As UpdateDefinition(Of OperacionGenerica)
+
+            If accionFirma_ = AccionesFirma.FirmarPublicar Then
+
+                estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_).
+                                                                             Set(Function(x) x.Publicado, True)
+            Else
+
+                estructuraOperacion_ = Builders(Of OperacionGenerica).Update.Set(Function(x) x.FirmaElectronica, firma_)
+
+            End If
+>>>>>>> develop
 
             If session_ IsNot Nothing Then
 

@@ -219,6 +219,10 @@
       <HintPath>..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.CampoGenerico64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoGenerico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -245,6 +249,10 @@
     </Reference>
     <Reference Include="Syn.Documento.OperacionGenerica64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodosNoSQL64.0.0.0.0">
