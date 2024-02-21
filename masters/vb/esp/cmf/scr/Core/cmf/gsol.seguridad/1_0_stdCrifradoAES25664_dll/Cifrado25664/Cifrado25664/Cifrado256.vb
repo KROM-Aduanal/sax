@@ -1,4 +1,5 @@
-﻿Imports System.Security.Cryptography
+﻿Imports System.IO
+Imports System.Security.Cryptography
 Imports System.Text
 
 Namespace gsol.seguridad
@@ -182,7 +183,7 @@ Namespace gsol.seguridad
 
         End Function
 
-        Function CifraCadena(ByVal cadena_ As String, _
+        Function CifraCadena(ByVal cadena_ As String,
                              ByVal metodo_ As ICifrado.Metodos) As String Implements ICifrado.CifraCadena
             Dim strResult_ As String = ""
 
@@ -204,19 +205,29 @@ Namespace gsol.seguridad
 
                     Next
 
+                Case ICifrado.Metodos.AES
+
+                    Using myAes As Aes = Aes.Create()
+
+                        Dim encrypted_ As Byte() = Cifrar_Aes(cadena_, myAes.Key, myAes.IV)
+
+                        strResult_ = Convert.ToBase64String(encrypted_)
+                        'Dim roundtrip As String = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV)
+                        'Dim newBytes As Byte() = Convert.FromBase64String(s)
+                    End Using
+
                 Case Else
 
                     'Sin implementar
 
             End Select
 
-
             Return strResult_
 
         End Function
 
-        Public Function CifraCadena(cadena_ As String, _
-                                     metodocifrado_ As SymmetricAlgorithm, _
+        Public Function CifraCadena(cadena_ As String,
+                                     metodocifrado_ As SymmetricAlgorithm,
                                      Optional llavecifrado_ As String = Nothing) As String _
                                      Implements ICifrado.CifraCadena
 
@@ -419,6 +430,105 @@ Namespace gsol.seguridad
 
 
             Return _cadena
+
+        End Function
+
+        Private Function Cifrar_Aes(ByVal cadena_ As String, ByVal llave_() As Byte, ByVal iv_() As Byte) As Byte()
+
+            'If plainText Is Nothing OrElse plainText.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("plainText")
+
+            'End If
+
+            'If Key Is Nothing OrElse Key.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("Key")
+
+            'End If
+
+            'If IV Is Nothing OrElse IV.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("IV")
+
+            'End If
+
+            Dim cifrado_() As Byte
+
+            Using aesAlg_ As Aes = Aes.Create()
+
+                aesAlg_.Key = llave_
+
+                aesAlg_.IV = iv_
+
+                Dim cifrador_ As ICryptoTransform = aesAlg_.CreateEncryptor(aesAlg_.Key, aesAlg_.IV)
+
+                Using msCifrado_ As New MemoryStream()
+
+                    Using csEncrypt As New CryptoStream(msCifrado_, cifrador_, CryptoStreamMode.Write)
+
+                        Using swCifrado_ As New StreamWriter(csEncrypt)
+
+                            swCifrado_.Write(cadena_)
+
+                        End Using
+
+                        cifrado_ = msCifrado_.ToArray()
+
+                    End Using
+
+                End Using
+
+            End Using
+
+            Return cifrado_
+
+        End Function
+
+        Private Function Descifrar_Aes(ByVal textCifrado_() As Byte, ByVal llave_() As Byte, ByVal iv_() As Byte) As String
+
+            'If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("cipherText")
+
+            'End If
+
+            'If Key Is Nothing OrElse Key.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("Key")
+
+            'End If
+
+            'If IV Is Nothing OrElse IV.Length <= 0 Then
+
+            '    Throw New ArgumentNullException("IV")
+
+            'End If
+
+            Dim cadena_ As String = Nothing
+
+            Using aesAlg_ As Aes = Aes.Create()
+
+                aesAlg_.Key = llave_
+
+                aesAlg_.IV = iv_
+
+                Dim descifrador_ As ICryptoTransform = aesAlg_.CreateDecryptor(aesAlg_.Key, aesAlg_.IV)
+
+                Using msDescifrar_ As New MemoryStream(textCifrado_)
+
+                    Using csDescifrar_ As New CryptoStream(msDescifrar_, descifrador_, CryptoStreamMode.Read)
+
+                        Using srDescifrar_ As New StreamReader(csDescifrar_)
+
+                            cadena_ = srDescifrar_.ReadToEnd()
+
+                        End Using
+                    End Using
+                End Using
+            End Using
+
+            Return cadena_
 
         End Function
 

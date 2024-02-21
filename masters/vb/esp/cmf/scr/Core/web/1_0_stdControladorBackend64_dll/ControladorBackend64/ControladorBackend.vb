@@ -20,7 +20,7 @@ Imports gsol
 Imports System.Xml.Serialization
 Imports System.IO
 Imports Syn.Operaciones
-
+Imports Rec.Globals.Controllers
 
 Public Class ControladorBackend
     Inherits Template.FormularioGeneralWeb
@@ -80,6 +80,7 @@ Public Class ControladorBackend
     Enum TiposAsignacion
         Valor = 0 ' Valor
         ValorPresentacion = 1
+        ValorFirma = 2
     End Enum
 
     Enum PropiedadesControl
@@ -91,6 +92,7 @@ Public Class ControladorBackend
         Checked = 5
         Ninguno = 6
         ValueDetail = 7
+        Signature = 8
     End Enum
 
     Public Enum TiposFlujo
@@ -229,6 +231,9 @@ Public Class ControladorBackend
 
             ViewState("_PageID") = (New Random()).Next().ToString()
             'SetVars("ActivaControles", False) : ActivaControles((GetVars("ActivaControles", False)))
+
+            'DataBind()
+
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "__serverObserver();", True)
 
         Else
@@ -506,12 +511,6 @@ Public Class ControladorBackend
                 Next
 
             Next
-
-            If Page.IsPostBack Then
-
-                'ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "__serverObserver();", True)
-
-            End If
 
         End If
 
@@ -1227,47 +1226,17 @@ Public Class ControladorBackend
 
     Private Function NotificarSubscriptores(Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
 
-        Dim tagwacher_ As New TagWatcher
+        Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos _
+              With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
 
-        Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
-
-            With controladorSubscripciones_
-
-                If .LeerSuscriptores(Buscador.DataObject.GetType.Name, OperacionGenerica.Id).Count Then
-
-                    tagwacher_ = .DifusionDatos(OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente, session_)
-
-                Else
-
-                    tagwacher_ = New TagWatcher(Ok)
-
-                End If
-
-            End With
+            Return enlaceDatos_.NotificarSubscriptores(Buscador.DataObject.GetType.Name,
+                                                       OperacionGenerica.Id,
+                                                       OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
+                                                       session_)
 
         End Using
 
-        Return tagwacher_
-
     End Function
-
-    Private Sub EliminarSubscripciones(Optional ByVal session_ As IClientSessionHandle = Nothing)
-
-        For Each subscriptionsgroup As subscriptionsgroup In Buscador.DataObject.SubscriptionsGroup
-
-            Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
-
-                With controladorSubscripciones_
-
-                    .EliminarSuscripciones(subscriptionsgroup.toresource, OperacionGenerica.Id)
-
-                End With
-
-            End Using
-
-        Next
-
-    End Sub
 
     Public Overridable Sub DespuesOperadorDatosProcesar(ByRef documentoElectronico_ As DocumentoElectronico)
 
@@ -1582,6 +1551,8 @@ Public Class ControladorBackend
 
                     Dim operacionGenerica_ As OperacionGenerica = resultadoDocumentos_(0)
 
+                    'OperacionGenerica = operacionGenerica_
+
                     Dim documentoElectronico_ = operacionGenerica_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
                     OperadorDatos(documentoElectronico_, TiposFlujo.Salida, Modalidades.Auto)
@@ -1612,6 +1583,84 @@ Public Class ControladorBackend
     Public Overridable Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
     End Sub
+
+    Private Async Function FirmarDocumentoPublicar() As Task(Of TagWatcher)
+
+        Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
+
+            Using session_ = Await enlaceDatos_.GetMongoClient().StartSessionAsync().ConfigureAwait(False)
+
+                session_.StartTransaction()
+
+                Dim tagwatcher_ As New TagWatcher
+
+                Dim tipoMensaje_ As StatusMessage = StatusMessage.Info
+
+                Dim espacioTrabajo_ = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")
+
+                If Buscador.DataObject.SubscriptionsGroup IsNot Nothing Then
+
+                    If enlaceDatos_.EliminarSuscripciones(OperacionGenerica.Id,
+                                                          Buscador.DataObject.SubscriptionsGroup,
+                                                          session_).Status = TypeStatus.Ok Then
+
+                        If enlaceDatos_.FirmarDocumento(Buscador.DataObject.GetType.Name,
+                                                                   OperacionGenerica.Id,
+                                                                   espacioTrabajo_.MisCredenciales.ClaveUsuario,
+                                                                   session_).Status = TypeStatus.Ok Then
+
+                            tipoMensaje_ = Info : tagwatcher_.SetOKInfo(Me, "El documento se ha firmado correctamente")
+
+                            session_.CommitTransaction()
+
+                        Else
+
+                            tipoMensaje_ = Fail : tagwatcher_.SetError(Me, "No se pudo firmar el documento")
+
+                            session_.AbortTransaction()
+
+                        End If
+
+                    Else
+
+                        tipoMensaje_ = Fail : tagwatcher_.SetError(Me, "No se pudo eliminar las suscripciones el documento")
+
+                        session_.AbortTransaction()
+
+                    End If
+
+                Else
+
+                    If enlaceDatos_.FirmarDocumento(Buscador.DataObject.GetType.Name,
+                                                                   OperacionGenerica.Id,
+                                                                   espacioTrabajo_.MisCredenciales.ClaveUsuario,
+                                                                   session_).Status = TypeStatus.Ok Then
+
+                        tipoMensaje_ = Info : tagwatcher_.SetOKInfo(Me, "El documento se ha firmado correctamente")
+
+                        session_.CommitTransaction()
+
+
+                    Else
+
+                        tipoMensaje_ = Fail : tagwatcher_.SetError(Me, "No se pudo firmar el documento")
+
+                        session_.AbortTransaction()
+
+                    End If
+
+                End If
+
+                DisplayMessage(IIf(tagwatcher_.Status = TypeStatus.OkInfo, tagwatcher_.LastMessage, tagwatcher_.ErrorDescription), tipoMensaje_)
+
+                Return tagwatcher_
+
+            End Using
+
+        End Using
+
+    End Function
 
     'EVENTOS DEL PANEL DE CONTROL PRINCIPAL (Nuevo, editar, borrar, otras acciones)
     Protected Sub EventosBotonera(ByVal sender_ As ButtonbarControl,
@@ -1654,13 +1703,17 @@ Public Class ControladorBackend
 
             Case 2 'Publicar
 
-                EliminarSubscripciones()
+                If FirmarDocumentoPublicar().Result.Status = TypeStatus.OkInfo Then
 
-                SetVars("ActivaControles", False) : ActivaControles(GetVars("ActivaControles"))
+                    SetVars("ActivaControles", False) : ActivaControles(GetVars("ActivaControles"))
 
-                PreparaBotonera(Closed)
+                    PreparaBotonera(Closed)
 
-                BotoneraClicPublicar()
+                    BotoneraClicPublicar()
+
+
+
+                End If
 
             Case 3 'Seguir Editando
 
@@ -2512,6 +2565,8 @@ Public Class ControladorBackend
 
                 Dim valorPresentacionAsignado_ = Nothing
 
+                Dim valorFirmaAsignado_ = Nothing
+
                 Dim control_ As Object = caracteristica_.Control 'CType(Convert.ChangeType(caracteristica_.Control, GetType(T)), T)
 
                 Select Case caracteristica_.PropiedadDelControl
@@ -2540,6 +2595,10 @@ Public Class ControladorBackend
 
                         valorAsignado_ = control_.OffText
 
+                    Case PropiedadesControl.Signature
+
+                        valorAsignado_ = control_.Signature
+
                     Case Else
 
                         Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
@@ -2554,11 +2613,17 @@ Public Class ControladorBackend
 
                         .Attribute(campoUnico_.IDUnico).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
 
-                    Else
+                    ElseIf caracteristica_.Asignacion = TiposAsignacion.ValorPresentacion Then
 
                         caracteristica_.ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
 
                         .Attribute(campoUnico_.IDUnico).ValorPresentacion = StringFormat(campoUnico_.TipoDato, valorAsignado_)
+
+                    ElseIf caracteristica_.Asignacion = TiposAsignacion.ValorFirma Then
+
+                        caracteristica_.ValorPresentacion = StringFormat(TiposDato.Texto, valorAsignado_)
+
+                        .Attribute(campoUnico_.IDUnico).ValorFirma = StringFormat(TiposDato.Texto, valorAsignado_)
 
                     End If
 
@@ -2568,12 +2633,21 @@ Public Class ControladorBackend
 
                     .Attribute(campoUnico_.IDUnico).Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
 
+                    'Valor Presentación
 
                     valorPresentacionAsignado_ = control_.Text
 
                     caracteristica_.ValorPresentacion = valorPresentacionAsignado_
 
                     .Attribute(campoUnico_.IDUnico).ValorPresentacion = valorPresentacionAsignado_
+
+                    'Valor Firma
+
+                    valorFirmaAsignado_ = control_.Signature
+
+                    caracteristica_.ValorFirma = valorFirmaAsignado_
+
+                    .Attribute(campoUnico_.IDUnico).ValorFirma = valorFirmaAsignado_
 
                 End If
 
@@ -3864,7 +3938,8 @@ Public Class ControladorBackend
                      Optional ByVal tipoFiltro_ As TiposFiltro? = Nothing,
                      Optional ByVal llave_ As TiposLlave? = Nothing,
                      Optional ByVal soloLectura_ As Boolean = False,
-                     Optional ByVal permisoConsulta_ As Int32? = Nothing)
+                     Optional ByVal permisoConsulta_ As Int32? = Nothing,
+                     Optional ByVal documentoDigital As Boolean = False)
 
         control_.WorksWith = campo_
 
@@ -3872,7 +3947,7 @@ Public Class ControladorBackend
 
         If permisoConsulta_ IsNot Nothing Then : control_.IdPermiso = permisoConsulta_ : End If
 
-        _caracteristicas.Add(New Caracteristica With {.Control = control_, .Campo = campo_, .Seccion = seccion_, .Asignacion = asignarA_, .PropiedadDelControl = propiedadDelControl_})
+        _caracteristicas.Add(New Caracteristica With {.Control = control_, .Campo = campo_, .Seccion = seccion_, .Asignacion = asignarA_, .PropiedadDelControl = propiedadDelControl_, .DocumentoDigital = documentoDigital})
 
     End Sub
 
@@ -4055,7 +4130,74 @@ Public Class ControladorBackend
 
                 Procesamiento(documentoElectronico_, tipoFlujo_)
 
+                'Preparación de documentos asociados
+                ProcesarDocumentosAsociados(documentoElectronico_)
+
         End Select
+
+    End Sub
+
+    Private Sub ProcesarDocumentosAsociados(ByRef documentoElectronico_ As DocumentoElectronico)
+
+        With documentoElectronico_
+
+            If .DocumentosAsociados IsNot Nothing Then
+
+                If .DocumentosAsociados.Count Then
+
+                    Dim listaDocumentosAsociados_ As New List(Of DocumentoAsociado)
+
+                    For Each documentosasociado_ As DocumentoAsociado In .DocumentosAsociados
+
+                        If documentosasociado_.idsection = 0 Then
+
+                            Dim campo_ As Componentes.Campo = .Campo(documentosasociado_.idcampo)
+
+                            AntesGuardarDocumentoAsociado(documentosasociado_, documentoElectronico_)
+
+                            listaDocumentosAsociados_.Add(New DocumentoAsociado With {
+                                                             ._iddocumentoasociado = campo_.Valor,
+                                                             .idcoleccion = documentosasociado_.idcoleccion,
+                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+                                                             .firmaelectronica = campo_.ValorFirma,
+                                                             .metadatos = documentosasociado_.metadatos
+                                                         })
+
+                        Else
+
+                            Dim seccion_ As Componentes.Seccion = .Seccion(documentosasociado_.idsection)
+
+                            For indice_ As Int32 = 1 To seccion_.CantidadPartidas
+
+                                Dim partida_ As Componentes.Partida = seccion_.Partida(indice_)
+
+                                AntesGuardarDocumentoAsociado(documentosasociado_, documentoElectronico_)
+
+                                listaDocumentosAsociados_.Add(New DocumentoAsociado With {
+                                                             ._iddocumentoasociado = partida_.Attribute(documentosasociado_.idcampo).Valor,
+                                                             .idcoleccion = documentosasociado_.idcoleccion,
+                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+                                                             .firmaelectronica = partida_.Attribute(documentosasociado_.idcampo).ValorFirma,
+                                                             .metadatos = documentosasociado_.metadatos
+                                                         })
+
+                            Next
+
+                        End If
+
+                    Next
+
+                    .DocumentosAsociados = listaDocumentosAsociados_
+
+                End If
+
+            End If
+
+        End With
+
+    End Sub
+
+    Public Overridable Sub AntesGuardarDocumentoAsociado(ByRef documentoasociado_ As DocumentoAsociado, ByRef documentoelectronico_ As DocumentoElectronico)
 
     End Sub
 
@@ -4075,15 +4217,20 @@ Public Class ControladorBackend
                     With caracteristica_
 
                         If caracteristica_.Control IsNot Nothing Then ' Mediante control
+
                             Try
 
 
                                 Dim check_ As TagWatcher = [In](caracteristica_, documentoElectronico_)
 
                                 If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
                             Catch ex As Exception
+
                                 Dim a = ex
+
                             End Try
+
                         ElseIf caracteristica_.Valor IsNot Nothing Then 'Mediante valor directo
                             'Por el momento no soporta asignacion directa a otras propiedades como Text, eso solo puede suceder mediante control
                             'Buscaremos el repositorio del dato en el documento para enterarnos del tipo de dato que toca.
@@ -4096,41 +4243,50 @@ Public Class ControladorBackend
 
                                 caracteristica_.TipoDato = campoUnico_.TipoDato
 
-                                Dim check_ As New TagWatcher
+                                Try
 
-                                Select Case .TipoDato
+                                    Dim check_ As New TagWatcher
 
-                                    Case TiposDato.IdObject
+                                    Select Case .TipoDato
 
-                                        check_ = [In](DirectCast(.Valor, ObjectId), documentoElectronico_, .Campo, .Asignacion)
+                                        Case TiposDato.IdObject
 
-                                    Case TiposDato.Booleano
+                                            'DirectCast(.Valor, ObjectId)
+                                            check_ = [In](New ObjectId(.Valor?.ToString), documentoElectronico_, .Campo, .Asignacion)
 
-                                        check_ = [In](DirectCast(.Valor, Boolean), documentoElectronico_, .Campo, .Asignacion)
+                                        Case TiposDato.Booleano
 
-                                    Case TiposDato.Entero
+                                            check_ = [In](DirectCast(.Valor, Boolean), documentoElectronico_, .Campo, .Asignacion)
 
-                                        check_ = [In](DirectCast(.Valor, Integer), documentoElectronico_, .Campo, .Asignacion)
+                                        Case TiposDato.Entero
 
-                                    Case TiposDato.Fecha
+                                            check_ = [In](DirectCast(.Valor, Integer), documentoElectronico_, .Campo, .Asignacion)
 
-                                        check_ = [In](DirectCast(.Valor, DateTime), documentoElectronico_, .Campo) ', .Asignacion)
+                                        Case TiposDato.Fecha
 
-                                    Case TiposDato.Real
+                                            check_ = [In](DirectCast(.Valor, DateTime), documentoElectronico_, .Campo) ', .Asignacion)
 
-                                        check_ = [In](DirectCast(.Valor, Double), documentoElectronico_, .Campo, .Asignacion)
+                                        Case TiposDato.Real
 
-                                    Case TiposDato.Texto
+                                            check_ = [In](DirectCast(.Valor, Double), documentoElectronico_, .Campo, .Asignacion)
 
-                                        check_ = [In](DirectCast(.Valor, String), documentoElectronico_, .Campo, .Asignacion)
+                                        Case TiposDato.Texto
 
-                                    Case Else
+                                            check_ = [In](DirectCast(.Valor, String), documentoElectronico_, .Campo, .Asignacion)
 
-                                        mensajes_ = New TagWatcher(0, Me, "No se encontró el tipo de dato")
+                                        Case Else
 
-                                End Select
+                                            mensajes_ = New TagWatcher(0, Me, "No se encontró el tipo de dato")
 
-                                If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+                                    End Select
+
+                                    If check_.Status <> TypeStatus.Ok Then : Return check_ : End If
+
+                                Catch ex As Exception
+
+                                    Dim a = ex
+
+                                End Try
 
                             Else
 
@@ -4241,6 +4397,8 @@ Public Class Caracteristica
 
     Property ValorPresentacion As Object
 
+    Property ValorFirma As Object
+
     Property Visible As TiposVisible
 
     Property PuedeInsertar As TiposRigorDatos
@@ -4258,5 +4416,7 @@ Public Class Caracteristica
     Property PermisoConsulta As Int32
 
     Property Estado As TagWatcher
+
+    Property DocumentoDigital As Boolean
 
 End Class

@@ -12,7 +12,7 @@ Imports System.Threading.Tasks
 Imports MongoDB.Bson
 Imports Page.Session
 Imports System.Web.HttpContext.Current
-
+Imports Rec.Globals.Controllers
 
 Namespace gsol.krom
 
@@ -361,7 +361,7 @@ Namespace gsol.krom
             Return tagwatcherlocal_
 
         End Function
-
+        'RESPALDO
         'Private Async Sub AssignSubscriptions(func_ As Action(Of Object),
         '                                      ByVal myObjectID_ As ObjectId,
         '                                      ByVal operacionGenerica_ As Object,
@@ -745,6 +745,62 @@ Namespace gsol.krom
 
         End Sub
 
+        'Private Sub AddAssociatedDocuments(ByRef operacionGenerica_ As OperacionGenerica)
+
+        '    Dim documentoElectronico_ = operacionGenerica_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+        '    With operacionGenerica_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+        '        If .DocumentosAsociados IsNot Nothing Then
+
+        '            If .DocumentosAsociados.Count Then
+
+        '                Dim listaDocumentosAsociados As New List(Of DocumentoAsociado)
+
+        '                For Each documentosasociado_ As DocumentoAsociado In .DocumentosAsociados
+
+        '                    If documentosasociado_.idsection = 0 Then
+
+        '                        Dim campo_ As Componentes.Campo = .Campo(documentosasociado_.idcampo)
+
+        '                        listaDocumentosAsociados.Add(New DocumentoAsociado With {
+        '                                                             ._iddocumentoasociado = campo_.Valor,
+        '                                                             .idcoleccion = documentosasociado_.idcoleccion,
+        '                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+        '                                                             .firmaelectronica = campo_.ValorFirma
+        '                                                         })
+
+        '                    Else
+
+        '                        Dim seccion_ As Componentes.Seccion = .Seccion(documentosasociado_.idsection)
+
+        '                        For indice_ As Int32 = 1 To seccion_.CantidadPartidas
+
+        '                            Dim partida_ As Componentes.Partida = seccion_.Partida(indice_)
+
+        '                            listaDocumentosAsociados.Add(New DocumentoAsociado With {
+        '                                                             ._iddocumentoasociado = partida_.Attribute(documentosasociado_.idcampo).Valor,
+        '                                                             .idcoleccion = documentosasociado_.idcoleccion,
+        '                                                             .identificadorrecurso = documentosasociado_.identificadorrecurso,
+        '                                                             .firmaelectronica = partida_.Attribute(documentosasociado_.idcampo).ValorFirma
+        '                                                         })
+
+        '                        Next
+
+        '                    End If
+
+        '                Next
+
+        '                operacionGenerica_.Borrador.Folder.DocumentosAsociados = listaDocumentosAsociados
+
+        '            End If
+
+        '        End If
+
+        '    End With
+
+        'End Sub
+
         Async Function Transaccion(ByVal documentoElectronico_ As DocumentoElectronico,
                                    Optional ByVal createStructure_ As Boolean = False,
                                    Optional ByVal sessionusr_ As IClientSessionHandle = Nothing) As Task(Of TagWatcher)
@@ -880,8 +936,14 @@ Namespace gsol.krom
                              .Publicado = False,
                              .SoloLectura = False,
                              .FolioOperacion = documentoElectronico_.FolioOperacion,
-                             .Id = myObjectID_
+                             .Id = myObjectID_,
+                             .FirmaElectronica = Nothing
                            }
+
+                '----------------------- We need collect all associated documents after insert -----------------------------
+
+                'AddAssociatedDocuments(operacionGenerica_)
+                operacionGenerica_.Borrador.Folder.DocumentosAsociados = documentoElectronico_.DocumentosAsociados
 
                 '------------------ We need collect all data related with our related fields after insert ------------------------
 
@@ -1067,8 +1129,6 @@ Namespace gsol.krom
                             End If
 
                             Dim newListOfFollowers_ As New List(Of follower)
-
-
 
 
                             With newListOfFollowers_
@@ -1826,8 +1886,6 @@ Namespace gsol.krom
 
 
                 End Select
-
-
 
 
                 tiempoFinalL_ = ObtenerMilisegundos(DateTime.Now)

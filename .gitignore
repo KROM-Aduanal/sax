@@ -2,6 +2,14 @@
 *.suo
 *.cache
 *.vsidx
+*.txt
+*.lock
+*.user
+_ReSharper.*
+bin
+obj
+packages
+Debug
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -15,3 +23,4 @@ synapsis.settings*.json
 
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/fileList.bin
+*.cache
