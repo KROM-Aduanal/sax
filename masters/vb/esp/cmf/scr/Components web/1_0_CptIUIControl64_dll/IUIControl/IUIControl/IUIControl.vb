@@ -41,6 +41,8 @@ Public Interface IUIControl
 
     Property ToolTipIsVisible As Boolean
 
+    Property Signature As String
+
 #End Region
 
 End Interface

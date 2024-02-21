@@ -340,6 +340,21 @@ Namespace gsol.krom
                                   ByVal IdUnicoCampo_ As Integer,
                                   ByVal valor_ As String) As TagWatcher
 
+
+        Function NotificarSubscriptores(ByVal recurso_ As String,
+                                        ByVal iddocumento_ As ObjectId,
+                                        ByVal documentoelectronico_ As DocumentoElectronico,
+                                        Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Function EliminarSuscripciones(ByVal iddocumento_ As ObjectId,
+                                       ByVal subscriptionsgroup_ As List(Of subscriptionsgroup),
+                                       Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
+        Function FirmarDocumento(ByVal recurso_ As String,
+                                 ByVal iddocumento_ As ObjectId,
+                                 ByVal claveusuario_ As String,
+                                 Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher
+
 #End Region
 
     End Interface
