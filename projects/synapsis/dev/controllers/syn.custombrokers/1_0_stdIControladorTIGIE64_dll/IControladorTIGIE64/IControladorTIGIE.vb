@@ -50,6 +50,9 @@ Public Interface IControladorTIGIE
                                       country_ As String,
                                        Optional ByVal date_ As Date = Nothing) As TagWatcher
 
+    Function Pruebas()
+    Function Pruebas2()
+
 
 #End Region
 

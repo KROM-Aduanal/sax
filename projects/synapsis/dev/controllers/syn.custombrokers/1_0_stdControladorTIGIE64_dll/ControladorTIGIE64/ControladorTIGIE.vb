@@ -2078,6 +2078,149 @@ Public Class ControladorTIGIE
 
     End Function
 
+    Public Function Pruebas() Implements IControladorTIGIE.Pruebas
+
+#Region "Conexión"
+        Dim client_ = New MongoClient("mongodb+srv://azamora87:lenM0M0N087@zamora0.hid645p.mongodb.net/?retryWrites=true&w=majority")
+        Dim db_ As IMongoDatabase = client_.GetDatabase("Zamora")
+        Dim Collection1_ = db_.GetCollection(Of Pruebas2)("Prueba2")
+#End Region
+
+        Dim prueba_ = Collection1_.Aggregate().
+                Project(Function(e) New With {
+                    Key .nombre = e.nombre,
+                    Key .numero = e.numero
+                }).
+                Match(Function(a) Not a.numero.Equals(3)).
+                Group(Function(ee) New With {
+                    Key ._id = ee.nombre
+                }, Function(g) New With {
+                 .hhh = g.Key,
+                 .numeroTotal = g.Sum(Function(x) x.numero)
+                }).
+                Project(Function(e) New With {
+                    Key .numero = e.numeroTotal,
+                    Key .nombre = e.hhh._id
+                }).
+                Sort("{numero: -1}").ToList
+
+        Dim bsonDoc_ = Collection1_.Aggregate().
+            Project(New BsonDocument().
+                Add("nombre", 1).
+                Add("numero", 1)
+            ).
+            Match(New BsonDocument().
+                Add("numero", New BsonDocument().
+                    Add("$ne", 3)
+                )
+            ).
+            Group(New BsonDocument().
+                Add("_id", "$nombre").
+                Add("numero", New BsonDocument("$sum", "Snumero"))
+            ).
+            Project(New BsonDocument().
+                Add("nombre", "$_id").
+                Add("numero", 1)
+            ).
+            Sort(New BsonDocument("numero", -1)).ToList()
+
+        Dim Prueba2_ As Pruebas2 = BsonSerializer.Deserialize(Of Pruebas2)(bsonDoc_(0))
+
+
+        Dim project_ As PipelineStageDefinition(Of Pruebas2, BsonDocument) = BsonDocument.Parse("{ ""$project"": { ""nombre"": 1, ""numero"": 1 } }")
+        Dim match_ As PipelineStageDefinition(Of BsonDocument, BsonDocument) = BsonDocument.Parse("{ ""$match"": { ""numero"": { ""$ne"": 3, } } }")
+        Dim group_ As PipelineStageDefinition(Of BsonDocument, BsonDocument) = BsonDocument.Parse("{ $group: { _id:""$nombre"", numero: { $sum: ""$numero"" } } }")
+        Dim project2_ As PipelineStageDefinition(Of BsonDocument, BsonDocument) = BsonDocument.Parse("{ $project: { nombre: ""$_id"", numero: 1 } }")
+        Dim sort_ As BsonDocument = BsonDocument.Parse("{ $sort: { numero: -1 } } ")
+
+        Dim prueba3_ = Collection1_.Aggregate().AppendStage(Of BsonDocument)(project_).
+            AppendStage(Of BsonDocument)(match_).AppendStage(Of BsonDocument)(group_).
+            AppendStage(Of BsonDocument)(project2_).AppendStage(Of BsonDocument)(sort_).ToList
+
+        Dim project21_ = BsonDocument.Parse("{ ""$project"": { ""nombre"": 1, ""numero"": 1 } }")
+        Dim match2_ = BsonDocument.Parse("{ ""$match"": { ""numero"": { ""$ne"": 3, } } }")
+        Dim group2_ = BsonDocument.Parse("{ $group: { _id:""$nombre"", numero: { $sum: ""$numero"" } } }")
+        Dim project22_ = BsonDocument.Parse("{ $project: { nombre: ""$_id"", numero: 1 } }")
+        Dim sort2_ = BsonDocument.Parse("{ $sort: { numero: -1 } } ")
+
+        Dim pipeline_ As PipelineDefinition(Of Pruebas2, BsonDocument) = New BsonDocument() {project21_, match2_, group2_, project22_, sort2_}
+
+        Dim prueba4_ = Collection1_.Aggregate(Of BsonDocument)(pipeline_).ToList
+
+    End Function
+
+    Public Function Pruebas2() Implements IControladorTIGIE.Pruebas2
+
+#Region "Conexión"
+        Dim client_ = New MongoClient("mongodb+srv://azamora87:lenM0M0N087@zamora0.hid645p.mongodb.net/")
+        Dim db_ As IMongoDatabase = client_.GetDatabase("Zamora")
+        Dim Collection1_ = db_.GetCollection(Of Pruebas3)("Prueba3")
+#End Region
+
+        Dim bsonDoc_ = Collection1_.Aggregate().
+            AppendStage(Of BsonDocument)(
+                    New BsonDocument("$addFields",
+                    New BsonDocument().Add("comentarios",
+                        New BsonDocument("$filter",
+                            New BsonDocument().
+                                Add("input", "$comentarios").
+                                Add("as", "comentario").
+                                Add("cond",
+                                    New BsonDocument("$or",
+                                        New BsonArray From {
+                                            New BsonDocument("$eq",
+                                                New BsonArray From {
+                                                    "fulano234",
+                                                    "$$comentario.autor"
+                                                }
+                                            ),
+                                            New BsonDocument("$eq",
+                                                New BsonArray From {
+                                                    "fulano543",
+                                                    "$$comentario.autor"
+                                                }
+                                            )
+                                        }
+                                    )
+                                )
+                        )
+                    )
+                )
+            ).
+            Match(New BsonDocument("$and",
+                New BsonArray From {
+                        New BsonDocument("comentarios", New BsonDocument("$ne", New BsonArray)),
+                        New BsonDocument("tags", New BsonDocument("$eq", "txt")),
+                        New BsonDocument("tags", New BsonDocument("$eq", "doc"))
+                    }
+                )
+            ).
+            Unwind("tags").ToList()
+
+        Dim prueba31_ As Pruebas3 = BsonSerializer.Deserialize(Of Pruebas3)(bsonDoc_(0))
+
+
+        Dim addfields_ As PipelineStageDefinition(Of Pruebas3, BsonDocument) = BsonDocument.Parse("{""$addFields"":{""comentarios"":{""$filter"":{input:""$comentarios"",
+            ""as"":""comentario"",""cond"":{""$or"":[{""$eq"":[""fulano234"",""$$comentario.autor""]},{ ""$eq"":[""fulano543"",""$$comentario.autor""]} ] } } } } }")
+        Dim match_ As PipelineStageDefinition(Of BsonDocument, BsonDocument) = BsonDocument.Parse("{""$match"": { ""$and"": [ { ""comentarios"": { ""$ne"": [] } }, 
+            { ""tags"": { ""$eq"": ""txt"" } }, { ""tags"": { ""$eq"": ""doc"" } } ] } }")
+        Dim unwind_ As PipelineStageDefinition(Of BsonDocument, BsonDocument) = BsonDocument.Parse("{ ""$unwind"": { ""path"": ""$tags"" } }")
+
+        Dim prueba32 = Collection1_.Aggregate().AppendStage(Of BsonDocument)(addfields_).
+            AppendStage(Of BsonDocument)(match_).AppendStage(Of BsonDocument)(unwind_).ToList
+
+        Dim addfields2_ As BsonDocument = BsonDocument.Parse("{""$addFields"":{""comentarios"":{""$filter"":{input:""$comentarios"",
+            ""as"":""comentario"",""cond"":{""$or"":[{""$eq"":[""fulano234"",""$$comentario.autor""]},{ ""$eq"":[""fulano543"",""$$comentario.autor""]} ] } } } } }")
+        Dim match2_ As BsonDocument = BsonDocument.Parse("{""$match"": { ""$and"": [ { ""comentarios"": { ""$ne"": [] } }, 
+            { ""tags"": { ""$eq"": ""txt"" } }, { ""tags"": { ""$eq"": ""doc"" } } ] } }")
+        Dim unwind2_ As BsonDocument = BsonDocument.Parse("{ ""$unwind"": { ""path"": ""$tags"" } }")
+
+        Dim pipeline_ As PipelineDefinition(Of Pruebas3, BsonDocument) = New BsonDocument() {addfields2_, match2_, unwind2_}
+
+        Dim prueba33_ = Collection1_.Aggregate(Of BsonDocument)(pipeline_).ToList
+
+    End Function
+
     Public Function ConsultaFraccionArancelaria(Of T)(fracciones_ As List(Of String), 'getHsCode
                                       tipoOperacion_ As IControladorTIGIE.TipoOperacion,
                                       pais_ As String,
@@ -4465,6 +4608,40 @@ Public Class ControladorTIGIE
 #End Region
 
 #End Region
+
+End Class
+<Serializable()>
+Public Class Pruebas3
+
+    Public Property _id As Object
+    <BsonIgnoreIfNull>
+    Public Property autor As String
+    <BsonIgnoreIfNull>
+    Public Property titulo As String
+    <BsonIgnoreIfNull>
+    Public Property texto As String
+    <BsonIgnoreIfNull>
+    Public Property tags As String
+    <BsonIgnoreIfNull>
+    Public Property comentarios As List(Of Object)
+
+End Class
+
+Public Class Comentario
+    Public Property autor As String
+    Public Property comentario As String
+
+End Class
+
+<Serializable()>
+Public Class Pruebas2
+    Public Property _id As String
+    <BsonIgnoreIfNull>
+    Public Property nombre As String
+    <BsonIgnoreIfNull>
+    Public Property numero As Int32
+    <BsonIgnoreIfNull>
+    Public Property datox As String
 
 End Class
 

@@ -20,6 +20,7 @@ Imports Syn.Utils
 Imports Wma.Exceptions
 Imports Syn.Nucleo
 Imports System.Web.UI
+Imports Syn.CustomBrokers.Controllers.Reportes
 
 Public Class ControladorManifestacionValor
     Implements IControladorManifestacionValor, ICloneable, IDisposable
@@ -31,10 +32,6 @@ Public Class ControladorManifestacionValor
     Private _entorno As Int32
 
     Private _enlaceDatos As IEnlaceDatos
-
-#Region "Enums"
-
-#End Region
 
 #Region "Propiedades"
 
@@ -451,16 +448,16 @@ Public Class ControladorManifestacionValor
 
             Case IControladorManifestacionValor.TiposDocumento.Ambos
 
-                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoMV(manifestacionValor_),
-                       New ConstructorManifestacionValorPDF().ImprimirEncabezadoHC(manifestacionValor_)}
+                Return New List(Of String) From {New RepresentacionManifestacionValor().EncabezadoMV(manifestacionValor_),
+                       New RepresentacionManifestacionValor().ImprimirEncabezadoHC(manifestacionValor_)}
 
             Case IControladorManifestacionValor.TiposDocumento.MV
 
-                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoMV(manifestacionValor_)}
+                Return New List(Of String) From {New RepresentacionManifestacionValor().ImprimirMV(manifestacionValor_)}
 
             Case IControladorManifestacionValor.TiposDocumento.HC
 
-                Return New List(Of String) From {New ConstructorManifestacionValorPDF().ImprimirEncabezadoHC(manifestacionValor_)}
+                Return New List(Of String) From {New RepresentacionManifestacionValor().ImprimirEncabezadoHC(manifestacionValor_)}
 
         End Select
 

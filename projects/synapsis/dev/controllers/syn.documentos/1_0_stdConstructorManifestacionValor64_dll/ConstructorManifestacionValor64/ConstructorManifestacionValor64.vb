@@ -1,5 +1,6 @@
 ﻿
 Imports gsol.krom
+Imports MongoDB.Bson.Serialization.Attributes
 Imports Syn.Documento
 Imports Syn.Documento.Componentes
 Imports Syn.Documento.Componentes.Campo.TiposDato

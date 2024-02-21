@@ -1,0 +1,9 @@
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Reportes.IRepresentacionManifestacionValor64.0.0.0.0.dll.config
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Reportes.IRepresentacionManifestacionValor64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Reportes.IRepresentacionManifestacionValor64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\IRepresentacionManifestacionValor.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\Syn.CustomBrokers.Controllers.Reportes.Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\IRepresentacionManifestacionValor.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\IRepresentacionManifestacionValor.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\Syn.CustomBrokers.Controllers.Reportes.IRepresentacionManifestacionValor64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdIRepresentacionManifestacionValor_dll\IRepresentacionManifestacionValor\obj\Debug\Syn.CustomBrokers.Controllers.Reportes.IRepresentacionManifestacionValor64.0.0.0.0.pdb

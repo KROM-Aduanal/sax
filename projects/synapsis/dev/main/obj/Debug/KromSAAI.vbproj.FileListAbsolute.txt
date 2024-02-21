@@ -12,5 +12,10 @@ C:\SAX\projects\synapsis\dev\main\bin\Krombase243.pdb
 C:\SAX\projects\synapsis\dev\main\obj\Debug\Krombase243.dll
 C:\SAX\projects\synapsis\dev\main\obj\Debug\Krombase243.pdb
 C:\SAX\projects\synapsis\dev\main\bin\Krombase243.tlb
-C:\Sax\projects\synapsis\dev\main\bin\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.IItextHandler64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.ItextHandler64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.IItextHandler64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.IItextHandler64.0.0.0.0.dll.config
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.ItextHandler64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\main\bin\Rpt.Global.ItextHandler64.0.0.0.0.dll.config
 C:\Sax\projects\synapsis\dev\main\obj\Debug\KromSAAI.vbproj.CopyComplete

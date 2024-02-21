@@ -63,7 +63,7 @@ Public Class ConstructorPedimentoPDF
 
     Private _layout As Table
 
-    Private _controladorPDF As Itext7Handler
+    Private _controladorPDF As IItext7Handler
 
     Private _celdas As Dictionary(Of String, String)
 
@@ -78,12 +78,6 @@ Public Class ConstructorPedimentoPDF
     Private _vinculacion As String
 
 #End Region
-
-    Enum TiposBordes
-        Niniguno = 0
-        Derecha = 1
-        DerechaAbajo = 2
-    End Enum
 
     Enum TipoOperacion
 
@@ -150,7 +144,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -230,7 +224,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -290,7 +284,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -358,7 +352,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -410,7 +404,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -474,7 +468,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.SetBorderTop(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderLeft(New SolidBorder(ColorConstants.BLACK, 0.5)).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -676,7 +670,7 @@ Public Class ConstructorPedimentoPDF
 
         _Nivel1 = _controladorPDF.FolioDoc(documento_.FolioOperacion)
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "PEDIMENTO")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "PEDIMENTO")
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -688,7 +682,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"ADUANA E/S: ", IIf(documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor, " ")}}
 
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
         '-----------------------------------------------------------------------------
@@ -704,7 +698,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO ", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor, " ")},
                                                           {"VACIO  ", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_SALIDA).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "MEDIOS DE TRANSPORTE", False)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "MEDIOS DE TRANSPORTE", False)
 
         _Nivel3.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -716,7 +710,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VALOR ADUANA:", IIf(documento_.Attribute(CA_VALOR_ADUANA).Valor IsNot Nothing, documento_.Attribute(CA_VALOR_ADUANA).Valor, "524,460.00")},
                                                           {"PRECIO PAGADO/VALOR COMERCIAL:", IIf(documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor IsNot Nothing, documento_.Attribute(CA_PRECIO_PAGADO_VALOR_COMERCIAL).Valor, "524,460.00")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _Nivel3.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -734,7 +728,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO ", "VACIO"},
                                                           {"DOMICILIO:", IIf(documento_.Attribute(CA_DOMICILIO_IOE).Valor IsNot Nothing, documento_.Attribute(CA_DOMICILIO_IOE).Valor, "CARRETERA JOROBAS - TULA KM. 3.5 MANZ. 5 LOTE 1 FRACC. PARQUE INDUSTRIAL HUEHUETOCA 54680 HUEHUETOCA ESTADO DE MEXICO, MEXICO (ESTADOS UNIDOS MEXICANOS)")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
 
         _tablalayout.AddStyle(_stylecell)
 
@@ -756,7 +750,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO   ", IIf(documento_.Attribute(CA_EMBALAJES).Valor IsNot Nothing, documento_.Attribute(CA_EMBALAJES).Valor, "0")},
                                                           {"VACIO    ", IIf(documento_.Attribute(CA_OTROS_INCREMENTABLES).Valor IsNot Nothing, documento_.Attribute(CA_OTROS_INCREMENTABLES).Valor, "0")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.AddStyle(_stylecell)
 
@@ -782,7 +776,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO   ", IIf(documento_.Attribute(CA_EMBALAJES).Valor IsNot Nothing, documento_.Attribute(CA_EMBALAJES).Valor, "0")},
                                                           {"VACIO    ", IIf(documento_.Attribute(CA_OTROS_INCREMENTABLES).Valor IsNot Nothing, documento_.Attribute(CA_OTROS_INCREMENTABLES).Valor, "0")}}
 
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "VALOR DECREMENTABLES", False)
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "VALOR DECREMENTABLES", False)
 
             _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -812,7 +806,7 @@ Public Class ConstructorPedimentoPDF
 
         _celdas = New Dictionary(Of String, String) From {{"MARCAS, NUMEROS Y TOTAL DE BULTOS:", IIf(documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor IsNot Nothing, documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor, "02 CONTENEDORES")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -832,7 +826,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"ENTRADA:", fechaEntrada_.ToString("dd/MM/yyyy")},
                                                           {"PAGO:", fechaPago_.ToString("dd/MM/yyyy")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "FECHAS", False)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "FECHAS", False)
 
         If documento_.Attribute(CA_FECHA_ORIGINAL).Valor IsNot Nothing And documento_.Attribute(CA_CVE_PEDIMENTO).Valor = "F4" Then
 
@@ -869,7 +863,7 @@ Public Class ConstructorPedimentoPDF
                 End If
             Next
 
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "TASAS A NIVEL PEDIMENTO")
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "TASAS A NIVEL PEDIMENTO")
 
         End With
 
@@ -995,7 +989,7 @@ Public Class ConstructorPedimentoPDF
 
         End With
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1011,7 +1005,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"OTROS", IIf(documento_.Attribute(CA_OTROS).Valor IsNot Nothing, documento_.Attribute(CA_OTROS).Valor, "0")},
                                                           {"TOTAL", IIf(documento_.Attribute(CA_TOTAL).Valor IsNot Nothing, documento_.Attribute(CA_TOTAL).Valor, "101,879")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "TOTALES")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "TOTALES")
 
         _tablalayout.SetFontSize(7.0F)
 
@@ -1081,7 +1075,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"MEDIO DE RECEPCIÓN/COBRO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor, "Efectivo - Cargo a cuenta"), New List(Of Int64) From {2, 4}}}}}
 
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas2, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas2, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
         _tablalayout.SetBorderBottom(NO_BORDER)
 
         _Nivel3.AddCell(New Cell(rowspan:=0, colspan:=2).Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
@@ -1130,7 +1124,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"CVE. PEDIMENTO: ", IIf(documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion IsNot Nothing, documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion, "A1")}}
 
         _Nivel1 = _controladorPDF.FolioDoc(documento_.FolioOperacion)
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "FORMA SIMPLIFICADA DEL PEDIMENTO")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "FORMA SIMPLIFICADA DEL PEDIMENTO")
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -1141,7 +1135,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"ADUANA E/S: ", IIf(documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor IsNot Nothing, documento_.Attribute(CA_ADUANA_ENTRADA_SALIDA).Valor, " ")}}
 
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
         '-----------------------------------------------------------------------------
@@ -1152,7 +1146,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"RFC:", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"CURP:", IIf(documento_.Attribute(CA_CURP_IOE).Valor IsNot Nothing, documento_.Attribute(CA_CURP_IOE).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
 
         _tablalayout.AddStyle(_stylecell)
 
@@ -1181,7 +1175,7 @@ Public Class ConstructorPedimentoPDF
 
         _celdas = New Dictionary(Of String, String) From {{"MARCAS, NUMEROS Y TOTAL DE BULTOS:", IIf(documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor IsNot Nothing, documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor, "02 CONTENEDORES")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1201,7 +1195,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"ENTRADA:", fechaEntrada_.ToString("dd/MM/yyyy")},
                                                           {"PAGO:", fechaPago_.ToString("dd/MM/yyyy")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "FECHAS", False)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "FECHAS", False)
 
         If documento_.Attribute(CA_FECHA_ORIGINAL).Valor IsNot Nothing And documento_.Attribute(CA_CVE_PEDIMENTO).Valor = "F4" Then
 
@@ -1329,7 +1323,7 @@ Public Class ConstructorPedimentoPDF
 
         End With
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1345,7 +1339,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"OTROS", IIf(documento_.Attribute(CA_OTROS).Valor IsNot Nothing, documento_.Attribute(CA_OTROS).Valor, "0")},
                                                           {"TOTAL", IIf(documento_.Attribute(CA_TOTAL).Valor IsNot Nothing, documento_.Attribute(CA_TOTAL).Valor, "101,879")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "TOTALES")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "TOTALES")
 
         _tablalayout.SetFontSize(7.0F)
 
@@ -1415,7 +1409,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"MEDIO DE RECEPCIÓN/COBRO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_RECEPCION_COBRO).Valor, "Efectivo - Cargo a cuenta"), New List(Of Int64) From {2, 4}}}}}
 
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas2, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas2, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
         _tablalayout.SetBorderBottom(NO_BORDER)
 
         _Nivel3.AddCell(New Cell(rowspan:=0, colspan:=2).Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
@@ -1463,7 +1457,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"CVE. PEDIMENTO: ", IIf(documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion IsNot Nothing, documento_.Attribute(CA_CVE_PEDIMENTO).ValorPresentacion, "A1")}}
 
         _Nivel1 = _controladorPDF.FolioDoc(documento_.FolioOperacion)
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "FORMATO DE AVISO CONSOLIDADO")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "FORMATO DE AVISO CONSOLIDADO")
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -1472,7 +1466,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"NUMERO DE ACUSE DE VALOR: ", " "}}
 
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
         '-----------------------------------------------------------------------------
@@ -1486,7 +1480,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO ", IIf(documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor IsNot Nothing, documento_.Attribute(CA_MEDIO_TRANSPORTE_ARRIBO).Valor, " ")},
                                                           {"VACIO  ", IIf(documento_.Attribute(CA_PESO_BRUTO).Valor IsNot Nothing, documento_.Attribute(CA_PESO_BRUTO).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "MEDIOS DE TRANSPORTE", False)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "MEDIOS DE TRANSPORTE", False)
 
         _Nivel3.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -1497,7 +1491,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"RFC:", IIf(documento_.Attribute(CA_RFC_IOE).Valor IsNot Nothing, documento_.Attribute(CA_RFC_IOE).Valor, " ")},
                                                           {"NOMBRE, DENOMINACION O RAZON SOCIAL:", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "DATOS DEL IMPORTADOR/EXPORTADOR")
 
         _tablalayout.AddStyle(_stylecell)
 
@@ -1525,7 +1519,7 @@ Public Class ConstructorPedimentoPDF
 
         _celdas = New Dictionary(Of String, String) From {{"MARCAS, NUMEROS Y TOTAL DE BULTOS:", IIf(documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor IsNot Nothing, documento_.Attribute(CA_MARCAS_NUMEROS_TOTAL_BULTOS).Valor, "02 CONTENEDORES")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1596,7 +1590,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO", IIf(proveedor_.Attribute(CA_ID_FISCAL_PROVEEDOR).Valor IsNot Nothing, proveedor_.Attribute(CA_ID_FISCAL_PROVEEDOR).Valor, " ")},
                                                           {"VACIO ", IIf(proveedor_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor IsNot Nothing, proveedor_.Attribute(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC).Valor, " ")}}
 
-                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
                     _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1609,7 +1603,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO", IIf(proveedor_.Attribute(CA_DOMICILIO_POC).Valor IsNot Nothing, proveedor_.Attribute(CA_DOMICILIO_POC).Valor, " ")},
                                                           {"VACIO ", IIf(proveedor_.Attribute(CA_VINCULACION).Valor IsNot Nothing, proveedor_.Attribute(CA_VINCULACION).Valor, "SI")}}
 
-                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
                     _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -1664,7 +1658,7 @@ Public Class ConstructorPedimentoPDF
                             End If
                         Next
 
-                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo)
+                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo)
 
                     End With
 
@@ -1749,7 +1743,7 @@ Public Class ConstructorPedimentoPDF
 
             Next
 
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "DATOS DEL PROVEEDOR O COMPRADOR")
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "DATOS DEL PROVEEDOR O COMPRADOR")
 
             _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -1849,7 +1843,7 @@ Public Class ConstructorPedimentoPDF
 
         '_tablalayout.AddCell(New Cell().Add(New Paragraph("TRANSPORTE").SetTextAlignment(TextAlignment.LEFT).SetFont(_arialBold).SetFontSize(8.0F).SetMultipliedLeading(1)).SetBackgroundColor(ColorConstants.LIGHT_GRAY))
         _celdas = Nothing
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, {60.0F}, TiposBordes.Niniguno, "TRANSPORTE")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, {60.0F}, IItext7Handler.TiposBordes.Niniguno, "TRANSPORTE")
 
         _tablalayout.SetBorder(NO_BORDER).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F)
 
@@ -1866,13 +1860,13 @@ Public Class ConstructorPedimentoPDF
                     _celdas = New Dictionary(Of String, String) From {{"IDENTIFICACIÓN:", IIf(transporte_.Attribute(CA_NOMBRE_RAZON_SOCIAL_TRANSPORTE).Valor IsNot Nothing, transporte_.Attribute(CA_NOMBRE_RAZON_SOCIAL_TRANSPORTE).Valor, " ")},
                                                         {"PAÍS:", "VACIO"}}
 
-                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
                     _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderRight(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
                     _celdas = New Dictionary(Of String, String) From {{"VACIO", IIf(transporte_.Attribute(CA_CVE_PAIS_TRANSPORTE).Valor IsNot Nothing, transporte_.Attribute(CA_CVE_PAIS_TRANSPORTE).Valor, " ")}}
 
-                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, {150.0F}, TiposBordes.Niniguno)
+                    _tablalayout = _controladorPDF.setTablaLayout(_celdas, {150.0F}, IItext7Handler.TiposBordes.Niniguno)
 
                     _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -1902,7 +1896,7 @@ Public Class ConstructorPedimentoPDF
             _Nivel2.SetBorder(NO_BORDER)
 
             _celdas = Nothing
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {340.0F}, TiposBordes.Niniguno, "NÚMERO DE CANDADO")
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {340.0F}, IItext7Handler.TiposBordes.Niniguno, "NÚMERO DE CANDADO")
 
             _tablalayout.SetBorder(NO_BORDER).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F)
 
@@ -1923,7 +1917,7 @@ Public Class ConstructorPedimentoPDF
                                                                           {"VACIO    ", " "},
                                                                           {"VACIO     ", " "}}
 
-                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
                         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER).SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5)))
 
@@ -1953,7 +1947,7 @@ Public Class ConstructorPedimentoPDF
             _dimensiones = {150.0F, 50.0F, 150.0F, 50.0F, 150.0F, 50.0F}
 
             _celdas = Nothing
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {400.0F}, TiposBordes.Niniguno, "NÚMERO (GUÍA/ORDEN EMBARQUE)/ID:")
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {400.0F}, IItext7Handler.TiposBordes.Niniguno, "NÚMERO (GUÍA/ORDEN EMBARQUE)/ID:")
 
             _tablalayout.SetBorder(NO_BORDER).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F)
 
@@ -1976,7 +1970,7 @@ Public Class ConstructorPedimentoPDF
                                                                           {"VACIO    ", " "},
                                                                           {"VACIO     ", " "}}
 
-                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+                        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
                         _tablalayout.SetBorderTop(NO_BORDER)
 
@@ -2005,7 +1999,7 @@ Public Class ConstructorPedimentoPDF
             _dimensiones = {150.0F, 50.0F, 150.0F, 50.0F, 150.0F, 50.0F}
 
             _celdas = Nothing
-            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {400.0F}, TiposBordes.Niniguno, "NÚMERO / TIPO")
+            _tablalayout = _controladorPDF.setTablaLayout(_celdas, {400.0F}, IItext7Handler.TiposBordes.Niniguno, "NÚMERO / TIPO")
 
             _tablalayout.SetBorder(NO_BORDER).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F)
 
@@ -2050,7 +2044,7 @@ Public Class ConstructorPedimentoPDF
 
                 End If
 
-                _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+                _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
                 _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2098,7 +2092,7 @@ Public Class ConstructorPedimentoPDF
 
         End With
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -2152,7 +2146,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"INSTITUCION EMISORA: ", "3"},
                                                           {"NUMERO DE CONTRATO: ", "4"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "CUENTAS ADUANERAS Y CUENTAS ADUANERAS DE GARANTIA")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "CUENTAS ADUANERAS Y CUENTAS ADUANERAS DE GARANTIA")
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2162,7 +2156,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"TOTAL DEPOSITO: ", "VACIO"},
                                                           {"FECHA CONSTANCIA: ", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2180,7 +2174,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"FECHA DE OPERACION ORIGINAL: ", "VACIO"},
                                                           {"CVE. PEDIMENTO ORIGINAL: ", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "DESCARGOS")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "DESCARGOS")
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2188,7 +2182,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO ", "25/02/2023"},
                                                           {"VACIO  ", "D3"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2205,7 +2199,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"NUM. PEDIMENTO ORIGINAL: ", "VACIO"},
                                                           {"FECHA DE OPERACION ORIGINAL:  CLAVE DEL GRAVAMEN: IMPORTE DEL GRAVAMEN:", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha, "COMPENSACIONES")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha, "COMPENSACIONES")
 
         _tablalayout.SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -2214,7 +2208,7 @@ Public Class ConstructorPedimentoPDF
         _celdas = New Dictionary(Of String, String) From {{"VACIO", "881818 11818 18"},
                                                           {"VACIO ", "25/02/2023  DFFD55   5665"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2236,7 +2230,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"SALDO DISPONIBLE", "VACIO"},
                                                           {"IMPORTE A PAGAR", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "FORMAS DE PAGO VIRTUALES")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "FORMAS DE PAGO VIRTUALES")
 
         _tablalayout.SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -2250,7 +2244,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO     ", "LLOK"},
                                                           {"VACIO      ", "LLOK"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -2282,7 +2276,7 @@ Public Class ConstructorPedimentoPDF
 
         End With
 
-        _Nivel2 = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno, "OBSERVACIONES")
+        _Nivel2 = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno, "OBSERVACIONES")
 
         '_Nivel2.AddStyle(_estiloSinBordes)
 
@@ -3155,7 +3149,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"F.P", "VACIO"},
                                                           {"IMPORTE", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "DETERMINACION DE CONTRIBUCIONES A NIVEL PARTIDA")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "DETERMINACION DE CONTRIBUCIONES A NIVEL PARTIDA")
 
         _tablalayout.SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -3177,7 +3171,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"CVE. PEDIM. RECT.", "VACIO"},
                                                           {"FECHA PAGO RECT", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "RECTIFICACION")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "RECTIFICACION")
 
         _tablalayout.SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -3188,7 +3182,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"VACIO  ", "335"},
                                                           {"VACIO   ", "21/05/2023"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo)
 
         _Nivel2.AddCell(New Cell().Add(_tablalayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 0F, 0F).SetBorder(NO_BORDER))
 
@@ -3318,7 +3312,7 @@ Public Class ConstructorPedimentoPDF
 
         End With
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Derecha)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Derecha)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 
@@ -3334,7 +3328,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"OTROS", IIf(documento_.Attribute(CA_OTROS).Valor IsNot Nothing, documento_.Attribute(CA_OTROS).Valor, "0")},
                                                           {"DIF. TOTALES", IIf(documento_.Attribute(CA_TOTAL).Valor IsNot Nothing, documento_.Attribute(CA_TOTAL).Valor, "101,879")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "DIFERENCIAS TOTALES")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "DIFERENCIAS TOTALES")
 
         _tablalayout.SetFontSize(7.0F)
 
@@ -3360,7 +3354,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"NUM. PEDIMENTO EUA/CAN", "VACIO"},
                                                           {"PRUEBA SUFICIENTE", "VACIO"}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.DerechaAbajo, "PRUEBA SUFICIENTE")
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.DerechaAbajo, "PRUEBA SUFICIENTE")
 
         _tablalayout.SetBorderBottom(New SolidBorder(ColorConstants.BLACK, 0.5))
 
@@ -3395,7 +3389,7 @@ Public Class ConstructorPedimentoPDF
                                                           {"RFC: ", IIf(documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_RFC_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor, " ")},
                                                           {"CURP: ", IIf(documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor IsNot Nothing, documento_.Attribute(CA_CURP_MANDATARIO_AA_REPRESENTANTE_ALMACEN).Valor, " ")}}
 
-        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, TiposBordes.Niniguno)
+        _tablalayout = _controladorPDF.setTablaLayout(_celdas, _dimensiones, IItext7Handler.TiposBordes.Niniguno)
 
         _tablalayout.AddStyle(_estiloSinBordes)
 

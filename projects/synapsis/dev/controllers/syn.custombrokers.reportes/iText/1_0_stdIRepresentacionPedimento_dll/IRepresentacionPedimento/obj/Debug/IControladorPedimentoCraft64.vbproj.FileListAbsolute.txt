@@ -1,0 +1,9 @@
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorPedimentoCraft64.0.0.0.0.dll.config
+C:\Sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorPedimentoCraft64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\IControladorPedimentoCraft64.vbproj.AssemblyReference.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\Resources.resources
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\IControladorPedimentoCraft64.vbproj.GenerateResource.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\IControladorPedimentoCraft64.vbproj.CoreCompileInputs.cache
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\IControladorPedimentoCraft64.vbproj.CopyComplete
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\Syn.CustomBrokers.Controllers.IControladorPedimentoCraft64.0.0.0.0.dll
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdIControladorPedimentoCraft64_dll\IControladorPedimentoCraft64\obj\Debug\Syn.CustomBrokers.Controllers.IControladorPedimentoCraft64.0.0.0.0.pdb

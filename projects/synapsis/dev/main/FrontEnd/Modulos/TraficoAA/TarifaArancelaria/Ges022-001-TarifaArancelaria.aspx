@@ -402,14 +402,14 @@
                             
                                     <div class="fieldset col-xs-12">
                                         <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.Clave%>" Detail="Sector:" CssClass="col-xs-12"></gwc-label>
+                                            <gwc-label Bold="True" Text="<%=row.idFraccion%>" Detail="Sector:" CssClass="col-xs-12"></gwc-label>
                                             <gwc-label Text="" Detail="Anexo:" CssClass="col-xs-12"></gwc-label>
                                             <gwc-label Text="" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
                                         </div>
                                         <div class="col-xs-12 col-md-6">
                                             <gwc-label Text="" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
                                             <gwc-label Text="" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.Encabezado%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
+                                            <gwc-label Text="<%=row.idFraccion%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
                                         </div>                         
                                     </div> 
 

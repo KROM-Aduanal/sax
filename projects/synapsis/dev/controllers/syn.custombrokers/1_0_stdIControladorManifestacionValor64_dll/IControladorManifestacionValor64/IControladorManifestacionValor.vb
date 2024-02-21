@@ -17,9 +17,9 @@ Public Interface IControladorManifestacionValor
 
 #End Region
 #Region "Propiedades"
-    Property ManifestacionesValor As List(Of ConstructorManifestacionValor) ' Implements IControladorManifestacionValor.ManifestacionesValor
-    Property Estado As TagWatcher 'Implements IControladorManifestacionValor.Estado
-    WriteOnly Property Entorno As Int32 'Implements IControladorManifestacionValor.Entorno
+    Property ManifestacionesValor As List(Of ConstructorManifestacionValor) ' Implements IControladorManifestacionValorCraft.ManifestacionesValor
+    Property Estado As TagWatcher 'Implements IControladorManifestacionValorCraft.Estado
+    WriteOnly Property Entorno As Int32 'Implements IControladorManifestacionValorCraft.Entorno
 
 #End Region
 

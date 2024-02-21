@@ -1,0 +1,10 @@
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0.dll.config
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0.dll
+C:\sax\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0.pdb
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Itext7Handler.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Syn.CustomBrokers.Controllers.Resources.resources
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Itext7Handler.vbproj.GenerateResource.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Itext7Handler.vbproj.CoreCompileInputs.cache
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Itext7Handler.vbproj.CopyComplete
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0.dll
+C:\sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdItext7Handler64_dll\Itext7Handler64\obj\Debug\Syn.CustomBrokers.Controllers.Itext7Handler64.0.0.0.0.pdb

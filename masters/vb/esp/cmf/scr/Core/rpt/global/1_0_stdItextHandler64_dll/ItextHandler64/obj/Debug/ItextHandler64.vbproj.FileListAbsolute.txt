@@ -1,0 +1,9 @@
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rpt\global\Rpt.Global.ItextHandler64.0.0.0.0.dll.config
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rpt\global\Rpt.Global.ItextHandler64.0.0.0.0.dll
+C:\sax\masters\vb\esp\sax2.0\bin\Core\rpt\global\Rpt.Global.ItextHandler64.0.0.0.0.pdb
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\ItextHandler64.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\Rpt.Global.Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\ItextHandler64.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\ItextHandler64.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\Rpt.Global.ItextHandler64.0.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\rpt\global\1_0_stdItextHandler64_dll\ItextHandler64\obj\Debug\Rpt.Global.ItextHandler64.0.0.0.0.pdb

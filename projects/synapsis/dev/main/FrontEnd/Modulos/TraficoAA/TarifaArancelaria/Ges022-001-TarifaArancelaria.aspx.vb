@@ -37,6 +37,7 @@ Imports System.Xml.Serialization
 Imports gsol
 Imports System.IO
 Imports Syn.CustomBrokers.Controllers
+Imports Syn.CustomBrokers.Controllers.Reportes
 
 
 #End Region
@@ -61,7 +62,7 @@ Public Class Ges022_001_TarifaArancelaria
 
     Private _tarifaArancelaria As IControladorTIGIE
 
-    Dim _manifestacionValor As IControladorManifestacionValor
+    Public _manifestacionValor As ControladorManifestacionValor
 
     Public Property Tratados As List(Of List(Of TratadoItem))
 
@@ -183,12 +184,13 @@ Public Class Ges022_001_TarifaArancelaria
 
         _tarifaArancelaria = New ControladorTIGIE()
 
-        Dim fracciones_ = New List(Of String) From {"4901100100", "8716809901", "9031809901"} '3304910100", "8716809901", "2201900100", "4901100100", "4415200299", "9031809901", "3923299199", "8466939901", "3307200100", "3401300100"}
+        'Dim fracciones_ = New List(Of String) From {"4901100100", "8716809901", "9031809901"} '3304910100", "8716809901", "2201900100", "4901100100", "4415200299", "9031809901", "3923299199", "8466939901", "3307200100", "3401300100"}
 
-        Dim estado_ = _tarifaArancelaria.GetHsCode(Of ConstructorTIGIE)("9031809901", IControladorTIGIE.TipoOperacion.Importacion, "BOL", DateTime.Now.Date)
+        'Dim estado_ = _tarifaArancelaria.GetHsCode(Of ConstructorTIGIE)("9031809901", IControladorTIGIE.TipoOperacion.Importacion, "BOL", DateTime.Now.Date)
 
-        Dim fracc = estado_.ObjectReturned
+        'Dim fracc = estado_.ObjectReturned
 
+        _tarifaArancelaria.Pruebas()
 
     End Sub
 
@@ -209,17 +211,19 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
 
+        Dim xxxx = 0
+
+        xxxx = Now.DayOfYear
+
         Select Case IndexSelected_
             Case 10
 
                 Dim docElectronico_ As DocumentoElectronico = Nothing
 
-                Dim FolioOperacion_ = "RKU21-00014"
+                Dim FolioOperacion_ = "RKU23-00000466"
 
                 Using enlaceDatos_ As IEnlaceDatos =
                     New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
-
-                    'enlaceDatos_.EspacioTrabajo.DivisionEmpresarial =
 
                     Dim operacionesDB_ = enlaceDatos_.GetMongoCollection(Of OperacionGenerica)(New ConstructorPedimentoNormal().GetType.Name)
 
@@ -239,9 +243,9 @@ Public Class Ges022_001_TarifaArancelaria
 
                 If docElectronico_ IsNot Nothing Then
 
-                    Dim constructorPedimento As New ConstructorPedimentoPDF
+                    Dim constructorPedimento As New RepresentacionPedimento(docElectronico_)
 
-                    Dim pdfstring = "data:Application/pdf;base64, " & constructorPedimento.ImprimirPedimentoNormal(docElectronico_)
+                    Dim pdfstring = "data:Application/pdf;base64, " & constructorPedimento.ImprimirPedimentoGlobal
 
                     ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "')", True)
 
@@ -249,13 +253,13 @@ Public Class Ges022_001_TarifaArancelaria
 
             Case 11
 
-                Dim tiposDocumento_ = IControladorManifestacionValor.TiposDocumento.HC
+                Dim tiposDocumento_ = IControladorManifestacionValor.TiposDocumento.MV
 
                 _manifestacionValor = New ControladorManifestacionValor(1)
 
                 Dim FolioOperacion_ = "RKU21-00014"
 
-                Dim manifestacionesValor_ = _manifestacionValor.RepresentacionImpresa(New ObjectId("657896d4e33944341afe02f9"), tiposDocumento_)
+                Dim manifestacionesValor_ = _manifestacionValor.RepresentacionImpresa(New ObjectId("65b7cefd812597d8520ee319"), tiposDocumento_)
 
                 Dim pdfstring_ = "data:Application/pdf;base64, " + manifestacionesValor_(0)
 
@@ -285,7 +289,7 @@ Public Class Ges022_001_TarifaArancelaria
 
                 Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
-                Dim tagWatcher = _manifestacionValor.Generar(New ObjectId("62a3751a7828c19ed414f687"), iEnlace_.GetMongoClient().StartSession)
+                Dim tagWatcher = _manifestacionValor.Generar(New ObjectId("64ed2b1a2706e974ae8e6e37"), iEnlace_.GetMongoClient().StartSession)
 
                 If tagWatcher.Status = TypeStatus.Ok Then
 
