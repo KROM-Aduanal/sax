@@ -2059,7 +2059,7 @@ Public Class Ges022_001_AcuseValor
 
         swc_Subdivision.Checked = False
 
-        sc_TipoDocumento.Value = "1"
+        sc_TipoDocumento.Value = "15464654"
 
         icFechaExpedicion.Value = DateTime.UtcNow.Date.ToString("yyyy-MM-dd")
 
