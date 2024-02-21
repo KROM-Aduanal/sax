@@ -1,0 +1,435 @@
+{
+    "about": "cube",
+    "version": "1.0.0.0",
+    "scope": "project",
+    "logs": {
+        "logcontrol": true,
+        "slots": [
+            {
+                "_id": 1,
+                "type": "basic",
+                "activated": false
+            },
+            {
+                "_id": 2,
+                "type": "full",
+                "activated": false
+            },
+            {
+                "_id": 3,
+                "type": "fsbasic",
+                "activated": true,
+                "pathlog": "c:\\logs\\"
+            },
+            {
+                "_id": 4,
+                "type": "fsbasic",
+                "activated": true,
+                "pathlog": "c:\\TransaccionesContables\\"
+            }
+        ]
+    },
+    "globals": {
+        "startAppId": 16,
+        "startCompanyGroupId": 1,
+        "startCompanySucId": 1
+    },
+    "credentials": [
+        {
+            "_id": 1,
+            "info": "for Microsoft Sql Server",
+            "user": "sa",
+            "password": "S0l1umF0rW",
+            "card": "\\KBSsqlserverLocalhost.key"
+        },
+        {
+            "_id": 2,
+            "info": "for MongoDB localhost",
+            "user": null,
+            "password": null,
+            "card": "\\SYNmongodbLocalhost.key"
+        },
+        {
+            "_id": 3,
+            "info": "for MongoDB Atlas Clúster onCloud",
+            "user": "superAdmin",
+            "password": "wtVAo0hrAJdnF89U",
+            "card": "\\serverMontoAtlasCluster.key"
+        },
+        {
+            "_id": 4,
+            "info": "for Google FireBase",
+            "user": "",
+            "password": "",
+            "card": "\\SYNgooglefirebaseTest.key"
+        },
+        {
+            "_id": 5,
+            "info": "for mysql",
+            "user": "EXTRANET",
+            "password": "654321",
+            "card": "\\keymongodbLocalhost.key"
+        },
+        {
+            "_id": 6,
+            "info": "for Microsoft Sql Server",
+            "user": "krombase",
+            "password": "K1s45gri",
+            "card": "\\keysqlserverLocalhost.key"
+        }
+    ],
+    "roots": [
+        {
+            
+
+            "_id": 1,
+            "info": "Colección para Cubos de A22",
+            "name": "Reg000CubeRoomsA22",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos A22",
+                    "name": "Reg000CubeRoomsA22"
+                }
+            ]
+        },
+        {
+
+            "_id": 2,
+            "info": "Colección para Cubos de VOCE",
+            "name": "Reg000CubeRoomsVOCE",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos VOCE",
+                    "name": "Reg000CubeRoomsVOCE"
+                }
+            ]
+        },
+        {
+
+            "_id": 3,
+            "info": "Colección para Cubos de UAA",
+            "name": "Reg000CubeRoomsUAA",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos UAA",
+                    "name": "Reg000CubeRoomsUAA"
+                }
+            ]
+        },        
+        {
+
+            "_id": 4,
+            "info": "Colección para Cubos de UCAA",
+            "name": "Reg000CubeRoomsUCAA",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos UCAA",
+                    "name": "Reg000CubeRoomsUCAA"
+                }
+            ]
+        },        
+        {
+
+            "_id": 5,
+            "info": "Colección para Cubos de UCC",
+            "name": "Reg000CubeRoomsUCC",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos UCC",
+                    "name": "Reg000CubeRoomsUCC"
+                }
+            ]
+        },
+        {
+
+            "_id": 6,
+            "info": "Colección para Cubos de CDI",
+            "name": "Reg000CubeRoomsCDI",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeRooms",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos CDI",
+                    "name": "Reg000CubeRoomsCDI"
+                }
+            ]
+        }          
+    ],
+    "endpoints": [
+        {
+            "_id": 1,
+            "info": "bigdatamathematics A22/VOCE local Mongo",
+            "url": null,
+            "ip": "localhost",
+            "port": "27020"
+        },
+        {
+            "_id": 2,
+            "info": "bigdatamathematics UAA local Mongo",
+            "url": null,
+            "ip": "localhost",
+            "port": "27027"
+        },
+        {
+            "_id": 3,
+            "info": "bigdatamathematics UCAA local Mongo",
+            "url": null,
+            "ip": "localhost",
+            "port": "27034"
+        },
+        {
+            "_id": 4,
+            "info": "bigdatamathematics UCC local Mongo",
+            "url": null,
+            "ip": "localhost",
+            "port": "27041"
+        },
+        {
+            "_id": 5,
+            "info": "bigdatamathematics CDI local Mongo",
+            "url": null,
+            "ip": "localhost",
+            "port": "27048"
+        }                  
+    ],
+    "environments": [
+        {
+            "_id": 1,
+            "name": "Veracruz",
+            "pref": "RKU",
+            "taxid": "GRK030919NX4",
+            "info": "Grupo Reyes Kuri. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 3,
+            "name": "CDMX",
+            "pref": "DAI",
+            "taxid": "DAI920805RH0",
+            "info": "Despachos Aereos Integrados S. C.",
+            "online": false,
+            "type": "tester"
+        },
+        {
+            "_id": 4,
+            "name": "Virtual",
+            "pref": "DEM",
+            "taxid": "DEMOVERSION",
+            "info": "Demo. S. C.",
+            "online": false,
+            "type": "demo"
+        },
+        {
+            "_id": 8,
+            "name": "Manzanillo",
+            "pref": "SAP",
+            "taxid": "SAP960117TM6",
+            "info": "Servicios Aduanales del Pacífico. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 6,
+            "name": "Altamira",
+            "pref": "CEG",
+            "taxid": "CEG911220CU0",
+            "info": "Comercio Exterior del Golfo. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 7,
+            "name": "Toluca",
+            "pref": "TOL",
+            "taxid": "CEG911220CU0",
+            "info": "Comercio Exterior del Golfo. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 9,
+            "name": "Lázaro Cárdenas",
+            "pref": "ALC",
+            "taxid": "SAP960117TM6",
+            "info": "Servicios Aduanales del Pacífico. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 10,
+            "name": "Tuxpan",
+            "pref": "TUX",
+            "taxid": "GRK030919NX4",
+            "info": "Grupo Reyes Kuri. S. C.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 7780,
+            "name": "Nuevo Laredo",
+            "pref": "LAR",
+            "taxid": "09-0894008",
+            "info": "Krom Forwarding Inc.",
+            "online": false,
+            "type": "production"
+        },
+        {
+            "_id": 7785,
+            "name": "Nogales",
+            "pref": "NOG",
+            "taxid": "GRK030919NX4",
+            "info": "Grupo Reyes Kuri. S. C.",
+            "online": false,
+            "type": "production"
+        }
+    ],
+    "servers": {
+        "nosql": {
+            "mongodb": {
+                "version": "3.4",
+                "rol": [
+                    {
+                        "_id": 1,
+                        "status": "on",
+                        "rolname": "bigdataops",
+                        "info": "Main bigdata database (dockers CubeRooms A22)",
+                        "name": "CubeA22",
+                        "officesuffix": false,
+                        "credentialId": 2,
+                        "endpointId": 1
+                    },
+                    {
+                            "_id": 2,
+                            "status": "on",
+                            "rolname": "bigdataops",
+                            "info": "Main bigdata database (dockers CubeRooms VOCE)",
+                            "name": "CubeVOCE",
+                            "officesuffix": false,
+                            "credentialId": 2,
+                            "endpointId": 1
+                        },
+                        {
+                                "_id": 3,
+                                "status": "on",
+                                "rolname": "bigdataops",
+                                "info": "Main bigdata database (dockers CubeRooms UAA)",
+                                "name": "CubeUAA",
+                                "officesuffix": false,
+                                "credentialId": 2,
+                                "endpointId": 2
+                            },
+                            {
+                                    "_id": 4,
+                                    "status": "on",
+                                    "rolname": "bigdataops",
+                                    "info": "Main bigdata database (dockers CubeRooms UCAA)",
+                                    "name": "CubeUCAA",
+                                    "officesuffix": false,
+                                    "credentialId": 2,
+                                    "endpointId": 3
+                                },
+                                {
+                                        "_id": 5,
+                                        "status": "on",
+                                        "rolname": "bigdataops",
+                                        "info": "Main bigdata database (dockers CubeRooms UCC)",
+                                        "name": "CubeUCC",
+                                        "officesuffix": false,
+                                        "credentialId": 2,
+                                        "endpointId": 4
+                                    },
+                                    {
+                                            "_id": 6,
+                                            "status": "on",
+                                            "rolname": "bigdataops",
+                                            "info": "Main bigdata database (dockers CubeRooms CDI)",
+                                            "name": "CubeCDI",
+                                            "officesuffix": false,
+                                            "credentialId": 2,
+                                            "endpointId": 5
+                                    }                     
+                ]
+            }
+        },
+        "sql": {
+            "mssql": {
+                "version": "12",
+                "rol": [
+                    {
+                        "_id": 1,
+                        "status": "off",
+                        "rolname": "master",
+                        "info": "Main rdbms datase",
+                        "name": "Sax",
+                        "credentialId": 1,
+                        "endpointId": 1
+                    },
+                    {
+                        "_id": 2,
+                        "status": "on",
+                        "rolname": "dimensional",
+                        "info": "dimentional model",
+                        "name": "KBSDIM",
+                        "credentialId": 6,
+                        "endpointId": 10
+                    },
+                    {
+                        "_id": 3,
+                        "status": "on",
+                        "rolname": "log",
+                        "info": "log model",
+                        "name": "KBSBIT",
+                        "credentialId": 6,
+                        "endpointId": 10
+                    },
+                    {
+                        "_id": 4,
+                        "status": "on",
+                        "rolname": "master",
+                        "info": "Producción Oracle",
+                        "name": "Solium",
+                        "credentialId": 6,
+                        "endpointId": 10
+                    }
+                ]
+            },
+            "mysql": {
+                "version": "6.5",
+                "rol": [
+                    {
+                        "_id": 1,
+                        "status": "off",
+                        "rolname": "master",
+                        "info": "Main rdbms datase",
+                        "name": "rku_extranet",
+                        "credentialId": 4,
+                        "endpointId": 9
+                    }
+                ]
+            }
+        }
+    }
+}

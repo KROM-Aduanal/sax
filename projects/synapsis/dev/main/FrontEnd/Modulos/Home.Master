@@ -594,6 +594,8 @@
                     if (i == 3) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/FacturasComerciales/Ges003-001-FacturasComerciales.aspx");
                     if (i == 9) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/BusquedaGeneral/BusquedaGeneral.aspx");
                     if (i == 11) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx");
+                    if (i == 12) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/CuboDatos/Ges022-001-CuboDatos.aspx");
+
                 });
 
                 $(".treeview-menu").append(
@@ -610,6 +612,15 @@
                         $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx' }).append([
                             $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
                             $('<span>', { text: 'Acuse de Valor' })
+                        ])
+                    )
+                );
+
+                $(".treeview-menu").append(
+                    $('<li>').append(
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/CuboDatos/Ges022-001-CuboDatos.aspx' }).append([
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<span>', { text: 'Cubo de Datos' })
                         ])
                     )
                 );
