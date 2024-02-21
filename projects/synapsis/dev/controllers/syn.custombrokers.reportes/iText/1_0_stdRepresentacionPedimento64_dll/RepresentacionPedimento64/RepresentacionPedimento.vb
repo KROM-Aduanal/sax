@@ -697,7 +697,7 @@ Public Class RepresentacionPedimento
 
         _celdas = New Dictionary(Of String, String) From {{"CÓDIGO DE ACEPTACIÓN:", IIf(_documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor IsNot Nothing, _documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor, "U8Z7A8E9")},
                                                           {"IMG", "C:/temp/CBA_RKU2100551.png"},
-                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO).Valor, "430")}}
+                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor, "430")}}
 
         _tablaLayout = _itextHandler.SetTableLayoutBorder(_celdas, _dimensiones)
 
@@ -972,7 +972,7 @@ Public Class RepresentacionPedimento
                                                           {"*** PAGO ELECTRÓNICO ***", New Dictionary(Of String, List(Of Int64)) From {{"VACIO", New List(Of Int64) From {6, 0}}}},
                                                           {"PATENTE:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_PATENTE).Valor IsNot Nothing, _documento.Attribute(CA_PATENTE).Valor, " "), New List(Of Int64) From {1, 1}}}},
                                                           {"PEDIMENTO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_NUMERO_PEDIMENTO).Valor IsNot Nothing, _documento.Attribute(CA_NUMERO_PEDIMENTO).Valor, " "), New List(Of Int64) From {1, 1}}}},
-                                                          {"ADUANA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO).Valor, "430"), New List(Of Int64) From {1, 1}}}},
+                                                          {"ADUANA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor, "430"), New List(Of Int64) From {1, 1}}}},
                                                           {"BANCO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor IsNot Nothing, _documento.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor, "BBVA BANCOMER"), New List(Of Int64) From {1, 5}}}},
                                                           {"LÍNEA DE CAPTURA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_LINEA_CAPTURA).Valor IsNot Nothing, _documento.Attribute(CA_LINEA_CAPTURA).Valor, "032100D13UP130040274"), New List(Of Int64) From {2, 4}}}},
                                                           {"IMPORTE PAGADO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_EFECTIVO).Valor IsNot Nothing, _documento.Attribute(CA_EFECTIVO).Valor, "$101,879"), New List(Of Int64) From {2, 1}}}},
@@ -1069,7 +1069,7 @@ Public Class RepresentacionPedimento
 
         _celdas = New Dictionary(Of String, String) From {{"CÓDIGO DE ACEPTACIÓN:", IIf(_documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor IsNot Nothing, _documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor, "U8Z7A8E9")},
                                                           {"IMG", "C:/temp/CBA_RKU2100551.png"},
-                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO).Valor, "430")}}
+                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor, "430")}}
 
         _tablaLayout = _itextHandler.SetTableLayoutBorder(_celdas, _dimensiones)
 
@@ -1309,7 +1309,7 @@ Public Class RepresentacionPedimento
                                                           {"*** PAGO ELECTRÓNICO ***", New Dictionary(Of String, List(Of Int64)) From {{"VACIO", New List(Of Int64) From {6, 0}}}},
                                                           {"PATENTE:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_PATENTE).Valor IsNot Nothing, _documento.Attribute(CA_PATENTE).Valor, " "), New List(Of Int64) From {1, 1}}}},
                                                           {"PEDIMENTO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_NUMERO_PEDIMENTO).Valor IsNot Nothing, _documento.Attribute(CA_NUMERO_PEDIMENTO).Valor, " "), New List(Of Int64) From {1, 1}}}},
-                                                          {"ADUANA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO).Valor, "430"), New List(Of Int64) From {1, 1}}}},
+                                                          {"ADUANA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor, "430"), New List(Of Int64) From {1, 1}}}},
                                                           {"BANCO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor IsNot Nothing, _documento.Attribute(CA_NOMBRE_INSTITUCION_BANCARIA).Valor, "BBVA BANCOMER"), New List(Of Int64) From {1, 5}}}},
                                                           {"LÍNEA DE CAPTURA:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_LINEA_CAPTURA).Valor IsNot Nothing, _documento.Attribute(CA_LINEA_CAPTURA).Valor, "032100D13UP130040274"), New List(Of Int64) From {2, 4}}}},
                                                           {"IMPORTE PAGADO:", New Dictionary(Of String, List(Of Int64)) From {{IIf(_documento.Attribute(CA_EFECTIVO).Valor IsNot Nothing, _documento.Attribute(CA_EFECTIVO).Valor, "$101,879"), New List(Of Int64) From {2, 1}}}},
@@ -1414,7 +1414,7 @@ Public Class RepresentacionPedimento
 
         _celdas = New Dictionary(Of String, String) From {{"CÓDIGO DE ACEPTACIÓN:", IIf(_documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor IsNot Nothing, _documento.Attribute(CA_ACUSE_ELECTRONICO_VALIDACION).Valor, "U8Z7A8E9")},
                                                           {"IMG", "C:/temp/CBA_RKU2100551.png"},
-                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO).Valor, "430")}}
+                                                          {"CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO:", IIf(_documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor IsNot Nothing, _documento.Attribute(CA_ADUANA_DESPACHO_ORIGINAL).Valor, "430")}}
 
         _tablaLayout = _itextHandler.SetTableLayoutBorder(_celdas, _dimensiones)
 

@@ -22,3 +22,4 @@ C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.Cont
 C:\SAX\projects\synapsis\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorManifestacionValor64.pdb
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorManifestacionValor64_dll\ControladorManifestacionValor64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorManifestacionValor64.dll
 C:\SAX\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorManifestacionValor64_dll\ControladorManifestacionValor64\obj\Debug\Syn.CustomBrokers.Controllers.ControladorManifestacionValor64.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers\1_0_stdControladorManifestacionValor64_dll\ControladorManifestacionValor64\obj\Debug\ControladorManifestacionValor64.vbproj.CopyComplete
