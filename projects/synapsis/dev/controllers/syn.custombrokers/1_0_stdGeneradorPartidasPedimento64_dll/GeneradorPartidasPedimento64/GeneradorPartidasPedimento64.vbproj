@@ -113,11 +113,6 @@
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.CustomBrokers.Controllers.ImpuestoPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ImpuestoPartidaPedimento64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformacionAgrupacion64.0.0.0.0.dll</HintPath>
@@ -262,6 +257,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\1_0_stdImpuestoPartidaPedimento64_dll\ImpuestoPartidaPedimento64\ImpuestoPartidaPedimento64.vbproj">
+      <Project>{C78BD033-C091-4EA5-93FC-24E41A367745}</Project>
+      <Name>ImpuestoPartidaPedimento64</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

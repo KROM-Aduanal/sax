@@ -454,7 +454,7 @@ Public Class GeneradorPartidasPedimento
             'mandar de un solo país de origen de "n" fracciones.
             If listaFraccionesPais_.Count > 0 And _informacionAgrupacion.tipooperacion = 1 Then
 
-                Dim tigie_ As IControladorTIGIE = New ControladorTIGIE()
+                Dim tigie_ As New ControladorTIGIE()
 
                 tigie_.GetHsCode(Of ConstructorTIGIE)(listaFraccionesPais_, IControladorTIGIE.TipoOperacion.Importacion, "DEU", DateTime.Now.Date)
 
