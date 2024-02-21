@@ -26,3 +26,9 @@ D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdC
 D:\testerborrar\ouch\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
 D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.pdb
 D:\testerborrar\ouch\sax\masters\vb\esp\cmf\scr\core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Cifrado25664.vbprojAssemblyReference.cache
+C:\sax\masters\vb\esp\sax2.0\bin\Core\cmf\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Cifrado25664.vbproj.AssemblyReference.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Resources.resources
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Cifrado25664.vbproj.GenerateResource.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Cifrado25664.vbproj.CoreCompileInputs.cache
+C:\sax\masters\vb\esp\cmf\scr\Core\cmf\gsol.seguridad\1_0_stdCrifradoAES25664_dll\Cifrado25664\Cifrado25664\obj\Debug\Gsol.Seguridad.Cifrado25664.1.0.0.0.dll

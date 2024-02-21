@@ -58,6 +58,9 @@ Namespace Syn.Documento
 
 
         End Sub
+
+
+
         Public Overrides Sub ConstruyeEncabezado()
 
             _estructuraDocumento(TiposBloque.Encabezado) = New List(Of Nodo)
@@ -128,7 +131,6 @@ Namespace Syn.Documento
                                              Item(CamposClientes.CP_CLIENTE_EXTRANJERO, Entero),
                                              Item(CamposClientes.CP_CLIENTE_HABILITADO, Booleano),
                                              Item(CamposClientes.CP_ID_EMPRESA, IdObject),
-                                                                                          _
                                              Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=250),
                                              Item(CamposDomicilio.CA_CALLE, Texto, longitud_:=80),
                                              Item(CamposDomicilio.CA_NUMERO_EXTERIOR, Texto, longitud_:=10),

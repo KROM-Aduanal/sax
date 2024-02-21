@@ -198,6 +198,39 @@ Public Class SelectControl
 
     End Property
 
+    Public Overrides Property Signature As String
+
+        Get
+
+            EnsureChildControls()
+
+            Dim data_ = LocalStorage
+
+            If data_ IsNot Nothing Then
+
+                Dim item_ = data_.FirstOrDefault(Function(e) e.Value = _selectControl.SelectedValue)
+
+                If item_ IsNot Nothing Then
+
+                    Return item_.Signature
+
+                End If
+
+            End If
+
+            Return Nothing
+
+        End Get
+
+        Set(value As String)
+
+            MyBase.Signature = value
+
+        End Set
+
+    End Property
+
+
     Public ReadOnly Property SuggestedText As String
 
         Get

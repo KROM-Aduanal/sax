@@ -42,6 +42,8 @@ Namespace Syn.Documento.Componentes
 
             TipoNodo = Nodo.TiposNodo.Campo
 
+            UseAsMetadata = False
+
         End Sub
 
 #End Region
@@ -90,6 +92,9 @@ Namespace Syn.Documento.Componentes
         <BsonIgnoreIfNull>
         Public Property ValorPresentacion As String
 
+        <BsonIgnore>
+        Public Property ValorFirma As String
+
         <BsonElement("Nombre")>
         Public Property Nombre As String
 
@@ -120,6 +125,12 @@ Namespace Syn.Documento.Componentes
         '<BsonIgnoreIfDefault>
         '<BsonIgnoreIfNull>
         'Public Property RegistroMovimientos As List(Of RegistroMovimiento)
+
+        '<BsonElement("UseAsMetadata")>
+        '<BsonIgnoreIfDefault>
+        '<BsonIgnoreIfNull>
+        <BsonIgnore>
+        Public Property UseAsMetadata As Boolean
 
 #End Region
 
