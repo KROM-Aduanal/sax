@@ -46,6 +46,63 @@ Namespace Syn.Operaciones
 
 #Region "Functions"
 
+
+        Public Function PreparaMetaDatos(ByVal nodos_ As List(Of Nodo)) As List(Of CampoGenerico)
+
+            Dim listaCampos_ As New List(Of CampoGenerico)
+
+            For Each nodo_ As Nodo In nodos_
+
+                Dim nodoAux_ = Nothing
+
+                Select Case nodo_.TipoNodo
+
+                    Case TiposNodo.Campo
+
+                        Dim campoNuevo_ = CType(nodo_, CampoGenerico)
+
+                        If campoNuevo_.UseAsMetadata = True Then
+
+                            listaCampos_.Add(campoNuevo_)
+
+                        End If
+
+                    Case Else
+
+                        If nodo_.Nodos IsNot Nothing Then
+
+                            nodoAux_ = PreparaMetaDatos(nodos_:=nodo_.Nodos)
+
+                            If nodoAux_ IsNot Nothing Then
+
+                                For Each subnodo_ As Object In nodoAux_
+
+                                    listaCampos_.Add(subnodo_)
+
+                                Next
+
+                            End If
+
+                        End If
+
+                End Select
+
+            Next
+
+            If Not IsNothing(listaCampos_) Then
+
+                If listaCampos_.Count > 0 Then
+
+                    Return listaCampos_
+
+                End If
+
+            End If
+
+            Return Nothing
+
+        End Function
+
         Public Function AnalizaDiferenciasNodos(ByVal nodosNuevo_ As List(Of Nodo),
                                                 ByVal nodosOriginal_ As List(Of Nodo)) As List(Of DocumentoElectronicoObjetoActualizador)
 

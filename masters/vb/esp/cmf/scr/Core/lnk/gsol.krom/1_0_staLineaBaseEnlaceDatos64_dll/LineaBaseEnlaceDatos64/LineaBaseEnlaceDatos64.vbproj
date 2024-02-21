@@ -195,6 +195,14 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.Partida64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Partida64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.Componentes.Seccion64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Seccion64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Documento64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Documento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -206,6 +214,10 @@
     </Reference>
     <Reference Include="Syn.Documento.OperacionGenerica64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.OperacionGenerica64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0">

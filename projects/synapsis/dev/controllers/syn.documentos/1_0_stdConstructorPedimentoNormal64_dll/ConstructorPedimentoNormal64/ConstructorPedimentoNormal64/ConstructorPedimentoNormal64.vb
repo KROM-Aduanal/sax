@@ -100,7 +100,7 @@ Namespace Syn.Documento
             'Datos del proveedor o comprador
             ConstruyeSeccion(seccionEnum_:=SeccionesPedimento.ANS10,
                              tipoBloque_:=TiposBloque.Cuerpo,
-                             conCampos_:=True)
+                             conCampos_:=False)
 
             'Datos del destinatario
             ConstruyeSeccion(seccionEnum_:=SeccionesPedimento.ANS11,
@@ -330,8 +330,8 @@ Namespace Syn.Documento
                                    Item(CA_CLAVE_SAD, Texto, longitud_:=3),
                                    Item(CA_MARCAS_NUMEROS_TOTAL_BULTOS, Texto), 'No tiene longitud en ConstructorCampoPedimento64
                                    Item(CA_CERTIFICACION, Texto, longitud_:=6), 'Revisar captura dice el ConstructorCampoPedimento64
-                                   Item(CA_ADUANA_DESPACHO, Texto, longitud_:=3),
-                                   Item(CA_ANIO_VALIDACION_2, Texto, longitud_:=2),
+                                   Item(CA_CLAVE_SAD, Texto, longitud_:=3),
+                                   Item(CA_ANIO_VALIDACION, Texto, longitud_:=2),
                                    Item(CA_ADUANA_SIN_SECCION, Texto, longitud_:=2),
                                    Item(CA_CVE_TIPO_OPERACION, Entero, longitud_:=1),
                                    Item(CA_FECHA_VALIDACION, Fecha),
@@ -443,13 +443,15 @@ Namespace Syn.Documento
                                Item(CA_NUMERO_TRANSACCION_SAT, Texto, longitud_:=25),
                                Item(CA_MEDIO_PRESENTACION, Texto, longitud_:=23),
                                Item(CA_MEDIO_RECEPCION_COBRO, Texto, longitud_:=26),
-                               Item(CA_ADUANA_DESPACHO, Texto, longitud_:=3),
+                               Item(CA_CLAVE_SAD, Texto, longitud_:=3),
                                Item(CA_EFECTIVO, Entero, longitud_:=12),
                                Item(CA_FECHA_PAGO, Fecha)
                          }
 
                         ' Datos del proveedor o comprador
                 Case SeccionesPedimento.ANS10
+
+
 
                     Return New List(Of Nodo) From {
                                Item(CA_ID_FISCAL_PROVEEDOR, Texto, longitud_:=30),
@@ -466,7 +468,7 @@ Namespace Syn.Documento
                                Item(CA_ENTIDAD_FEDERATIVA_POC, Texto, longitud_:=3),
                                Item(CA_PAIS_POC, Texto, 3),
                                                            _
-                               Item(SeccionesPedimento.ANS13, True),
+                               Item(SeccionesPedimento.ANS13, False),
                                Item(CamposGlobales.CP_IDENTITY, Entero)
                          }
 
@@ -580,15 +582,14 @@ Namespace Syn.Documento
                     Return New List(Of Nodo) From {
                                Item(CA_CVE_CUENTA_ADUANERA, Entero, longitud_:=1),
                                Item(CA_CVE_TIPO_GARANTIA, Entero, longitud_:=1),
-                               Item(CA_NOMBRE_INSTITUCION_EMISORA_CUENTA, Texto, longitud_:=120),
+                               Item(CA_INSTITUCION_EMISORA_GARANTIA, Texto, longitud_:=120),
                                Item(CA_NUMERO_CONTRATO, Entero, longitud_:=17),
                                Item(CA_FOLIO_CONSTANCIA, Entero, longitud_:=17),
                                Item(CA_IMPORTE_TOTAL_CONSTANCIA, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_FECHA_EMISION_CONSTANCIA, Fecha),
                                Item(CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO, Real, cantidadEnteros_:=10, cantidadDecimales_:=4),
                                Item(CA_TITULOS_ASIGNADOS_PEDIMENTO, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
-                               Item(CA_VALOR_UNITARIO_TITULO_PEDIMENTO, Real, cantidadEnteros_:=10, cantidadDecimales_:=4),
-                               Item(CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PEDIMENTO, Entero, longitud_:=1)
+                               Item(CA_VALOR_UNITARIO_TITULO_PEDIMENTO, Real, cantidadEnteros_:=10, cantidadDecimales_:=4)
                          }
 
                         ' Descargos
@@ -599,7 +600,7 @@ Namespace Syn.Documento
                                Item(CA_FECHA_PEDIMENTO_ORIGINAL, Fecha),
                                Item(CA_CVE_PEDIMENTO_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=4),
-                               Item(CA_ANIO_VALIDACION_2_ORIGINAL, Texto, longitud_:=2),
+                               Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_PATENTE_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL, Texto, longitud_:=3),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL_2, Texto, longitud_:=2),
@@ -731,8 +732,7 @@ Namespace Syn.Documento
                                Item(CA_FOLIO_CONSTANCIA_PARTIDA, Texto, longitud_:=17),
                                Item(CA_MONTO_TOTAL_CONSTANCIA_PARTIDA, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_PRECIO_ESTIMADO_PARTIDA, Real, cantidadEnteros_:=10, cantidadDecimales_:=4),
-                               Item(CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PARTIDA, Real, cantidadEnteros_:=10, cantidadDecimales_:=4),
-                               Item(CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PARTIDA, Entero, longitud_:=1)
+                               Item(CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PARTIDA, Real, cantidadEnteros_:=10, cantidadDecimales_:=4)
                          }
 
                         ' Tasas y contribuciones a nivel partida

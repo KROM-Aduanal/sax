@@ -89,6 +89,10 @@
       <HintPath>..\..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoFecha64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.CampoGenerico64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoGenerico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.Componentes.CampoReal64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoReal64.0.0.0.0.dll</HintPath>
       <Private>False</Private>

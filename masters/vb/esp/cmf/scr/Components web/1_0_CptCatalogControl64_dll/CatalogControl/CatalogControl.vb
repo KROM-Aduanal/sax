@@ -48,12 +48,14 @@ Public Class CatalogControl
 
     Private Shared ReadOnly EventClick As New Object()
 
+    Public Event RowChanged As EventHandler
+
     Private Property Headers As List(Of String) = New List(Of String)
 
     <PersistenceMode(PersistenceMode.InnerProperty)>
     Public Property Columns As List(Of CompositeControl) = New List(Of CompositeControl)
 
-    Private Property DataRows As List(Of Dictionary(Of String, Object)) = New List(Of Dictionary(Of String, Object))
+    Private Property DataRows As List(Of Object) = New List(Of Object)
 
     Public Property UserInteraction As Boolean
 
@@ -174,7 +176,6 @@ Public Class CatalogControl
 
     End Property
 
-
     Public Property CanDelete As Boolean
 
         Get
@@ -214,9 +215,22 @@ Public Class CatalogControl
             EnsureChildControls()
 
             Try
+
                 Dim dataSource_ = New JavaScriptSerializer().Deserialize(Of Dictionary(Of Object, Object))(_textJsondata.Text)
 
                 If dataSource_ IsNot Nothing Then
+
+                    _lastrowinteraction = Convert.ToInt32(dataSource_.Item("LastRowInteraction"))
+
+                    If _lastrowinteraction >= 0 Then
+
+                        OnRowChanged(dataSource_.Item("Items")(_lastrowinteraction))
+
+                        dataSource_.Item("LastRowInteraction") = -1
+
+                        _textJsondata.Text = New JavaScriptSerializer().Serialize(dataSource_)
+
+                    End If
 
                     Return dataSource_.Item("Items")
 
@@ -240,6 +254,8 @@ Public Class CatalogControl
 
                 If value.GetType = GetType(Dictionary(Of String, Object)) Then
 
+                    value.Item("LastRowInteraction") = -1
+
                     _textJsondata.Text = New JavaScriptSerializer().Serialize(value)
 
                 Else
@@ -251,6 +267,8 @@ Public Class CatalogControl
                     dataSource_.Add("DropItems", Nothing)
 
                     dataSource_.Add("SelectedItem", Nothing)
+
+                    dataSource_.Add("LastRowInteraction", -1)
 
                     _textJsondata.Text = New JavaScriptSerializer().Serialize(dataSource_)
 
@@ -267,6 +285,8 @@ Public Class CatalogControl
     End Property
 
     Private Property _interaction As String
+
+    Private Property _lastrowinteraction As Integer
 
 #End Region
 
@@ -287,6 +307,12 @@ Public Class CatalogControl
 #End Region
 
 #Region "Eventos"
+
+    Public Overridable Sub OnRowChanged(ByRef row_ As Object)
+
+        RaiseEvent RowChanged(row_, EventArgs.Empty)
+
+    End Sub
 
     Public Custom Event Click As EventHandler
 
@@ -436,7 +462,7 @@ Public Class CatalogControl
 
     Public Sub ClearRows()
 
-        DataRows = New List(Of Dictionary(Of String, Object))
+        DataRows = New List(Of Object)
 
     End Sub
 
@@ -465,8 +491,6 @@ Public Class CatalogControl
         _cloneButton.Attributes.Add("class", "__clone" & _interaction)
 
         _deleteButton.Attributes.Add("class", "__delete" & _interaction)
-
-        '_findBar.Attributes.Add("class", "__find" & interaction)
 
     End Sub
 
@@ -607,7 +631,7 @@ Public Class CatalogControl
 
         If _Columns.Count Then
 
-            For Each column_ As WebControl In _Columns
+            For Each column_ As Object In _Columns
 
                 control_.Controls.Add(New LiteralControl("       <td id=" & column_.ID & ">"))
 
@@ -653,9 +677,19 @@ Public Class CatalogControl
 
                         If Convert.ToInt32(c) = rowIndex_ Then
 
-                            Dim b = selectedItem_.Item("Drop")
+                            Dim b = Convert.ToBoolean(selectedItem_.Item("Drop"))
 
-                            Return Convert.ToBoolean(b)
+                            If b = False Then
+
+                                dataSource_.Item("LastRowInteraction") = -1
+
+                                dataSource_.Item("SelectedItem") = Nothing
+
+                                _textJsondata.Text = New JavaScriptSerializer().Serialize(dataSource_)
+
+                            End If
+
+                            Return b
 
                         End If
 
@@ -732,7 +766,7 @@ Public Class CatalogControl
 
                                     .Enabled = column_.Enabled 'Enabled
 
-                                    .ID = column_.ID
+                                    .ID = column_.ID '& rowIndex
 
                                     .Label = column_.Label
 
@@ -1046,32 +1080,26 @@ Public Class CatalogControl
 
             If UserInteraction = True Then
 
-                'Dim interaction_ = IIf(Enabled = False, " interaction-disabled", Nothing)
-
                 If CanAdd Then
 
-                    '.Controls.Add(New LiteralControl("	<a href='' class='__add" & interaction_ & "'></a>"))
                     .Controls.Add(_addButton)
 
                 End If
 
                 If CanClone Then
 
-                    '.Controls.Add(New LiteralControl("	<a href='' class='__clone" & interaction_ & "'></a>"))
                     .Controls.Add(_cloneButton)
 
                 End If
 
                 If CanDelete Then
 
-                    '.Controls.Add(New LiteralControl("    <a href='' class='__delete" & interaction_ & "'></a>"))
                     .Controls.Add(_deleteButton)
 
                 End If
 
             End If
 
-            '.Controls.Add(New LiteralControl("    <input type='text' class='__find' placeholder='Buscar'/>"))
             .Controls.Add(_findBar)
 
             .Controls.Add(New LiteralControl(" </div>"))
@@ -1138,19 +1166,43 @@ Public Class CatalogRow
 
     Public Sub SetColumn(ByRef control_ As InputControl, value_ As String)
 
-        Properties.Add(control_.ID, value_)
+        If Properties.ContainsKey(control_.ID) Then
+
+            Properties(control_.ID) = value_
+
+        Else
+
+            Properties.Add(control_.ID, value_)
+
+        End If
 
     End Sub
 
     Public Sub SetColumn(ByRef control_ As SelectControl, value_ As SelectOption)
 
-        Properties.Add(control_.ID, value_)
+        If Properties.ContainsKey(control_.ID) Then
+
+            Properties(control_.ID) = value_
+
+        Else
+
+            Properties.Add(control_.ID, value_)
+
+        End If
 
     End Sub
 
     Public Sub SetColumn(ByRef control_ As SwitchControl, value_ As Boolean)
 
-        Properties.Add(control_.ID, value_)
+        If Properties.ContainsKey(control_.ID) Then
+
+            Properties(control_.ID) = value_
+
+        Else
+
+            Properties.Add(control_.ID, value_)
+
+        End If
 
     End Sub
 

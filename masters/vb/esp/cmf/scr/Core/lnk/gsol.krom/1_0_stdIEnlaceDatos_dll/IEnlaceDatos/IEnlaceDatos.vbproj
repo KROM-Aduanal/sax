@@ -93,6 +93,10 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.OperacionesNodosNoSQL64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

@@ -123,9 +123,8 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Documento.Componentes.NodoGenerico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll</HintPath>
+    <Reference Include="Syn.Documento.Componentes.NodoGenerico64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Componentes.NodoPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

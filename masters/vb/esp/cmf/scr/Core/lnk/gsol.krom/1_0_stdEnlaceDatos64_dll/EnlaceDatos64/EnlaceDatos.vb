@@ -12,6 +12,8 @@ Imports System.Threading.Tasks
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions.TagWatcher
+Imports Rec.Globals.Utils
+Imports Syn.Utils
 
 Namespace gsol.krom
     Public Class EnlaceDatos
@@ -408,6 +410,52 @@ Namespace gsol.krom
             Return _tagWatcher
 
         End Function
+
+
+        Public Sub PreparaMetaDatos(ByRef documentoOriginal_ As DocumentoElectronico)
+
+            Dim operacionNodoNoSQL_ = New OperacionesNodosNoSQL(_espacioTrabajo)
+
+            Dim listaCampos_ As New List(Of CampoGenerico)
+
+            For Each parDatos_ As KeyValuePair(Of String, List(Of Nodo)) In documentoOriginal_.EstructuraDocumento.Parts
+
+                For Each parts_ As Nodo In parDatos_.Value
+
+                    Dim listaCamposHijo_ As New List(Of CampoGenerico)
+
+                    If Not IsNothing(parts_.Nodos) Then
+
+                        listaCamposHijo_ = operacionNodoNoSQL_.PreparaMetaDatos(parts_.Nodos)
+
+                        If Not IsNothing(listaCamposHijo_) Then
+
+                            If listaCamposHijo_.Count > 0 Then
+
+                                For Each campo_ As CampoGenerico In listaCamposHijo_
+
+                                    listaCampos_.Add(campo_)
+
+                                Next
+
+                            End If
+
+                        End If
+
+                    End If
+
+                Next
+
+            Next
+
+            If listaCampos_.Count > 0 Then
+
+                documentoOriginal_.Metadatos = listaCampos_
+
+            End If
+
+        End Sub
+
         Public Async Function AgregarDatosDocumento(ByVal objetoDatos_ As DocumentoElectronico,
                                                     Optional ByVal espacioTrabajo_ As IEspacioTrabajo = Nothing,
                                                     Optional ByVal session_ As IClientSessionHandle = Nothing) As Threading.Tasks.Task(Of TagWatcher) _
@@ -437,6 +485,9 @@ Namespace gsol.krom
                 _dimension = IEnlaceDatos.TiposDimension.SinDefinir
 
                 If Not _espacioTrabajo Is Nothing Then
+
+                    'Asignar metadatos
+                    PreparaMetaDatos(objetoDatos_)
 
                     _tagWatcher = Await .ProduceTransaccionDocumento(objetoDatos_,
                                                       _modalidadConsulta,
@@ -509,6 +560,74 @@ Namespace gsol.krom
 
         End Function
 
+        Public Function NotificarSubscriptores(ByVal recurso_ As String,
+                                               ByVal iddocumento_ As ObjectId,
+                                               ByVal documentoelectronico_ As DocumentoElectronico,
+                                               Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.NotificarSubscriptores
+
+            Dim tagwacher_ As New TagWatcher
+
+            Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
+
+                With controladorSubscripciones_
+
+                    If .LeerSuscriptores(recurso_, iddocumento_).Count Then
+
+                        tagwacher_ = .DifusionDatos(documentoelectronico_, session_)
+
+                    Else
+
+                        tagwacher_ = New TagWatcher(1)
+
+                    End If
+
+                End With
+
+            End Using
+
+            Return tagwacher_
+
+        End Function
+
+        Public Function EliminarSuscripciones(ByVal iddocumento_ As ObjectId,
+                                              ByVal subscriptionsgroup_ As List(Of subscriptionsgroup),
+                                              Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.EliminarSuscripciones
+
+            For Each subscriptionsgroup As subscriptionsgroup In subscriptionsgroup_
+
+                Using controladorSubscripciones_ As ControladorSubscripciones = New ControladorSubscripciones
+
+                    With controladorSubscripciones_
+
+                        If Not .EliminarSuscripciones(subscriptionsgroup.toresource, iddocumento_, session_).Status = TypeStatus.Ok Then
+
+                            Return New TagWatcher(0)
+
+                        End If
+
+                    End With
+
+                End Using
+
+            Next
+
+            Return New TagWatcher(1)
+
+        End Function
+
+        Public Function FirmarDocumento(ByVal recurso_ As String,
+                                        ByVal iddocumento_ As ObjectId,
+                                        ByVal claveusuario_ As String,
+                                        Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.FirmarDocumento
+
+            Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
+
+                Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
+
+            End Using
+
+        End Function
+
         Public Function AnalizaDiferencias(ByVal documentoNuevo_ As DocumentoElectronico,
                                            ByVal documentoOriginal_ As DocumentoElectronico) As List(Of DocumentoElectronicoObjetoActualizador) Implements IEnlaceDatos.AnalizaDiferencias
 
@@ -553,7 +672,7 @@ Namespace gsol.krom
                     Dim listaActualizacionesHijo_ As New List(Of DocumentoElectronicoObjetoActualizador)
 
                     If Not IsNothing(parts_.Nodos) Then
-                        Dim a = parts_.Nodos.GetType.ToString
+
                         listaActualizacionesHijo_ = operacionNodoNoSQL_.AnalizaDiferenciasNodos(nodosNuevo_:=parts_.Nodos,
                                                                                                 nodosOriginal_:=documentoOriginal_.EstructuraDocumento.Parts(parDatos_.Key.ToString)(contadorNodos_).Nodos)
 
@@ -584,6 +703,25 @@ Namespace gsol.krom
                 Next
 
             Next
+
+            'test
+            'movi acuse de valor un par de metodos, revisar con sergio porque chayo me paso su controlador de factura
+            If Not documentoOriginal_.DocumentosAsociados Is Nothing Then
+
+                If documentoOriginal_.DocumentosAsociados.Equals(documentoNuevo_.DocumentosAsociados) = False Then
+
+                    listaActualizaciones_.Add(New DocumentoElectronicoObjetoActualizador With {
+                        .RutaActualizacion = "Borrador.Folder.DocumentosAsociados",
+                        .Valor = documentoNuevo_.DocumentosAsociados,
+                        .TipoDato = Componentes.Campo.TiposDato.Documento,
+                        .PropiedadActualizar = Nothing,
+                        .TipoNodo = TiposNodo.SinDefinir
+                    })
+
+                End If
+
+            End If
+
 
             Return listaActualizaciones_
 
@@ -686,18 +824,27 @@ Namespace gsol.krom
 
                             Case Componentes.Campo.TiposDato.Documento
 
-                                Dim aux_ As PartidaGenerica = Nothing
+                                'Dim aux_ As Object = CType(actualizacion_.Valor, Object)
 
                                 Select Case actualizacion_.TipoNodo
+
                                     Case TiposNodo.Partida
 
-                                        aux_ = CType(actualizacion_.Valor, PartidaGenerica)
+                                        Dim aux_ As PartidaGenerica = CType(actualizacion_.Valor, PartidaGenerica)
+
+                                        .Add(Builders(Of T).Update.Set(Of PartidaGenerica)(actualizacion_.RutaActualizacion, aux_))
 
                                     Case TiposNodo.Seccion
 
+                                    Case TiposNodo.SinDefinir
+
+                                        Dim aux_ As List(Of DocumentoAsociado) = CType(actualizacion_.Valor, List(Of DocumentoAsociado))
+
+                                        .Add(Builders(Of T).Update.Set(Of List(Of DocumentoAsociado))(actualizacion_.RutaActualizacion, aux_))
+
                                 End Select
 
-                                .Add(Builders(Of T).Update.Set(Of PartidaGenerica)(actualizacion_.RutaActualizacion, aux_))
+                                '.Add(Builders(Of T).Update.Set(Of Object)(actualizacion_.RutaActualizacion, aux_))
 
                             Case Componentes.Campo.TiposDato.SinDefinir
 
