@@ -7,3 +7,4 @@ C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_st
 C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdRepresentacionPedimento64_dll\RepresentacionPedimento64\obj\Debug\RepresentacionPedimento64.vbproj.CoreCompileInputs.cache
 C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdRepresentacionPedimento64_dll\RepresentacionPedimento64\obj\Debug\Syn.CustomBrokers.Controllers.reportes.RepresentacionPedimento64.0.0.0.0.dll
 C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdRepresentacionPedimento64_dll\RepresentacionPedimento64\obj\Debug\Syn.CustomBrokers.Controllers.reportes.RepresentacionPedimento64.0.0.0.0.pdb
+C:\Sax\projects\synapsis\dev\controllers\syn.custombrokers.reportes\iText\1_0_stdRepresentacionPedimento64_dll\RepresentacionPedimento64\obj\Debug\RepresentacionPedimento64.vbproj.CopyComplete

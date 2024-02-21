@@ -124,6 +124,10 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\libs\bin\controllers\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.dll</HintPath>
+    </Reference>
     <Reference Include="Rpt.Global.IItextHandler64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\rpt\global\Rpt.Global.IItextHandler64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
