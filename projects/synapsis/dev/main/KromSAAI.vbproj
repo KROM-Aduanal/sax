@@ -1568,6 +1568,7 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\Ges022-001-Clientes.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\respaldopbm.txt" />
     <Content Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
@@ -1952,6 +1953,13 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx.vb">
       <DependentUpon>Ges003-001-Consultas.Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.designer.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">
