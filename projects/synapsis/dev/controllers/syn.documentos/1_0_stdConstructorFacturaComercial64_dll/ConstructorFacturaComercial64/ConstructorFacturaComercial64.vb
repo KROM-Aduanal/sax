@@ -1,5 +1,6 @@
 ﻿
 Imports gsol.krom
+Imports MongoDB.Bson
 Imports Syn.Documento
 Imports Syn.Documento.Componentes
 Imports Syn.Documento.Componentes.Campo.TiposDato
@@ -26,6 +27,7 @@ Namespace Syn.Documento
                         True)
 
         End Sub
+
         Sub New(ByVal construir_ As Boolean,
                 Optional ByVal documentoElectronico_ As DocumentoElectronico = Nothing)
 
@@ -34,16 +36,37 @@ Namespace Syn.Documento
                        construir_)
 
         End Sub
+
+        'Public Sub New(ByVal folioDocumento_ As String,
+        '               ByVal referencia_ As String,
+        '               ByVal idCliente_ As Int32,
+        '               ByVal nombreCliente_ As String
+        '               )
+
+        '    Inicializa(folioDocumento_,
+        '                 referencia_,
+        '                 idCliente_,
+        '                 nombreCliente_,
+        '                 TiposDocumentoElectronico.FacturaComercial)
+
+        'End Sub
+
         Public Sub New(ByVal folioDocumento_ As String,
                        ByVal referencia_ As String,
-                       ByVal idCliente_ As Int32,
-                       ByVal nombreCliente_ As String
-                       )
+                       ByVal tipoPropietario_ As String,
+                       ByVal nombrePropietario_ As String,
+                       ByVal idPropietario_ As Int32,
+                       ByVal objectIdPropietario_ As ObjectId,
+                       ByVal metadatos_ As List(Of CampoGenerico)
+                      )
 
             Inicializa(folioDocumento_,
                          referencia_,
-                         idCliente_,
-                         nombreCliente_,
+                         tipoPropietario_,
+                         nombrePropietario_,
+                         idPropietario_,
+                         objectIdPropietario_,
+                         metadatos_,
                          TiposDocumentoElectronico.FacturaComercial)
 
         End Sub
@@ -98,9 +121,9 @@ Namespace Syn.Documento
                             conCampos_:=True)
 
 
-            ConstruyeSeccion(seccionEnum_:=SeccionesFacturaComercial.SFAC6,
-                            tipoBloque_:=TiposBloque.Cuerpo,
-                            conCampos_:=True)
+            'ConstruyeSeccion(seccionEnum_:=SeccionesFacturaComercial.SFAC6,
+            '                tipoBloque_:=TiposBloque.Cuerpo,
+            '                conCampos_:=True)
 
             'ConstruyeSeccion(seccionEnum_:=SeccionesFacturaComercial.SFAC7,
             '                tipoBloque_:=TiposBloque.Cuerpo,
@@ -142,6 +165,8 @@ Namespace Syn.Documento
                                              Item(CamposAcuseValor.CA_NUMERO_ACUSEVALOR, Texto, longitud_:=40),
                                              Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha),
                                              Item(CamposAcuseValor.CA_FECHA_ACUSEVALOR, Fecha),
+                                             Item(CamposClientes.CP_OBJECTID_CLIENTE, IdObject),
+                                             Item(CamposClientes.CP_CVE_CLIENTE, Entero),
                                              Item(CamposClientes.CA_RAZON_SOCIAL, Texto, longitud_:=120),
                                              Item(CamposClientes.CA_TAX_ID, Texto, longitud_:=11),
                                              Item(CamposClientes.CA_RFC_CLIENTE, Texto, longitud_:=13),
@@ -162,7 +187,7 @@ Namespace Syn.Documento
                                              Item(CamposDomicilio.CA_PAIS, Texto, longitud_:=80),
                                              Item(CamposFacturaComercial.CA_CVE_PAIS_FACTURACION, Texto, longitud_:=3),
                                              Item(CamposFacturaComercial.CA_PAIS_FACTURACION, Texto, longitud_:=80),
-                                             Item(CamposFacturaComercial.CP_TIPO_OPERACION, Texto, longitud_:=11),
+                                             Item(CamposFacturaComercial.CP_TIPO_OPERACION, Texto), 'Item(CamposFacturaComercial.CP_TIPO_OPERACION, Texto, longitud_:=11),
                                              Item(CamposFacturaComercial.CA_CVE_INCOTERM, Texto, longitud_:=3),
                                              Item(CamposFacturaComercial.CP_VALOR_FACTURA, Real, cantidadEnteros_:=14, cantidadDecimales_:=2),
                                              Item(CamposFacturaComercial.CA_MONEDA_FACTURACION, Texto, longitud_:=3),
@@ -177,6 +202,8 @@ Namespace Syn.Documento
                 ' Datos del proveedor
                 Case SeccionesFacturaComercial.SFAC2
                     Return New List(Of Nodo) From {
+                                             Item(CamposProveedorOperativo.CP_ID_PROVEEDOR, IdObject),
+                                             Item(CamposProveedorOperativo.CP_CVE_PROVEEDOR, Texto),
                                              Item(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, Texto, longitud_:=120),
                                              Item(CamposProveedorOperativo.CA_TAX_ID_PROVEEDOR, Texto, longitud_:=11),
                                              Item(CamposProveedorOperativo.CA_RFC_PROVEEDOR, Texto, longitud_:=13),
@@ -198,12 +225,15 @@ Namespace Syn.Documento
                                              Item(CamposFacturaComercial.CP_CVE_METODO_VALORACION, Entero),
                                              Item(CamposFacturaComercial.CA_APLICA_CERTIFICADO, Entero),
                                              Item(CamposFacturaComercial.CP_NOMBRE_CERTIFICADOR, Texto, longitud_:=120),
-                                             Item(CamposFacturaComercial.CP_ORDEN_COMPRA, Texto, longitud_:=60)
+                                             Item(CamposFacturaComercial.CP_ORDEN_COMPRA, Texto, longitud_:=60),
+                                             Item(CamposFacturaComercial.CP_REFERENCIA_CLIENTE, Texto, longitud_:=120)
                     }
 
                 ' Datos del destinatario
                 Case SeccionesFacturaComercial.SFAC3
                     Return New List(Of Nodo) From {
+                                             Item(CamposDestinatario.CP_ID_DESTINATARIO, IdObject),
+                                             Item(CamposDestinatario.CP_CVE_DESTINATARIO, Texto),
                                              Item(CamposDestinatario.CA_RAZON_SOCIAL, Texto, longitud_:=120),
                                              Item(CamposDestinatario.CA_TAX_ID, Texto, longitud_:=11),
                                              Item(CamposDestinatario.CA_RFC_DESTINATARIO, Texto, longitud_:=13),
@@ -225,6 +255,7 @@ Namespace Syn.Documento
                 ' Partidas
                 Case SeccionesFacturaComercial.SFAC4
                     Return New List(Of Nodo) From {
+                                             Item(CamposFacturaComercial.CP_OBJECTID_PRODUCTOS, IdObject),
                                              Item(CamposFacturaComercial.CP_NUMERO_PARTIDA, Entero),
                                              Item(CamposFacturaComercial.CA_NUMERO_PARTE_PARTIDA, Texto, longitud_:=20),
                                              Item(CamposFacturaComercial.CA_VALOR_FACTURA_PARTIDA, Real, cantidadEnteros_:=18, cantidadDecimales_:=5),
