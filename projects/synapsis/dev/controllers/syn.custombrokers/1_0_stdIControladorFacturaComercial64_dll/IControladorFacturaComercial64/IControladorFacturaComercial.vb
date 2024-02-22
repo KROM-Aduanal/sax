@@ -23,6 +23,17 @@ Public Interface IControladorFacturaComercial : Inherits IDisposable
         Externo = 1
 
     End Enum
+
+    Enum TipoOperaciones
+
+        SinDefinir = 0
+
+        Importacion = 1
+
+        Exportacion = 2
+
+    End Enum
+
 #End Region
 
 #Region "Propiedades"
@@ -43,6 +54,9 @@ Public Interface IControladorFacturaComercial : Inherits IDisposable
     Property DisponibilidadRecurso As Disponibilidades
 
     ReadOnly Property FactorConfiabilidadIA As Double
+
+    Property TipoOperacion As TipoOperaciones
+
 #End Region
 
 #Region "Métodos"
@@ -145,6 +159,10 @@ Public Interface IControladorFacturaComercial : Inherits IDisposable
     Function ConsultaValorDolaresFactura(ByVal folioFactura_ As String,
                                          fechaMoneda_ As Date) _
                                          As TagWatcher
+
+    Function ListaFacturasProveedor(ByVal idProveedor_ As ObjectId,
+                                    ByVal idCliente_ As ObjectId) _
+                                    As TagWatcher
 
     Function ConsultaValorDolaresFactura(ByVal foliosFacturas_ As List(Of String),
                                          fechaMoneda_ As Date) _
