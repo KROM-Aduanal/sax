@@ -113,8 +113,9 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\MongoDB.Libmongocrypt.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0">
-      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\rec\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
+    <Reference Include="Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Rec.Globals.Controllers.IControladorTIGIE64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
@@ -176,6 +177,10 @@
     </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodos64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.OperacionesNodos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Utils.Organismo64.2.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.Organismo64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

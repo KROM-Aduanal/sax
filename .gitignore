@@ -6,7 +6,6 @@
 *.lock
 *.user
 _ReSharper.*
-bin
 obj
 packages
 Debug
@@ -23,8 +22,6 @@ synapsis.settings*.json
 
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/fileList.bin
-*.cache
 masters/vb/esp/cmf/scr/Components web/1_0_CptFindbarControl64_dll/FindbarControl/obj/Debug/CptFindbarControl64.vbproj.AssemblyReference.cache
 *.cache
 *.pdb
-projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
