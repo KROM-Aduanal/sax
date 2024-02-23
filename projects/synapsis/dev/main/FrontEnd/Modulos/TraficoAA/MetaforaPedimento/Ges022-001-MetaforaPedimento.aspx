@@ -425,11 +425,7 @@
 
                     <ListControls>
 
-<<<<<<< HEAD
-                        <GWC:CatalogControl ID="ccCuadroLiquidacion" runat="server" KeyField="Catalogo_liquidacion" CssClass="w-100 bold" CanClone="false" CanDelete="false">
-=======
                         <GWC:CatalogControl ID="ccCuadroLiquidacion" runat="server" KeyField="Catalogo_liquidacion" CssClass="w-100 bold" UserInteraction="false">
->>>>>>> develop
 
                             <Columns>
 
@@ -465,11 +461,8 @@
 
                 </GWC:FieldsetControl>
 
-<<<<<<< HEAD
-                <GWC:FieldsetControl runat="server" ID="fscCetificacion" Detail="Certificación" Label="Certificación" Enabled="false">
-=======
+
                 <GWC:FieldsetControl runat="server" ID="fscCetificacion" Detail="Certificación" Label="Certificación" Visible="false">
->>>>>>> develop
 
                     <ListControls>
 
@@ -546,11 +539,9 @@
 
                                     <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 p-0">
 
-<<<<<<< HEAD
-                                        <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial"/>
-=======
+
                                         <GWC:FindboxControl runat="server" CssClass="col-md-12 mb-5" ID="fbxProveedor" Label="Nombre, denominación, razon social" KeyField="_id" DisplayField="razonsocial" OnTextChanged="fbxProveedor_TextChanged"/>
->>>>>>> develop
+
 
                                         <GWC:InputControl runat="server" CssClass="col-md-12 mt-4 mb-5" Type="Text" ID="icIdFiscalProveedor" Label="ID Fiscal" Enabled="false" />
 
@@ -569,11 +560,8 @@
 
                                             <Columns>
 
-<<<<<<< HEAD
-                                                <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" LocalSearch="false" OnTextChanged="scFacturaProveedor_TextChanged"/>
-=======
+
                                                 <GWC:SelectControl runat="server" ID="scFacturaProveedor" Label="Factura" OnClick="scFacturaProveedor_Click"/>
->>>>>>> develop
 
                                                 <GWC:InputControl runat="server" Type="Text" ID="icFechaFacturaProveedor" Label="Fecha" Format="Calendar" Enabled="false"/>
 

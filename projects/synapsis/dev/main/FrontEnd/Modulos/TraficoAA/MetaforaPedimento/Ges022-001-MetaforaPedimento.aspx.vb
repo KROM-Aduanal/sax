@@ -1198,11 +1198,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-<<<<<<< HEAD
-#End Region
-
-End Class
-=======
 
     'SISTEMA SIN LUGAR APROPIADO DESIGNADO
 
@@ -2786,4 +2781,3 @@ Class ReglasModalidad
     Property Editable As Boolean = True
 
 End Class
->>>>>>> develop
