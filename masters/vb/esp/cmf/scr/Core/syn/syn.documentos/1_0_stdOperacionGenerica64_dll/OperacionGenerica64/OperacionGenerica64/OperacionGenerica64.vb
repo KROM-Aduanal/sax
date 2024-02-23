@@ -71,6 +71,7 @@ Namespace Syn.Documento
 
         <BsonElement("abierto")>
         Public Property abierto As Boolean
+
         <BsonIgnoreIfNull>
         Public Property FirmaElectronica As String
 
