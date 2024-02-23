@@ -24,7 +24,9 @@
     <OutputPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +36,9 @@
     <OutputPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -79,6 +83,10 @@
     <Reference Include="MongoDB.Libmongocrypt, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Foreign\MongoDB.Libmongocrypt.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Domicilio64.2.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\global\lib\rec.globals\Rec.Globals.Domicilio64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sax.SaxStatements64.0.0.0.0">
@@ -237,7 +245,6 @@
     <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -357,4 +364,8 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)Syn.Documento.DocumentoElectronico64.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
