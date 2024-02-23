@@ -958,50 +958,11 @@ Public Class Ges022_001_MetaforaPedimento
 
     Protected Sub swcTipoOperacion_CheckedChanged(sender As Object, e As EventArgs)
 
-<<<<<<< HEAD
-        If swcTipoOperacion.Checked = True Then
-            'impo
-            icFechaEntrada.Visible = True
-            icFechaPresentacion.Visible = False
-            scPaisOrigen.Visible = True
-            scPaisDestino.Visible = False
-            scPaisVendedor.Visible = True
-            scPaisComprador.Visible = False
-            icPartidaValorAduana.Visible = True
-            icPartidaValorUSd.Visible = False
-            lbValorAduana.Visible = True
-            lbValorUsd.Visible = False
-            icValorAduana.Visible = True
-            pcIncrementables.Visible = True
-            pcDecrementables.Visible = True
-            fscDestinatarios.Visible = False
-        Else
-            'expo
-            icFechaEntrada.Visible = False
-            icFechaPresentacion.Visible = True
-            scPaisOrigen.Visible = False
-            scPaisDestino.Visible = True
-            scPaisVendedor.Visible = False
-            scPaisComprador.Visible = True
-            icPartidaValorAduana.Visible = False
-            icPartidaValorUSd.Visible = True
-            lbValorAduana.Visible = False
-            lbValorUsd.Visible = True
-            icValorAduana.Visible = False
-            pcIncrementables.Visible = False
-            pcDecrementables.Visible = False
-            fscDestinatarios.Visible = True
-        End If
-
-    End Sub
-
-=======
         AplicarReglasCampoPedimento()
 
     End Sub
 
 
->>>>>>> develop
 
     Protected Sub InicializaPrefijo(ByVal tipoReferencia_ As SelectControl, ByVal prefijo_ As SelectControl)
 
@@ -1148,21 +1109,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-<<<<<<< HEAD
-    Protected Sub scFacturaProveedor_TextChanged(sender As Object, e As EventArgs)
-
-        scFacturaProveedor.DataSource = New List(Of SelectOption) From {
-            New SelectOption With {.Value = 1, .Text = "9A351011-707E-4114-82B"},
-            New SelectOption With {.Value = 2, .Text = "9A351011-707E-4115-82B"},
-            New SelectOption With {.Value = 3, .Text = "9A351011-707E-4116-82B"}
-        }
-
-    End Sub
-
-    Protected Sub ccFacturas_RowChanged(row_ As Object, e As EventArgs)
-
-        row_.Item(icIncontermProveedor.ID) = "Holis Bolis"
-=======
     Protected Sub ccFacturas_RowChanged(row_ As Object, e As EventArgs)
 
         Dim facturasInfo_ As List(Of Dictionary(Of String, String)) = GetVars("facturasInfo_")
@@ -1176,21 +1122,11 @@ Public Class Ges022_001_MetaforaPedimento
         row_.Item(scFactorMonedaProveedor.ID) = New Dictionary(Of String, String) From {{"Value", factura_.Item("monedaValor")}, {"Text", factura_.Item("monedaValorPresentacion")}}
         row_.Item(icMontoFacturaProveedor.ID) = factura_.Item("valorFactura")
         row_.Item(icMontoFacturaUSDProveedor.ID) = factura_.Item("valorMercancia")
->>>>>>> develop
 
     End Sub
 
     Protected Sub scClavePedimento_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-<<<<<<< HEAD
-        If scClavePedimento.Value = "13" Then
-
-            fscRectificaciones.Visible = True
-
-        Else
-
-            fscRectificaciones.Visible = False
-=======
         AplicarReglasCampoPedimento()
 
     End Sub
@@ -1257,7 +1193,6 @@ Public Class Ges022_001_MetaforaPedimento
                 SetVars("facturasInfo_", facturasInfo_)
 
             End If
->>>>>>> develop
 
         End If
 
