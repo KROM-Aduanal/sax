@@ -864,7 +864,7 @@ Public Class RepresentacionManifestacionValor
         _nivel2.AddCell(New Cell().Add(_tablaLayout).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 2.0F, 0F).SetBorder(NO_BORDER).
                         SetHorizontalAlignment(HorizontalAlignment.LEFT))
 
-        _nivel2.AddCell(New Cell().Add(New Paragraph(NumeroLetras.ToCardinal(valor_)).SetTextAlignment(TextAlignment.LEFT).
+        _nivel2.AddCell(New Cell().Add(New Paragraph().SetTextAlignment(TextAlignment.LEFT).'NumeroLetras.ToCardinal(valor_)).SetTextAlignment(TextAlignment.LEFT).
                         SetFont(_itextHandler.Arial).SetFontSize(7.0F)).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 2.0F, 5.0F).SetBorder(NO_BORDER))
 
         _nivel1.AddCell(New Cell().Add(_nivel2).SetMargins(0F, 0F, 0F, 0F).SetPaddings(0F, 0F, 10.0F, 0F).SetBorder(NO_BORDER))
