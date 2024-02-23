@@ -14,3 +14,4 @@ C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElect
 C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.CoreCompileInputs.cache
 C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll
 C:\saxunion\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\Syn.Documento.DocumentoElectronico64.0.0.0.0.pdb
+C:\Sax\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\obj\Debug\DocumentoElectronico64.vbproj.CopyComplete

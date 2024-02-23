@@ -27,6 +27,7 @@ Imports Rec.Globals.Utils
 Imports Syn.CustomBrokers.Controllers
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 Imports Rec.Globals
+Imports Syn.CustomBrokers.Controllers.reportes
 
 #End Region
 
@@ -742,20 +743,18 @@ Public Class Ges022_001_MetaforaPedimento
 
         If docElectronico_ IsNot Nothing Then
 
-            Using constructorPedimento = New ConstructorPedimentoNormalPDF(TiposDocumentoDigital.PedimentoNormalPDF,
-                                                                        True, docElectronico_)
+            Dim constructorPedimento As New RepresentacionPedimento(docElectronico_)
 
-                Dim pdfstring = "data:Application/pdf;base64, " & constructorPedimento.ImpresionEncabezado(docElectronico_)
+            Dim pdfstring = "data:Application/pdf;base64, " & constructorPedimento.ImprimirPedimentoNormal()
 
-                ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "')", True)
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "')", True)
 
-                'Dim iframe = "<iframe src='" & pdfstring & "' name='" & FolioOperacion_ & ".pdf' frameborder='0' style='border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;position:absolute;' allowfullscreen></iframe>"
+            'Dim iframe = "<iframe src='" & pdfstring & "' name='" & FolioOperacion_ & ".pdf' frameborder='0' style='border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;position:absolute;' allowfullscreen></iframe>"
 
-                'Dim func = "win = window.open() win.document.write(""" & iframe & """) win.document.title=""" & FolioOperacion_ & """"
+            'Dim func = "win = window.open() win.document.write(""" & iframe & """) win.document.title=""" & FolioOperacion_ & """"
 
-                'ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", func, True)
-                ' HttpUtility.UrlEncode(pdfstring)
-            End Using
+            'ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", func, True)
+            ' HttpUtility.UrlEncode(pdfstring)
 
         End If
 
