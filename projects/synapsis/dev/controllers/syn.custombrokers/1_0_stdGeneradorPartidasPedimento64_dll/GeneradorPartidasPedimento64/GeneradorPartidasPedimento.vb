@@ -456,7 +456,7 @@ Public Class GeneradorPartidasPedimento
 
                 Dim tigie_ As New ControladorTIGIE()
 
-                tigie_.GetHsCode(Of ConstructorTIGIE)(listaFraccionesPais_, IControladorTIGIE.TipoOperacion.Importacion, "DEU", DateTime.Now.Date)
+                tigie_.ConsultaFraccionArancelaria(Of ConstructorTIGIE)(listaFraccionesPais_, IControladorTIGIE.TipoOperacion.Importacion, "DEU", DateTime.Now.Date)
 
                 If tigie_.Estado.Status = TagWatcher.TypeStatus.Ok Then
 
