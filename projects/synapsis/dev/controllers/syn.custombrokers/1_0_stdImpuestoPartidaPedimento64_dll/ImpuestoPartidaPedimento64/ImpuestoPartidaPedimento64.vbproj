@@ -46,6 +46,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="gsol.IRecursosSistemas.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll</HintPath>

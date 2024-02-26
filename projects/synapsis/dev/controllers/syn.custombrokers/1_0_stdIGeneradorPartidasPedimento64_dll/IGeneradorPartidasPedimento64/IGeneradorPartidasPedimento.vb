@@ -10,13 +10,14 @@ Public Interface IGeneradorPartidasPedimento
 
         SinDefinir = 0
         FraccionNico = 1
-        UMCPRecioUnitario = 2
+        UMCPrecioUnitarioCalculado = 2
         PaisVentaCompraOrigenDestino = 3
         ContribucionFormaPago = 4
         TasaTipoTasa = 5
         MetodoValoracionVinculacion = 6
         ValorAgregado = 7
-        SinAgrupacion = 8
+        PrecioUnitario = 8
+        SinAgrupacion = 9
 
     End Enum
 

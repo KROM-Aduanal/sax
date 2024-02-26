@@ -177,6 +177,10 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Padron Sectorial")> TIGIE18 = 18
 
             <EnumMember> <Description("Impuestos")> TIGIE19 = 19
+            <EnumMember> <Description("Identificadores")> TIGIE20 = 20
+            <EnumMember> <Description("Preferencias")> TIGIE21 = 21
+            <EnumMember> <Description("ALADIS")> TIGIE22 = 22
+            <EnumMember> <Description("ALADIS paises")> TIGIE23 = 23
 
         End Enum
 
@@ -1002,6 +1006,24 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Tasa")> CA_TASA = 10147
             <EnumMember> <Description("Cuota")> CA_CUOTA = 10148
             <EnumMember> <Description("Empresa")> CA_EMPRESA = 10149
+            <EnumMember> <Description("Clave identificador")> CA_CLAVE_IDENTIFICADOR = 10150
+            <EnumMember> <Description("Identificador")> CA_IDENTIFICADOR = 10151
+            <EnumMember> <Description("Clave unidad de medida")> CA_CLAVE_UNIDAD_MEDIDA = 10152
+            <EnumMember> <Description("ObjectId tratadis")> CA_ID_TRATADO = 10153
+            <EnumMember> <Description("ObjectId pais")> CP_ID = 10154
+            <EnumMember> <Description("Id pais")> CA_ID_PAIS = 10155
+            <EnumMember> <Description("Id nota")> CP_IDNOTA = 10156
+            <EnumMember> <Description("Nota")> CP_NOTA = 10157
+            <EnumMember> <Description("Nombre preferencia")> CP_NOMBRE_PREFERENCIA = 10158
+            <EnumMember> <Description("Tipo tasa")> CA_TIPO_TASA = 10159
+            <EnumMember> <Description("Valor preferencia")> CP_VALOR = 10160
+            <EnumMember> <Description("ObjectId historico")> CP_ID_HISTORICO = 10161
+            <EnumMember> <Description("Unidad de medida nombre corto")> CA_UNIDAD_MEDIDA_CORTO = 10162
+            <EnumMember> <Description("impuesto siglas")> CA_NOMBRE_IMPUESTO_CORTO = 10163
+            <EnumMember> <Description("Unidad de medida nombre corto")> CA_NUMERO_ALADI = 10164
+            <EnumMember> <Description("impuesto siglas")> CA_NOMBRE_ALADI = 10165
+            <EnumMember> <Description("impuesto siglas")> CP_DESCUENTO = 10166
+            <EnumMember> <Description("Nombre corto del país")> CP_NOMBRECORTO_PAIS = 10167
         End Enum
 
         Public Enum CamposManifestacionValor
