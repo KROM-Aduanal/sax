@@ -6,6 +6,7 @@
 *.lock
 *.user
 _ReSharper.*
+bin
 obj
 packages
 Debug
@@ -22,6 +23,35 @@ synapsis.settings*.json
 
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
 /projects/synapsis/dev/main/.vs/KromSAAI/v17/fileList.bin
-masters/vb/esp/cmf/scr/Components web/1_0_CptFindbarControl64_dll/FindbarControl/obj/Debug/CptFindbarControl64.vbproj.AssemblyReference.cache
+*.cache
 *.cache
 *.pdb
+masters/vb/esp/cmf/scr/Core/syn/syn.documentos/1_0_stdDocumentoElectronico64_dll/DocumentoElectronico64/DocumentoElectronico64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+masters/vb/esp/cmf/scr/Core/syn/syn.documentos/1_0_stdDocumentoElectronico64_dll/DocumentoElectronico64/DocumentoElectronico64/obj/Debug/DocumentoElectronico64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorFacturaComercial64_dll/ControladorFacturaComercial64/obj/Debug/ControladorFacturaComercial64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorFacturaComercial64_dll/ControladorFacturaComercial64/obj/Debug/ControladorFacturaComercial64.vbproj.GenerateResource.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorFacturaComercial64_dll/ControladorFacturaComercial64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorFacturaComercial64_dll/ControladorFacturaComercial64/obj/Debug/Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.pdb
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorManifestacionValor64_dll/ControladorManifestacionValor64/obj/Debug/ControladorManifestacionValor64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorManifestacionValor64_dll/ControladorManifestacionValor64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorPDF64_dll/ControladorPDF64/obj/Debug/ControladorPDF64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorPDF64_dll/ControladorPDF64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorTIGIE64_dll/ControladorTIGIE64/obj/Debug/ControladorTIGIE64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdControladorTIGIE64_dll/ControladorTIGIE64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdGeneradorPartidasPedimento64_dll/GeneradorPartidasPedimento64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdGeneradorPartidasPedimento64_dll/GeneradorPartidasPedimento64/obj/Debug/GeneradorPartidasPedimento64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdIControladorFacturaComercial64_dll/IControladorFacturaComercial64/obj/Debug/IControladorFacturaComercial64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdIControladorFacturaComercial64_dll/IControladorFacturaComercial64/obj/Debug/IControladorFacturaComercial64.vbproj.GenerateResource.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdImpuestoPartidaPedimento64_dll/ImpuestoPartidaPedimento64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdImpuestoPartidaPedimento64_dll/ImpuestoPartidaPedimento64/obj/Debug/ImpuestoPartidaPedimento64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValor64_dll/ConstructorManifestacionValor64/obj/Debug/ConstructorManifestacionValor64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorManifestacionValor64_dll/ConstructorManifestacionValor64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoPDF64_dll/ConstructorPedimentoPDF64/obj/Debug/ConstructorPedimentoPDF64.vbproj.AssemblyReference.cache
+projects/synapsis/dev/controllers/syn.documentos/1_0_stdConstructorPedimentoPDF64_dll/ConstructorPedimentoPDF64/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/controllers/syn.custombrokers/1_0_stdIControladorFacturaComercial64_dll/IControladorFacturaComercial64/obj/Debug/Syn.CustomBrokers.Controllers.IControladorFacturaComercial64.0.0.0.0.pdb
+projects/synapsis/dev/main/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+projects/synapsis/dev/main/obj/Debug/KromSAAI.vbproj.AssemblyReference.cache
+projects/synapsis/libs/bin/controllers/Syn.CustomBrokers.Controllers.ControladorFacturaComercial64.0.0.0.0.pdb
+projects/synapsis/libs/bin/controllers/Syn.CustomBrokers.Controllers.IControladorFacturaComercial64.0.0.0.0.pdb
+projects/synapsis/dev/main/.vs/KromSAAI/v17/.suo
+masters/vb/esp/cmf/scr/Core/cmf/sax/1_0_stdSaxStatements64_dll/SaxStatements64/obj/Debug/Sax.SaxStatements64.0.0.0.0.pdb

@@ -64,6 +64,8 @@ Public Class ItemPartida
 
     Property secuenciaproducto As Integer
 
+    Property valoragregado As Integer
+
     Property archivado As Boolean
 
     Property estado As Integer
@@ -110,11 +112,13 @@ Public Class ItemPartida
                         .valormercancia = itemFactura_.ValorMercancia,
                         .codigoproducto = itemFactura_.CodigoProducto,
                         .secuenciaproducto = itemFactura_.SecuenciaProducto,
+                        .valoragregado = itemFactura_.ValorAgregado,
                         .archivado = False,
                         .estado = 1
             }
 
             '_itempartida.SecuenciaProducto = 'Debe venir de FC pero no se tiene implementado
+            '_itempartida.ValorAgregado = 'Debe venir de FC pero no se tiene implementado
 
             tagwatcher_.ObjectReturned = itemPartida_
 
