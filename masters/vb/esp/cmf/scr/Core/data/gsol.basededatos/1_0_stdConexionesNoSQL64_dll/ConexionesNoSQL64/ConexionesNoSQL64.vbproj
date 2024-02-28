@@ -59,9 +59,8 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Foreign\packages\DnsClient.1.4.0\lib\net45\DnsClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\data\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll</HintPath>
+    <Reference Include="Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\cmf\Gsol.BaseDatos.Operaciones.EnvironmentViews64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Gsol.BaseDatos.Operaciones.IOperacionesCatalogo0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

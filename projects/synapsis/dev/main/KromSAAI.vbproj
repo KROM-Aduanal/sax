@@ -50,6 +50,36 @@
     <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.interpreters\Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Interpreters.MathematicalInterpreterNCalc64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.interpreters\Cube.Interpreters.MathematicalInterpreterNCalc64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.ValidatorReport64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube\Cube.ValidatorReport64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.CubeController64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.CubeController64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.ICubeController64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.ICubeController64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.Room64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\services\libs\bin\cube.validators\Cube.Validators.Room64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DnsClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\DnsClient.dll</HintPath>
@@ -841,8 +871,9 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
@@ -1583,6 +1614,7 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\Ges022-001-Clientes.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\respaldopbm.txt" />
     <Content Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
@@ -1967,6 +1999,13 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx.vb">
       <DependentUpon>Ges003-001-Consultas.Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.designer.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.vb">
+      <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">

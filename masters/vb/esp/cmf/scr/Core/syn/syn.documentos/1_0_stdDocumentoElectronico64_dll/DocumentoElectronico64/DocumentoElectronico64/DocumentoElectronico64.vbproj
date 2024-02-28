@@ -181,6 +181,10 @@
       <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Componentes.SeccionGenerica64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.ConstructorAcuseValor64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorAcuseValor64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.ConstructorCliente64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\projects\synapsis\libs\bin\controllers\Syn.Documento.ConstructorCliente64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -245,6 +249,7 @@
     <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
