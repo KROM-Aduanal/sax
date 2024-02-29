@@ -78,6 +78,8 @@ Public Class Ges022_001_MetaforaPedimento
 
         AplicarReglasCampoPedimento()
 
+        test.Visible = False
+
     End Sub
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
@@ -435,7 +437,7 @@ Public Class Ges022_001_MetaforaPedimento
 
         PreparaTarjetero(PillboxControl.ToolbarModality.Simple, pbcPartidas)
 
-
+        test.Visible = True
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -1205,6 +1207,24 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
+    Private Function ValidarIncrementables() As Boolean
+
+        'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
+        'Si se desea bajar el valor, con respecto de lo originalmente declarado, deberá tener autorización de la Autoridad.
+
+        Return True
+
+    End Function
+
+    Private Function ValidarDecrementables() As Boolean
+
+        'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
+        'Si se desea bajar el valor, con respecto de lo originalmente declarado, deberá tener autorización de la Autoridad.
+
+        Return True
+
+    End Function
+
     Private Function ValidarRfcImportadorExportador() As Boolean
         'Es editable si no ha sido sometido a despacho aduanero, 
         'Que caiga en los supuestos de la regla 6.1.2.
@@ -1231,20 +1251,18 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-    Private Function ValidarIncrementablesDecrementables() As Boolean
-        'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
-        Return True
-
-    End Function
-
-    Private Function ValidarIncrementablesDecrementablesRectificacion() As Boolean
-        'Si se desea bajar el valor, con respecto de lo originalmente declarado, deberá tener autorización de la Autoridad.
-        Return True
-
-    End Function
 
     Private Function ValidarDatosPreveedorComprador() As Boolean
         'No es necesario cuando CVE_PEDIMENTO=E1, E2, G1,C3, K2, E3, E4, G2, K3, F3, V3, F8, F9, G6, G7, V8. 
+
+        Dim clavesPedimento = New List(Of String) From {"59", "11", "6", "66", "75", "56", "61", "36", "33", "37", "42", "38", "44", "76", "69", "14"}
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
@@ -1257,6 +1275,13 @@ Public Class Ges022_001_MetaforaPedimento
 
     Private Function ValidarDatosTransporteTransportista() As Boolean
         'Solo si T_OPER=TRA, excepto pedimento clave T9.
+
+        If scClavePedimento.Value = "40" Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
@@ -1275,14 +1300,30 @@ Public Class Ges022_001_MetaforaPedimento
 
     Private Function ValidarDatosCuentasAduaneras() As Boolean
         'Solo si CVE_PEDIMENTO=S2, y si hay FP=4 o FP=15
-        Return True
+
+        If scClavePedimento.Value = "26" Then
+
+            Return True
+
+        End If
+
+        Return False
 
     End Function
 
     Private Function ValidarDatosDescargos() As Boolean
         'Solo ciertas claves de pedimento lo requieren como K1, F4, F5, A3, BR, H1, H8, I1, E1, E2, G1, C3, K2, F5, F4, D1, K1, V1, S2, CT, A3, V5, V7, V9, BB, GC, P1, C3, F8, F9, M3, cabe mencionar que el hecho que sean estas claves de pedimento no hace obligatorio que deban declarar descargos, porque pueden caer en una excepción que permita que no tengan que declararlo.
         'RECTI: Solo cuando el pedimento original es una clave que contiene descargos. 
-        Return True
+
+        Dim clavesPedimento = New List(Of String) From {"15", "53", "54", "57", "10", "51", "74", "64", "59", "11", "6", "66", "75", "54", "53", "46", "15", "45", "26", "41", "57", "17", "48", "24", "49", "71", "1", "66", "38", "44", "19"}
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return True
+
+        End If
+
+        Return False
 
     End Function
 
@@ -1300,7 +1341,14 @@ Public Class Ges022_001_MetaforaPedimento
 
     Private Function ValidarValorAgregadoExportacion() As Boolean
         'Solo para pedimentos clave RT.
-        Return True
+
+        If scClavePedimento.Value = "32" Then
+
+            Return True
+
+        End If
+
+        Return False
 
     End Function
 
@@ -1498,84 +1546,84 @@ Public Class Ges022_001_MetaforaPedimento
             '-VAL. SEGUROS.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icValorSeguros,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-SEGUROS
             .Add(New ReglasCampoPedimento With {
                  .Campo = icSeguros,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-FLETES
             .Add(New ReglasCampoPedimento With {
                  .Campo = icFletes,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-EMBALAJES
             .Add(New ReglasCampoPedimento With {
                  .Campo = icEmbalajes,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-OTROS INCREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icOtrosIncrementables,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '***DECREMENTABLES
 
             '-TRANSPORTE DECREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icTransporteDec,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-SEGURO DECREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icSegurosDec,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-CARGA DECREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icCargaDec,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-DESCARGA DECREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icDescargaDec,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-OTROS DECREMENTABLES.
             .Add(New ReglasCampoPedimento With {
                  .Campo = icOtrosDec,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarIncrementablesDecrementables()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarIncrementablesDecrementablesRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+                 .ReglasImportacion = New ReglasImportacion,
+                 .ReglasExportacion = New ReglasExportacion,
+                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
              })
             '-ACUSE ELECTRÓNICO DE VALIDACIÓN.
             '-CÓDIGO DE BARRAS.
@@ -2787,61 +2835,68 @@ Public Class Ges022_001_MetaforaPedimento
 
         For Each regla_ As ReglasCampoPedimento In reglasCampos
 
-            If swcTipoOperacion.Checked = True Then
-                'IMPORTACION
+            regla_.Campo.Visible = True
+            regla_.Campo.Enabled = True
 
-                If scClavePedimento.Value = "13" Then
-                    'RECTIFICACION
+            'If swcTipoOperacion.Checked = True Then
+            '    'IMPORTACION
 
-                    regla_.Campo.Visible = regla_.ReglasRectificacionImportacion.Visible
-                    regla_.Campo.Enabled = regla_.ReglasRectificacionImportacion.Editable
+            '    If scClavePedimento.Value = "13" Then
+            '        'RECTIFICACION
 
-                Else
-                    'NORMAL
+            '        regla_.Campo.Visible = regla_.ReglasRectificacionImportacion.Visible
+            '        regla_.Campo.Enabled = regla_.ReglasRectificacionImportacion.Editable
 
-                    regla_.Campo.Visible = regla_.ReglasImportacion.Visible
-                    regla_.Campo.Enabled = regla_.ReglasImportacion.Editable
+            '    Else
+            '        'NORMAL
 
-                End If
+            '        regla_.Campo.Visible = regla_.ReglasImportacion.Visible
+            '        regla_.Campo.Enabled = regla_.ReglasImportacion.Editable
 
-            Else
-                'EXPORTACION
+            '    End If
 
-                If scClavePedimento.Value = "13" Then
-                    'RECTIFICACION
+            'Else
+            '    'EXPORTACION
 
-                    regla_.Campo.Visible = regla_.ReglasRectificacionExportacion.Visible
-                    regla_.Campo.Enabled = regla_.ReglasRectificacionExportacion.Editable
+            '    If scClavePedimento.Value = "13" Then
+            '        'RECTIFICACION
 
-                Else
-                    'NORMAL
+            '        regla_.Campo.Visible = regla_.ReglasRectificacionExportacion.Visible
+            '        regla_.Campo.Enabled = regla_.ReglasRectificacionExportacion.Editable
 
-                    regla_.Campo.Visible = regla_.ReglasExportacion.Visible
-                    regla_.Campo.Enabled = regla_.ReglasExportacion.Editable
+            '    Else
+            '        'NORMAL
 
-                End If
+            '        regla_.Campo.Visible = regla_.ReglasExportacion.Visible
+            '        regla_.Campo.Enabled = regla_.ReglasExportacion.Editable
 
-            End If
+            '    End If
+
+            'End If
 
         Next
 
         'Validar secciones enteras
 
-        fscDatosProveedoresImpo.Visible = ValidarDatosPreveedorComprador()
+        pcIncrementables.Visible = True 'ValidarIncrementables()
 
-        fscDestinatarios.Visible = ValidarDatosDestinatario()
+        pcDecrementables.Visible = True 'ValidarDecrementables()
 
-        fscGuias.Visible = ValidarDatosGuias()
+        fscDatosProveedoresImpo.Visible = True 'ValidarDatosPreveedorComprador()
 
-        fscCuentasAduaneras.Visible = ValidarDatosCuentasAduaneras()
+        fscDestinatarios.Visible = True 'ValidarDatosDestinatario()
 
-        fscDescargos.Visible = ValidarDatosDescargos()
+        fscGuias.Visible = True 'ValidarDatosGuias()
 
-        fscCompensaciones.Visible = ValidarDatosCompensaciones()
+        fscCuentasAduaneras.Visible = True 'ValidarDatosCuentasAduaneras()
 
-        fscPagosvirtuales.Visible = ValidarDatosPagosVirtuales()
+        fscDescargos.Visible = True 'ValidarDatosDescargos()
 
-        fscDiferenciaContribuciones.Visible = ValidarDatosDiferenciasContribucionesRectificacion()
+        fscCompensaciones.Visible = True 'ValidarDatosCompensaciones()
+
+        fscPagosvirtuales.Visible = True 'ValidarDatosPagosVirtuales()
+
+        fscDiferenciaContribuciones.Visible = True 'ValidarDatosDiferenciasContribucionesRectificacion()
 
     End Sub
 

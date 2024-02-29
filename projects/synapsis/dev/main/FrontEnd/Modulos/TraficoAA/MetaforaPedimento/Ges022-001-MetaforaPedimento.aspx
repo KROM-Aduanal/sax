@@ -175,7 +175,7 @@
                         <%--CA_CVE_TIPO_OPERACION--%>
                         <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-center jc-center" ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" OnCheckedChanged="swcTipoOperacion_CheckedChanged"/>
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scClavePedimento" Label="Clave Pedimento" KeyField="i_Cve_ClavePedimento" DisplayField="t_ClaveDescripcion" Dimension="Vt022ClavesPedimentoA02"/>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scClavePedimento" Label="Clave Pedimento" KeyField="i_Cve_ClavePedimento" DisplayField="t_ClaveDescripcion" Dimension="Vt022ClavesPedimentoA02" OnSelectedIndexChanged="scClavePedimento_SelectedIndexChanged"/>
 
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-6" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" />
 
@@ -198,6 +198,13 @@
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" Type="Text" ID="icValorAduana" Label="Valor aduana" Enabled="false" />
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="icPrecioPagado" Label="Precio pagado/Valor comercial" Enabled="false" />
+
+                         <GWC:CardControl ID="test" runat="server" Label="Esto es una prueba nada mas">
+                            <ListControls>
+                                <GWC:InputControl runat="server" ID="t1" Label="prueba 1"/>
+                                <GWC:InputControl runat="server" ID="t2" Label="prueba 2"/>
+                            </ListControls>
+                        </GWC:CardControl>
 
                     </ListControls>
 
@@ -270,7 +277,6 @@
 
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" Type="Text" ID="icOtrosIncrementables" Label="Otros incrementables" />
 
-                            
                             </asp:Panel>
 
                         </asp:Panel>
@@ -1537,10 +1543,7 @@
 
     <script>
             
-        const section = document.querySelector('section-id="fscDatosImportador"');
-
-
-
+        //const section = document.querySelector('section-id="fscDatosImportador"');
 
     </script>
 
