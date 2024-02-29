@@ -1,4 +1,6 @@
+
 //Import Components
+import { WCToolTip } from './components/webcomponent-tooltip.js';
 
 import { WCForm } from './components/webcomponent-form.js';
 
@@ -27,6 +29,8 @@ import { WCPillbox } from './components/webcomponent-pillbox.js';
 import { WCLabel } from './components/webcomponent-label.js';
 
 //Defined Components
+
+customElements.define('wc-tooltip', WCToolTip, { extends: 'input' });
 
 customElements.define('wc-form', WCForm, { extends: 'form' });
 
@@ -237,6 +241,8 @@ $(document).click((event) => {
         $('.__reminder').remove();
     }
 });
+
+
 
 $('body').on('click', '.__down', function (e) {
 
