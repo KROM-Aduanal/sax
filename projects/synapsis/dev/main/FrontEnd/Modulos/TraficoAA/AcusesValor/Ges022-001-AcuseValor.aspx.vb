@@ -996,9 +996,6 @@ Public Class Ges022_001_AcuseValor
         'End If
         'Dim Allgo = _ControladorMonedas.ObtenerFactorTipodeCambio("USD", Date.Parse("26/06/2023")).ObjectReturned
         'MsgBox("AHH")
-<<<<<<< HEAD
-
-=======
         'Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
 
         'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
@@ -1040,7 +1037,6 @@ Public Class Ges022_001_AcuseValor
         '                                                     .estado = 1,
         '                                                     .archivado = False
         '                                                        }
->>>>>>> develop
 
 
 
@@ -1087,28 +1083,8 @@ Public Class Ges022_001_AcuseValor
         '                                                     .archivado = False
         '                                                        }
 
-<<<<<<< HEAD
-        ''Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
-        ''                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
-        ''                                    "BBVA Bancomer, S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer".ToUpper},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.CLAVEUSONUEVO,
-        ''                                    New List(Of UsoIdentificador) From
-        ''                                                                    {New UsoIdentificador With {.clave = "400012",
-        ''                                                                                               .info = "Banxico"},
-        ''                                                                    New UsoIdentificador With {.clave = "012",
-        ''                                                                                                .info = "SAT"}}},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.NOMBRECOMERCIALNUEVO,
-        ''                                    New AliasBancos With {.tipoalias = "Abreviatura", .valor = "BBVA"}},
-        ''                                    {IControladorInstitucionBancaria.CamposBusquedaSimple.DOMICILIOFISCAL,
-        ''                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
-        ''                                    })
-
         'Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
 
-=======
-        'Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
-
->>>>>>> develop
         'Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
 
         'Dim seccionFac_ = SeccionesFacturaComercial.SFAC4
@@ -1161,6 +1137,7 @@ Public Class Ges022_001_AcuseValor
                 Dim resultado_ As Dictionary(Of String, List(Of Nodo)) = tagwatcher_.ObjectReturned
 
                 If resultado_ IsNot Nothing Then
+
                     If resultado_(dbc_NumFacturaAcuseValor.Value.ToString).Count > 0 Then
 
                         Dim listaResultado_ = resultado_(dbc_NumFacturaAcuseValor.Value.ToString)
@@ -1184,7 +1161,7 @@ Public Class Ges022_001_AcuseValor
 
                         SetVars("IDS", idFactura_)
 
-                        Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(6), Campo).Valor)
+                        Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(7), Campo).Valor)
 
                         sc_TipoMoneda.DataSource.RemoveAll(Function(ch) ch.Value <> "")
 
@@ -1208,42 +1185,35 @@ Public Class Ges022_001_AcuseValor
 
                         SetVars("_Monedas", monedas_)
 
-<<<<<<< HEAD
-                        If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
+                        'If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
 
-                            swc_Subdivision.Checked = True
+                        '    swc_Subdivision.Checked = True
 
-=======
-                    'If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
+                        'Else
 
-                    '    swc_Subdivision.Checked = True
+                        '    swc_Subdivision.Checked = False
 
-                    'Else
+                        'End If
 
-                    '    swc_Subdivision.Checked = False
+                        'Dim identificacionPersona_, tipoIdentificador_ As String
 
-                    'End If
+                        'If DirectCast(listaResultado_.Item(9), Campo).Valor IsNot Nothing Then
 
-                    Dim identificacionPersona_, tipoIdentificador_ As String
+                        '    identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
 
-                    If DirectCast(listaResultado_.Item(9), Campo).Valor IsNot Nothing Then
+                        '    tipoIdentificador_ = "TAXID"
 
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
+                        'Else
 
-                        tipoIdentificador_ = "TAXID"
+                        '    If DirectCast(listaResultado_.Item(11), Campo).Valor IsNot Nothing Then
+                        '        identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
 
-                    Else
+                        '        tipoIdentificador_ = "RFC"
+                        '    Else
 
-                        If DirectCast(listaResultado_.Item(11), Campo).Valor IsNot Nothing Then
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
+                        '        swc_Subdivision.Checked = False
 
-                            tipoIdentificador_ = "RFC"
->>>>>>> develop
-                        Else
-
-                            swc_Subdivision.Checked = False
-
-                        End If
+                        '    End If
 
                         Dim identificacionPersona_, tipoIdentificador_ As String
 
@@ -1713,23 +1683,20 @@ Public Class Ges022_001_AcuseValor
                                    StatusMessage.Fail)
 
                     End If
+
                 Else
 
-                    DisplayMessage("No se encontró un Documento con Folio " &
-                                   Chr(34) &
-                                   dbc_NumFacturaAcuseValor.Value.ToString &
-                                   Chr(34),
+                    DisplayMessage("Falta especificar el Folio del Documento",
                                    StatusMessage.Fail)
 
                 End If
-            Else
 
-                DisplayMessage("Falta especificar el Folio del Documento",
-                               StatusMessage.Fail)
 
             End If
 
         End If
+
+
 
     End Sub
 
