@@ -9,6 +9,8 @@ Public Class ImpuestoPartidaPedimento
 
     Private _contribucion As Integer
 
+    Private _descripcionContribucion As String
+
     Private _tasa As Double
 
     Private _tipoTasa As Integer
@@ -52,6 +54,22 @@ Public Class ImpuestoPartidaPedimento
         Set(value As Integer)
 
             _contribucion = value
+
+        End Set
+
+    End Property
+
+    Property DescripcionContribucion As String
+
+        Get
+
+            Return _descripcionContribucion
+
+        End Get
+
+        Set(value As String)
+
+            _descripcionContribucion = value
 
         End Set
 
@@ -156,6 +174,37 @@ Public Class ImpuestoPartidaPedimento
 #End Region
 
 #Region "Metodos"
+
+    Public Overloads Function Agregar(ByVal impuestoNuevo_ As ImpuestoPartidaPedimento) As TagWatcher
+
+        Dim tagwatcher_ As New TagWatcher
+
+        If impuestoNuevo_ IsNot Nothing Then
+
+            'Dim partida_ = New ImpuestoPartidaPedimento With {
+            '            .IdImpuesto = 1,
+            '            .Contribucion = impuestoNuevo_.FraccionArancelaria,
+            '            .DescripcionContribucion = impuestoNuevo_.DescripcionFraccionArancelaria,
+            '            .Tasa = impuestoNuevo_.Nico,
+            '            .TipoTasa = impuestoNuevo_.DescripcionNico,
+            '            .FormaPago = impuestoNuevo_.PrecioUnitario,
+            '            .Importe = impuestoNuevo_.PaisOrigen,
+            '            .Archivado = impuestoNuevo_.DescripcionPaisOrigen,
+            '            .Estado = impuestoNuevo_.PaisDestino
+            '        }
+
+            tagwatcher_.ObjectReturned = impuestoNuevo_
+            tagwatcher_.SetOK()
+
+        Else
+
+            tagwatcher_.SetError(Me, "No se tienen la información correcta, verificar.")
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
 
     Public Overrides Function Agregar() As TagWatcher
 

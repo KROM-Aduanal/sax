@@ -11,4 +11,8 @@ C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE6
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE64_dll\ConstructorTIGIE64\obj\Debug\ConstructorTIGIE64.vbproj.GenerateResource.cache
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE64_dll\ConstructorTIGIE64\obj\Debug\ConstructorTIGIE64.vbproj.CoreCompileInputs.cache
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE64_dll\ConstructorTIGIE64\obj\Debug\Syn.Documento.ConstructorTIGIE64.0.0.0.0.dll
+<<<<<<< HEAD
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE64_dll\ConstructorTIGIE64\obj\Debug\Syn.Documento.ConstructorTIGIE64.0.0.0.0.pdb
+=======
+C:\Sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorTIGIE64_dll\ConstructorTIGIE64\obj\Debug\Syn.Documento.ConstructorTIGIE64.0.0.0.0.pdb
+>>>>>>> develop

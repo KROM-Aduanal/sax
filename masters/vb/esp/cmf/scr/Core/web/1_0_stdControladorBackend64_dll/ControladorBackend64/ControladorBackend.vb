@@ -20,7 +20,6 @@ Imports gsol
 Imports System.Xml.Serialization
 Imports System.IO
 Imports Syn.Operaciones
-Imports Rec.Globals.Controllers
 
 Public Class ControladorBackend
     Inherits Template.FormularioGeneralWeb
