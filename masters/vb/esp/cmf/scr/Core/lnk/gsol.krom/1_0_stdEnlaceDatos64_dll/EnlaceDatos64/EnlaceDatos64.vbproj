@@ -131,6 +131,10 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Foreign\MongoDB.Libmongocrypt.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\projects\global\lib\rec.globals.utils\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sax.SaxStatements64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\cmf\Sax.SaxStatements64.0.0.0.0.dll</HintPath>
@@ -203,6 +207,10 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Recursos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.OperacionesNodos64.0.0.0.0.dll</HintPath>
@@ -210,6 +218,14 @@
     </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodosNoSQL64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.OperacionesNodosNoSQL64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Utils.ControladorFirmaElectronica64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Utils.ControladorFirmaElectronica64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">

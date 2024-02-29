@@ -52,6 +52,31 @@ Namespace Syn.Documento
 
 #Region "Methods"
 
+        Public Sub ConfiguracionDocumentosAsociados()
+
+            DocumentosAsociados =
+                New List(Of DocumentoAsociado) _
+                From {
+                    New DocumentoAsociado With {
+                    .idcoleccion = "Glo007Clientes",
+                    .identificadorrecurso = "ConstructorCliente",
+                    .idcampo = CamposReferencia.CP_DESCRIPCION_DETALLE,
+                    .idsection = SeccionesReferencias.SREF3
+                    }
+                }
+
+            'DocumentosAsociados =
+            '    New List(Of DocumentoAsociado) _
+            '    From {
+            '        New DocumentoAsociado With {
+            '        .idcoleccion = "Glo007Clientes",
+            '        .identificadorrecurso = "ConstructorCliente",
+            '        .idcampo = CamposReferencia.CP_ID_IOE
+            '        }
+            '    }
+
+        End Sub
+
         Public Sub ConfiguracionNotificaciones()
 
             SubscriptionsGroup =
@@ -72,7 +97,7 @@ Namespace Syn.Documento
                                 },
                                .fields = New List(Of fieldInfo) From
                                 {
-                                field(CamposReferencia.CA_RFC_DEL_IOE, nsp:=1, attr:="Valor")
+                                 field(CamposReferencia.CA_RFC_DEL_IOE, nsp:=1, attr:="Valor")
                                 }
                              }
                          }
@@ -109,7 +134,9 @@ Namespace Syn.Documento
             'ConstruyeSeccion(seccionEnum_:=SeccionesReferencias.SREF1,
             '                 tipoBloque_:=TiposBloque.Encabezado,
             '                 conCampos_:=True)
-            ConfiguracionNotificaciones()
+            'ConfiguracionNotificaciones()
+
+            ConfiguracionDocumentosAsociados()
 
         End Sub
         Public Overrides Sub ConstruyeCuerpo()
@@ -125,8 +152,8 @@ Namespace Syn.Documento
                 conCampos_:=True)
 
             ConstruyeSeccion(seccionEnum_:=SeccionesReferencias.SREF3,
-            tipoBloque_:=TiposBloque.Cuerpo,
-            conCampos_:=True)
+                tipoBloque_:=TiposBloque.Cuerpo,
+                conCampos_:=True)
 
             ConstruyeSeccion(seccionEnum_:=SeccionesReferencias.SREF4,
                 tipoBloque_:=TiposBloque.Cuerpo,
@@ -154,8 +181,8 @@ Namespace Syn.Documento
                                             Item(CamposReferencia.CP_REFERENCIA, Texto, longitud_:=16),
                                             Item(CamposReferencia.CP_PEDIMENTO, Texto, longitud_:=16),
                                             Item(CamposReferencia.CP_ORIGINAL, Texto, longitud_:=16),
-                                            Item(CamposReferencia.CP_TIPO_OPERACION, Booleano),
-                                            Item(CamposReferencia.CP_TIPO_REFERENCIA, Entero),
+                                            Item(CamposReferencia.CP_TIPO_OPERACION, Booleano, useAsMetadata_:=True),
+                                            Item(CamposReferencia.CP_TIPO_REFERENCIA, Entero, useAsMetadata_:=True),
                                             Item(CamposReferencia.CP_MATERIAL_PELIROSO, Booleano),
                                             Item(CamposReferencia.CP_RECTIFICACION, Booleano),
                                             Item(CamposReferencia.CP_TIPO_CARGA, Texto, longitud_:=100),
@@ -174,7 +201,7 @@ Namespace Syn.Documento
 
                     Return New List(Of Nodo) From {
                                              Item(CamposReferencia.CP_ID_IOE, IdObject),
-                                             Item(CamposReferencia.CA_RAZON_SOCIAL_IOE, Texto, longitud_:=250),
+                                             Item(CamposReferencia.CA_RAZON_SOCIAL_IOE, Texto, longitud_:=250, useAsMetadata_:=True),
                                              Item(CamposReferencia.CA_RFC_DEL_IOE, Texto, longitud_:=13),
                                              Item(CamposReferencia.CA_CURP_DEL_IOE, Texto, longitud_:=25),
                                              Item(CamposReferencia.CP_RFC_FACTURACION_IOE, Texto, longitud_:=13),

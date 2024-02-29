@@ -41,6 +41,8 @@ Namespace Syn.Documento
 
             _borrador.Folder.ArchivoPrincipal.Dupla.Fuente = documentoElectronico_
 
+            _Borrador.Folder.DocumentosAsociados = New List(Of DocumentoAsociado)
+
             _Publicaciones = New Publicaciones
 
             _estado = 1
@@ -69,8 +71,9 @@ Namespace Syn.Documento
 
         <BsonElement("abierto")>
         Public Property abierto As Boolean
+
         <BsonIgnoreIfNull>
-        Public Property FirmaDigital As String
+        Public Property FirmaElectronica As String
 
         Protected Overridable Sub Dispose(disposing As Boolean)
 
@@ -196,11 +199,15 @@ Namespace Syn.Documento
 
             _ObjetosRelacionados = New List(Of ObjetoRelacionado)
 
+            _DocumentosAsociados = New List(Of DocumentoAsociado)
+
         End Sub
 
         Public Property ArchivoPrincipal As ArchivoPrincipal
         <BsonIgnoreIfNull>
         Public Property ObjetosRelacionados As List(Of ObjetoRelacionado)
+        <BsonIgnoreIfNull>
+        Public Property DocumentosAsociados As List(Of DocumentoAsociado)
 
     End Class
 

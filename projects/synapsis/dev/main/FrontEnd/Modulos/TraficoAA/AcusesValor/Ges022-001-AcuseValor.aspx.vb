@@ -299,6 +299,7 @@ Public Class Ges022_001_AcuseValor
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Esta metodo se manda llamar al dar clic en la opción nuevo (+) '
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        '''
         sc_TipoDocumento.Value = "1"
 
         icFechaExpedicion.Value = DateTime.UtcNow.Date.ToString("yyyy-MM-dd")
@@ -306,6 +307,7 @@ Public Class Ges022_001_AcuseValor
         SetVars("_sc_tipomoneda", sc_TipoMoneda)
 
         Dim listaSelectOption_ = New List(Of SelectOption)
+
 
         Dim monedas_ = _icontroladorMonedas.BuscarMonedas(New List(Of String) From {"USD",
                                                                                     "EUR",
@@ -316,11 +318,13 @@ Public Class Ges022_001_AcuseValor
                                                                                     "cveAcuseValor")
 
 
+
         listaSelectOption_ = _organismo.ObtenerSelectOption(sc_TipoMoneda,
                                                             monedas_.Select(Of ValorProvisionalOption)(Function(e) New ValorProvisionalOption With {
                             .Id = e._id,
                             .Valor = e.nombremonedaesp & " | " & e.aliasmoneda.Find(Function(ef) ef.Clave = "cveAcuseValor").Valor
                            }).ToList)
+
 
         SetVars("_Monedas", monedas_)
 
@@ -981,7 +985,7 @@ Public Class Ges022_001_AcuseValor
         'End If
         'Dim Allgo = _ControladorMonedas.ObtenerFactorTipodeCambio("USD", Date.Parse("26/06/2023")).ObjectReturned
         'MsgBox("AHH")
-        Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
+        'Dim ctrlBanco_ As IControladorInstitucionBancaria = New ControladorInstitucionBancaria
 
         'Dim Algo = ctrlBanco_.BuscarBancos(New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
         '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
@@ -993,35 +997,35 @@ Public Class Ges022_001_AcuseValor
         '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.METADATOS, "NO"}},
         '                                     IControladorInstitucionBancaria.Modalidades.Externo)
         'MsgBox(Algo.LastMessage)
-        Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
-                                                             ._idinstitucionbancaria = 1,
-                                                             ._idempresa = ObjectId.GenerateNewId,
-                                                             ._iddomicilio = ObjectId.GenerateNewId,
-                                                             .uso = New List(Of UsoIdentificador) From
-                                                                            {New UsoIdentificador With {.clave = "49992",
-                                                                                                       .info = "Banxico"},
-                                                                            New UsoIdentificador With {.clave = "992",
-                                                                                                        .info = "SAT"}},
-                                                             .otrosaliasinstitucion = New List(Of AliasBancos) From
-                                                                                     {New AliasBancos With {.tipoalias = "Comercial",
-                                                                                                            .valor = "CITIBANAMEX"},
-                                                                                     New AliasBancos With {.tipoalias = "Corto",
-                                                                                                            .valor = "BANAMEX"},
-                                                                                     New AliasBancos With {.tipoalias = "Siglas",
-                                                                                                            .valor = "BNM"},
-                                                                                     New AliasBancos With {.tipoalias = "Abreviatura",
-                                                                                                            .valor = "BANX"}
-                                                                                                            },
-                                                             .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
-                                                             .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
-                                                             .metadatos = New List(Of AliasBancos) From
-                                                                                     {New AliasBancos With {.tipoalias = "Pece",
-                                                                                                            .valor = "SI"}
-                                                                                                            },
-                                                             .tipobanco = TiposBanco.Nacional,
-                                                             .estado = 1,
-                                                             .archivado = False
-                                                                }
+        'Dim institucionBancaria_ As New InstitucionBancaria With {._id = New ObjectId("64ff2986540f5b42dd4032dc"),
+        '                                                     ._idinstitucionbancaria = 1,
+        '                                                     ._idempresa = ObjectId.GenerateNewId,
+        '                                                     ._iddomicilio = ObjectId.GenerateNewId,
+        '                                                     .uso = New List(Of UsoIdentificador) From
+        '                                                                    {New UsoIdentificador With {.clave = "49992",
+        '                                                                                               .info = "Banxico"},
+        '                                                                    New UsoIdentificador With {.clave = "992",
+        '                                                                                                .info = "SAT"}},
+        '                                                     .otrosaliasinstitucion = New List(Of AliasBancos) From
+        '                                                                             {New AliasBancos With {.tipoalias = "Comercial",
+        '                                                                                                    .valor = "CITIBANAMEX"},
+        '                                                                             New AliasBancos With {.tipoalias = "Corto",
+        '                                                                                                    .valor = "BANAMEX"},
+        '                                                                             New AliasBancos With {.tipoalias = "Siglas",
+        '                                                                                                    .valor = "BNM"},
+        '                                                                             New AliasBancos With {.tipoalias = "Abreviatura",
+        '                                                                                                    .valor = "BANX"}
+        '                                                                                                    },
+        '                                                     .razonsocialespaniol = "BancA Racional de México, S.A., Institución de Banca Múltiple, Grupo Financiero Banamex ".ToUpper,
+        '                                                     .domiciliofiscal = "Actuario Roberto Medellín No. 800, 2° piso Norte, Colonia Santa Fe Peña Blanca, C.P. 01210, Delegación Álvaro Obregón en México, D.F",
+        '                                                     .metadatos = New List(Of AliasBancos) From
+        '                                                                             {New AliasBancos With {.tipoalias = "Pece",
+        '                                                                                                    .valor = "SI"}
+        '                                                                                                    },
+        '                                                     .tipobanco = TiposBanco.Nacional,
+        '                                                     .estado = 1,
+        '                                                     .archivado = False
+        '                                                        }
 
         'Dim Algo2 = ctrlBanco_.ActualizaBanco(New ObjectId("64f8b17a5f133141112719c6"), New Dictionary(Of IControladorInstitucionBancaria.CamposBusquedaSimple, Object) From
         '                                    {{IControladorInstitucionBancaria.CamposBusquedaSimple.RAZONSOCIAL,
@@ -1038,9 +1042,9 @@ Public Class Ges022_001_AcuseValor
         '                                    "Av. Paseo de la Reforma 510, Colonia Juárez, Delegación Cuauhtémoc, C.P. 06600, Ciudad de México"}
         '                                    })
 
-        Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
+        'Dim Allgo2 = ctrlBanco_.NuevoBanco(institucionBancaria_)
 
-        Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
+        'Dim Allgo = _icontroladorMonedas.ObtenerFactorTipodeCambio("EUR", Date.Parse("15/09/2023"))
 
         'Dim seccionFac_ = SeccionesFacturaComercial.SFAC4
 
@@ -1139,21 +1143,21 @@ Public Class Ges022_001_AcuseValor
 
                     SetVars("_Monedas", monedas_)
 
-                    If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
+                    'If DirectCast(listaResultado_.Item(8), Campo).Valor.ToString = "2" Then
 
-                        swc_Subdivision.Checked = True
+                    '    swc_Subdivision.Checked = True
 
-                    Else
+                    'Else
 
-                        swc_Subdivision.Checked = False
+                    '    swc_Subdivision.Checked = False
 
-                    End If
+                    'End If
 
                     Dim identificacionPersona_, tipoIdentificador_ As String
 
-                    If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
+                    If DirectCast(listaResultado_.Item(9), Campo).Valor IsNot Nothing Then
 
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
+                        identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
 
                         tipoIdentificador_ = "TAXID"
 

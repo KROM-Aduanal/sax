@@ -157,6 +157,10 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Operaciones.OperacionesNodos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.OperacionesNodos64.0.0.0.0.dll</HintPath>

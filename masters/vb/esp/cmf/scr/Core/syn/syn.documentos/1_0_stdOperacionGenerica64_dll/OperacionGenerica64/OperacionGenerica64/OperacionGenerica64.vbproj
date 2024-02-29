@@ -80,6 +80,11 @@
       <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Recursos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -157,4 +162,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)Syn.Documento.OperacionGenerica64.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -84,7 +84,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Datos del destinatario")> SFAC3 = 3
             <EnumMember> <Description("Partidas")> SFAC4 = 4
             <EnumMember> <Description("Incrementables")> SFAC5 = 5
-            <EnumMember> <Description("Subdivisión")> SFAC6 = 6
+            '<EnumMember> <Description("Subdivisión")> SFAC6 = 6
             'Se comenta para que un futuro se pueda dividir la forma de guardar los item de la factura (si es que es optimo)
             '<EnumMember> <Description("Partida - factura")> SFAC7 = 7
             '<EnumMember> <Description("Partida - clasificación")> SFAC8 = 8
@@ -177,6 +177,10 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Padron Sectorial")> TIGIE18 = 18
 
             <EnumMember> <Description("Impuestos")> TIGIE19 = 19
+            <EnumMember> <Description("Identificadores")> TIGIE20 = 20
+            <EnumMember> <Description("Preferencias")> TIGIE21 = 21
+            <EnumMember> <Description("ALADIS")> TIGIE22 = 22
+            <EnumMember> <Description("ALADIS paises")> TIGIE23 = 23
 
         End Enum
 
@@ -309,7 +313,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("COMPL. IDENTIFICADOR 3.")> CA_COMPLEMENTO_3 = 90
             <EnumMember> <Description("TIPO CUENTA.")> CA_CVE_CUENTA_ADUANERA = 91
             <EnumMember> <Description("CLAVE DE GARANTIA.")> CA_CVE_TIPO_GARANTIA = 92
-            <EnumMember> <Description("INSTITUCION EMISORA.")> CA_NOMBRE_INSTITUCION_EMISORA_CUENTA = 93
+            <EnumMember> <Description("INSTITUCION EMISORA.")> CA_INSTITUCION_EMISORA_GARANTIA = 93
             <EnumMember> <Description("NUMERO DE CONTRATO.")> CA_NUMERO_CONTRATO = 94
             <EnumMember> <Description("FOLIO CONSTANCIA.")> CA_FOLIO_CONSTANCIA = 95
             <EnumMember> <Description("TOTAL DEPOSITO.")> CA_IMPORTE_TOTAL_CONSTANCIA = 96
@@ -470,10 +474,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("CLAVE CONCEPTO NIVEL PEDIMENTO")> CA_CVE_CONCEPTO_NIVEL_PEDIMENTO = 245
             <EnumMember> <Description("CLAVE CONTRIBUCION A NIVEL PARTIDA")> CA_CVE_CONTRIBUCION_NIVEL_PARTIDA = 246
             <EnumMember> <Description("NUMERO DE ACUSE DE VALOR")> CA_NUMERO_ACUSE_DE_VALOR = 247
-            <EnumMember> <Description("CLAVE INSTITUCION EMISORA CUENTA ADUANERA PEDIMENTO")> CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PEDIMENTO = 248
             <EnumMember> <Description("CLAVE VINCULACION")> CA_CVE_VINCULACION = 249
-            <EnumMember> <Description("CLAVE INSTITUCION EMISORA CUENTA ADUANERA PARTIDA")> CA_CVE_INSTITUCION_EMISORA_CTA_ADUANERA_PARTIDA = 250
-            <EnumMember> <Description("ADUANA DE DESPACHO")> CA_ADUANA_DESPACHO = 251
             <EnumMember> <Description("NUMERO DE PEDIMENTO ORIGINAL 7 DIGITOS")> CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS = 252
             <EnumMember> <Description("ANIO VALIDACION 2 DIGITOS ORIGINAL")> CA_ANIO_VALIDACION_2_ORIGINAL = 253
             <EnumMember> <Description("ANIO VALIDACION ORIGINAL")> CA_ANIO_VALIDACION_ORIGINAL = 254
@@ -782,6 +783,13 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Moneda descuentos")> CA_MONEDA_DESCUENTOS = 3056
             <EnumMember> <Description("Orden de compra partida")> CP_ORDEN_COMPRA_PARTIDA = 3057
             <EnumMember> <Description("Moneda precio unitario")> CP_MONEDA_PRECIO_UNITARIO = 3058
+            <EnumMember> <Description("Referencia de cliente")> CP_REFERENCIA_CLIENTE = 3059
+
+            <EnumMember> <Description("ObjectId Factura Comercial")> CP_OBJECTID_FACTURA = 3060
+
+            <EnumMember> <Description("ObjectId Productos")> CP_OBJECTID_PRODUCTOS = 3061
+
+            <EnumMember> <Description("ObjectId Fraccion")> CP_OBJECTID_FRACCION = 3062
 
         End Enum
 
@@ -856,6 +864,9 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Termino de facturación (INCOTERM)")> CP_INCOTERM = 5030
 
             <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 5031
+            <EnumMember> <Description("ObjectID Proveedor")> CP_ID_PROVEEDOR = 5032
+            <EnumMember> <Description("Tipo Persona")> CP_TIPO_PERSONA_PROVEEDOR = 5033
+            <EnumMember> <Description("Destinatario")> CP_DESTINATARIO_PROVEEDOR = 5034
 
 
         End Enum
@@ -869,6 +880,10 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("RFC")> CA_RFC_DESTINATARIO = 6003
 
             <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 6004
+            <EnumMember> <Description("Identificador de empresa")> CP_CVE_EMPRESA = 6005
+
+            <EnumMember> <Description("ObjectID Destinatario")> CP_ID_DESTINATARIO = 6006
+            <EnumMember> <Description("Clave Destinatario")> CP_CVE_DESTINATARIO = 6007
 
         End Enum
 
@@ -936,6 +951,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Descripcion COVE")> CP_DESCRIPCION_COVE = 9014
             <EnumMember> <Description("Fecha Modificacion")> CP_FECHA_MODIFICACION = 9015
             <EnumMember> <Description("Fecha Modificacion")> CP_TIPO_ALIAS = 9016
+            <EnumMember> <Description("ObjectId Producto")> CP_OBJECTID_PRODUCTO = 9017
         End Enum
 
         Public Enum CamposTarifaArancelaria
@@ -990,6 +1006,24 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Tasa")> CA_TASA = 10147
             <EnumMember> <Description("Cuota")> CA_CUOTA = 10148
             <EnumMember> <Description("Empresa")> CA_EMPRESA = 10149
+            <EnumMember> <Description("Clave identificador")> CA_CLAVE_IDENTIFICADOR = 10150
+            <EnumMember> <Description("Identificador")> CA_IDENTIFICADOR = 10151
+            <EnumMember> <Description("Clave unidad de medida")> CA_CLAVE_UNIDAD_MEDIDA = 10152
+            <EnumMember> <Description("ObjectId tratadis")> CA_ID_TRATADO = 10153
+            <EnumMember> <Description("ObjectId pais")> CP_ID = 10154
+            <EnumMember> <Description("Id pais")> CA_ID_PAIS = 10155
+            <EnumMember> <Description("Id nota")> CP_IDNOTA = 10156
+            <EnumMember> <Description("Nota")> CP_NOTA = 10157
+            <EnumMember> <Description("Nombre preferencia")> CP_NOMBRE_PREFERENCIA = 10158
+            <EnumMember> <Description("Tipo tasa")> CA_TIPO_TASA = 10159
+            <EnumMember> <Description("Valor preferencia")> CP_VALOR = 10160
+            <EnumMember> <Description("ObjectId historico")> CP_ID_HISTORICO = 10161
+            <EnumMember> <Description("Unidad de medida nombre corto")> CA_UNIDAD_MEDIDA_CORTO = 10162
+            <EnumMember> <Description("impuesto siglas")> CA_NOMBRE_IMPUESTO_CORTO = 10163
+            <EnumMember> <Description("Unidad de medida nombre corto")> CA_NUMERO_ALADI = 10164
+            <EnumMember> <Description("impuesto siglas")> CA_NOMBRE_ALADI = 10165
+            <EnumMember> <Description("impuesto siglas")> CP_DESCUENTO = 10166
+            <EnumMember> <Description("Nombre corto del país")> CP_NOMBRECORTO_PAIS = 10167
         End Enum
 
         Public Enum CamposManifestacionValor

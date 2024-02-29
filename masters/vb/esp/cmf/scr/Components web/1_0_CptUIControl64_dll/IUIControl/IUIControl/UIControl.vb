@@ -114,6 +114,21 @@ Public Class UIControl
 
     End Property
 
+    Public Overridable Property Signature As String Implements IUIControl.Signature
+
+        Get
+
+            Return ViewState("Signature")
+
+        End Get
+
+        Set(value As String)
+
+            ViewState("Signature") = value
+
+        End Set
+
+    End Property
 
 #End Region
 
