@@ -600,7 +600,7 @@ Namespace Syn.Documento
                                Item(CA_FECHA_PEDIMENTO_ORIGINAL, Fecha),
                                Item(CA_CVE_PEDIMENTO_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=4),
-                               Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=2),
+                               Item(CA_ANIO_VALIDACION_2_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_PATENTE_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL, Texto, longitud_:=3),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL_2, Texto, longitud_:=2),
