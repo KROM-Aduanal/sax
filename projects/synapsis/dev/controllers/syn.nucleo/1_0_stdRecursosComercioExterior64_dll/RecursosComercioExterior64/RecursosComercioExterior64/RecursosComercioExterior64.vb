@@ -125,6 +125,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("DomiciliosFiscales")> SPRO3 = 3
             <EnumMember> <Description("VinculacionesClientes")> SPRO4 = 4
             <EnumMember> <Description("ConfiguracionAdicional")> SPRO5 = 5
+
             '#############################  SECCIONES ÚNICAS  DEL PROVEEDOR OPERATIVO ##################################
         End Enum
 

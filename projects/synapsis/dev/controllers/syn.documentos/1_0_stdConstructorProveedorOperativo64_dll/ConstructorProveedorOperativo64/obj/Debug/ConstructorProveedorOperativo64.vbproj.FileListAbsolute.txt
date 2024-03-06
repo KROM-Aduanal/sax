@@ -6,3 +6,4 @@ C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProvee
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProveedorOperativo64_dll\ConstructorProveedorOperativo64\obj\Debug\Syn.Documento.ConstructorProveedoresOperativos64.0.0.0.0.dll
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProveedorOperativo64_dll\ConstructorProveedorOperativo64\obj\Debug\Syn.Documento.ConstructorProveedoresOperativos64.0.0.0.0.pdb
 C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProveedorOperativo64_dll\ConstructorProveedorOperativo64\obj\Debug\ConstructorProveedorOperativo64.vbproj.AssemblyReference.cache
+C:\sax\projects\synapsis\dev\controllers\syn.documentos\1_0_stdConstructorProveedorOperativo64_dll\ConstructorProveedorOperativo64\obj\Debug\Construc.A6D96476.Up2Date

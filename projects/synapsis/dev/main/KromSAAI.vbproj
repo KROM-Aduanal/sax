@@ -1618,6 +1618,7 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Revalidacion\Ges022-001-Revalidacion.aspx" />

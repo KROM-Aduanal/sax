@@ -1,4 +1,5 @@
 ﻿Imports gsol.krom
+Imports MongoDB.Bson
 Imports Syn.Documento.Componentes
 Imports Syn.Documento.Componentes.Campo.TiposDato
 Imports Syn.Nucleo.Recursos
@@ -45,6 +46,27 @@ Namespace Syn.Documento
                          referencia_,
                          idCliente_,
                          nombreCliente_,
+                         TiposDocumentoElectronico.ProveedoresOperativos)
+
+        End Sub
+
+        'NEW
+        Public Sub New(ByVal folioDocumento_ As String,
+                       ByVal referencia_ As String,
+                       ByVal tipoPropietario_ As String,
+                       ByVal nombrePropietario_ As String,
+                       ByVal idPropietario_ As Int32,
+                       ByVal objectIdPropietario_ As ObjectId,
+                       ByVal metadatos_ As List(Of CampoGenerico)
+                      )
+
+            Inicializa(folioDocumento_,
+                         referencia_,
+                         tipoPropietario_,
+                         nombrePropietario_,
+                         idPropietario_,
+                         objectIdPropietario_,
+                         metadatos_,
                          TiposDocumentoElectronico.ProveedoresOperativos)
 
         End Sub
@@ -141,6 +163,7 @@ Namespace Syn.Documento
 
         Public Overrides Function ObtenerCamposSeccion(ByVal idSeccion_ As Integer) As List(Of Nodo)
 
+            'NEW
             Select Case idSeccion_
 
                 'Generales
@@ -149,24 +172,19 @@ Namespace Syn.Documento
                 Case SeccionesProvedorOperativo.SPRO1
                     Return New List(Of Nodo) From {
                                                     Item(CP_CVE_PROVEEDOR, Entero), 'Clave p/usuario, secuencia automática
- _
                                                     Item(CP_CVE_EMPRESA, Entero), 'Clave p/usuario, secuencia...
                                                     Item(CP_ID_EMPRESA, IdObject), 'Clave mongo ObjectID ( Para mantenimiento con sus dependencias)
                                                     Item(CA_RAZON_SOCIAL_PROVEEDOR, Texto, longitud_:=120),
- _
-                                                    Item(CP_TIPO_USO, Entero)
+                                                    Item(CP_TIPO_USO, Texto),
+                                                    Item(CP_TIPO_PERSONA_PROVEEDOR, Texto)
                                                 }
 
                 'Detalle proveedor
                 Case SeccionesProvedorOperativo.SPRO2
                     Return New List(Of Nodo) From {
-                                                    Item(CP_SECUENCIA_PROVEEDOR, Entero),
-                                                    Item(CA_RFC_PROVEEDOR, Texto, longitud_:=13),
-                                                    Item(CA_TAX_ID_PROVEEDOR, Texto, longitud_:=30),
-                                                    Item(CA_CURP_PROVEEDOR, Texto, longitud_:=18),
- _
+                                                    Item(CamposDomicilio.CA_CVE_PAIS, Texto, longitud_:=3),
+                                                    Item(CamposDomicilio.CA_PAIS, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto, longitud_:=250),
- _
                                                     Item(CamposDomicilio.CA_CALLE, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_NUMERO_EXTERIOR, Texto, longitud_:=10),
                                                     Item(CamposDomicilio.CA_NUMERO_INTERIOR, Texto, longitud_:=10),
@@ -179,12 +197,10 @@ Namespace Syn.Documento
                                                     Item(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA, Texto, longitud_:=3),
                                                     Item(CamposDomicilio.CA_ENTIDAD_FEDERATIVA, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_ENTIDAD_MUNICIPIO, Texto, longitud_:=80),
-                                                    Item(CamposDomicilio.CA_CVE_PAIS, Texto, longitud_:=3),
-                                                    Item(CamposDomicilio.CA_PAIS, Texto, longitud_:=80),
- _
+                                                    Item(CP_DESTINATARIO_PROVEEDOR, Texto), 'ES DESTINATARIO
                                                     Item(CamposDomicilio.CP_ID_DOMICILIO, IdObject),
                                                     Item(CamposDomicilio.CP_SEC_DOMICILIO, Entero),
-                                                    Item(CamposGlobales.CP_IDENTITY, Entero)
+                                                    Item(CamposGlobales.CP_IDENTITY, Entero) 'ES PARA EL TARJETERO
                                                 }
 
                 'Domicilios físcales

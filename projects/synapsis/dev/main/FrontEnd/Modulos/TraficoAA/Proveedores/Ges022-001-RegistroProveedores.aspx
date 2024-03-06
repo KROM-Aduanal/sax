@@ -10,48 +10,8 @@
     <GWC:FindbarControl Label="Buscar Proveedor" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="BusquedaGeneral" />
 
     <% End If %>
-        
-    <style>
-
-        .cl_Domicilios {
-            opacity: .6;
-            color: #757575;
-            display: inline-block;
-            padding: 0 14px;
-            border-radius: 0 16px 16px 0px;
-        }
-
-        .cl_Domicilios {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .cl_Tarjeta {      
-            font-size: 24px;
-            font-weight: bold;   
-            color: #432776;               
-            display: flex;           
-	        justify-content: center;
-            align-items: center;   
-            
-        }
-
-        .cl_Num__Tarjeta {
-            background-color: #432776;            
-            color: #fff;
-            display: flex;        
-            border-radius: 50%;           
-	        justify-content: center;            
-            align-items: center;
-            width: 60px;
-            height: 60px;
-        }
-
-        .cl_Num__Tarjeta {
-            font-size: 2.4em;
-            font-weight: bold;
-        }
-    </style>
+   
+     <link rel="stylesheet" type="text/css" href="estilos.css" />
 
 </asp:Content>
 
