@@ -21,6 +21,7 @@ Namespace Syn.Documento
     <BsonKnownTypes(GetType(ConstructorRevalidacion))>
     <BsonKnownTypes(GetType(ConstructorViajes))>
     <BsonKnownTypes(GetType(ConstructorTIGIE))>
+    <BsonKnownTypes(GetType(ConstructorAcuseValor))>
     <BsonKnownTypes(GetType(ConstructorFacturaComercial))>
     <BsonKnownTypes(GetType(ConstructorManifestacionValor))>
     <Serializable()>

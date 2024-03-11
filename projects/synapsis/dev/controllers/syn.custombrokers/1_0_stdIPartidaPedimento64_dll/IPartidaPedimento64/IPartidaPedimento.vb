@@ -86,6 +86,8 @@ Public Interface IPartidaPedimento
 
     Property ValorAgregado As Double
 
+    Property PrecioUnitarioUSD As Double
+
     Property Archivo As Boolean
 
     Property Estado As Integer

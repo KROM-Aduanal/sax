@@ -87,6 +87,8 @@ Public Class PartidaPedimento
 
     Private _valorAgregado As Double
 
+    Private _precioUnitarioUSD As Double
+
     Private _archivo As Boolean
 
     Private _estado As Integer
@@ -735,6 +737,22 @@ Public Class PartidaPedimento
 
     End Property
 
+    Public Property PrecioUnitarioUSD As Double Implements IPartidaPedimento.PrecioUnitarioUSD
+
+        Get
+
+            Return _precioUnitarioUSD
+
+        End Get
+
+        Set(value As Double)
+
+            _precioUnitarioUSD = value
+
+        End Set
+
+    End Property
+
     Public Property Archivo As Boolean Implements IPartidaPedimento.Archivo
 
         Get
@@ -814,7 +832,8 @@ Public Class PartidaPedimento
                         .DescripcionVinculacion = itemFactura_.DescripcionVinculacion,
                         .Modelo = itemFactura_.Modelo,
                         .Descripcion = itemFactura_.Descripcion,
-                        .Marca = itemFactura_.Marca
+                        .Marca = itemFactura_.Marca,
+                        .ValorAgregado = itemFactura_.ValorAgregado
                     }
 
             'partida_.CodigoProducto = _itemfactura.CodigoProducto

@@ -12,6 +12,3 @@ C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.GenerateResource.c
 C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.CoreCompileInputs.cache
 C:\SAX\projects\synapsis\dev\main\obj\Release\Krombase243.dll
 C:\SAX\projects\synapsis\dev\main\obj\Release\Krombase243.pdb
-C:\SAX\projects\synapsis\dev\main\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.dll
-C:\SAX\projects\synapsis\dev\main\bin\Gsol.Web.Gsol.KromComponentes64.0.0.0.0.pdb
-C:\SAX\projects\synapsis\dev\main\obj\Release\KromSAAI.vbproj.CopyComplete

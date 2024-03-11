@@ -1,6 +1,7 @@
 ﻿Imports gsol.krom
 Imports MongoDB.Bson
 Imports MongoDB.Driver
+Imports Rec.Globals.Controllers
 Imports Sax
 Imports Syn.Documento
 Imports Syn.Nucleo.RecursosComercioExterior
@@ -21,6 +22,14 @@ Public Class GeneradorPartidasPedimento
     Private _agrupacionesDisponibles As New List(Of IGeneradorPartidasPedimento.TipoAgrupaciones)
 
     Private _informacionAgrupacion As New InformacionAgrupacion
+
+    Private ReadOnly _tieneCuentasAduaneras As Boolean = False
+
+    Private _tieneCuotaCompensatoria As Boolean = False
+
+    Private ReadOnly _esIMMEX As Boolean = False
+
+    Private ReadOnly _esRetorno As Boolean = False
 
     Private ReadOnly _idPedimentoModulo As ObjectId
 
@@ -161,6 +170,26 @@ Public Class GeneradorPartidasPedimento
 
         _estado = ProcesarItemsFactura(facturasComerciales_)
 
+        _informacionAgrupacion.tipooperacion = _pedimentoDocumento.Attribute(CA_TIPO_OPERACION).Valor
+
+        If _informacionAgrupacion.tipooperacion = 1 Then
+
+            'importaciones
+            'Después que se tenga mejorada la interfaz se debe ajustar para revisar el componente o algún otro campo
+            _tieneCuentasAduaneras = IIf(_pedimentoDocumento.Seccion(SeccionesPedimento.ANS19).CantidadPartidas > 0, True, False)
+
+        Else
+
+            'Exportaciones
+            'Se revisa si tiene descargos porque aplica a empresas IMMEX (hasta el momento es lo mejor que se aproxima)
+            'Se sugiere revisar el identificador general "IM" Para detectar si es o no IMMEX
+            _esIMMEX = IIf(_pedimentoDocumento.Seccion(SeccionesPedimento.ANS20).CantidadPartidas > 0, True, False)
+
+            'Se valida que sea una operación de retorno para aplicar valor agregado
+            _esRetorno = IIf(_pedimentoDocumento.Attribute(CA_CVE_PEDIMENTO).Valor = 32, True, False)
+
+        End If
+
         If _estado.Status = TagWatcher.TypeStatus.Ok Then
 
             _itemsFacturaComercial = _estado.ObjectReturned
@@ -192,6 +221,7 @@ Public Class GeneradorPartidasPedimento
     Public Function GeneraOpcionesAgrupacion(ByVal itemsFactura_ As List(Of IItemFacturaComercial)) As List(Of IGeneradorPartidasPedimento.TipoAgrupaciones) Implements IGeneradorPartidasPedimento.GeneraOpcionesAgrupacion
 
         Dim listaCampos_ As New List(Of String)
+        Dim listaFraccionesPais_ As New List(Of String)
 
         If itemsFactura_.Count > 0 And itemsFactura_ IsNot Nothing Then
 
@@ -215,7 +245,7 @@ Public Class GeneradorPartidasPedimento
 
                     Else
 
-                        _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: FraccionNico, no se cumple con lo solicitado.")
+                        _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: FraccionNico, no se cumple con lo solicitado.")
 
                     End If
 
@@ -231,9 +261,9 @@ Public Class GeneradorPartidasPedimento
 
                         listaCampos_.Add(iItemFacturaComercial_.UnidadMedidaComercial)
 
-                        If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario) Then
+                        If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado) Then
 
-                            _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario)
+                            _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado)
 
                         End If
 
@@ -241,7 +271,7 @@ Public Class GeneradorPartidasPedimento
 
                     Else
 
-                        _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: UMCPRecioUnitario, no se cumple con lo solicitado.")
+                        _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: UMCPrecioUnitarioPromedio, no se cumple con lo solicitado.")
 
                     End If
 
@@ -251,35 +281,7 @@ Public Class GeneradorPartidasPedimento
 
                 End If
 
-                'En este caso se requiere saber si tiene PrecioEstimado o PrecioReferencia (PENDIENTE porque no se tiene analizada esa parte)
-                If iItemFacturaComercial_.PrecioUnitario > 0 Then
-
-                    If Not listaCampos_.Contains(iItemFacturaComercial_.PrecioUnitario) Then
-
-                        listaCampos_.Add(iItemFacturaComercial_.PrecioUnitario)
-
-                        If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario) Then
-
-                            _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario)
-
-                        End If
-
-                        _estado.SetOK()
-
-                    Else
-
-                        _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: UMCPRecioUnitario, no se cumple con lo solicitado.")
-
-
-                    End If
-
-                Else
-
-                    _estado.SetError(Me, "No se cuenta con Precio unitario.")
-
-                End If
-
-                If _informacionAgrupacion.TipoOperacion = 1 Then
+                If _informacionAgrupacion.tipooperacion = 1 Then
 
                     'Para importaciones
                     If iItemFacturaComercial_.PaisVendedor <> "" And iItemFacturaComercial_.PaisOrigen <> "" Then
@@ -300,7 +302,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
 
 
                         End If
@@ -311,7 +313,55 @@ Public Class GeneradorPartidasPedimento
 
                     End If
 
-                    'Para este se requiere validar el tipo de operación (Expo -> tiene valores fijos Impo -> pueden variar)
+                    'En este caso se requiere saber si tiene cuenta aduanera solo aplica Importaciones
+                    If _tieneCuentasAduaneras = True Then
+
+                        If iItemFacturaComercial_.PrecioUnitario > 0 Then
+
+                            If Not listaCampos_.Contains(iItemFacturaComercial_.PrecioUnitario) Then
+
+                                listaCampos_.Add(iItemFacturaComercial_.PrecioUnitario)
+
+                                If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario) Then
+
+                                    _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario)
+
+                                End If
+
+                                _estado.SetOK()
+
+                            Else
+
+
+                                _estado.SetOKInfo(Me, "No se puede aplicar al tipo de agrupación: PrecioUnitario, no se cumple con lo solicitado sobre precios estimados.")
+
+                            End If
+
+                        Else
+
+                            _estado.SetOKBut(Me, "No se cuenta con Precio unitario disponible para precios estimados.")
+
+                        End If
+
+                    End If
+
+                    'Agregamos el listado de Fracciones, para revisar Cuotas compensatorias (Precios de referencia)
+                    If Not listaFraccionesPais_.Contains(iItemFacturaComercial_.FraccionArancelaria + iItemFacturaComercial_.Nico) Then
+
+                        listaFraccionesPais_.Add(iItemFacturaComercial_.FraccionArancelaria + iItemFacturaComercial_.Nico)
+
+                    End If
+
+                    '************
+                    'Agregamos el listado de Fracciones con País de Origen, para revisar Cuotas compensatorias (Precios de referencia) Pendiente por si se ocupa
+                    'If Not listaFraccionesPais_.Contains(iItemFacturaComercial_.FraccionArancelaria + iItemFacturaComercial_.Nico + "|" + iItemFacturaComercial_.PaisOrigen) Then
+
+                    '    listaFraccionesPais_.Add(iItemFacturaComercial_.FraccionArancelaria + iItemFacturaComercial_.Nico + "|" + iItemFacturaComercial_.PaisOrigen)
+
+                    'End If
+                    '************
+
+                    'Para este se requiere validar el tipo de operación (Impo -> pueden variar & Expo -> tiene valores fijos )
                     If iItemFacturaComercial_.MetodoValoracion > 0 And iItemFacturaComercial_.Vinculacion > 0 Then
 
                         If Not listaCampos_.Contains(iItemFacturaComercial_.MetodoValoracion And iItemFacturaComercial_.Vinculacion) Then
@@ -330,7 +380,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: MetodoValoracionVinculacion, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: MetodoValoracionVinculacion, no se cumple con lo solicitado.")
 
 
                         End If
@@ -362,7 +412,7 @@ Public Class GeneradorPartidasPedimento
 
                         Else
 
-                            _estado.SetError(Me, "Ocurrio un error al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
+                            _estado.SetOKInfo(Me, "Ocurrio un detalle al agregar el tipo de agrupación: PaisVentaCompraOrigenDestino, no se cumple con lo solicitado.")
 
 
                         End If
@@ -377,7 +427,74 @@ Public Class GeneradorPartidasPedimento
 
             Next
 
-            'Queda pendiente revisar lo del valor agregado
+            'Solo exportaciones, si es immex y retorno
+            If _informacionAgrupacion.tipooperacion = 2 Then
+
+                If _esIMMEX = True And _esRetorno = True Then
+
+                    If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.ValorAgregado) Then
+
+                        _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.ValorAgregado)
+
+                        _estado.SetOK()
+
+                    End If
+
+                Else
+
+                    _estado.SetOKInfo(Me, "No se puede aplicar al tipo de agrupación: ValorAgregado, no se cumple con lo solicitado.")
+
+                End If
+
+            End If
+
+            'Solo si son importaciones - Precio de Referencia
+            'se consultan las fracciones y se revisan si tienen C.C. con uno que tenga se debe validar el Precio unitario sea igual en los items
+            'Se deja esto como apoyo pero se debe revisar detenidamente lo de consultar "n" fracciones con Países de origen diferentes por que ahorita solo se puede
+            'mandar de un solo país de origen de "n" fracciones.
+            If listaFraccionesPais_.Count > 0 And _informacionAgrupacion.tipooperacion = 1 Then
+
+                Dim tigie_ As New ControladorTIGIE()
+
+                tigie_.ConsultaFraccionArancelaria(Of ConstructorTIGIE)(listaFraccionesPais_, IControladorTIGIE.TipoOperacion.Importacion, "DEU", DateTime.Now.Date)
+
+                If tigie_.Estado.Status = TagWatcher.TypeStatus.Ok Then
+
+                    'PENDIENTE CORRECCIÓN DE ANTONIO ZAMORA PARA LEER LA LISTA (ahora manda error).
+                    Dim listaFraccionesArancelarias_ As List(Of hsCode) = tigie_.Estado.ObjectReturned
+
+                    For Each fraccionArancelaria_ In listaFraccionesArancelarias_
+
+                        If fraccionArancelaria_.regulacionesArancelarias.cuotasCompensatorias.Count > 0 Then
+
+                            _tieneCuotaCompensatoria = True
+
+                            Exit For
+
+                        End If
+
+                    Next
+
+                End If
+
+                If _tieneCuotaCompensatoria = True Then
+
+
+                    If Not _agrupacionesDisponibles.Contains(IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario) Then
+
+                        _agrupacionesDisponibles.Add(IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario)
+
+                    End If
+
+                Else
+
+                    _estado.SetOKInfo(Me, "Ocurrio un error al agregar el tipo de agrupación: PrecioUnitario, no se cumple con lo solicitado sobre precios de referencia.")
+
+
+                End If
+
+
+            End If
 
         End If
 
@@ -395,29 +512,68 @@ Public Class GeneradorPartidasPedimento
         Dim existePartida_ = True
         Dim secuenciapartida_ = 0
 
-        ProcesarEntradas(_pedimentoDocumento, tipoAgrupacionSeleccionada_)
+        ProcesarEntradas(tipoAgrupacionSeleccionada_)
 
         'Comprobamos que tenga un item y que no este vacía
         If itemsFactura_.Count > 0 And itemsFactura_ IsNot Nothing Then
 
             For Each itemFactura_ In itemsFactura_
 
+                Dim secpartida_ As IEnumerable(Of Integer)
                 'Comprobamos que el nuevo item de factura no este en alguna partida
                 If partidas_.Count > 0 Then
 
-                    'Obtenemos la secuencia de la partida
-                    Dim secpartida_ = From partidaRegistrada_ In partidas_
+                    If _tieneCuentasAduaneras = True Or _tieneCuotaCompensatoria = True Then
+
+                        'Obtenemos la secuencia de la partida validando el precio unitario
+                        secpartida_ = From partidaRegistrada_ In partidas_
                                       Where partidaRegistrada_.FraccionArancelaria = itemFactura_.FraccionArancelaria _
-                                            And partidaRegistrada_.Nico = itemFactura_.Nico _
-                                            And partidaRegistrada_.UnidadMedidaComercial = itemFactura_.UnidadMedidaComercial _
-                                            And partidaRegistrada_.UnidadMedidaTarifa = itemFactura_.UnidadMedidaTarifa _
-                                            And partidaRegistrada_.PaisOrigen = itemFactura_.PaisOrigen _
-                                            And partidaRegistrada_.PaisDestino = itemFactura_.PaisDestino _
-                                            And partidaRegistrada_.PaisVendedor = itemFactura_.PaisVendedor _
-                                            And partidaRegistrada_.PaisComprador = itemFactura_.PaisComprador _
-                                            And partidaRegistrada_.MetodoValoracion = itemFactura_.MetodoValoracion _
-                                            And partidaRegistrada_.Vinculacion = itemFactura_.Vinculacion
+                                                And partidaRegistrada_.Nico = itemFactura_.Nico _
+                                                And partidaRegistrada_.UnidadMedidaComercial = itemFactura_.UnidadMedidaComercial _
+                                                And partidaRegistrada_.UnidadMedidaTarifa = itemFactura_.UnidadMedidaTarifa _
+                                                And partidaRegistrada_.PrecioUnitario = itemFactura_.PrecioUnitario _
+                                                And partidaRegistrada_.PaisOrigen = itemFactura_.PaisOrigen _
+                                                And partidaRegistrada_.PaisDestino = itemFactura_.PaisDestino _
+                                                And partidaRegistrada_.PaisVendedor = itemFactura_.PaisVendedor _
+                                                And partidaRegistrada_.PaisComprador = itemFactura_.PaisComprador _
+                                                And partidaRegistrada_.MetodoValoracion = itemFactura_.MetodoValoracion _
+                                                And partidaRegistrada_.Vinculacion = itemFactura_.Vinculacion
                                       Select partidaRegistrada_.SecuenciaPartida
+
+                        'Falta validar el valor agregado porque no se tiene implementado en la factura comercial
+                    ElseIf True Then
+
+                        secpartida_ = From partidaRegistrada_ In partidas_
+                                      Where partidaRegistrada_.FraccionArancelaria = itemFactura_.FraccionArancelaria _
+                                                And partidaRegistrada_.Nico = itemFactura_.Nico _
+                                                And partidaRegistrada_.UnidadMedidaComercial = itemFactura_.UnidadMedidaComercial _
+                                                And partidaRegistrada_.UnidadMedidaTarifa = itemFactura_.UnidadMedidaTarifa _
+                                                And partidaRegistrada_.PaisOrigen = itemFactura_.PaisOrigen _
+                                                And partidaRegistrada_.PaisDestino = itemFactura_.PaisDestino _
+                                                And partidaRegistrada_.PaisVendedor = itemFactura_.PaisVendedor _
+                                                And partidaRegistrada_.PaisComprador = itemFactura_.PaisComprador _
+                                                And partidaRegistrada_.MetodoValoracion = itemFactura_.MetodoValoracion _
+                                                And partidaRegistrada_.Vinculacion = itemFactura_.Vinculacion _
+                                                And partidaRegistrada_.ValorAgregado = itemFactura_.ValorAgregado
+                                      Select partidaRegistrada_.SecuenciaPartida
+
+                    Else
+
+                        'Obtenemos la secuencia de la partida
+                        secpartida_ = From partidaRegistrada_ In partidas_
+                                      Where partidaRegistrada_.FraccionArancelaria = itemFactura_.FraccionArancelaria _
+                                                And partidaRegistrada_.Nico = itemFactura_.Nico _
+                                                And partidaRegistrada_.UnidadMedidaComercial = itemFactura_.UnidadMedidaComercial _
+                                                And partidaRegistrada_.UnidadMedidaTarifa = itemFactura_.UnidadMedidaTarifa _
+                                                And partidaRegistrada_.PaisOrigen = itemFactura_.PaisOrigen _
+                                                And partidaRegistrada_.PaisDestino = itemFactura_.PaisDestino _
+                                                And partidaRegistrada_.PaisVendedor = itemFactura_.PaisVendedor _
+                                                And partidaRegistrada_.PaisComprador = itemFactura_.PaisComprador _
+                                                And partidaRegistrada_.MetodoValoracion = itemFactura_.MetodoValoracion _
+                                                And partidaRegistrada_.Vinculacion = itemFactura_.Vinculacion
+                                      Select partidaRegistrada_.SecuenciaPartida
+
+                    End If
 
                     If secpartida_.Count > 0 Then
 
@@ -477,7 +633,7 @@ Public Class GeneradorPartidasPedimento
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.FraccionNico
 
 
-                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPRecioUnitario
+                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.UMCPrecioUnitarioCalculado
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.PaisVentaCompraOrigenDestino
@@ -493,6 +649,9 @@ Public Class GeneradorPartidasPedimento
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.ValorAgregado
+
+
+                        Case IGeneradorPartidasPedimento.TipoAgrupaciones.PrecioUnitario
 
 
                         Case IGeneradorPartidasPedimento.TipoAgrupaciones.SinAgrupacion
@@ -535,7 +694,7 @@ Public Class GeneradorPartidasPedimento
 
             Next
 
-            _informacionAgrupacion.ItemsAsociados() = itemsAsociados_
+            _informacionAgrupacion.itemsasociados() = itemsAsociados_
 
             'Se procesa la información de las facturas
             ProcesarFacturas(itemsAsociados_)
@@ -571,7 +730,6 @@ Public Class GeneradorPartidasPedimento
             End If
 
             'Se deben procesar los campos de validación al momento (SOLO AQUELLOS QUE SE TENGAN Y QUE SE PUEDAN VERIFICAR)
-            'Se debe traer la información de la FRACCIÓN ARANCELARIA (ESTA SEGURAMENTE SE CONSULTARA POR MEDIO DEL CONTROLADOR)
 
         Else
 
@@ -671,28 +829,25 @@ Public Class GeneradorPartidasPedimento
 
     End Function
 
-    Private Function ProcesarEntradas(ByVal pedimento_ As DocumentoElectronico,
-                                    ByVal agrupacionSeleccionada_ As IGeneradorPartidasPedimento.TipoAgrupaciones) As InformacionAgrupacion
-
-        Dim tipoOperacion_ As Integer = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(2).Valor 'Se debe cambiar el nombre del campo
+    Private Function ProcesarEntradas(ByVal agrupacionSeleccionada_ As IGeneradorPartidasPedimento.TipoAgrupaciones) As InformacionAgrupacion
 
         _informacionAgrupacion = New InformacionAgrupacion With {
+            .tipooperacion = _pedimentoDocumento.Attribute(CA_TIPO_OPERACION).Valor,
             ._id = ObjectId.GenerateNewId(),
             ._idpedimento = _idPedimentoModulo, 'Actualmente no se tiene valor en el campo y se decidio traerlo antes por si aplica 
             .agrupacionseleccionada = agrupacionSeleccionada_,
-            .tipooperacion = tipoOperacion_,
-            .fechatipocambio = IIf(tipoOperacion_ = 1, pedimento_.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_ENTRADA).Valor, pedimento_.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_PRESENTACION).Valor),
-            .tipocambio = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_TIPO_CAMBIO).Valor,
+            .fechatipocambio = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Attribute(CA_FECHA_ENTRADA).Valor, _pedimentoDocumento.Attribute(CA_FECHA_PRESENTACION).Valor),
+            .tipocambio = _pedimentoDocumento.Attribute(CA_TIPO_CAMBIO).Valor,
             .fechageneracionagrupacion = Date.Now,
             .pedimento = New DatosPedimento With {
-                .numeropedimentocompleto = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_NUMERO_PEDIMENTO_COMPLETO).Valor,
-                .aduanaseccion = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_CLAVE_SAD).Valor,
-                .anio = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_ANIO_VALIDACION).ValorPresentacion,
-                .patente = pedimento_.Seccion(SeccionesPedimento.ANS44).Campo(CA_PATENTE).Valor,
-                .cvepedimento = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_CVE_PEDIMENTO).Valor,
-                .regimen = pedimento_.Seccion(SeccionesPedimento.ANS1).Campo(CA_REGIMEN).Valor,
-                .fechaentrada = IIf(tipoOperacion_ = 1, pedimento_.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_ENTRADA).Valor, Nothing),
-                .fechapresentacion = IIf(tipoOperacion_ = 2, pedimento_.Seccion(SeccionesPedimento.ANS14).Campo(CA_FECHA_PRESENTACION).Valor, Nothing)
+                .numeropedimentocompleto = _pedimentoDocumento.Attribute(CA_NUMERO_PEDIMENTO_COMPLETO).Valor,
+                .aduanaseccion = _pedimentoDocumento.Attribute(CA_CLAVE_SAD).Valor,
+                .anio = _pedimentoDocumento.Attribute(CA_ANIO_VALIDACION).ValorPresentacion,
+                .patente = _pedimentoDocumento.Attribute(CA_PATENTE).Valor,
+                .cvepedimento = _pedimentoDocumento.Attribute(CA_CVE_PEDIMENTO).Valor,
+                .regimen = _pedimentoDocumento.Attribute(CA_REGIMEN).Valor,
+                .fechaentrada = IIf(_informacionAgrupacion.tipooperacion = 1, _pedimentoDocumento.Attribute(CA_FECHA_ENTRADA).Valor, Nothing),
+                .fechapresentacion = IIf(_informacionAgrupacion.tipooperacion = 2, _pedimentoDocumento.Attribute(CA_FECHA_PRESENTACION).Valor, Nothing)
             },
             .archivado = False,
             .estado = 1
@@ -752,7 +907,7 @@ Public Class GeneradorPartidasPedimento
                                     ._iddocumentoasociado = New ObjectId(facturaComercial_.Id),
                                     .identificadorrecurso = recurso_.ToList(0),
                                     .idcoleccion = root_.collection,
-                                    .AnalisisConsistencia = 1
+                                    .analisisconsistencia = 1
                                 }
 
                                 'facturaAgregada_.firmadigital = factura_.FirmaDigital, No se tiene implementado.
@@ -810,9 +965,11 @@ Public Class GeneradorPartidasPedimento
         Dim items_ As IEnumerable(Of ItemPartida)
         Dim sumaUMC_ As Double = 0
         Dim sumaUMT_ As Double = 0
+        Dim sumaVA_ As Double = 0
         Dim precioPagado_ As Double = 0
         Dim sumaMercancia_ As Double = 0
         Dim factormonedaFC_ As Double = 0
+        Dim datosfraccion As New hsCode
 
         If itemsAsociados_ IsNot Nothing Then
 
@@ -884,7 +1041,7 @@ Public Class GeneradorPartidasPedimento
                             factormonedaFC_ = informacionFC_.factormoneda
 
                             'Se hace el calculo de la suma del valor por el factor moneda por el tipo de cambio.
-                            precioPagado_ = (sumaMercancia_ * factormonedaFC_) * _informacionAgrupacion.TipoCambio
+                            precioPagado_ = (sumaMercancia_ * factormonedaFC_) * _informacionAgrupacion.tipocambio
 
                             'Se suma al valor anterior si es el primero será 0.
                             sumaTotalPrecioPagado_ = precioPagado_ + sumaTotalPrecioPagado_
@@ -905,15 +1062,24 @@ Public Class GeneradorPartidasPedimento
 
                     End If
 
-                    'PRECIO UNITARIO | PrecioPagado / cantidadUMC | Si se considera en la malla entonces no debe calcularse pero sino si.
-                    'Se debe validar que sea Precio estimado o de referencia para no aplicar la formula.
-                    partida_.PrecioUnitario = sumaTotalPrecioPagado_ / partida_.CantidadUMC
+                    'PRECIO UNITARIO | PrecioPagado / cantidadUMC |
+                    'Si se considera en la malla entonces no debe calcularse pero sino si.
+                    'Se debe validar que sea Precio estimado (Cuenta aduanera) o de referencia (Cuota compensatoria) para no aplicar la formula.
+                    If _tieneCuentasAduaneras = False And _tieneCuotaCompensatoria = False Then
 
-                    If _informacionAgrupacion.TipoOperacion = 2 Then
+                        partida_.PrecioUnitario = sumaTotalPrecioPagado_ / partida_.CantidadUMC
+
+                    Else
+
+                        partida_.PrecioUnitario = items_(0).preciounitario
+
+                    End If
+
+                    If _informacionAgrupacion.tipooperacion = 2 Then
 
                         'Exportaciones
                         'VALOR COMERCIAL | Se tiene fórmula: (Precio pagado part. / TIPO_CAMBIO)|
-                        Dim valorComercial_ = sumaTotalPrecioPagado_ / _informacionAgrupacion.TipoCambio
+                        Dim valorComercial_ = sumaTotalPrecioPagado_ / _informacionAgrupacion.tipocambio
 
                         If valorComercial_ > 0 Then
 
@@ -926,7 +1092,25 @@ Public Class GeneradorPartidasPedimento
 
                         End If
 
-                    ElseIf _informacionAgrupacion.TipoOperacion = 1 Then
+                        'Suma del Valor agregado
+                        If _esIMMEX = True And _esRetorno = True Then
+
+                            sumaVA_ = Aggregate asociados_ In items_
+                                        Into Sum(asociados_.valoragregado)
+
+                            If sumaVA_ > 0 Then
+
+                                partida_.ValorAgregado = sumaVA_
+
+                            Else
+
+                                _estado.SetOKInfo(Me, "Es apta para valor agregado pero no tiene.")
+
+                            End If
+
+                        End If
+
+                    ElseIf _informacionAgrupacion.tipooperacion = 1 Then
 
                         'Importaciones
                         Dim sumaIncrementables_ As Double = 0
@@ -954,7 +1138,7 @@ Public Class GeneradorPartidasPedimento
 
                                 Else
 
-                                    partida_.ValorAduanal = partida_.ImportePrecioPagado * _informacionAgrupacion.TipoCambio
+                                    partida_.ValorAduanal = partida_.ImportePrecioPagado * _informacionAgrupacion.tipocambio
 
                                 End If
 
@@ -968,7 +1152,7 @@ Public Class GeneradorPartidasPedimento
 
                                 Else
 
-                                    partida_.ValorAduanal = sumaValorTotal_ * _informacionAgrupacion.TipoCambio
+                                    partida_.ValorAduanal = sumaValorTotal_ * _informacionAgrupacion.tipocambio
 
                                 End If
 
@@ -982,13 +1166,52 @@ Public Class GeneradorPartidasPedimento
 
                         End If
 
+                        'Si tiene precios estimados o precios de referencia se debe sacar el precio unitario en USD 
+                        'Por sugerencia de Juridico (Jovana) se saca con el valor aduanal entre el tipo de cambio (recordando que aquí ya se incluyen incrementables)
+                        If _tieneCuentasAduaneras = True Or _tieneCuotaCompensatoria = True Then
+
+                            partida_.PrecioUnitarioUSD = partida_.ValorAduanal / _informacionAgrupacion.tipocambio
+
+                        End If
+
+                    End If
+
+                    'Vamos a intentar consultar una fracción por país y fecha
+                    Dim fraccionArancelaria_ = ObtenerDatosFraccionArancelaria(partida_.FraccionArancelaria + partida_.Nico, partida_.PaisOrigen)
+
+                    If fraccionArancelaria_.Status = TagWatcher.TypeStatus.Ok Then
+
+                        datosfraccion = fraccionArancelaria_.ObjectReturned
+
+                        Dim datosFA_ = ProcesarDatosFraccionArancelaria(datosfraccion, partida_)
+
+                        'Miau
+
+                        If datosFA_.Status = TagWatcher.TypeStatus.Ok Then
+
+                            _estado.SetOK()
+
+                        ElseIf datosFA_.Status = TagWatcher.TypeStatus.OkInfo Then
+
+                            _estado.SetOKInfo("ControladorTIGIE", "Se reviso todo sin detalle, pero no se tiene toda la información.")
+
+                        Else
+
+                            _estado.SetError("ControladorTIGIE", "Ha ocurrido un detalle: No se procesarón los datos de la fracción arancelaria.")
+
+                        End If
+
+                    Else
+
+                        _estado.SetError("ControladorTIGIE", "Ha ocurrido un detalle: No se obtuvo la información de la fracción arancelaria " + partida_.FraccionArancelaria + partida_.Nico + " correctamente.")
+
                     End If
 
                     indice_ += 1
 
                 Next
 
-                If _estado.Status = TagWatcher.TypeStatus.Ok Then
+                If _estado.Status = TagWatcher.TypeStatus.Ok Or _estado.Status = TagWatcher.TypeStatus.OkInfo Then
 
                     _estado.SetOK()
 
@@ -1006,24 +1229,29 @@ Public Class GeneradorPartidasPedimento
                     sumaPrecioPagado_ = Aggregate partidas In listaPartidas_
                                 Into Sum(partidas.ImportePrecioPagado)
 
-                    If _informacionAgrupacion.TipoOperacion = 1 Then
+                    If _informacionAgrupacion.tipooperacion = 1 Then
 
                         'Importaciones
 
                         Dim sumaValorAduanal_ = Aggregate partidas In listaPartidas_
                                         Into Sum(partidas.ValorAduanal)
 
-                        montoDolares = sumaValorAduanal_ * _informacionAgrupacion.TipoCambio
+                        montoDolares = sumaValorAduanal_ * _informacionAgrupacion.tipocambio
 
-                    ElseIf _informacionAgrupacion.TipoOperacion = 2 Then
+                    ElseIf _informacionAgrupacion.tipooperacion = 2 Then
 
                         'Exportaciones
                         Dim sumaValorComercial_ = Aggregate partidas In listaPartidas_
                                         Into Sum(partidas.ValorComercial)
 
-                        montoDolares = sumaValorComercial_ * _informacionAgrupacion.TipoCambio
+                        montoDolares = sumaValorComercial_ * _informacionAgrupacion.tipocambio
 
                     End If
+
+
+                ElseIf _estado.Status = TagWatcher.TypeStatus.OkInfo Then
+
+                    _estado.SetOKBut(Me, "Algo sucedio en la información de la Fracción arancelaria.")
 
                 Else
 
@@ -1045,26 +1273,408 @@ Public Class GeneradorPartidasPedimento
 
     End Sub
 
-    Private Sub ProcesarCalculosFraccionArancelaria(ByVal _fraccionarancelaria As String)
+    Private Function ObtenerDatosFraccionArancelaria(ByVal _fraccionarancelaria As String, ByVal _pais As String) As TagWatcher
 
-        'ByVal _requisitosfa
+        Dim tigie_ As IControladorTIGIE = New ControladorTIGIE()
 
-        'IGI/IGE
-        'Se tiene fórmula
+        Dim fracciones_ = New List(Of String) From {_fraccionarancelaria}
 
-        'IVA
-        'Se tiene fórmula
+        tigie_.GetHsCode(Of ConstructorTIGIE)(_fraccionarancelaria, IControladorTIGIE.TipoOperacion.Importacion, _pais, DateTime.Now.Date)
 
-        'IEPS
-        'Se tiene fórmula
+        Return tigie_.Estado
 
-        'DTA
-        'Se tiene fórmula
+    End Function
 
-        'C.C.
-        'Se tiene fórmula
+    Private Function ProcesarDatosFraccionArancelaria(ByVal _fraccionarancelaria As hsCode, ByRef _partidaActual As IPartidaPedimento) As TagWatcher
 
-    End Sub
+        If _partidaActual.UnidadMedidaTarifa = _fraccionarancelaria.claveUnidadMedida Then
+
+            _estado.SetOK()
+
+        Else
+
+            _estado.SetError(Me, "Ha ocurrido un detalle: No coindiden las unidades de tarifa.")
+
+        End If
+
+        _partidaActual.ResumenImpuestos = New List(Of ImpuestoPartidaPedimento)
+        _partidaActual.Identificadores = New List(Of IdentificadorPartidaPedimento)
+        _partidaActual.Permisos = New List(Of PermisoPartidaPedimento)
+
+        'Aquí vamos a pasarle los impuestos
+        If _fraccionarancelaria.impuestos.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _impuestorequerido In _fraccionarancelaria.impuestos
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                .IdImpuesto = index_,
+                .DescripcionContribucion = _impuestorequerido.impuesto,
+                .TipoTasa = _impuestorequerido.tipoTasa,
+                .Tasa = _impuestorequerido.tasa
+            }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron impuestos.")
+
+        End If
+
+        'Comenzamos a revisar las regulaciones arancelarias
+        If _fraccionarancelaria.regulacionesArancelarias.tratadosComerciales.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _tratadosdisponibles In _fraccionarancelaria.regulacionesArancelarias.tratadosComerciales
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _tratadosdisponibles.tratado,
+                    .Tasa = _tratadosdisponibles.tasa,
+                    .TipoTasa = _tratadosdisponibles.tipoTasa,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                Dim _identificadorposible As New IdentificadorPartidaPedimento With {
+                    .Identificador = _tratadosdisponibles.identificador,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+                _partidaActual.Identificadores.Add(_identificadorposible)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron tratados comerciales.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesArancelarias.aladis.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _aldisdisponibles In _fraccionarancelaria.regulacionesArancelarias.aladis
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _aldisdisponibles.aladi,
+                    .Tasa = _aldisdisponibles.descuento,
+                    .TipoTasa = _aldisdisponibles.identificador,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                Dim _identificadorposible As New IdentificadorPartidaPedimento With {
+                    .Identificador = _aldisdisponibles.identificador,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+                _partidaActual.Identificadores.Add(_identificadorposible)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron aladis.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesArancelarias.cuposArancel.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _cuposaranceldisponible In _fraccionarancelaria.regulacionesArancelarias.cuposArancel
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _cuposaranceldisponible.pais,
+                    .Tasa = _cuposaranceldisponible.arancel,
+                    .TipoTasa = _cuposaranceldisponible.arancelFuera,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron cupos arancel.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesArancelarias.ieps.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _iepsdisponible In _fraccionarancelaria.regulacionesArancelarias.ieps
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _iepsdisponible.tipo,
+                    .Tasa = _iepsdisponible.tasa,
+                    .TipoTasa = _iepsdisponible.medida,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron cupos ieps.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesArancelarias.cuotasCompensatorias.Count > 0 Then
+
+            Dim index_ = 1
+
+            'Para las Unidades medidas lo que se pueda convertir hacerlo y sino indicar que se debe hacer la conversión
+            'Considerar que esto se hace por producto así que aunque este requerido puede no aplicar
+            'Se van a colocar pero al final el usuario tiene la ultima palabra dependiendo de las características del producto
+
+            For Each _cuotacompensatoriadisponible In _fraccionarancelaria.regulacionesArancelarias.cuotasCompensatorias
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _cuotacompensatoriadisponible.acotacion,
+                    .Tasa = _cuotacompensatoriadisponible.cuota,
+                    .TipoTasa = _cuotacompensatoriadisponible.tipo,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron cuotas compensatorias.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesArancelarias.preciosEstimados.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _preciosestimadosdisponible In _fraccionarancelaria.regulacionesArancelarias.preciosEstimados
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _preciosestimadosdisponible.descripcion,
+                    .Tasa = _preciosestimadosdisponible.precio,
+                    .TipoTasa = _preciosestimadosdisponible.unidad,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                'Comparar el precio y sacar la conversión (dolares)
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron precios estimados.")
+
+        End If
+
+        'Comenzamos a revisar las regulaciones y restricciones no arancelarias
+        If _fraccionarancelaria.regulacionesNoArancelarias.anexos.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _anexosdisponibles In _fraccionarancelaria.regulacionesNoArancelarias.anexos
+
+                'Dim _permisonuevo As New PermisoPartidaPedimento With {
+                '    .IdPermiso = index_,
+                '    . = _tratadosdisponibles.tratado,
+                '    .Tasa = _tratadosdisponibles.tasa,
+                '    .TipoTasa = _tratadosdisponibles.tipoTasa,
+                '    .Archivado = 0,
+                '    .Estado = 1
+                '}
+
+                '_partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+                '_partidaActual.Identificadores.Add(_identificadorposible)
+
+                'index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron anexos.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesNoArancelarias.cuposMinimos.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _cuposminimosdisponibles In _fraccionarancelaria.regulacionesNoArancelarias.cuposMinimos
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _cuposminimosdisponibles.descripcion,
+                    .Tasa = _cuposminimosdisponibles.cupo,
+                    .TipoTasa = _cuposminimosdisponibles.unidad,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron cupos mínimos.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesNoArancelarias.embargos.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _embargosdisponibles In _fraccionarancelaria.regulacionesNoArancelarias.embargos
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _embargosdisponibles.aplicacion,
+                    .Tasa = _embargosdisponibles.acotacion,
+                    .TipoTasa = _embargosdisponibles.mercancia,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron embargos.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesNoArancelarias.normas.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _normasdisponibles In _fraccionarancelaria.regulacionesNoArancelarias.normas
+
+                Dim _permisonuevo As New PermisoPartidaPedimento With {
+                    .IdPermiso = index_,
+                    .Clave = _normasdisponibles.norma,
+                    .Numero = _normasdisponibles.identificadores(0),
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.Permisos.Add(_permisonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron normas.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesNoArancelarias.permisos.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _permisosdisponibles In _fraccionarancelaria.regulacionesNoArancelarias.permisos
+
+                Dim _permisonuevo As New PermisoPartidaPedimento With {
+                    .IdPermiso = index_,
+                    .Clave = _permisosdisponibles.clave,
+                    .Numero = _permisosdisponibles.acotacion,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.Permisos.Add(_permisonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron permisos.")
+
+        End If
+
+        If _fraccionarancelaria.regulacionesNoArancelarias.padronSectorial.Count > 0 Then
+
+            Dim index_ = 1
+
+            For Each _padrondisponibles In _fraccionarancelaria.regulacionesNoArancelarias.padronSectorial
+
+                Dim _impuestonuevo As New ImpuestoPartidaPedimento With {
+                    .IdImpuesto = index_,
+                    .DescripcionContribucion = _padrondisponibles.anexo,
+                    .Tasa = _padrondisponibles.acotacion,
+                    .TipoTasa = _padrondisponibles.descripcion,
+                    .Archivado = 0,
+                    .Estado = 1
+                }
+
+                _partidaActual.ResumenImpuestos.Add(_impuestonuevo)
+
+                index_ += 1
+
+            Next
+
+        Else
+
+            _estado.SetOKInfo(Me, "No se detectaron padron sectorial.")
+
+        End If
+
+        Return _estado
+
+    End Function
 
     Private Sub Reordernar(ByRef partidas_ As List(Of IPartidaPedimento), ByRef itemsAsociados_ As List(Of ItemPartida))
 

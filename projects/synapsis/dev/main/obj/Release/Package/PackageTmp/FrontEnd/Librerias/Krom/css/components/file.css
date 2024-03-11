@@ -77,8 +77,6 @@
 .wc-file .col-auto a:empty {
 	padding-right: 8px;
 	background-position: center !important;
-	/*border-radius:50%;
-	height: 44px;*/
 }
 
 .wc-file .col-auto {

@@ -22,7 +22,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
-
     <style>
 
         .img-section {
@@ -158,35 +157,38 @@
                         </GWC:FieldsetControl>
                         <GWC:FieldsetControl ID="_fsdescripcionfacturas" runat="server" Detail="Descripciones en Facturas" Label="Descripciones">
                             <ListControls>
-                                    <GWC:PillboxControl runat="server" CssClass="col-xs-12" ID="pbx_DescipcionesFacturas" KeyField="indice" OnBeforeClick="pbx_DescipcionesFacturas_BeforeClick" OnClick="pbx_DescipcionesFacturas_Click" OnCheckedChange="pbx_DescipcionesFacturas_CheckedChange">
+                                    <GWC:PillboxControl runat="server" CssClass="col-xs-12" ID="pbx_DescipcionesFacturas" KeyField="indice">
                                         <ListControls>
                                             <%-- 
                                             <GWC:SwitchControl runat="server" ID="cd6" CssClass="col-xs-12 col-md-2 d-flex align-items-center justify-content-center" OnText="Si" OffText="No" Label="Combinar Descripción"/>
                                             --%>
                                             <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6" ID="fbx_Cliente" Label="Cliente" OnTextChanged="fbx_Cliente_TextChanged" RequiredSelect="true"/>
                                             <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6" ID="fbx_Proveedor" Label="Proveedor" OnTextChanged="fbx_Proveedor_TextChanged" RequiredSelect="true"/>                                   
+                                       
+                                            <GWC:CatalogControl runat="server" ID="cat_DescipcionesFacturas" CssClass="col custom_cat_3" KeyField="indice">
+                                                <Columns>
+                                                    <GWC:InputControl Type="Text" runat="server" ID="txt_IdKrom" Label="Id Krom" Enabled="false"/>
+                                                    <GWC:InputControl Type="Text" runat="server" ID="txt_NumeroParte" Label="Número de parte"/>
+                                                    <GWC:InputControl runat="server" ID="txt_Descripcion" Label="Descripción" Type="Text"/>
+                                                    <GWC:SwitchControl runat="server" ID="sw_AplicaCove" OnText="Si" OffText="No" Label="Aplica COVE"/>
+                                                    <GWC:InputControl runat="server" ID="txt_DescripcionCove" Label="Descripción COVE" Type="Text"/>
+                                                    <GWC:InputControl Type="Text" runat="server" ID="txt_Alias" Label="Alias"/>
+                                                    <GWC:SelectControl runat="server" ID="sl_TipoAlias" Label="Tipo Alias">
+                                                        <Options>
+                                                            <GWC:SelectOption Value="1" Text="Modelo"/>
+                                                            <GWC:SelectOption Value="2" Text="Submodelo"/>
+                                                            <GWC:SelectOption Value="3" Text="Número de série"/>
+                                                            <GWC:SelectOption Value="4" Text="SKU"/>
+                                                            <GWC:SelectOption Value="5" Text="Código interno"/>
+                                                        </Options>
+                                                    </GWC:SelectControl>
+                                                </Columns>
+                                            </GWC:CatalogControl>
+                                            
                                         </ListControls>
                                     </GWC:PillboxControl>
                                     <asp:Panel runat="server" CssClass="w-100 fieldset custom_cat_3_content">
-                                        <GWC:CatalogControl runat="server" ID="cat_DescipcionesFacturas" CssClass="col custom_cat_3" KeyField="indice">
-                                            <Columns>
-                                                <GWC:InputControl Type="Text" runat="server" ID="txt_IdKrom" Label="Id Krom" Enabled="false"/>
-                                                <GWC:InputControl Type="Text" runat="server" ID="txt_NumeroParte" Label="Número de parte"/>
-                                                <GWC:InputControl runat="server" ID="txt_Descripcion" Label="Descripción" Type="Text"/>
-                                                <GWC:SwitchControl runat="server" ID="sw_AplicaCove" OnText="Si" OffText="No" Label="Aplica COVE"/>
-                                                <GWC:InputControl runat="server" ID="txt_DescripcionCove" Label="Descripción COVE" Type="Text"/>
-                                                <GWC:InputControl Type="Text" runat="server" ID="txt_Alias" Label="Alias"/>
-                                                <GWC:SelectControl runat="server" ID="sl_TipoAlias" Label="Tipo Alias">
-                                                    <Options>
-                                                        <GWC:SelectOption Value="1" Text="Modelo"/>
-                                                        <GWC:SelectOption Value="2" Text="Submodelo"/>
-                                                        <GWC:SelectOption Value="3" Text="Número de série"/>
-                                                        <GWC:SelectOption Value="4" Text="SKU"/>
-                                                        <GWC:SelectOption Value="5" Text="Código interno"/>
-                                                    </Options>
-                                                </GWC:SelectControl>
-                                            </Columns>
-                                        </GWC:CatalogControl>
+                                        
                                     </asp:Panel>
                             </ListControls>
                         </GWC:FieldsetControl>
@@ -212,7 +214,7 @@
                                                 <GWC:InputControl Type="Text" runat="server" ID="txt_HistoricoDescripcion" Label="Descripción"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="txt_HistoricoProveedor" Label="Proveedor"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="txt_HistoricoCliente" Label="Cliente"/>
-                                                <GWC:InputControl Type="Text" runat="server" ID="txt_HistoricoFechaArchivado" Label="Fecha archivado"/>
+                                                <%--<GWC:InputControl Type="Text" runat="server" ID="txt_HistoricoFechaArchivado" Label="Fecha archivado"/>--%>
                                             </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>

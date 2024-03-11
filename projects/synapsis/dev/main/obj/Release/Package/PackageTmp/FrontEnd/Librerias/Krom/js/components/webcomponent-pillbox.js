@@ -10,8 +10,10 @@ export class WCPillbox extends HTMLDivElement {
 
         this._component = this.closest('.__component');
 
-        this._jsonString = this._component.querySelector('.__data');
+        //this._jsonString = this._component.querySelectorAll('.__data');
 
+        this._jsonString = [].slice.call(this._component.querySelectorAll('.__data')).pop();
+       
         const controls_ = this._component.querySelectorAll('input[id], textarea[id], select[id]') || [];
 
         controls_.addEventListener('change', e => this.prepareJsonData(e));
@@ -23,7 +25,7 @@ export class WCPillbox extends HTMLDivElement {
     }
 
     prepareJsonData(e) {
-        
+       
         try {
 
             const json_ = JSON.parse(this._jsonString.value);
@@ -31,7 +33,7 @@ export class WCPillbox extends HTMLDivElement {
             const filteredJson_ = json_.filter((e) => { return e.borrado == false && e.archivado == false });
 
             const controls_ = this._component.querySelectorAll('input[id], textarea[id], select[id]') || [];
-           
+            
             const page_ = Number(this._jsonString.getAttribute('page'));
             
             controls_.forEach((control_) => {
@@ -66,6 +68,22 @@ export class WCPillbox extends HTMLDivElement {
 
                         filteredJson_[page_][controlId_] = { Value: control_.value, Text: container_.querySelector('.__value').value };
 
+                    } else if (container_.classList.contains('wc-catalog')) {
+
+                        const subcontrolId_ = container_.classList.item(container_.classList.length - 1);
+                        
+                        try {
+
+                            const subjson_ = JSON.parse(container_.querySelector('.__data').value);
+
+                            filteredJson_[page_][subcontrolId_] = subjson_;
+
+                        } catch (e) {
+
+                            filteredJson_[page_][subcontrolId_] = null;
+
+                        }
+
                     } else {
 
                         filteredJson_[page_][controlId_] = control_.value;
@@ -91,11 +109,13 @@ export class WCPillbox extends HTMLDivElement {
                 }
 
             });
+
+            console.log(json_)
             
             this._jsonString.value = JSON.stringify(json_);
             
         } catch (e) {
-            
+            //console.log(e);
         }
 
     }

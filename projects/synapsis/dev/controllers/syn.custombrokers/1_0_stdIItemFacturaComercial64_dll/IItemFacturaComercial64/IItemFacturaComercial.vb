@@ -63,6 +63,8 @@ Public Interface IItemFacturaComercial
 
     Property ValorMercancia As Double
 
+    Property ValorAgregado As Integer
+
     Property Estado As Integer
 
 #End Region

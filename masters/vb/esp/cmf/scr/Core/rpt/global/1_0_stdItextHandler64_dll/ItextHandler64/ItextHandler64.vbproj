@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A1D4CF1-5055-4134-AD14-E2151D1021BB}</ProjectGuid>
+    <ProjectGuid>{8F6E2733-C399-42F5-91D1-DC79EF860A0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Rpt.Global</RootNamespace>
     <AssemblyName>Rpt.Global.ItextHandler64.0.0.0.0</AssemblyName>

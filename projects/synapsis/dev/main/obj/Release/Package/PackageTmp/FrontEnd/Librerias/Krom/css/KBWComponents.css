@@ -98,11 +98,6 @@
 	opacity: 1;
 }
 
-.interaction-disabled {
-	pointer-events: none;
-	opacity: .5;
-}
-
 .lock-input {
 	width: 20px;
 	height: 20px;
