@@ -969,6 +969,7 @@ Public Class Ges022_001_AcuseValor
     Public Sub dbc_NumFacturaAcuseValor_Click(sender As Object, e As EventArgs)
 
 
+        _icontroladorAcuseValor.GenerarAcuseValor(New ConstructorAcuseValor)
         '_organismo.ObtenerCamposSeccionExterior(New List(Of ObjectId) From {New ObjectId("64fb6e1ebd6d1ecd88701663")},
         '                                        New ConstructorTIGIE(), New Dictionary(Of [Enum], List(Of [Enum])) From
         '                                        {{SeccionesTarifaArancelaria.TIGIE1, New List(Of [Enum]) From
