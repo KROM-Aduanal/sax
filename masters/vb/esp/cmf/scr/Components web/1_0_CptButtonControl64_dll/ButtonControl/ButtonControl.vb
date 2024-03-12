@@ -27,8 +27,6 @@ Public Class ButtonControl
 
     Private Shared ReadOnly EventClick As New Object()
 
-    Public Property Icon As String
-
     Public Property RowId As Integer
 
     Public Overrides Property Enabled As Boolean
@@ -56,6 +54,26 @@ Public Class ButtonControl
             End If
 
             MyBase.Enabled = value
+
+        End Set
+
+    End Property
+
+    Public Property Icon As String
+
+        Get
+
+            EnsureChildControls()
+
+            Return ViewState("Icon")
+
+        End Get
+
+        Set(value As String)
+
+            EnsureChildControls()
+
+            ViewState("Icon") = value
 
         End Set
 

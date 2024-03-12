@@ -139,6 +139,10 @@
       <HintPath>..\..\..\..\..\..\global\lib\rec.globals.utils\Rec.Globals.Utils.SelectOption64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sax.SaxStatements64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\Sax.SaxStatements64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sax.Web.ControladorBackend64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\web\Sax.Web.ControladorBackend64.0.0.0.0.dll</HintPath>
       <Private>False</Private>

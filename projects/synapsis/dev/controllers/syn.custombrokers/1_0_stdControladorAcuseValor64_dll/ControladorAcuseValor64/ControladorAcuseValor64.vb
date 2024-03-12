@@ -9,7 +9,6 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 
 Imports Wma.Exceptions
-Imports gsol.Web.Components
 
 Imports Rec.Globals.Controllers
 Imports Syn.Utils
@@ -264,6 +263,31 @@ Public Class ControladorAcuseValor
     Public Function GenerarAcuseValor(constructorAcuseValor_ As ConstructorAcuseValor,
                                       Optional adendar_ As Boolean = False) As TagWatcher _
                                       Implements IControladorAcuseValor.GenerarAcuseValor
+
+
+        'Dim sax2_ As Sax.SaxStatements = Sax.SaxStatements.GetInstance(13)
+
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).endpointId = 14
+
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).credentialId = 7
+
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).name = "customers"
+
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).officesuffix = False
+
+        'Using enlace_3 As IEnlaceDatos = New EnlaceDatos
+
+        '    enlace_3.GetMongoCollection(Of BsonDocument)("users").Aggregate.
+        '    ToList.
+        '                                  ForEach(Sub(room_)
+
+        '                                              MsgBox("ALGO")
+
+        '                                          End Sub)
+
+        '    MsgBox("AAAA")
+        'End Using
+
 
         Dim acuseValor_ As String = "COVE237"
 

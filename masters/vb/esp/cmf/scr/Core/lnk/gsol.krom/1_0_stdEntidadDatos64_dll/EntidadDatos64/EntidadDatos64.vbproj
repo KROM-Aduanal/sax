@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

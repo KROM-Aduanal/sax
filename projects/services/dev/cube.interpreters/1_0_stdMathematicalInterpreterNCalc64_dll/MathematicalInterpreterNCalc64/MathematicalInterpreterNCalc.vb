@@ -1,7 +1,9 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Linq.Expressions
+Imports System.Text.RegularExpressions
 Imports Cube.ValidatorReport
 Imports Cube.Validators
 Imports gsol.krom
+Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports MongoDB.Driver.Linq
 Imports NCalc
@@ -88,7 +90,9 @@ Public Class MathematicalInterpreterNCalc
                                                            "TRUNC",
                                                            "SI",
                                                            "Y",
-                                                           "O"}
+                                                           "O",
+                                                           "EXTRAE",
+                                                           "EN"}
 
         _operandsNCalc = New List(Of String) From {"if",
                                                     "Round",
@@ -127,6 +131,9 @@ Public Class MathematicalInterpreterNCalc
                                         Implements IMathematicalInterpreter.RunExpression
 
 
+        sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).endpointId = 2
+
+        sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).credentialId = 3
 
         If constantValues_ Is Nothing Then
 
@@ -161,6 +168,8 @@ Public Class MathematicalInterpreterNCalc
         AddHandler _expressionNCalc.EvaluateFunction, RunFunctionHandler(paramValues_)
 
         Dim result_
+
+        _reports = New ValidatorReport
 
         Try
 
@@ -724,52 +733,42 @@ Public Class MathematicalInterpreterNCalc
 
                                 tempOperand_ = tempOperand_.TrimEnd("0123456789".ToCharArray())
 
-                                    Dim lengthFinalOperand = curedElement_.Length - 1
-
-                                    While Char.IsNumber(CChar(Enumerable.ElementAt(CType(curedElement_, IEnumerable(Of Char)), CInt(lengthFinalOperand)))) Or
+                                Dim lengthFinalOperand = curedElement_.Length - 1
+                                While Char.IsNumber(CChar(Enumerable.ElementAt(CType(curedElement_, IEnumerable(Of Char)), CInt(lengthFinalOperand)))) Or
                                           Enumerable.ElementAt(CType(curedElement_, IEnumerable(Of Char)), CInt(lengthFinalOperand)) = "N"
+                                    lengthFinalOperand -= 1
 
-                                        lengthFinalOperand -= 1
+                                End While
 
-                                    End While
+                                Dim finalRange_ As Int32
 
-                                    Dim finalRange_ As Int32
+                                tempOperand_ = _operandsTemp(_operandsTemp.IndexOf(tempOperand_) + 1)
 
-                                    tempOperand_ = _operandsTemp(_operandsTemp.IndexOf(tempOperand_) + 1)
+                                Dim listaAux_ = GetMatchesCount(tempOperand_,
+values_)
 
-                                    Dim listaAux_ = GetMatchesCount(tempOperand_,
-                                                                          values_)
-
-                                    If curedElement_.Substring(CInt(lengthFinalOperand + 1),
-                                                                CInt(curedElement_.Length - lengthFinalOperand - 1)) = "N" Then
-
-                                        finalRange_ = listaAux_(listaAux_.Count - 1) - 1
-
-                                    Else
-
-                                        finalRange_ = curedElement_.Substring(CInt(lengthFinalOperand + 1),
-                                                                              CInt(curedElement_.Length - 1)) - 1
-
-                                    End If
-
-                                    Dim mongoPosition_ As Int32
-
-                                    For mongoPosition_ = initialRange_ - 1 To finalRange_
-
-                                        finalExpression_ &= SetValuesOperands(tempOperand_,
-                                                                             mongoPosition_,
-                                                                             values_,
-                                                                             False) &
-                                                                             ","
-
-                                    Next
-
-                                    finalExpression_ = finalExpression_.Substring(0,
-                                                                        finalExpression_.Length - 1)
+                                If curedElement_.Substring(CInt(lengthFinalOperand + 1),
+CInt(curedElement_.Length - lengthFinalOperand - 1)) = "N" Then
+                                    finalRange_ = listaAux_(listaAux_.Count - 1) - 1
 
                                 Else
 
-                                    finalExpression_ &= SetValuesOperands(curedElement_,
+                                    finalRange_ = curedElement_.Substring(CInt(lengthFinalOperand + 1),
+                                                                              CInt(curedElement_.Length - 1)) - 1
+                                End If
+                                Dim mongoPosition_ As Int32
+                                For mongoPosition_ = initialRange_ - 1 To finalRange_
+
+                                    finalExpression_ &= SetValuesOperands(tempOperand_,
+                                                                             mongoPosition_,
+values_,
+                                                                             False) &
+","
+                                Next
+                                finalExpression_ = finalExpression_.Substring(0,
+finalExpression_.Length - 1)
+                            Else
+                                finalExpression_ &= SetValuesOperands(curedElement_,
                                                                          0,
                                                                          values_,
                                                                          False)
@@ -779,13 +778,9 @@ Public Class MathematicalInterpreterNCalc
                         Else
 
                             If curedElement_ = ":" Then
-
                                 found2Points_ = True
-
                             End If
-
                             finalExpression_ &= curedElement_
-
                         End If
 
                     End If
@@ -801,15 +796,10 @@ Public Class MathematicalInterpreterNCalc
     End Function
 
     Function SeparateSentences(expression_ As String) As String
-
         Dim separationQuotes_ = expression_.Split("'")
-
         Dim result_ = ""
-
         Dim quotesCount_ = 0
-
         For Each separation_ In separationQuotes_
-
             If quotesCount_ Mod 2 = 0 Then
 
                 result_ &= separation_.Replace("  ", " ").Replace(vbCrLf, "") & "'"
@@ -909,8 +899,9 @@ Public Class MathematicalInterpreterNCalc
                                         listOperand_.Add(operand_ & ",SI")
 
                                     End If
-                                End If
 
+
+                                End If
 
 
                             End If
@@ -1154,7 +1145,7 @@ Public Class MathematicalInterpreterNCalc
 
 
 
-                listOperand_.Add(operand_.Substring(0, operand_.Length - 1) & ",SI")
+            listOperand_.Add(operand_.Substring(0, operand_.Length - 1) & ",SI")
 
         End If
 
@@ -1182,7 +1173,6 @@ Public Class MathematicalInterpreterNCalc
         functionOperands_.AddRange(_customFunctions)
 
         originalExpression_ = SeparateSentences(originalExpression_)
-
         For Each character_ In originalExpression_ & "?"
 
             word_ = character_
@@ -1578,6 +1568,52 @@ Public Class MathematicalInterpreterNCalc
 
                                      result_ = 1
 
+                                 Case "EN"
+
+                                     Dim sentencesIn_ As String = ""
+
+                                     For Each parameter_ In functionParameters_.Parameters
+
+
+                                         sentencesIn_ &= "'" & parameter_.Evaluate & "',"
+
+                                     Next
+
+                                     sentencesIn_ = "in(" & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
+
+                                     Dim expression_ = New NCalc.Expression(sentencesIn_)
+
+
+                                     expression_.Parameters = values_
+
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+
+
+                                     functionParameters_.Result = expression_.Evaluate
+
+                                     resultIsDouble_ = False
+
+                                 Case "EXTRAE"
+
+                                     Dim firstParameter_ As String = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+
+                                     Dim secondParameter_ = functionParameters_.
+                                                            Parameters(1).
+                                                            Evaluate
+
+                                     Dim thirdParameter_ = functionParameters_.
+                                                            Parameters.
+                                                            Last.
+Evaluate
+
+
+                                     functionParameters_.Result = firstParameter_.SubString(secondParameter_ - 1, thirdParameter_)
+
+                                     resultIsDouble_ = False
+
                                  Case "O"
 
                                      Dim resultO_ = ""
@@ -1596,6 +1632,8 @@ Public Class MathematicalInterpreterNCalc
                                      Dim expression_ = New NCalc.Expression(resultO_)
 
                                      expression_.Parameters = values_
+
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
                                      functionParameters_.Result = expression_.Evaluate
 
@@ -1979,6 +2017,11 @@ Public Class MathematicalInterpreterNCalc
                                                                               ToString &
                                                                               ")*10000)/10000")
 
+
+                                     expression_.Parameters = values_
+
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+
                                      result_ = CDbl(expression_.Evaluate)
 
 
@@ -1998,6 +2041,10 @@ Public Class MathematicalInterpreterNCalc
                                      resultY_ = resultY_.Substring(0, resultY_.Length - 5)
 
                                      Dim expression_ = New NCalc.Expression(resultY_)
+
+                                     expression_.Parameters = values_
+
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
                                      functionParameters_.Result = expression_.Evaluate
 

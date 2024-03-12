@@ -127,6 +127,8 @@ Public Class CubeController
 
     Public Function GetFormula(roomname_ As String) As TagWatcher Implements ICubeController.GetFormula
 
+
+
         Dim operacion_ As String = ""
 
         Dim parametros_ As New List(Of String)
@@ -197,7 +199,9 @@ Public Class CubeController
 
         Dim rolIds_ As New List(Of Int32) From {1, 2, 3, 4, 5, 6}
 
+
         Dim sax_ = SwicthedProjectSax(16)
+
 
         For Each rolId_ In rolIds_
 
