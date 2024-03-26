@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentFindbar" runat="server">
 
 <% If IsPopup = False Then %>
-    <GWC:FindbarControl Label="Buscar Recámara" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
+    <GWC:FindbarControl Label="Buscar Recámara" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo" />
 <% End If %> 
 
     <style>
@@ -97,11 +97,68 @@
                 margin-left:20px;                     
               }
 
-        }        
-               
+        }      
+                
+       .CUBODESTINO {
+            left:1%;
+            top:2px;
+         }
+        
+        .CUBODESTINO input {
+            background-color:#050745;            
+            color: #fff;
+            display: flex;        
+            border-radius: 0%;   
+            border-color:white;
+            box-shadow:none;
+	        justify-content: center;            
+            align-items: center;
+            font-size:small;
+            font-weight:bold;
+            width: 70%;
+            height: 34px;
+        }
+
+        .CUBODESTINO input:hover {
+            background-color:#050745;            
+            color: #fff;
+            display: flex;        
+            border-radius: 0%;   
+            border-color:white;
+            box-shadow:none;
+	        justify-content: center;            
+            align-items: center;
+            font-size:small;
+            font-weight:bold;
+            width: 70%;
+            height: 34px;
+        }
+
+
+          .bc_funcionesexel {
+            border-radius: 20%; 
+            background-color:#3e1093;
+            left:2%;
+            height: stretch;   
+            width: contain;
+        }
+
+           .bc_funcionesexel input {
+            background-color: #3e1093;            
+	        align-items: center; 
+            
+            height: 30px;   
+            width: 40px;            
+        }
+
+               .LDIAS {
+            left:1%;
+            bottom:5px;
+         }
+        
         .LDIAS input {
             background-color: white;            
-            color: black;
+            color: #757575;
             display: flex;        
             border-radius: 0%;   
             border-color:white;
@@ -111,22 +168,14 @@
             font-size:x-large;
             font-weight:bold;
             width: 70%;
-            height: 110%;
+            height: 70%;
         }
 
-          .bc_funcionesexel {
-            border-radius: 2%; 
-      
-        }
 
-        .LDIAS {
-            left:2%;
-            bottom:8px;
-         }
 
         .swcOnlines {
 
-            left:30%;
+            left:38%;
             bottom:8px;
             width: 48%;
             height: 40%;
@@ -149,9 +198,17 @@
 
         }
 
+        .bc_checaformula input:hover {
+             
+            background-color: #340687;      
+            border-radius: 5%; 
+
+        }
+
           .bc_checaformula  {
           background-color: #fff;    
                   bottom:25px;
+            color:#757575
        
         }
 
@@ -164,8 +221,9 @@
             box-shadow:none;
 	        justify-content: left;            
                  
-            font-size:x-large;
+            font-size:large;
             font-weight:bold;
+            font-family:Calibri;
             width: 70%;
             height: 110%;
         }
@@ -188,31 +246,8 @@
 
         }
 
-        .p_Principals {
-
-            align-items: flex-start;
-
-        }
 
 
-        .CUBODESTINO {
-            bottom:1px;
-         }
-
-        .CUBODESTINO input {
-            background-color: #9c27b0;            
-            color: white;
-            display: flex;        
-            border-radius: 20%;   
-            border-color:white;
-            box-shadow:none;
-	        justify-content: center;            
-            align-items: center;
-            font-size:medium;
-            font-weight:bold;
-            width: 70%;
-            height: 10%;
-        }
 
 
 
@@ -239,19 +274,19 @@
                <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Reglas" >
                     <ListControls>
 
-                        <asp:Panel runat="server" CssClass="p_Principals col-xs-12 col-md-12" ID="p_Principal">
+                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12" ID="p_Principal">
 
                              <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 px-0 mt-2 py-2">
                         
                                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2">
                                         
-                                                   <GWC:ButtonControl runat="server" Label="A22" Font-Names="" ID="bc_SourceCube" CssClass="CUBODESTINO col-xs-2 col-md-1"/>
+                                                   <GWC:ButtonControl runat="server" Label="A22" ID="bc_SourceCube" CssClass="CUBODESTINO col-xs-2 col-md-1"/>
 
-                                                    <GWC:ButtonControl runat="server"  Icon="funcionexcel.png" ID="bc_Function" CssClass="bc_funcionesexel col-xs-1 col-md-1 mt-2 mb-1 px-0" Label="" OnClick="VeamosQuepasa"  />
-                                             
-                                                    <GWC:ButtonControl runat="server"  Icon="variable.png" ID="bc_Variable" CssClass="bc_funcionesexel col-xs-1 col-md-1 mt-2 mb-1 px-0" Label="" OnClick="VeamosQuepasa" Visible="False"/>
-                                          
-                                                    <GWC:FindboxControl runat="server" CssClass="col-xs-7 col-md-7 mt-2 mb-1 ml-3" Priority="false" Label="Nombre de la Recámara" ID="fbc_RoomName" />
+                                                    <GWC:ButtonControl runat="server" icon="funcionexcel1.png"  ID="bc_Function" CssClass="bc_funcionesexel col-xs-1 col-md-1 mt-2 px-0" OnClick="CambioContenido"  />
+
+                                                    <GWC:ButtonControl runat="server" icon="variable1.png"  ID="bc_variable" CssClass="bc_funcionesexel col-xs-1 col-md-1 mt-2 px-0" Visible="false" OnClick="CambioContenido"  />
+
+                                                    <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-8 mt-2 mb-1 px-5" Priority="false" Label="Nombre de la regla" ID="fbc_RoomName" />
                                                                                      
                                         </asp:Panel>
 
@@ -261,9 +296,7 @@
   
                                                    <GWC:ButtonControl runat="server" Label="0d" Font-Names="" ID="bc_CurrentUser" CssClass="LDIAS col-xs-2 col-md-2 mb-5"/>
 
-                                                   <GWC:SwitchControl runat="server" ID="swc_Online" CssClass="swcOnlines col-xs-1 col-md-1 mb-5" OnText="Online" OffText="Online" Checked="false"  />
-
-                                                   <GWC:ButtonControl runat="server" icon="filed.png" ID="bc_filed" CssClass="col-xs-2 col-md-2 mb-5"/>
+                                                   <GWC:SwitchControl runat="server" ID="swc_Online" CssClass="swcOnlines col-xs-1 col-md-1 mb-5" OnText="Online" OffText="Offline" Checked="false"  />
 
                                         </asp:Panel>
 
@@ -273,7 +306,7 @@
 
                                         </asp:Panel>
 
-                                        <asp:Panel runat="server" CssClass=" col-xs-12 col-md-6 px-0 mt-2 py-5" Visible="false">
+                                        <asp:Panel runat="server" CssClass=" col-xs-12 col-md-8 px-0 mt-2 py-5" Visible="false" ID="panel_ValoresOperandos">
                  
                                             <GWC:CatalogControl runat="server" KeyField="indice" ID="cc_ValoresOperandos" CssClass="w-100" Collapsed="true">
 
@@ -291,7 +324,7 @@
 
                                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0">
                            
-                                            <GWC:ButtonControl runat="server" Label="Verificar"  Icon="check.png" ID="bc_VerificarFormula" CssClass="bc_checaformula col-xs-2 col-md-2 ml-3 mr-4"/>
+                                            <GWC:ButtonControl runat="server" Label="Verificar"  Icon="check.png" ID="bc_VerificarFormula" CssClass="bc_checaformula col-xs-2 col-md-2 ml-3 mr-4" OnClick="VerificarFormula"/>
 
                                             <GWC:ButtonControl runat="server" Label="Limpiar"  Icon="eraser.png" ID="bc_LimpiarFormula" CssClass="bc_checaformula col-xs-2 col-md-2 ml-5"/>
 
@@ -358,6 +391,11 @@
 
                         </asp:Panel>
 
+                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0">
+                                  
+                                 <GWC:InputControl runat="server" CssClass="icruless col-xs-12 col-md-10 solid-textarea"  ID="ic_DescripcionRules" Type="TextArea" Format="SinDefinir" Name="ic_DescripcionRules" Label="Descripción" />
+
+                        </asp:Panel>
 
                     </ListControls>
                 </GWC:FieldsetControl>

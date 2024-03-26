@@ -6,6 +6,8 @@ Public Class Room
     <BsonIgnoreIfNull>
     Public Property roomname As String
     <BsonIgnoreIfNull>
+    Public Property description As String
+    <BsonIgnoreIfNull>
     Public Property rules As String
     <BsonIgnoreIfNull>
     Public Property required As Boolean

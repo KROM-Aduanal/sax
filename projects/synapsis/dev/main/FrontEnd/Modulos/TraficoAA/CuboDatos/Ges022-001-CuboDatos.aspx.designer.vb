@@ -77,13 +77,13 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents bc_Function As Global.Gsol.Web.Components.ButtonControl
 
     '''<summary>
-    '''Control bc_Variable.
+    '''Control bc_variable.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents bc_Variable As Global.Gsol.Web.Components.ButtonControl
+    Protected WithEvents bc_variable As Global.Gsol.Web.Components.ButtonControl
 
     '''<summary>
     '''Control fbc_RoomName.
@@ -122,15 +122,6 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents swc_Online As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
-    '''Control bc_filed.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents bc_filed As Global.Gsol.Web.Components.ButtonControl
-
-    '''<summary>
     '''Control ic_RoomRules.
     '''</summary>
     '''<remarks>
@@ -138,6 +129,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ic_RoomRules As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control panel_ValoresOperandos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents panel_ValoresOperandos As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''Control cc_ValoresOperandos.
@@ -264,4 +264,13 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents swc_MensajeDefault As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
+    '''Control ic_DescripcionRules.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ic_DescripcionRules As Global.Gsol.Web.Components.InputControl
 End Class

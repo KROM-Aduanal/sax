@@ -92,7 +92,10 @@ Public Class MathematicalInterpreterNCalc
                                                            "Y",
                                                            "O",
                                                            "EXTRAE",
-                                                           "EN"}
+                                                           "EN",
+                                                           "EXISTE",
+                                                           "ESBLANCO",
+                                                           "LARGO"}
 
         _operandsNCalc = New List(Of String) From {"if",
                                                     "Round",
@@ -131,9 +134,9 @@ Public Class MathematicalInterpreterNCalc
                                         Implements IMathematicalInterpreter.RunExpression
 
 
-        sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).endpointId = 2
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).endpointId = 2
 
-        sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).credentialId = 3
+        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).credentialId = 3
 
         If constantValues_ Is Nothing Then
 
@@ -141,7 +144,7 @@ Public Class MathematicalInterpreterNCalc
 
         End If
 
-        Dim newExpression_ = GetExpression(expression_,
+        Dim newExpression_ = GetExpression(expression_.Replace(Chr(34), "'"),
                                            constantValues_)
 
         Dim paramValues_ As New Dictionary(Of String, Object)
@@ -152,9 +155,26 @@ Public Class MathematicalInterpreterNCalc
 
             If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
 
-                paramValues_.Add(constanvalue_.Key, doubleParse_)
+                If doubleParse_ < 1 Then
 
-            Else
+                    paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                Else
+
+                    If constanvalue_.Value.ToString(0) = "0" Then
+
+                        paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+
+                    Else
+
+                        paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                    End If
+
+                End If
+
+
+                    Else
 
                 paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
 
@@ -446,7 +466,7 @@ Public Class MathematicalInterpreterNCalc
 
     Public Function GetParams(expression_ As String) As List(Of String) Implements IMathematicalInterpreter.GetParams
 
-        Dim listOperand_ = GetListFormula(expression_)
+        Dim listOperand_ = GetListFormula(expression_.Replace(Chr(34), "'"))
 
         listOperand_ = GetListOperandOperator(listOperand_)
 
@@ -565,7 +585,7 @@ Public Class MathematicalInterpreterNCalc
 
         Dim parenthesisCount_, parenthesisCountTruncate_ As New List(Of String)
 
-        expression_ = SeparateSentences(expression_)
+        expression_ = SeparateSentences(expression_.Replace(Chr(34), "'"))
 
         Dim operandList_ = GetListFormula(expression_)
 
@@ -1164,6 +1184,8 @@ finalExpression_.Length - 1)
 
         Dim operand_ As String = ""
 
+        Dim quoteFound = False
+
         Dim word_ As String
 
         Dim functionOperands_ As New List(Of String)
@@ -1177,106 +1199,72 @@ finalExpression_.Length - 1)
 
             word_ = character_
 
-            Select Case character_
+            If word_ = "'" Then
 
-                Case " ", "+", "-", "*", "/", "^", "?"
+                quoteFound = Not quoteFound
 
-                    If word_ = "?" Then
+            End If
 
-                        word_ = ""
+            If quoteFound Then
 
-                    End If
+                expression_ &= word_
 
-                    Dim doubleTemp_ As Double
+            Else
 
-                    Dim isNumber_ As Boolean
+                Select Case character_
 
-                    If Double.TryParse(operand_,
+                    Case " ", "+", "-", "*", "/", "^", "?", "(", ")"
+
+                        If word_ = "?" Then
+
+                            word_ = ""
+
+                        End If
+
+                        Dim doubleTemp_ As Double
+
+                        Dim isNumber_ As Boolean
+
+                        If Double.TryParse(operand_,
                                            doubleTemp_) OrElse
                            operand_ = "" OrElse
                            operand_ = "true" OrElse
                            operand_ = "false" Then
 
-                        isNumber_ = True
+                            isNumber_ = True
 
-                    Else
+                        Else
 
-                        operand_ = GetValueOperand(operand_)
+                            operand_ = GetValueOperand(operand_)
 
-                        isNumber_ = Double.TryParse(operand_,
+                            isNumber_ = Double.TryParse(operand_,
                                                        doubleTemp_)
 
-                    End If
-
-                    If isNumber_ Then
-
-                        expression_ &= operand_ & word_
-
-                    Else
-
-                        If operand_(0) = "[" Then
-
-                            operand_ = operand_.Substring(1,
-                                                                operand_.Length - 2)
-
                         End If
-
-                        Dim positionOperandFound_ = -1
-
-                        For index_ = operand_.Length - 1 To 0 Step -1
-
-                            If Not Char.IsNumber(operand_(index_)) OrElse
-                                    operand_(index_) = "N" Then
-
-                                positionOperandFound_ = index_
-
-                                isNumber_ = True
-
-                                Exit For
-
-                            End If
-
-                        Next
 
                         If isNumber_ Then
 
-                            positionOperandFound_ = _operandsTemp.IndexOf(operand_.Substring(0,
-                                                                                    positionOperandFound_ + 1))
+                            expression_ &= operand_ & word_
 
-                            If positionOperandFound_ Mod 2 <> 0 Then
+                        Else
 
-                                positionOperandFound_ = -1
+                            If operand_(0) = "[" Then
+
+                                operand_ = operand_.Substring(1,
+                                                                operand_.Length - 2)
 
                             End If
 
-                        Else
+                            Dim positionOperandFound_ = -1
 
-                            positionOperandFound_ = -1
+                            For index_ = operand_.Length - 1 To 0 Step -1
 
-                        End If
+                                If Not Char.IsNumber(operand_(index_)) OrElse
+                                    operand_(index_) = "N" Then
 
-                        If positionOperandFound_ > -1 OrElse
-                               functionOperands_.Contains(operand_) OrElse
-                               (operand_(0) = "'" AndAlso
-                               operand_(operand_.Length - 1) = "'") Then
+                                    positionOperandFound_ = index_
 
-                            expression_ &= If(operand_ = "SUMAR.SI",
-                                                "[" & operand_ & "]",
-                                                operand_)
-
-                        Else
-
-                            Dim maxencontrado_ As Boolean = False
-
-                            Dim maxposicion_ As Int32
-
-                            For maxposicion_ = position_ To 0 Step -1
-
-                                If values_.ContainsKey(operand_ &
-                                                            "." &
-                                                            maxposicion_) Then
-
-                                    maxencontrado_ = True
+                                    isNumber_ = True
 
                                     Exit For
 
@@ -1284,9 +1272,60 @@ finalExpression_.Length - 1)
 
                             Next
 
-                            If maxencontrado_ OrElse skip_ Then
+                            If isNumber_ Then
 
-                                expression_ &= If(brackets_,
+                                positionOperandFound_ = _operandsTemp.IndexOf(operand_.Substring(0,
+                                                                                    positionOperandFound_ + 1))
+
+                                If positionOperandFound_ Mod 2 <> 0 Then
+
+                                    positionOperandFound_ = -1
+
+                                End If
+
+                            Else
+
+                                positionOperandFound_ = -1
+
+                            End If
+
+                            If positionOperandFound_ > -1 OrElse
+                               functionOperands_.Contains(operand_) OrElse
+                               (operand_(0) = "'" AndAlso
+                               operand_(operand_.Length - 1) = "'") Then
+
+                                expression_ &= If(operand_ = "SUMAR.SI",
+                                                "[" & operand_ & "]",
+                                                operand_)
+                                If word_ = "(" Then
+
+                                    expression_ &= word_
+
+                                End If
+
+                            Else
+
+                                Dim maxencontrado_ As Boolean = False
+
+                                Dim maxposicion_ As Int32
+
+                                For maxposicion_ = position_ To 0 Step -1
+
+                                    If values_.ContainsKey(operand_ &
+                                                            "." &
+                                                            maxposicion_) Then
+
+                                        maxencontrado_ = True
+
+                                        Exit For
+
+                                    End If
+
+                                Next
+
+                                If maxencontrado_ OrElse skip_ Then
+
+                                    expression_ &= If(brackets_,
                                                      "[" &
                                                      operand_ &
                                                      "." &
@@ -1298,30 +1337,34 @@ finalExpression_.Length - 1)
                                                      maxposicion_ &
                                                      word_)
 
-                            Else
+                                Else
 
-                                If {"*", "+", "-", "/"}.Any(Function(ch_) operand_.Contains(ch_)) Then
+                                    If {"*", "+", "-", "/", ")", "("}.Any(Function(ch_) operand_.Contains(ch_)) Then
 
-                                    expression_ &= GetExpression(operand_,
+                                        expression_ &= GetExpression(operand_,
                                                                        values_) &
                                                                        word_
-                                Else
-                                    expression_ &= operand_ & word_
+                                    Else
+                                        expression_ &= operand_ & word_
+                                    End If
+
                                 End If
 
                             End If
 
                         End If
 
-                    End If
+                        operand_ = ""
 
-                    operand_ = ""
+                    Case Else
 
-                Case Else
+                        operand_ &= word_
 
-                    operand_ &= word_
+                End Select
 
-            End Select
+            End If
+
+
 
         Next
 
@@ -1398,39 +1441,43 @@ finalExpression_.Length - 1)
 
             Select Case character_
 
-                Case " ", "+", "-", "*", "/", "^", "?"
+                Case " ", "+", "-", "*", "/", "^", "?", "(", ")"
 
                     Dim doubleTemp_ As Double
 
                     Dim isNumber_ = Double.TryParse(operand_,
                                                        doubleTemp_)
 
+
                     If Not isNumber_ Then
 
-                        If operand_(0) = "[" Then
+                        If operand_ <> "" Then
 
-                            operand_ = operand_.Substring(1,
+                            If operand_(0) = "[" Then
+
+                                operand_ = operand_.Substring(1,
                                                                 operand_.Length - 2)
-
-                        End If
-
-                        Dim pointLastPosition_ = operand_.LastIndexOf(".")
-
-                        If pointLastPosition_ > -1 Then
-
-                            Dim integerTemp_ As Int32
-
-                            If Integer.TryParse(operand_.Substring(pointLastPosition_ + 1),
-                                                    integerTemp_) Then
-
-                                operand_ = operand_.Substring(0,
-                                                                    pointLastPosition_)
 
                             End If
 
-                        End If
+                            Dim pointLastPosition_ = operand_.LastIndexOf(".")
 
-                        listOperand_.Add(operand_)
+                            If pointLastPosition_ > -1 Then
+
+                                Dim integerTemp_ As Int32
+
+                                If Integer.TryParse(operand_.Substring(pointLastPosition_ + 1),
+                                                    integerTemp_) Then
+
+                                    operand_ = operand_.Substring(0,
+                                                                    pointLastPosition_)
+
+                                End If
+
+                            End If
+
+                            listOperand_.Add(operand_)
+                        End If
 
                         If character_ <> "?" Then
 
@@ -1438,17 +1485,28 @@ finalExpression_.Length - 1)
 
                         End If
 
-                        Dim matches_ = values_.Keys.Where(Function(e) e.Contains(operand_)).Count
+                        If operand_ <> "" Then
+                            Dim matches_ = values_.Keys.Where(Function(e) e.Contains(operand_)).Count
 
-                        If matches_ > count_ Then
+                            If matches_ > count_ Then
 
-                            count_ = matches_
+                                count_ = matches_
+
+                            End If
+                        End If
+
+                    Else
+
+                        listOperand_.Add(operand_)
+                        If character_ <> "?" Then
+
+                            listOperand_.Add(character_)
 
                         End If
 
                     End If
 
-                    operand_ = ""
+                        operand_ = ""
 
                 Case Else
 
@@ -1593,6 +1651,26 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = False
 
+                                 Case "ESBLANCO"
+
+                                     Dim firstParameter_ As String = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+
+                                     If firstParameter_ <> "" Then
+
+                                         functionParameters_.Result = False
+
+                                     Else
+
+                                         functionParameters_.Result = True
+
+                                     End If
+
+
+                                     resultIsDouble_ = False
+
                                  Case "EXTRAE"
 
                                      Dim firstParameter_ As String = functionParameters_.
@@ -1606,13 +1684,24 @@ finalExpression_.Length - 1)
 
                                      Dim thirdParameter_ = functionParameters_.
                                                             Parameters.
-                                                            Last.
-Evaluate
+                                                            Last.Evaluate
 
 
                                      functionParameters_.Result = firstParameter_.SubString(secondParameter_ - 1, thirdParameter_)
 
                                      resultIsDouble_ = False
+
+                                 Case "LARGO"
+
+                                     Dim firstParameter_ As String = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+
+                                     result_ = firstParameter_.Length
+
+                                     resultIsDouble_ = True
+
 
                                  Case "O"
 
@@ -1668,6 +1757,8 @@ Evaluate
 
                                      Dim cube_ As ICubeController = New CubeController
 
+                                     Dim lastParameter_ As String = ""
+
                                      parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
 
                                      operation_ = parameters_(0)
@@ -1710,12 +1801,29 @@ Evaluate
 
                                              End If
 
+                                             lastParameter_ = parametro_
 
                                          End If
 
                                          paramPosition_ += 1
 
                                      Next
+
+                                     If paramPosition_ > 0 And paramPosition_ < functionParameters_.Parameters.Count - 1 Then
+
+
+
+                                         For position_ = 1 To functionParameters_.Parameters.Count - paramPosition_
+
+                                             values_(lastParameter_.ToString & "." & position_) = functionParameters_.
+                                                                                                          Parameters(position_ + paramPosition_ - 1).
+                                                                                                          Evaluate
+
+                                         Next
+
+                                     End If
+
+
 
                                      Dim expressionRoom_ = New NCalc.Expression(GetExpression(operation_,
                                                                                                   values_))

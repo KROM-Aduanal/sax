@@ -308,7 +308,7 @@ Public Class CubeController
     End Function
 
 
-    Public Function SetFormula(Of T)(roomName_ As String, roomRules_ As String, cubeDestin_ As String, contenttype_ As String) As TagWatcher Implements ICubeController.SetFormula
+    Public Function SetFormula(Of T)(roomName_ As String, roomRules_ As String, cubeDestin_ As String, contenttype_ As String, descriptionRules_ As String) As TagWatcher Implements ICubeController.SetFormula
 
         Dim params_ As New List(Of String) From {cubeDestin_ & "." & roomName_}
 
@@ -356,6 +356,7 @@ Public Class CubeController
                                 {._id = ObjectId.GenerateNewId,
                                   .roomname = cubeDestin_ & "." & roomName_,
                                   .rules = roomRules_,
+                                  .description = descriptionRules_,
                                   .required = True,
                                   .fieldsrequired = New List(Of String),
                                   .type = "warning",
@@ -397,6 +398,7 @@ Public Class CubeController
                                     Update.
                                    Set(Function(e) e.roomname, room_.roomname).
                                    Set(Function(e) e.rules, room_.rules).
+                                   Set(Function(e) e.description, room_.description).
                                    Set(Function(e) e.required, room_.required).
                                    Set(Function(e) e.fieldsrequired, room_.fieldsrequired).
                                    Set(Function(e) e.type, room_.type).
@@ -492,7 +494,7 @@ Public Class CubeController
 
                     _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of Room)("", rolId_).
                                                  Aggregate.
-                                                 Match(Function(ch) ch.roomname.Contains(token_)).
+                                                 Match(Function(ch) ch.roomname.ToUpper.Contains(token_.ToUpper)).
                                                  Limit(cuenta_).
                                                  ToList)
 

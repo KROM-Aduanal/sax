@@ -63,7 +63,7 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function GetOperands(Optional firma_ As String = "") As TagWatcher
 
-    Function SetFormula(Of T)(roomName_ As String, roomRules_ As String, cubeDestin_ As String, contentype_ As String) As TagWatcher
+    Function SetFormula(Of T)(roomName_ As String, roomRules_ As String, cubeDestin_ As String, contenType_ As String, descriptionRules_ As String) As TagWatcher
 
 
     Function RunRoom(Of T)(roomName_ As String, params_ As String) As ValidatorReport
