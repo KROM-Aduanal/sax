@@ -34,104 +34,52 @@ export class WCCatalog extends HTMLTableElement {
 
         if (findText) findText.addEventListener('keyup', e => this.findElements(e));
 
-        //this.fillCatalog();
         this.setControlsEvents(this);
 
     }
-    /*
-    fillCatalog() {
 
-        try {
-
-            const dataRows_ = JSON.parse(this.jsonString.value).Items;
-
-            const tableRows_ = this.querySelectorAll('tbody tr.__row');
-
-            tableRows_.forEach((tableRow_, index_) => {
-
-                const rowControls_ = tableRow_.querySelectorAll('td');
-
-                rowControls_.forEach((controlContainer_) => {
-
-                    const controlId_ = controlContainer_.getAttribute('id');
-
-                    const control_ = controlContainer_.querySelector('input[id], textarea[id], select[id]') || false;
-
-                    if (control_) {
-
-                        const dataRow_ = dataRows_[index_];
-
-                        const controlValue_ = dataRow_[controlId_];
-
-                        if (control_.type.toLowerCase() == 'checkbox') {
-
-                            if (typeof controlValue_ === 'boolean') {
-
-                                control_.checked = controlValue_;
-
-                            } else {
-
-                                control_.value = controlValue_;
-
-                            }
-                        } else if (control_.type == 'select-one') {
-
-                            control_.value = controlValue_.Value;
-
-                        } else {
-
-                            control_.value = controlValue_;
-
-                        }
-
-                    }
-
-
-                });
-
-
-            });
-
-            this.setControlsEvents(this);
-
-        } catch (e) { }
-
-    }
-    */
     setControlsEvents(region_) {
 
-        const inputs = region_.querySelectorAll('input[id], textarea[id], select[id]') || [];
+        const inputs = region_.querySelectorAll('tr.__row input[id], tr.__row textarea[id], tr.__row select[id]') || [];
 
         inputs.addEventListener('change', (e) => {
 
-            if (!e.target.hasAttribute('in-process')) {
+            if (!e.target.closest('.__row').length) {
 
-                e.preventDefault();
+                if (!e.target.hasAttribute('in-process')) {
 
-                e.target.setAttribute('in-process', 'true');
+                    e.preventDefault();
 
-                this.prepareJsonData();
+                    e.target.setAttribute('in-process', 'true');
 
-                this.prepareJsonDrop(e.target);
+                    this.prepareJsonData();
 
-                /**/
-                //CUSTOM EVENT
-                /**/
-                window.onCatalogChange(this);
+                    this.prepareJsonDrop(e.target);
 
-                if ("createEvent" in document) {
+                    /**/
+                    //CUSTOM EVENT
+                    /**/
+                    window.onCatalogChange(this);
 
-                    var evt = document.createEvent("HTMLEvents");
+                    if ("createEvent" in document) {
 
-                    evt.initEvent("change", false, true);
+                        var evt = document.createEvent("HTMLEvents");
 
-                    e.target.dispatchEvent(evt);
+                        evt.initEvent("change", false, true);
 
-                } else {
+                        e.target.dispatchEvent(evt);
 
-                    e.target.fireEvent("onchange");
+                    } else {
+
+                        e.target.fireEvent("onchange");
+
+                    }
 
                 }
+
+            } else {
+
+                e.preventDefault();
 
             }
 
@@ -141,7 +89,7 @@ export class WCCatalog extends HTMLTableElement {
         const tableRows_ = region_.querySelectorAll('.__row .__down');
 
         tableRows_.addEventListener('click', (e) => {
-            
+
             if (!e.target.hasAttribute('in-process')) {
 
                 e.preventDefault();
@@ -152,8 +100,7 @@ export class WCCatalog extends HTMLTableElement {
 
                 e.target.click();
 
-            } 
-
+            }
 
         });
 
@@ -192,6 +139,7 @@ export class WCCatalog extends HTMLTableElement {
     //DATA PROCESS
 
     prepareJsonData() {
+
         try {
 
             const json = JSON.parse(this.jsonString.value);
@@ -199,7 +147,7 @@ export class WCCatalog extends HTMLTableElement {
             json.Items = [];
 
             this.querySelectorAll('tbody tr.__row').forEach((tr) => {
-            
+
                 var row_ = {};
 
                 tr.querySelectorAll('td').forEach((td) => {
@@ -207,7 +155,7 @@ export class WCCatalog extends HTMLTableElement {
                     const control_ = td.querySelector('input[id], textarea[id], select[id]') || false;
 
                     if (control_) {
-                   
+
                         if (control_.type.toLowerCase() == 'checkbox') {
 
                             if (control_.id == 'id_') {
@@ -221,7 +169,7 @@ export class WCCatalog extends HTMLTableElement {
                             }
 
                         } else if (control_.type.toLowerCase() == 'select-one') {
-                       
+
                             row_[td.id] = {
                                 Value: control_.value,
                                 Text: control_.options[control_.selectedIndex].text
@@ -258,7 +206,7 @@ export class WCCatalog extends HTMLTableElement {
         try {
 
             const dataRows_ = JSON.parse(this.jsonString.value);
-            
+
             if (!dataRows_.SelectedItem) {
 
                 dataRows_.SelectedItem = {
@@ -275,6 +223,8 @@ export class WCCatalog extends HTMLTableElement {
 
                     dataRows_.SelectedItem.RowId = rowIndex;
 
+                    dataRows_.LastRowInteraction = rowIndex;
+
                 } else {
 
                     dataRows_.SelectedItem.Id = column_.id;
@@ -286,7 +236,7 @@ export class WCCatalog extends HTMLTableElement {
                 }
 
             }
-            
+
             this.jsonString.value = JSON.stringify(dataRows_);
 
         } catch (e) { }
@@ -311,7 +261,8 @@ export class WCCatalog extends HTMLTableElement {
             json_ = {
                 Items: [],
                 DropItems: null,
-                SelectedItem: null
+                SelectedItem: null,
+                LastRowInteraction: -1
             };
 
         }
@@ -348,7 +299,7 @@ export class WCCatalog extends HTMLTableElement {
         });
 
         json_.Items.push(dataRow_);
-        
+
         this.jsonString.value = JSON.stringify(json_);
 
         this.ServerNotify();
@@ -363,9 +314,9 @@ export class WCCatalog extends HTMLTableElement {
         try {
 
             const json_ = JSON.parse(this.jsonString.value);
-            
+
             const dataRows_ = json_.Items;
-            
+
             const tableRows_ = this.querySelectorAll('tr.__row td:first-child input:not(.__checks):checked');
 
             tableRows_.forEach((e) => {
@@ -390,7 +341,7 @@ export class WCCatalog extends HTMLTableElement {
 
             this.ServerNotify();
 
-        } catch (e) {}
+        } catch (e) { }
 
     }
 
@@ -433,7 +384,7 @@ export class WCCatalog extends HTMLTableElement {
 
             } catch (e) { }
 
-        } 
+        }
 
     }
 
@@ -461,7 +412,7 @@ export class WCCatalog extends HTMLTableElement {
             } else {
 
                 e.target.closest('tr.__row').remove();
-                
+
                 this.prepareJsonData();
 
             }
@@ -487,7 +438,7 @@ export class WCCatalog extends HTMLTableElement {
         const value_ = input_.value;
 
         const tableRows_ = this.querySelectorAll('tr.__row');
-        
+
         if (value_.length >= 1) {
 
             for (let i = 0; i < tableRows_.length; i++) {
@@ -539,15 +490,19 @@ export class WCCatalog extends HTMLTableElement {
     //SERVER METHODS
 
     ServerNotify() {
-        console.log("deberia llamar....")
+
         //const event = new CustomEvent("build", { detail: elem.dataset.time });
+
         const event = new Event("build");
 
         this.dispatchEvent(event);
 
         this.jsonString.onchange();
 
+
     }
+
+
 
 }
 

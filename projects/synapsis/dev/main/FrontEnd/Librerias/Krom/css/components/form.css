@@ -243,6 +243,18 @@ label {
     left:18px;
 }
 
+.fieldset-subtitle {
+    border-left: 2px solid var(--Color) !important;
+    color: rgb(117, 117, 117) !important;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 6px 18px;
+    width:100%;
+    clear:both;
+    display: block;
+    margin-bottom:16px;
+}
+
 .wc-form form {
     overflow: auto;
     height: 100%;

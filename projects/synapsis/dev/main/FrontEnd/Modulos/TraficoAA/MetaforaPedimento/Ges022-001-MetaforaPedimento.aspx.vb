@@ -56,7 +56,6 @@ Public Class Ges022_001_MetaforaPedimento
 
 #End Region
 
-
 #Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
     '    ██                                                                                                ██
     '    ██                                                                                                ██
@@ -77,8 +76,6 @@ Public Class Ges022_001_MetaforaPedimento
         CargaCatalogos()
 
         AplicarReglasCampoPedimento()
-
-        test.Visible = False
 
     End Sub
 
@@ -437,7 +434,6 @@ Public Class Ges022_001_MetaforaPedimento
 
         PreparaTarjetero(PillboxControl.ToolbarModality.Simple, pbcPartidas)
 
-        test.Visible = True
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -957,7 +953,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-
     Protected Sub swcTipoOperacion_CheckedChanged(sender As Object, e As EventArgs)
 
         AplicarReglasCampoPedimento()
@@ -1201,16 +1196,22 @@ Public Class Ges022_001_MetaforaPedimento
 
     'SISTEMA SIN LUGAR APROPIADO DESIGNADO
 
-    Private Function ValidarRegimen() As Boolean
-        'Solo cuando es autorizado por la Autoridad. 
-        Return True
+    'Private Function ValidarRegimen() As Boolean
+    '    'Solo cuando es autorizado por la Autoridad. 
+    '    Return True
 
-    End Function
+    'End Function
 
     Private Function ValidarIncrementables() As Boolean
 
         'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
         'Si se desea bajar el valor, con respecto de lo originalmente declarado, deberá tener autorización de la Autoridad.
+
+        If swcTipoOperacion.Checked = False Then
+
+            Return False
+
+        End If
 
         Return True
 
@@ -1221,43 +1222,64 @@ Public Class Ges022_001_MetaforaPedimento
         'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
         'Si se desea bajar el valor, con respecto de lo originalmente declarado, deberá tener autorización de la Autoridad.
 
+        If swcTipoOperacion.Checked = False Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
 
-    Private Function ValidarRfcImportadorExportador() As Boolean
-        'Es editable si no ha sido sometido a despacho aduanero, 
-        'Que caiga en los supuestos de la regla 6.1.2.
-        Return True
+    'Private Function ValidarRfcImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero, 
+    '    'Que caiga en los supuestos de la regla 6.1.2.
+    '    Return True
 
-    End Function
+    'End Function
 
-    Private Function ValidarCurpImportadorExportador() As Boolean
-        'Es editable si no ha sido sometido a despacho aduanero. 
-        Return True
+    'Private Function ValidarCurpImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero. 
+    '    Return True
 
-    End Function
+    'End Function
 
-    Private Function ValidarImportadorExportador() As Boolean
-        'Es editable si no ha sido sometido a despacho aduanero, 
-        'Que caiga en los supuestos de la regla 6.1.2.
-        Return True
+    'Private Function ValidarImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero, 
+    '    'Que caiga en los supuestos de la regla 6.1.2.
+    '    Return True
 
-    End Function
+    'End Function
 
-    Private Function ValidarDomicilioImportadorExportador() As Boolean
-        'Solo si la razón social/RFC sufrió cambios.
-        Return True
+    'Private Function ValidarDomicilioImportadorExportador() As Boolean
+    '    'Solo si la razón social/RFC sufrió cambios.
+    '    Return True
 
-    End Function
+    'End Function
+
+    'Private Function ValidarValorAgregadoExportacion() As Boolean
+    '    'Solo para pedimentos clave RT.
+
+    '    If scClavePedimento.Value = "32" Then
+
+    '        Return True
+
+    '    End If
+
+    '    Return False
+
+    'End Function
 
 
     Private Function ValidarDatosPreveedorComprador() As Boolean
         'No es necesario cuando CVE_PEDIMENTO=E1, E2, G1,C3, K2, E3, E4, G2, K3, F3, V3, F8, F9, G6, G7, V8. 
+        'Dim clavesPedimento = New List(Of String) From {"59", "11", "6", "66", "75", "56", "61", "36", "33", "37", "42", "38", "44", "76", "69", "14"}
+        'If clavesPedimento.Contains(scClavePedimento.Value) Then
+        '    Return False
+        'End If
 
-        Dim clavesPedimento = New List(Of String) From {"59", "11", "6", "66", "75", "56", "61", "36", "33", "37", "42", "38", "44", "76", "69", "14"}
-
-        If clavesPedimento.Contains(scClavePedimento.Value) Then
+        If scClavePedimento.Value = "41" Then
 
             Return False
 
@@ -1269,14 +1291,14 @@ Public Class Ges022_001_MetaforaPedimento
 
     Private Function ValidarDatosDestinatario() As Boolean
         'Solo si T_OPER=TRA
-        Return True
 
-    End Function
+        If scClavePedimento.Value = "41" Then
 
-    Private Function ValidarDatosTransporteTransportista() As Boolean
-        'Solo si T_OPER=TRA, excepto pedimento clave T9.
+            Return False
 
-        If scClavePedimento.Value = "40" Then
+        End If
+
+        If swcTipoOperacion.Checked = False Then
 
             Return False
 
@@ -1286,20 +1308,151 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-    Private Function ValidarDatosTransporteTransportistaRectificacion() As Boolean
-        'Solo si el pedimento original tenía el dato. 
+    Private Function ValidarDatosTransporteTransportista() As Boolean
+        'Solo si T_OPER=TRA, excepto pedimento clave T9.
+        'If scClavePedimento.Value = "40" Then
+        '    Return False
+        'End If
+
+        'No aplica para CVE_PEDIMENTO= V1, G9, V2, V6, V7, V9 | V5 (impo) | VD (expo).
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
+        Dim clavesPedimento = New List(Of String) From {"45", "4", "28", "25", "48", "24"}
+
+        If swcTipoOperacion.Checked = True Then
+
+            clavesPedimento.Add("17")
+
+        Else
+
+            clavesPedimento.Add("35")
+
+        End If
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return False
+
+        End If
+
+        Return True
+
+    End Function
+
+    Private Function ValidarDatosCandados() As Boolean
+
+        'No aplica para CVE_PEDIMENTO= V1, G9, V2, V6, V7, V9 | V5 (impo) | VD (expo).
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
+        Dim clavesPedimento = New List(Of String) From {"45", "4", "28", "25", "48", "24"}
+
+        If swcTipoOperacion.Checked = True Then
+
+            clavesPedimento.Add("17")
+
+        Else
+
+            clavesPedimento.Add("35")
+
+        End If
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
 
     Private Function ValidarDatosGuias() As Boolean
-        'Aplica en todos los casos, excepto en operaciones virtuales.
+
+        'No aplica para CVE_PEDIMENTO= V1, G9, V2, V6, V7, V9 | V5 (impo) | VD (expo).
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
+        Dim clavesPedimento = New List(Of String) From {"45", "4", "28", "25", "48", "24"}
+
+        If swcTipoOperacion.Checked = True Then
+
+            clavesPedimento.Add("17")
+
+        Else
+
+            clavesPedimento.Add("35")
+
+        End If
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return False
+
+        End If
+
+        Return True
+
+    End Function
+
+
+    Private Function ValidarDatosContenedores() As Boolean
+
+        If scTransporteEntradaSalida.Value = "4" Then
+
+            Return False
+
+        End If
+
+        'No aplica para CVE_PEDIMENTO= V1, G9, V2, V6, V7, V9 | V5 (impo) | VD (expo).
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
+        Dim clavesPedimento = New List(Of String) From {"45", "4", "28", "25", "48", "24"}
+
+        If swcTipoOperacion.Checked = True Then
+
+            clavesPedimento.Add("17")
+
+        Else
+
+            clavesPedimento.Add("35")
+
+        End If
+
+
+        If clavesPedimento.Contains(scClavePedimento.Value) Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
 
     Private Function ValidarDatosCuentasAduaneras() As Boolean
         'Solo si CVE_PEDIMENTO=S2, y si hay FP=4 o FP=15
+
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
 
         If scClavePedimento.Value = "26" Then
 
@@ -1329,9 +1482,17 @@ Public Class Ges022_001_MetaforaPedimento
 
     Private Function ValidarDatosCompensaciones() As Boolean
         'Solo si se declara la FP=12
+
+        If scClavePedimento.Value = "41" Then
+
+            Return False
+
+        End If
+
         Return True
 
     End Function
+
 
     Private Function ValidarDatosPagosVirtuales() As Boolean
         'Solo si FP= 2, 4, 7, 12, 15, 19 y 22
@@ -1339,16 +1500,15 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-    Private Function ValidarValorAgregadoExportacion() As Boolean
-        'Solo para pedimentos clave RT.
+    Private Function ValidarDatosPartidas() As Boolean
 
-        If scClavePedimento.Value = "32" Then
+        If scClavePedimento.Value = "41" Then
 
-            Return True
+            Return False
 
         End If
 
-        Return False
+        Return True
 
     End Function
 
@@ -1358,1470 +1518,1497 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-    Private Function ValidarDatosDiferenciasContribucionesRectificacion() As Boolean
+
+    Private Function ValidarDatosDiferenciasContribuciones() As Boolean
         'Aplica cuando existen diferencias de contribuciones entre el pedimento original y la R1, pero el cálculo debe hacerse en automatico conforme a la fórmula correspondiente.  
-        Return True
+
+        If scClavePedimento.Value = "13" Then
+
+            Return True
+
+        End If
+
+        Return False
 
     End Function
+
+    Private Function ValidarDatosPruebasSuficientes() As Boolean
+
+        If scClavePedimento.Value = "41" Then
+
+            Return True
+
+        End If
+
+        If scClavePedimento.Value = "13" Then
+
+            Return True
+
+        End If
+
+        Return False
+
+    End Function
+
 
     Private Function ReglasCamposPedimento() As List(Of ReglasCampoPedimento)
 
         Dim reglasCampos As New List(Of ReglasCampoPedimento)
 
-        With reglasCampos
-            '***GENERALES
+        'With reglasCampos
+        '    '***GENERALES
 
-            '-NÚM. PEDIMENTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = dbcReferenciaPedimento,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-T. OPER.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = swcTipoOperacion,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-CVE. PEDIMENTO.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scClavePedimento,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '-RÉGIMEN.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scRegimen,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarRegimen()},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarRegimen()}
-            })
-            '-DESTINO/ORIGEN.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scDestinoMercancia,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-TIPO CAMBIO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTipoCambio,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '-PESO BRUTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPesoBruto,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-ADUANA E/S.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scAduanaEntradaSalida,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-MEDIO DE TRANSPORTE.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTransporteEntradaSalida,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-MEDIO DE TRANSPORTE DE ARRIBO
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scMedioTransporteArribo,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-MEDIO DE TRANSPORTE DE SALIDA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scMedioTransporteSalida,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-VALOR DÓLARES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icValorDolares,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-VALOR ADUANA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icValorAduana,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-PRECIO PAGADO/VALOR COMERCIAL
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPrecioPagado,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTipoReferencia,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scPatente,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scEjecutivoCuenta,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***DATOS IMPORTADOR
+        '    '-NÚM. PEDIMENTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = dbcReferenciaPedimento,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-T. OPER.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = swcTipoOperacion,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-CVE. PEDIMENTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scClavePedimento,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '-RÉGIMEN.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scRegimen,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarRegimen()},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarRegimen()}
+        '    })
+        '    '-DESTINO/ORIGEN.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scDestinoMercancia,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-TIPO CAMBIO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTipoCambio,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '-PESO BRUTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPesoBruto,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-ADUANA E/S.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scAduanaEntradaSalida,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-MEDIO DE TRANSPORTE.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTransporteEntradaSalida,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-MEDIO DE TRANSPORTE DE ARRIBO
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scMedioTransporteArribo,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-MEDIO DE TRANSPORTE DE SALIDA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scMedioTransporteSalida,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-VALOR DÓLARES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icValorDolares,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-VALOR ADUANA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icValorAduana,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-PRECIO PAGADO/VALOR COMERCIAL
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPrecioPagado,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTipoReferencia,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scPatente,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scEjecutivoCuenta,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***DATOS IMPORTADOR
 
-            '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL DEL IMPORTADOR/EXPORTADOR
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = fbcCliente,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarImportadorExportador()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarImportadorExportador()}
-             })
-            '-RFC DEL IMPORTADOR/EXPORTADOR
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icRFCCliente,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarRfcImportadorExportador()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarRfcImportadorExportador()}
-             })
-            '-CURP DEL IMPORTADOR/EXPORTADOR
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCURP,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarCurpImportadorExportador()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarCurpImportadorExportador()}
-             })
-            '-DOMICILIO DEL IMPORTADOR/EXPORTADOR.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDomicilioCliente,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDomicilioImportadorExportador()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarDomicilioImportadorExportador()}
-             })
-            '***INCREMENTABLES
+        '    '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL DEL IMPORTADOR/EXPORTADOR
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = fbcCliente,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarImportadorExportador()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarImportadorExportador()}
+        '     })
+        '    '-RFC DEL IMPORTADOR/EXPORTADOR
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icRFCCliente,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarRfcImportadorExportador()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarRfcImportadorExportador()}
+        '     })
+        '    '-CURP DEL IMPORTADOR/EXPORTADOR
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCURP,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarCurpImportadorExportador()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarCurpImportadorExportador()}
+        '     })
+        '    '-DOMICILIO DEL IMPORTADOR/EXPORTADOR.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDomicilioCliente,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDomicilioImportadorExportador()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = ValidarDomicilioImportadorExportador()}
+        '     })
+        '    '***INCREMENTABLES
 
-            '-VAL. SEGUROS.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icValorSeguros,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-SEGUROS
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icSeguros,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FLETES
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFletes,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-EMBALAJES
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icEmbalajes,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-OTROS INCREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icOtrosIncrementables,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***DECREMENTABLES
+        '    '-VAL. SEGUROS.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icValorSeguros,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-SEGUROS
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icSeguros,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FLETES
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFletes,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-EMBALAJES
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icEmbalajes,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-OTROS INCREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icOtrosIncrementables,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***DECREMENTABLES
 
-            '-TRANSPORTE DECREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTransporteDec,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-SEGURO DECREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icSegurosDec,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-CARGA DECREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCargaDec,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-DESCARGA DECREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargaDec,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-OTROS DECREMENTABLES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icOtrosDec,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-ACUSE ELECTRÓNICO DE VALIDACIÓN.
-            '-CÓDIGO DE BARRAS.
-            '-CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO.
-            '-MARCAS, NÚMEROS Y TOTAL DE BULTOS
+        '    '-TRANSPORTE DECREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTransporteDec,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-SEGURO DECREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icSegurosDec,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-CARGA DECREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCargaDec,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-DESCARGA DECREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargaDec,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-OTROS DECREMENTABLES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icOtrosDec,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-ACUSE ELECTRÓNICO DE VALIDACIÓN.
+        '    '-CÓDIGO DE BARRAS.
+        '    '-CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO.
+        '    '-MARCAS, NÚMEROS Y TOTAL DE BULTOS
 
-            '***VALIDACION Y PAGOS
+        '    '***VALIDACION Y PAGOS
 
-            '-ACUSE ELECTRÓNICO DE VALIDACIÓN.
-            '-CÓDIGO DE BARRAS.
-            '-CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO.
-            '-MARCAS, NÚMEROS Y TOTAL DE BULTOS
-            'scValidadorDesignado
-            'scNumeroSemana
-            'icArchivoValidacion
-            'icAcuseValidación
-            'icArchivoPago
-            'icAcusetaPago
-            'scValidacionAduanaDespacho
-            'icMarcasNumeros
-            'icCertificacion
-            'icFechaValidacion
+        '    '-ACUSE ELECTRÓNICO DE VALIDACIÓN.
+        '    '-CÓDIGO DE BARRAS.
+        '    '-CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO.
+        '    '-MARCAS, NÚMEROS Y TOTAL DE BULTOS
+        '    'scValidadorDesignado
+        '    'scNumeroSemana
+        '    'icArchivoValidacion
+        '    'icAcuseValidación
+        '    'icArchivoPago
+        '    'icAcusetaPago
+        '    'scValidacionAduanaDespacho
+        '    'icMarcasNumeros
+        '    'icCertificacion
+        '    'icFechaValidacion
 
-            '***FECHAS
+        '    '***FECHAS
 
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaRegistro,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaRevalidacion,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaZarpe,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaPrevio,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaFondeo,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaPago,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaAtraque,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaDespacho,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaEstimadaArribo,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaEntrega,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaEntrada,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaPresentacion,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaFacturacion,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '***TASAS Y TOTALES
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaRegistro,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaRevalidacion,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaZarpe,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaPrevio,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaFondeo,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaPago,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaAtraque,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaDespacho,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaEstimadaArribo,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaEntrega,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaEntrada,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaPresentacion,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaFacturacion,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '***TASAS Y TOTALES
 
-            '-CONTRIB.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTasasContribucion,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-CVE. T. TASA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTasasTipoTasa,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-TASA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTasasTasa,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
+        '    '-CONTRIB.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTasasContribucion,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-CVE. T. TASA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTasasTipoTasa,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-TASA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTasasTasa,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
 
-            '***CUADRO DE LIQUIDACION
+        '    '***CUADRO DE LIQUIDACION
 
-            '-CONCEPTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCuadroLiquidacionConcepto,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-F.P.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCuadroLiquidacionFP,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-IMPORTE.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCuadroLiquidacionImporte,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            'icCuadroLiquidacionDescripcion
-            '-EFECTIVO.
-            '-OTROS.
-            '-TOTAL.
+        '    '-CONCEPTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCuadroLiquidacionConcepto,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-F.P.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCuadroLiquidacionFP,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-IMPORTE.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCuadroLiquidacionImporte,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    'icCuadroLiquidacionDescripcion
+        '    '-EFECTIVO.
+        '    '-OTROS.
+        '    '-TOTAL.
 
-            '***CERTIFICACION
-            'no va en el formulario
+        '    '***CERTIFICACION
+        '    'no va en el formulario
 
-            '***DEPOSITO REFERENCIADO
-            'no va en el formulario
+        '    '***DEPOSITO REFERENCIADO
+        '    'no va en el formulario
 
-            '***CÓDIGO QR, VERIFICADOR DE PAGO O CUMPLIMIENTO.
-            'no va en el formulario 
+        '    '***CÓDIGO QR, VERIFICADOR DE PAGO O CUMPLIMIENTO.
+        '    'no va en el formulario 
 
-            '***PROVEEDORES
+        '    '***PROVEEDORES
 
-            '-ID. FISCAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icIdFiscalProveedor,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = fbxProveedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-DOMICILIO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDocimilioProveedor,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-VINCULACIÓN, 
-            '-NÚM. CFDI O DOCUMENTO EQUIVALENTE.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scFacturaProveedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FECHA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaFacturaProveedor,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-INCOTERM.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icIncontermProveedor,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-             })
-            '-MONEDA FACTURA
-            '-VAL. MON. FACT.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icMontoFacturaProveedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FACTOR MON. FACT.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scFactorMonedaProveedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-VAL. DÓLARES.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icMontoFacturaUSDProveedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***DATOS DEL DESTINATARIO
+        '    '-ID. FISCAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icIdFiscalProveedor,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = fbxProveedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-DOMICILIO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDocimilioProveedor,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-VINCULACIÓN, 
+        '    '-NÚM. CFDI O DOCUMENTO EQUIVALENTE.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scFacturaProveedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FECHA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaFacturaProveedor,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-INCOTERM.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icIncontermProveedor,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '     })
+        '    '-MONEDA FACTURA
+        '    '-VAL. MON. FACT.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icMontoFacturaProveedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FACTOR MON. FACT.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scFactorMonedaProveedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-VAL. DÓLARES.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icMontoFacturaUSDProveedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***DATOS DEL DESTINATARIO
 
-            '-ID. FISCAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTaxtIDDestinatario,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scRazonSocialDestinatario,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-DOMICILIO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDomicilioDestinatario,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***DATOS TRANSPORTE Y TRANSPORTISTA
+        '    '-ID. FISCAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTaxtIDDestinatario,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-NOMBRE, DENOMINACIÓN O RAZÓN SOCIAL
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scRazonSocialDestinatario,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-DOMICILIO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDomicilioDestinatario,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***DATOS TRANSPORTE Y TRANSPORTISTA
 
-            '-IDENTIFICACIÓN.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icIDTransporte,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-PAÍS.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scPaisTransporte,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-TRANSPORTISTA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTransportista,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '-RFC.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTransportistaRfc,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '-CURP.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTransportistaCurp,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '-DOMICILIO/CIUDAD/ESTADO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTransportistaDomicilio,
-                 .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '***CANDADOS
+        '    '-IDENTIFICACIÓN.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icIDTransporte,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-PAÍS.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scPaisTransporte,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-TRANSPORTISTA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTransportista,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '-RFC.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTransportistaRfc,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '-CURP.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTransportistaCurp,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '-DOMICILIO/CIUDAD/ESTADO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTransportistaDomicilio,
+        '         .ReglasImportacion = New ReglasImportacion With {.Editable = ValidarDatosTransporteTransportista()},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = ValidarDatosTransporteTransportistaRectificacion()},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '***CANDADOS
 
-            '-NÚMERO DE CANDADO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = ccCandados,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-1RA. REVISIÓN.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCandadoPrimeraRevisión,
-                 .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '-2DA. REVISIÓN.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCandadoSegundaRevision,
-                 .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                 .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-             })
-            '***GUIAS, MANIFIESTOS, CONOCIMENTOS DE EMBARQUE O DOCUMENTOS
+        '    '-NÚMERO DE CANDADO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = ccCandados,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-1RA. REVISIÓN.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCandadoPrimeraRevisión,
+        '         .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '-2DA. REVISIÓN.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCandadoSegundaRevision,
+        '         .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '         .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '     })
+        '    '***GUIAS, MANIFIESTOS, CONOCIMENTOS DE EMBARQUE O DOCUMENTOS
 
-            '-NÚMERO (GUÍA/CONOCIMIENTO EMBARQUE) DOCUMENTOS DE TRANSPORTE
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icGuia,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-ID
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = swcTipoGuia,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***CONTENEDORES/EQUIPO FERROCARRIL/NUMERO ECONOMICO DEL VEHICULO
+        '    '-NÚMERO (GUÍA/CONOCIMIENTO EMBARQUE) DOCUMENTOS DE TRANSPORTE
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icGuia,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-ID
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = swcTipoGuia,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***CONTENEDORES/EQUIPO FERROCARRIL/NUMERO ECONOMICO DEL VEHICULO
 
-            '-NÚMERO DE CONTENEDOR/EQUIPO FERROCARRIL/NÚMERO ECONÓMICO DEL VEHÍCULO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icNumeroContenedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-TIPO DE CONTENEDOR/EQUIPO FERROCARRIL/NÚMERO ECONÓMICO DEL VEHÍCULO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTipoContenedor,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***IDENTIFICADORES (NIVEL PEDIMENTO)
+        '    '-NÚMERO DE CONTENEDOR/EQUIPO FERROCARRIL/NÚMERO ECONÓMICO DEL VEHÍCULO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icNumeroContenedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-TIPO DE CONTENEDOR/EQUIPO FERROCARRIL/NÚMERO ECONÓMICO DEL VEHÍCULO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTipoContenedor,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***IDENTIFICADORES (NIVEL PEDIMENTO)
 
-            '-CLAVE.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scIdentificadorPedimento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-COMPL. IDENTIFICADOR 1.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icComplemento1Pedimento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-COMPL. IDENTIFICADOR 2.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icComplemento2Pedimento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-COMPL. IDENTIFICADOR 3.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icComplemento3Pedimento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***CUENTAS ADUANERAS Y CUENTAS ADUANERAS DE GARANTIA (NIVEL PEDIMENTO)
+        '    '-CLAVE.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scIdentificadorPedimento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-COMPL. IDENTIFICADOR 1.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icComplemento1Pedimento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-COMPL. IDENTIFICADOR 2.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icComplemento2Pedimento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-COMPL. IDENTIFICADOR 3.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icComplemento3Pedimento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***CUENTAS ADUANERAS Y CUENTAS ADUANERAS DE GARANTIA (NIVEL PEDIMENTO)
 
-            '-TIPO CUENTA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-CLAVE DE GARANTÍA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scTipoCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-INSTITUCIÓN EMISORA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scInstitucionEmisora,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-NÚMERO DE CONTRATO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icNumeroCOntratoCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FOLIO CONSTANCIA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFolioConstanciaCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-TOTAL DEPÓSITO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icImporteCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FECHA CONSTANCIA.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icFechaEmisionCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPrecioEstimadoCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icTitulosCuentaAduanera,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icValorUnitario,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***DESCARGOS
+        '    '-TIPO CUENTA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-CLAVE DE GARANTÍA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scTipoCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-INSTITUCIÓN EMISORA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scInstitucionEmisora,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-NÚMERO DE CONTRATO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icNumeroCOntratoCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FOLIO CONSTANCIA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFolioConstanciaCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-TOTAL DEPÓSITO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icImporteCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FECHA CONSTANCIA.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icFechaEmisionCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPrecioEstimadoCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icTitulosCuentaAduanera,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icValorUnitario,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***DESCARGOS
 
-            '-NÚM. PEDIMENTO ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosPedCompletoOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FECHA DE OPERACIÓN ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosFechaPedOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-CVE. PEDIMENTO ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scDescargosClavePedOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosValidacionOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosValidacion2Original,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scDescargosPatenteOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scDescargosAduanaOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scDescargosAduana2Original,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosPedOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosFraccionOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosUMOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icDescargosUMDescargo,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***COMPENSACIONES
+        '    '-NÚM. PEDIMENTO ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosPedCompletoOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FECHA DE OPERACIÓN ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosFechaPedOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-CVE. PEDIMENTO ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scDescargosClavePedOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosValidacionOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosValidacion2Original,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scDescargosPatenteOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scDescargosAduanaOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scDescargosAduana2Original,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosPedOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosFraccionOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosUMOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icDescargosUMDescargo,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***COMPENSACIONES
 
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCompensacionesContribucion,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-NÚM. PEDIMENTO ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesPedCompletoOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FECHA DE OPERACIÓN ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesFechaPagoPedOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-CLAVE DE GRAVAMEN.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesGravamen,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-IMPORTE DEL GRAVAMEN.
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCompensacionesConcepto,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesAñoValidacionOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesAñoValidacion2Original,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCompensacionesPatenteOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCompensacionesAduanaOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scCompensacionesAduana2Original,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icCompensacionesPedOriginal,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '***FORMAS DE PAGOS VIRTUALES
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCompensacionesContribucion,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-NÚM. PEDIMENTO ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesPedCompletoOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FECHA DE OPERACIÓN ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesFechaPagoPedOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-CLAVE DE GRAVAMEN.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesGravamen,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-IMPORTE DEL GRAVAMEN.
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCompensacionesConcepto,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesAñoValidacionOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesAñoValidacion2Original,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCompensacionesPatenteOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCompensacionesAduanaOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scCompensacionesAduana2Original,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icCompensacionesPedOriginal,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '***FORMAS DE PAGOS VIRTUALES
 
-            '-FORMAS DE PAGO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scPagosVirtualesFormaPago,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-DEPENDENCIA O INSTITUCIÓN EMISORA
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = scPagosVIrtualesEmisora,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-NÚMERO DEL DOCUMENTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPagosVirtualesDocumento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-FECHA DEL DOCUMENTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPagosVirtualesFechaDocumento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-IMPORTE DEL DOCUMENTO.
-            .Add(New ReglasCampoPedimento With {
-                 .Campo = icPagosVirtualesImporteDocumento,
-                 .ReglasImportacion = New ReglasImportacion,
-                 .ReglasExportacion = New ReglasExportacion,
-                 .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                 .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-             })
-            '-SALDO DISPONIBLE.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPagosVirtualesSaldo,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-IMPORTE A PAGAR.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPagosVirtualesImportePedimento,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '***OBSERVACIONES
+        '    '-FORMAS DE PAGO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scPagosVirtualesFormaPago,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-DEPENDENCIA O INSTITUCIÓN EMISORA
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = scPagosVIrtualesEmisora,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-NÚMERO DEL DOCUMENTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPagosVirtualesDocumento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-FECHA DEL DOCUMENTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPagosVirtualesFechaDocumento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-IMPORTE DEL DOCUMENTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '         .Campo = icPagosVirtualesImporteDocumento,
+        '         .ReglasImportacion = New ReglasImportacion,
+        '         .ReglasExportacion = New ReglasExportacion,
+        '         .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '         .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '     })
+        '    '-SALDO DISPONIBLE.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPagosVirtualesSaldo,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-IMPORTE A PAGAR.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPagosVirtualesImportePedimento,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '***OBSERVACIONES
 
-            '-Observaciones (nivel pedimento)
-            .Add(New ReglasCampoPedimento With {
-                .Campo = fscObservaciones,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '***PARTIDAS
+        '    '-Observaciones (nivel pedimento)
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = fscObservaciones,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '***PARTIDAS
 
-            '-SEC
-            '-FRACCIÓN.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icFraccionArancelaria,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-SUBD. / NÚM. IDENTIFICACIÓN COMERCIAL
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icNico,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-PRECIO UNIT.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaPrecioUnitario,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-MET. VAL.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPartidaMetodoValoracion,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-            })
-            '-CANTIDAD UMC.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icCantidadUMC,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-UMC
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scUMC,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-CANTIDAD UMT
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icCantidadUMT,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-UMT
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scUMT,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '-VAL. ADU/VAL. USD.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaValorAduana,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '-VAL. ADU/VAL. USD.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaValorUSd,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '-IMP. PRECIO PAG./VALOR COMERCIAL.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaPrecioPagado,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-IMP. PRECIO PAG./VALOR COMERCIAL.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaValorComercial,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-P. V/C.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPaisVendedor,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-P. V/C.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPaisComprador,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-P. O/D.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPaisOrigen,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-P. O/D.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPaisDestino,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-MARCA
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaMarca,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-MODELO
-            '-CODIGO PRODUCTO
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaModelo,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-VINC
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPartidaVinculacion,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
-            })
-            '-VAL. AGREG.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaValorAgregado,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = ValidarValorAgregadoExportacion()},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = ValidarValorAgregadoExportacion()}
-            })
-            '-DESCRIPCIÓN (RENGLONES VARIABLES SEGÚN SE REQUIERA).
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaDescripcion,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-CON
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPartidaContribucion,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-TASA
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaTasa,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-T.T
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPartidaTipoTasa,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '-F.P.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scFormaPago,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-IMPORTE
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icImporte,
-                .ReglasImportacion = New ReglasImportacion With {.Editable = False},
-                .ReglasExportacion = New ReglasExportacion With {.Editable = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
-            })
-            '***MERCANCIAS
-            'no esta
+        '    '-SEC
+        '    '-FRACCIÓN.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icFraccionArancelaria,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-SUBD. / NÚM. IDENTIFICACIÓN COMERCIAL
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icNico,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-PRECIO UNIT.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaPrecioUnitario,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-MET. VAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPartidaMetodoValoracion,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '    })
+        '    '-CANTIDAD UMC.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icCantidadUMC,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-UMC
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scUMC,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-CANTIDAD UMT
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icCantidadUMT,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-UMT
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scUMT,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '-VAL. ADU/VAL. USD.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaValorAduana,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '-VAL. ADU/VAL. USD.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaValorUSd,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '-IMP. PRECIO PAG./VALOR COMERCIAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaPrecioPagado,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-IMP. PRECIO PAG./VALOR COMERCIAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaValorComercial,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-P. V/C.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPaisVendedor,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-P. V/C.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPaisComprador,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-P. O/D.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPaisOrigen,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-P. O/D.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPaisDestino,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-MARCA
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaMarca,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-MODELO
+        '    '-CODIGO PRODUCTO
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaModelo,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-VINC
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPartidaVinculacion,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = False}
+        '    })
+        '    '-VAL. AGREG.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaValorAgregado,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = ValidarValorAgregadoExportacion()},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Visible = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Visible = ValidarValorAgregadoExportacion()}
+        '    })
+        '    '-DESCRIPCIÓN (RENGLONES VARIABLES SEGÚN SE REQUIERA).
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaDescripcion,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-CON
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPartidaContribucion,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-TASA
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaTasa,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-T.T
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPartidaTipoTasa,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '-F.P.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scFormaPago,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-IMPORTE
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icImporte,
+        '        .ReglasImportacion = New ReglasImportacion With {.Editable = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Editable = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion With {.Editable = False},
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion With {.Editable = False}
+        '    })
+        '    '***MERCANCIAS
+        '    'no esta
 
-            '***REGULACIONES Y RESTRICCIONES NO ARANCELARIAS
+        '    '***REGULACIONES Y RESTRICCIONES NO ARANCELARIAS
 
-            '-PERMISO
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scClavePermiso,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-NÚMERO DE PERMISO.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPermisoNom,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-FIRMA DESCARGO.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icFirmaDescargo,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-VAL. COM. DLS.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icValorComercialDLS,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-CANTIDAD UMT/C.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icCantidadUMTC,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '***IDENTIFICADORES (NIVEL PARTIDA)
+        '    '-PERMISO
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scClavePermiso,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-NÚMERO DE PERMISO.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPermisoNom,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-FIRMA DESCARGO.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icFirmaDescargo,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-VAL. COM. DLS.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icValorComercialDLS,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-CANTIDAD UMT/C.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icCantidadUMTC,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '***IDENTIFICADORES (NIVEL PARTIDA)
 
-            '-IDENTIF.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scPartidaIdentificador,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-COMPLEMENTO 1.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaComplemento1,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-COMPLEMENTO 2.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaComplemento2,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '--COMPLEMENTO 3.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icPartidaComplemento3,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '***CUENTAS ADUANERAS DE GARANTIA (NIVEL PARTIDA)
-            'no esta
+        '    '-IDENTIF.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scPartidaIdentificador,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-COMPLEMENTO 1.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaComplemento1,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-COMPLEMENTO 2.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaComplemento2,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '--COMPLEMENTO 3.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icPartidaComplemento3,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '***CUENTAS ADUANERAS DE GARANTIA (NIVEL PARTIDA)
+        '    'no esta
 
-            '***RECTIFICACIONES
+        '    '***RECTIFICACIONES
 
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesFechaPedOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-PEDIMENTO ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scRectificacionesClavePedOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesPatentePedOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-CVE. PEDIM. ORIGINAL.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesPedimentoCompleto,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesAñoValidacion2PedOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesAñoValidacionPedOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scRectificacionesAduanaOriginal,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            'no definido
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scRectificacionesAduana2Original,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-CVE. PEDIM. RECT.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scRectificacionesClavePedimento,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-FECHA PAGO RECT.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icRectificacionesFechaPedimento,
-                .ReglasImportacion = New ReglasImportacion With {.Visible = False},
-                .ReglasExportacion = New ReglasExportacion With {.Visible = False},
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '***DIFERENCIAS DE CONTRIBUCIONES (NIVEL PEDIMENTO)
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesFechaPedOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-PEDIMENTO ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scRectificacionesClavePedOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesPatentePedOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-CVE. PEDIM. ORIGINAL.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesPedimentoCompleto,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesAñoValidacion2PedOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesAñoValidacionPedOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scRectificacionesAduanaOriginal,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    'no definido
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scRectificacionesAduana2Original,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-CVE. PEDIM. RECT.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scRectificacionesClavePedimento,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-FECHA PAGO RECT.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icRectificacionesFechaPedimento,
+        '        .ReglasImportacion = New ReglasImportacion With {.Visible = False},
+        '        .ReglasExportacion = New ReglasExportacion With {.Visible = False},
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '***DIFERENCIAS DE CONTRIBUCIONES (NIVEL PEDIMENTO)
 
-            '-CONCEPTO.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scDifConConcepto,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-F.P.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = scDifConFormaPago,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-DIFERENCIA.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icDifConDiferencia,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-DIFERENCIA.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icDifConEfectivo,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-OTROS.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icDifConOtros,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
-            '-DIF. TOTALES.
-            .Add(New ReglasCampoPedimento With {
-                .Campo = icDifConTotal,
-                .ReglasImportacion = New ReglasImportacion,
-                .ReglasExportacion = New ReglasExportacion,
-                .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
-                .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
-            })
+        '    '-CONCEPTO.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scDifConConcepto,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-F.P.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = scDifConFormaPago,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-DIFERENCIA.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icDifConDiferencia,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-DIFERENCIA.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icDifConEfectivo,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-OTROS.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icDifConOtros,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
+        '    '-DIF. TOTALES.
+        '    .Add(New ReglasCampoPedimento With {
+        '        .Campo = icDifConTotal,
+        '        .ReglasImportacion = New ReglasImportacion,
+        '        .ReglasExportacion = New ReglasExportacion,
+        '        .ReglasRectificacionImportacion = New ReglasRectificacionImportacion,
+        '        .ReglasRectificacionExportacion = New ReglasRectificacionExportacion
+        '    })
 
-        End With
+        'End With
 
         Return reglasCampos
 
@@ -2877,26 +3064,35 @@ Public Class Ges022_001_MetaforaPedimento
         Next
 
         'Validar secciones enteras
+        pcIncrementables.Visible = ValidarIncrementables()
+        pcDecrementables.Visible = ValidarDecrementables()
 
-        pcIncrementables.Visible = True 'ValidarIncrementables()
-
-        pcDecrementables.Visible = True 'ValidarDecrementables()
-
-        fscDatosProveedoresImpo.Visible = True 'ValidarDatosPreveedorComprador()
-
-        fscDestinatarios.Visible = True 'ValidarDatosDestinatario()
-
-        fscGuias.Visible = True 'ValidarDatosGuias()
-
-        fscCuentasAduaneras.Visible = True 'ValidarDatosCuentasAduaneras()
-
-        fscDescargos.Visible = True 'ValidarDatosDescargos()
-
-        fscCompensaciones.Visible = True 'ValidarDatosCompensaciones()
-
-        fscPagosvirtuales.Visible = True 'ValidarDatosPagosVirtuales()
-
-        fscDiferenciaContribuciones.Visible = True 'ValidarDatosDiferenciasContribucionesRectificacion()
+        'DATOS DEL PROVEEDOR/COMPRADOR
+        fscDatosProveedoresImpo.Visible = ValidarDatosPreveedorComprador()
+        'DATOS DEL DESTINATARIO
+        fscDestinatarios.Visible = ValidarDatosDestinatario()
+        'DATOS DEL TRANSPORTE Y TRANSPORTISTA
+        fscDatosTransporte.Visible = ValidarDatosTransporteTransportista()
+        'CANDADOS
+        fsDatosCandados.Visible = ValidarDatosCandados()
+        'GUIAS, MANIFIESTOS, CONOCIMIENTOS DE EMBARQUE O DOCUMENTOS DE TRANSPORTE
+        fscGuias.Visible = ValidarDatosGuias()
+        'CONTENEDORES
+        fscContenedores.Visible = ValidarDatosContenedores()
+        'CUENTAS ADUANERAS Y CUENTAS ADUANERAS DE GARANTIA (NIVEL PEDIMENTO)
+        fscCuentasAduaneras.Visible = ValidarDatosCuentasAduaneras()
+        'DESCARGOS
+        fscDescargos.Visible = ValidarDatosDescargos()
+        'COMPENSACIONES
+        fscCompensaciones.Visible = ValidarDatosCompensaciones()
+        'PAGOS VIRTUALES
+        fscPagosvirtuales.Visible = ValidarDatosPagosVirtuales()
+        'PARTIDAS
+        fscPartidas.Visible = ValidarDatosPartidas()
+        'DIFERENCIAS DE CONTRIBUCIONES (NIVEL PEDIMENTO)
+        fscDiferenciaContribuciones.Visible = ValidarDatosDiferenciasContribuciones()
+        'PRUEBA SUFICIENTE
+        fscPruebaSuficiente.Visible = ValidarDatosPruebasSuficientes()
 
     End Sub
 

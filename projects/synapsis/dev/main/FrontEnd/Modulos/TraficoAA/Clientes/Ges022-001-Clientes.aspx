@@ -36,7 +36,7 @@
                     </Buttonbar>           
                     <Fieldsets>
 
-                        <GWC:FieldsetControl ID="_fstest" runat="server" Label="Datos Pruebas">
+                       <%-- <GWC:FieldsetControl ID="_fstest" runat="server" Label="Datos Pruebas">
                             <ListControls>
 
                                 <GWC:CollectionViewControl CssClass="col-xs-4" runat="server" ID="cv" KeyField="indice" DetailField="f1" TitleField="f1">
@@ -60,12 +60,12 @@
                                 </GWC:CollectionViewControl>
 
                             </ListControls>
-                        </GWC:FieldsetControl>
+                        </GWC:FieldsetControl> --%>
 
                         <GWC:FieldsetControl ID="_fsdatosgenerales" runat="server" Label="Datos Generales">
                             
-                             <ListControls>                               
-                            
+                             <ListControls>                  
+                                 
                                 <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="i_Cve_Empresa" KeyField="_id" DisplayField="razonsocial" Label="Razón social|IMP/EXP" Rules="required" OnTextChanged="i_Cve_Empresa_TextChanged" OnClick="i_Cve_Empresa_Click"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_tipoPersona" label="Tipo Persona" OnText="M" OffText="F" Checked="true"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_Habilitado" label="Habilitado" OnText="Sí" OffText="No" OnCheckedChanged="s_Habilitado_CheckedChanged"/>

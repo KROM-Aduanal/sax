@@ -233,6 +233,8 @@ Public Class GroupControl
 
                             .InputAttributes.Add("class", "d-none")
 
+                            .GroupName = ID
+
                             AddHandler .CheckedChanged, AddressOf GroupItemSelected
 
                         End With

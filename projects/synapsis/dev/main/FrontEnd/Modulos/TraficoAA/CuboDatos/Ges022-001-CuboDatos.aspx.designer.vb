@@ -41,6 +41,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
 
     '''<summary>
+    '''Control fEditor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fEditor As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control fscGenerales.
     '''</summary>
     '''<remarks>

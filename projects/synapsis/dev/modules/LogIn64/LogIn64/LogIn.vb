@@ -199,9 +199,24 @@ Public Class LogIn
 
     End Sub
 
+
+    Private Sub tester()
+
+        'Dim accessToken = Await HttpContext.GetTokenAsync("access_token")
+
+        Dim token = HttpContext.Current.Request.Headers("access_token")
+
+        Dim b = Request.Cookies(".AspNetCore.Identity.Application")
+
+        Dim a = 1
+        '.AspNetCore.Identity.Application
+    End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         Dim status_ As String = Request.QueryString("sta")
+
+        tester()
 
         If status_ = "2" Then : Preferencias(MiSesion, eliminar_:=True) : End If
 

@@ -212,33 +212,6 @@ Partial Public Class Ges022_001_MetaforaPedimento
     Protected WithEvents icPrecioPagado As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control test.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents test As Global.Gsol.Web.Components.CardControl
-
-    '''<summary>
-    '''Control t1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents t1 As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control t2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents t2 As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control fscDatosImportador.
     '''</summary>
     '''<remarks>
