@@ -4,7 +4,5 @@ C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorPaises64_dll
 C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorPaises64_dll\ControladorPaises64\obj\Debug\ControladorPaises64.vbproj.CoreCompileInputs.cache
 C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.dll
 C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.pdb
-C:\SAX\projects\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.xml
 C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorPaises64_dll\ControladorPaises64\obj\Debug\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.dll
-C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorPaises64_dll\ControladorPaises64\obj\Debug\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.xml
 C:\SAX\projects\global\dev\rec.global.controllers\1_0_stdControladorPaises64_dll\ControladorPaises64\obj\Debug\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.pdb

@@ -843,7 +843,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Identificador proveedor operativo del domicilio")> CP_SECUENCIA_PROVEEDOR_DOMICILIO = 5011
             <EnumMember> <Description("Tax id del domicilio")> CP_TAX_ID_DOMICILIO = 5012
             <EnumMember> <Description("RFC del domicilio")> CP_RFC_PROVEEDOR_DOMICILIO = 5013
-            <EnumMember> <Description("ObjectID Domicilio")> CP_ID_DOMICILIO = 5014
+            <EnumMember> <Description("ObjectID Domicilio")> CP_ID_DOMICILIOS = 5014
             <EnumMember> <Description("Domicilio fiscal")> CA_DOMICILIO_FISCAL = 5015
             <EnumMember> <Description("Domicilio archivado")> CP_ARCHIVADO_DOMICILIO = 5016
 
@@ -869,6 +869,9 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Tipo Persona")> CP_TIPO_PERSONA_PROVEEDOR = 5033
             <EnumMember> <Description("Destinatario")> CP_DESTINATARIO_PROVEEDOR = 5034
 
+            <EnumMember> <Description("Id Tax id")> CA_CVE_TAX_ID_PROVEEDOR = 5035
+            <EnumMember> <Description("Id RFC")> CA_CVE_RFC_PROVEEDOR = 5036
+            <EnumMember> <Description("Id Curp")> CA_CVE_CURP_PROVEEDOR = 5037
 
         End Enum
 
