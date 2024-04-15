@@ -427,13 +427,13 @@ Public Class InputControl
 
             .Text = Value
 
-            .Attributes.Add("class", "d-none")
+            '.Attributes.Add("class", "d-none")
 
         End With
 
         With component_
 
-            .Controls.Add(New LiteralControl("<div class='wc-input __component form-group position-relative'>"))
+            .Controls.Add(New LiteralControl("<div class='wc-input __component form-group position-relative d-none'>"))
 
             .Controls.Add(_inputElement)
 

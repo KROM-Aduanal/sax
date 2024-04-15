@@ -1,6 +1,5 @@
 ﻿Imports MongoDB.Bson
 Public Class Bus
-
     Property idunidadnegocio As ObjectId
 
     Property sec As Integer
