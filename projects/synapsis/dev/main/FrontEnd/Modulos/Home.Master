@@ -595,26 +595,13 @@
                     if (i == 9) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/BusquedaGeneral/BusquedaGeneral.aspx");
                     if (i == 11) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx");
                     if (i == 12) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/CuboDatos/Ges022-001-CuboDatos.aspx");
-                    if (i == 13) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/Proveedores/Ges022-001-RegistroProveedores.aspx?Type=true");
 
                 });
-
-
-
-                $(".treeview-menu").append(
-                    $('<li>').append(
-                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/Proveedores/Ges022-001-RegistroProveedores.aspx?Type=true' }).append([
-                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
-                            $('<span>', { text: 'Proveedor Extranjero' })
-                        ])
-                    )
-                );
-
 
                 $(".treeview-menu").append(
                     $('<li>').append(
                         $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/Revalidacion/Ges022-001-Revalidacion.aspx' }).append([
-                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
                             $('<span>', {text: 'Revalidación'})
                         ])
                     )
@@ -623,7 +610,7 @@
                 $(".treeview-menu").append(
                     $('<li>').append(
                         $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx' }).append([
-                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
                             $('<span>', { text: 'Acuse de Valor' })
                         ])
                     )
@@ -632,13 +619,12 @@
                 $(".treeview-menu").append(
                     $('<li>').append(
                         $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/CuboDatos/Ges022-001-CuboDatos.aspx' }).append([
-                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<i>', { class: 'NULL', style: 'font-size: 12px;margin-right: 6px;' }),
                             $('<span>', { text: 'Cubo de Datos' })
                         ])
                     )
                 );
-
-
+            
             });
 
         </script>

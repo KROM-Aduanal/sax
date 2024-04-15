@@ -12,5 +12,3 @@ C:\sax\projects\synapsis\dev\main\obj\Debug\KromSAAI.vbproj.GenerateResource.cac
 C:\sax\projects\synapsis\dev\main\obj\Debug\KromSAAI.vbproj.CoreCompileInputs.cache
 C:\sax\projects\synapsis\dev\main\obj\Debug\Krombase243.dll
 C:\sax\projects\synapsis\dev\main\obj\Debug\Krombase243.pdb
-C:\sax\projects\synapsis\dev\main\bin\System.ValueTuple.dll
-C:\sax\projects\synapsis\dev\main\obj\Debug\KromSAAI.vbproj.Up2Date

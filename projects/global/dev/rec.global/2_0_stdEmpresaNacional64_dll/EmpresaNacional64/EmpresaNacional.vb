@@ -4,13 +4,13 @@ Imports MongoDB.Driver
 Imports Rec.Globals.Contacto64
 Imports Rec.Globals.Curp64
 Imports Rec.Globals.Empresa64
-Imports Rec.Globals
+Imports Rec.Globals.IEmpresa64
 Imports Rec.Globals.IEmpresaNacional64
 Imports Rec.Globals.PaisDomicilio64
 Imports Rec.Globals.RegimenFiscal64
 Imports Rec.Globals.Rfc64
 
-Public Class EmpresaNacional : Inherits Empresa64.Empresa
+Public Class EmpresaNacional : Inherits Empresa
     Implements IEmpresa, IEmpresaNacional, IDisposable
 
     <BsonIgnore>

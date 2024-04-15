@@ -8,9 +8,9 @@ Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
 Imports MongoDB.Driver.Linq
 Imports Wma.Exceptions
+Imports Rec.Globals.IEmpresa64
 Imports Rec.Globals.PaisDomicilio64
 Imports Rec.Globals.Contacto64
-Imports Rec.Globals
 
 
 #Region "CLASE EMPRESA"
@@ -70,6 +70,15 @@ Public MustInherit Class Empresa
 
     Public Property archivado As Boolean _
         Implements IEmpresa.archivado
+
+    <BsonIgnore>
+    Public Property esNuevoDomicilio As Boolean? _
+        Implements IEmpresa.esNuevoDomicilio
+
+    <BsonIgnore>
+    Public Property tipoEmpresa As Boolean? _
+        Implements IEmpresa.tipoEmpresa
+
 
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not disposedValue Then

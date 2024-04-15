@@ -538,14 +538,6 @@
       <HintPath>bin\netstandard.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Bus64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Bus64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Contacto64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Contacto64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Rec.Globals.Controllers.ControladorBusqueda64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorBusqueda64.0.0.0.0.dll</HintPath>
@@ -556,9 +548,14 @@
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorDocumento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rec.Globals.Controllers.ControladorEmpresas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresas64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Controllers.ControladorEmpresav264.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresav264.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Controllers.ControladorInstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -581,11 +578,6 @@
       <HintPath>..\..\libs\bin\controllers\Rec.Globals.Controllers.ControladorTIGIE64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Controllers.IControladorEmpresas.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorEmpresas.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Rec.Globals.Controllers.IControladorInstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorInstitucionBancaria64.0.0.0.0.dll</HintPath>
@@ -596,40 +588,9 @@
       <HintPath>..\..\..\global\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorMonedas64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Curp64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Curp64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Domicilio64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rec.Globals.Empresa64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Domicilio64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Empresa64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Empresa64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.EmpresaInternacional64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.EmpresaInternacional64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.EmpresaNacional64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.EmpresaNacional64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.IEmpresa.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IEmpresa.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.IEmpresaInternacional.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IEmpresaInternacional.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.IEmpresaNacional.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IEmpresaNacional.2.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Empresa64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.InstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -647,51 +608,14 @@
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Pais64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.PaisDomicilio64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.PaisDomicilio64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.RegimenFiscal64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.RegimenFiscal64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Rfc64.2.0.0.0">
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Rfc64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.TaxId64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.TaxId64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Utils.ControladorSecuencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.ControladorSecuencia64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals.utils\Rec.Globals.Utils.ControladorSubscripciones64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Utils.IControladorSecuencia.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.IControladorSecuencia.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Rec.Globals.Utils.InformacionDocumento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals.utils\Rec.Globals.Utils.InformacionDocumento64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Utils.ISecuencia.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.ISecuencia.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Utils.Secuencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.Secuencia64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Utils.SelectOption64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -809,11 +733,6 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Campo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
@@ -921,6 +840,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Operaciones.Secuencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.Secuencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0">
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.TransaccionesDocumentos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -970,9 +894,6 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -2044,6 +1965,7 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\AcusesValor\Ges022-001-AcuseValor.aspx.vb">
       <DependentUpon>Ges022-001-AcuseValor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\AltaApendices\Ges022-001-RegistroApendices.aspx.designer.vb">
       <DependentUpon>Ges022-001-RegistroApendices.aspx</DependentUpon>
@@ -2071,6 +1993,7 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Clientes\Ges022-001-Clientes.aspx.vb">
       <DependentUpon>Ges022-001-Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx.designer.vb">
       <DependentUpon>Ges003-001-Consultas.Principal.aspx</DependentUpon>
@@ -2084,6 +2007,7 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx.vb">
       <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">
       <DependentUpon>Ges003-001-FacturasComerciales.aspx</DependentUpon>
@@ -2097,12 +2021,14 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx.vb">
       <DependentUpon>Ges022-001-MetaforaPedimento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx.designer.vb">
       <DependentUpon>Ges022-001-RegistroProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx.vb">
       <DependentUpon>Ges022-001-RegistroProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx.designer.vb">
       <DependentUpon>Ges022-001-RegistroProveedores.aspx</DependentUpon>
@@ -2116,24 +2042,28 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx.vb">
       <DependentUpon>Ges022-001-Referencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Revalidacion\Ges022-001-Revalidacion.aspx.designer.vb">
       <DependentUpon>Ges022-001-Revalidacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Revalidacion\Ges022-001-Revalidacion.aspx.vb">
       <DependentUpon>Ges022-001-Revalidacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\TarifaArancelaria\Ges022-001-TarifaArancelaria.aspx.designer.vb">
       <DependentUpon>Ges022-001-TarifaArancelaria.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\TarifaArancelaria\Ges022-001-TarifaArancelaria.aspx.vb">
       <DependentUpon>Ges022-001-TarifaArancelaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Viajes\Ges022-001-Viajes.aspx.designer.vb">
       <DependentUpon>Ges022-001-Viajes.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Viajes\Ges022-001-Viajes.aspx.vb">
       <DependentUpon>Ges022-001-Viajes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -2192,18 +2122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdAdaptadorDatos64_dll\AdaptadorDatos64\AdaptadorDatos64.vbproj">
-      <Project>{710F4139-B58B-4BA2-B8D3-A361796A8F03}</Project>
-      <Name>AdaptadorDatos64</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampoGenerico64_dll\CampoGenerico64\CampoGenerico64.vbproj">
-      <Project>{43F817A0-7782-4828-BE5F-0A7263BB9953}</Project>
-      <Name>CampoGenerico64</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

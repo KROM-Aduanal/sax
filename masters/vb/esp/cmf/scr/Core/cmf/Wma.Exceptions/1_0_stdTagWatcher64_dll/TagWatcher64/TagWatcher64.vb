@@ -53,6 +53,8 @@ Namespace Wma.Exceptions
 
 #Region "Enums"
 
+
+
         Enum InfoTypes
             <EnumMember> <Description("Info: No se encontró ningún valor para esta consulta")> G0_000_0000 = 0
             <EnumMember> <Description("Info:G0_000_0001: Not defined")> G0_000_0001 = 2
@@ -1215,10 +1217,6 @@ Namespace Wma.Exceptions
                 Return EnumConstant.ToString()
             End If
         End Function
-
-        Public Shared Widening Operator CType(v As TagWatcher) As Task(Of Object)
-            Throw New NotImplementedException()
-        End Operator
 
 #End Region
 

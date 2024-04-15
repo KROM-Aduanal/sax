@@ -105,14 +105,18 @@
       <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Controllers.IControladorEmpresas64.2.0.0.0">
+      <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorEmpresas64.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.Curp64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.Curp64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.IEmpresa.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rec.Globals.IEmpresa64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresa.2.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresa64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.PaisDomicilio64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

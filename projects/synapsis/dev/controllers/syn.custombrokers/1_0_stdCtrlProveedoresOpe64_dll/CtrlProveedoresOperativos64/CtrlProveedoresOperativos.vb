@@ -19,7 +19,6 @@ Public Class CtrlProveedoresOperativos
 
     End Enum
 
-    ''ESTO NO, UTILICEMOS SOBRECARGAS
     Public Enum TipoSelectOption
 
         IdRazonsocial = 1
@@ -44,6 +43,7 @@ Public Class CtrlProveedoresOperativos
     End Sub
 
 #End Region
+
 #Region "Funciones"
 
     Public Function ListarProveedores() As List(Of ConstructorProveedoresOperativos)

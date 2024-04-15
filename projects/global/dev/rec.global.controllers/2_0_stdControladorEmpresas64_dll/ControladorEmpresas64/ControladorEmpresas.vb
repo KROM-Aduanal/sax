@@ -5,8 +5,8 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports MongoDB.Driver.Linq
 Imports Wma.Exceptions
-Imports Rec.Globals.Controllers.IControladorEmpresas.TipoEstructura
-
+'Imports Rec.Globals.Controllers.IControladorEmpresas64
+Imports Rec.Globals.IEmpresa64
 Imports Rec.Globals.PaisDomicilio64
 Imports Rec.Globals.TaxId64
 Imports Rec.Globals.Contacto64
@@ -20,11 +20,8 @@ Imports Rec.Globals.Domicilio64
 Imports Rec.Globals.Curp64
 Imports Rec.Globals.Bus64
 Imports Rec.Globals.Empresa64
-Imports Rec.Globals
-
 Imports Microsoft.VisualBasic.FileIO
 Imports System.Runtime.InteropServices
-Imports System.CodeDom
 
 
 Public Class ControladorEmpresas
@@ -40,11 +37,13 @@ Public Class ControladorEmpresas
 
     Private disposedValue As Boolean
 
-    Private _paisPresentacion = "MEX - MÉXICO (ESTADOS UNIDOS MEXICANOS)"
+    Private _paisPresentacion As String
 
 #End Region
 
+
 #Region "PROPIEDADES PUBLICAS"
+
     Public Property TipoEmpresa _
         As IControladorEmpresas.TiposEmpresas _
         Implements IControladorEmpresas.TipoEmpresa
@@ -68,6 +67,7 @@ Public Class ControladorEmpresas
 
     Public Property Empresa As IEmpresa _
         Implements IControladorEmpresas.Empresa
+
 #End Region
 
     Sub New(ByVal espacioTrabajo_ As IEspacioTrabajo)
@@ -76,12 +76,15 @@ Public Class ControladorEmpresas
 
     End Sub
 
+
     Sub New(ByVal espacioTrabajo_ As IEspacioTrabajo,
             ByVal tipoEmpresa_ As IControladorEmpresas.TiposEmpresas)
 
         Inicializa(espacioTrabajo_,
                    tipoEmpresa_)
+
     End Sub
+
 
     Sub New(ByVal espacioTrabajo_ As IEspacioTrabajo,
             ByVal tipoEmpresa_ _
@@ -94,7 +97,9 @@ Public Class ControladorEmpresas
                    tipoEmpresa_,
                    paisEmpresa_,
                    modalidad_)
+
     End Sub
+
 
     Private Sub Inicializa(ByVal espacioTrabajo_ As IEspacioTrabajo,
                           Optional ByVal tipoEmpresa_ _
@@ -112,7 +117,7 @@ Public Class ControladorEmpresas
 
         PaisEmpresa = paisEmpresa_
 
-        ListaEmpresas = New List(Of IEmpresa)
+        _paisPresentacion = "MEX - MÉXICO (ESTADOS UNIDOS MEXICANOS)"
 
         Estado = New TagWatcher
 
@@ -120,31 +125,282 @@ Public Class ControladorEmpresas
 
 
 #Region "MÉTODOS PRIVADOS"
-    Private Function ArchivarRegistro(ByVal tipo_ As IControladorEmpresas.TipoEstructura,
-                                            ByVal filtro_ As String) _
-                                            As TagWatcher
+
+    Private Function BuscarPaisPorCveISO(ByVal pais_ As String) _
+                                        As TagWatcher
+
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                With {.EspacioTrabajo = _espacioTrabajo}
+
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Pais)("Reg000Paises")
+
+            Dim result_ = operationsDB_.Aggregate.
+                                        Project(Function(e) _
+                                                    New With {
+                                                        Key ._id = e._id,
+                                                        Key .cveISO3 = e.cveISO3,
+                                                        Key .nombrepaisesp = e.nombrepaiscortoesp,
+                                                        Key .estado = e.estado
+                                            }).
+                                       Match(Function(x) pais_.Equals(x.cveISO3) And x.estado = 1).
+                                       Limit(1).
+                                       ToList()
+
+
+            With Estado
+
+                If result_.Count <> 0 Then
+
+                    .ObjectReturned = result_
+
+                    .SetOK()
+
+                Else
+
+                    .SetOKBut(Me, "No se encontró país solicitado")
+
+                End If
+
+            End With
+
+        End Using
+
+        Return Estado
+
+    End Function
+
+
+    Private Function ObtenerDomicilio(ByRef paisesdomicilios_ As List(Of PaisDomicilio)) _
+                                      As List(Of PaisDomicilio)
+
+        _listaPaisesDomicilios = New List(Of PaisDomicilio)
+
+        Dim buscarPais_ As TagWatcher
+
+        Dim clavePais_ As ObjectId
+
+        Dim pais_ As String
+
+        Dim paisPresentacion_ As String
+
+        If PaisEmpresa = "MEX" Then
+
+            clavePais_ = New ObjectId("635acf2ba8210bfa0d5843f3")
+
+            pais_ = PaisEmpresa
+
+            paisPresentacion_ = _paisPresentacion
+
+        Else
+
+            buscarPais_ = BuscarPaisPorCveISO(PaisEmpresa)
+
+            With buscarPais_
+
+                If .Status = TagWatcher.TypeStatus.Ok Then
+
+                    If .ObjectReturned.Count > 0 Then
+
+                        clavePais_ = .ObjectReturned(0)._id
+
+                        pais_ = .ObjectReturned(0).cveISO3
+
+                        paisPresentacion_ = pais_ & " - " & .ObjectReturned(0).nombrepaisesp
+
+                    End If
+
+                End If
+
+            End With
+
+        End If
+
+        _listaPaisesDomicilios = New List(Of PaisDomicilio) _
+                                         From {(New PaisDomicilio _
+                                         With {
+                                                .idpais = clavePais_,
+                                                .sec = 1,
+                                                .pais = pais_,
+                                                .paisPresentacion = paisPresentacion_,
+                                                .domicilios = New List(Of Domicilio)
+                                         })}
+
+        If paisesdomicilios_ IsNot Nothing Then
+
+            If paisesdomicilios_.Count > 0 Then
+
+                Dim domicilioAux_ = paisesdomicilios_(0).domicilios
+
+                Dim sec_ = 0
+
+                For Each item_ In domicilioAux_
+
+                    Dim aux_ = New Domicilio
+
+                    sec_ = sec_ + 1
+
+                    aux_ = New Domicilio With {
+                                        ._iddomicilio = IIf(item_._iddomicilio = ObjectId.Empty, ObjectId.GenerateNewId, item_._iddomicilio),
+                                        .sec = IIf(item_.sec > 0, item_.sec, sec_),
+                                        .calle = item_.calle,
+                                        .numeroexterior = item_.numeroexterior,
+                                        .numerointerior = item_.numerointerior,
+                                        .colonia = item_.colonia,
+                                        .ciudad = item_.ciudad,
+                                        .municipio = item_.municipio,
+                                        .localidad = item_.localidad,
+                                        .entidadfederativa = item_.entidadfederativa,
+                                        .codigopostal = item_.codigopostal,
+                                        .pais = pais_,
+                                        .paisPresentacion = paisPresentacion_,
+                                        .estado = 1,
+                                        .archivado = False
+                                    }
+
+                    _listaPaisesDomicilios(0).domicilios.Add(aux_)
+
+                Next
+
+            End If
+
+        End If
+
+        Return _listaPaisesDomicilios
+
+    End Function
+
+
+    Private Function ObtenerRfc(ByRef rfc_ As String,
+                                Optional ByRef idrfc_? As ObjectId = Nothing) _
+                                As List(Of Rfc)
+
+        Dim rfcAux_ As New List(Of Rfc)
+
+        If rfc_ IsNot Nothing Then
+
+            rfcAux_ = New List(Of Rfc) _
+                            From {(New Rfc _
+                            With {.idrfc = IIf(idrfc_ Is Nothing,
+                                               ObjectId.GenerateNewId,
+                                               idrfc_),
+                                  .sec = 1,
+                                  .rfc = rfc_,
+                                  .estado = 1,
+                                  .archivado = False
+                            })}
+        End If
+
+        Return rfcAux_
+
+    End Function
+
+
+    Private Function ObtenerCurp(ByRef curp_ As String,
+                                Optional ByRef idcurp_? As ObjectId = Nothing) _
+                                As List(Of Curp)
+
+        Dim curpAux_ As New List(Of Curp)
+
+        If curp_ IsNot Nothing Then
+
+            curpAux_ = New List(Of Curp) _
+                            From {(New Curp _
+                            With {.idcurp = IIf(idcurp_ Is Nothing,
+                                               ObjectId.GenerateNewId,
+                                               idcurp_),
+                                  .sec = 1,
+                                  .curp = curp_,
+                                  .estado = 1,
+                                  .archivado = False
+                            })}
+        End If
+
+        Return curpAux_
+
+    End Function
+
+
+    Private Function ObtenerTaxid(ByRef taxid_ As List(Of TaxId)) _
+        As List(Of TaxId)
+
+        Dim taxidAux_ = New List(Of TaxId)
+
+        If taxid_ IsNot Nothing Then
+
+            taxidAux_ = New List(Of TaxId) _
+                        From {(New TaxId _
+                        With {
+                                .idtaxid = ObjectId.GenerateNewId,
+                                .sec = 1,
+                                .taxid = taxid_(0).taxid,
+                                .estado = 1,
+                                .archivado = False
+                            })}
+        End If
+
+        Return taxidAux_
+
+    End Function
+
+
+    Private Function ObtenerBus(ByRef bu_ As String) _
+        As List(Of Bus)
+
+        Dim buAux_ = New List(Of Bus)
+
+        If bu_ IsNot Nothing Then
+
+            buAux_ = New List(Of Bus) _
+                            From {(New Bus _
+                            With {.idunidadnegocio = ObjectId.GenerateNewId,
+                                  .sec = 1,
+                                  .unidadnegocio = bu_,
+                                  .estado = 1,
+                                  .archivado = False
+                            })}
+        End If
+
+        Return buAux_
+
+    End Function
+
+
+    Private Function ArchivarRegistro(ByVal tipo_ As Integer,
+                                      ByVal item_ As ObjectId) _
+                                      As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
 
             Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
 
+            Dim filter_ As FilterDefinition(Of EmpresaNacional)
+
             Dim setStructureOfSubs_ As UpdateDefinition(Of EmpresaNacional)
 
             Dim result_ As UpdateResult
 
-            Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.razonsocial, filtro_)
-
             Select Case tipo_
 
-                Case IControladorEmpresas.TipoEstructura.RFC
+                Case 1
 
-                    setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.Set(Of Boolean)("rfcs.$[].archivado", True)
+                    'Dim filter_ As FilterDefinition(Of EmpresaNacional) = Builders(Of EmpresaNacional).Filter.And(Builders(Of EmpresaNacional).Filter.Eq(Function(e) e._id, objectIdEmpresa_),
+                    'Builders(Of EmpresaNacional).Filter.ElemMatch(Function(x) x.rfcs, Function(y) y.idrfc.Equals(objectIdEmpresa_)))
+
+                    filter_ = Builders(Of EmpresaNacional).Filter.ElemMatch(Function(y) y.rfcs,
+                                                                        Function(z) z.idrfc.Equals(item_))
+
+                    setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.
+                                      Set(Of Boolean)("rfcs.$[].archivado", True)
 
                     result_ = operationsDB_.UpdateMany(filter_, setStructureOfSubs_)
 
-                Case IControladorEmpresas.TipoEstructura.CURP
+                Case 2
 
-                    setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.Set(Of Boolean)("curps.$[].archivado", True)
+                    filter_ = Builders(Of EmpresaNacional).Filter.ElemMatch(Function(y) y.curps,
+                                                                      Function(z) z.idcurp.Equals(item_))
+
+                    setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.
+                                      Set(Of Boolean)("curps.$[].archivado", True)
 
                     result_ = operationsDB_.UpdateMany(filter_, setStructureOfSubs_)
 
@@ -174,15 +430,345 @@ Public Class ControladorEmpresas
 
     End Function
 
+
+    Private Function SecuenciaRfcInterna(ByRef empresa_ As EmpresaNacional) _
+                                         As Integer
+
+        Dim secLast_ = empresa_.rfcs.Last.sec
+
+        With empresa_
+
+            Dim idLast_ = .rfcs.Last.idrfc
+
+            Dim rfcLast_ = .rfcs.Last.rfc
+
+            If .rfcNuevo IsNot Nothing Then
+
+                If .rfcNuevo Then
+
+                    ArchivarRegistro(1, idLast_)
+
+                    secLast_ += 1
+
+                End If
+
+            Else
+
+                If empresa_.rfc <> rfcLast_ Then
+
+                    ArchivarRegistro(1, idLast_)
+
+                    secLast_ += 1
+
+                End If
+
+            End If
+
+        End With
+
+        Return secLast_
+
+    End Function
+
+
+    Private Function SecuenciaCurpInterna(ByRef empresa_ As EmpresaNacional) _
+                                          As Integer
+
+        Dim secLast_ = empresa_.curps.Last.sec
+
+        With empresa_
+
+            Dim idLast_ = .curps.Last.idcurp
+
+            Dim curpLast_ = .curps.Last.curp
+
+            If .curpNuevo IsNot Nothing Then
+
+                If .curpNuevo Then
+
+                    ArchivarRegistro(2, idLast_)
+
+                    secLast_ += 1
+
+                End If
+
+            Else
+
+                If empresa_.curp <> curpLast_ Then
+
+                    ArchivarRegistro(2, idLast_)
+
+                    secLast_ += 1
+
+                End If
+
+            End If
+
+        End With
+
+        Return secLast_
+
+    End Function
+
+
+    Private Function AgregarDomicilio(ByRef empresa_ As Empresa) _
+                                      As TagWatcher
+
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                                         With {.EspacioTrabajo = _espacioTrabajo}
+
+            With empresa_
+
+                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+
+                Dim lastDomicilio = empresa_.paisesdomicilios.Last.domicilios.Last
+
+                Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, empresa_._id) And
+                              Builders(Of EmpresaNacional).Filter.ElemMatch(Function(y) y.paisesdomicilios,
+                                                                            Function(x) x.pais.Equals(PaisEmpresa))
+
+                Dim setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.
+                                          AddToSet("paisesdomicilios.$.domicilios", New Domicilio With {
+                                                             ._iddomicilio = lastDomicilio._iddomicilio,
+                                                             .sec = lastDomicilio.sec,
+                                                             .calle = lastDomicilio.calle,
+                                                             .numeroexterior = lastDomicilio.numeroexterior,
+                                                             .numerointerior = lastDomicilio.numerointerior,
+                                                             .ciudad = lastDomicilio.ciudad,
+                                                             .colonia = lastDomicilio.colonia,
+                                                             .localidad = lastDomicilio.localidad,
+                                                             .municipio = lastDomicilio.municipio,
+                                                             .codigopostal = lastDomicilio.codigopostal,
+                                                             .entidadfederativa = lastDomicilio.entidadfederativa,
+                                                             .pais = lastDomicilio.pais,
+                                                             .paisPresentacion = lastDomicilio.paisPresentacion
+                                          })
+
+                Dim result_ = operationsDB_.UpdateOne(filter_, setStructureOfSubs_, New UpdateOptions With {.IsUpsert = True})
+
+                With Estado
+
+                    If result_.ModifiedCount <> 0 Then
+
+                        .SetOK()
+
+                    ElseIf result_.UpsertedId IsNot Nothing Then
+
+                        .SetOK()
+
+                    Else
+
+                        .SetOKBut(Me, "No se generaron cambios")
+
+                    End If
+
+                End With
+
+            End With
+
+        End Using
+
+        Return Estado
+
+    End Function
+
+
+    Private Function SecuenciaContactoInterna(ByRef empresa_ As Empresa) _
+        As Contacto
+
+        Dim structureContactos_ As Contacto
+
+        Dim pruebas_ = empresa_.contactos
+
+        If empresa_.contactos.Count <> 0 Then
+
+            If empresa_.contactos.Last IsNot Nothing Then
+
+                Dim lastContacto = empresa_.contactos.Last
+
+                structureContactos_ = New Contacto With {
+                                            .idcontacto = lastContacto.idcontacto,
+                                            .sec = lastContacto.sec,
+                                            .nombrecompleto = lastContacto.nombrecompleto,
+                                            .correoelectronico = lastContacto.correoelectronico,
+                                            .telefono = lastContacto.telefono
+                                      }
+
+            End If
+
+        End If
+
+        Return structureContactos_
+
+    End Function
+
+
+    Private Function SecuenciaRegimenFiscalInterna(ByRef empresa_ _
+                                                   As EmpresaNacional) As RegimenFiscal
+        Dim structureRegimenFiscal_ As RegimenFiscal
+
+        If empresa_.regimenesfiscales.Count <> 0 Then
+
+            If empresa_.regimenesfiscales.Last IsNot Nothing Then
+
+                Dim lastRegimenFiscal = empresa_.regimenesfiscales.Last
+
+                structureRegimenFiscal_ = New RegimenFiscal With {
+                                            .idregimenfiscal = lastRegimenFiscal.idregimenfiscal,
+                                            ._sec = lastRegimenFiscal._sec,
+                                            .regimenfiscal = lastRegimenFiscal.regimenfiscal
+                                          }
+
+            End If
+
+        End If
+
+        Return structureRegimenFiscal_
+
+    End Function
+
+
+    Private Function SecuenciaTaxIdInterna(ByRef empresa_ _
+                                           As EmpresaInternacional) As TaxId
+        Dim structureTaxId_ As TaxId
+
+        If empresa_.taxids.Count <> 0 Then
+
+            If empresa_.taxids.Last IsNot Nothing Then
+
+                Dim lastTaxId = empresa_.taxids.Last
+
+                structureTaxId_ = New TaxId With {
+                                                .idtaxid = lastTaxId.idtaxid,
+                                                .sec = lastTaxId.sec,
+                                                .taxid = lastTaxId.taxid
+                                              }
+
+            End If
+
+        End If
+
+        Return structureTaxId_
+
+    End Function
+
+
+    Private Function SecuenciaBusInterna(ByRef empresa_ _
+                                         As EmpresaInternacional) As Bus
+        Dim structureBus_ As Bus
+
+        If empresa_.bus.Count <> 0 Then
+
+            If empresa_.bus.Last IsNot Nothing Then
+
+                Dim lastBus = empresa_.bus.Last
+
+                structureBus_ = New Bus With {
+                                                .idunidadnegocio = lastBus.idunidadnegocio,
+                                                .sec = lastBus.sec,
+                                                .unidadnegocio = lastBus.unidadnegocio
+                                              }
+
+                Return structureBus_
+
+            End If
+
+        End If
+
+        Return structureBus_
+
+    End Function
+
+    Private Function SecuenciaDomiciliosInterna(ByRef empresa_ _
+                                                As Empresa) As Domicilio
+        Dim structureDomicilio_ As Domicilio
+
+        If empresa_.paisesdomicilios.Count <> 0 Then
+
+            If empresa_.paisesdomicilios.Last.domicilios IsNot Nothing Then
+
+                Dim lastDomicilio = empresa_.paisesdomicilios.Last.domicilios.Last
+
+                structureDomicilio_ = New Domicilio With {
+                                                            ._iddomicilio = lastDomicilio._iddomicilio,
+                                                            .sec = lastDomicilio.sec,
+                                                            .calle = lastDomicilio.calle,
+                                                            .numeroexterior = lastDomicilio.numeroexterior,
+                                                            .numerointerior = lastDomicilio.numerointerior,
+                                                            .ciudad = lastDomicilio.ciudad,
+                                                            .colonia = lastDomicilio.colonia,
+                                                            .localidad = lastDomicilio.localidad,
+                                                            .municipio = lastDomicilio.municipio,
+                                                            .codigopostal = lastDomicilio.codigopostal,
+                                                            .entidadfederativa = lastDomicilio.entidadfederativa,
+                                                            .pais = lastDomicilio.pais,
+                                                            .paisPresentacion = lastDomicilio.paisPresentacion
+                                                        }
+            End If
+
+        End If
+
+        Return structureDomicilio_
+
+    End Function
+
+
     Private Function AgregarEmpresaNacional(ByVal empresaNacional_ As EmpresaNacional,
                                             Optional ByVal objetoRetorno_ As Boolean = False,
                                             Optional ByVal session_ As IClientSessionHandle = Nothing) _
                                             As TagWatcher
 
-        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
-                                         With {.EspacioTrabajo = _espacioTrabajo}
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
 
             Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+
+            Dim totalEmpresasNacionales_ = operationsDB_.EstimatedDocumentCount()
+
+            With empresaNacional_
+
+                ._id = ObjectId.GenerateNewId
+
+                ._idempresa = Convert.ToInt64(totalEmpresasNacionales_) + 1
+
+                If ._idcurp = ObjectId.Empty Then
+
+                    .curps = ObtenerCurp(.curp)
+
+                    ._idcurp = .curps.Last.idcurp
+
+                ElseIf .curps Is Nothing Or .curps.Count = 0 Then
+
+                    .curps = ObtenerCurp(.curp, ._idcurp)
+
+                    ._idcurp = .curps.Last.idcurp
+
+                End If
+
+                If ._idrfc = ObjectId.Empty Then
+
+                    .rfcs = ObtenerRfc(.rfc)
+
+                    ._idrfc = .rfcs.Last.idrfc
+
+                ElseIf .rfcs Is Nothing Or .rfcs.Count = 0 Then
+
+                    .rfcs = ObtenerRfc(.rfc, ._idrfc)
+
+                    ._idrfc = .rfcs.Last.idrfc
+
+                End If
+
+                .paisesdomicilios = ObtenerDomicilio(.paisesdomicilios)
+
+                .estatus = 1
+
+                .estado = 1
+
+                .abierto = True
+
+                .archivado = False
+
+            End With
 
             If session_ IsNot Nothing Then
 
@@ -198,14 +784,15 @@ Public Class ControladorEmpresas
 
                 If objetoRetorno_ Then
 
-                    Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.razonsocial,
-                                                                         empresaNacional_.razonsocial)
+                    Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.razonsocial, empresaNacional_.razonsocial)
 
                     Dim empresaResult_ = operationsDB_.Find(filter_).Limit(1).ToList()
 
                     If empresaResult_.Count > 0 Then
 
-                        ListaEmpresas = New List(Of IEmpresa) From {empresaResult_(0)}
+                        ListaEmpresas = New List(Of IEmpresa)
+
+                        ListaEmpresas.Add(empresaResult_(0))
 
                         .ObjectReturned = ListaEmpresas
 
@@ -230,6 +817,7 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Private Function AgregarEmpresaInternacional(ByVal empresaInternacional_ As EmpresaInternacional,
                                                  Optional ByVal objetoRetorno_ As Boolean = False,
                                                  Optional ByVal session_ As IClientSessionHandle = Nothing) _
@@ -238,6 +826,32 @@ Public Class ControladorEmpresas
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
 
             Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+
+            Dim totalEmpresasInternacionales_ = operationsDB_.EstimatedDocumentCount()
+
+            With empresaInternacional_
+
+                ._id = ObjectId.GenerateNewId
+
+                ._idempresa = Convert.ToInt64(totalEmpresasInternacionales_) + 1
+
+                .paisesdomicilios = ObtenerDomicilio(.paisesdomicilios)
+
+                If .taxids.Last.idtaxid = ObjectId.Empty Then
+
+                    .taxids = ObtenerTaxid(.taxids)
+
+                End If
+
+                .estatus = 1
+
+                .estado = 1
+
+                .abierto = True
+
+                .archivado = False
+
+            End With
 
             If session_ IsNot Nothing Then
 
@@ -253,14 +867,17 @@ Public Class ControladorEmpresas
 
                 If objetoRetorno_ Then
 
-                    Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.razonsocial,
-                                                                              empresaInternacional_.razonsocial)
+                    ListaEmpresas = New List(Of IEmpresa)
+
+                    Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.razonsocial, empresaInternacional_.razonsocial)
 
                     Dim empresaResult_ = operationsDB_.Find(filter_).Limit(1).ToList()
 
                     If empresaResult_.Count > 0 Then
 
-                        ListaEmpresas = New List(Of IEmpresa) From {empresaResult_(0)}
+                        ListaEmpresas = New List(Of IEmpresa)
+
+                        ListaEmpresas.Add(empresaResult_(0))
 
                         .ObjectReturned = ListaEmpresas
 
@@ -285,6 +902,7 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Private Function ModificarEmpresaNacional(ByRef empresaNacional_ As EmpresaNacional,
                                               Optional session_ As IClientSessionHandle = Nothing) _
                                               As TagWatcher
@@ -295,72 +913,77 @@ Public Class ControladorEmpresas
 
                 Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
 
-                Dim filter_ = Builders(Of EmpresaNacional).Filter.And(
-                                Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.razonsocial, .razonsocial),
-                                Builders(Of EmpresaNacional).Filter.ElemMatch(Function(y) y.paisesdomicilios, Function(x) x.pais.Equals(PaisEmpresa)),
-                                Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1))
+                Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.razonsocial, .razonsocial) And
+                              Builders(Of EmpresaNacional).Filter.ElemMatch(Function(y) y.paisesdomicilios,
+                                                                            Function(x) x.pais.Equals(PaisEmpresa)) And
+                              Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
 
-                Dim lastDomicilio_ As New Domicilio
+                Dim lastDomicilio_ = .paisesdomicilios.Last.domicilios.Last
 
-                lastDomicilio_ = DirectCast(empresaNacional_.paisesdomicilios.Last.domicilios.Last, Domicilio)
+                Dim iddomicilio_ = lastDomicilio_._iddomicilio
 
-                If .rfcNuevo Then
+                Dim secDomicilio_ = lastDomicilio_.sec
 
-                    ArchivarRegistro(IControladorEmpresas.TipoEstructura.RFC, .razonsocial)
+                If .esNuevoDomicilio Then
 
-                End If
+                    iddomicilio_ = ObjectId.GenerateNewId
 
-                Dim estructuraCurp_ = Nothing
-
-                If .curpNuevo IsNot Nothing Then
-
-                    If .curpNuevo Then
-
-                        ArchivarRegistro(IControladorEmpresas.TipoEstructura.CURP, .razonsocial)
-
-                        estructuraCurp_ = .curps.Last
-
-                    End If
+                    secDomicilio_ += 1
 
                 End If
 
-                Dim estructuraContactos_ = New List(Of Contacto)
+                Dim structureContactos_ As Contacto
 
                 If .contactos IsNot Nothing Then
 
-                    If .contactos.Count <> 0 Then
-
-                        estructuraContactos_.Add(.contactos.Last)
-                    Else
-
-                        estructuraContactos_ = Nothing
-
-                    End If
-                Else
-
-                    estructuraContactos_ = Nothing
+                    structureContactos_ = SecuenciaContactoInterna(empresaNacional_)
 
                 End If
 
-                Dim estructuraRegimenes_ = New List(Of RegimenFiscal)
+                Dim structureRegimenFiscal_ As RegimenFiscal
 
                 If .regimenesfiscales IsNot Nothing Then
 
-                    If .regimenesfiscales.Count <> 0 Then
-
-                        estructuraRegimenes_.Add(.regimenesfiscales.Last)
-
-                    Else
-
-                        estructuraRegimenes_ = Nothing
-
-                    End If
-
-                Else
-
-                    estructuraRegimenes_ = Nothing
+                    structureRegimenFiscal_ = SecuenciaRegimenFiscalInterna(empresaNacional_)
 
                 End If
+
+                Dim rfcAux_ As Rfc
+
+                If .rfcs.Last IsNot Nothing Then
+
+                    Dim secRfc_ = SecuenciaRfcInterna(empresaNacional_)
+
+                    rfcAux_ = New Rfc _
+                              With {
+                                    .idrfc = IIf(Not empresaNacional_._idrfc = ObjectId.Empty,
+                                                  empresaNacional_._idrfc, ObjectId.GenerateNewId),
+                                    .sec = secRfc_,
+                                    .rfc = empresaNacional_.rfc,
+                                    .archivado = False,
+                                    .estado = 1
+                              }
+                End If
+
+                Dim curpAux_ As Curp
+
+                If .curps.Last IsNot Nothing Then
+
+                    Dim secCurp_ = SecuenciaCurpInterna(empresaNacional_)
+
+                    curpAux_ = New Curp _
+                               With {.idcurp = IIf(empresaNacional_._idcurp IsNot Nothing,
+                                                   empresaNacional_._idcurp,
+                                                   ObjectId.GenerateNewId),
+                                     .sec = secCurp_,
+                                     .curp = empresaNacional_.curp,
+                                     .archivado = False,
+                                     .estado = 1
+                               }
+
+                End If
+
+
 
                 Dim setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.
                                                                         Set(Function(x) x.razonsocial, .razonsocial).
@@ -372,21 +995,36 @@ Public Class ControladorEmpresas
                                                                         Set(Function(x) x.girocomercial, .girocomercial).
                                                                         Set(Function(x) x._idgrupocomercial, ._idgrupocomercial).
                                                                         Set(Function(x) x.tipopersona, .tipopersona).
-                                                                        Set(Function(x) x._idrfc, ._idrfc).
-                                                                        Set(Function(x) x.rfc, .rfc).
-                                                                        AddToSet("rfcs", .rfcs.Last).
-                                                                        Set(Function(x) x._idcurp, ._idcurp).
-                                                                        Set(Function(x) x.curp, .curp).
-                                                                        AddToSet("curps", estructuraCurp_).
-                                                                        AddToSet("contactos", estructuraContactos_).
-                                                                        AddToSet("regimenesfiscales", estructuraRegimenes_).
-                                                                        AddToSet("paisesdomicilios.$.domicilios", lastDomicilio_)
+                                                                        Set(Function(x) x._idrfc, rfcAux_.idrfc).
+                                                                        Set(Function(x) x.rfc, rfcAux_.rfc).
+                                                                        AddToSet("rfcs", rfcAux_).
+                                                                        Set(Function(x) x._idcurp, curpAux_.idcurp).
+                                                                        Set(Function(x) x.curp, curpAux_.curp).
+                                                                        AddToSet("curps", curpAux_).
+                                                                        AddToSet("paisesdomicilios.$.domicilios", New Domicilio With {
+                                                                             ._iddomicilio = iddomicilio_,
+                                                                             .sec = secDomicilio_,
+                                                                             .calle = lastDomicilio_.calle,
+                                                                             .numeroexterior = lastDomicilio_.numeroexterior,
+                                                                             .numerointerior = lastDomicilio_.numerointerior,
+                                                                             .ciudad = lastDomicilio_.ciudad,
+                                                                             .colonia = lastDomicilio_.colonia,
+                                                                             .localidad = lastDomicilio_.localidad,
+                                                                             .municipio = lastDomicilio_.municipio,
+                                                                             .codigopostal = lastDomicilio_.codigopostal,
+                                                                             .entidadfederativa = lastDomicilio_.entidadfederativa,
+                                                                             .pais = lastDomicilio_.pais,
+                                                                             .paisPresentacion = lastDomicilio_.paisPresentacion
+                                                                        }).
+                                                                        AddToSet("contactos", structureContactos_).
+                                                                        AddToSet("regimenesfiscales", structureRegimenFiscal_)
 
                 Dim result_ As UpdateResult
 
                 If session_ IsNot Nothing Then
 
-                    result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_, New UpdateOptions With {.IsUpsert = True}).Result
+                    result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_,
+                                                              New UpdateOptions With {.IsUpsert = True}).Result
                 Else
 
                     result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_, New UpdateOptions With {.IsUpsert = True}).Result
@@ -423,57 +1061,58 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Private Function ModificarEmpresaInternacional(ByRef empresaInternacional_ As EmpresaInternacional,
                                                    Optional session_ As IClientSessionHandle = Nothing) _
                                                    As TagWatcher
 
-        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                                         With {.EspacioTrabajo = _espacioTrabajo}
 
             With empresaInternacional_
 
                 Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
 
                 Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.razonsocial, .razonsocial) And
-                              Builders(Of EmpresaInternacional).Filter.ElemMatch(Function(y) y.paisesdomicilios, Function(x) x.pais.Equals(PaisEmpresa)) And
+                              Builders(Of EmpresaInternacional).Filter.ElemMatch(Function(y) y.paisesdomicilios,
+                                                                                 Function(x) x.pais.Equals(PaisEmpresa)) And
                               Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
 
-                Dim lastDomicilio_ As New Domicilio
+                Dim lastDomicilio_ = .paisesdomicilios.Last.domicilios.Last
 
-                lastDomicilio_ = DirectCast(empresaInternacional_.paisesdomicilios.Last.domicilios.Last, Domicilio)
+                Dim iddomicilio_ = lastDomicilio_._iddomicilio
 
-                Dim estructuraContactos_ = New List(Of Contacto)
+                Dim secDomicilio_ = lastDomicilio_.sec
 
-                If .contactos IsNot Nothing Then
+                If .esNuevoDomicilio Then
 
-                    If .contactos.Count <> 0 Then
+                    iddomicilio_ = ObjectId.GenerateNewId
 
-                        estructuraContactos_.Add(.contactos.Last)
-                    Else
-
-                        estructuraContactos_ = Nothing
-
-                    End If
-                Else
-
-                    estructuraContactos_ = Nothing
+                    secDomicilio_ += 1
 
                 End If
 
-                Dim estructuraBus_ = New List(Of Bus)
+                Dim structureContactos_ As Contacto
+
+                If .contactos IsNot Nothing Then
+
+                    structureContactos_ = SecuenciaContactoInterna(empresaInternacional_)
+
+                End If
+
+                Dim structureTaxId_ As TaxId
+
+                If .taxids IsNot Nothing Then
+
+                    structureTaxId_ = SecuenciaTaxIdInterna(empresaInternacional_)
+
+                End If
+
+                Dim structureBus_ As Bus
 
                 If .bus IsNot Nothing Then
 
-                    If .bus.Count <> 0 Then
-
-                        estructuraBus_.Add(.bus.Last)
-                    Else
-
-                        estructuraBus_ = Nothing
-
-                    End If
-                Else
-
-                    estructuraBus_ = Nothing
+                    structureBus_ = SecuenciaBusInterna(empresaInternacional_)
 
                 End If
 
@@ -488,10 +1127,24 @@ Public Class ControladorEmpresas
                                                                         Set(Function(x) x._idgrupocomercial, ._idgrupocomercial).
                                                                         Set(Function(x) x._idbu, ._idbu).
                                                                         Set(Function(x) x.bu, .bu).
-                                                                        AddToSet("taxids", .taxids.Last).
-                                                                        AddToSet("paisesdomicilios.$.domicilios", lastDomicilio_).
-                                                                        AddToSet("contactos", estructuraContactos_).
-                                                                        AddToSet("bus", estructuraBus_)
+                                                                        AddToSet("taxids", structureTaxId_).
+                                                                        AddToSet("paisesdomicilios.$.domicilios", New Domicilio With {
+                                                                             ._iddomicilio = iddomicilio_,
+                                                                             .sec = secDomicilio_,
+                                                                             .calle = lastDomicilio_.calle,
+                                                                             .numeroexterior = lastDomicilio_.numeroexterior,
+                                                                             .numerointerior = lastDomicilio_.numerointerior,
+                                                                             .ciudad = lastDomicilio_.ciudad,
+                                                                             .colonia = lastDomicilio_.colonia,
+                                                                             .localidad = lastDomicilio_.localidad,
+                                                                             .municipio = lastDomicilio_.municipio,
+                                                                             .codigopostal = lastDomicilio_.codigopostal,
+                                                                             .entidadfederativa = lastDomicilio_.entidadfederativa,
+                                                                             .pais = lastDomicilio_.pais,
+                                                                             .paisPresentacion = lastDomicilio_.paisPresentacion
+                                                                        }).
+                                                                        AddToSet("contactos", structureContactos_).
+                                                                        AddToSet("bus", structureBus_)
                 Dim result_ As UpdateResult
 
                 If session_ IsNot Nothing Then
@@ -501,16 +1154,8 @@ Public Class ControladorEmpresas
 
                 Else
 
-                    Try
-
-                        result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_,
-                                                               New UpdateOptions With {.IsUpsert = True}).Result
-
-                    Catch ex As Exception
-
-                        Dim aaa_ = ex
-
-                    End Try
+                    result_ = operationsDB_.UpdateOneAsync(filter_, setStructureOfSubs_,
+                                                           New UpdateOptions With {.IsUpsert = True}).Result
 
                 End If
 
@@ -544,17 +1189,27 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Private Function ConsultarEmpresasNacionales(ByRef razonSocial_ As String,
                                                  ByRef limiteResultados_ As Int32) As TagWatcher
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                                             With {.EspacioTrabajo = _espacioTrabajo}
 
-                Dim operationsdb_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+                Dim operationsdb_ = iEnlace_.
+                                    GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
 
-                Dim filter_ = Builders(Of EmpresaNacional).Filter.And(
-                                Builders(Of EmpresaNacional).Filter.Text(razonSocial_),
-                                Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1))
+                'release el proyecto y deben de ir las puras dll 
+
+                'INDICE CATEGORIA 4 DE TEXTO
+                'Dim queryExpr_ = New BsonRegularExpression(New Regex(razonSocial_, RegexOptions.IgnoreCase))
+
+                'Dim filter_ = Builders(Of EmpresaNacional).Filter.Regex("razonsocial", queryExpr_) And
+                '              Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
+
+                Dim filter_ = Builders(Of EmpresaNacional).Filter.Text(razonSocial_) And
+                              Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
 
                 Dim result_ = operationsdb_.Find(filter_).Limit(limiteResultados_).ToList()
 
@@ -576,18 +1231,25 @@ Public Class ControladorEmpresas
         Return Estado
 
     End Function
+
 
     Private Function ConsultarEmpresasInternacionales(ByRef razonSocial_ As String,
                                                       ByRef limiteResultados_ As Int32) As TagWatcher
+
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                                             With {.EspacioTrabajo = _espacioTrabajo}
 
-                Dim operationsdb_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+                Dim operationsdb_ = iEnlace_.
+                                    GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
 
-                Dim filter_ = Builders(Of EmpresaInternacional).Filter.And(
-                                Builders(Of EmpresaInternacional).Filter.Text(razonSocial_),
-                                Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1))
+                Dim paisFilter_ = PaisEmpresa
+
+                Dim filter_ = Builders(Of EmpresaInternacional).Filter.ElemMatch(Function(x) x.paisesdomicilios,
+                                                                                 Function(z) z.pais.Equals(paisFilter_)) And
+                              Builders(Of EmpresaInternacional).Filter.Text(razonSocial_) And
+                              Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
 
                 Dim result_ = operationsdb_.Find(filter_).Limit(limiteResultados_).ToList()
 
@@ -611,32 +1273,54 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Private Function ConsultarEmpresaNacional(ByVal cveEmpresa_ As ObjectId) _
-                                              As TagWatcher
+        As TagWatcher
+
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+            Select Case Modalidad
 
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+                Case IControladorEmpresas.Modalidades.Extrinseca
 
-                Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) _
-                              And Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = _espacioTrabajo}
 
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+                        Dim operationsDB_ = iEnlace_.
+                                            GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
 
-                If result_.Count > 0 Then
+                        Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                                      Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
 
-                    .ObjectReturned = result_(0)
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
 
-                    .SetOK()
+                        If result_.Count > 0 Then
 
-                Else
+                            .ObjectReturned = result_(0)
 
-                    .SetOKBut(Me, "Empresa no encontrada")
+                            .SetOK()
 
-                End If
+                        Else
 
-            End Using
+                            .SetOKBut(Me, "Empresa no encontrada")
+
+                        End If
+
+                    End Using
+
+                Case IControladorEmpresas.Modalidades.Intrinseca
+
+                    If ListaEmpresas.Count > 0 Then
+
+                        .ObjectReturned = ListaEmpresas.Where(Function(t) t._id = cveEmpresa_)
+
+                    Else
+
+                        .SetOKBut(Me, "Lista de empresas vacía")
+
+                    End If
+
+            End Select
 
         End With
 
@@ -648,58 +1332,48 @@ Public Class ControladorEmpresas
                                                    As TagWatcher
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+            Select Case Modalidad
 
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+                Case IControladorEmpresas.Modalidades.Extrinseca
 
-                Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) _
-                              And Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                        With {.EspacioTrabajo = _espacioTrabajo}
 
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+                        Dim operationsDB_ = iEnlace_.
+                                            GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
 
-                If result_.Count > 0 Then
+                        Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                                      Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
 
-                    .ObjectReturned = result_(0)
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
 
-                    .SetOK()
+                        If result_.Count > 0 Then
 
-                Else
+                            .ObjectReturned = result_(0)
 
-                    .SetOKBut(Me, "Empresa no encontrada")
+                            .SetOK()
 
-                End If
+                        Else
 
-            End Using
+                            .SetOKBut(Me, "Empresa no encontrada")
 
+                        End If
 
-        End With
+                    End Using
 
-        Return Estado
+                Case IControladorEmpresas.Modalidades.Intrinseca
 
-    End Function
+                    If ListaEmpresas.Count > 0 Then
 
-    Private Function ConsultarEmpresaInterna(ByVal cveEmpresa_ As ObjectId) _
-        As TagWatcher
+                        .ObjectReturned = ListaEmpresas.Where(Function(t) t._id = cveEmpresa_)
 
-        With Estado
+                    Else
 
-            If ListaEmpresas IsNot Nothing Then
+                        .SetOKBut(Me, "Lista de empresas vacía")
 
-                If ListaEmpresas.Count > 0 Then
+                    End If
 
-                    .ObjectReturned = ListaEmpresas.Where(Function(t) t._id = cveEmpresa_)
-
-                Else
-
-                    .SetOKBut(Me, "Lista de empresas vacía")
-
-                End If
-
-            Else
-
-                .SetOKBut(Me, "Lista de empresas vacía")
-
-            End If
+            End Select
 
         End With
 
@@ -707,305 +1381,406 @@ Public Class ControladorEmpresas
 
     End Function
 
-    Private Function ConsultarDomiciliosNacionales(ByVal cveEmpresa_ As ObjectId) As TagWatcher
 
+    Private Function ConsultarDomiciliosEmpresaNacional(ByVal cveEmpresa_ _
+                                                        As ObjectId) As TagWatcher
         ListaDomicilios = New List(Of Domicilio)
 
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+            Select Case Modalidad
 
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+                Case IControladorEmpresas.Modalidades.Extrinseca
 
-                Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) _
-                              And Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = _espacioTrabajo}
 
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+                        Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
 
-                result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
+                        Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                                      Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
 
-                                                          Dim domiciliosExt_ = empresa_.paisesdomicilios.
-                                                                                        Where(Function(x) x.pais = PaisEmpresa).
-                                                                                        Select(Function(y) y.domicilios)
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
 
-                                                          For Each item_ In domiciliosExt_
+                        result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
 
-                                                              ListaDomicilios = item_
+                                                                  Dim domiciliosExt_ = empresa_.paisesdomicilios.
+                                                                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                                                                Select(Function(y) y.domicilios)
 
-                                                          Next
+                                                                  For Each item_ In domiciliosExt_
 
-                                                      End Sub)
+                                                                      ListaDomicilios = item_
 
-                If ListaDomicilios.Count > 0 Then
+                                                                  Next
 
-                    .ObjectReturned = ListaDomicilios
+                                                              End Sub)
 
-                    .SetOK()
+                        If ListaDomicilios.Count > 0 Then
 
-                Else
+                            .ObjectReturned = ListaDomicilios
 
-                    .SetOKBut(Me, "Empresa no contiene domicilios")
+                            .SetOK()
 
-                End If
+                        Else
 
-            End Using
+                            .SetOKBut(Me, "Empresa no contiene domicilios")
 
-        End With
+                        End If
 
-        Return Estado
+                    End Using
 
-    End Function
+                Case IControladorEmpresas.Modalidades.Intrinseca
 
-    Private Function ConsultarDomiciliosInternacionales(ByVal cveEmpresa_ As ObjectId) As TagWatcher
+                    If ListaEmpresas IsNot Nothing And
+                        ListaEmpresas.Count > 0 Then
 
-        ListaDomicilios = New List(Of Domicilio)
+                        Dim domiciliosInt_ = ListaEmpresas.
+                            Where(Function(t) t._id = cveEmpresa_).
+                            Select(Function(z) z.paisesdomicilios.
+                            Where(Function(a) a.pais = PaisEmpresa).
+                            Select(Function(b) b.domicilios))
 
-        With Estado
+                        For Each item_ In domiciliosInt_
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+                            For Each i_ In item_
 
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+                                ListaDomicilios = i_
 
-                Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
-                              Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
-
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
-
-                result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
-
-                                                          Dim domiciliosExt_ = empresa_.paisesdomicilios.
-                                                                                        Where(Function(x) x.pais = PaisEmpresa).
-                                                                                        Select(Function(y) y.domicilios)
-
-                                                          For Each item_ In domiciliosExt_
-
-                                                              ListaDomicilios = item_
-
-                                                          Next
-
-                                                      End Sub)
-
-                If ListaDomicilios.Count > 0 Then
-
-                    .ObjectReturned = ListaDomicilios
-
-                    .SetOK()
-
-                Else
-
-                    .SetOKBut(Me, "Empresa no contiene domicilios")
-
-                End If
-
-            End Using
-
-        End With
-
-        Return Estado
-
-    End Function
-
-    Private Function ConsultarDomiciliosInternos(ByVal cveEmpresa_ As ObjectId,
-                                                 ByVal pais_ As String) _
-                                                 As TagWatcher
-
-        ListaDomicilios = New List(Of Domicilio)
-
-        With Estado
-
-            Dim domicilios_ = ListaEmpresas.
-                    Where(Function(t) t._id = cveEmpresa_).
-                    Select(Function(z) z.paisesdomicilios.
-                    Where(Function(a) a.pais = pais_).
-                    Select(Function(b) b.domicilios)).AsEnumerable
-
-            For Each item_ In domicilios_
-
-                For Each i_ In item_
-
-                    ListaDomicilios = i_
-
-                Next
-
-            Next
-
-            If ListaDomicilios.Count > 0 Then
-
-                .ObjectReturned = ListaDomicilios
-
-                .SetOK()
-
-            Else
-
-                .SetOKBut(Me, "Domicilios no disponibles")
-
-            End If
-
-        End With
-
-        Return Estado
-
-    End Function
-
-    Private Function ConsultarDomicilioNacional(ByVal cveEmpresa_ As ObjectId,
-                                                ByVal cveDomicilio_ As ObjectId) _
-                                                As TagWatcher
-        ListaDomicilios = New List(Of Domicilio)
-
-        With Estado
-
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
-
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
-
-                Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
-                              Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
-
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
-
-                result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
-
-                                                          Dim domiciliosExt_ = empresa_.paisesdomicilios.
-                                                                                Where(Function(x) x.pais = PaisEmpresa).
-                                                                                Select(Function(y) y.domicilios.
-                                                                                Where(Function(z) z._iddomicilio = cveDomicilio_))
-
-                                                          For Each item_ In domiciliosExt_
-
-                                                              For Each i_ In item_
-
-                                                                  ListaDomicilios.Add(i_)
-
-                                                              Next
-
-                                                          Next
-
-                                                      End Sub)
-                If ListaDomicilios.Count > 0 Then
-
-                    .ObjectReturned = ListaDomicilios
-
-                    .SetOK()
-
-                Else
-
-                    .SetOKBut(Me, "Empresa no contiene domicilios")
-
-                End If
-
-            End Using
-
-        End With
-
-        Return Estado
-
-    End Function
-
-    Private Function ConsultarDomicilioInternacional(ByVal cveEmpresa_ As ObjectId,
-                                                     ByVal cveDomicilio_ As ObjectId) _
-                                                     As TagWatcher
-        ListaDomicilios = New List(Of Domicilio)
-
-        With Estado
-
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
-
-                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
-
-                Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
-                              Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
-
-                Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
-
-                result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
-
-                                                          Dim domiciliosExt_ = empresa_.paisesdomicilios.
-                                                                                Where(Function(x) x.pais = PaisEmpresa).
-                                                                                Select(Function(y) y.domicilios.
-                                                                                Where(Function(z) z._iddomicilio = cveDomicilio_))
-
-                                                          For Each item_ In domiciliosExt_
-
-                                                              For Each i_ In item_
-
-                                                                  ListaDomicilios.Add(i_)
-
-                                                              Next
-
-                                                          Next
-
-                                                      End Sub)
-
-                If ListaDomicilios.Count > 0 Then
-
-                    .ObjectReturned = ListaDomicilios
-
-                    .SetOK()
-
-                Else
-
-                    .SetOKBut(Me, "Empresa no contiene domicilios")
-
-                End If
-
-            End Using
-
-
-        End With
-
-        Return Estado
-
-    End Function
-
-    Private Function ConsultarDomicilioInterno(ByVal cveEmpresa_ As ObjectId,
-                                               ByVal cveDomicilio_ As ObjectId) _
-                                               As TagWatcher
-        ListaDomicilios = New List(Of Domicilio)
-
-        With Estado
-
-            If ListaEmpresas IsNot Nothing And
-                        ListaEmpresas.Count <> 0 Then
-
-                Dim domicilioInt_ = ListaEmpresas.
-                                    Where(Function(t) t._id = cveEmpresa_).
-                                    Select(Function(z) z.paisesdomicilios.
-                                    Where(Function(a) a.pais = PaisEmpresa).
-                                    Select(Function(b) b.domicilios.
-                                    Where(Function(y) y._iddomicilio = cveDomicilio_)))
-
-
-                For Each domicilio_ In domicilioInt_
-
-                    For Each item_ In domicilio_
-
-                        For Each i_ In item_
-
-                            ListaDomicilios.Add(i_)
+                            Next
 
                         Next
 
-                    Next
+                        If ListaDomicilios.Count > 0 Then
 
-                Next
+                            .ObjectReturned = ListaDomicilios
 
-                If ListaDomicilios.Count > 0 Then
+                            .SetOK()
 
-                    .ObjectReturned = ListaDomicilios
+                        Else
 
-                    .SetOK()
+                            .SetOKBut(Me, "Domicilios no disponibles")
 
-                Else
+                        End If
 
-                    .SetOKBut(Me, "Domicilios no disponibles")
+                    Else
 
-                End If
+                        .SetOKBut(Me, "Lista de empresas vacía")
 
-            Else
+                    End If
 
-                .SetOKBut(Me, "Lista de empresas vacía")
+            End Select
 
-            End If
+        End With
+
+        Return Estado
+
+    End Function
+
+    Private Function ConsultarDomiciliosEmpresaInternacional(ByVal cveEmpresa_ _
+                                                             As ObjectId) As TagWatcher
+        ListaDomicilios = New List(Of Domicilio)
+
+        With Estado
+
+            Select Case Modalidad
+
+                Case IControladorEmpresas.Modalidades.Extrinseca
+
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = _espacioTrabajo}
+
+                        Dim operationsDB_ = iEnlace_.
+                                            GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+
+                        Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                                      Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
+
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+
+                        result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
+
+                                                                  Dim domiciliosExt_ = empresa_.paisesdomicilios.
+                                                                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                                                                Select(Function(y) y.domicilios)
+
+                                                                  For Each item_ In domiciliosExt_
+
+                                                                      ListaDomicilios = item_
+
+                                                                  Next
+
+                                                              End Sub)
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Empresa no contiene domicilios")
+
+                        End If
+
+                    End Using
+
+                Case IControladorEmpresas.Modalidades.Intrinseca
+
+                    If ListaEmpresas IsNot Nothing And
+                        ListaEmpresas.Count > 0 Then
+
+                        Dim domiciliosInt_ = ListaEmpresas.
+                            Where(Function(t) t._id = cveEmpresa_).
+                            Select(Function(z) z.paisesdomicilios.
+                            Where(Function(a) a.pais = PaisEmpresa).
+                            Select(Function(b) b.domicilios))
+
+                        For Each item_ In domiciliosInt_
+
+                            For Each i_ In item_
+
+                                ListaDomicilios = i_
+
+                            Next
+
+                        Next
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Domicilios no disponibles")
+
+                        End If
+
+                    Else
+
+                        .SetOKBut(Me, "Lista de empresas vacía")
+
+                    End If
+
+            End Select
+
+        End With
+
+        Return Estado
+
+    End Function
+
+    Private Function ConsultarDomicilioEmpresaNacional(ByVal cveEmpresa_ As ObjectId,
+                                                       ByVal cveDomicilio_ As ObjectId) _
+                                                       As TagWatcher
+        ListaDomicilios = New List(Of Domicilio)
+
+        With Estado
+
+            Select Case Modalidad
+
+                Case IControladorEmpresas.Modalidades.Extrinseca
+
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = _espacioTrabajo}
+
+                        Dim operationsDB_ = iEnlace_.
+                                            GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+
+                        Dim filter_ = Builders(Of EmpresaNacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                                      Builders(Of EmpresaNacional).Filter.Eq(Function(x) x.estado, 1)
+
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+
+                        result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
+
+                                                                  Dim domiciliosExt_ = empresa_.paisesdomicilios.
+                                                                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                                                                Select(Function(y) y.domicilios.
+                                                                                                Where(Function(z) z._iddomicilio = cveDomicilio_))
+
+                                                                  For Each item_ In domiciliosExt_
+
+                                                                      For Each i_ In item_
+
+                                                                          ListaDomicilios.Add(i_)
+
+                                                                      Next
+
+                                                                  Next
+
+                                                              End Sub)
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Empresa no contiene domicilios")
+
+                        End If
+
+                    End Using
+
+                Case IControladorEmpresas.Modalidades.Intrinseca
+
+                    If ListaEmpresas IsNot Nothing And
+                        ListaEmpresas.Count > 0 Then
+
+                        Dim domicilioInt_ = ListaEmpresas.
+                            Where(Function(t) t._id = cveEmpresa_).
+                            Select(Function(z) z.paisesdomicilios.
+                            Where(Function(a) a.pais = PaisEmpresa).
+                            Select(Function(b) b.domicilios.
+                            Where(Function(y) y._iddomicilio = cveDomicilio_)))
+
+
+                        For Each domicilio_ In domicilioInt_
+
+                            For Each item_ In domicilio_
+
+                                For Each i_ In item_
+
+                                    ListaDomicilios.Add(i_)
+
+                                Next
+
+                            Next
+
+                        Next
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Domicilios no disponibles")
+
+                        End If
+
+                    Else
+
+                        .SetOKBut(Me, "Lista de empresas vacía")
+
+                    End If
+
+            End Select
+
+        End With
+
+        Return Estado
+
+    End Function
+
+    Private Function ConsultarDomicilioEmpresaInternacional(ByVal cveEmpresa_ As ObjectId,
+                                                            ByVal cveDomicilio_ As ObjectId) _
+                                                            As TagWatcher
+        ListaDomicilios = New List(Of Domicilio)
+
+        With Estado
+
+            Select Case Modalidad
+
+                Case IControladorEmpresas.Modalidades.Extrinseca
+
+                    Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                    With {.EspacioTrabajo = _espacioTrabajo}
+
+                        Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaInternacional)("Glo007EmpresasInternacionales")
+
+                        Dim filter_ = Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x._id, cveEmpresa_) And
+                            Builders(Of EmpresaInternacional).Filter.Eq(Function(x) x.estado, 1)
+
+                        Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList()
+
+                        result_.AsEnumerable.ToList().ForEach(Sub(empresa_)
+
+                                                                  Dim domiciliosExt_ = empresa_.paisesdomicilios.
+                                                                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                                                                Select(Function(y) y.domicilios.
+                                                                                                Where(Function(z) z._iddomicilio = cveDomicilio_))
+
+                                                                  For Each item_ In domiciliosExt_
+
+                                                                      For Each i_ In item_
+
+                                                                          ListaDomicilios.Add(i_)
+
+                                                                      Next
+
+                                                                  Next
+
+                                                              End Sub)
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Empresa no contiene domicilios")
+
+                        End If
+
+                    End Using
+
+                Case IControladorEmpresas.Modalidades.Intrinseca
+
+                    If ListaEmpresas IsNot Nothing And
+                        ListaEmpresas.Count <> 0 Then
+
+                        Dim domicilioInt_ = ListaEmpresas.
+                            Where(Function(t) t._id = cveEmpresa_).
+                            Select(Function(z) z.paisesdomicilios.
+                            Where(Function(a) a.pais = PaisEmpresa).
+                            Select(Function(b) b.domicilios.
+                            Where(Function(y) y._iddomicilio = cveDomicilio_)))
+
+
+                        For Each domicilio_ In domicilioInt_
+
+                            For Each item_ In domicilio_
+
+                                For Each i_ In item_
+
+                                    ListaDomicilios.Add(i_)
+
+                                Next
+
+                            Next
+
+                        Next
+
+                        If ListaDomicilios.Count > 0 Then
+
+                            .ObjectReturned = ListaDomicilios
+
+                            .SetOK()
+
+                        Else
+
+                            .SetOKBut(Me, "Domicilios no disponibles")
+
+                        End If
+
+                    Else
+
+                        .SetOKBut(Me, "Lista de empresas vacía")
+
+                    End If
+
+            End Select
 
         End With
 
@@ -1023,7 +1798,8 @@ Public Class ControladorEmpresas
 
             Dim filter_ = Builders(Of EmpresaNacional).Filter.In(Function(x) x._id, objectIdEmpresa_)
 
-            Dim setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.Set(Of Boolean)("archivado", True)
+            Dim setStructureOfSubs_ = Builders(Of EmpresaNacional).Update.
+                                      Set(Of Boolean)("archivado", True)
 
             Dim result_ = operationsDB_.UpdateMany(filter_, setStructureOfSubs_)
 
@@ -1051,7 +1827,8 @@ Public Class ControladorEmpresas
 
     End Function
 
-    Private Function ArchivarEmpresasInternacionales(ByRef listaObjectIdEmpresa_ As List(Of ObjectId)) As TagWatcher
+    Private Function ArchivarEmpresasInternacionales(ByRef listaObjectIdEmpresa_ _
+                                                     As List(Of ObjectId)) As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
 
@@ -1087,6 +1864,7 @@ Public Class ControladorEmpresas
         Return Estado
 
     End Function
+
 
     'PENDIENTE DE CHECAR, SE SIGUEN ARCHIVANDO TODOS LOS DOMICILIOS, EN VEZ DE SOLO LOS DE LA LISTA QUE SE MANDEN
     Private Function ArchivarDomiciliosNacionales(ByVal objectIdEmpresa_ As ObjectId,
@@ -1164,8 +1942,10 @@ Public Class ControladorEmpresas
 #Region "Métodos públicos"
     Public Function Agregar(empresa_ As IEmpresaNacional,
                             Optional objetoRetorno_ As Boolean = False,
-                            Optional session_ As IClientSessionHandle = Nothing) As TagWatcher _
+                            Optional session_ As IClientSessionHandle = Nothing) _
+                            As TagWatcher _
                             Implements IControladorEmpresas.Agregar
+
         With Estado
 
             If empresa_ IsNot Nothing Then
@@ -1186,7 +1966,8 @@ Public Class ControladorEmpresas
 
     Public Function Agregar(empresa_ As IEmpresaInternacional,
                             Optional objetoRetorno_ As Boolean = False,
-                            Optional session_ As IClientSessionHandle = Nothing) As TagWatcher _
+                            Optional session_ As IClientSessionHandle = Nothing) _
+                            As TagWatcher _
                             Implements IControladorEmpresas.Agregar
         With Estado
 
@@ -1207,7 +1988,8 @@ Public Class ControladorEmpresas
     End Function
 
     Public Function Modificar(empresa_ As IEmpresaNacional,
-                              Optional session_ As IClientSessionHandle = Nothing) As TagWatcher _
+                              Optional session_ As IClientSessionHandle = Nothing) _
+                              As TagWatcher _
                               Implements IControladorEmpresas.Modificar
         With Estado
 
@@ -1228,7 +2010,8 @@ Public Class ControladorEmpresas
     End Function
 
     Public Function Modificar(empresa_ As IEmpresaInternacional,
-                              Optional session_ As IClientSessionHandle = Nothing) As TagWatcher _
+                              Optional session_ As IClientSessionHandle = Nothing) _
+                              As TagWatcher _
                               Implements IControladorEmpresas.Modificar
         With Estado
 
@@ -1287,29 +2070,22 @@ Public Class ControladorEmpresas
 
     End Function
 
-    Public Function ConsultarUna(cveEmpresa_ As ObjectId) As TagWatcher _
+    Public Function ConsultarUna(cveEmpresa_ As ObjectId) _
+                                 As TagWatcher _
                                  Implements IControladorEmpresas.ConsultarUna
         With Estado
 
             If Not cveEmpresa_ = ObjectId.Empty Then
 
-                Select Case Modalidad
+                Select Case TipoEmpresa
 
-                    Case IControladorEmpresas.Modalidades.Extrinseca
+                    Case IControladorEmpresas.TiposEmpresas.Nacional
 
-                        If TipoEmpresa = IControladorEmpresas.TiposEmpresas.Nacional Then
+                        ConsultarEmpresaNacional(cveEmpresa_)
 
-                            ConsultarEmpresaNacional(cveEmpresa_)
+                    Case IControladorEmpresas.TiposEmpresas.Internacional
 
-                        Else
-
-                            ConsultarEmpresaInternacional(cveEmpresa_)
-
-                        End If
-
-                    Case IControladorEmpresas.Modalidades.Intrinseca
-
-                        ConsultarEmpresaInterna(cveEmpresa_)
+                        ConsultarEmpresaInternacional(cveEmpresa_)
 
                 End Select
 
@@ -1325,37 +2101,23 @@ Public Class ControladorEmpresas
 
     End Function
 
-    Public Function ConsultarDomicilios(ByVal idEmpresa_ As ObjectId) As TagWatcher _
+
+    Public Function ConsultarDomicilios(ByVal cveEmpresa_ As ObjectId) _
+                                     As TagWatcher _
                                      Implements IControladorEmpresas.ConsultarDomicilios
         With Estado
 
-            If Not idEmpresa_ = ObjectId.Empty Then
+            If Not cveEmpresa_ = ObjectId.Empty Then
 
-                Select Case Modalidad
+                Select Case TipoEmpresa
 
-                    Case IControladorEmpresas.Modalidades.Extrinseca
+                    Case IControladorEmpresas.TiposEmpresas.Nacional
 
-                        If TipoEmpresa = IControladorEmpresas.TiposEmpresas.Nacional Then
+                        ConsultarDomiciliosEmpresaNacional(cveEmpresa_)
 
-                            ConsultarDomiciliosNacionales(idEmpresa_)
+                    Case IControladorEmpresas.TiposEmpresas.Internacional
 
-                        Else
-
-                            ConsultarDomiciliosInternacionales(idEmpresa_)
-
-                        End If
-
-                    Case IControladorEmpresas.Modalidades.Intrinseca
-
-                        If ListaEmpresas.Count > 0 Then
-
-                            ConsultarDomiciliosInternos(idEmpresa_, PaisEmpresa)
-
-                        Else
-
-                            .SetError(Me, "Lista de empresas vacía")
-
-                        End If
+                        ConsultarDomiciliosEmpresaInternacional(cveEmpresa_)
 
                 End Select
 
@@ -1371,6 +2133,7 @@ Public Class ControladorEmpresas
 
     End Function
 
+
     Public Function ConsultarDomicilio(cveEmpresa_ As ObjectId,
                                        cveDomicilio_ As ObjectId) _
                                        As TagWatcher _
@@ -1381,23 +2144,15 @@ Public Class ControladorEmpresas
 
                 If Not cveDomicilio_ = ObjectId.Empty Then
 
-                    Select Case Modalidad
+                    Select Case TipoEmpresa
 
-                        Case IControladorEmpresas.Modalidades.Extrinseca
+                        Case IControladorEmpresas.TiposEmpresas.Nacional
 
-                            If TipoEmpresa = IControladorEmpresas.TiposEmpresas.Nacional Then
+                            ConsultarDomicilioEmpresaNacional(cveEmpresa_, cveDomicilio_)
 
-                                ConsultarDomicilioNacional(cveEmpresa_, cveDomicilio_)
+                        Case IControladorEmpresas.TiposEmpresas.Internacional
 
-                            Else
-
-                                ConsultarDomicilioInternacional(cveEmpresa_, cveDomicilio_)
-
-                            End If
-
-                        Case IControladorEmpresas.Modalidades.Intrinseca
-
-                            ConsultarDomicilioInterno(cveEmpresa_, cveDomicilio_)
+                            ConsultarDomicilioEmpresaInternacional(cveEmpresa_, cveDomicilio_)
 
                     End Select
 
@@ -1418,6 +2173,7 @@ Public Class ControladorEmpresas
         Return Estado
 
     End Function
+
 
     Function Archivar(ByVal listaObjectIdEmpresas_ As List(Of ObjectId)) _
                       As TagWatcher _
@@ -1449,6 +2205,7 @@ Public Class ControladorEmpresas
         Return Estado
 
     End Function
+
 
     'PENDIENTE DE IMPLEMENTAR
     Public Function ArchivarDomicilios(ByVal objectIdEmpresa As ObjectId,
@@ -1535,6 +2292,49 @@ Public Class ControladorEmpresas
                    IControladorEmpresas.Modalidades.Extrinseca)
 
     End Sub
+
+
+    ''' <summary>
+    ''' 'NO ES CORRECTO QUE VAYA EN ESTE LUGAR, PERO ES UNA NECESIDAD QUE SE TENÍA QUE SOLVENTAR DE MOMENTO, AL MENOS
+    ''' HASTA QUE EL INGE Y ROSITA INDIQUEN LO CONTRARIO O SE DE UNA MEJOR SOLUCIÓN
+    ''' PERO TU NO VASS AQUI
+    ''' ESTA NO ES TU FAMILIA <
+    ''' <returns></returns>
+    Public Function ConsultarPaises(ByVal pais_ As String,
+                                    Optional ByVal limiteResultados_ As Int32 = 10) _
+                                    As TagWatcher _
+                                    Implements IControladorEmpresas.ConsultarPaises
+
+        With Estado
+
+            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
+                                             With {.EspacioTrabajo = _espacioTrabajo}
+
+                Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Pais)("Reg000Paises")
+
+                Dim filter_ = Builders(Of Pais).Filter.Text(pais_) And
+                              Builders(Of Pais).Filter.Eq(Function(x) x.estado, 1)
+
+                Dim result_ = operationsDB_.Find(filter_).Limit(limiteResultados_).ToList()
+
+                If result_.Count <> 0 Then
+
+                    .ObjectReturned = result_
+
+                    .SetOK()
+
+                Else
+                    .SetOKBut(Me, "No se encontraron resultados")
+
+                End If
+
+            End Using
+
+        End With
+
+        Return Estado
+
+    End Function
 
 End Class
 #End Region
