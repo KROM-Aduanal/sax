@@ -28,6 +28,12 @@ import { WCPillbox } from './components/webcomponent-pillbox.js';
 
 import { WCLabel } from './components/webcomponent-label.js';
 
+import { WCComment } from './components/webcomponent-comment.js';
+
+import { WCUserData } from './components/webcomponent-userdata.js';
+
+import { WCFEditor } from './components/webcomponent-feditor.js';
+
 //Defined Components
 
 customElements.define('wc-tooltip', WCToolTip, { extends: 'input' });
@@ -57,6 +63,12 @@ customElements.define('wc-listbox', WCListbox, { extends: 'input' });
 customElements.define('wc-pillbox', WCPillbox, { extends: 'div' });
 
 customElements.define('gwc-label', WCLabel);
+
+customElements.define('gwc-userdata', WCUserData);
+
+customElements.define('gwc-comment', WCComment);
+
+customElements.define('wc-feditor', WCFEditor, { extends: 'div' });
 
 
 //Initialize External Libraries

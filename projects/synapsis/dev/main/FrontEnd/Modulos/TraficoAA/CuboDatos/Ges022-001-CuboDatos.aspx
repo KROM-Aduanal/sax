@@ -7,98 +7,101 @@
     <GWC:FindbarControl Label="Buscar Gajo" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
 <% End If %> 
 
-    <style>
-
-        .cl_Secciones {
-            opacity: .6;
-            color: #757575;      
-            font-size: 24px;
-            font-weight: bold;
-        }
+<style>
+    /*
+    .cl_Secciones {
+        opacity: .6;
+        color: #757575;      
+        font-size: 24px;
+        font-weight: bold;
+    }
         
-        .cl_Tarjeta {      
-            font-size: 24px;
-            font-weight: bold;   
-            color: #432776;               
-            display: flex;        
-	        justify-content: center;
-            align-items: center;   
+    .cl_Tarjeta {      
+        font-size: 24px;
+        font-weight: bold;   
+        color: #432776;               
+        display: flex;        
+	    justify-content: center;
+        align-items: center;   
             
-        }
+    }
 
-        .cl_Num__Tarjeta {
-            background-color: #432776;            
-            color: #fff;
-            display: flex;        
-            border-radius: 50%;           
-	        justify-content: center;            
-            align-items: center;
-            width: 60px;
-            height: 60px;
-        }
+    .cl_Num__Tarjeta {
+        background-color: #432776;            
+        color: #fff;
+        display: flex;        
+        border-radius: 50%;           
+	    justify-content: center;            
+        align-items: center;
+        width: 60px;
+        height: 60px;
+    }
 
-        .cl_Num__Tarjeta {
-            font-size: 2.4em;
-            font-weight: bold;
-        }
+    .cl_Num__Tarjeta {
+        font-size: 2.4em;
+        font-weight: bold;
+    }
 
-        .sc__Subdivision {
-            display: block !important;
-            border:1px solid red !important;
+    .sc__Subdivision {
+        display: block !important;
+        border:1px solid red !important;
             
             
-        }
+    }
 
-        .customsizetextarea {
-           height: 2.4em;
-        }
-        .ALGODON{
+    .customsizetextarea {
+        height: 2.4em;
+    }
+    .ALGODON{
 
-        }
+    }
 
-        @media(min-width:400px){
-             .ALGODON{
-                                  justify-content: flex-start;
+    @media(min-width:400px){
+            .ALGODON{
+                                justify-content: flex-start;
                                              
-              }
+            }
 
-        }
-        @media(min-width: 576px){
-             .ALGODON{
-                                  justify-content: flex-start;
+    }
+    @media(min-width: 576px){
+            .ALGODON{
+                                justify-content: flex-start;
                                             
-              }
+            }
 
-        }
+    }
 
 
-        @media(min-width:760px){
-              .ALGODON{
-                  justify-content: flex-start;
+    @media(min-width:760px){
+            .ALGODON{
+                justify-content: flex-start;
                             
-             }
+            }
 
-        }
+    }
 
-        @media(min-width:992px){
-              .ALGODON{
-                  justify-content: flex-start;
+    @media(min-width:992px){
+            .ALGODON{
+                justify-content: flex-start;
                              
-                margin-left:20px;                     
+            margin-left:20px;                     
  
-              }
+            }
 
-        }
+    }
 
-                @media(min-width:1200px){
-              .ALGODON{
-                  justify-content: flex-start;
+            @media(min-width:1200px){
+            .ALGODON{
+                justify-content: flex-start;
                              
-                margin-left:20px;                     
-              }
+            margin-left:20px;                     
+            }
 
-        }
-    </style>
+    }*/
+
+       
+</style>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentCompanyList" runat="server">
 <% If IsPopup = False Then %>
@@ -118,8 +121,108 @@
                 </DropdownButtons>
             </Buttonbar>   
             <Fieldsets>
+                 <GWC:FieldsetControl runat="server" Label="Formulas">
+                    <ListControls>
+                        <asp:Panel runat="server" CssClass="col-xs-6">
+                            <%-- DISEÑO COMPONENTE --%>
+                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle"></asp:Label>
+                            <asp:Panel runat="server" CssClass="wc-cubo-formulas">
+
+                                <div>
+                                    <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22"/>
+                                    <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server"/>
+                                    <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"/>
+                                </div>
+                                <div>
+                                    <gwc-userdata title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png"></gwc-userdata>
+                                   
+                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online"/>
+                                </div>
+                                <div>
+                                    <div is="wc-feditor" contenteditable="true"></div>
+                                    <asp:TextBox ID="fEditor" runat="server"></asp:TextBox>
+                                </div>
+                                <div>
+                                    <GWC:ButtonControl runat="server" Label="Limpiar"/>
+                                    <GWC:ButtonControl runat="server" Label="Verificar"/>
+                                </div>
+
+                            </asp:Panel>
+
+                            <%-- FIN DISEÑO COMPONENTE --%>
+                        </asp:Panel>
+                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-messages">
+                            <%-- DISEÑO COMPONENTE --%>
+                            <asp:Label runat="server" Text="Mensajes" CssClass="fieldset-subtitle"></asp:Label>
+                            <GWC:TabbarControl runat="server">
+                                <Tabs>
+                                    <GWC:TabItem Text="Alertas"/>
+                                    <GWC:TabItem Text="Advertencias"/>
+                                    <GWC:TabItem Text="Información"/>
+                                </Tabs>
+                                <TabsSections>
+                                    <GWC:FieldsetControl runat="server">
+                                        <ListControls>
+                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
+                                            <asp:Panel runat="server">
+                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
+                                            </asp:Panel>
+                                        </ListControls>
+                                    </GWC:FieldsetControl>
+                                    <GWC:FieldsetControl runat="server">
+                                        <ListControls>
+                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
+                                            <asp:Panel runat="server">
+                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
+                                            </asp:Panel>
+                                        </ListControls>
+                                    </GWC:FieldsetControl>
+                                    <GWC:FieldsetControl runat="server">
+                                        <ListControls>
+                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
+                                            <asp:Panel runat="server">
+                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
+                                            </asp:Panel>
+                                        </ListControls>
+                                    </GWC:FieldsetControl>
+                                </TabsSections>
+                            </GWC:TabbarControl>
+                            
+                            <%-- FIN DISEÑO COMPONENTE --%>
+                        </asp:Panel>
+                    </ListControls>
+                </GWC:FieldsetControl>
+                <GWC:FieldsetControl runat="server" Label="Información">
+                    <ListControls>
+                   
+                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-description">
+                            <%-- DISEÑO COMPONENTE --%>
+                            <asp:Label runat="server" Text="Descripción" CssClass="fieldset-subtitle"></asp:Label>
+                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
+
+                            <%-- FIN DISEÑO COMPONENTE --%>
+                        </asp:Panel>
+                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-comments">
+                            <%-- DISEÑO COMPONENTE --%>
+                            <asp:Label runat="server" Text="Histórico" CssClass="fieldset-subtitle"></asp:Label>
+                            <ul>
+                                <gwc-comment title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
+                               
+                                <gwc-comment title="Roberto Carlos2" date="hace 2 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
+                                
+                                <gwc-comment title="Roberto Carlos3" date="hace 1 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>                              
+                            </ul>
+
+                            <%-- FIN DISEÑO COMPONENTE --%>
+                        </asp:Panel>
+                    </ListControls>
+                </GWC:FieldsetControl>
+
+                        
                <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
                     <ListControls>
+
+                       
 
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2 py-5">
                             <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 solid-textarea p-0 justify-content-start" ID="ic_RoomName" Type="Text" Format="SinDefinir" Name="ic_RoomName" Label="Nombre del Gajo" />

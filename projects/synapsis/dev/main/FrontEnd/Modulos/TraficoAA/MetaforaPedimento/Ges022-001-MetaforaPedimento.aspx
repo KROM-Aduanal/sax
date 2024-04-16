@@ -148,7 +148,7 @@
                 <GWC:FieldsetControl runat="server" ID="fscDatosGenerales" Label="Generales">
 
                     <ListControls>
-
+                        
                         <%--CP_REFERENCIA--%>
                         <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="dbcReferenciaPedimento" Label="Referencia aduanal" LabelDetail="Número de pedimento" />
 
@@ -198,7 +198,7 @@
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" Type="Text" ID="icValorAduana" Label="Valor aduana" Enabled="false" />
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="icPrecioPagado" Label="Precio pagado/Valor comercial" Enabled="false" />
-
+                        
                     </ListControls>
 
                 </GWC:FieldsetControl>
@@ -270,7 +270,6 @@
 
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" Type="Text" ID="icOtrosIncrementables" Label="Otros incrementables" />
 
-                            
                             </asp:Panel>
 
                         </asp:Panel>
@@ -325,8 +324,8 @@
 
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scValidacionAduanaDespacho" Label="Aduana de despacho">
                             <Options>
-                                <GWC:SelectOption Text="Seleccionar" Value="0" />
-                                <GWC:SelectOption Text="430 - Vercruz, Ver, México" Value="1" />
+                                <GWC:SelectOption Text="Seleccionar" Value="0"/>
+                                <GWC:SelectOption Text="430 - Vercruz, Ver, México" Value="1"/>
                             </Options>
                         </GWC:SelectControl>
 
@@ -395,6 +394,7 @@
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" Format="Calendar" ID="CA_FECHA_IMP_EUA_CAN" Label="IMP EUA CAN" />
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" Format="Calendar" ID="CA_FECHA_ORIGINAL" Label="Original" />--%>
+
                     </ListControls>
 
                 </GWC:FieldsetControl>
@@ -1537,10 +1537,7 @@
 
     <script>
             
-        const section = document.querySelector('section-id="fscDatosImportador"');
-
-
-
+        //const section = document.querySelector('section-id="fscDatosImportador"');
 
     </script>
 

@@ -185,7 +185,6 @@ Public Class Ges022_001_CuboDatos
         ' Esta metodo se manda llamar al dar clic en la opción nuevo (+) '
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()

@@ -315,6 +315,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptButtonControl64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Gsol.Web.Components.CptCardControl64.0.0.0.0, Version=1.0.8824.30385, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptCardControl64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Gsol.Web.Components.CptCatalogControl64.0.0.0.0, Version=1.0.8152.16923, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptCatalogControl64.0.0.0.0.dll</HintPath>
@@ -835,8 +840,7 @@
       <HintPath>..\..\libs\bin\controllers\Syn.Nucleo.RecursosComercioExterior64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Syn.Operaciones.DocumentoAsociado64.0.0.0.0">
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Operaciones.DocumentoAsociado64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
@@ -1487,9 +1491,11 @@
     <Content Include="FrontEnd\Librerias\Jvectormap\tests\reverse-projection.html" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\button.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\buttonbar.css" />
+    <Content Include="FrontEnd\Librerias\Krom\css\components\card.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\catalog.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\checkbox.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\collection.css" />
+    <Content Include="FrontEnd\Librerias\Krom\css\components\feditor.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\dualitybar.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\file.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\findbar.css" />
@@ -1532,6 +1538,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\expand_more.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\expand_up.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\find.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\function.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\hourglass.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\less.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\list.png" />
@@ -1541,6 +1548,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\next-arrow.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\next.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\notify.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\nouser.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\preview-arrow.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\preview.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\save.png" />
@@ -1554,11 +1562,16 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\undo.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\up.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\uparrow.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\variable.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\w_close.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\w_close_outline.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_lock.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_reply.png" />
     <Content Include="FrontEnd\Librerias\Krom\js\Components.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-catalog.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-collectionview.js" />
+    <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-comment.js" />
+    <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-feditor.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-file.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-findbar.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-findbox.js" />
@@ -1570,6 +1583,8 @@
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-pillbox.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-select.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-table.js" />
+    <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-tooltip.js" />
+    <Content Include="FrontEnd\Librerias\Krom\js\components\webcomponent-userdata.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\Dialogs.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\KromComponentes.js" />
     <Content Include="FrontEnd\Librerias\Krom\js\Prototypes.js" />
