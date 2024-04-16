@@ -43,8 +43,31 @@ export class WCFEditor extends HTMLDivElement {
                 this._input.value = this.innerText;
 
                 setEndOfContenteditable(this);
-                
+                //setCursorAtLastPosition(this)
+
             });
+
+
+            /*function setCursorAtLastPosition(contentEditableElement) {
+                var selection, range;
+
+                if (window.getSelection) {
+                    selection = window.getSelection();
+                    if (selection.rangeCount > 0) {
+                        range = selection.getRangeAt(0).cloneRange();
+                        range.setStart(selection.focusNode, selection.focusOffset);
+                        range.collapse(true);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+                } else if (document.selection) {
+                    range = document.selection.createRange();
+                    range.moveStart('character', -1);
+                    range.moveStart('character', 1);
+                    range.collapse(false);
+                    range.select();
+                }
+            }*/
 
 
             function setEndOfContenteditable(contentEditableElement) {
@@ -75,6 +98,18 @@ export class WCFEditor extends HTMLDivElement {
 
                     range.select();
                 }
+
+            }
+
+            if (this._input.value) {
+
+                this._component.innerHTML = this._input.value;
+
+                var event = document.createEvent('Event');
+
+                event.initEvent('input', true, false);
+
+                this._component.dispatchEvent(event);
 
             }
 

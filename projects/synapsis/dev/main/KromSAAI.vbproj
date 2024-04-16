@@ -1564,6 +1564,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\uparrow.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\variable.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_close.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\w_close_outline.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_lock.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_reply.png" />
     <Content Include="FrontEnd\Librerias\Krom\js\Components.js" />

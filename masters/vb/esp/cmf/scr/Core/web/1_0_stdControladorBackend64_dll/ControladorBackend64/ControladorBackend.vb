@@ -4196,7 +4196,8 @@ Public Class ControladorBackend
 
     End Sub
 
-    Public Overridable Sub AntesGuardarDocumentoAsociado(ByRef documentoasociado_ As DocumentoAsociado, ByRef documentoelectronico_ As DocumentoElectronico)
+    Public Overridable Sub AntesGuardarDocumentoAsociado(ByRef documentoasociado_ As DocumentoAsociado,
+                                                         ByRef documentoelectronico_ As DocumentoElectronico)
 
     End Sub
 

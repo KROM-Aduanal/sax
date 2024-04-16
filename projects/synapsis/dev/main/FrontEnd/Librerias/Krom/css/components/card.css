@@ -37,10 +37,10 @@
 	border-radius: 50%;
 	background-color: var(--tintColor);
 	margin-left: auto;
-	background-image: url('../../imgs/less.png');
+	background-image: url('../../imgs/w_close_outline.png');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size:70%;
+	background-size:60%;
 }
 
 .wc-card > div:nth-child(2) {

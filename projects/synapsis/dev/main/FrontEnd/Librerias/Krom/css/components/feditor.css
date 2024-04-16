@@ -17,12 +17,12 @@
     color: #ffffff;
     text-align: center;
 }
-.wc-cubo-formulas > div:nth-child(1) div:nth-child(1) input {
+.wc-cubo-formulas > div:nth-child(1) .cubo-btn input {
     border-radius: 20px 0 0 20px;
     opacity: .7;
     border-right: 1px solid rgba(255,255,255,0.035);
 }
-.wc-cubo-formulas > div:nth-child(1) div:nth-child(2) input {
+.wc-cubo-formulas > div:nth-child(1) .cubo-btn-formula input {
     border-radius: 0 20px 20px 0;
     background-image: url('../../imgs/function.png');
     background-position: center;
@@ -30,12 +30,12 @@
     background-size: 30px;
     border-left: 1px solid rgba(0,0,0,0.035);
 }
-.wc-cubo-formulas > div:nth-child(1) div:nth-child(3) input {
+.wc-cubo-formulas > div:nth-child(1) .cubo-input-search input {
     border: 0 !important;
     height: 40px;
     margin: 0 !important;
 }
-.wc-cubo-formulas > div:nth-child(1) .wc-input {
+.wc-cubo-formulas > div:nth-child(1) .cubo-input-search .wc-input {
     margin: 0 4px !important;
     min-height: 40px !important;
 }

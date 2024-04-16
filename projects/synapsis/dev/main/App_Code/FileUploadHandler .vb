@@ -57,6 +57,8 @@ Public Class FileUploadHandler
 
         Response = sender.ObjectReturned
 
+        Message = "Elemento cargado correctamente"
+
     End Sub
 
     Private Sub UploadDocumentError(sender As TagWatcher, e As EventArgs)
@@ -72,6 +74,8 @@ Public Class FileUploadHandler
         Code = 200
 
         Response = sender.ObjectReturned
+
+        Message = "Elemento descargado correctamente"
 
     End Sub
 
@@ -115,6 +119,8 @@ Public Class FileUploadHandler
                                                                              End If
 
                                                                          Next
+
+                                                                         documentodigital_.nombrearchivo = document.FileName
 
                                                                      End Sub)
 

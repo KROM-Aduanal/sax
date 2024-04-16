@@ -36,36 +36,10 @@
                     </Buttonbar>           
                     <Fieldsets>
 
-                       <%-- <GWC:FieldsetControl ID="_fstest" runat="server" Label="Datos Pruebas">
-                            <ListControls>
-
-                                <GWC:CollectionViewControl CssClass="col-xs-4" runat="server" ID="cv" KeyField="indice" DetailField="f1" TitleField="f1">
-                                    <ViewTemplate>
-                                        <ItemTemplate>
-                                            
-                                            <asp:Panel runat="server">
-                                                <GWC:InputControl runat="server" ID="f1" Label="F1"></GWC:InputControl>
-                                                <GWC:InputControl runat="server" ID="f2" Label="F2"></GWC:InputControl>
-                                                <GWC:SelectControl runat="server" ID="s1" Label="F3">
-                                                    <Options>
-                                                        <GWC:SelectOption Value="1" Text="A"/>
-                                                        <GWC:SelectOption Value="2" Text="B"/>
-                                                        <GWC:SelectOption Value="3" Text="C"/>
-                                                    </Options>
-                                                </GWC:SelectControl>
-                                            </asp:Panel>
-
-                                        </ItemTemplate>
-                                    </ViewTemplate>
-                                </GWC:CollectionViewControl>
-
-                            </ListControls>
-                        </GWC:FieldsetControl> --%>
-
                         <GWC:FieldsetControl ID="_fsdatosgenerales" runat="server" Label="Datos Generales">
                             
                              <ListControls>                  
-                                 
+
                                 <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="i_Cve_Empresa" KeyField="_id" DisplayField="razonsocial" Label="Razón social|IMP/EXP" Rules="required" OnTextChanged="i_Cve_Empresa_TextChanged" OnClick="i_Cve_Empresa_Click"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_tipoPersona" label="Tipo Persona" OnText="M" OffText="F" Checked="true"/>
                                 <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-end" ID="s_Habilitado" label="Habilitado" OnText="Sí" OffText="No" OnCheckedChanged="s_Habilitado_CheckedChanged"/>
@@ -99,7 +73,7 @@
                         </GWC:FieldsetControl>
 
 
-                    <%--<GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text"  Name="t_Calle" ID="InputControl1" Label="Calle" Rules="required"/>
+                        <%--<GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text"  Name="t_Calle" ID="InputControl1" Label="Calle" Rules="required"/>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text"  Name="t_NumeroExt" ID="InputControl2" Label="Número exterior" Rules="required|onlynumber"/>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text"  Name="t_NumeroInt" ID="InputControl3" Label="Número interior"/>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text"  Name="t_Colonia" ID="InputControl4" Label="Colonia"/>
@@ -157,7 +131,7 @@
                             <ListControls>
                                 <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaCertificado" Label="Ruta archivo certificado" OnChooseFile="icRutaCertificado_ChooseFile" ShowButtonsTitle="false"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icContraseniaCertificado" Label="Contraseña" Format="Security"/>
-                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaLlave" Label="Ruta archivo llave" ShowButtonsTitle="false"/>
+                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaLlave" Label="Ruta archivo llave" OnChooseFile="icRutaLlave_ChooseFile" ShowButtonsTitle="false" Dragable="true"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCveWebServices" Label="Clave web services" Format="Security"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" Format="Calendar" ID="icFechaVigencia" Label="Vigencia"/>
                             </ListControls>
@@ -186,7 +160,7 @@
 
                         </GWC:FieldsetControl>
                         
-                          <GWC:FieldsetControl ID="_fspago" runat="server" Label="Pago electrónico del cliente">
+                        <GWC:FieldsetControl ID="_fspago" runat="server" Label="Pago electrónico del cliente">
 
                             <ListControls>
                                 <GWC:CatalogControl CssClass="w-100"  ID="ccPagoElectronico" runat="server" KeyField="indice" Collapsed="true">
@@ -222,6 +196,7 @@
                                     </Columns>
                                 </GWC:CatalogControl>
                             </ListControls>
+
                         </GWC:FieldsetControl>
 
                         <GWC:FieldsetControl ID="_fsexpediente" runat="server" Label="Expediente legal del cliente" Enabled ="false">

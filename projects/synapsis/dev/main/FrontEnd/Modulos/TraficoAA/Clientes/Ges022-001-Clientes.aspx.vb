@@ -34,7 +34,8 @@ Imports System.Globalization
 Imports Syn.Documento.Componentes.Campo
 Imports Rec.Globals.Utils
 Imports System.IO
-Imports Syn.Custombrokers.Controllers
+Imports Syn.CustomBrokers.Controllers
+Imports System.Web.Script.Serialization
 
 #End Region
 
@@ -78,22 +79,7 @@ Public Class Ges022_001_Clientes
 
         End With
 
-        'icRutaCertificado.Value = "647f42e48f3c19d9cf5ea6c5"
-        'icRutaCertificado.Text = "algo.pdf"
-
-        If Not Page.IsPostBack Then
-            'cv.DataSource = New List(Of Dictionary(Of String, Object)) From {
-            '   New Dictionary(Of String, Object) From {{"indice", 1}, {"f1", "aa"}, {"f2", "aa"}, {"f3", 1}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}},
-            '   New Dictionary(Of String, Object) From {{"indice", 2}, {"f1", "bb"}, {"f2", "bb"}, {"f3", 2}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}}
-            '}
-        End If
-
-
-
     End Sub
-
-
-
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
@@ -214,6 +200,13 @@ Public Class Ges022_001_Clientes
 
         s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
 
+        Dim d As New List(Of Dictionary(Of String, String)) From {
+            New Dictionary(Of String, String) From {{"fileId", "1"}, {"fileName", "cosa1"}},
+            New Dictionary(Of String, String) From {{"fileId", "2"}, {"fileName", "cosa2"}}
+        }
+
+
+        icRutaLlave.Value = New JavaScriptSerializer().Serialize(d)
 
     End Sub
 
@@ -954,6 +947,27 @@ Public Class Ges022_001_Clientes
     End Function
 
     Protected Sub icRutaCertificado_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
+
+        Dim id = ObjectId.GenerateNewId().ToString
+
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "Yo Merengues Dos"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000002",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "Yo Merengues Dos",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+        End With
+
+    End Sub
+
+    Protected Sub icRutaLlave_ChooseFile(sender As Object, e As EventArgs)
 
         Dim id = ObjectId.GenerateNewId().ToString
 

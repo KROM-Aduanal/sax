@@ -357,6 +357,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorTIGIE64", "..\co
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CptCardControl64", "..\..\..\..\masters\vb\esp\cmf\scr\Components web\1_0_CptCardControl64_dll\CardControl\CptCardControl64.vbproj", "{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorFirmaElectronica64", "..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\ControladorFirmaElectronica64.vbproj", "{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1027,6 +1029,10 @@ Global
 		{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1203,6 +1209,7 @@ Global
 		{5C009B48-6419-4D12-B9D3-4E4AA2DA8668} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
 		{8A6540B7-D041-4F18-98F5-32F9A001B664} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
 		{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7} = {62449754-D0B4-475C-99AF-0BEDFFFDB07F}
+		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E} = {5680221B-C37C-4E13-B764-2394F2EF8302}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DB70D15-1726-4FC9-95C9-1DF3E9509B26}

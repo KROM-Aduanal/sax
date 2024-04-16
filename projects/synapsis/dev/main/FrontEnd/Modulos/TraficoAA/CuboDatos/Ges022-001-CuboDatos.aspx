@@ -129,9 +129,9 @@
                             <asp:Panel runat="server" CssClass="wc-cubo-formulas">
 
                                 <div>
-                                    <GWC:ButtonControl runat="server" Label="A22"/>
-                                    <GWC:ButtonControl runat="server"/>
-                                    <GWC:InputControl runat="server" CssClass="w-100" Label="Escriba aquí"/>
+                                    <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22"/>
+                                    <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server"/>
+                                    <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"/>
                                 </div>
                                 <div>
                                     <gwc-userdata title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png"></gwc-userdata>
