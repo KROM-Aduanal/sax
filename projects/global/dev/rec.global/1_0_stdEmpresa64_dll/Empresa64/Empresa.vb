@@ -4,6 +4,11 @@ Imports Syn.Operaciones
 Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 
+
+
+''' <summary>
+''' CONTROLADOR DESCONTINUADO
+''' </summary>
 Public Class Empresa
     Public Enum TiposPersona
         Moral = 1

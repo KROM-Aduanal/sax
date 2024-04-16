@@ -59,6 +59,33 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents icClave As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
+    '''Control scProveedor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scProveedor As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control cveEmpresa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cveEmpresa As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control idEmpresa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idEmpresa As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
     '''Control fcRazonSocial.
     '''</summary>
     '''<remarks>
@@ -68,6 +95,15 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents fcRazonSocial As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
+    '''Control fbcPais.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fbcPais As Global.Gsol.Web.Components.FindboxControl
+
+    '''<summary>
     '''Control swcTipoUso.
     '''</summary>
     '''<remarks>
@@ -75,6 +111,42 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents swcTipoUso As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
+    '''Control fsConfiguracionDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fsConfiguracionDomicilio As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control rdSeleccionarDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rdSeleccionarDomicilio As Global.Gsol.Web.Components.GroupControl
+
+    '''<summary>
+    '''Control scDomicilios.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scDomicilios As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control swcEditarDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents swcEditarDomicilio As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control fsDetalles.
@@ -140,6 +212,15 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents icCURP As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
+    '''Control swcTipoPersona.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents swcTipoPersona As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
     '''Control swcDestinatario.
     '''</summary>
     '''<remarks>
@@ -149,6 +230,15 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents swcDestinatario As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
+    '''Control sectionDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents sectionDomicilio As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''Control lbDomicilio.
     '''</summary>
     '''<remarks>
@@ -156,33 +246,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lbDomicilio As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control swcUtilizarDatos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcUtilizarDatos As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control swcEditarDomicilio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcEditarDomicilio As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control scDomicilios.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scDomicilios As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control icCalle.
@@ -212,15 +275,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents icNumeroInterior As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icColonia.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icColonia As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control icCodigoPostal.
     '''</summary>
     '''<remarks>
@@ -228,6 +282,15 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icCodigoPostal As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icColonia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icColonia As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icLocalidad.
@@ -273,6 +336,105 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icPais As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icIdDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icIdDomicilio As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icSecDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icSecDomicilio As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCveRfc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCveRfc As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCveCurp.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCveCurp As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCveTaxId.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCveTaxId As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scDomicilio As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCvePais.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCvePais As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icIdPais.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icIdPais As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icNumeroExtInt.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icNumeroExtInt As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCveMunicipio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCveMunicipio As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icCveEntidadFederativa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icCveEntidadFederativa As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control fsVinculaciones.

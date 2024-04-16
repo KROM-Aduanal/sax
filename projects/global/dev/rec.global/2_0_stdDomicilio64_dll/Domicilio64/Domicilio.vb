@@ -29,15 +29,18 @@ Public Class Domicilio
     Property localidad As String
 
     <BsonIgnoreIfNull>
+    Property cveMunicipio As String
+
+    <BsonIgnoreIfNull>
     Property municipio As String
+
+    <BsonIgnoreIfNull>
+    Property cveEntidadfederativa As String
 
     <BsonIgnoreIfNull>
     Property entidadfederativa As String
 
-    Property pais As String
-
-    <BsonIgnoreIfNull>
-    Property paisPresentacion As String
+    Property domicilioPresentacion As String
 
     Property estado As Int16 = 1
 
