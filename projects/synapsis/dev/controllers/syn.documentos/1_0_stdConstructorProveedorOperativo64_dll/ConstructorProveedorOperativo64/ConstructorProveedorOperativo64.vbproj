@@ -216,5 +216,15 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.documentos.componentes\1_0_stdCampoGenerico64_dll\CampoGenerico64\CampoGenerico64.vbproj">
+      <Project>{43F817A0-7782-4828-BE5F-0A7263BB9953}</Project>
+      <Name>CampoGenerico64</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)Syn.Documento.ConstructorProveedoresOperativos64.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
