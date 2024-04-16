@@ -269,31 +269,6 @@ Public Class Ges022_001_RegistroProveedores
 
     Public Overrides Sub BotoneraClicEditar()
 
-        'fsDatosGenerales.Enabled = False
-
-        'fbcPais.Enabled = True
-
-
-
-        'swcEditarDomicilio.Enabled = True
-        'swcEditarDomicilio.Visible = True
-
-        'VerificaCheckDomicilio(4)
-
-        'icCalle.Enabled = False
-        'icNumeroExterior.Enabled = False
-        'icNumeroInterior.Enabled = False
-        'icCodigoPostal.Enabled = False
-        'icColonia.Enabled = False
-        'icCiudad.Enabled = False
-        'icLocalidad.Enabled = False
-        'icMunicipio.Enabled = False
-        'icEntidadFederativa.Enabled = False
-        'icPais.Enabled = False
-
-        ''QUIZAS ESTO NO VAYA AQUI
-        ''
-
         fsConfiguracionDomicilio.Visible = True
 
         fsConfiguracionDomicilio.Enabled = True
@@ -301,9 +276,6 @@ Public Class Ges022_001_RegistroProveedores
         scDomicilios.Enabled = True
         swcEditarDomicilio.Enabled = True
         swcEditarDomicilio.Checked = False
-
-
-        'AQUI LO QUE DEBE HACER AHORA, ES IR POR LOS DOMICILIOS AL MONGODB DE LA EMPRESA QUE ESTA EN SIERNES
 
         Session("_tbDetalleProveedor") = PillboxControl.ToolbarModality.Advanced : pbDetalleProveedor.Modality = Session("_tbDetalleProveedor")
 
@@ -319,7 +291,6 @@ Public Class Ges022_001_RegistroProveedores
         'swcEditarDomicilio.Visible = False
 
     End Sub
-
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
@@ -832,6 +803,8 @@ Public Class Ges022_001_RegistroProveedores
 
     Protected Sub fcRazonSocial_Click(sender As Object, e As EventArgs)
 
+        '''_urlType en true es INTERNACIONAL
+
         If _urlType Then
 
             fbcPais.Enabled = True
@@ -1022,6 +995,10 @@ Public Class Ges022_001_RegistroProveedores
     'EVENTOS PARA CARGAR LOS CLIENTES
     Protected Sub fbcPais_TextChanged(sender As Object, e As EventArgs)
 
+        icPais.Value = Nothing
+        icCvePais.Value = Nothing
+        icIdPais.Value = Nothing
+
         If GetVars("listaDomiciliosPais_") IsNot Nothing Then
 
             If GetVars("listaDomiciliosPais_").Count > 0 Then
@@ -1029,16 +1006,6 @@ Public Class Ges022_001_RegistroProveedores
                 Dim lista_ = DirectCast(GetVars("listaDomiciliosPais_"), List(Of SelectOption))
 
                 fbcPais.DataSource = lista_
-                fbcPais.Value = lista_.Last.Value
-
-                icPais.Value = Nothing
-                icCvePais.Value = Nothing
-                icIdPais.Value = Nothing
-
-                icPais.Value = fbcPais.Text
-                icCvePais.Value = fbcPais.Text.Substring(0, 3)
-                icIdPais.Value = fbcPais.Value.ToString
-
             Else
 
                 DisplayMessage("País no encontrado", StatusMessage.Info)
@@ -1053,7 +1020,6 @@ Public Class Ges022_001_RegistroProveedores
             If opcionesPaises_.Count > 0 Then
 
                 fbcPais.DataSource = opcionesPaises_
-                fbcPais.Value = opcionesPaises_.Last.Value
 
             Else
 
@@ -1636,8 +1602,8 @@ Public Class Ges022_001_RegistroProveedores
 
             If _listaEmpresasInternacionales.Count > 0 Then
 
-                _empresaInternacional = DirectCast(_listaEmpresasInternacionales.
-                                                        Find(Function(x) x.razonsocial = fcRazonSocial.Text), EmpresaInternacional)
+                _empresaInternacional = DirectCast(_listaEmpresasInternacionales.Find(Function(x) x.razonsocial = fcRazonSocial.Text), EmpresaInternacional)
+
                 With _empresaInternacional
 
                     idEmpresa.Value = ._id.ToString
