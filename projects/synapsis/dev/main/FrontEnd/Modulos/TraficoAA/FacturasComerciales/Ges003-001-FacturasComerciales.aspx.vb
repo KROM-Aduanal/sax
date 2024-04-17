@@ -14,7 +14,7 @@ Imports Syn.Nucleo.Recursos.CamposClientes
 Imports Syn.Nucleo.RecursosComercioExterior
 Imports Syn.Nucleo.RecursosComercioExterior.CamposAcuseValor
 Imports Syn.Nucleo.RecursosComercioExterior.CamposFacturaComercial
-
+Imports Syn.Operaciones
 Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
@@ -38,7 +38,7 @@ Public Class Ges003_001_FacturasComerciales
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _icontroladorEmpresas64 As IControladorEmpresas
+    Private _icontroladorEmpresas64 As IControladorEmpresas64
 
 #End Region
 
@@ -370,34 +370,34 @@ Public Class Ges003_001_FacturasComerciales
 
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        'Dim secuencia_ As New Secuencia _
-        '      With {.anio = 0,
-        '            .environment = Statements.GetOfficeOnline()._id,
-        '            .mes = 0,
-        '            .nombre = "FacturasComerciales",
-        '            .tiposecuencia = 1,
-        '            .subtiposecuencia = 0
-        '            }
+        Dim secuencia_ As New Secuencia _
+              With {.anio = 0,
+                    .environment = Statements.GetOfficeOnline()._id,
+                    .mes = 0,
+                    .nombre = "FacturasComerciales",
+                    .tiposecuencia = 1,
+                    .subtiposecuencia = 0
+                    }
 
-        'Dim respuesta_ As TagWatcher = secuencia_.Generar().Result
+        Dim respuesta_ As TagWatcher = secuencia_.Generar().Result
 
-        'Dim sec_ As Int32 = 0
+        Dim sec_ As Int32 = 0
 
-        'Select Case respuesta_.Status
+        Select Case respuesta_.Status
 
-        '    Case TypeStatus.Ok
+            Case TypeStatus.Ok
 
-        '        sec_ = respuesta_.ObjectReturned.sec
+                sec_ = respuesta_.ObjectReturned.sec
 
-        '    Case Else
+            Case Else
 
-        'End Select
+        End Select
 
         With documentoElectronico_
 
             .FolioDocumento = dbcNumFacturaCOVE.Value
 
-            .FolioOperacion = 1
+            .FolioOperacion = sec_
 
             .IdCliente = 0
 

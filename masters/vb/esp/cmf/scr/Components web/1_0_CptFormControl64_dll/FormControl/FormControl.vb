@@ -476,7 +476,7 @@ Public Class FormControl
 
                         For Each fieldset_ As FieldsetControl In _Fieldsets
 
-                            If fieldset_.Priority = True Then
+                            If fieldset_.Priority = True And fieldset_.Visible = True Then
 
                                 Dim checked = If(indexPath_ = 1, "checked='checked'", "")
 

@@ -69,16 +69,16 @@ export class WCSelect extends HTMLSelectElement {
 
                     label.appendChild(document.createTextNode(this.options[i].text));
 
-                    input.addEventListener('change', e => this.itemSelected(e.target, i));
+                    input.addEventListener('change', e => this.itemSelected(e.target, i, e));
 
                     items.appendChild(li);
 
                 }
 
             }
-            
+
             if (this.options.length == 0) {
-                
+
                 const li = document.createElement('li');
 
                 li.appendChild(document.createTextNode('Sin elementos disponibles'));
@@ -91,18 +91,17 @@ export class WCSelect extends HTMLSelectElement {
 
             }
 
-        } 
+        }
     }
 
-    itemSelected(item, i) {
-
+    itemSelected(item, i, evt) {
 
         this.selectedIndex = i;
 
         /**/
         //CUSTOM EVENT
         /**/
-        window.onSelectChange(this);
+        window.onSelectChange(this, evt);
 
         if ("createEvent" in document) {
 
@@ -111,18 +110,17 @@ export class WCSelect extends HTMLSelectElement {
             evt.initEvent("change", false, true);
 
             this.dispatchEvent(evt);
-            
+
         } else {
-           
+
             this.fireEvent("onchange");
-            
 
         }
 
     }
 
     controlTyping(e) {
-        
+
         const input = e.target;
 
         const value = input.value;
@@ -158,7 +156,7 @@ export class WCSelect extends HTMLSelectElement {
                 this.typingTimer = setTimeout(() => {
 
                     input.blur();
-                    
+
                 }, this.doneTypingInterval);
 
             }

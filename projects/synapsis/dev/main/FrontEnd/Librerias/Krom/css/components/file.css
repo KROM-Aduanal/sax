@@ -2,7 +2,7 @@
 /*FILE*/
 
 .wc-file {
-	--percent: "Procesando 0%";
+	--percent: 0%;
 	--tintColor: #6c4fd3;
 	position: relative;
 	background-color: transparent;
@@ -88,4 +88,102 @@
 	background-color: #d7d7d7;
 	color: #686767;
 	opacity: .5 !important;
+}
+
+.wc-file-dragable {
+	width: 100%;
+	position: relative;
+	background-color: #f9f9f9;
+	border: 2px dashed #cecdcd !important;
+	transition:.5s all;
+}
+
+.wc-file-dragable:before {
+	content:"";
+	display:block;
+	padding-top: 20%;
+}
+
+.wc-file-dragable > div {
+	position: absolute;
+	top:50%;
+	width:100%;
+	text-align:center;
+	transform:translateY(-50%);
+}
+
+.wc-file-dragable > div > div:nth-child(1) {
+	--total:"0 de 0";
+	width:50%;
+	height:2px;
+	background-color:#cecdcd;
+	margin:auto;
+	position:relative;
+	margin-bottom:4px;
+}
+
+.wc-file-dragable > div > div:nth-child(1):before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: var(--tintColor);
+	height: 100%;
+	width: var(--percent);
+}
+
+.wc-file-dragable > div > div:nth-child(1):after {
+	content: var(--total);
+	position: absolute;
+	right: 0;
+	top: -20px;
+	width: 10%;
+	text-align: center;
+	font-size:75%;
+	opacity:.75;
+}
+
+.wc-file-dragable > div:before {
+	content: attr(data-placeholder) " (Arrastre un archivo)";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 75%;
+	opacity: .75;
+}
+
+.dragable-over {
+	border: 2px dashed var(--tintColor) !important;
+	background-color: #f2f0fb !important;
+}
+
+.wc-file-dragable .__items {
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	max-height:120px;
+}
+
+.wc-file-dragable .__items span {
+	display: flex;
+	align-items: center;
+	width:100%;
+	justify-content:center;
+}
+
+.wc-file-dragable .__items span a {
+	display: flex;
+	align-items: center;
+	width:18px;
+	height:18px;
+	display:block;
+	border-radius:50%;
+	background-color:var(--tintColor);
+	margin-left:8px;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-image: url('../../imgs/w_close.png');
+	cursor:pointer;
 }

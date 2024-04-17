@@ -68,7 +68,7 @@ Public Class ControladorFirmaElectronica
 
 #Region "Métodos"
 
-    Public Function Generar(ByVal iddocumento_ As ObjectId,
+    Private Function Generar(ByVal iddocumento_ As ObjectId,
                             ByVal claveusuario_ As Int32) As String
 
         Dim firma_ = claveusuario_.ToString & iddocumento_.ToString & ObtenerFechaActual() & "v1"

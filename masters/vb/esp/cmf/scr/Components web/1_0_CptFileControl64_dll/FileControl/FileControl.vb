@@ -135,11 +135,13 @@ Public Class FileControl
 
     End Property
 
-    Public Property Multiple As Boolean = False
+    'Public Property Multiple As Boolean = False
 
     Public Property ShowButtonsTitle As Boolean = True
 
     Public Property CanDelete As Boolean = True
+
+    Public Property Dragable As Boolean = False
 
 #End Region
 
@@ -261,13 +263,13 @@ Public Class FileControl
 
             .Attributes.Add("is", "wc-file")
 
-            If Multiple = True Then
+            'If Multiple = True Then
 
-                .Attributes.Add("limit", 20)
+            '    .Attributes.Add("limit", 20)
 
-                '.AllowMultiple = True
+            '    '.AllowMultiple = True
 
-            End If
+            'End If
 
         End With
 
@@ -351,6 +353,8 @@ Public Class FileControl
 
         End With
 
+
+
     End Sub
 
 #End Region
@@ -367,51 +371,87 @@ Public Class FileControl
 
         With component_
 
-            .Controls.Add(New LiteralControl("<div class='row no-gutters wc-file mb-5 " & IIf(ShowDetails = True, "", "only-buttons") & " __component' " & ForeColor.HtmlPropertyColor & ">"))
+            If Dragable = False Then
 
-            If ShowDetails = True Then
+                .Controls.Add(New LiteralControl("<div class='row no-gutters wc-file mb-5 " & IIf(ShowDetails = True, "", "only-buttons") & " __component' " & ForeColor.HtmlPropertyColor & ">"))
 
-                .Controls.Add(New LiteralControl("  <div class='col d-flex align-items-center'>"))
+                If ShowDetails = True Then
 
-                .Controls.Add(_textInput)
+                    .Controls.Add(New LiteralControl("  <div class='col d-flex align-items-center'>"))
 
-                .Controls.Add(_valueInput)
+                    .Controls.Add(_textInput)
+
+                    .Controls.Add(New LiteralControl("  </div>"))
+
+                End If
+
+                .Controls.Add(New LiteralControl("  <div class='col-auto d-flex align-items-center'>"))
+
+                If Modality = FilecontrolModality.Default Then
+
+                    .Controls.Add(_uploadActionButton)
+
+                    .Controls.Add(_downloadActionButton)
+
+                ElseIf Modality = FilecontrolModality.Reading Then
+
+                    .Controls.Add(_downloadActionButton)
+
+                ElseIf Modality = FilecontrolModality.Writing Then
+
+                    .Controls.Add(_uploadActionButton)
+
+                End If
+
+                If CanDelete Then
+
+                    .Controls.Add(_deleteActionButton)
+
+                End If
 
                 .Controls.Add(New LiteralControl("  </div>"))
 
+                .Controls.Add(_fileInput)
+
+                .Controls.Add(_valueInput)
+
+                .Controls.Add(_textJsondata)
+
+                .Controls.Add(New LiteralControl("</div>"))
+
+            Else
+
+
+                Dim documentodigital_ = New PropiedadesDocumento
+
+                RaiseEvent ChooseFile(documentodigital_, EventArgs.Empty)
+
+                Dim data_ = New Dictionary(Of String, Object) From {{"type", "dragable"}, {"data", documentodigital_}}
+
+                _textJsondata.Text = New JavaScriptSerializer().Serialize(data_)
+
+                _fileInput.Attributes.Add("accept", GetEnumDescription(documentodigital_.formatoarchivo))
+
+
+                .Controls.Add(New LiteralControl("<div class='row no-gutters wc-file wc-file-dragable mb-5 __component' " & ForeColor.HtmlPropertyColor & ">"))
+
+                .Controls.Add(New LiteralControl("  <div data-placeholder='" & Label & "'>"))
+
+                .Controls.Add(New LiteralControl("      <div class='__details'></div>"))
+
+                .Controls.Add(New LiteralControl("      <div class='__items'></div>"))
+
+                .Controls.Add(New LiteralControl("  </div>"))
+
+                .Controls.Add(_fileInput)
+
+                .Controls.Add(_valueInput)
+
+                .Controls.Add(_textJsondata)
+
+                .Controls.Add(New LiteralControl("</div>"))
+
             End If
-
-            .Controls.Add(New LiteralControl("  <div class='col-auto d-flex align-items-center'>"))
-
-            If Modality = FilecontrolModality.Default Then
-
-                .Controls.Add(_uploadActionButton)
-
-                .Controls.Add(_downloadActionButton)
-
-            ElseIf Modality = FilecontrolModality.Reading Then
-
-                .Controls.Add(_downloadActionButton)
-
-            ElseIf Modality = FilecontrolModality.Writing Then
-
-                .Controls.Add(_uploadActionButton)
-
-            End If
-
-            If CanDelete Then
-
-                .Controls.Add(_deleteActionButton)
-
-            End If
-
-            .Controls.Add(New LiteralControl("  </div>"))
-
-            .Controls.Add(_fileInput)
-
-            .Controls.Add(_textJsondata)
-
-            .Controls.Add(New LiteralControl("</div>"))
 
         End With
 

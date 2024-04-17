@@ -1,0 +1,65 @@
+
+/*CARD*/
+
+.wc-card {
+	--tintColor: #673ab7;
+	width: 100%;
+	border: 1px solid var(--tintColor);
+	border-left-width: 8px;
+	padding: 16px;
+	border-radius: 16px;
+	box-shadow: 2px 4px 8px rgba(0,0,0,.16);
+	background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(255,255,255,0) 50%);
+	/*opacity: 0;
+	animation-duration: 1s;
+	animation-delay: .30s;
+	animation-fill-mode: forwards;
+	animation-name: fade-in-left;*/
+}
+
+.wc-card > div:nth-child(1) {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.wc-card > div:nth-child(1) b {
+	display:block;
+	font-size: 24px;
+	color: var(--tintColor);
+	padding-right: 16px;
+}
+
+.wc-card > div:nth-child(1) a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: var(--tintColor);
+	margin-left: auto;
+	background-image: url('../../imgs/w_close_outline.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:60%;
+}
+
+.wc-card > div:nth-child(2) {
+	width: 100%;
+	display: table;
+}
+/*
+.fade-in-left {
+	animation: fade-in-left 2s ease infinite;
+}
+*/
+@keyframes fade-in-left {
+	0% {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

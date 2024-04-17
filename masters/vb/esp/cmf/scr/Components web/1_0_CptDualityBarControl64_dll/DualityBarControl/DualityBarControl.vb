@@ -4,6 +4,7 @@ Imports System.Web.UI.HtmlControls
 Imports System.Web
 Imports System.Security.Permissions
 Imports System.ComponentModel
+Imports System.Drawing
 
 <Assembly: TagPrefix("Gsol.Web.Components", "GWC")>
 <
@@ -104,7 +105,10 @@ Public Class DualityBarControl
             MyBase.Enabled = value
 
         End Set
+
     End Property
+
+    Public Property TintColor As Color
 
 #End Region
 
@@ -214,6 +218,12 @@ Public Class DualityBarControl
         With _barButton
 
             .CausesValidation = False
+
+            If Not TintColor.IsEmpty Then
+
+                .Attributes.Add("style", "--ForeColor:" & TintColor.ToHex)
+
+            End If
 
             AddHandler .Click, AddressOf DualityBarSetDetail
 

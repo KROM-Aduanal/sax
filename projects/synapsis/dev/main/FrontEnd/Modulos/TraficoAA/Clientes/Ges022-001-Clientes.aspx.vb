@@ -1,980 +1,994 @@
 ﻿
-'#Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
+#Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
 
-''RECURSOS DEL CMF
-'Imports gsol.krom
-'Imports MongoDB.Bson
-'Imports Syn.Documento
-'Imports MongoDB.Driver
-'Imports Wma.Exceptions
-'Imports Syn.Operaciones
-'Imports gsol.Web.Components
-'Imports Syn.Nucleo.Recursos
-'Imports Syn.Nucleo.Recursos.CamposClientes
-'Imports Wma.Exceptions.TagWatcher
-'Imports Wma.Exceptions.TagWatcher.TypeStatus
-'Imports Syn.Nucleo.RecursosComercioExterior
-'Imports gsol.Web.Components.FormControl.ButtonbarModality
-'Imports Syn.Nucleo.Recursos.CamposDomicilio
+'RECURSOS DEL CMF
+Imports gsol.krom
+Imports MongoDB.Bson
+Imports Syn.Documento
+Imports MongoDB.Driver
+Imports Wma.Exceptions
+Imports Syn.Operaciones
+Imports gsol.Web.Components
+Imports Syn.Nucleo.Recursos
+Imports Syn.Nucleo.Recursos.CamposClientes
+Imports Wma.Exceptions.TagWatcher
+Imports Wma.Exceptions.TagWatcher.TypeStatus
+Imports Syn.Nucleo.RecursosComercioExterior
+Imports gsol.Web.Components.FormControl.ButtonbarModality
+Imports Syn.Nucleo.Recursos.CamposDomicilio
 
-''UTILERIAS/RECURSOS ADICIONALES
-'Imports Sax.Web
-'Imports Syn.Utils.Organismo
-'Imports Sax.Web.ControladorBackend.Datos
-'Imports Sax.Web.ControladorBackend.Cookies
+'UTILERIAS/RECURSOS ADICIONALES
+Imports Sax.Web
+Imports Syn.Utils.Organismo
+Imports Sax.Web.ControladorBackend.Datos
+Imports Sax.Web.ControladorBackend.Cookies
 
-''OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
-'Imports Rec.Globals
-'Imports Rec.Globals.Empresa
-'Imports Rec.Globals.Controllers
+'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
+Imports Rec.Globals
+Imports Rec.Globals.Empresa
+Imports Rec.Globals.Controllers
 
-''OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
-'Imports gsol.krom.Anexo22.Vt022AduanaSeccionA01
-'Imports System.Globalization
-'Imports Syn.Documento.Componentes.Campo
-'Imports Rec.Globals.Utils
-'Imports System.IO
-'Imports Syn.Custombrokers.Controllers
+'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
+Imports gsol.krom.Anexo22.Vt022AduanaSeccionA01
+Imports System.Globalization
+Imports Syn.Documento.Componentes.Campo
+Imports Rec.Globals.Utils
+Imports System.IO
+Imports Syn.CustomBrokers.Controllers
+Imports System.Web.Script.Serialization
 
-'#End Region
+#End Region
 
-'Public Class Ges022_001_Clientes
-'    Inherits ControladorBackend
+Public Class Ges022_001_Clientes
+    Inherits ControladorBackend
 
-'#Region "████████████████████████████████████████   Atributos locales  ██████████████████████████████████████"
-'    '    ██                                                                                                ██
-'    '    ██                                                                                                ██
-'    '    ██                                                                                                ██
-'    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+#Region "████████████████████████████████████████   Atributos locales  ██████████████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-'    'Private _empresa As Empresa
+    Private _empresa As Empresa
 
-'    Private _sistema As New Syn.Utils.Organismo
+    Private _sistema As New Syn.Utils.Organismo
 
-'    Private _controladorEmpresas As ControladorEmpresas
+    Private _controladorEmpresas As ControladorEmpresas
 
-'    Private _tipoObjeto As Type
+    Private _tipoObjeto As Type
 
-'    Private _cdocumentos As New ControladorDocumento
+    Private _cdocumentos As New ControladorDocumento
 
-'    Private _t As Boolean
+    Private _t As Boolean
 
-'#End Region
-'#Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
-'    '    ██                                                                                                ██
-'    '    ██                                                                                                ██
-'    '    ██                                                                                                ██
-'    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+#End Region
+#Region "██████ Vinculación c/capas inf █████████       SAX      ████████████████████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-'    Public Overrides Sub Inicializa()
+    Public Overrides Sub Inicializa()
 
-'        With Buscador
+        With Buscador
 
-'            .DataObject = New ConstructorCliente(True)
+            .DataObject = New ConstructorCliente(True)
 
-'            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
-'            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RFC_CLIENTE, "RFC")
-'            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_TAX_ID, "TaxID")
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_RFC_CLIENTE, "RFC")
+            .addFilter(SeccionesClientes.SCS1, CamposClientes.CA_TAX_ID, "TaxID")
 
-'        End With
+        End With
 
-'        'icRutaCertificado.Value = "647f42e48f3c19d9cf5ea6c5"
-'        'icRutaCertificado.Text = "algo.pdf"
+    End Sub
 
-'        If Not Page.IsPostBack Then
-'            'cv.DataSource = New List(Of Dictionary(Of String, Object)) From {
-'            '   New Dictionary(Of String, Object) From {{"indice", 1}, {"f1", "aa"}, {"f2", "aa"}, {"f3", 1}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}},
-'            '   New Dictionary(Of String, Object) From {{"indice", 2}, {"f1", "bb"}, {"f2", "bb"}, {"f3", 2}, {"borrado", False}, {"archivado", False}, {"calapsado", False}, {"editando", False}}
-'            '}
-'        End If
+    'ASIGNACION PARA CONTROLES AUTOMÁTICOS
+    Public Overrides Function Configuracion() As TagWatcher
 
+        [Set](i_Cve_Empresa, CP_CVE_EMPRESA, propiedadDelControl_:=PropiedadesControl.Valor)
 
+        [Set](i_Cve_Empresa, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
 
-'    End Sub
+        [Set](0, CP_CVE_DIVISION_MI_EMPRESA, TiposDato.Entero)
 
+        [Set](t_RFC, CA_RFC_CLIENTE)
 
+        [Set](t_TaxID, CA_TAX_ID)
 
+        [Set](t_CURP, CA_CURP_CLIENTE)
 
-'    'ASIGNACION PARA CONTROLES AUTOMÁTICOS
-'    Public Overrides Function Configuracion() As TagWatcher
+        [Set](Convert.ToInt32(IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)), CP_TIPO_PERSONA, TiposDato.Entero)
 
-'        [Set](i_Cve_Empresa, CP_CVE_EMPRESA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](s_Habilitado, CP_CLIENTE_HABILITADO)
 
-'        [Set](i_Cve_Empresa, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](Convert.ToInt32(IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)), CP_CLIENTE_EXTRANJERO, TiposDato.Entero)
 
-'        [Set](0, CP_CVE_DIVISION_MI_EMPRESA, TiposDato.Entero)
+        'Datos del domicilio
 
-'        [Set](t_RFC, CA_RFC_CLIENTE)
+        [Set](t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value, CamposDomicilio.CA_DOMICILIO_FISCAL)
 
-'        [Set](t_TaxID, CA_TAX_ID)
+        [Set](t_Calle, CamposDomicilio.CA_CALLE, permisoConsulta_:=582)
 
-'        [Set](t_CURP, CA_CURP_CLIENTE)
+        [Set](t_NumeroExt, CamposDomicilio.CA_NUMERO_EXTERIOR)
 
-'        [Set](Convert.ToInt32(IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)), CP_TIPO_PERSONA, TiposDato.Entero)
+        [Set](t_NumeroInt, CamposDomicilio.CA_NUMERO_INTERIOR)
 
-'        [Set](s_Habilitado, CP_CLIENTE_HABILITADO)
+        [Set](t_CP, CamposDomicilio.CA_CODIGO_POSTAL)
 
-'        [Set](Convert.ToInt32(IIf(s_Extranjero.Checked, TiposEmpresa.Nacional, TiposEmpresa.Extranjera)), CP_CLIENTE_EXTRANJERO, TiposDato.Entero)
+        [Set](t_Colonia, CamposDomicilio.CA_COLONIA)
 
-'        'Datos del domicilio
+        [Set](t_Ciudad, CamposDomicilio.CA_CIUDAD)
 
-'        [Set](t_Calle.Value & " #" & t_NumeroExt.Value & ", " & t_Ciudad.Value & " CP:" & t_CP.Value, CamposDomicilio.CA_DOMICILIO_FISCAL)
+        [Set](t_Pais, CamposDomicilio.CA_CVE_PAIS)
 
-'        [Set](t_Calle, CamposDomicilio.CA_CALLE, permisoConsulta_:=582)
+        [Set](t_Pais, CamposDomicilio.CA_PAIS)
 
-'        [Set](t_NumeroExt, CamposDomicilio.CA_NUMERO_EXTERIOR)
+        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS)
 
-'        [Set](t_NumeroInt, CamposDomicilio.CA_NUMERO_INTERIOR)
+        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
 
-'        [Set](t_CP, CamposDomicilio.CA_CODIGO_POSTAL)
+        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS)
 
-'        [Set](t_Colonia, CamposDomicilio.CA_COLONIA)
+        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
 
-'        [Set](t_Ciudad, CamposDomicilio.CA_CIUDAD)
+        [Set](icFechaVigencia, CP_FECHA_VIGENCIA_SELLOS)
 
-'        [Set](t_Pais, CamposDomicilio.CA_CVE_PAIS)
+        [Set](icContraseniaCertificado, CP_CONTRASENIA_SELLOS, soloLectura_:=True, permisoConsulta_:=651)
 
-'        [Set](t_Pais, CamposDomicilio.CA_PAIS)
+        [Set](icCveWebServices, CP_CVE_WEB_SERVICES_SELLOS)
 
-'        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS)
+        'CatConf [_cataduanasdefecto]
+        [Set](sc_claveAduanaSeccion, CP_CVE_ADUANA_SECCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icRutaCertificado, CP_RUTA_ARCHIVO_SER_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](sc_patenteAduanal, CP_CVE_PATENTE_ADUANAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS)
+        [Set](sc_tipoOperacion, CP_CVE_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icRutaLlave, CP_RUTA_ARCHIVO_KEY_SELLOS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](_cataduanasdefecto, Nothing, seccion_:=SeccionesClientes.SCS2)
 
-'        [Set](icFechaVigencia, CP_FECHA_VIGENCIA_SELLOS)
+        'CatConf [ccContactos]
+        [Set](icNombreContacto, CP_NOMBRE_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icContraseniaCertificado, CP_CONTRASENIA_SELLOS, soloLectura_:=True, permisoConsulta_:=651)
+        [Set](icInfoContacto, CP_INFO_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icCveWebServices, CP_CVE_WEB_SERVICES_SELLOS)
+        [Set](icTelefono1, CP_TELEFONO1_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        'CatConf [_cataduanasdefecto]
-'        [Set](sc_claveAduanaSeccion, CP_CVE_ADUANA_SECCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icMovil, CP_MOVIL_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](sc_patenteAduanal, CP_CVE_PATENTE_ADUANAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCorreoElectronico, CP_EMAIL_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](sc_tipoOperacion, CP_CVE_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccContactos, Nothing, seccion_:=SeccionesClientes.SCS3)
 
-'        [Set](_cataduanasdefecto, Nothing, seccion_:=SeccionesClientes.SCS2)
+        'CatConf [ccEncargosConferidos]
+        [Set](scPatenteAduanaEncargo, CP_CVE_PATENTE_ADUANAL_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        'CatConf [ccContactos]
-'        [Set](icNombreContacto, CP_NOMBRE_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFechaInicialEncargo, CP_FECHA_INICIO_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icInfoContacto, CP_INFO_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFechaFinalEncargo, CP_FECHA_FIN_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icTelefono1, CP_TELEFONO1_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scEncargoActivo, CP_ACTIVO_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icMovil, CP_MOVIL_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccEncargosConferidos, Nothing, seccion_:=SeccionesClientes.SCS6)
 
-'        [Set](icCorreoElectronico, CP_EMAIL_CONTACTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        'CatConf [ccPagoElectronico]
+        [Set](scTipoOperacionPago, CP_CVE_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](ccContactos, Nothing, seccion_:=SeccionesClientes.SCS3)
+        [Set](scPatentePago, CP_PATENTE_ADUANA_SECCION_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        'CatConf [ccEncargosConferidos]
-'        [Set](scPatenteAduanaEncargo, CP_CVE_PATENTE_ADUANAL_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scClaveDocumentoPago, CP_CVE_DOCUMENTO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icFechaInicialEncargo, CP_FECHA_INICIO_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scBancoPago, CP_CVE_BANCO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](icFechaFinalEncargo, CP_FECHA_FIN_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icCuentaPago, CP_ID_CUENTA_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](scEncargoActivo, CP_ACTIVO_ENCARGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icRangoCuentaPago, CP_RANGO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        [Set](ccEncargosConferidos, Nothing, seccion_:=SeccionesClientes.SCS6)
+        [Set](scEstatusPago, CP_ACTIVO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-'        'CatConf [ccPagoElectronico]
-'        [Set](scTipoOperacionPago, CP_CVE_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccPagoElectronico, Nothing, seccion_:=SeccionesClientes.SCS7)
 
-'        [Set](scPatentePago, CP_PATENTE_ADUANA_SECCION_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        Return New TagWatcher(1)
 
-'        [Set](scClaveDocumentoPago, CP_CVE_DOCUMENTO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+    End Function
 
-'        [Set](scBancoPago, CP_CVE_BANCO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+    Public Overrides Sub BotoneraClicNuevo()
 
-'        [Set](icCuentaPago, CP_ID_CUENTA_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        If OperacionGenerica IsNot Nothing Then
 
-'        [Set](icRangoCuentaPago, CP_RANGO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+            _empresa = Nothing
 
-'        [Set](scEstatusPago, CP_ACTIVO_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        End If
 
-'        [Set](ccPagoElectronico, Nothing, seccion_:=SeccionesClientes.SCS7)
+        s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
 
-'        Return New TagWatcher(1)
+        Dim d As New List(Of Dictionary(Of String, String)) From {
+            New Dictionary(Of String, String) From {{"fileId", "1"}, {"fileName", "cosa1"}},
+            New Dictionary(Of String, String) From {{"fileId", "2"}, {"fileName", "cosa2"}}
+        }
 
-'    End Function
 
-'    Public Overrides Sub BotoneraClicNuevo()
+        icRutaLlave.Value = New JavaScriptSerializer().Serialize(d)
 
-'        If OperacionGenerica IsNot Nothing Then
+    End Sub
 
-'            _empresa = Nothing
+    Public Overrides Sub BotoneraClicGuardar()
 
-'        End If
+        'ProcesarOperacion(Of Something)()
+        If Not ProcesarTransaccion(Of ConstructorCliente)().Status = TypeStatus.Errors Then : End If
 
-'        s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
+    End Sub
 
+    Public Overrides Sub BotoneraClicEditar()
 
-'    End Sub
+        s_EditarDomicilio.Enabled = True
 
-'    Public Overrides Sub BotoneraClicGuardar()
+    End Sub
 
-'        'ProcesarOperacion(Of Something)()
-'        If Not ProcesarTransaccion(Of ConstructorCliente)().Status = TypeStatus.Errors Then : End If
+    Public Overrides Sub BotoneraClicBorrar()
 
-'    End Sub
+        If OperacionGenerica IsNot Nothing Then
 
-'    Public Overrides Sub BotoneraClicEditar()
+            _empresa = Nothing
 
-'        s_EditarDomicilio.Enabled = True
+        End If
 
-'    End Sub
+    End Sub
 
-'    Public Overrides Sub BotoneraClicBorrar()
+    Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
 
-'        If OperacionGenerica IsNot Nothing Then
 
-'            _empresa = Nothing
 
-'        End If
+    End Sub
 
-'    End Sub
+    'EVENTOS PARA LA INSERCIÓN DE DATOS
+    Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
-'    Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
+        Dim tagwatcher_ As TagWatcher
 
+        '      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+        If session_ IsNot Nothing Then
 
+            '  ██████inicio███████        Logica de negocios local      ████████████████████████
 
-'    End Sub
+            _controladorEmpresas = New ControladorEmpresas
 
-'    'EVENTOS PARA LA INSERCIÓN DE DATOS
-'    Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
+            With _controladorEmpresas
 
-'        Dim tagwatcher_ As TagWatcher
+                .t_CURP = t_CURP.Value
 
-'        '      ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-'        If session_ IsNot Nothing Then
+                .t_Calle = t_Calle.Value
 
-'            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+                .t_NumeroExt = t_NumeroExt.Value
 
-'            '_controladorEmpresas = New ControladorEmpresas
+                .t_NumeroInt = t_NumeroInt.Value
 
-'            'With _controladorEmpresas
+                .t_Colonia = t_Colonia.Value
 
-'            '    .t_CURP = t_CURP.Value
+                .t_Ciudad = t_Ciudad.Value
 
-'            '    .t_Calle = t_Calle.Value
+                .t_Estado = t_Estado.Value
 
-'            '    .t_NumeroExt = t_NumeroExt.Value
+                .t_Pais = t_Pais.Value
 
-'            '    .t_NumeroInt = t_NumeroInt.Value
+                .i_Cve_Empresa = i_Cve_Empresa.Text
 
-'            '    .t_Colonia = t_Colonia.Value
+                .t_RFC = t_RFC.Value
 
-'            '    .t_Ciudad = t_Ciudad.Value
+                .s_tipoPersona = s_tipoPersona.Checked
 
-'            '    .t_Estado = t_Estado.Value
+                .s_Extranjero = s_Extranjero.Checked
 
-'            '    .t_Pais = t_Pais.Value
+                .esNuevoDomicilio = Not s_Domicilios.Visible
 
-'            '    .i_Cve_Empresa = i_Cve_Empresa.Text
+                If GetVars("_empresa") IsNot Nothing Then
 
-'            '    .t_RFC = t_RFC.Value
+                    _empresa = GetVars("_empresa")
 
-'            '    .s_tipoPersona = s_tipoPersona.Checked
+                    tagwatcher_ = .ActualizaEmpresa(_empresa, session_)
 
-'            '    .s_Extranjero = s_Extranjero.Checked
+                    If s_Domicilios.Visible = True Then
 
-'            '    .esNuevoDomicilio = Not s_Domicilios.Visible
+                        SetVars("_secDomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
 
-'            'If GetVars("_empresa") IsNot Nothing Then
+                    End If
 
-'            '        _empresa = GetVars("_empresa")
+                Else
 
-'            '        tagwatcher_ = .ActualizaEmpresa(_empresa, session_)
+                    tagwatcher_ = .NuevaEmpresa(session_)
 
-'            '        If s_Domicilios.Visible = True Then
+                    If tagwatcher_.Status = TypeStatus.Ok Then
 
-'            '            SetVars("_secDomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
+                        _empresa = tagwatcher_.ObjectReturned
 
-'            '        End If
+                        'Grabamos la instancia en la session
+                        SetVars("_empresa", _empresa)
 
-'            '    Else
+                    End If
 
-'            '        tagwatcher_ = .NuevaEmpresa(session_)
+                End If
 
-'            '        If tagwatcher_.Status = TypeStatus.Ok Then
+                '  ████████fin█████████       Logica de negocios local       ███████████████████████
 
-'            '            _empresa = tagwatcher_.ObjectReturned
+            End With
 
-'            '            'Grabamos la instancia en la session
-'            '            SetVars("_empresa", _empresa)
 
-'            '        End If
+        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
 
-'            '    End If
+            tagwatcher_ = New TagWatcher
 
-'            '  ████████fin█████████       Logica de negocios local       ███████████████████████
+            tagwatcher_.SetOK()
 
-'            'End With
+        End If
 
+        Return tagwatcher_
 
-'        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
+    End Function
 
-'            tagwatcher_ = New TagWatcher
+    Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-'            tagwatcher_.SetOK()
+        '************** TEMPORAL ********** (Este segmento se colocará al interior de DocomentoElectronico y como una propiedad en el CMF) ***********
+        Dim secuencia_ As New Secuencia _
+                  With {.anio = 2022,
+                        .environment = 0,
+                        .mes = 0,
+                        .nombre = "Clientes",
+                        .tiposecuencia = 1,
+                        .subtiposecuencia = 0
+                        }
 
-'        End If
+        Dim respuesta_ As TagWatcher = secuencia_.Generar().Result
 
-'        Return tagwatcher_
+        Dim sec_ As Int32 = 0
 
-'    End Function
+        Select Case respuesta_.Status
 
-'    Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
+            Case TypeStatus.Ok
 
-'        '************** TEMPORAL ********** (Este segmento se colocará al interior de DocomentoElectronico y como una propiedad en el CMF) ***********
-'        Dim secuencia_ As New Secuencia _
-'                  With {.anio = 2022,
-'                        .environment = 0,
-'                        .mes = 0,
-'                        .nombre = "Clientes",
-'                        .tiposecuencia = 1,
-'                        .subtiposecuencia = 0
-'                        }
+                sec_ = respuesta_.ObjectReturned.sec
 
-'        Dim respuesta_ As TagWatcher = secuencia_.Generar().Result
+            Case Else
 
-'        Dim sec_ As Int32 = 0
+        End Select
 
-'        Select Case respuesta_.Status
+        _empresa = GetVars("_empresa")
 
-'            Case TypeStatus.Ok
+        If _empresa IsNot Nothing Then : [Set](_empresa._id, CP_ID_EMPRESA) : End If
 
-'                sec_ = respuesta_.ObjectReturned.sec
+        Dim domicilio_ As Int32 = GetVars("_secDomicilio")
 
-'            Case Else
+        [Set](domicilio_, CamposDomicilio.CP_SEC_DOMICILIO, tipoDato_:=TiposDato.Entero)
+        '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = GetVars("_secDomicilio")
 
-'        End Select
+        If _empresa IsNot Nothing Then : [Set](_empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio, CamposDomicilio.CP_ID_DOMICILIO) : End If
+        ''.Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
 
-'        _empresa = GetVars("_empresa")
+        If s_Domicilios.Visible = True Then
 
-'        If _empresa IsNot Nothing Then : [Set](_empresa._id, CP_ID_EMPRESA) : End If
+            With _empresa.domicilios(GetVars("_secDomicilio"))
+                [Set](.calle, CA_CALLE)
+                [Set](.numeroexterior, CA_NUMERO_EXTERIOR)
+                [Set](.numerointerior, CA_NUMERO_INTERIOR)
+                [Set](.cp, CA_CODIGO_POSTAL)
+                [Set](.colonia, CA_COLONIA)
+                [Set](.ciudad, CA_CIUDAD)
+                [Set](.pais, CA_PAIS)
+            End With
 
-'        Dim domicilio_ As Int32 = GetVars("_secDomicilio")
+        End If
 
-'        [Set](domicilio_, CamposDomicilio.CP_SEC_DOMICILIO, tipoDato_:=TiposDato.Entero)
-'        '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = GetVars("_secDomicilio")
+        '************** TEMPORAL ********** (Este segmento requiere ser cargado una sola vez y bajo demanda) ***********
 
-'        If _empresa IsNot Nothing Then : [Set](_empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio, CamposDomicilio.CP_ID_DOMICILIO) : End If
-'        ''.Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
+        With documentoElectronico_
 
-'        If s_Domicilios.Visible = True Then
+            .FolioDocumento = _empresa._idempresa
 
-'            With _empresa.domicilios(GetVars("_secDomicilio"))
-'                [Set](.calle, CA_CALLE)
-'                [Set](.numeroexterior, CA_NUMERO_EXTERIOR)
-'                [Set](.numerointerior, CA_NUMERO_INTERIOR)
-'                [Set](.cp, CA_CODIGO_POSTAL)
-'                [Set](.colonia, CA_COLONIA)
-'                [Set](.ciudad, CA_CIUDAD)
-'                [Set](.pais, CA_PAIS)
-'            End With
+            .FolioOperacion = sec_
 
-'        End If
+            .IdCliente = _empresa._idempresa
 
-'        '************** TEMPORAL ********** (Este segmento requiere ser cargado una sola vez y bajo demanda) ***********
+            .NombreCliente = _empresa.razonsocial
 
-'        With documentoElectronico_
+        End With
 
-'            .FolioDocumento = _empresa._idempresa
+        'operacion = referencia
 
-'            .FolioOperacion = sec_
+    End Sub
 
-'            .IdCliente = _empresa._idempresa
+    Public Overrides Function DespuesRealizarInsercion() As TagWatcher
 
-'            .NombreCliente = _empresa.razonsocial
+        Return New TagWatcher(Ok)
 
-'        End With
+    End Function
 
-'        'operacion = referencia
 
-'    End Sub
+    'EVENTOS PARA MODIFICACIÓN DE DATOS
+    Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
-'    Public Overrides Function DespuesRealizarInsercion() As TagWatcher
+        Dim tagwatcher_ As TagWatcher
 
-'        Return New TagWatcher(Ok)
+        '     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-'    End Function
+        If session_ IsNot Nothing Then
 
+            '  ██████inicio███████        Logica de negocios local      ████████████████████████
 
-'    'EVENTOS PARA MODIFICACIÓN DE DATOS
-'    Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
+            'tagwatcher_ = New TagWatcher
 
-'        Dim tagwatcher_ As TagWatcher
+            '.SetOK()
 
-'        '     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas con transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+            'Actualizamos los datos del objeto empresa en session
+            _controladorEmpresas = New ControladorEmpresas
 
-'        If session_ IsNot Nothing Then
+            With _controladorEmpresas
 
-'            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+                .t_CURP = t_CURP.Value
 
-'            'tagwatcher_ = New TagWatcher
+                .t_Calle = t_Calle.Value
 
-'            '.SetOK()
+                .t_NumeroExt = t_NumeroExt.Value
 
-'            'Actualizamos los datos del objeto empresa en session
-'            '_controladorEmpresas = New ControladorEmpresas
+                .t_NumeroInt = t_NumeroInt.Value
 
-'            'With _controladorEmpresas
+                .t_Colonia = t_Colonia.Value
 
-'            '.t_CURP = t_CURP.Value
+                .t_Ciudad = t_Ciudad.Value
 
-'            '.t_Calle = t_Calle.Value
+                .t_Estado = t_Estado.Value
 
-'            '.t_NumeroExt = t_NumeroExt.Value
+                .t_Pais = t_Pais.Value
 
-'            '.t_NumeroInt = t_NumeroInt.Value
+                .i_Cve_Empresa = i_Cve_Empresa.Text
 
-'            '.t_Colonia = t_Colonia.Value
+                .t_RFC = t_RFC.Value
 
-'            '.t_Ciudad = t_Ciudad.Value
+                .s_tipoPersona = s_tipoPersona.Checked
 
-'            '.t_Estado = t_Estado.Value
+                .s_Extranjero = s_Extranjero.Checked
 
-'            '.t_Pais = t_Pais.Value
+                .esNuevoDomicilio = Not s_Domicilios.Visible
 
-'            '.i_Cve_Empresa = i_Cve_Empresa.Text
+                tagwatcher_ = .ActualizaEmpresa(GetVars("_empresa"), session_)
 
-'            '.t_RFC = t_RFC.Value
+                '  ████████fin█████████        Logica de negocios local      ███████████████████████
 
-'            '.s_tipoPersona = s_tipoPersona.Checked
+            End With
 
-'            '.s_Extranjero = s_Extranjero.Checked
+        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
 
-'            '.esNuevoDomicilio = Not s_Domicilios.Visible
+            tagwatcher_ = New TagWatcher
 
-'            'tagwatcher_ = .ActualizaEmpresa(GetVars("_empresa"), session_)
+            tagwatcher_.SetOK()
 
-'            '  ████████fin█████████        Logica de negocios local      ███████████████████████
+        End If
 
-'            'End With
+        Return tagwatcher_
 
-'        Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
+    End Function
 
-'            tagwatcher_ = New TagWatcher
+    Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-'            tagwatcher_.SetOK()
+        _empresa = GetVars("_empresa")
 
-'        End If
+        With documentoElectronico_
 
-'        Return tagwatcher_
+            'Datos generales
+            .Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
 
-'    End Function
+            ''Datos del domicilio
+            .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
 
-'    Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
+        End With
 
-'        _empresa = GetVars("_empresa")
+    End Sub
 
-'        With documentoElectronico_
+    Public Overrides Function DespuesRealizarModificacion() As TagWatcher
 
-'            'Datos generales
-'            .Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
+        's_EditarDomicilio.Checked = False
 
-'            ''Datos del domicilio
-'            .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
+        'If s_Domicilios.Value IsNot Nothing Then
 
-'        End With
+        '    s_EditarDomicilio.Enabled = True
 
-'    End Sub
+        'End If
 
-'    Public Overrides Function DespuesRealizarModificacion() As TagWatcher
+        's_SeleccionarDomicilio.Checked = True
 
-'        's_EditarDomicilio.Checked = False
+        Return New TagWatcher(Ok)
 
-'        'If s_Domicilios.Value IsNot Nothing Then
+    End Function
 
-'        '    s_EditarDomicilio.Enabled = True
+    'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
+    Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-'        'End If
+        With documentoElectronico_
 
-'        's_SeleccionarDomicilio.Checked = True
+            Dim domicilio_ As New domicilio
 
-'        Return New TagWatcher(Ok)
+            Dim listOptionsDomicilios_ As New List(Of SelectOption)
 
-'    End Function
+            SetVars("_empresa", ControladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
+                                                .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
+                                                listOptionsDomicilios_,
+                                                domicilio_))
+            _empresa = GetVars("_empresa")
 
-'    'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
-'    Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
+            'If .Attribute(CamposClientes.CP_ID_EMPRESA).Valor IsNot Nothing Then
 
-'        With documentoElectronico_
+            '    _empresa._id = .Attribute(CamposClientes.CP_ID_EMPRESA).Valor
 
-'            'Dim domicilio_ As New domicilio
+            'End If
 
-'            'Dim listOptionsDomicilios_ As New List(Of SelectOption)
+            'Datos del domicilio
+            SetVars("_secDomicilio", .Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor)
+            'SetVars("_secDomicilio", _empresa.domicilios.Last.sec)
 
-'            'SetVars("_empresa", ControladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
-'            '                                    .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
-'            '                                    listOptionsDomicilios_,
-'            '                                    domicilio_))
-'            '_empresa = GetVars("_empresa")
+        End With
 
-'            'If .Attribute(CamposClientes.CP_ID_EMPRESA).Valor IsNot Nothing Then
+    End Sub
 
-'            '    _empresa._id = .Attribute(CamposClientes.CP_ID_EMPRESA).Valor
+    Public Overrides Sub DespuesBuquedaGeneralConDatos()
 
-'            'End If
+        s_SeleccionarDomicilio.Checked = True
 
-'            'Datos del domicilio
-'            SetVars("_secDomicilio", .Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor)
-'            'SetVars("_secDomicilio", _empresa.domicilios.Last.sec)
+        VerificaCheckDomicilio(2)
 
-'        End With
+    End Sub
 
-'    End Sub
+    Public Overrides Sub DespuesBuquedaGeneralSinDatos()
 
-'    Public Overrides Sub DespuesBuquedaGeneralConDatos()
+    End Sub
 
-'        s_SeleccionarDomicilio.Checked = True
 
-'        VerificaCheckDomicilio(2)
+    'EVENTOS DE MANTENIMIENTO
+    Public Overrides Sub LimpiaSesion()
 
-'    End Sub
+        SetVars("_empresa", Nothing)
+        SetVars("_empresasTemporal", Nothing)
+        SetVars("_secDomicilio", Nothing)
 
-'    Public Overrides Sub DespuesBuquedaGeneralSinDatos()
+    End Sub
 
-'    End Sub
+    Public Overrides Sub Limpiar()
 
+        _cataduanasdefecto.DataSource = Nothing
+        ccContactos.DataSource = Nothing
+        ccEncargosConferidos.DataSource = Nothing
+        ccExpedienteLegal.DataSource = Nothing
+        ccPagoElectronico.DataSource = Nothing
 
-'    'EVENTOS DE MANTENIMIENTO
-'    Public Overrides Sub LimpiaSesion()
+    End Sub
 
-'        SetVars("_empresa", Nothing)
-'        SetVars("_empresasTemporal", Nothing)
-'        SetVars("_secDomicilio", Nothing)
+#End Region
 
-'    End Sub
+#Region "████████████████  QUINTA CAPA  █████████       Reglas locales         ██████████████████████████████"
+    '    ██                                                                                                ██
+    '    ██    Pendientes ( al 07/05/2022 )                                                                ██
+    '    ██      1. Mejorar la carga de los dropdowns ( hace las consultas en cada postback)               ██
+    '    ██      2. Completar el caso de uso de inserción cuando se reutilice una empresa y domicilio      ██
+    '    ██      3. Completar la carga de datos del CRUD ( el resto de las secciones )                     ██
+    '    ██                                                                                                ██
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-'    Public Overrides Sub Limpiar()
+    Protected Sub CambioTipoEmpresa(ByVal sender As Object, ByVal e As EventArgs)
 
-'        _cataduanasdefecto.DataSource = Nothing
-'        ccContactos.DataSource = Nothing
-'        ccEncargosConferidos.DataSource = Nothing
-'        ccExpedienteLegal.DataSource = Nothing
-'        ccPagoElectronico.DataSource = Nothing
+        If sender.Checked Then 'Extranjera
 
-'    End Sub
+            t_CURP.Enabled = False
 
-'#End Region
+        Else 'Nacional
 
-'#Region "████████████████  QUINTA CAPA  █████████       Reglas locales         ██████████████████████████████"
-'    '    ██                                                                                                ██
-'    '    ██    Pendientes ( al 07/05/2022 )                                                                ██
-'    '    ██      1. Mejorar la carga de los dropdowns ( hace las consultas en cada postback)               ██
-'    '    ██      2. Completar el caso de uso de inserción cuando se reutilice una empresa y domicilio      ██
-'    '    ██      3. Completar la carga de datos del CRUD ( el resto de las secciones )                     ██
-'    '    ██                                                                                                ██
-'    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+            t_CURP.Enabled = True
 
-'    Protected Sub CambioTipoEmpresa(ByVal sender As Object, ByVal e As EventArgs)
+        End If
 
-'        If sender.Checked Then 'Extranjera
+    End Sub
 
-'            t_CURP.Enabled = False
+    Protected Sub s_EditarDomicilio_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
 
-'        Else 'Nacional
+        VerificaCheckDomicilio(3)
 
-'            t_CURP.Enabled = True
+        If s_EditarDomicilio.Checked Then
 
-'        End If
+            Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
 
-'    End Sub
+            If empresasTemporales_ IsNot Nothing And
+                        Not IsNumeric(empresasTemporales_) Then
 
-'    Protected Sub s_EditarDomicilio_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+                If i_Cve_Empresa.Value <> "" Then
 
-'        VerificaCheckDomicilio(3)
+                    If IsNumeric(i_Cve_Empresa.Value) Then
 
-'        'If s_EditarDomicilio.Checked Then
+                        If i_Cve_Empresa.Value <> -1 Then
 
-'        '    Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
+                            Dim result_ = From data In empresasTemporales_
+                                          Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
+                                          Select data.rfc, data.curp
 
-'        '    If empresasTemporales_ IsNot Nothing And
-'        '                Not IsNumeric(empresasTemporales_) Then
+                            If result_.Count > 0 Then
 
-'        '        If i_Cve_Empresa.Value <> "" Then
+                                Dim domicilio_ = ControladorEmpresas.BuscarDomicilio(i_Cve_Empresa.Value,
+                                                                                         Convert.ToInt32(s_Domicilios.Value),
+                                                                                         empresasTemporales_)
 
-'        '            If IsNumeric(i_Cve_Empresa.Value) Then
+                                t_Calle.Value = domicilio_.calle
+                                t_NumeroExt.Value = domicilio_.numeroexterior
+                                t_NumeroInt.Value = domicilio_.numerointerior
+                                t_CP.Value = domicilio_.cp
+                                t_Colonia.Value = domicilio_.colonia
+                                t_Ciudad.Value = domicilio_.ciudad
+                                t_Pais.Value = domicilio_.pais
 
-'        '                If i_Cve_Empresa.Value <> -1 Then
+                            End If
 
-'        '                    Dim result_ = From data In empresasTemporales_
-'        '                                  Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
-'        '                                  Select data.rfc, data.curp
+                        End If
 
-'        '                    If result_.Count > 0 Then
+                    End If
 
-'        '                        'Dim domicilio_ = ControladorEmpresas.BuscarDomicilio(i_Cve_Empresa.Value,
-'        '                        '                                                         Convert.ToInt32(s_Domicilios.Value),
-'        '                        '                                                         empresasTemporales_)
+                End If
 
-'        '                        't_Calle.Value = domicilio_.calle
-'        '                        't_NumeroExt.Value = domicilio_.numeroexterior
-'        '                        't_NumeroInt.Value = domicilio_.numerointerior
-'        '                        't_CP.Value = domicilio_.cp
-'        '                        't_Colonia.Value = domicilio_.colonia
-'        '                        't_Ciudad.Value = domicilio_.ciudad
-'        '                        't_Pais.Value = domicilio_.pais
+            End If
 
-'        '                    End If
+        End If
 
-'        '                End If
+    End Sub
 
-'        '            End If
+    Protected Sub s_SeleccionarDomicilio_CheckedChanged(sender As Object, e As EventArgs)
 
-'        '        End If
+        VerificaCheckDomicilio()
 
-'        '    End If
+        If GetVars("isEditing") = True Then
 
-'        'End If
+            If s_SeleccionarDomicilio.Checked = True Then
 
-'    End Sub
+                t_Calle.Value = [Get](Of String)(CamposDomicilio.CA_CALLE)
+                t_NumeroExt.Value = [Get](Of String)(CamposDomicilio.CA_NUMERO_EXTERIOR)
+                t_NumeroInt.Value = [Get](Of String)(CamposDomicilio.CA_NUMERO_INTERIOR)
+                t_CP.Value = [Get](Of String)(CamposDomicilio.CA_CODIGO_POSTAL)
+                t_Colonia.Value = [Get](Of String)(CamposDomicilio.CA_COLONIA)
+                t_Ciudad.Value = [Get](Of String)(CamposDomicilio.CA_CIUDAD)
+                t_Pais.Value = [Get](Of String)(CamposDomicilio.CA_PAIS)
 
-'    Protected Sub s_SeleccionarDomicilio_CheckedChanged(sender As Object, e As EventArgs)
+            End If
 
-'        VerificaCheckDomicilio()
+        End If
 
-'        If GetVars("isEditing") = True Then
+    End Sub
 
-'            If s_SeleccionarDomicilio.Checked = True Then
+    Sub VerificaCheckDomicilio(Optional ByVal opcion_ As Int32 = 1)
 
-'                t_Calle.Value = [Get](Of String)(CamposDomicilio.CA_CALLE)
-'                t_NumeroExt.Value = [Get](Of String)(CamposDomicilio.CA_NUMERO_EXTERIOR)
-'                t_NumeroInt.Value = [Get](Of String)(CamposDomicilio.CA_NUMERO_INTERIOR)
-'                t_CP.Value = [Get](Of String)(CamposDomicilio.CA_CODIGO_POSTAL)
-'                t_Colonia.Value = [Get](Of String)(CamposDomicilio.CA_COLONIA)
-'                t_Ciudad.Value = [Get](Of String)(CamposDomicilio.CA_CIUDAD)
-'                t_Pais.Value = [Get](Of String)(CamposDomicilio.CA_PAIS)
+        Select Case opcion_
 
-'            End If
+            Case 1 'Defaults
 
-'        End If
+                If s_SeleccionarDomicilio.Checked Then
 
-'    End Sub
+                    If GetVars("isEditing") = False Then
 
-'    Sub VerificaCheckDomicilio(Optional ByVal opcion_ As Int32 = 1)
+                        t_Calle.Visible = False
+                        t_NumeroExt.Visible = False
+                        t_NumeroInt.Visible = False
+                        t_CP.Visible = False
+                        t_Colonia.Visible = False
+                        t_Ciudad.Visible = False
+                        t_Pais.Visible = False
+                        s_Domicilios.Visible = True
+                        If s_Domicilios.Value IsNot Nothing And Not String.IsNullOrEmpty(s_Domicilios.Value) Then
 
-'        Select Case opcion_
+                            s_EditarDomicilio.Visible = True
 
-'            Case 1 'Defaults
+                        End If
+                    End If
 
-'                If s_SeleccionarDomicilio.Checked Then
+                Else
+                    t_Calle.Visible = True
+                    t_Calle.Value = Nothing
+                    t_NumeroExt.Visible = True
+                    t_NumeroExt.Value = Nothing
+                    t_NumeroInt.Visible = True
+                    t_NumeroInt.Value = Nothing
+                    t_CP.Visible = True
+                    t_CP.Value = Nothing
+                    t_Colonia.Visible = True
+                    t_Colonia.Value = Nothing
+                    t_Ciudad.Visible = True
+                    t_Ciudad.Value = Nothing
+                    t_Pais.Visible = True
+                    t_Pais.Value = Nothing
+                    s_Domicilios.Visible = False
+                    s_EditarDomicilio.Visible = False
+                End If
 
-'                    If GetVars("isEditing") = False Then
+            Case 2
 
-'                        t_Calle.Visible = False
-'                        t_NumeroExt.Visible = False
-'                        t_NumeroInt.Visible = False
-'                        t_CP.Visible = False
-'                        t_Colonia.Visible = False
-'                        t_Ciudad.Visible = False
-'                        t_Pais.Visible = False
-'                        s_Domicilios.Visible = True
-'                        If s_Domicilios.Value IsNot Nothing And Not String.IsNullOrEmpty(s_Domicilios.Value) Then
+                If s_SeleccionarDomicilio.Checked Then
+                    t_Calle.Visible = True
+                    t_NumeroExt.Visible = True
+                    t_NumeroInt.Visible = True
+                    t_CP.Visible = True
+                    t_Colonia.Visible = True
+                    t_Ciudad.Visible = True
+                    t_Pais.Visible = True
+                    s_Domicilios.Visible = False
+                    s_EditarDomicilio.Visible = False
+                Else
+                    t_Calle.Visible = False
+                    t_NumeroExt.Visible = False
+                    t_NumeroInt.Visible = False
+                    t_CP.Visible = False
+                    t_Colonia.Visible = False
+                    t_Ciudad.Visible = False
+                    t_Pais.Visible = False
+                    s_Domicilios.Visible = True
+                    If s_Domicilios.Value IsNot Nothing And Not String.IsNullOrEmpty(s_Domicilios.Value) Then
+                        s_EditarDomicilio.Visible = True
+                    End If
+                End If
 
-'                            s_EditarDomicilio.Visible = True
+            Case 3
 
-'                        End If
-'                    End If
+                If s_EditarDomicilio.Checked = True Then
 
-'                Else
-'                    t_Calle.Visible = True
-'                    t_Calle.Value = Nothing
-'                    t_NumeroExt.Visible = True
-'                    t_NumeroExt.Value = Nothing
-'                    t_NumeroInt.Visible = True
-'                    t_NumeroInt.Value = Nothing
-'                    t_CP.Visible = True
-'                    t_CP.Value = Nothing
-'                    t_Colonia.Visible = True
-'                    t_Colonia.Value = Nothing
-'                    t_Ciudad.Visible = True
-'                    t_Ciudad.Value = Nothing
-'                    t_Pais.Visible = True
-'                    t_Pais.Value = Nothing
-'                    s_Domicilios.Visible = False
-'                    s_EditarDomicilio.Visible = False
-'                End If
+                    t_Calle.Visible = True
+                    t_NumeroExt.Visible = True
+                    t_NumeroInt.Visible = True
+                    t_CP.Visible = True
+                    t_Colonia.Visible = True
+                    t_Ciudad.Visible = True
+                    t_Pais.Visible = True
+                    s_Domicilios.Visible = False
+                    s_SeleccionarDomicilio.Enabled = False
 
-'            Case 2
+                Else
 
-'                If s_SeleccionarDomicilio.Checked Then
-'                    t_Calle.Visible = True
-'                    t_NumeroExt.Visible = True
-'                    t_NumeroInt.Visible = True
-'                    t_CP.Visible = True
-'                    t_Colonia.Visible = True
-'                    t_Ciudad.Visible = True
-'                    t_Pais.Visible = True
-'                    s_Domicilios.Visible = False
-'                    s_EditarDomicilio.Visible = False
-'                Else
-'                    t_Calle.Visible = False
-'                    t_NumeroExt.Visible = False
-'                    t_NumeroInt.Visible = False
-'                    t_CP.Visible = False
-'                    t_Colonia.Visible = False
-'                    t_Ciudad.Visible = False
-'                    t_Pais.Visible = False
-'                    s_Domicilios.Visible = True
-'                    If s_Domicilios.Value IsNot Nothing And Not String.IsNullOrEmpty(s_Domicilios.Value) Then
-'                        s_EditarDomicilio.Visible = True
-'                    End If
-'                End If
+                    t_Calle.Visible = False
+                    t_NumeroExt.Visible = False
+                    t_NumeroInt.Visible = False
+                    t_CP.Visible = False
+                    t_Colonia.Visible = False
+                    t_Ciudad.Visible = False
+                    t_Pais.Visible = False
+                    s_Domicilios.Visible = True
+                    s_SeleccionarDomicilio.Enabled = True
 
-'            Case 3
+                End If
 
-'                If s_EditarDomicilio.Checked = True Then
+        End Select
 
-'                    t_Calle.Visible = True
-'                    t_NumeroExt.Visible = True
-'                    t_NumeroInt.Visible = True
-'                    t_CP.Visible = True
-'                    t_Colonia.Visible = True
-'                    t_Ciudad.Visible = True
-'                    t_Pais.Visible = True
-'                    s_Domicilios.Visible = False
-'                    s_SeleccionarDomicilio.Enabled = False
+    End Sub
 
-'                Else
+    Protected Sub s_Habilitado_CheckedChanged(sender As Object, e As EventArgs)
 
-'                    t_Calle.Visible = False
-'                    t_NumeroExt.Visible = False
-'                    t_NumeroInt.Visible = False
-'                    t_CP.Visible = False
-'                    t_Colonia.Visible = False
-'                    t_Ciudad.Visible = False
-'                    t_Pais.Visible = False
-'                    s_Domicilios.Visible = True
-'                    s_SeleccionarDomicilio.Enabled = True
+    End Sub
 
-'                End If
+    Protected Sub i_Cve_Empresa_TextChanged(sender As Object, e As EventArgs)
 
-'        End Select
+        Dim empresasTemporales_ As New List(Of Empresa)
 
-'    End Sub
+        Dim lista_ As List(Of SelectOption) = ControladorEmpresas.BuscarEmpresas(empresasTemporales_, i_Cve_Empresa.Text)
 
-'    Protected Sub s_Habilitado_CheckedChanged(sender As Object, e As EventArgs)
+        SetVars("_empresasTemporal", empresasTemporales_)
 
-'    End Sub
+        i_Cve_Empresa.DataSource = lista_
 
-'    Protected Sub i_Cve_Empresa_TextChanged(sender As Object, e As EventArgs)
+    End Sub
 
-'        'Dim empresasTemporales_ As New List(Of Empresa)
+    Protected Sub i_Cve_Empresa_Click(sender As Object, e As EventArgs)
 
-'        'Dim lista_ As List(Of SelectOption) = ControladorEmpresas.BuscarEmpresas(empresasTemporales_, i_Cve_Empresa.Text)
+        With s_Domicilios
 
-'        'SetVars("_empresasTemporal", empresasTemporales_)
+            .Options.Clear()
 
-'        'i_Cve_Empresa.DataSource = lista_
+            Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
 
-'    End Sub
+            If empresasTemporales_ IsNot Nothing And
+                Not IsNumeric(empresasTemporales_) Then
 
-'    Protected Sub i_Cve_Empresa_Click(sender As Object, e As EventArgs)
+                If i_Cve_Empresa.Value <> "" Then
 
-'        'With s_Domicilios
+                    If IsNumeric(i_Cve_Empresa.Value) Then
 
-'        '    .Options.Clear()
+                        If i_Cve_Empresa.Value <> -1 Then
 
-'        '    Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
+                            Dim result_ = From data In empresasTemporales_
+                                          Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
+                            'Select data.rfc, data.curp
 
-'        '    If empresasTemporales_ IsNot Nothing And
-'        '        Not IsNumeric(empresasTemporales_) Then
+                            If result_.Count > 0 Then
 
-'        '        If i_Cve_Empresa.Value <> "" Then
+                                SetVars("_empresa", result_(0))
 
-'        '            If IsNumeric(i_Cve_Empresa.Value) Then
+                                t_RFC.Value = result_(0).rfc
 
-'        '                If i_Cve_Empresa.Value <> -1 Then
+                                t_CURP.Value = result_(0).curp
 
-'        '                    Dim result_ = From data In empresasTemporales_
-'        '                                  Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
-'        '                    'Select data.rfc, data.curp
+                                Dim domicilios_ = ControladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
+                                                               empresasTemporales_)
 
-'        '                    If result_.Count > 0 Then
+                                .DataSource = domicilios_
 
-'        '                        SetVars("_empresa", result_(0))
+                                If domicilios_.Count > 0 Then
 
-'        '                        t_RFC.Value = result_(0).rfc
+                                    .Value = domicilios_(0).Value
 
-'        '                        t_CURP.Value = result_(0).curp
+                                    s_EditarDomicilio.Visible = True
 
-'        '                        Dim domicilios_ = ControladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
-'        '                                                       empresasTemporales_)
+                                    s_SeleccionarDomicilio.Checked = True
 
-'        '                        .DataSource = domicilios_
+                                    VerificaCheckDomicilio()
 
-'        '                        If domicilios_.Count > 0 Then
+                                End If
 
-'        '                            .Value = domicilios_(0).Value
+                            End If
 
-'        '                            s_EditarDomicilio.Visible = True
+                        End If
 
-'        '                            s_SeleccionarDomicilio.Checked = True
+                    End If
+                Else
 
-'        '                            VerificaCheckDomicilio()
+                    t_RFC.Value = Nothing
 
-'        '                        End If
+                    t_CURP.Value = Nothing
 
-'        '                    End If
+                    s_EditarDomicilio.Checked = False
 
-'        '                End If
+                    s_Domicilios.DataSource = Nothing
 
-'        '            End If
-'        '        Else
+                    VerificaCheckDomicilio(3)
 
-'        '            t_RFC.Value = Nothing
+                End If
 
-'        '            t_CURP.Value = Nothing
+            Else
 
-'        '            s_EditarDomicilio.Checked = False
+                .Options.Clear()
 
-'        '            s_Domicilios.DataSource = Nothing
+                .DataSource = Nothing
 
-'        '            VerificaCheckDomicilio(3)
+                t_RFC.Value = Nothing
 
-'        '        End If
+                t_CURP.Value = Nothing
 
-'        '    Else
+            End If
 
-'        '        .Options.Clear()
+        End With
 
-'        '        .DataSource = Nothing
+    End Sub
 
-'        '        t_RFC.Value = Nothing
+#End Region
 
-'        '        t_CURP.Value = Nothing
+#Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
+    '    ██████   Controladores utilizados                     Documentos por coding para MongoDB      ██████
+    '    ██████    1.ControladorEmpresas                        1. En Empresa:                         ██████
+    '    ██████    2.ControladorRecursosAduanales                  a). Domicilios                      ██████
+    '    ██████    3.ControladorSecuencias                         b). Contactos                       ██████
+    '    ██████                                                                                        ██████
+    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-'        '    End If
 
-'        'End With
+    Protected Sub sc_claveAduanaSeccion_Click()
 
-'    End Sub
+        sc_claveAduanaSeccion.DataSource = AduanasSeccion()
 
-'#End Region
+    End Sub
 
-'#Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
-'    '    ██████   Controladores utilizados                     Documentos por coding para MongoDB      ██████
-'    '    ██████    1.ControladorEmpresas                        1. En Empresa:                         ██████
-'    '    ██████    2.ControladorRecursosAduanales                  a). Domicilios                      ██████
-'    '    ██████    3.ControladorSecuencias                         b). Contactos                       ██████
-'    '    ██████                                                                                        ██████
-'    '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+    Protected Sub sc_patenteAduanal_Click()
 
+        sc_patenteAduanal.DataSource = PatentesAduanales()
 
-'    Protected Sub sc_claveAduanaSeccion_Click()
+    End Sub
 
-'        sc_claveAduanaSeccion.DataSource = AduanasSeccion()
+    Protected Sub scPatenteAduanaEncargo_Click(sender As Object, e As EventArgs)
 
-'    End Sub
+        scPatenteAduanaEncargo.DataSource = PatentesAduanales()
 
-'    Protected Sub sc_patenteAduanal_Click()
+    End Sub
+    Protected Sub scPatentePago_Click(sender As Object, e As EventArgs)
 
-'        sc_patenteAduanal.DataSource = PatentesAduanales()
+        scPatentePago.DataSource = PatentesAduanales()
 
-'    End Sub
+    End Sub
 
-'    Protected Sub scPatenteAduanaEncargo_Click(sender As Object, e As EventArgs)
+    Private Function PatentesAduanales() As List(Of SelectOption)
 
-'        scPatenteAduanaEncargo.DataSource = PatentesAduanales()
+        Dim recursos_ As ControladorRecursosAduanales = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
 
-'    End Sub
-'    Protected Sub scPatentePago_Click(sender As Object, e As EventArgs)
+        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+                                Where data.archivado = False And data.estado = 1
+                                Select data.modalidad, data.ciudad, data._idaduanaseccion
 
-'        scPatentePago.DataSource = PatentesAduanales()
+        Dim patentes_ = From data In recursos_.patentes
+                        Where data.archivado = False And data.estado = 1
+                        Select data.agenteaduanal, data._idpatente
 
-'    End Sub
+        If patentes_.Count > 0 Then
 
-'    Private Function PatentesAduanales() As List(Of SelectOption)
+            Dim dataSource1_ As New List(Of SelectOption)
 
-'        Dim recursos_ As ControladorRecursosAduanales = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+            For index_ As Int32 = 0 To patentes_.Count - 1
 
-'        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
-'                                Where data.archivado = False And data.estado = 1
-'                                Select data.modalidad, data.ciudad, data._idaduanaseccion
+                dataSource1_.Add(New SelectOption With
+                             {.Value = patentes_(index_)._idpatente,
+                              .Text = patentes_(index_)._idpatente.ToString & "|" & patentes_(index_).agenteaduanal})
 
-'        Dim patentes_ = From data In recursos_.patentes
-'                        Where data.archivado = False And data.estado = 1
-'                        Select data.agenteaduanal, data._idpatente
+            Next
 
-'        If patentes_.Count > 0 Then
+            Return dataSource1_
 
-'            Dim dataSource1_ As New List(Of SelectOption)
+        End If
 
-'            For index_ As Int32 = 0 To patentes_.Count - 1
+        Return Nothing
 
-'                dataSource1_.Add(New SelectOption With
-'                             {.Value = patentes_(index_)._idpatente,
-'                              .Text = patentes_(index_)._idpatente.ToString & "|" & patentes_(index_).agenteaduanal})
+    End Function
 
-'            Next
+    Private Function AduanasSeccion() As List(Of SelectOption)
 
-'            Return dataSource1_
+        Dim recursos_ As ControladorRecursosAduanales = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
 
-'        End If
+        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
+                                Where data.archivado = False And data.estado = 1
+                                Select data.modalidad, data.ciudad, data._idaduanaseccion
 
-'        Return Nothing
+        If aduanasSecciones_.Count > 0 Then
 
-'    End Function
+            Dim dataSource1_ As New List(Of SelectOption)
 
-'    Private Function AduanasSeccion() As List(Of SelectOption)
+            For index_ As Int32 = 0 To aduanasSecciones_.Count - 1
 
-'        Dim recursos_ As ControladorRecursosAduanales = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+                dataSource1_.Add(New SelectOption With
+                             {.Value = aduanasSecciones_(index_)._idaduanaseccion,
+                              .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
 
-'        Dim aduanasSecciones_ = From data In recursos_.aduanasmodalidad
-'                                Where data.archivado = False And data.estado = 1
-'                                Select data.modalidad, data.ciudad, data._idaduanaseccion
+            Next
 
-'        If aduanasSecciones_.Count > 0 Then
+            Return dataSource1_
 
-'            Dim dataSource1_ As New List(Of SelectOption)
+        End If
 
-'            For index_ As Int32 = 0 To aduanasSecciones_.Count - 1
+        Return Nothing
 
-'                dataSource1_.Add(New SelectOption With
-'                             {.Value = aduanasSecciones_(index_)._idaduanaseccion,
-'                              .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
+    End Function
 
-'            Next
+    Protected Sub icRutaCertificado_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
 
-'            Return dataSource1_
+        Dim id = ObjectId.GenerateNewId().ToString
 
-'        End If
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "Yo Merengues Dos"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000002",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "Yo Merengues Dos",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+        End With
 
-'        Return Nothing
+    End Sub
 
-'    End Function
+    Protected Sub icRutaLlave_ChooseFile(sender As Object, e As EventArgs)
 
-'    Protected Sub icRutaCertificado_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
+        Dim id = ObjectId.GenerateNewId().ToString
 
-'        Dim id = ObjectId.GenerateNewId().ToString
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "Yo Merengues Dos"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000002",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "Yo Merengues Dos",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+        End With
 
-'        With sender
-'            ._idpropietario = id
-'            .nombrepropietario = "Yo Merengues Dos"
-'            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
-'            .datosadicionales = New InformacionDocumento With {
-'                          .foliodocumento = "00000002",
-'                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
-'                          .datospropietario = New InformacionPropietario With {
-'                              .nombrepropietario = "Yo Merengues Dos",
-'                              ._id = id
-'                          }
-'                         }
-'            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
-'        End With
+    End Sub
 
-'    End Sub
+#End Region
 
-'#End Region
 
-
-'End Class
+End Class

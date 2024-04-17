@@ -136,9 +136,23 @@ Public Class ButtonControl
 
                 End If
 
-                .Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & ")")
+                If ForeColor.IsEmpty = False Then
+
+                    Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & "); --tintColor: " & ForeColor.ToHex)
+
+                Else
+
+                    Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & ");")
+
+                End If
 
             Else
+
+                If ForeColor.IsEmpty = False Then
+
+                    .Attributes.Add("style", "--tintColor: " & ForeColor.ToHex)
+
+                End If
 
                 .Attributes.Add("class", "wc-button")
 
