@@ -38,7 +38,7 @@ Public Class Ges003_001_FacturasComerciales
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _icontroladorEmpresas64 As IControladorEmpresas64
+    'Private _icontroladorEmpresas64 As IControladorEmpresas64
 
 #End Region
 
