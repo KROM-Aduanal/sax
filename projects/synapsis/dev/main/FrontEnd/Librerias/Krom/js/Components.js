@@ -28,6 +28,12 @@ import { WCPillbox } from './components/webcomponent-pillbox.js';
 
 import { WCLabel } from './components/webcomponent-label.js';
 
+import { WCComment } from './components/webcomponent-comment.js';
+
+import { WCUserData } from './components/webcomponent-userdata.js';
+
+import { WCFEditor } from './components/webcomponent-feditor.js';
+
 //Defined Components
 
 customElements.define('wc-tooltip', WCToolTip, { extends: 'input' });
@@ -58,6 +64,12 @@ customElements.define('wc-pillbox', WCPillbox, { extends: 'div' });
 
 customElements.define('gwc-label', WCLabel);
 
+customElements.define('gwc-userdata', WCUserData);
+
+customElements.define('gwc-comment', WCComment);
+
+customElements.define('wc-feditor', WCFEditor, { extends: 'div' });
+
 
 //Initialize External Libraries
 
@@ -73,21 +85,42 @@ $(document).on('click', 'legend label', function (e) {
 
 });
 
+
+//$(document).on('click', '.iraformulacabulidad', function (e) {
+
+//        const content_ = document.querySelector('.content-wrapper-page');
+
+//    const fieldset_ = document.querySelector('.formulariocabulidad');
+
+//    if (content_) {
+//        content_.scroll({
+//            top: fieldset_.offsetTop - 22.2,
+//            behavior: 'smooth'
+//        });
+
+//        // document.querySelector('[to-section="fscProbarFormulas"]').click();
+
+//    }
+
+
+//});
+
+
 //DOBLE SUBMIT CONTROLLER
-$('button, input:submit', '#form1').click(e => e.target.disabled = true);
+$('button, input:submit','#form1').click(e => e.target.disabled = true);
 
 //DATEPICKER
 $(document).on('focusin', '.datepicker', function () {
     $(this).datepicker({
         autoclose: true, format: 'yyyy-mm-dd',
     });
-}).on('changeDate', '.datepicker', function (e) {
+}).on('changeDate','.datepicker', function (e) {
     this.dispatchEvent(new Event('change'));
 });
 
 //TIMEPICKER
 $(document).on('focusin', '.timepicker', function () {
-    $(this).timepicker({ showInputs: false });
+	$(this).timepicker({ showInputs: false });
 }).on('change', '.timepicker', function (e) {
     this.dispatchEvent(new Event('change'));
 });
@@ -107,7 +140,7 @@ $(document).on('propertychange input', '.numeric', function () {
 $(document).on('keypress', '.real', function (evt) {
 
     var input = $(this).get(0);
-
+    
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode == 46) {
         //Check if the text already contains the . character
@@ -242,6 +275,8 @@ $(document).click((event) => {
     }
 });
 
+
+
 $('body').on('click', '.__down', function (e) {
 
     const component = e.target.closest('.wc-collectionview') || false;
@@ -293,7 +328,7 @@ $('body').on('change', '.wc-collectionview input[id], .wc-collectionview textare
 
 });
 
-window.onSelectChange = (e, evt) => {
+window.onSelectChange = (e) => {
 
     const component = e.closest('.wc-collectionview') || false;
 
@@ -301,12 +336,8 @@ window.onSelectChange = (e, evt) => {
 
         OnCollectionViewControlChanged(e);
 
-    } else {
-
-        evt.preventDefault();
-
     }
-
+    
 };
 
 function OnCollectionViewControlChanged(e) {
@@ -349,10 +380,10 @@ function OnCollectionViewControlChanged(e) {
 
 }
 
-window.onCatalogChange = (e) => OnCatalogControlChange(e);
+window.onCatalogChange = (e) => OnCatalogControlChange(e); 
 
 function OnCatalogControlChange(e) {
-
+    
     const collection = e.closest('.wc-collectionview') || false;
 
     if (collection) {

@@ -5,7 +5,7 @@
     --tintColor: #6c4fd3;
 }
 
-.wc-tabbar label {
+.wc-tabbar > div:nth-child(1) label {
     flex-grow: 1;
     text-align: center;
     position: relative;
@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.wc-tabbar label input + span {
+.wc-tabbar > div:nth-child(1) label input + span {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -23,11 +23,11 @@
     transition: .5s all;
 }
 
-.wc-tabbar label input:checked + span {
+.wc-tabbar > div:nth-child(1) label input:checked + span {
     background-color: var(--tintColor);
 }
 
-.wc-tabbar > div:first-child {
+.wc-tabbar > div:nth-child(1) > div:first-child {
     border-bottom: 1px solid #d9d9d9;
 }
 

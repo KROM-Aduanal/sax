@@ -162,6 +162,110 @@ Public Class Organismo
 
     End Function
 
+    Public Sub GetHistoricalUser(Of T As {Class, New})(historical As List(Of T), ByRef accionDate_ As List(Of String), ByRef userName_ As List(Of String), userLimit_ As Int32)
+
+        Dim cuenta_ = 1
+
+        For Each roomhstory_ In historical
+
+            If cuenta_ <= userLimit_ Then
+
+                Dim user As T = TryCast(roomhstory_, T)
+
+                If user IsNot Nothing Then
+
+                    userName_(cuenta_ - 1) = DirectCast(GetType(T).GetProperty("username").GetValue(user), String)
+
+                    accionDate_(cuenta_ - 1) = DirectCast(GetType(T).GetProperty("createat").GetValue(user), String)
+
+                End If
+
+            Else
+
+                Exit For
+
+            End If
+
+
+            cuenta_ += 1
+
+        Next
+
+    End Sub
+
+    Public Function GetCurrentUser(initial_ As DateTime, final_ As DateTime) As String
+
+
+        Dim pastedTime As TimeSpan
+
+        Dim currentUser_ As String
+
+
+        pastedTime = final_ - initial_
+
+        If pastedTime.Days > 0 Then
+
+            If pastedTime.Days = 1 Then
+
+                currentUser_ = "Hace 1 día"
+
+            Else
+
+                currentUser_ = "Hace " & pastedTime.Days & " días"
+
+            End If
+
+        Else
+
+            If pastedTime.Hours > 0 Then
+
+                If pastedTime.Hours = 1 Then
+
+                    currentUser_ = "Hace 1 hr"
+
+                Else
+
+                    currentUser_ = "Hace " & pastedTime.Hours & " hrs"
+
+                End If
+
+            Else
+
+                If pastedTime.Minutes > 0 Then
+
+                    If pastedTime.Minutes = 1 Then
+
+                        currentUser_ = "Hace 1 min"
+
+                    Else
+
+                        currentUser_ = "Hace " & pastedTime.Minutes & " mins"
+
+                    End If
+
+                Else
+
+
+                    If pastedTime.Seconds = 1 Then
+
+                        currentUser_ = "Hace 1s"
+
+                    Else
+
+                        currentUser_ = "Hace " & pastedTime.Seconds & "s"
+
+                    End If
+
+                End If
+
+            End If
+
+        End If
+
+        Return currentUser_
+
+    End Function
+
     Public Function SeparacionPalabras(oracion_ As String,
                                        campo_ As String,
                                        anexo_ As String,

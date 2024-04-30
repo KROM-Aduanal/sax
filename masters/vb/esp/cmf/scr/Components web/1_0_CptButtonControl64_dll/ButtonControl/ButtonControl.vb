@@ -27,6 +27,8 @@ Public Class ButtonControl
 
     Private Shared ReadOnly EventClick As New Object()
 
+    Public Property Icon As String
+
     Public Property RowId As Integer
 
     Public Overrides Property Enabled As Boolean
@@ -54,26 +56,6 @@ Public Class ButtonControl
             End If
 
             MyBase.Enabled = value
-
-        End Set
-
-    End Property
-
-    Public Property Icon As String
-
-        Get
-
-            EnsureChildControls()
-
-            Return ViewState("Icon")
-
-        End Get
-
-        Set(value As String)
-
-            EnsureChildControls()
-
-            ViewState("Icon") = value
 
         End Set
 
@@ -154,9 +136,23 @@ Public Class ButtonControl
 
                 End If
 
-                .Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & ")")
+                If ForeColor.IsEmpty = False Then
+
+                    Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & "); --tintColor: " & ForeColor.ToHex)
+
+                Else
+
+                    Attributes.Add("style", "background-image:url(/FrontEnd/Librerias/Krom/imgs/" & Icon & ");")
+
+                End If
 
             Else
+
+                If ForeColor.IsEmpty = False Then
+
+                    .Attributes.Add("style", "--tintColor: " & ForeColor.ToHex)
+
+                End If
 
                 .Attributes.Add("class", "wc-button")
 

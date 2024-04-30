@@ -622,11 +622,8 @@ Namespace gsol.krom
 
             Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
 
-<<<<<<< HEAD
+
                 Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_)
-=======
-                Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
->>>>>>> develop
 
             End Using
 

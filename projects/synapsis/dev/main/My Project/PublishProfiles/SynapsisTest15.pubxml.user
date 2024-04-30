@@ -2601,6 +2601,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="FrontEnd/Librerias/Krom/css/components/dualitybar.css">
       <publishTime>02/26/2024 10:40:06</publishTime>
     </File>
+    <File Include="FrontEnd/Librerias/Krom/css/components/feditor.css">
+      <publishTime>04/09/2024 11:58:11</publishTime>
+    </File>
     <File Include="FrontEnd/Librerias/Krom/css/components/file.css">
       <publishTime>02/26/2024 10:40:01</publishTime>
     </File>

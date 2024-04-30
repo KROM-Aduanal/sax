@@ -204,9 +204,6 @@ Public Class SelectControl
 
             EnsureChildControls()
 
-<<<<<<< HEAD
-            Return LocalStorage.FirstOrDefault(Function(e) e.Value = _selectControl.SelectedValue).Signature
-=======
             Dim data_ = LocalStorage
 
             If data_ IsNot Nothing Then
@@ -222,7 +219,6 @@ Public Class SelectControl
             End If
 
             Return Nothing
->>>>>>> develop
 
         End Get
 

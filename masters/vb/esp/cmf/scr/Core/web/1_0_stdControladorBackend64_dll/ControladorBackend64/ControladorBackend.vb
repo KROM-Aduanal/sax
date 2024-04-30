@@ -419,6 +419,7 @@ Public Class ControladorBackend
 
             Formulario.Modality = GetVars("ModalidadBotonera")
 
+
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "__serverObserver();", True)
 
         End If
@@ -1710,11 +1711,6 @@ Public Class ControladorBackend
 
                     BotoneraClicPublicar()
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> develop
                 End If
 
             Case 3 'Seguir Editando

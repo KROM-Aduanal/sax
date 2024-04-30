@@ -200,7 +200,6 @@ Public Class UIControl
 
 End Class
 
-
 Public Module ColorExtensions
 
     <System.Runtime.CompilerServices.Extension()>
