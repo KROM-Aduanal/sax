@@ -62,12 +62,20 @@
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EnlaceDatos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="gsol.krom.EntidadDatos64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EntidadDatos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="gsol.krom.EntidadDatosDocumento64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EntidadDatosDocumento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="gsol.krom.IEnlaceDatos.0.0.0.0">
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.IEnlaceDatos.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gsol.krom.IEntidadDatos.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.IEntidadDatos.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=2.12.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -107,6 +115,10 @@
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.Componentes.NodoGenerico64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.NodoGenerico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.ConstructorCliente64.0.0.0.0">
       <HintPath>..\..\..\..\..\synapsis\libs\bin\controllers\Syn.Documento.ConstructorCliente64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -115,7 +127,8 @@
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Documento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0">
+    <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
@@ -195,6 +208,18 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\lnk\gsol.krom\1_0_stdEntidadDatosDocumento64_dll\EntidadDatosDocumento64\EntidadDatosDocumento64.vbproj">
+      <Project>{9DB1AAD0-CDCF-4C50-9D6F-BF6B360D0D30}</Project>
+      <Name>EntidadDatosDocumento64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumento64_dll\Documento64\Documento64\Documento64.vbproj">
+      <Project>{27F91980-8AE6-43B0-8277-B49AF64BAB0D}</Project>
+      <Name>Documento64</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

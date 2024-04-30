@@ -20,6 +20,12 @@ Namespace Syn.Nucleo
         'SFAC = Factura Comercial
         'SPRO = Secciones Proveedor Operativo
 
+        Enum SecuenciasComercioExterior
+
+            ProveedoresOperativos
+
+        End Enum
+
         Enum SeccionesPedimento
 
             <EnumMember> <Description("Sin definir")> UNS00 = 0
