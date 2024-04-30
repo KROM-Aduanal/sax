@@ -1,16 +1,6 @@
-﻿Imports System.Security.Cryptography
-Imports System.Text.RegularExpressions
-Imports gsol
-Imports gsol.krom
-Imports MongoDB.Bson
-Imports MongoDB.Bson.Serialization
+﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
-Imports MongoDB.Driver
-Imports MongoDB.Driver.Linq
-Imports Wma.Exceptions
-Imports Rec.Globals.PaisDomicilio64
-Imports Rec.Globals.Contacto64
-Imports Rec.Globals
+Imports Rec.Globals.Empresas
 
 
 #Region "CLASE EMPRESA"

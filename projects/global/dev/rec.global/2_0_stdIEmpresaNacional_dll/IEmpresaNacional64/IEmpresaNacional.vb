@@ -1,9 +1,6 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
-Imports Rec.Globals.Curp64
-Imports Rec.Globals
-Imports Rec.Globals.RegimenFiscal64
-Imports Rec.Globals.Rfc64
+Imports Rec.Globals.Empresas
 
 Public Interface IEmpresaNacional
     Enum TiposPersona

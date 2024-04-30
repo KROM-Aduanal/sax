@@ -51,8 +51,7 @@ Public Class ControladorSecuencia
                            Optional ByVal mes_ As Int32 = 0,
                            Optional ByVal subTipoSecuencia_ As Int32 = 0,
                            Optional ByVal prefijo_ As String = Nothing,
-                           Optional ByVal subfijo_ As String = Nothing)
-
+                           Optional ByVal sufijo_ As String = Nothing)
 
         With _Secuencia
             .nombre = nombre_
@@ -64,7 +63,7 @@ Public Class ControladorSecuencia
             .tiposecuencia = tipoSecuencia_
             .subtiposecuencia = subTipoSecuencia_
             .prefijo = prefijo_
-            .sufijo = subfijo_
+            .sufijo = sufijo_
             .estado = 1
             .archivado = True
         End With
@@ -178,6 +177,16 @@ Public Class ControladorSecuencia
                             As TagWatcher _
                             Implements IControladorSecuencia.Generar
 
+        '''
+        ''' Genera una secuencia de documento
+        ''' # COMBINACIÓN 1
+        ''' nombre_ = Empresas
+        ''' tipoSecuencia_ = 1 (Nacional) , 2 (Internacional)
+        ''' compania_ = 1 (Krom aduanal), 2 (Krom logistica)
+        ''' area_ = 1 (Tráfico aduanal), 2 (Tráfico logística)
+        '''
+        '''
+
         With _Estado
 
             If nombre_ IsNot Nothing Then
@@ -209,6 +218,16 @@ Public Class ControladorSecuencia
                             Optional session_ As IClientSessionHandle = Nothing) _
                             As TagWatcher _
                             Implements IControladorSecuencia.Generar
+
+        '''
+        ''' Genera una secuencia de documento
+        ''' # COMBINACIÓN 2
+        ''' nombre_ = Pedimentos
+        ''' tipoSecuencia_ = 1 (PedimentoNormal) , 2 (PedimentoRectificación), 3 (Pedimento complementario), ...
+        ''' compania_ = 1 (Krom aduanal), 2 (Krom logistica), ...
+        ''' area_ = 1 (Tráfico aduanal), 2 (Tráfico logística), ...
+        ''' subtipoSecuencia_ = 430 (Veracruz), 160 (Manzanillo), 510 (Lázaro Cárdenas), ...
+        '''
 
         With _Estado
 
@@ -244,6 +263,17 @@ Public Class ControladorSecuencia
                             As TagWatcher _
                             Implements IControladorSecuencia.Generar
 
+        '''
+        ''' Genera una secuencia de documento
+        ''' # COMBINACIÓN 3
+        ''' nombre_ = Pedimentos
+        ''' tipoSecuencia_ = 1 (PedimentoNormal) , 2 (PedimentoRectificación), 3 (Pedimento complementario), ...
+        ''' compania_ = 1 (Krom aduanal), 2 (Krom logistica), ...
+        ''' area_ = 1 (Tráfico aduanal), 2 (Tráfico logística), ...
+        ''' subtipoSecuencia_ = 430 (Veracruz), 160 (Manzanillo), 510 (Lázaro Cárdenas), ...
+        ''' enviroment_ = 1 (Veracruz), 3 (CDMX), 4 (Virtual), 8 (Manzanillo), 6 (Altamira), ...
+        '''
+
         With _Estado
 
             If nombre_ IsNot Nothing Then
@@ -274,11 +304,24 @@ Public Class ControladorSecuencia
                             compania_ As Integer,
                             area_ As Integer,
                             subtipoSecuencia_ As Integer,
-                            prefijo_ As Integer,
-                            subfijo_ As Integer,
+                            prefijo_ As String,
+                            sufijo_ As String,
                             Optional session_ As IClientSessionHandle = Nothing) _
                             As TagWatcher _
                             Implements IControladorSecuencia.Generar
+
+
+        '''
+        ''' Genera una secuencia de documento
+        ''' # COMBINACIÓN 4
+        ''' nombre_ = Pedimentos
+        ''' tipoSecuencia_ = 1 (PedimentoNormal) , 2 (PedimentoRectificación), 3 (Pedimento complementario), ...
+        ''' compania_ = 1 (Krom aduanal), 2 (Krom logistica), ...
+        ''' area_ = 1 (Tráfico aduanal), 2 (Tráfico logística), ...
+        ''' subtipoSecuencia_ = 430 (Veracruz), 160 (Manzanillo), 510 (Lázaro Cárdenas), ...
+        ''' prefijo_ = RKU, ...
+        ''' sufijo_ =  ...
+        '''
 
         With _Estado
 
@@ -290,7 +333,7 @@ Public Class ControladorSecuencia
                             area_,
                             subtipoSecuencia_,
                             prefijo_,
-                            subfijo_)
+                            sufijo_)
 
                 GenerarSecuencia(_Secuencia, session_)
 
@@ -310,6 +353,14 @@ Public Class ControladorSecuencia
                             Optional session_ As IClientSessionHandle = Nothing) _
                             As TagWatcher _
                             Implements IControladorSecuencia.Generar
+
+        '''
+        ''' Genera una secuencia de documento
+        ''' # COMBINACIÓN 5
+        ''' secuencia_ = Estructura de secuencia
+        '''
+
+
         With _Estado
 
             If secuencia_ IsNot Nothing Then

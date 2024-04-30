@@ -2,17 +2,30 @@
 Imports System.Collections.Generic
 Imports System.Text.RegularExpressions
 Imports gsol
+Imports gsol.krom.EntidadDatos
+Imports Syn.Documento
+Imports Syn.Documento.Componentes
 Imports gsol.krom
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Rec.Globals.Empresa
 Imports Rec.Globals.Utils
-Imports Syn.Documento
-Imports Syn.Documento.Componentes
 Imports Syn.Utils
 Imports Wma.Exceptions
+Imports Syn.Documento.OperacionGenerica
+
+
+
+
+
 
 Public Class ControladorEmpresas
+    ''' <summary>
+    ''' CONTROLADOR DE EMPRESAS V.1.0.0 
+    ''' DESCONTINUADO
+    ''' UTILIZAR CONTROLADOR DE EMPRESAS V.2.0.0
+    ''' </summary>
+    ''' <returns></returns>
 
 #Region "Propiedades"
 
@@ -475,105 +488,124 @@ Public Class ControladorEmpresas
     End Function
 
     Public Function BuscarClientes1(ByVal token_ As String, btipooperacion_ As Boolean) As List(Of SelectOption)
+
+        '''
+        ''' MÉTODO DESCONTINUADO, FAVOR DE UTILIZAR EL NUEVO CONTROLADOR
+        '''
+
         Dim listaclientes_ As New List(Of SelectOption)
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
-                   {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
+        'Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
+        '           {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
 
-            Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorCliente).Name)
-            Dim ctrlRecursosGenerales_ As New Organismo
-            Dim itipooperacion_ As Integer
-            If btipooperacion_ Then
-                itipooperacion_ = 1
-            Else
-                itipooperacion_ = 2
-            End If
+        '    Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorCliente).Name)
 
-            Dim Algo As DocumentoElectronico
+        '    Dim ctrlRecursosGenerales_ As New Organismo
+        '    Dim itipooperacion_ As Integer
+        '    If btipooperacion_ Then
+        '        itipooperacion_ = 1
+        '    Else
+        '        itipooperacion_ = 2
+        '    End If
 
-
-
-            operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .razonsocial = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.NombreCliente,
-                                          Key .foliodocumentos = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento,
-                                          Key .tipouso = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Cuerpo")(0).Nodos(0).Nodos(0).Nodos(4).Nodos(0), Campo).Valor
-              }).Match(BsonDocument.Parse(ctrlRecursosGenerales_.SeparacionPalabras(token_, "razonsocial", "tipouso", itipooperacion_.ToString, ""))).
-                ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
-                                                           listaclientes_.Add(New SelectOption With {
-                                                                          .Value = estatus_.IDS.ToString,
-                                                                          .Text = estatus_.razonsocial & " | " & estatus_.foliodocumentos
-                                                           })
-                                                       End Sub)
+        '    'Dim Algo As DocumentoElectronico
 
 
-        End Using
+
+        '    operationsDB_.Aggregate().Project(Function(ch) New With {
+        '                                  Key .IDS = ch.Id,
+        '                                  Key .razonsocial = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.NombreCliente,
+        '                                  Key .foliodocumentos = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento,
+        '                                  Key .tipouso = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Cuerpo")(0).Nodos(0).Nodos(0).Nodos(4).Nodos(0), Campo).Valor
+        '      }).Match(BsonDocument.Parse(ctrlRecursosGenerales_.SeparacionPalabras(token_, "razonsocial", "tipouso", itipooperacion_.ToString, ""))).
+        '        ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
+        '                                                   listaclientes_.Add(New SelectOption With {
+        '                                                                  .Value = estatus_.IDS.ToString,
+        '                                                                  .Text = estatus_.razonsocial & " | " & estatus_.foliodocumentos
+        '                                                   })
+        '                                               End Sub)
+
+
+        'End Using
         Return listaclientes_
 
 
     End Function
 
     Public Function BuscarCliente(ByVal token_ As String, ByRef stipoidentificador_ As String) As ConstructorCliente
+
+        '''
+        ''' SI ESTABAS UTILIZANDO ESTE FUNCIONAMIENTO
+        ''' LO DESACTIVE TEMPORALMENTE
+        ''' FAVOR DE IMPLEMENTAR EL CONTROLADOR ADECUADO
+        ''' PARA ESTA FUNCION
+        ''' CONTROLADOR DE EMPRESAS NO SABE NADA DE CLIENTES
+        ''' PERO SI DE RAZONES SOCIALES :V
+        ''' '''
+
+
+
         Dim ConstructorCliente_ As New ConstructorCliente
 
+
         'MsgBox(token_ & ":::" & tipopersona_ & ":::" & stipoidentificador_)
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
-               {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
-            Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorCliente).Name)
-            If stipoidentificador_ = "ID" Then
-                operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-              }).Match(Function(e) e.IDS = New ObjectId(token_)).
-                ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
+        'Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
+        '       {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
+        '    Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorCliente).Name)
+        '    If stipoidentificador_ = "ID" Then
+        '        operationsDB_.Aggregate().Project(Function(ch) New With {
+        '                                  Key .IDS = ch.Id,
+        '                                  Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+        '      }).Match(Function(e) e.IDS = New ObjectId(token_)).
+        '        ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
 
-                                                           ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
-                                                                                 With {.Id = estatus_.IDS.ToString}
+        '                                                   ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
+        '                                                                         With {.Id = estatus_.IDS.ToString}
 
-                                                       End Sub)
-            Else
-                If stipoidentificador_ = "TAXID" Then
-                    operationsDB_.Aggregate().Project(Function(ch) New With {
-                                          Key .IDS = ch.Id,
-                                          Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                          Key .TaxId = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(4).Nodos(0), Campo).Valor
-              }).Match(Function(e) e.TaxId.Equals(token_)).
-                ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
-                                                           ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
-                                                                                 With {.Id = estatus_.IDS.ToString}
+        '                                               End Sub)
+        '    Else
+        '        If stipoidentificador_ = "TAXID" Then
+        '            operationsDB_.Aggregate().Project(Function(ch) New With {
+        '                                  Key .IDS = ch.Id,
+        '                                  Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
+        '                                  Key .TaxId = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(4).Nodos(0), Campo).Valor
+        '      }).Match(Function(e) e.TaxId.Equals(token_)).
+        '        ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
+        '                                                   ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
+        '                                                                         With {.Id = estatus_.IDS.ToString}
 
-                                                       End Sub)
-                Else
-                    If stipoidentificador_ = "RFC" Then
+        '                                               End Sub)
+        '        Else
+        '            If stipoidentificador_ = "RFC" Then
 
-                        operationsDB_.Aggregate().Project(Function(ch) New With {
-                                              Key .IDS = ch.Id,
-                                              Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                              Key .RFC = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(3).Nodos(0), Campo).Valor
-                  }).Match(Function(e) e.RFC.Equals(token_)).
-                    ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
-                                                               ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
-                                                                                 With {.Id = estatus_.IDS.ToString}
+        '                operationsDB_.Aggregate().Project(Function(ch) New With {
+        '                                      Key .IDS = ch.Id,
+        '                                      Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
+        '                                      Key .RFC = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(3).Nodos(0), Campo).Valor
+        '          }).Match(Function(e) e.RFC.Equals(token_)).
+        '            ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
+        '                                                       ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
+        '                                                                         With {.Id = estatus_.IDS.ToString}
 
-                                                           End Sub)
-                    Else
-                        operationsDB_.Aggregate().Project(Function(ch) New With {
-                                              Key .IDS = ch.Id,
-                                              Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
-                                              Key .RazonSocial = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(1).Nodos(0), Campo).Valor
-                  }).Match(Function(e) e.RazonSocial.Equals(token_)).
-                    ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
-                                                               ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
-                                                                                 With {.Id = estatus_.IDS.ToString}
+        '                                                   End Sub)
+        '            Else
+        '                operationsDB_.Aggregate().Project(Function(ch) New With {
+        '                                      Key .IDS = ch.Id,
+        '                                      Key .DocumentoCliente = ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente,
+        '                                      Key .RazonSocial = DirectCast(ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.EstructuraDocumento.Parts.Item("Encabezado")(0).Nodos(0).Nodos(1).Nodos(0), Campo).Valor
+        '          }).Match(Function(e) e.RazonSocial.Equals(token_)).
+        '            ToList().AsEnumerable.ToList().ForEach(Sub(estatus_)
+        '                                                       ConstructorCliente_ = New ConstructorCliente(True, estatus_.DocumentoCliente) _
+        '                                                                         With {.Id = estatus_.IDS.ToString}
 
-                                                           End Sub)
-                    End If
+        '                                                   End Sub)
+        '            End If
 
-                End If
+        '        End If
 
-            End If
+        '    End If
 
-        End Using
+        'End Using
         Return ConstructorCliente_
 
 
