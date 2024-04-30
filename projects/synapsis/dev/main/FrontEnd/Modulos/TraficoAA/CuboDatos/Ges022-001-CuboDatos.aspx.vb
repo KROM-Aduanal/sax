@@ -1497,8 +1497,6 @@ Public Class Ges022_001_CuboDatos
         Dim formulaNuevaFormato_ As String = tb_FormulaNueva.Text.Replace("[13]", vbCrLf)
 
 
-        MsgBox(formulaFormato_)
-
         If formulaFormato_ <> "" AndAlso
             (tb_Formula.Enabled OrElse
            (formulaNuevaFormato_ <> "" AndAlso
