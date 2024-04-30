@@ -50,6 +50,15 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents fsDatosGenerales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control bacalao.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bacalao As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
     '''Control icClave.
     '''</summary>
     '''<remarks>

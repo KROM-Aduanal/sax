@@ -24,7 +24,7 @@ Imports Sax.Web.ControladorBackend.Cookies
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals
-Imports Rec.Globals.Empresa
+Imports Rec.Globals.Empresa64
 Imports Rec.Globals.Controllers
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)

@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Reflection
 Imports System.Security.Permissions
 Imports System.Web
 Imports System.Web.UI
@@ -139,6 +140,8 @@ Public Class InputControl
     End Property
 
     Public Property UpperCase As Boolean = False
+
+    Public Property AutoPostBack As Boolean = False
 
 #End Region
 
@@ -321,11 +324,15 @@ Public Class InputControl
 
             .Attributes.Add("autocomplete", "off")
 
-            .AutoPostBack = True
+            .AutoPostBack = AutoPostBack
 
         End With
 
-        AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
+        If AutoPostBack = True Then
+
+            AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
+
+        End If
 
         With component_
 
@@ -389,11 +396,15 @@ Public Class InputControl
 
             .Attributes.Add("placeholder", Label)
 
-            .AutoPostBack = True
+            .AutoPostBack = AutoPostBack
 
         End With
 
-        AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
+        If AutoPostBack = True Then
+
+            AddHandler DirectCast(_inputElement, TextBox).TextChanged, AddressOf TextInputChanged
+
+        End If
 
         With component_
 
@@ -454,7 +465,7 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
-            .AutoPostBack = True
+            .AutoPostBack = AutoPostBack
 
         End With
 
@@ -490,7 +501,7 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
-            .AutoPostBack = True
+            .AutoPostBack = AutoPostBack
 
         End With
 

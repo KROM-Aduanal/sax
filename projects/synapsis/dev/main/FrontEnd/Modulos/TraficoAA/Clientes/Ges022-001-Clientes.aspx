@@ -16,7 +16,7 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentCompanyList" runat="server">
 <% If IsPopup = False Then %>
 
-<GWC:SelectControl CssClass="col-auto company-list-select" runat="server" SearchBarEnabled="false" ID="__SYSTEM_ENVIRONMENT" OnSelectedIndexChanged="CambiarEmpresa"/>
+    <GWC:SelectControl CssClass="col-auto company-list-select" runat="server" SearchBarEnabled="false" ID="__SYSTEM_ENVIRONMENT" OnSelectedIndexChanged="CambiarEmpresa"/>
 
 <% End If %>
 </asp:Content>
@@ -47,7 +47,7 @@
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_RFC" Label="RFC" Rules="required|maxlegth[16]"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_CURP" Label="Curp" Rules="required|maxlegth[18]"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="t_TaxID" Label="Tax Number" Visible="false" />
-
+                                
                             </ListControls>
                            
                         </GWC:FieldsetControl>
@@ -129,9 +129,9 @@
                         <GWC:FieldsetControl ID="_fssesllos" runat="server" Label="Sellos Digitales">
 
                             <ListControls>
-                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaCertificado" Label="Ruta archivo certificado" OnChooseFile="icRutaCertificado_ChooseFile" ShowButtonsTitle="false"/>
+                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaCertificado" Label="Ruta archivo certificado" ShowButtonsTitle="false"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icContraseniaCertificado" Label="Contraseña" Format="Security"/>
-                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaLlave" Label="Ruta archivo llave" OnChooseFile="icRutaLlave_ChooseFile" ShowButtonsTitle="false" Dragable="true"/>
+                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-6" ID="icRutaLlave" Label="Ruta archivo llave" ShowButtonsTitle="false"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" ID="icCveWebServices" Label="Clave web services" Format="Security"/>
                                 <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6" Type="Text" Format="Calendar" ID="icFechaVigencia" Label="Vigencia"/>
                             </ListControls>

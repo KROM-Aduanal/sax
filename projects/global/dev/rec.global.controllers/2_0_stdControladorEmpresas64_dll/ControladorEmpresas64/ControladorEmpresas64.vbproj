@@ -134,6 +134,7 @@
     </Reference>
     <Reference Include="Rec.Globals.IEmpresa.2.0.0.0">
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresa.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.IEmpresaInternacional.2.0.0.0">
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresaInternacional.2.0.0.0.dll</HintPath>

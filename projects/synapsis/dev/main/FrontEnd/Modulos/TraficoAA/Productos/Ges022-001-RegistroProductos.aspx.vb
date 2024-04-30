@@ -56,44 +56,51 @@ Public Class Ges022_001_RegistroProductos
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
-        [Set](txt_NombreComercial, CamposProducto.CP_NOMBRE_COMERCIAL)
-        [Set](sw_EstadoProducto, CamposProducto.CP_HABILITADO)
-        [Set](fbx_FraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA)
-        [Set](fbx_FraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
-        [Set](sl_Nico, CamposProducto.CP_NICO)
-        '[Set](fbx_Nico, CamposProducto.CP_NICO)
-        '[Set](fbx_Nico, CamposProducto.CP_NICO, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
-        [Set](txtFechaRegistro, CamposProducto.CP_FECHA_REGISTRO)
-        [Set](sl_Estatus, CamposProducto.CP_ESTATUS)
-        [Set](txt_Observaciones, CamposProducto.CP_OBSERVACION)
-        '[Set](txt_Motivo, CamposProducto.CP_MOTIVO)
+        [Set](icNombreComercial, CamposProducto.CP_NOMBRE_COMERCIAL)
+        [Set](swcEstadoProducto, CamposProducto.CP_HABILITADO, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](fbcFraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA)
+        [Set](fbcFraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](icDescripcionFraccion, CamposProducto.CP_DESCRIPCION_FRACCION_ARANCELARIA)
+        [Set](scNico, CamposProducto.CP_NICO)
+        [Set](icDescripcionNico, CamposProducto.CP_DESCRIPCION_NICO)
+        '[Set](fbcNico, CamposProducto.CP_NICO)
+        '[Set](fbCNico, CamposProducto.CP_NICO, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](icFechaRegistro, CamposProducto.CP_FECHA_REGISTRO)
 
-        [Set](fbx_Cliente, CamposClientes.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](fbx_Proveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scEstatus, CamposProducto.CP_ESTATUS)
+        [Set](icObservaciones, CamposProducto.CP_OBSERVACION)
+        '[Set](icMotivo, CamposProducto.CP_MOTIVO)
 
-        [Set](txt_IdKrom, CamposProducto.CP_IDKROM, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](txt_NumeroParte, CamposProducto.CP_NUMERO_PARTE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](txt_Alias, CamposProducto.CP_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sl_TipoAlias, CamposProducto.CP_TIPO_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sl_TipoAlias, CamposProducto.CP_TIPO_ALIAS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](txt_Descripcion, CamposProducto.CP_DESCRIPCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](sw_AplicaCove, CamposProducto.CP_APLICACOVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](txt_DescripcionCove, CamposProducto.CP_DESCRIPCION_COVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](cat_DescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO5, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](fbcCliente, CamposClientes.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](fbcProveedor, CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        [Set](icIdKrom, CamposProducto.CP_IDKROM, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icNumeroParte, CamposProducto.CP_NUMERO_PARTE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icAlias, CamposProducto.CP_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTipoAlias, CamposProducto.CP_TIPO_ALIAS, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTipoAlias, CamposProducto.CP_TIPO_ALIAS, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescripcion, CamposProducto.CP_DESCRIPCION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](swcAplicaCove, CamposProducto.CP_APLICACOVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icDescripcionCove, CamposProducto.CP_DESCRIPCION_COVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccDescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO5, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
 
-        [Set](pbx_DescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO3)
+        [Set](pbcDescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO3)
         Return New TagWatcher(1)
 
     End Function
 
     Public Overrides Sub BotoneraClicNuevo()
 
-        PreparaTarjetero(Simple, pbx_DescipcionesFacturas)
+        PreparaTarjetero(Simple, pbcDescipcionesFacturas)
 
-        btn_Restaurar.Enabled = False
+        btnRestaurar.Enabled = False
 
-        btn_Archivar.Enabled = False
+        btnArchivar.Enabled = False
+
+        swcEstadoProducto.Checked = True
+
+        icFechaRegistro.Value = Convert.ToDateTime(Now).Date.ToString("yyyy-MM-dd")
 
     End Sub
 
@@ -106,13 +113,13 @@ Public Class Ges022_001_RegistroProductos
 
     Public Overrides Sub BotoneraClicEditar()
 
-        PreparaTarjetero(Advanced, pbx_DescipcionesFacturas)
+        PreparaTarjetero(Advanced, pbcDescipcionesFacturas)
 
-        btn_Restaurar.Enabled = False
+        btnRestaurar.Enabled = False
 
-        btn_Archivar.Enabled = True
+        btnArchivar.Enabled = True
 
-        _fshistoriales.Visible = True
+        fscHistoriales.Visible = True
 
     End Sub
 
@@ -204,16 +211,16 @@ Public Class Ges022_001_RegistroProductos
                 'Dictionary(Of String, String)
                 For Each item_ As Object In clasificacionArchivados_
 
-                    Dim claIndice = Convert.ToInt32(item_.Item(cat_HistorialClasificacion.KeyField))
+                    Dim claIndice = Convert.ToInt32(item_.Item(ccHistorialClasificacion.KeyField))
 
                     If claIndice > 0 Then
 
                         With .Seccion(SeccionesProducto.SPTO4).Partida(numeroSecuencia_:=claIndice)
 
-                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("txt_HistoricoFraccion")
-                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("txt_HistoricoNico")
-                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("txt_HistoricoFechaModificacion")
-                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("txt_HistoricoMotivo")
+                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("icHistoricoFraccion")
+                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("icHistoricoNico")
+                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("icHistoricoFechaModificacion")
+                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("icHistoricoMotivo")
 
                         End With
 
@@ -221,10 +228,10 @@ Public Class Ges022_001_RegistroProductos
 
                         With .Seccion(SeccionesProducto.SPTO4).Partida(documentoElectronico_)
 
-                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("txt_HistoricoFraccion")
-                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("txt_HistoricoNico")
-                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("txt_HistoricoFechaModificacion")
-                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("txt_HistoricoMotivo")
+                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("icHistoricoFraccion")
+                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("icHistoricoNico")
+                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("icHistoricoFechaModificacion")
+                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("icHistoricoMotivo")
 
                         End With
 
@@ -270,6 +277,7 @@ Public Class Ges022_001_RegistroProductos
 
         End If
 
+        icFechaRegistro.Value = Convert.ToDateTime(Now).Date.ToString("yyyy-MM-dd")
 
         Return tagwatcher_
 
@@ -278,11 +286,9 @@ Public Class Ges022_001_RegistroProductos
     Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
 
-
     End Sub
 
     Public Overrides Function DespuesRealizarModificacion() As TagWatcher
-
 
         Return New TagWatcher(Ok)
 
@@ -297,29 +303,29 @@ Public Class Ges022_001_RegistroProductos
 
         With seccionUnicaClasificacion_
 
-            cat_HistorialClasificacion.ClearRows()
+            ccHistorialClasificacion.ClearRows()
 
             For indice_ As Int32 = 1 To .CantidadPartidas
 
-                cat_HistorialClasificacion.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
+                ccHistorialClasificacion.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
 
-                                                      With .Partida(indice_)
+                                                    With .Partida(indice_)
 
-                                                          catalogRow_.SetIndice(cat_HistorialClasificacion.KeyField, indice_)
-                                                          catalogRow_.SetColumn(txt_HistoricoFraccion, .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor)
-                                                          catalogRow_.SetColumn(txt_HistoricoNico, .Attribute(CamposProducto.CP_NICO).Valor)
-                                                          catalogRow_.SetColumn(txt_HistoricoMotivo, .Attribute(CamposProducto.CP_MOTIVO).Valor)
-                                                          catalogRow_.SetColumn(txt_HistoricoFechaModificacion, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+                                                        catalogRow_.SetIndice(ccHistorialClasificacion.KeyField, indice_)
+                                                        catalogRow_.SetColumn(icHistoricoFraccion, .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor)
+                                                        catalogRow_.SetColumn(icHistoricoNico, .Attribute(CamposProducto.CP_NICO).Valor)
+                                                        catalogRow_.SetColumn(icHistoricoMotivo, .Attribute(CamposProducto.CP_MOTIVO).Valor)
+                                                        catalogRow_.SetColumn(icHistoricoFechaModificacion, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
 
-                                                      End With
+                                                    End With
 
-                                                  End Sub)
+                                                End Sub)
 
             Next
 
-            cat_HistorialClasificacion.CatalogDataBinding()
+            ccHistorialClasificacion.CatalogDataBinding()
 
-            SetVars("_clasificacionArchivados", cat_HistorialClasificacion.DataSource)
+            SetVars("_clasificacionArchivados", ccHistorialClasificacion.DataSource)
 
         End With
 
@@ -330,7 +336,7 @@ Public Class Ges022_001_RegistroProductos
 
         With seccionUnicaDescripciones_
 
-            cat_HistorialDescripciones.ClearRows()
+            ccHistorialDescripciones.ClearRows()
 
             For indice_ As Int32 = 1 To .CantidadPartidas
 
@@ -346,20 +352,20 @@ Public Class Ges022_001_RegistroProductos
 
                         For subindice_ As Int32 = 1 To .CantidadPartidas
 
-                            cat_HistorialDescripciones.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
+                            ccHistorialDescripciones.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
 
-                                                                  With .Partida(subindice_)
+                                                                With .Partida(subindice_)
 
-                                                                      catalogRow_.SetIndice(cat_HistorialDescripciones.KeyField, subindice_)
-                                                                      catalogRow_.SetColumn(txt_HistoricoCliente, cliente_)
-                                                                      catalogRow_.SetColumn(txt_HistoricoProveedor, proveedor_)
-                                                                      catalogRow_.SetColumn(txt_HistoricoNumeroParte, .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor)
-                                                                      catalogRow_.SetColumn(txt_HistoricoDescripcion, .Attribute(CamposProducto.CP_DESCRIPCION).Valor)
-                                                                      'catalogRow_.SetColumn(txt_HistoricoFechaArchivado, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+                                                                    catalogRow_.SetIndice(ccHistorialDescripciones.KeyField, subindice_)
+                                                                    catalogRow_.SetColumn(icHistoricoCliente, cliente_)
+                                                                    catalogRow_.SetColumn(icHistoricoProveedor, proveedor_)
+                                                                    catalogRow_.SetColumn(icHistoricoNumeroParte, .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor)
+                                                                    catalogRow_.SetColumn(icHistoricoDescripcion, .Attribute(CamposProducto.CP_DESCRIPCION).Valor)
+                                                                    'catalogRow_.SetColumn(icHistoricoFechaArchivado, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
 
-                                                                  End With
+                                                                End With
 
-                                                              End Sub)
+                                                            End Sub)
 
                         Next
 
@@ -369,11 +375,11 @@ Public Class Ges022_001_RegistroProductos
 
             Next
 
-            cat_HistorialDescripciones.CatalogDataBinding()
+            ccHistorialDescripciones.CatalogDataBinding()
 
         End With
 
-        _fshistoriales.Visible = True
+        fscHistoriales.Visible = True
 
     End Sub
 
@@ -385,7 +391,7 @@ Public Class Ges022_001_RegistroProductos
 
     Public Overrides Sub DespuesBuquedaGeneralSinDatos()
 
-        PreparaTarjetero([Default], pbx_DescipcionesFacturas)
+        PreparaTarjetero([Default], pbcDescipcionesFacturas)
 
     End Sub
 
@@ -397,19 +403,23 @@ Public Class Ges022_001_RegistroProductos
 
         SetVars("_clasificacionArchivados", Nothing)
 
+        SetVars("_fraccionesArancelarias", Nothing)
+
+        SetVars("_nicos", Nothing)
+
     End Sub
 
     Public Overrides Sub Limpiar()
 
-        cat_DescipcionesFacturas.DataSource = Nothing
+        ccDescipcionesFacturas.DataSource = Nothing
 
-        cat_HistorialClasificacion.DataSource = Nothing
+        ccHistorialClasificacion.DataSource = Nothing
 
-        cat_HistorialDescripciones.DataSource = Nothing
+        ccHistorialDescripciones.DataSource = Nothing
 
-        sl_Nico.Value = Nothing
+        scNico.Value = Nothing
 
-        sl_Nico.DataSource = Nothing
+        scNico.DataSource = Nothing
 
     End Sub
 
@@ -430,9 +440,9 @@ Public Class Ges022_001_RegistroProductos
 
         Dim controlBusqueda_ = New ControladorBusqueda(Of ConstructorCliente)
 
-        Dim references_ = controlBusqueda_.Buscar(fbx_Cliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
+        Dim references_ = controlBusqueda_.Buscar(fbcCliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
 
-        fbx_Cliente.DataSource = references_
+        fbcCliente.DataSource = references_
 
     End Sub
 
@@ -440,9 +450,9 @@ Public Class Ges022_001_RegistroProductos
 
         Dim controlBusqueda_ = New ControladorBusqueda(Of ConstructorProveedoresOperativos)
 
-        Dim references_ = controlBusqueda_.Buscar(fbx_Proveedor.Text, New Filtro With {.IdSeccion = SeccionesProvedorOperativo.SPRO1, .IdCampo = CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR})
+        Dim references_ = controlBusqueda_.Buscar(fbcProveedor.Text, New Filtro With {.IdSeccion = SeccionesProvedorOperativo.SPRO1, .IdCampo = CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR})
 
-        fbx_Proveedor.DataSource = references_
+        fbcProveedor.DataSource = references_
 
     End Sub
 
@@ -450,17 +460,19 @@ Public Class Ges022_001_RegistroProductos
 
         Dim controlador_ = New ControladorTIGIE()
 
-        Dim tagwacher_ = controlador_.EnlistarFracciones(fbx_FraccionArancelaria.Text)
+        Dim tagwacher_ = controlador_.EnlistarFracciones(fbcFraccionArancelaria.Text)
 
         If tagwacher_.Status = TypeStatus.Ok Then
 
             Dim fracciones_ As List(Of FraccionArancelaria) = tagwacher_.ObjectReturned
 
+            SetVars("_fraccionesArancelarias", fracciones_)
+
             Dim fraccionesData_ = New List(Of SelectOption)
+            '& " | " & fraccion_.DescripcionFraccion
+            fracciones_.ForEach(Sub(ByVal fraccion_ As FraccionArancelaria) fraccionesData_.Add(New SelectOption With {.Value = fraccion_.Fraccion, .Text = fraccion_.Fraccion}))
 
-            fracciones_.ForEach(Sub(ByVal fraccion_ As FraccionArancelaria) fraccionesData_.Add(New SelectOption With {.Value = fraccion_.Fraccion, .Text = fraccion_.Fraccion & " | " & fraccion_.DescripcionFraccion}))
-
-            fbx_FraccionArancelaria.DataSource = fraccionesData_
+            fbcFraccionArancelaria.DataSource = fraccionesData_
 
         End If
 
@@ -468,47 +480,74 @@ Public Class Ges022_001_RegistroProductos
 
     Protected Sub fbx_FraccionArancelaria_Click(sender As Object, e As EventArgs)
 
-        Dim controlador_ = New ControladorTIGIE()
 
-        Dim tagwacher_ = controlador_.EnlistarNicosFraccion(fbx_FraccionArancelaria.Value)
+        If Not String.IsNullOrEmpty(fbcFraccionArancelaria.Text) Then
 
-        If tagwacher_.Status = TypeStatus.Ok Then
+            Dim controlador_ = New ControladorTIGIE()
 
-            Dim nicos_ As List(Of NicoFraccionArancelaria) = tagwacher_.ObjectReturned
+            Dim tagwacher_ = controlador_.EnlistarNicosFraccion(fbcFraccionArancelaria.Value)
 
-            Dim nicosData_ = New List(Of SelectOption)
+            If tagwacher_.Status = TypeStatus.Ok Then
 
-            nicos_.ForEach(Sub(ByVal nico_ As NicoFraccionArancelaria) nicosData_.Add(New SelectOption With {.Value = nico_.Nico, .Text = nico_.Nico & " | " & nico_.DescripcionNico}))
+                Dim nicos_ As List(Of NicoFraccionArancelaria) = tagwacher_.ObjectReturned
 
-            sl_Nico.DataSource = nicosData_
+                SetVars("_nicos", nicos_)
+
+                Dim nicosData_ = New List(Of SelectOption)
+                '& " | " & nico_.DescripcionNico
+                nicos_.ForEach(Sub(ByVal nico_ As NicoFraccionArancelaria) nicosData_.Add(New SelectOption With {.Value = nico_.Nico, .Text = nico_.Nico}))
+
+                scNico.DataSource = nicosData_
+
+                Dim fracciones_ As List(Of FraccionArancelaria) = GetVars("_fraccionesArancelarias")
+
+                Dim fraccion_ As String = fracciones_.Where(Function(u) u.Fraccion = fbcFraccionArancelaria.Value).Select(Function(u) u.DescripcionFraccion).FirstOrDefault()
+
+                icDescripcionFraccion.Value = fraccion_
+
+            End If
+
+        Else
+
+            scNico.DataSource = Nothing
+
+            scNico.Value = Nothing
+
+            icDescripcionFraccion.Value = Nothing
+
+            icDescripcionNico.Value = Nothing
 
         End If
 
     End Sub
 
-    Protected Sub sl_Nico_Click(sender As Object, e As EventArgs)
+    Protected Sub sl_Nico_Selected(sender As Object, e As EventArgs)
 
+        Dim nicos_ As List(Of NicoFraccionArancelaria) = GetVars("_nicos")
 
+        Dim nico_ As String = nicos_.Where(Function(u) u.Nico = scNico.Value).Select(Function(u) u.DescripcionNico).FirstOrDefault()
+
+        icDescripcionNico.Value = nico_
 
     End Sub
 
     Protected Sub ConfigurarControlesClasificacion_Click(sender As Object, e As EventArgs)
 
-        btn_Archivar.Enabled = Not btn_Archivar.Enabled
+        btnArchivar.Enabled = Not btnArchivar.Enabled
 
-        btn_Restaurar.Enabled = Not btn_Restaurar.Enabled
+        btnRestaurar.Enabled = Not btnRestaurar.Enabled
 
-        fbx_FraccionArancelaria.Visible = Not fbx_FraccionArancelaria.Visible
+        fbcFraccionArancelaria.Visible = Not fbcFraccionArancelaria.Visible
 
-        sl_Nico.Visible = Not sl_Nico.Visible
+        scNico.Visible = Not scNico.Visible
 
-        txtFechaRegistro.Visible = Not txtFechaRegistro.Visible
+        icFechaRegistro.Visible = Not icFechaRegistro.Visible
 
-        sl_Estatus.Visible = Not sl_Estatus.Visible
+        scEstatus.Visible = Not scEstatus.Visible
 
-        txt_Observaciones.Visible = Not txt_Observaciones.Visible
+        icObservaciones.Visible = Not icObservaciones.Visible
 
-        txt_Motivo.Visible = Not txt_Motivo.Visible
+        icMotivo.Visible = Not icMotivo.Visible
 
         btn_ConfirmarArchivado.Visible = Not btn_ConfirmarArchivado.Visible
 
@@ -521,38 +560,38 @@ Public Class Ges022_001_RegistroProductos
         Array.Resize(clasificacionArchivados, clasificacionArchivados.Length + 1)
 
         clasificacionArchivados(clasificacionArchivados.Length - 1) = New Dictionary(Of String, String) From {
-            {cat_HistorialClasificacion.KeyField, 0},
-            {"txt_HistoricoFraccion", fbx_FraccionArancelaria.Text},
-            {"txt_HistoricoNico", sl_Nico.Text},
-            {"txt_HistoricoMotivo", txt_Motivo.Value},
-            {"txt_HistoricoFechaModificacion", Date.Now().ToString("yyyy-MM-dd")}
+            {ccHistorialClasificacion.KeyField, 0},
+            {"icHistoricoFraccion", fbcFraccionArancelaria.Text},
+            {"icHistoricoNico", scNico.Text},
+            {"icHistoricoMotivo", icMotivo.Value},
+            {"icHistoricoFechaModificacion", Date.Now().ToString("yyyy-MM-dd")}
         }
 
         SetVars("_clasificacionArchivados", clasificacionArchivados)
 
-        cat_HistorialClasificacion.DataSource = clasificacionArchivados
+        ccHistorialClasificacion.DataSource = clasificacionArchivados
 
-        _fshistoriales.Visible = True
+        fscHistoriales.Visible = True
 
-        fbx_FraccionArancelaria.Text = Nothing
+        fbcFraccionArancelaria.Text = Nothing
 
-        fbx_FraccionArancelaria.Value = Nothing
+        fbcFraccionArancelaria.Value = Nothing
 
-        sl_Nico.Value = Nothing
+        scNico.Value = Nothing
 
-        sl_Nico.DataSource = Nothing
+        scNico.DataSource = Nothing
 
-        txtFechaRegistro.Value = Nothing
+        icFechaRegistro.Value = Nothing
 
-        sl_Estatus.Value = Nothing
+        scEstatus.Value = Nothing
 
-        txt_Observaciones.Value = Nothing
+        icObservaciones.Value = Nothing
 
-        txt_Motivo.Value = Nothing
+        icMotivo.Value = Nothing
 
-        sl_Estatus.DataSource = Nothing
+        scEstatus.DataSource = Nothing
 
-        sl_Estatus.Value = Nothing
+        scEstatus.Value = Nothing
 
         ConfigurarControlesClasificacion_Click(Nothing, EventArgs.Empty)
 
@@ -568,6 +607,5 @@ Public Class Ges022_001_RegistroProductos
 
 
 #End Region
-
 
 End Class

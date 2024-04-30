@@ -21,6 +21,10 @@ Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
 Imports Cube.Interpreters
+Imports System.Runtime.Remoting
+Imports System.Windows.Forms
+Imports MongoDB.Bson.IO
+
 
 Public Class Ges022_001_CuboDatos
     Inherits ControladorBackend
@@ -35,6 +39,23 @@ Public Class Ges022_001_CuboDatos
     Private _ctrlCube As ICubeController
 
     Private _ctrlInterpreter As IMathematicalInterpreter
+
+    Public Property _accionDate As String
+    Public Property _accionDate2 As String
+    Public Property _accionDate3 As String
+    Public Property _userImage As String
+    Public Property _userImage2 As String
+    Public Property _userImage3 As String
+
+    Public Property _userName As String
+
+    Public Property _userName2 As String
+
+    Public Property _userName3 As String
+    '<GWC-userdata _userName="Sergionor Flores Martínez" _accionDate="hace 3 días" _userImage="/FrontEnd/Librerias/Krom/imgs/nouser.png" ID="ud_UserData34" Name="ud_UserData34"></GWC-userdata>
+
+    Private _organismo As Organismo
+
 
 #End Region
 
@@ -55,12 +76,6 @@ Public Class Ges022_001_CuboDatos
         '  -defina el campo que debe consultar en la seccio dada                                    '
         '  -defina un titulo a los resultados de su filtro                                          '
         '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        If _ctrlCube Is Nothing Then
-
-            _ctrlCube = New CubeController
-
-
-        End If
 
         With Buscador
 
@@ -162,9 +177,68 @@ Public Class Ges022_001_CuboDatos
 
         End If
 
+        _ctrlCube = GetVars("_cubeController")
+
+        If _ctrlCube Is Nothing Then
+
+            _ctrlCube = New CubeController
+
+        End If
+
         SetVars("_cubeController", _ctrlCube)
 
         SetVars("_interpreterController", _ctrlInterpreter)
+
+        _userName = GetVars("_userName")
+
+        _accionDate = GetVars("_accionDate")
+
+        _userImage = "/FrontEnd/Librerias/Krom/imgs/nouser.png"
+
+
+        ' bc_Var.BackColor = Drawing.Color.Aqua
+
+        'Dim Algo As Control
+
+        'For Each elemento_ In p_Cabulidad.Controls
+
+        '    If elemento_.GetType.ToString = "Gsol.Web.Components.SwitchControl" Then
+
+        '        MsgBox("Cavulidad" & Algo.ToJson.ToString)
+
+
+
+
+        '        MsgBox("Cavulidad" & datess)
+
+        '        ' Supongamos que tienes el siguiente JSON:
+        '        'Dim jsonString As String = Algo.ToJson.ToString
+
+        '        '' Deserializa el JSON en un objeto
+        '        'Dim jsonObject As JObject = JObject.Parse(jsonString)
+
+        '        '' Accede al campo "token" y actualiza su valor
+        '        'jsonObject("date") = "Hace mil años"
+
+        '        '' Vuelve a serializar el objeto a JSON
+        '        'Dim jsonActualizado As String = jsonObject.ToString()
+
+        '        '' Ahora "jsonActualizado" contiene el JSON con el valor del token actualizado
+        '        'elemento_.Text = jsonObject("date")
+
+        '    Else
+
+        '        ' MsgBox(elemento_.GetType.ToString)
+
+        '        Algo = elemento_
+
+        '    End If
+
+
+
+        'Next
+
+        'ud_UserData.date = "Hace mil años"
 
     End Sub
 
@@ -173,7 +247,7 @@ Public Class Ges022_001_CuboDatos
 
 
         'Datos Generales
-        'Case SeccionesACUSEVALOR.SACUSEVALOR1
+        'Case Secciones CUBO
 
         Return New TagWatcher(Ok)
 
@@ -184,6 +258,7 @@ Public Class Ges022_001_CuboDatos
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Esta metodo se manda llamar al dar clic en la opción nuevo (+) '
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 
     End Sub
 
@@ -199,14 +274,62 @@ Public Class Ges022_001_CuboDatos
         ' If Not ProcesarTransaccion(Of ConstructorAcuseValor)().Status = TypeStatus.Errors Then : End If
 
 
+        If bc_Verificado.Visible Then
 
-        Dim algo_ = _ctrlCube.SetFormula(Of String)(ic_RoomName.Value, ic_RoomRules.Value, sc_DestinoCubo.Text.ToString, sc_TipoRegla.Text.ToString.ToLower)
 
-        If algo_.Status = Ok Then
+            Dim rulesType_, status_ As String
 
-            DisplayMessage("Regla Asignada Satisfactoriamente", Ok)
+
+            If bc_Function.Visible Then
+
+                rulesType_ = "formula"
+
+            Else
+
+                rulesType_ = "operando"
+
+
+            End If
+
+            If swc_Online.Checked Then
+
+                status_ = "on"
+
+            Else
+
+                status_ = "off"
+
+            End If
+
+
+            Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
+
+            _userName = loginUsuario_("WebServiceUserID")
+
+            Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(ic_RoomName.Value, tb_Formula.Text, bc_SourceCube.Label, rulesType_, ic_DescripcionRules.Value, status_, Nothing, loginUsuario_("WebServiceUserID"))
+
+            If tagwatcher_.Status = Ok Then
+
+                Dim room_ As Room = tagwatcher_.ObjectReturned
+
+                ColocaHistorial(room_.historical)
+
+                DisplayMessage("Regla asignada satisfactoriamente", Ok)
+
+                SetVars("_userName", _userName)
+
+                SetVars("_accionDate", _accionDate)
+
+
+
+            End If
+
+        Else
+
+            DisplayMessage("Esta regla no ha sido verificada", TypeStatus.OkBut)
 
         End If
+
 
     End Sub
 
@@ -278,197 +401,25 @@ Public Class Ges022_001_CuboDatos
 
             Case 7
 
-                Dim interpreterController_ As IMathematicalInterpreter = GetVars("_interpreterController")
-
-                If interpreterController_ Is Nothing Then
-
-                    interpreterController_ = New MathematicalInterpreterNCalc
-
-                    SetVars("_interpreterController", interpreterController_)
-
-                End If
-
-                Dim cubeController_ As ICubeController = GetVars("_cubeController")
-
-                If cubeController_ Is Nothing Then
-
-                    cubeController_ = New CubeController
-
-                End If
-
-                interpreterController_.addOperands(cubeController_.GetOperands().ObjectReturned)
-
-                Dim Values_ = New Dictionary(Of String, Object)
-
-                Dim icontroladorMonedas_ As IControladorMonedas = New ControladorMonedas
-
-                Dim params_ = interpreterController_.GetParams(ic_RoomRules.Value)
-
-                Dim rnd_ As New Random()
-
-
-
-                For Each param_ In params_
-
-                    Dim numeroAleatorio As Integer = rnd_.Next(1, 1000)
-
-                    If Not Values_.ContainsKey(param_) Then
-
-                        Dim position_ = param_.LastIndexOf(".")
-
-                        Dim positionFound_ As Boolean
-
-                        If position_ = -1 Then
-
-                            positionFound_ = False
-
-                        Else
-
-                            positionFound_ = Int32.TryParse(param_.Substring(position_ + 1), position_)
-
-                        End If
-
-                        If positionFound_ Then
-
-                            Values_.Add(param_, numeroAleatorio)
-
-                        Else
-
-                            Values_.Add(param_ & ".0", numeroAleatorio)
-
-                        End If
-
-
-
-                    End If
-
-                Next
-
-                Dim found_ = True
-
-                If cc_ValoresOperandos.DataSource IsNot Nothing Then
-
-                    For Each elementos_ In cc_ValoresOperandos.DataSource
-
-                        Dim operandName_ = elementos_("operandName_").ToString
-
-                        Dim operandNameFull = elementos_("operandName_").ToString
-
-                        Dim position_ = operandName_.LastIndexOf(".")
-
-
-
-                        operandName_ = operandName_.Substring(position_ + 1)
-
-                        Dim doubleValue_ As Double
-
-                        If Double.TryParse(operandName_, doubleValue_) Then
-
-                            operandNameFull = elementos_("operandName_").ToString
-
-                            operandName_ = operandNameFull.Substring(0, position_)
-
-                        Else
-
-
-
-                            operandName_ = operandNameFull
-
-                            If found_ Then
-
-                                position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count - 1
-
-                                found_ = False
-
-                            Else
-
-                                position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count
-
-
-                            End If
-
-
-                            If position_ = -1 Then
-
-                                position_ = 0
-
-                            End If
-
-                            operandNameFull = operandName_ & "." & position_
-                            ' position = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count)
-
-                        End If
-
-                        If Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count > 0 Then
-
-                            Values_(operandNameFull) = elementos_("operandValue_")
-
-                        End If
-
-
-                    Next
-
-                End If
-
-                Dim cuenta_ = 1
-
-                cc_ValoresOperandos.ClearRows()
-
-                For Each valor_ In Values_
-
-                    cc_ValoresOperandos.SetRow(Sub(catalogRow_ As CatalogRow)
-
-                                                   'Define el valor Llave de tu fila
-
-                                                   catalogRow_.SetIndice(cc_ValoresOperandos.KeyField, cuenta_)
-
-                                                   'Define el valor de una columna de la fila
-
-
-
-                                                   Dim algo_ As New InputControl With {.ID = "operandName_",
-                                                                                           .Value = valor_.Key,
-                                                                                           .Type = InputControl.InputType.Text}
-
-                                                   Dim algo2_ As New InputControl With {.ID = "operandValue_",
-                                                                                           .Value = valor_.Value,
-                                                                                           .Type = InputControl.InputType.Text}
-
-
-
-                                                   catalogRow_.SetColumn(algo_, valor_.Key)
-
-                                                   catalogRow_.SetColumn(algo2_, valor_.Value)
-
-
-                                                   'de esta manera agregamos todas las columnas de nuestra fila 
-                                                   'usando el control asociado a la columna y el valor que se asignara
-
-                                               End Sub)
-
-                    cuenta_ += 1
-
-                Next
-
-                cc_ValoresOperandos.CatalogDataBinding()
-
-                DisplayMessage(interpreterController_.RunExpression(Of Object)(ic_RoomRules.Value, Values_), TypeStatus.OkInfo)
+                VerificarFormula()
 
             Case 8
 
-                ic_RoomName.Value = ""
-
-                ic_RoomRules.Value = ""
-
-                sc_DestinoCubo.Value = 1
-
-                sc_TipoRegla.Value = 1
-
-                cc_ValoresOperandos.ClearRows()
-
-                cc_ValoresOperandos.CatalogDataBinding()
+                LimpiarTodo()
 
             Case 9
+
+                'Dim cubeController_ As ICubeController = GetVars("_cubeController")
+
+                'If cubeController_ Is Nothing Then
+
+                '    cubeController_ = New CubeController
+
+                'End If
+
+                'cubeController_.GetStatus(ObjectId.Parse(fEditor.Text))
+
+                'MsgBox("Llenando los Recursos")
 
                 Dim cubeController_ As ICubeController = GetVars("_cubeController")
 
@@ -478,7 +429,9 @@ Public Class Ges022_001_CuboDatos
 
                 End If
 
-                cubeController_.GetStatus(ObjectId.Parse(ic_RoomRules.Value))
+                cubeController_.FillRoomResource()
+
+                MsgBox("Recursos Llenados Satisfactoriamente")
 
         End Select
 
@@ -640,32 +593,51 @@ Public Class Ges022_001_CuboDatos
 
     Public Sub LimpiarTodo()
 
-        ic_RoomName.Value = ""
-        ic_RoomRules.Value = ""
-        sc_DestinoCubo.Value = 1
-        sc_TipoRegla.Value = 1
 
+        ic_RoomName.Value = ""
+
+        tb_Formula.Text = ""
+
+        bc_SourceCube.Label = "A22"
+
+        bc_Function.Visible = True
+
+        bc_Var.Visible = False
+
+        ic_DescripcionRules.Value = ""
+
+        cc_ValoresOperandos.ClearRows()
+
+        cc_ValoresOperandos.CatalogDataBinding()
+
+        swc_Online.Checked = False
+
+        bc_Verificado.Visible = False
 
     End Sub
 
     Public Sub BuscarGajo()
         'Dim keyValuePair_ As New KeyValuePair(Of Object, Dictionary(Of Object, Object))("Value", dictionaryKey_)
 
-        Dim roomdictionary_ As New Dictionary(Of ObjectId, Room)
+        Dim roomResourceDictionary_ As New Dictionary(Of ObjectId, RoomResource)
 
         Dim dictionary_ As New Dictionary(Of Object, Object) From {{"Habitación", New List(Of Dictionary(Of Object, Object))}}
 
-        Dim TagWartcher_ = _ctrlCube.GetRoomNames(Buscador.Text)
+        Dim buscador_ = Buscador.Text.Replace(" | ", ".")
 
-        For Each room_ As Room In TagWartcher_.ObjectReturned
 
-            dictionary_("Habitación").add(New Dictionary(Of Object, Object) From {{"Value", room_._id.ToString},
-                                                                                   {"Text", room_.roomname}})
-            roomdictionary_(room_._id) = room_
+
+        Dim TagWatcher_ = _ctrlCube.GetRoomNamesResource(buscador_.Substring(buscador_.IndexOf(".") + 1))
+
+        For Each roomResource_ As RoomResource In TagWatcher_.ObjectReturned
+
+            dictionary_("Habitación").add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                   {"Text", roomResource_.cubeSource_ & " | " & roomResource_.valorpresentacion}})
+            roomResourceDictionary_(roomResource_._id) = roomResource_
 
         Next
 
-        SetVars("_roomdictionary_", roomdictionary_)
+        SetVars("_roomdictionary_", roomResourceDictionary_)
 
         Buscador.DataSource = dictionary_
 
@@ -676,76 +648,609 @@ Public Class Ges022_001_CuboDatos
 
     Public Sub CargarGajo(sender_ As Object, e As EventArgs)
 
-        Dim rooms_ As Dictionary(Of ObjectId, Room) = GetVars("_roomdictionary_")
+        Dim roomsResource_ As Dictionary(Of ObjectId, RoomResource) = GetVars("_roomdictionary_")
 
 
         If sender_.Value.ToString() <> "" Then
 
             Dim objectId_ = ObjectId.Parse(sender_.Value.ToString())
 
-            Dim room_ = rooms_(objectId_)
+            Dim roomResource_ = roomsResource_(objectId_)
 
-            Dim pointPosition_ = room_.roomname.IndexOf(".")
+            '           Dim pointPosition_ = room_.roomname.IndexOf(".")
 
 
-            ic_RoomName.Value = room_.roomname.Substring(pointPosition_ + 1)
 
-            Select Case room_.roomname.Substring(0, pointPosition_ - 1)
+            'ic_RoomName.Value = room_.roomname.Substring(pointPosition_ + 1)
 
-                Case "A22"
+            bc_SourceCube.Label = roomResource_.cubeSource_
 
-                    sc_DestinoCubo.Value = 1
+            Dim rooms_ As List(Of Room) = _ctrlCube.GetRoom(roomResource_._idroom, roomResource_.rolId_).ObjectReturned
 
-                Case "VOCE"
+            _organismo = New Organismo
 
-                    sc_DestinoCubo.Value = 2
-                Case "UCC"
+            Dim currentUser_ As String
 
-                    sc_DestinoCubo.Value = 3
-                Case "UCAA"
+            If rooms_(0).historical Is Nothing Then
 
-                    sc_DestinoCubo.Value = 4
-                Case "UAA"
+                currentUser_ = _organismo.GetCurrentUser(rooms_(0)._id.CreationTime, DateTime.Now)
 
-                    sc_DestinoCubo.Value = 5
-                Case "CDI"
+                _userName = ""
 
-                    sc_DestinoCubo.Value = 6
+            Else
+
+                If rooms_(0).historical.Count = 0 Then
+
+                    currentUser_ = _organismo.GetCurrentUser(rooms_(0)._id.CreationTime, DateTime.Now)
+
+                    _userName = ""
+
+                Else
+
+                    '  currentUser_ = _organismo.GetCurrentUser(rooms_(0).historical(0).createat, DateTime.Now)
+
+                    '_userName = rooms_(0).historical(0).username
+
+                    'Dim cuenta_ = 1
+
+                    '_organismo.GetHistoricalUser(Of RoomHistory)(rooms_(0).historical, listDate_, listUser_, 3)
+
+                    ColocaHistorial(rooms_(0).historical)
+
+                End If
+
+
+            End If
+
+
+            ' _accionDate = currentUser_
+
+            SetVars("_userName", _userName)
+
+            SetVars("_accionDate", _accionDate)
+
+            If rooms_(0).contenttype = "formula" Then
+                bc_Var.Visible = False
+
+                bc_Function.Visible = True
+            Else
+
+                bc_Function.Visible = False
+
+                bc_Var.Visible = True
+
+            End If
+
+            ic_RoomName.Value = roomResource_.valorpresentacion
+
+            tb_Formula.Text = roomResource_.rules
+
+            ic_DescripcionRules.Value = rooms_(0).description
+
+            If rooms_(0).status = "on" Then
+
+                swc_Online.Checked = True
+            Else
+
+                swc_Online.Checked = False
+            End If
+
+
+
+
+            'Select Case room_.contenttype
+
+            '    Case "formula"
+
+            '        sc_TipoRegla.Value = 1
+
+            '    Case "operando"
+
+            '        sc_TipoRegla.Value = 2
+
+            '    Case "csv"
+
+            '        sc_TipoRegla.Value = 3
+
+            '    Case "json"
+
+            '        sc_TipoRegla.Value = 4
+
+            'End Select
+
+        End If
+
+    End Sub
+    Sub CambioContenido()
+
+        bc_Var.BackColor = Drawing.Color.Orange
+
+        If bc_Function.Visible Then
+
+            bc_Function.Visible = False
+
+            bc_Var.Visible = True
+
+        Else
+
+            bc_Var.Visible = False
+
+            bc_Function.Visible = True
+
+        End If
+
+
+    End Sub
+
+    Sub ColocaHistorial(historical_ As List(Of RoomHistory))
+
+        Dim cuenta_ = 1
+
+        If _organismo Is Nothing Then
+
+            _organismo = New Organismo
+
+        End If
+
+        For Each roomhstory_ In historical_
+
+            Select Case cuenta_
+
+                Case 1
+
+                    _accionDate = _organismo.GetCurrentUser(roomhstory_.createat, DateTime.Now)
+
+                    _userName = roomhstory_.username
+
+                Case 2
+
+                    _accionDate2 = _organismo.GetCurrentUser(roomhstory_.createat, DateTime.Now)
+
+                    _userName2 = roomhstory_.username
+
+                Case 3
+
+                    _userName3 = roomhstory_.username
+
+                    _accionDate3 = _organismo.GetCurrentUser(roomhstory_.createat, DateTime.Now)
 
                 Case Else
 
-                    sc_DestinoCubo.Value = 1
+                    Exit For
 
             End Select
 
-            ic_RoomRules.Value = room_.rules
+            cuenta_ += 1
 
-            Select Case room_.contenttype
+        Next
+    End Sub
 
-                Case "formula"
+    Sub VerificarFormula()
 
-                    sc_TipoRegla.Value = 1
+        If tb_Formula.Text = "" Then
 
-                Case "operando"
+            DisplayMessage("Falta Especificar la fórmula", TypeStatus.OkBut)
 
-                    sc_TipoRegla.Value = 2
+        Else
 
-                Case "csv"
+            Dim interpreterController_ As IMathematicalInterpreter = GetVars("_interpreterController")
 
-                    sc_TipoRegla.Value = 3
+            If interpreterController_ Is Nothing Then
 
-                Case "json"
+                interpreterController_ = New MathematicalInterpreterNCalc
 
-                    sc_TipoRegla.Value = 4
+                SetVars("_interpreterController", interpreterController_)
 
-            End Select
+            End If
+
+            Dim cubeController_ As ICubeController = GetVars("_cubeController")
+
+            If cubeController_ Is Nothing Then
+
+                cubeController_ = New CubeController
+
+            End If
+
+            interpreterController_.addOperands(cubeController_.GetOperands().ObjectReturned)
+
+            Dim Values_ = New Dictionary(Of String, Object)
+
+            Dim icontroladorMonedas_ As IControladorMonedas = New ControladorMonedas
+
+            Dim params_ = interpreterController_.GetParams(tb_Formula.Text)
+
+            Dim rnd_ As New Random()
+
+
+
+            For Each param_ In params_
+
+                Dim numeroAleatorio As Integer = rnd_.Next(1, 1000)
+
+                If Not Values_.ContainsKey(param_) Then
+
+                    Dim position_ = param_.LastIndexOf(".")
+
+                    Dim positionFound_ As Boolean
+
+                    If position_ = -1 Then
+
+                        positionFound_ = False
+
+                    Else
+
+                        positionFound_ = Int32.TryParse(param_.Substring(position_ + 1), position_)
+
+                    End If
+
+                    If positionFound_ Then
+
+                        Values_.Add(param_, numeroAleatorio)
+
+                    Else
+
+                        Values_.Add(param_ & ".0", numeroAleatorio)
+
+                    End If
+
+
+
+                End If
+
+            Next
+
+            Dim found_ = True
+
+            If cc_ValoresOperandos.DataSource IsNot Nothing Then
+
+                For Each elementos_ In cc_ValoresOperandos.DataSource
+
+                    Dim operandName_ = elementos_("operandName_").ToString
+
+                    Dim operandNameFull = elementos_("operandName_").ToString
+
+                    Dim position_ = operandName_.LastIndexOf(".")
+
+
+
+                    operandName_ = operandName_.Substring(position_ + 1)
+
+                    Dim doubleValue_ As Double
+
+                    If Double.TryParse(operandName_, doubleValue_) Then
+
+                        operandNameFull = elementos_("operandName_").ToString
+
+                        operandName_ = operandNameFull.Substring(0, position_)
+
+                    Else
+
+
+
+                        operandName_ = operandNameFull
+
+                        If found_ Then
+
+                            position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count - 1
+
+                            found_ = False
+
+                        Else
+
+                            position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count
+
+
+                        End If
+
+
+                        If position_ = -1 Then
+
+                            position_ = 0
+
+                        End If
+
+                        operandNameFull = operandName_ & "." & position_
+                        ' position = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count)
+
+                    End If
+
+                    If Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count > 0 Then
+
+                        Values_(operandNameFull) = elementos_("operandValue_")
+
+                    End If
+
+
+                Next
+
+            End If
+
+            Dim cuenta_ = 1
+
+            cc_ValoresOperandos.ClearRows()
+
+            For Each valor_ In Values_
+
+                cc_ValoresOperandos.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                               'Define el valor Llave de tu fila
+
+                                               catalogRow_.SetIndice(cc_ValoresOperandos.KeyField, cuenta_)
+
+                                               'Define el valor de una columna de la fila
+
+
+
+                                               Dim algo_ As New InputControl With {.ID = "operandName_",
+                                                                                       .Value = valor_.Key,
+                                                                                       .Type = InputControl.InputType.Text}
+
+                                               Dim algo2_ As New InputControl With {.ID = "operandValue_",
+                                                                                       .Value = valor_.Value,
+                                                                                       .Type = InputControl.InputType.Text}
+
+
+
+                                               catalogRow_.SetColumn(algo_, valor_.Key)
+
+                                               catalogRow_.SetColumn(algo2_, valor_.Value)
+
+
+                                               'de esta manera agregamos todas las columnas de nuestra fila 
+                                               'usando el control asociado a la columna y el valor que se asignara
+
+                                           End Sub)
+
+                cuenta_ += 1
+
+            Next
+
+            cc_ValoresOperandos.CatalogDataBinding()
+
+            DisplayMessage(interpreterController_.RunExpression(Of Object)(tb_Formula.Text, Values_), TypeStatus.OkInfo)
+
+            Dim report_ = interpreterController_.GetReportFull
+
+            If report_.getTitle = "" Then
+
+                If cuenta_ > 1 Then
+
+                    bc_Verificado.Visible = True
+
+
+                Else
+
+                    bc_Verificado.Visible = False
+
+                End If
+
+            Else
+
+                bc_Verificado.Visible = False
+
+
+            End If
 
         End If
 
 
 
+    End Sub
 
 
+    Sub IrVerificarFormula()
+
+        If tb_Formula.Text = "" Then
+
+            DisplayMessage("Falta Especificar la fórmula", TypeStatus.OkBut)
+
+        Else
+
+            Dim interpreterController_ As IMathematicalInterpreter = GetVars("_interpreterController")
+
+            If interpreterController_ Is Nothing Then
+
+                interpreterController_ = New MathematicalInterpreterNCalc
+
+                SetVars("_interpreterController", interpreterController_)
+
+            End If
+
+            Dim cubeController_ As ICubeController = GetVars("_cubeController")
+
+            If cubeController_ Is Nothing Then
+
+                cubeController_ = New CubeController
+
+            End If
+
+            interpreterController_.addOperands(cubeController_.GetOperands().ObjectReturned)
+
+            Dim Values_ = New Dictionary(Of String, Object)
+
+            Dim icontroladorMonedas_ As IControladorMonedas = New ControladorMonedas
+
+            Dim params_ = interpreterController_.GetParams(tb_Formula.Text)
+
+            Dim rnd_ As New Random()
+
+
+
+            For Each param_ In params_
+
+                Dim numeroAleatorio As Integer = rnd_.Next(1, 1000)
+
+                If Not Values_.ContainsKey(param_) Then
+
+                    Dim position_ = param_.LastIndexOf(".")
+
+                    Dim positionFound_ As Boolean
+
+                    If position_ = -1 Then
+
+                        positionFound_ = False
+
+                    Else
+
+                        positionFound_ = Int32.TryParse(param_.Substring(position_ + 1), position_)
+
+                    End If
+
+                    If positionFound_ Then
+
+                        Values_.Add(param_, numeroAleatorio)
+
+                    Else
+
+                        Values_.Add(param_ & ".0", numeroAleatorio)
+
+                    End If
+
+
+
+                End If
+
+            Next
+
+            Dim found_ = True
+
+            If cc_ValoresOperandos.DataSource IsNot Nothing Then
+
+                For Each elementos_ In cc_ValoresOperandos.DataSource
+
+                    Dim operandName_ = elementos_("operandName_").ToString
+
+                    Dim operandNameFull = elementos_("operandName_").ToString
+
+                    Dim position_ = operandName_.LastIndexOf(".")
+
+
+
+                    operandName_ = operandName_.Substring(position_ + 1)
+
+                    Dim doubleValue_ As Double
+
+                    If Double.TryParse(operandName_, doubleValue_) Then
+
+                        operandNameFull = elementos_("operandName_").ToString
+
+                        operandName_ = operandNameFull.Substring(0, position_)
+
+                    Else
+
+
+
+                        operandName_ = operandNameFull
+
+                        If found_ Then
+
+                            position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count - 1
+
+                            found_ = False
+
+                        Else
+
+                            position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count
+
+
+                        End If
+
+
+                        If position_ = -1 Then
+
+                            position_ = 0
+
+                        End If
+
+                        operandNameFull = operandName_ & "." & position_
+                        ' position = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count)
+
+                    End If
+
+                    If Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count > 0 Then
+
+                        Values_(operandNameFull) = elementos_("operandValue_")
+
+                    End If
+
+
+                Next
+
+            End If
+
+            Dim cuenta_ = 1
+
+            cc_ValoresOperandos.ClearRows()
+
+            For Each valor_ In Values_
+
+                cc_ValoresOperandos.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                               'Define el valor Llave de tu fila
+
+                                               catalogRow_.SetIndice(cc_ValoresOperandos.KeyField, cuenta_)
+
+                                               'Define el valor de una columna de la fila
+
+
+
+                                               Dim algo_ As New InputControl With {.ID = "operandName_",
+                                                                                       .Value = valor_.Key,
+                                                                                       .Type = InputControl.InputType.Text}
+
+                                               Dim algo2_ As New InputControl With {.ID = "operandValue_",
+                                                                                       .Value = valor_.Value,
+                                                                                       .Type = InputControl.InputType.Text}
+
+
+
+                                               catalogRow_.SetColumn(algo_, valor_.Key)
+
+                                               catalogRow_.SetColumn(algo2_, valor_.Value)
+
+
+                                               'de esta manera agregamos todas las columnas de nuestra fila 
+                                               'usando el control asociado a la columna y el valor que se asignara
+
+                                           End Sub)
+
+                cuenta_ += 1
+
+            Next
+
+
+
+            cc_ValoresOperandos.CatalogDataBinding()
+
+            If cuenta_ = 1 AndAlso tb_Formula.Text <> "" Then
+
+                VerificarFormula()
+
+            End If
+
+
+            'DisplayMessage(interpreterController_.RunExpression(Of Object)(fEditor.Text, Values_), TypeStatus.OkInfo)
+
+        End If
+
+    End Sub
+
+    Sub EjecutarRoom()
+
+
+        Dim cubeController_ As ICubeController = GetVars("_cubeController")
+
+        If cubeController_ Is Nothing Then
+
+            cubeController_ = New CubeController
+
+        End If
+
+        Dim params_ As New Dictionary(Of String, Object) From {{"S1.CA_TIPO_OPERACION.0", 1}, {"S10.CA_VINCULACION.0", ""}}
+
+        Dim reports_ = cubeController_.RunRoom(Of Object)("A22.CA_VINCULACION", params_)
+
+        MsgBox(reports_.result)
 
     End Sub
 
@@ -755,7 +1260,6 @@ Public Class Ges022_001_CuboDatos
 
 
 #End Region
-
 #Region "██████ Vinculación sexta capa  █████████       SAX      ████████████████████████████████████████████"
     '    ██                                                                                                ██
     '    ██ Defina en esta región todo lo que involucre el uso de controladores externos al contexto actual██

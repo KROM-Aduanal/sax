@@ -47,6 +47,9 @@ Public Class CardControl
 #End Region
 
 #Region "Metodos"
+#End Region
+
+#Region "Renderizado"
 
     Private Sub SettingCardControls()
 
@@ -61,10 +64,6 @@ Public Class CardControl
         End With
 
     End Sub
-
-#End Region
-
-#Region "Renderizado"
 
     Protected Overrides Sub CreateChildControls()
 

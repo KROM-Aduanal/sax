@@ -120,13 +120,14 @@ Public Class ControladorEmpresas
 
 
 #Region "MÉTODOS PRIVADOS"
+
     Private Function ArchivarRegistro(ByVal tipo_ As IControladorEmpresas.TipoEstructura,
                                             ByVal filtro_ As String) _
                                             As TagWatcher
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
 
-            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)("Glo007EmpresasNacionales")
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of EmpresaNacional)(GetType(EmpresaInternacional).Name)
 
             Dim setStructureOfSubs_ As UpdateDefinition(Of EmpresaNacional)
 

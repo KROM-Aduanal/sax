@@ -175,7 +175,23 @@
                     "name": "Reg000CubeRoomsCDI"
                 }
             ]
-        }          
+        },
+        {
+
+            "_id": 7,
+            "info": "Colección para Recursos de los Cubos",
+            "name": "Reg000CubeNames",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000CubeNames",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para Cubos CDI",
+                    "name": "Reg000CubeNames"
+                }
+            ]
+        }            
     ],
     "endpoints": [
         {
@@ -370,8 +386,17 @@
                                             "officesuffix": false,
                                             "credentialId": 2,
                                             "endpointId": 5
-                                    }                     
-                ]
+                                        },
+                                        {
+                                                "_id": 7,
+                                                "status": "on",
+                                                "rolname": "bigdataops",
+                                                "info": "Main bigdata database (dockers CubeRooms CDI)",
+                                                "name": "CubeResource",
+                                                "officesuffix": false,
+                                                "credentialId": 2,
+                                                "endpointId": 1
+                                        }                   ]
             }
         },
         "sql": {

@@ -38,7 +38,7 @@ Public Class Ges003_001_FacturasComerciales
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _icontroladorEmpresas64 As IControladorEmpresas64
+    Private _icontroladorEmpresas64 As Object 'IControladorEmpresas64
 
 #End Region
 
@@ -132,11 +132,11 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CA_NUMERO_FACTURA, Texto, longitud_:=40)
         [Set](dbcNumFacturaCOVE, CA_NUMERO_FACTURA, propiedadDelControl_:=PropiedadesControl.Valor)
         '                                     Item(CamposCOVE.CA_NUMERO_COVE, Texto, longitud_:=40)
-        [Set](dbcNumFacturaCOVE, CA_NUMERO_AcuseValor, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](dbcNumFacturaCOVE, CA_NUMERO_ACUSEVALOR, propiedadDelControl_:=PropiedadesControl.ValueDetail)
         '                                     Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha)
         [Set](icFechaFactura, CA_FECHA_FACTURA)
         '                                     Item(CamposCOVE.CA_FECHA_COVE, Fecha)
-        [Set](icFechaCOVE, CA_FECHA_AcuseValor)
+        [Set](icFechaCOVE, CA_FECHA_ACUSEVALOR)
         '                                     Item(CamposClientes.CA_RAZON_SOCIAL, Texto, longitud_:=120)
         [Set](fbcCliente, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
         '                                     Item(CamposClientes.CA_TAX_ID, Texto, longitud_:=11)

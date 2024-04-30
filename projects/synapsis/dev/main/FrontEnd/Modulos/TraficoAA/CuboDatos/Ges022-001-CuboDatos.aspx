@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="vb" Async="true" AutoEventWireup="false" MasterPageFile="~/FrontEnd/Modulos/Home.Master" CodeBehind="Ges022-001-CuboDatos.aspx.vb" Inherits=".Ges022_001_CuboDatos" %>
+﻿<%@ Page Title="" Language="vb" Async="true" AutoEventWireup="false"  MasterPageFile="~/FrontEnd/Modulos/Home.Master" CodeBehind="Ges022-001-CuboDatos.aspx.vb" Inherits=".Ges022_001_CuboDatos" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentFindbar" runat="server">
@@ -102,6 +104,8 @@
        
 </style>
 
+
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentCompanyList" runat="server">
 <% If IsPopup = False Then %>
@@ -109,8 +113,10 @@
 <% End If %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentBody" runat="server">
-    <div class="d-flex">
-        <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM" HasAutoSave="false" Label="Cubo de Datos" OnCheckedChanged="MarcarPagina">
+
+
+    <div class="d-flex" >
+        <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM" HasAutoSave="false" Label="Reglas del Cubo" OnCheckedChanged="MarcarPagina">
             <Buttonbar runat="server" OnClick="EventosBotonera">
                 <DropdownButtons>
                     <GWC:ButtonItem Text="Probar Fórmula"/>
@@ -120,31 +126,36 @@
                     <GWC:ButtonItem Text="Mandar por Correo"/>
                 </DropdownButtons>
             </Buttonbar>   
-            <Fieldsets>
-                 <GWC:FieldsetControl runat="server" Label="Formulas">
+            <Fieldsets >
+                 <GWC:FieldsetControl runat="server" Label="Formulas" ID="fscformulas">
                     <ListControls>
-                        <asp:Panel runat="server" CssClass="col-xs-6">
+                        <asp:Panel runat="server" CssClass="col-md-12 col-xs-6" ID="p_formulillas">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle"></asp:Label>
-                            <asp:Panel runat="server" CssClass="wc-cubo-formulas">
+                            <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_Cabulidad">
 
                                 <div>
-                                    <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22"/>
-                                    <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server"/>
-                                    <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"/>
+
+                                      <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22" ID="bc_SourceCube"/>
+                                      <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server" ID="bc_Function"  OnClick="CambioContenido"/>
+                                      <GWC:ButtonControl CssClass="cubo-btn-variable" runat="server" ID="bc_Var" Visible="False" OnClick="CambioContenido"/>
+                                      <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"  ID="ic_RoomName" />
+
                                 </div>
-                                <div>
-                                    <gwc-userdata title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png"></gwc-userdata>
+                                <div >
+                                    
+                                    <gwc-userdata title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
                                    
-                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online"/>
+                                    <GWC:ButtonControl runat="server" Label="Verificado" ID="bc_Verificado" CssClass="swcverificado" Visible="false"/>
+                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online" ID="swc_Online"/>
                                 </div>
                                 <div>
                                     <div is="wc-feditor" contenteditable="true"></div>
-                                    <asp:TextBox ID="fEditor" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tb_Formula" runat="server" CssClass="feditorcabulidad"></asp:TextBox>
                                 </div>
                                 <div>
-                                    <GWC:ButtonControl runat="server" Label="Limpiar"/>
-                                    <GWC:ButtonControl runat="server" Label="Verificar"/>
+                                    <GWC:ButtonControl runat="server" Label="Limpiar" CssClass="iralimpiar" OnClick="EjecutarRoom"/>
+                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPrueba" CssClass="iraformulacabulidad"  OnClick="IrVerificarFormula" Enabled="false"/>
                                 </div>
 
                             </asp:Panel>
@@ -192,13 +203,13 @@
                         </asp:Panel>
                     </ListControls>
                 </GWC:FieldsetControl>
-                <GWC:FieldsetControl runat="server" Label="Información">
+                <GWC:FieldsetControl runat="server" Label="Información" ID="fscinformacion" >
                     <ListControls>
                    
                         <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-description">
                             <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Descripción" CssClass="fieldset-subtitle"></asp:Label>
-                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
+                            <asp:Label runat="server" Text="Descripción" CssClass="fieldset-subtitle" ></asp:Label>
+                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea" ID="ic_DescripcionRules"/>
 
                             <%-- FIN DISEÑO COMPONENTE --%>
                         </asp:Panel>
@@ -206,11 +217,11 @@
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Histórico" CssClass="fieldset-subtitle"></asp:Label>
                             <ul>
-                                <gwc-comment title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
+                                <gwc-comment title="<%=_userName%>" date="<%=_accionDate%>" image="<%=_userImage%>" Text="Lorem Ipsum es simplemente la pura cabulidad desde el año 1500"></gwc-comment>
                                
-                                <gwc-comment title="Roberto Carlos2" date="hace 2 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
+                                <gwc-comment title="<%=_userName2%>" date="<%=_accionDate2%>" image="<%=_userImage%>" Text="Lorem Ipsum es simplemente la pura cabulidad desde el año 1500"></gwc-comment>
                                 
-                                <gwc-comment title="Roberto Carlos3" date="hace 1 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>                              
+                                <gwc-comment title="<%=_userName3%>" date="<%=_accionDate3%>" image="<%=_userImage%>" Text="Lorem Ipsum es simplemente la pura cabulidad desde el año 1500"></gwc-comment>                              
                             </ul>
 
                             <%-- FIN DISEÑO COMPONENTE --%>
@@ -219,41 +230,22 @@
                 </GWC:FieldsetControl>
 
                         
-               <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
+               <GWC:FieldsetControl runat="server"  Label="Prueba de Fórmulas" ID="fscProbarFormulas" CssClass="formulariocabulidad">
                     <ListControls>
 
-                       
-
+ 
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2 py-5">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 solid-textarea p-0 justify-content-start" ID="ic_RoomName" Type="Text" Format="SinDefinir" Name="ic_RoomName" Label="Nombre del Gajo" />
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 p-0 d-flex justify-content-end" ID="sc_TipoRegla" Name="sc_TipoRegla" Label="Tipo de regla"  SearchBarEnabled="false" LocalSearch="false" Rules="required"  >
-                                  <Options >
-                                         <GWC:SelectOption Value="1" Text="Fórmula"/>
-                                         <GWC:SelectOption Value="2" Text="Operando"/>
-                                         <GWC:SelectOption Value="3" Text="Archivo CSV"/>
-                                         <GWC:SelectOption Value="4" Text="Archivo JSON"/>
-                                  </Options>
-                            </GWC:SelectControl>
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 p-0 d-flex justify-content-end" ID="sc_DestinoCubo" Name="sc_DestinoCubo" Label="Cubo destino"  SearchBarEnabled="false" LocalSearch="false" Rules="required"  >
-                                  <Options >
-                                         <GWC:SelectOption Value="1" Text="A22"/>
-                                         <GWC:SelectOption Value="2" Text="VOCE"/>
-                                         <GWC:SelectOption Value="3" Text="UCC"/>
-                                         <GWC:SelectOption Value="4" Text="UCAA"/>
-                                         <GWC:SelectOption Value="5" Text="UAA"/>
-                                         <GWC:SelectOption Value="6" Text="CDI"/>
-                                  </Options>
-                            </GWC:SelectControl>
-                        </asp:Panel>
 
-                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2 py-5">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mt-2 mb-5 solid-textarea p-0 justify-content-start" ID="ic_RoomRules" Type="TextArea" Format="SinDefinir" Name="ic_RoomRules" Label="Regla del Gajo" />
-                        </asp:Panel>
+                             
+                            
+                             <GWC:ButtonControl runat="server" Label="Ejecutar Prueba" ID="bc_ProbarFormula" OnClick="VerificarFormula"  CssClass="probarformulacabulidad" Enabled="true"/>
+                            
+                            
 
-                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2 py-5">
-                             <GWC:CatalogControl runat="server" KeyField="indice" ID="cc_ValoresOperandos" CssClass="w-100" Collapsed="true">
+                             <GWC:CatalogControl runat="server" KeyField="indice" ID="cc_ValoresOperandos" CssClass="w-100 catalogopendacabulidad" Collapsed="true">
+                                 
                                 <Columns>
-                                   <GWC:InputControl runat="server" ID="operandName_" Label="Operando"/>
+                                   <GWC:InputControl runat="server" ID="operandName_" Label="Operando" CssClass="catalogopendacabulidad"/>
                                    <GWC:InputControl runat="server" ID="operandValue_" Label="Valor"/>
                                 </Columns>
                             </GWC:CatalogControl>
@@ -266,6 +258,161 @@
             </Fieldsets>
         </GWC:FormControl>
     </div>
+
+ <script>
+     localStorage.setItem('cabulidadFeditor','');
+     document.addEventListener('click', function (event) {
+        
+         if (event.target.parentNode.classList.contains('iraformulacabulidad')) {
+
+             const feditor_ = document.querySelector('.feditorcabulidad');
+
+             if (feditor_.value == "") {
+                 localStorage.setItem('cabulidadFeditor', '');
+
+             }
+             else {
+
+
+                 const content_ = document.querySelector('.content-wrapper-page');
+
+                 const fieldset_ = document.querySelector('.formulariocabulidad');
+
+/*                 const operandname_ = document.querySelector('.catalogopendacabulidad');*/
+
+                 //const miTabla = document.querySelector('[is="wc-catalog"]');
+                 //if (miTabla.rows.length > 2) {
+                 //    console.log('La tabla tiene elementos.' + miTabla.rows.length );
+                 //} else {
+                 //    console.log('La tabla está vacía.');
+                 //}
+
+                // const operandname_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscProbarFormulas_cc_ValoresOperandos_operandName__operandName_');
+
+                 const expresion = feditor_.value;
+                 const operandos = expresion.split(/[-+*/()]/); // Busca todos los números en la expresión
+                 var tieneElementos = false;
+
+                 for (const operando_ of operandos) {
+
+                     if (checanumero(operando_)) {
+
+                         tieneElementos = true;
+                         break;
+                     }
+                 }
+                 console.log(operandos);
+                 if (tieneElementos) {
+                     if (content_) {
+                         content_.scroll({
+                             top: fieldset_.offsetTop - 22.2,
+                             behavior: 'smooth'
+                         });
+                     }
+                 }
+
+             }
+         } else if (event.target.parentNode.classList.contains('probarformulacabulidad')) {
+
+             const feditor_ = document.querySelector('.feditorcabulidad');
+
+             if (feditor_.value == "") {
+
+                 localStorage.setItem('cabulidadFeditor', '');
+
+             }
+             else {
+
+                 const content_ = document.querySelector('.content-wrapper-page');
+
+                 const fieldset_ = document.querySelector('.fieldset-subtitle');
+
+
+                 if (content_) {
+                     content_.scroll({
+                         top: fieldset_.offsetTop - 22.2,
+                         behavior: 'smooth'
+                     });
+                 }
+             }
+         } 
+     });
+
+     document.addEventListener('input', function (event) {
+
+
+         const algo_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_ic_RoomName_ic_RoomName'); 
+
+         algo_.style.width = '800px';
+         //alert(algo_.style.width);
+         const componente_ = document.querySelector("[is=wc-feditor]");
+
+         if (event.target==componente_) {
+
+
+             const feditor_ = document.querySelector(".feditorcabulidad");
+
+             const bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
+
+             //console.log(bc_ircabulidad_);
+
+             if (feditor_.value == "") {
+                 localStorage.setItem('cabulidadFeditor', '');
+
+                 bc_ircabulidad_.style.backgroundColor = '#cecdcd';
+                 bc_ircabulidad_.disabled = true;
+             }
+             else {
+
+                 bc_ircabulidad_.style.backgroundColor = 'var(--tintColor)';
+                 bc_ircabulidad_.disabled = false;
+                 //bc_ircabulidad_.style.backgroundImage = 'url("/FrontEnd/Librerias/Krom/imgs/matrazc.png")';
+                 //bc_ircabulidad_.style.backgroundPosition = 'left center';
+                 //bc_ircabulidad_.style.backgroundSize = '17%';
+
+
+             }
+         }
+     });
+
+     function checanumero(numero_) {
+
+         numero_ = numero_.trim();
+
+         var tieneLetra_ = false;
+
+         var cuentaPunto_ = 0;
+
+         for (const digito_ of numero_) {
+
+             if (!/^[1-9]$/.test(digito_)) {
+
+                 if (digito_ === ".") {
+
+                     cuentaPunto_++;
+
+                     if (cuentaPunto_ > 1) {
+
+                         tieneLetra_ = true;
+
+                         break;
+                     }
+                 } else {
+                     // Si no es un número ni un punto, rompemos el ciclo
+                     tieneLetra_ = true;
+                     break;
+                 }
+             }
+         }
+         return tieneLetra_;
+     }
+
+ </script>
+
 </asp:Content>
+
+
 <asp:Content ID="Content5" ContentPlaceHolderID="footer" runat="server">
+
 </asp:Content>
+

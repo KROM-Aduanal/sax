@@ -956,6 +956,8 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Fecha Modificacion")> CP_FECHA_MODIFICACION = 9015
             <EnumMember> <Description("Fecha Modificacion")> CP_TIPO_ALIAS = 9016
             <EnumMember> <Description("ObjectId Producto")> CP_OBJECTID_PRODUCTO = 9017
+            <EnumMember> <Description("Descripcion Fracción Arancelaria")> CP_DESCRIPCION_FRACCION_ARANCELARIA = 9018
+            <EnumMember> <Description("Descripcion Nico")> CP_DESCRIPCION_NICO = 9019
         End Enum
 
         Public Enum CamposTarifaArancelaria

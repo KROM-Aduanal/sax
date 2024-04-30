@@ -12,6 +12,9 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorCliente64", "..\controllers\syn.documentos\1_0_stdConstructorCliente64_dll\ConstructorCliente64\ConstructorCliente64.vbproj", "{838DA789-C00F-4D79-BA2D-6C99BDB78B9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Synapsis controllers", "Synapsis controllers", "{8C786625-42E0-438B-8D99-E5CAF2E2BC9D}"
+	ProjectSection(SolutionItems) = preProject
+		..\controllers\syn.documentos\1_0_stdConstructorReferencia64_dll\ConstructorReferencia64\ConstructorReferencia64.sln = ..\controllers\syn.documentos\1_0_stdConstructorReferencia64_dll\ConstructorReferencia64\ConstructorReferencia64.sln
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorReferencia64", "..\controllers\syn.documentos\1_0_stdConstructorReferencia64_dll\ConstructorReferencia64\ConstructorReferencia64.vbproj", "{2C1C3532-F913-4F5B-BDF8-C625272BDC19}"
 EndProject
@@ -301,8 +304,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SingletonSQLServer64", "..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Empresa64", "..\..\..\global\dev\rec.global\1_0_stdEmpresa64_dll\Empresa64\Empresa64.vbproj", "{2488D12D-6EE2-45AE-B70F-302D855F9411}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InstitucionBancaria64", "..\..\..\global\dev\rec.global\1_0_stdInstitucionBancaria64_dll\InstitucionBancaria64\InstitucionBancaria64.vbproj", "{FBA92EA3-0846-4F92-8307-B03B59A2BA64}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Moneda64", "..\..\..\global\dev\rec.global\1_0_stdMonedas64_dll\Monedas64\Moneda64.vbproj", "{E0754896-6D37-4E52-960C-FB7016B4CEFD}"
@@ -312,10 +313,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorBusqueda64", "..\..\..\global\dev\rec.global.controllers\1_0_stdControladorBusqueda64_dll\ControladorBusqueda64\ControladorBusqueda64.vbproj", "{F5C277CE-A013-4454-849E-BFA6EACD1040}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorDocumento64", "..\..\..\global\dev\rec.global.controllers\1_0_stdControladorDocumento64_dll\ControladorDocumento64\ControladorDocumento64.vbproj", "{F6F5888F-C9B1-45C7-BAF2-D3F7518CCDA7}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorEmpresas64", "..\..\..\global\dev\rec.global.controllers\1_0_stdControladorEmpresas64_dll\ControladorEmpresas64\ControladorEmpresas64.vbproj", "{3E04D37F-B322-4787-A278-38BEE9A80F16}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorEmpresav264", "..\..\..\global\dev\rec.global.controllers\1_0_stdControladorEmpresav264_dll\ControladorEmpresav264.vbproj", "{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorInstitucionBancaria64", "..\..\..\global\dev\rec.global.controllers\1_0_stdControladorInstitucionBancaria64_dll\ControladorInstitucionBancaria64\ControladorInstitucionBancaria64.vbproj", "{64FE1C1A-AEF9-4FB0-AB9A-1ACD652E7CF8}"
 EndProject
@@ -358,6 +355,26 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CptCardControl64", "..\..\..\..\masters\vb\esp\cmf\scr\Components web\1_0_CptCardControl64_dll\CardControl\CptCardControl64.vbproj", "{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorFirmaElectronica64", "..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.utils\1_0_stdControladorFirmaElectronica64_dll\ControladorFirmaElectronica64\ControladorFirmaElectronica64.vbproj", "{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Empresa64", "..\..\..\global\dev\rec.global\2_0_stdEmpresa64_dll\Empresa64\Empresa64.vbproj", "{74FF2477-57B8-433A-96A8-2D2FEAD16200}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EmpresaInternacional64", "..\..\..\global\dev\rec.global\2_0_stdEmpresaInternacional64_dll\EmpresaInternacional64\EmpresaInternacional64.vbproj", "{0BD03ED1-0A60-451B-82FA-94D87BD3D561}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EmpresaNacional64", "..\..\..\global\dev\rec.global\2_0_stdEmpresaNacional64_dll\EmpresaNacional64\EmpresaNacional64.vbproj", "{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IEmpresa", "..\..\..\global\dev\rec.global\2_0_stdIEmpresa_dll\IEmpresa64\IEmpresa.vbproj", "{24E39000-4ADD-4283-B016-0F9090574A48}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IEmpresaInternacional", "..\..\..\global\dev\rec.global\2_0_stdIEmpresaInternacional_dll\IEmpresaInternacional64\IEmpresaInternacional.vbproj", "{EC4A5D09-1E3E-47FA-8127-20909CEC94E2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IEmpresaNacional", "..\..\..\global\dev\rec.global\2_0_stdIEmpresaNacional_dll\IEmpresaNacional64\IEmpresaNacional.vbproj", "{124C7951-8C75-4BE5-9B55-97BE10AC677E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IControladorEmpresas", "..\..\..\global\dev\rec.global.controllers\2_0_stdIControladorEmpresas_dll\IControladorEmpresas64\IControladorEmpresas.vbproj", "{3DAF6E5A-466F-495B-89B1-759D54226EEC}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorEmpresas64", "..\..\..\global\dev\rec.global.controllers\2_0_stdControladorEmpresas64_dll\ControladorEmpresas64\ControladorEmpresas64.vbproj", "{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorViajes64", "..\controllers\syn.documentos\1_0_stdConstructorViajes64_dll\ConstructorViajes64\ConstructorViajes64.vbproj", "{0C8E1609-4629-4A4C-A750-F4844A574656}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConstructorRevalidacion64", "..\controllers\syn.documentos\1_0_stdConstructorRevalidacion64_dll\ConstructorRevalidacion64\ConstructorRevalidacion64.vbproj", "{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -917,10 +934,6 @@ Global
 		{07D89EB5-6B98-439E-B6D5-0A57DA0BD104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D89EB5-6B98-439E-B6D5-0A57DA0BD104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D89EB5-6B98-439E-B6D5-0A57DA0BD104}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2488D12D-6EE2-45AE-B70F-302D855F9411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2488D12D-6EE2-45AE-B70F-302D855F9411}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2488D12D-6EE2-45AE-B70F-302D855F9411}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2488D12D-6EE2-45AE-B70F-302D855F9411}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBA92EA3-0846-4F92-8307-B03B59A2BA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBA92EA3-0846-4F92-8307-B03B59A2BA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA92EA3-0846-4F92-8307-B03B59A2BA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -941,14 +954,6 @@ Global
 		{F6F5888F-C9B1-45C7-BAF2-D3F7518CCDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F5888F-C9B1-45C7-BAF2-D3F7518CCDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F5888F-C9B1-45C7-BAF2-D3F7518CCDA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E04D37F-B322-4787-A278-38BEE9A80F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E04D37F-B322-4787-A278-38BEE9A80F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E04D37F-B322-4787-A278-38BEE9A80F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E04D37F-B322-4787-A278-38BEE9A80F16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64FE1C1A-AEF9-4FB0-AB9A-1ACD652E7CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64FE1C1A-AEF9-4FB0-AB9A-1ACD652E7CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64FE1C1A-AEF9-4FB0-AB9A-1ACD652E7CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -1033,6 +1038,46 @@ Global
 		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FF2477-57B8-433A-96A8-2D2FEAD16200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FF2477-57B8-433A-96A8-2D2FEAD16200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FF2477-57B8-433A-96A8-2D2FEAD16200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FF2477-57B8-433A-96A8-2D2FEAD16200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD03ED1-0A60-451B-82FA-94D87BD3D561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD03ED1-0A60-451B-82FA-94D87BD3D561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD03ED1-0A60-451B-82FA-94D87BD3D561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD03ED1-0A60-451B-82FA-94D87BD3D561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E39000-4ADD-4283-B016-0F9090574A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E39000-4ADD-4283-B016-0F9090574A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E39000-4ADD-4283-B016-0F9090574A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E39000-4ADD-4283-B016-0F9090574A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4A5D09-1E3E-47FA-8127-20909CEC94E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4A5D09-1E3E-47FA-8127-20909CEC94E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4A5D09-1E3E-47FA-8127-20909CEC94E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4A5D09-1E3E-47FA-8127-20909CEC94E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{124C7951-8C75-4BE5-9B55-97BE10AC677E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{124C7951-8C75-4BE5-9B55-97BE10AC677E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{124C7951-8C75-4BE5-9B55-97BE10AC677E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{124C7951-8C75-4BE5-9B55-97BE10AC677E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DAF6E5A-466F-495B-89B1-759D54226EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAF6E5A-466F-495B-89B1-759D54226EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAF6E5A-466F-495B-89B1-759D54226EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAF6E5A-466F-495B-89B1-759D54226EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8E1609-4629-4A4C-A750-F4844A574656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8E1609-4629-4A4C-A750-F4844A574656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8E1609-4629-4A4C-A750-F4844A574656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8E1609-4629-4A4C-A750-F4844A574656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1181,14 +1226,11 @@ Global
 		{CF86813A-EDE1-4537-80BD-E2AA8365132B} = {C39319F2-79ED-45F7-AF41-BFBBB84645A9}
 		{A3A253BA-A71A-4E96-A53B-E7977D1EBEB1} = {C39319F2-79ED-45F7-AF41-BFBBB84645A9}
 		{07D89EB5-6B98-439E-B6D5-0A57DA0BD104} = {C39319F2-79ED-45F7-AF41-BFBBB84645A9}
-		{2488D12D-6EE2-45AE-B70F-302D855F9411} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{FBA92EA3-0846-4F92-8307-B03B59A2BA64} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{E0754896-6D37-4E52-960C-FB7016B4CEFD} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{3A7EB91C-8E77-43A0-95B6-C3B20DF85626} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{F5C277CE-A013-4454-849E-BFA6EACD1040} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{F6F5888F-C9B1-45C7-BAF2-D3F7518CCDA7} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
-		{3E04D37F-B322-4787-A278-38BEE9A80F16} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
-		{CD26FF50-0BE8-4941-BE0A-6984C2BB21FD} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{64FE1C1A-AEF9-4FB0-AB9A-1ACD652E7CF8} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{36E64295-A200-4938-8F13-93DB14FFB54C} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
 		{52A58E24-2A32-410A-A16A-B4048DC5A6A5} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
@@ -1210,6 +1252,16 @@ Global
 		{8A6540B7-D041-4F18-98F5-32F9A001B664} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
 		{9324C0C9-B9C8-49C2-BCAD-22C8F4595AC7} = {62449754-D0B4-475C-99AF-0BEDFFFDB07F}
 		{F765EB78-7F24-4889-A6DD-8E94CBCC8C2E} = {5680221B-C37C-4E13-B764-2394F2EF8302}
+		{74FF2477-57B8-433A-96A8-2D2FEAD16200} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{0BD03ED1-0A60-451B-82FA-94D87BD3D561} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{DF2F0B27-FDAE-4E33-8F6F-07AA4ECA6995} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{24E39000-4ADD-4283-B016-0F9090574A48} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{EC4A5D09-1E3E-47FA-8127-20909CEC94E2} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{124C7951-8C75-4BE5-9B55-97BE10AC677E} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{3DAF6E5A-466F-495B-89B1-759D54226EEC} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11} = {9FBB4D4A-601D-4D77-830B-BA2C3FBB2EB6}
+		{0C8E1609-4629-4A4C-A750-F4844A574656} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
+		{335695A8-FFD7-4CE3-92E4-F509E0E0CE8D} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DB70D15-1726-4FC9-95C9-1DF3E9509B26}

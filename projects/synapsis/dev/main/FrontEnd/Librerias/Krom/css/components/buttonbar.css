@@ -6,9 +6,9 @@
     border-radius: 20px;
 }
 
-    .wc-buttonbar a {
-        --tintColor: #6c4fd3;
-    }
+.wc-buttonbar a {
+    --tintColor: #6c4fd3;
+}
 
 .wc-buttonbar label {
     --tintColor: #36215b;
@@ -27,7 +27,14 @@
 
 .wc-buttonbar > a:not(:last-child),
 .wc-buttonbar > label:not(:last-child) {
-    border-right: 1px solid #ffffff;
+    /*border-right: 1px solid #ffffff;*/
+    border-right: 1px solid rgba(0,0,0,.075);
+}
+
+.wc-buttonbar > a:not(:first-child),
+.wc-buttonbar > label:not(:first-child) {
+    /*border-right: 1px solid #ffffff;*/
+    border-left: 1px solid rgba(255,255,255,.075);
 }
 
 .wc-buttonbar > a,

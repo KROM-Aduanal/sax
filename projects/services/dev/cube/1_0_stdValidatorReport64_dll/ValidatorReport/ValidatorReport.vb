@@ -1,5 +1,4 @@
 ﻿Imports System.Linq.Expressions
-Imports Cube.ValidatorReport
 Imports Cube.Interpreters
 Imports MongoDB.Bson
 Imports Cube.Validators
@@ -46,6 +45,8 @@ Public Class ValidatorReport
     Property scope As AdviceTypesReport
 
     Property _iduser As ObjectId
+
+    Property result As String
 
 #End Region
 
@@ -309,6 +310,12 @@ Public Class ValidatorReport
 
     End Sub
 
+    Public Function getTitle() As String
+
+        Return title
+
+    End Function
+
 #End Region
 
 End Class
@@ -324,7 +331,7 @@ Public Class ItemReport
 
     Property descriptionerrortype As String
 
-    Property advicetypeerror As AdviceTypesReport
+    Property advicetypeerror As ValidatorReport.AdviceTypesReport
 
     Property errortype As [Enum]
 

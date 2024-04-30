@@ -105,7 +105,9 @@ Namespace Syn.Documento
 
                     Return New List(Of Nodo) From {
                                                     Item(CamposProducto.CP_FRACCION_ARANCELARIA, Texto, 80),
+                                                    Item(CamposProducto.CP_DESCRIPCION_FRACCION_ARANCELARIA, Texto),
                                                     Item(CamposProducto.CP_NICO, Texto),
+                                                    Item(CamposProducto.CP_DESCRIPCION_NICO, Texto),
                                                     Item(CamposProducto.CP_FECHA_REGISTRO, Fecha),
                                                     Item(CamposProducto.CP_ESTATUS, Texto, 30),
                                                     Item(CamposProducto.CP_OBSERVACION, Texto, 250)

@@ -272,7 +272,13 @@ Public Class FindboxControl
 
         If Not source.Text = Nothing Then
 
+            'Enabled = False
+
             OnClick(EventArgs.Empty)
+
+        Else
+
+            'Enabled = True
 
         End If
 

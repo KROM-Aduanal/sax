@@ -379,7 +379,7 @@
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaEntrega" Label="Entrega" />
 
-                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaEntrada" Label="Entrada" OnTextChanged="icFecha_TextChanged"/>
+                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaEntrada" Label="Entrada" AutoPostBack="true" OnTextChanged="icFecha_TextChanged"/>
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaPresentacion" Label="Presentación" OnTextChanged="icFecha_TextChanged" Visible="false"/>
 

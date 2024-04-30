@@ -2,40 +2,35 @@
 #Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
 
 'RECURSOS DEL CMF
-Imports gsol.krom
-Imports MongoDB.Bson
 Imports Syn.Documento
 Imports MongoDB.Driver
 Imports Wma.Exceptions
-Imports Syn.Operaciones
-Imports gsol.Web.Components
 Imports Syn.Nucleo.Recursos
 Imports Syn.Nucleo.Recursos.CamposClientes
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
 Imports Syn.Nucleo.RecursosComercioExterior
-Imports gsol.Web.Components.FormControl.ButtonbarModality
 Imports Syn.Nucleo.Recursos.CamposDomicilio
 
 'UTILERIAS/RECURSOS ADICIONALES
 Imports Sax.Web
-Imports Syn.Utils.Organismo
-Imports Sax.Web.ControladorBackend.Datos
-Imports Sax.Web.ControladorBackend.Cookies
+
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals
-Imports Rec.Globals.Empresa
 Imports Rec.Globals.Controllers
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
-Imports gsol.krom.Anexo22.Vt022AduanaSeccionA01
-Imports System.Globalization
+
 Imports Syn.Documento.Componentes.Campo
 Imports Rec.Globals.Utils
 Imports System.IO
 Imports Syn.CustomBrokers.Controllers
 Imports System.Web.Script.Serialization
+Imports Rec.Globals.Domicilio64
+
+Imports Rec.Globals.Empresa
+Imports Syn.Operaciones
 
 #End Region
 
@@ -199,14 +194,6 @@ Public Class Ges022_001_Clientes
         End If
 
         s_SeleccionarDomicilio.Checked = True : VerificaCheckDomicilio()
-
-        Dim d As New List(Of Dictionary(Of String, String)) From {
-            New Dictionary(Of String, String) From {{"fileId", "1"}, {"fileName", "cosa1"}},
-            New Dictionary(Of String, String) From {{"fileId", "2"}, {"fileName", "cosa2"}}
-        }
-
-
-        icRutaLlave.Value = New JavaScriptSerializer().Serialize(d)
 
     End Sub
 
@@ -501,7 +488,7 @@ Public Class Ges022_001_Clientes
 
         With documentoElectronico_
 
-            Dim domicilio_ As New domicilio
+            Dim domicilio_ As New Rec.Globals.domicilio
 
             Dim listOptionsDomicilios_ As New List(Of SelectOption)
 
@@ -946,47 +933,27 @@ Public Class Ges022_001_Clientes
 
     End Function
 
-    Protected Sub icRutaCertificado_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
+    'Protected Sub icRutaCertificado_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
 
-        Dim id = ObjectId.GenerateNewId().ToString
+    '    Dim id = ObjectId.GenerateNewId().ToString
 
-        With sender
-            ._idpropietario = id
-            .nombrepropietario = "Yo Merengues Dos"
-            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
-            .datosadicionales = New InformacionDocumento With {
-                          .foliodocumento = "00000002",
-                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
-                          .datospropietario = New InformacionPropietario With {
-                              .nombrepropietario = "Yo Merengues Dos",
-                              ._id = id
-                          }
-                         }
-            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
-        End With
+    '    With sender
+    '        ._idpropietario = id
+    '        .nombrepropietario = "Yo Merengues Dos"
+    '        .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+    '        .datosadicionales = New InformacionDocumento With {
+    '                      .foliodocumento = "00000002",
+    '                      .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+    '                      .datospropietario = New InformacionPropietario With {
+    '                          .nombrepropietario = "Yo Merengues Dos",
+    '                          ._id = id
+    '                      }
+    '                     }
+    '        .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+    '    End With
 
-    End Sub
+    'End Sub
 
-    Protected Sub icRutaLlave_ChooseFile(sender As Object, e As EventArgs)
-
-        Dim id = ObjectId.GenerateNewId().ToString
-
-        With sender
-            ._idpropietario = id
-            .nombrepropietario = "Yo Merengues Dos"
-            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
-            .datosadicionales = New InformacionDocumento With {
-                          .foliodocumento = "00000002",
-                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
-                          .datospropietario = New InformacionPropietario With {
-                              .nombrepropietario = "Yo Merengues Dos",
-                              ._id = id
-                          }
-                         }
-            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
-        End With
-
-    End Sub
 
 #End Region
 

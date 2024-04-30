@@ -23,7 +23,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="contentBody" runat="server">
     <style>
         .wc-group:before {
-            background-color: #826d86 !important;
+            background-color: #3b0b43 !important;
             color: #fff !important;
             width: 100%;
             text-align: center;
@@ -33,7 +33,7 @@
             padding: 10px 18px !important;
         }
         .wc-group.group-boders {
-          border: 1px solid #826d86;
+          border: 1px solid #3b0b43;
         }
         .wc-group {
           padding-top: 50px;
@@ -67,6 +67,9 @@
         .wc-dualitybar input[type="text"] {
             font-size: 120%;
         }
+        .wc-dualitybar label:nth-child(2) > div > div:nth-child(2) a {
+            display:none !important;
+        }
     </style>
     
     <div class="d-flex">
@@ -80,35 +83,35 @@
                 </DropdownButtons>
             </Buttonbar>      
             <Fieldsets>
-                <GWC:FieldsetControl runat="server" Label="Datos generales" ID="_fsDatosGenerales">
+                <GWC:FieldsetControl runat="server" Label="Datos generales" ID="fscDatosGenerales">
                     <ListControls>  
                        
-                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="db_FraccionArancelaria" Label="Fracción arancelaria" LabelDetail="NICO"/>                       
+                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="dbcFraccionArancelaria" Label="Fracción arancelaria" LabelDetail="NICO"/>                       
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 nopadding">
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="sw_TipoOperacion" label="Tipo de Operación" OnText="Importación" OffText="Exportación" Checked="true" OnCheckedChanged="sw_TipoOperacion_CheckedChanged"/>
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="sw_TipoMaterialPeligroso" label="Tipo de material" OnText="Peligroso" OffText="Peligroso"/>
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="sw_TipoMaterialVulnerable" label="Material vulnerable" OnText="Si" OffText="No"/>
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="sw_TipoMaterialSensible" label="Material sensible" OnText="Si" OffText="No"/>
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="swcTipoOperacion" label="Tipo de Operación" OnText="Importación" OffText="Exportación" Checked="true" OnCheckedChanged="sw_TipoOperacion_CheckedChanged"/>
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="swcTipoMaterialPeligroso" label="Tipo de material" OnText="Peligroso" OffText="Peligroso"/>
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="swcTipoMaterialVulnerable" label="Material vulnerable" OnText="Si" OffText="No"/>
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 mb-5 d-flex justify-content-center" ID="swcTipoMaterialSensible" label="Material sensible" OnText="Si" OffText="No"/>
                         </asp:Panel>          
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 nopadding">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5 solid-textarea bigsize" Type="Textarea" ID="txt_Fraccion" Label="Descripción Fracción"/>
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5 solid-textarea bigsize" Type="Textarea" ID="txt_Nico" Label="Descripción NICO"/>
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5 solid-textarea bigsize" Type="Textarea" ID="icFraccion" Label="Descripción Fracción"/>
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 mb-5 solid-textarea bigsize" Type="Textarea" ID="icNico" Label="Descripción NICO"/>
                             <asp:Panel runat="server" CssClass="col-xs-12">
                                  <asp:Panel runat="server" CssClass="row no-gutters important-controls">
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-2" Type="Text" ID="txt_ValorImpuestoGeneral" Label="IGI / IGE"/>                               
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-2" Type="Text" ID="txt_ValorIVA" Label="IVA"/>
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4" Type="Text" ID="txt_FranjaRegionFonteriza" Label="Franja región fronteriza"/>
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4" Type="Text" ID="txt_UnidadMedida" Label="Unidad de medida"/>
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-2" Type="Text" ID="icValorImpuestoGeneral" Label="IGI / IGE"/>                               
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-2" Type="Text" ID="icValorIVA" Label="IVA"/>
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4" Type="Text" ID="icFranjaRegionFonteriza" Label="Franja región fronteriza"/>
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4" Type="Text" ID="icUnidadMedida" Label="Unidad de medida"/>
                                 </asp:Panel>
                             </asp:Panel>
                         </asp:Panel>   
-                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-6">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="txt_Publicacion" Label="Publicación"/> 
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="txt_EntradaVigor" Label="Entrada en vigor"/>                         
-                            <GWC:GroupControl runat="server" CssClass="col-xs-12 col-md-12 mb-5 nopadding" Bordered="true" Columns="X3" type="Radio" Enabled="true" ID="grp_RegulacionesRequeridas" Label="Requisitos">
+                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 pointer-events-none">
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaPublicacion" Label="Publicación"/> 
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Calendar" ID="icFechaEntradaVigor" Label="Entrada en vigor"/>                         
+                            <GWC:GroupControl runat="server" CssClass="col-xs-12 col-md-12 mb-5 nopadding" Bordered="true" Columns="X3" type="Checkbox" Enabled="true" ID="gcRegulacionesRequeridas" Label="Requisitos">
                                 <ListItems>
                                     <GWC:Item Text="IEPS"/>
-                                    <GWC:Item Text="Noms"/>
+                                    <GWC:Item Text="Normas"/>
                                     <GWC:Item Text="AP"/>
                                     <GWC:Item Text="Anexos"/>
                                     <GWC:Item Text="Cuotas"/>
@@ -122,14 +125,20 @@
                         </asp:Panel>
                     </ListControls>
                 </GWC:FieldsetControl>                      
-                <GWC:FieldsetControl runat="server" ID="_fsPreferencias" Label="Tratados" Detail="Preferencias arancelarias">
+                <GWC:FieldsetControl runat="server" ID="fscPreferencias" Label="Tratados" Detail="Preferencias arancelarias">
                     <ListControls>
                         
+                        <asp:Panel runat="server" CssClass="row no-gutters">
+                            <div class="col-xs-12">
+                                <p>- Sin contenido</p>
+                            </div>
+                        </asp:Panel>
+
                     </ListControls>
                 </GWC:FieldsetControl>
-                <GWC:FieldsetControl runat="server" ID="_fsTratados"  Label="Tratados" Priority="false">  
+                <GWC:FieldsetControl runat="server" ID="fscTratados"  Label="Tratados" Priority="false">  
                     <ListControls>
-                        <GWC:TabbarControl runat="server" ID="tbar_Tratados" CssClass="col-xs-6">
+                        <GWC:TabbarControl runat="server" ID="tbcTratados" CssClass="col-xs-6">
                             <Tabs>       
                                 <GWC:TabItem Text="TMEC"/>
                                 <GWC:TabItem Text="TLCUE"/>
@@ -137,30 +146,30 @@
                             <TabsSections>
                                 <GWC:FieldsetControl runat="server">
                                     <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="cat_tlcan" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
+                                        <GWC:CatalogControl runat="server" ID="cctlcan" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
                                             <Columns>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Paises" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Sector" Label="Sector"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Arancel" Label="Arancel"/>
-                                                <%--<GWC:InputControl runat="server" ID="c1_txt_Preferencia" Label="Preferencia"/>--%>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Observacion" Label="Observación"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_Publicacion" Label="Publicación"/>
-                                                <GWC:InputControl runat="server" ID="c1_txt_EntradaVigor" Label="Entrada en vigor"/>
+                                                <GWC:InputControl runat="server" ID="icPaisesTab1" Label="Paises"/>
+                                                <GWC:InputControl runat="server" ID="icSectorTab1" Label="Sector"/>
+                                                <GWC:InputControl runat="server" ID="icArancelTab1" Label="Arancel"/>
+                                                <%--<GWC:InputControl runat="server" ID="icPreferenciaTab1" Label="Preferencia"/>--%>
+                                                <GWC:InputControl runat="server" ID="icObservacionTab1" Label="Observación"/>
+                                                <GWC:InputControl runat="server" ID="icPublicacionTab1" Label="Publicación"/>
+                                                <GWC:InputControl runat="server" ID="icEntradaVigorTab1" Label="Entrada en vigor"/>
                                             </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>
                                 </GWC:FieldsetControl>
                                 <GWC:FieldsetControl runat="server">
                                     <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="cat_tlcue" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                        <GWC:CatalogControl runat="server" ID="cctlcue" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
                                             <Columns>
-                                                <GWC:InputControl runat="server" ID="c2_txt_Paises" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="c2_txt_Sector" Label="Sector"/>
-                                                <GWC:InputControl runat="server" ID="c2_txt_Arancel" Label="Arancel"/>
-                                                <%-- %><GWC:InputControl runat="server" ID="c2_txt_Preferencia" Label="Preferencia"/>--%>
-                                                <GWC:InputControl runat="server" ID="c2_txt_Observacion" Label="Observación"/>
-                                                <GWC:InputControl runat="server" ID="c2_txt_Publicacion" Label="Publicación"/>
-                                                <GWC:InputControl runat="server" ID="c2_txt_EntradaVigor" Label="Entrada en vigor"/>
+                                                <GWC:InputControl runat="server" ID="icPaisesTab2" Label="Paises"/>
+                                                <GWC:InputControl runat="server" ID="icSectorTab2" Label="Sector"/>
+                                                <GWC:InputControl runat="server" ID="icArancelTab2" Label="Arancel"/>
+                                                <%-- %><GWC:InputControl runat="server" ID="icPreferenciaTab2" Label="Preferencia"/>--%>
+                                                <GWC:InputControl runat="server" ID="icObservacionTab2" Label="Observación"/>
+                                                <GWC:InputControl runat="server" ID="icPublicacionTab2" Label="Publicación"/>
+                                                <GWC:InputControl runat="server" ID="icEntradaVigorTab2" Label="Entrada en vigor"/>
                                             </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>
@@ -169,9 +178,9 @@
                         </GWC:TabbarControl>
                     </ListControls>
                 </GWC:FieldsetControl>
-                <GWC:FieldsetControl runat="server" ID="_fsRequisitos" Label="Requisitos">
+                <GWC:FieldsetControl runat="server" ID="fscRequisitos" Label="Requisitos">
                     <ListControls>
-                        <GWC:FieldsetControl runat="server" ID="_fsCupo" Label="Cupos / país" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscCupo" Label="Cupos / país" Visible="false" Priority="false">
                             <ListControls>
                                 
                                 <%--<asp:panel runat="server" CssClass="fieldset col-xs-12">
@@ -188,11 +197,15 @@
                                         <gwc-label Text="Certificado de cupo por la Secretaría de Economía." Detail="Nota:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel> --%>
-
+                                <asp:Panel runat="server" CssClass="row no-gutters">
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsImpuestoEspecial" Label="IEPS" Detail="Impuesto especial sobre producción y servicios / IEPS" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscImpuestoEspecial" Label="IEPS" Detail="Impuesto especial sobre producción y servicios / IEPS" Visible="false" Priority="false">
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If IEPS IsNot Nothing %>
@@ -214,11 +227,17 @@
                                     </div> 
 
                                 <% Next  %>
+                                <% Else %>
+
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+
                                 <% End If %>
                                 </asp:panel>
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsCuotasCompensatorias" Label="CC" Detail="Cuotas compensatorias / Empresas" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscCuotasCompensatorias" Label="CC" Detail="Cuotas compensatorias / Empresas" Visible="false" Priority="false">
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Cuotas IsNot Nothing %>
@@ -239,11 +258,17 @@
                                     </div> 
 
                                 <% Next  %>
+                                <% Else %>
+
+                                <div class="col-xs-12">
+                                    <p>- Sin contenido</p>
+                                </div>
+
                                 <% End If %>
                                 </asp:panel>     
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsPreciosEstimados" Label="PE" Detail="Precios estimados / Mercancía" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscPreciosEstimados" Label="PE" Detail="Precios estimados / Mercancía" Visible="false" Priority="false">
                             <ListControls>                       
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Precios IsNot Nothing %>
@@ -262,11 +287,17 @@
                                     </div> 
 
                                 <% Next  %>
+                                <% Else %>
+
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+
                                 <% End If %>
                                 </asp:panel>   
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsPermisos" Label="Permisos" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscPermisos" Label="Permisos" Priority="false">
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Permisos IsNot Nothing %>
@@ -285,6 +316,12 @@
                                     </div>
 
                                 <% Next  %>
+                                <% Else %>
+
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+
                                 <% End If %>
                                 </asp:panel>
 
@@ -313,7 +350,7 @@
                                 </GWC:FieldsetControl>--%>
                             </ListControls> 
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsNormas" Label="Normas" Detail="Normas oficiales mexicanas" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscNormas" Label="Normas" Detail="Normas oficiales mexicanas" Visible="false" Priority="false">
                             <ListControls>                       
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Normas IsNot Nothing %>
@@ -333,11 +370,17 @@
                                     </div> 
 
                                 <% Next  %>
+                                <% Else %>
+
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+
                                 <% End If %>
                                 </asp:panel>
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsAnexos" Label="Anexos" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscAnexos" Label="Anexos" Visible="false" Priority="false">
                             <ListControls>                       
                         
                                 <%--<asp:panel runat="server" CssClass="fieldset col-xs-12">
@@ -352,10 +395,15 @@
                                         <gwc-label Text="IX. Tratándose de las siguientes mercancías: k) Juguetes: Juguetes y modelos, con motor, excepto lo comprendido en las  fracciones arancelarias 95030002, 95030003, 95030004, 95030005,  95030006, 95030007, 95030009,95030010, 95030011, 95030012, 95030014, 95030015 y 95030018." Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
+                                <asp:Panel runat="server" CssClass="row no-gutters">
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>                
-                        <GWC:FieldsetControl runat="server" ID="_fsEmbargos" Label="Embargos" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscEmbargos" Label="Embargos" Visible="false" Priority="false">
                             <ListControls>                       
                         
                                 <%--<asp:panel runat="server" CssClass="fieldset col-xs-12">
@@ -370,10 +418,15 @@
                                         <gwc-label Text="Láseres, excepto los diodos láser." Detail="Mercancía:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
+                                <asp:Panel runat="server" CssClass="row no-gutters">
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsCuposMinimos" Label="Cupos mínimos" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscCuposMinimos" Label="Cupos mínimos" Visible="false" Priority="false">
                             <ListControls>
                         
                                 <%--<asp:panel runat="server" CssClass="fieldset col-xs-12">
@@ -388,10 +441,15 @@
                                         <gwc-label Text="Rellenos." Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
-
+                                <asp:Panel runat="server" CssClass="row no-gutters">
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+                                </asp:Panel>
+                               
                             </ListControls>
                         </GWC:FieldsetControl>
-                        <GWC:FieldsetControl runat="server" ID="_fsPadronSctorial" Label="Padrón sectorial" Visible="false" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscPadronSctorial" Label="Padrón sectorial" Visible="false" Priority="false">
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Padrones IsNot Nothing %>
@@ -411,20 +469,26 @@
                                     </div> 
 
                                 <% Next  %>
+                                <% Else %>
+
+                                    <div class="col-xs-12">
+                                        <p>- Sin contenido</p>
+                                    </div>
+
                                 <% End If %>
                                 </asp:panel>
                             </ListControls>
                         </GWC:FieldsetControl>                
-                        <GWC:FieldsetControl runat="server" ID="_fsDescripciones" Label="Descripciones" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscDescripciones" Label="Descripciones" Priority="false">
                             <ListControls>
                                 <asp:Panel runat="server" CssClass="col-xs-12 col-md-6">
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="Text" ID="t_Seccion" Label="Sección"/>   
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="t_Capitulo" Label="Capítulo"/>     
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="t_Partida" Label="Partida"/>
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="Text" ID="icSeccion" Label="Sección"/>   
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="icCapitulo" Label="Capítulo"/>     
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="icPartida" Label="Partida"/>
                                 </asp:Panel>                            
                                 <asp:Panel runat="server" CssClass="col-xs-12 col-md-6">                                
-                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="t_Subpartida" Label="Subpartida"/> 
-                                </asp:Panel>      
+                                    <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" Type="TextArea" ID="icSubpartida" Label="Subpartida"/> 
+                                </asp:Panel>   
                             </ListControls>
                         </GWC:FieldsetControl>
                     </ListControls>

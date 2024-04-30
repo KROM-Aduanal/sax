@@ -220,13 +220,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\rec.global.utils\1_0_stdSelectOption64_dll\SelectOption64\SelectOption64.vbproj">
-      <Project>{C29F3D42-12E9-4F0E-A26D-B57F9D5B44AA}</Project>
-      <Name>SelectOption64</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
