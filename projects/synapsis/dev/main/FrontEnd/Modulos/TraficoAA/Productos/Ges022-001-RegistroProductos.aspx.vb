@@ -156,7 +156,7 @@ Public Class Ges022_001_RegistroProductos
 
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        Dim secuencia_ As New Secuencia _
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
                   With {.anio = 0,
                         .environment = 0,
                         .mes = 0,

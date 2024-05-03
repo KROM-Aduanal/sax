@@ -18,9 +18,24 @@ Imports gsol
 'UTILERIAS/RECURSOS ADICIONALES
 Imports Sax.Web
 Imports Rec.Globals.Utils
-Imports Rec.Globals.Controllers.ControladorRecursosAduanales
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 Imports Syn.CustomBrokers.Controllers
+Imports gsol.krom
+Imports MongoDB.Bson
+Imports SharpCompress.Common
+Imports System.IO
+Imports System.Web.Hosting
+Imports Syn.CustomBrokers.Controllers.ControladorUnidadesMedida
+Imports System.Windows.Forms
+Imports System.Linq
+Imports gsol.Web.Components
+Imports Syn.Documento.Componentes
+
+
+
+
+
+
 
 #End Region
 
@@ -32,6 +47,10 @@ Public Class Ges022_001_Referencia
     '    ██                                                                                                ██
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
+
+    Private _controladorReferencias As IControladorReferencias
+
+    Private _idDocumento As ObjectId
 
     Private Enum TipoReferenciaPedimento
         Prefijo = 1
@@ -53,12 +72,12 @@ Public Class Ges022_001_Referencia
 
         With Buscador
 
-            .DataObject = New ConstructorReferencia(True)
+            .DataObject = New ConstructorReferencia()
 
 
             .addFilter(SeccionesReferencias.SREF1, CamposReferencia.CP_REFERENCIA, "Referencia")
-            .addFilter(SeccionesReferencias.SREF1, CamposReferencia.CP_PEDIMENTO, "Pedimento")
-            .addFilter(SeccionesReferencias.SREF2, CamposReferencia.CA_RAZON_SOCIAL_IOE, "Cliente")
+            .addFilter(SeccionesReferencias.SREF1, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, "Pedimento")
+            .addFilter(SeccionesReferencias.SREF2, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
 
         End With
 
@@ -68,15 +87,32 @@ Public Class Ges022_001_Referencia
 
         scClaveDocumento.DataEntity = New krom.Anexo22()
 
-        scAduanaEntradaSalida.DataEntity = New krom.Anexo22
+        scPais.DataEntity = New krom.Anexo22()
+
+        scPaisMulti.DataEntity = New krom.Anexo22()
 
         'scAduanaDespacho.DataEntity = New krom.Anexo22
-
-        scDestinoMercancia.DataEntity = New krom.Anexo22
 
         scEjecutivoCuenta.DataEntity = New krom.Ejecutivos
 
         scEjecutivoCuenta.FreeClauses = " and i_Cve_DivisionMiEmpresa = " & Statements.GetOfficeOnline()._id
+
+        If scGuias.Checked = False Then
+
+            ccGuias.Visible = False
+
+            pnGuia.Visible = True
+
+        Else
+
+            ccGuias.Visible = True
+
+            pnGuia.Visible = False
+
+
+        End If
+
+        '_controladorReferencias = New ControladorReferencias
 
         'End If
     End Sub
@@ -89,16 +125,48 @@ Public Class Ges022_001_Referencia
 
         End If
 
+        swcMaterialPeligroso.Checked = False
+        swcRectificacion.Checked = False
         swcTipoOperacion.Checked = True
+        ccDocumento.Visible = True
         swcTipoOperacion.Enabled = True
         swcRectificacion.Enabled = True
-        icFechaATA.Visible = False
-        icFechaRevalidacion.Visible = False
-        icFechaRegistro.Visible = False
-        icFechaPagoPedimento.Visible = False
-        icFechaDespacho.Visible = False
-        icFechaPrevio.Visible = False
-        scTipoPrevio.Visible = False
+        Fechas.Visible = True
+        Guia.Visible = True
+        ccGuias.Visible = False
+
+        scRegimen.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "IMD", .Text = "IMD - DEFINITIVO DE IMPORTACIÓN."}}
+        scRegimen.Value = "IMD"
+        scRegimen.ToolTip = "Sugerencia del sistema, validar por favor"
+        scRegimen.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+        scRegimen.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+        scRegimen.ShowToolTip()
+
+        scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 8, .Text = "A1"}}
+        scClaveDocumento.Value = 8
+        scClaveDocumento.ToolTip = "Sugerencia del sistema, validar por favor"
+        scClaveDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+        scClaveDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+        scClaveDocumento.ShowToolTip()
+
+        scPatente.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Marítimo | Veracruz 430 | Jesús Gómez Reyes 3945"}}
+        scPatente.Value = 1
+        scPatente.ToolTip = "Sugerencia del sistema, validar por favor"
+        scPatente.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+        scPatente.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+        scPatente.ShowToolTip()
+
+        scTipoDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Normal"}}
+        scTipoDocumento.Value = 1
+        scTipoDocumento.ToolTip = "Sugerencia del sistema, validar por favor"
+        scTipoDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+        scTipoDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+        scTipoDocumento.ShowToolTip()
+
+        TrackingExpo.Visible = False
+        TrackingImpo.Visible = False
+        Fechas.Visible = False
+        Documentos.Visible = True
 
         PreparaControles()
 
@@ -114,21 +182,63 @@ Public Class Ges022_001_Referencia
 
         InicializaPrefijo()
 
-        icFechaATA.Visible = False
-        icFechaRevalidacion.Visible = False
-        icFechaRegistro.Visible = False
-        icFechaPagoPedimento.Visible = False
-        icFechaDespacho.Visible = False
-        icFechaPrevio.Visible = False
-        scTipoPrevio.Visible = False
+        ccDocumento.Visible = False
+        Fechas.Visible = True
+        Guia.Visible = True
 
         swcTipoOperacion.Enabled = False
         swcRectificacion.Enabled = False
 
-        scTipoReferencia.Enabled = False
         scTipoDocumento.Enabled = False
         scEjecutivoCuenta.Enabled = False
+        scPatente.Enabled = False
+        scClaveDocumento.Enabled = False
+        scRegimen.Enabled = False
+        Dim x = scRegimen.Enabled
 
+        fbcCliente.Enabled = False
+
+        If swcTipoOperacion.Checked Then
+
+            Guia.Visible = True
+
+            TrackingImpo.Visible = True
+
+            TrackingExpo.Visible = False
+
+            icFechaEtd.Visible = False
+
+            icFechaPresentacion.Visible = False
+
+            icFechaSalida.Visible = False
+
+            icFechaCierreFisico.Visible = False
+
+            icFechaEta.Visible = True
+
+            icFechaRevalidacion.Visible = True
+
+        Else
+
+            Guia.Visible = False
+
+            TrackingExpo.Visible = True
+
+            TrackingImpo.Visible = False
+
+            icFechaEtd.Visible = True
+
+            icFechaPresentacion.Visible = True
+
+            icFechaSalida.Visible = True
+
+            icFechaCierreFisico.Visible = True
+
+            icFechaEta.Visible = False
+
+            icFechaRevalidacion.Visible = False
+
+        End If
 
     End Sub
 
@@ -138,53 +248,94 @@ Public Class Ges022_001_Referencia
     End Sub
 
 
+    Public Overrides Sub BotoneraClicOtros(ByVal IndexSelected_ As Integer)
+
+
+
+        If IndexSelected_ = 10 Then
+
+            Dim pdfBytes_ As Byte() = File.ReadAllBytes("C:\TEMP\Ejemplo_BL.pdf")
+
+            Dim ms_ As New MemoryStream(pdfBytes_)
+
+            'Dim x = _controladorReferencias.CrearPrereferencia(ms_)
+
+        End If
+
+    End Sub
+
+
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
         [Set](dbcReferencia, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](dbcReferencia, CP_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
-        [Set](icOriginal, CP_ORIGINAL)
-        [Set](swcTipoOperacion, CP_TIPO_OPERACION)
-        [Set](scTipoReferencia, CP_TIPO_REFERENCIA)
-        [Set](swcMaterialPeligroso, CP_MATERIAL_PELIROSO)
-        [Set](swcRectificacion, CP_RECTIFICACION)
-        [Set](scTipoCarga, CP_TIPO_CARGA)
-        [Set](scPatente, CP_MODALIDAD_ADUANA_PATENTE2)
-        [Set](scRegimen, CP_REGIMEN)
-        [Set](scTipoDocumento, CA_TIPO_DOCUMENTO)
-        [Set](scClaveDocumento, CP_CLAVE_DOCUMENTO)
-        [Set](scAduanaEntradaSalida, CP_ADUANA_ENTRADA_SALIDA)
-        [Set](scAduanaDespacho, CP_ADUANA_DESPACHO)
-        [Set](scDestinoMercancia, CP_DESTINO_MERCANCIA)
-        [Set](scEjecutivoCuenta, CP_EJECUTIVO_CUENTA)
+        [Set](dbcReferencia, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](swcTipoOperacion, CamposPedimento.CA_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](swcMaterialPeligroso, CP_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](swcRectificacion, CP_RECTIFICACION, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](scPatente, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)
+        [Set](scRegimen, CamposPedimento.CA_REGIMEN)
+        [Set](scTipoDocumento, CA_TIPO_PEDIMENTO)
+        [Set](scClaveDocumento, CamposPedimento.CA_CVE_PEDIMENTO)
+        '[Set](scDesaduanamiento, CP_DESADUANAMIENTO)
+        [Set](scEjecutivoCuenta, CamposPedimento.CP_EJECUTIVO_CUENTA)
+        [Set](scTipoCarga, CP_TIPO_CARGA_AGENCIA)
+        [Set](icDescripcionCompleta, CP_DESCRIPCION_MERCANCIA_COMPLETA)
 
-        [Set](fbcCliente, CamposReferencia.CP_ID_IOE)
-        [Set](fbcCliente, CamposReferencia.CA_RAZON_SOCIAL_IOE, propiedadDelControl_:=PropiedadesControl.Text)
-        [Set](icRFC, CamposReferencia.CA_RFC_DEL_IOE)
-        [Set](icCURP, CamposReferencia.CA_CURP_DEL_IOE)
-        [Set](icRFCFacturacion, CamposReferencia.CP_RFC_FACTURACION_IOE)
-        [Set](icBancoPago, CamposReferencia.CA_BANCO_PAGO_IOE)
+        [Set](fbcCliente, CamposClientes.CP_OBJECTID_CLIENTE)
+        [Set](fbcCliente, CamposClientes.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
+        [Set](icRFC, CamposClientes.CA_RFC_CLIENTE)
+        [Set](icRFCFacturacion, CamposClientes.CP_RFC_FACTURACION)
+        [Set](icBancoPago, CamposClientes.CP_CVE_BANCO)
 
-        [Set](icNumero, CamposReferencia.CP_DESCRIPCION_DETALLE)
-        [Set](scTipoDato, CamposReferencia.CP_TIPO_DETALLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](ccCDetallesliente, Nothing, seccion_:=SeccionesReferencias.SREF3)
+        '[Set](icFechaApertura, CP_FECHA_APERTURA)
+        '[Set](icFechaEntrada, CamposPedimento.CA_FECHA_ENTRADA)
+        '[Set](icFechaProforma, CP_FECHA_PROFORMA)
+        '[Set](icFechaCierre, CP_FECHA_CIERRE)
+        '[Set](icFechaPago, CP_FECHA_PAGO)
+        '[Set](icFechaDespacho, CP_FECHA_ULTIMO_DESPACHO)
 
-        [Set](swcEntrada, CP_ES_ENTRADA)
-        [Set](scPagoAnticipado, CP_ES_PAGO_ANTICIPADO)
-        [Set](icFechaETA, CP_FECHA_ETA)
+        [Set](icFechaEta, CP_FECHA_ETA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaRevalidacion, CP_FECHA_REVALIDACION, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaPrevio, CP_FECHA_PREVIO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaPrevio, CP_FECHA_PREVIO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaPresentacion, CP_FECHA_PRESENTACION, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaSalida, CP_FECHA_SALIDA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaEtd, CP_FECHA_ETD, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaCierreFisico, CP_FECHA_CIERRE_FISICO, propiedadDelControl_:=PropiedadesControl.Valor)
 
-        [Set](icFechaRecepcionDocumentos, CP_FECHA_RECEPCION_DOCUMENTOS)
+        [Set](scRecintoFiscal, CP_RECINTO_FISCAL)
+        [Set](scGuias, CP_GUIA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Checked)
+
+        [Set](icArchivo, CP_NOMBRE_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icTipoArchivo, CP_TIPO_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccDocumentos, Nothing, seccion_:=SeccionesReferencias.SREF6)
+
+        [Set](icNumeroGuiaMulti, CP_NUMERO_GUIA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTransportistaMulti, CP_TRANSPORTISTA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPaisMulti, CP_PAIS_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icTipoCargaGuiaMulti, CP_TIPO_CARGA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scPesoBrutoMulti, CP_PESOBRUTO_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scUnidadMedidaMulti, CP_UNIDADMEDIDA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](scTipoGuiaMulti, CP_TIPO_GUIA_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icFechaSalidaOrigenMulti, CP_FECHA_SALIDA_ORIGEN_MULTIPLE, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](ccGuias, Nothing, seccion_:=SeccionesReferencias.SREF7)
+
+        [Set](icNumeroGuia, CP_NUMERO_GUIA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](scTransportista, CP_TRANSPORTISTA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](scPais, CP_PAIS, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icTipoCargaGuia, CP_TIPO_CARGA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](scPesoBruto, CP_PESOBRUTO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](scUnidadMedida, CP_UNIDADMEDIDA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](scTipoGuia, CP_TIPO_GUIA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaSalidaOrigen, CP_FECHA_SALIDA_ORIGEN, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icDescripcionMercancia, CP_DESCRIPCION_MERCANCIA, propiedadDelControl_:=PropiedadesControl.Valor)
 
         Return New TagWatcher(1)
 
     End Function
 
     Protected Sub PreparaControles()
-        'Inicializa Tipo de Referencia
-        Dim infoprefijolocal_ As New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Operativa"}}
-        scTipoReferencia.DataSource = infoprefijolocal_
-        scTipoReferencia.Value = 1
-
         'Inicizliza prefijo
         InicializaPrefijo()
 
@@ -197,7 +348,11 @@ Public Class Ges022_001_Referencia
     'EVENTOS PARA LA INSERCIÓN DE DATOS
     Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
-        dbcReferencia.Value = dbcReferencia.Value & GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
+
+
+        _controladorReferencias = New ControladorReferencias
+
+        dbcReferencia.Value = dbcReferencia.Value & _controladorReferencias.GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
 
         Return New TagWatcher(Ok)
 
@@ -271,7 +426,7 @@ Public Class Ges022_001_Referencia
                                        ) As Int32
 
         ''* ** * ** Generador de secuencias referencias ** * ** *
-        Dim secuencia_ As New Secuencia _
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
                   With {.nombre = nombre_,
                       .environment = enviroment_,
                       .anio = anio_,
@@ -301,6 +456,78 @@ Public Class Ges022_001_Referencia
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
 
+        Dim swMultiple = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_GUIA_MULTIPLE).Valor
+
+        Dim fuente_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+        If swMultiple Then
+
+            ccGuias.Visible = True
+
+            pnGuia.Visible = False
+
+        Else
+
+            ccGuias.Visible = False
+
+            pnGuia.Visible = True
+
+        End If
+
+        If fuente_.Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = True Then
+
+            Guia.Visible = True
+
+            TrackingImpo.Visible = True
+
+            TrackingExpo.Visible = False
+
+            icFechaEtd.Visible = False
+
+            icFechaPresentacion.Visible = False
+
+            icFechaSalida.Visible = False
+
+            icFechaCierreFisico.Visible = False
+
+            icFechaEta.Visible = True
+
+            icFechaRevalidacion.Visible = True
+
+
+
+
+
+        Else
+
+            Guia.Visible = False
+
+            TrackingExpo.Visible = True
+
+            TrackingImpo.Visible = False
+
+            icFechaEtd.Visible = True
+
+            icFechaPresentacion.Visible = True
+
+            icFechaSalida.Visible = True
+
+            icFechaCierreFisico.Visible = True
+
+            icFechaEta.Visible = False
+
+            icFechaRevalidacion.Visible = False
+
+        End If
+
+        Fechas.Visible = True
+
+        swcRectificacion.Visible = True
+
+        Documentos.Visible = True
+
+
+
     End Sub
 
     Public Overrides Sub DespuesBuquedaGeneralSinDatos()
@@ -325,10 +552,18 @@ Public Class Ges022_001_Referencia
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
+    Protected Sub btGuardarDocumento_OnClick(sender As Object, e As EventArgs)
 
-    Protected Sub scTipoReferencia_SelectedIndexChanged(sender As Object, e As EventArgs)
+        ccDocumentos.SetRow(Sub(catalogRow_ As CatalogRow)
+                                Dim listaObjetos As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumento.Value)
+                                catalogRow_.SetIndice(ccDocumentos.KeyField, 0)
+                                catalogRow_.SetColumn(icArchivo, New SelectOption With {.Value = listaObjetos(0).SelectToken("fileId").ToString, .Text = listaObjetos(0).SelectToken("fileName").ToString})
+                                catalogRow_.SetColumn(icTipoArchivo, New SelectOption With {.Value = scTipoDocumentos.Value, .Text = scTipoDocumentos.Text})
+                            End Sub)
+        '
+        ccDocumentos.CatalogDataBinding()
 
-        InicializaPrefijo()
+        ccDocumento.Visible = False
 
     End Sub
 
@@ -342,14 +577,9 @@ Public Class Ges022_001_Referencia
 
         If scTipoDocumento.Value IsNot Nothing And scTipoDocumento.Value = 4 Then
 
-            icOriginal.Visible = True
-
             swcRectificacion.Checked = True
 
         Else
-
-            icOriginal.Visible = False
-
             swcRectificacion.Checked = False
 
         End If
@@ -360,17 +590,109 @@ Public Class Ges022_001_Referencia
 
         If swcTipoOperacion.Checked Then
 
-            icFechaETD.Visible = False
+            Guia.Visible = True
 
-            icFechaETA.Visible = True
+            TrackingImpo.Visible = True
+
+            TrackingExpo.Visible = False
+
+            icFechaEtd.Visible = False
+
+            icFechaPresentacion.Visible = False
+
+            icFechaSalida.Visible = False
+
+            icFechaCierreFisico.Visible = False
+
+            icFechaEta.Visible = True
+
+            icFechaRevalidacion.Visible = True
 
         Else
 
-            icFechaETD.Visible = True
+            Guia.Visible = False
 
-            icFechaETA.Visible = False
+            TrackingExpo.Visible = True
+
+            TrackingImpo.Visible = False
+
+            icFechaEtd.Visible = True
+
+            icFechaPresentacion.Visible = True
+
+            icFechaSalida.Visible = True
+
+            icFechaCierreFisico.Visible = True
+
+            icFechaEta.Visible = False
+
+            icFechaRevalidacion.Visible = False
 
         End If
+
+    End Sub
+
+    Protected Sub swcGuiaMultiple_CheckedChanged(sender As Object, e As EventArgs)
+
+        If scGuias.Checked = True Then
+
+            ccGuias.Visible = True
+
+            pnGuia.Visible = False
+
+        Else
+
+            ccGuias.Visible = False
+
+            pnGuia.Visible = True
+
+        End If
+
+    End Sub
+
+    Protected Sub icRutaDocumento_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
+
+        Dim id = ObjectId.GenerateNewId().ToString
+
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "Yo Merengues"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000002",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "Yo Merengues",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+        End With
+
+        _idDocumento = ObjectId.Parse(id)
+
+    End Sub
+
+    Protected Sub icRutaDocumento_ChooseFile2(sender As PropiedadesDocumento, e As EventArgs)
+
+        Dim id = ObjectId.GenerateNewId().ToString
+
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "Yo Merengues"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000002",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.BL,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "Yo Merengues",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.pdf
+        End With
+
+        _idDocumento = ObjectId.Parse(id)
 
     End Sub
 
@@ -459,15 +781,11 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
-    Protected Sub scPatente_Click(sender As Object, e As EventArgs)
+    Protected Sub AntesDeCambiarEmpresa(ByVal sender As FindbarControl, ByVal e As EventArgs)
 
-        scPatente.DataSource = CargaPatente()
+        'MsgBox(OperacionGenerica.Id.ToString)
 
-    End Sub
-
-    Protected Sub scAduanaDespacho_Click(sender As Object, e As EventArgs)
-
-        scAduanaDespacho.DataSource = AduanasSeccion()
+        BusquedaGeneral(sender, e)
 
     End Sub
 
@@ -526,25 +844,7 @@ Public Class Ges022_001_Referencia
 
         Dim tipoPrefijo_ As Int16
 
-        Select Case scTipoReferencia.Value
-
-            Case ControladorRecursosAduanales.TiposReferenciasOperativas.Operativas
-
-                tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.ReferenciaOperativaNormal
-
-            Case ControladorRecursosAduanales.TiposReferenciasOperativas.Corresponsalias
-
-                tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.ReferenciaOperativaCorresponsalia
-
-            Case ControladorRecursosAduanales.TiposReferenciasOperativas.CorresponsaliasTerceros
-
-                tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.ReferenciaOperativaCorresponsaliasTerceros
-
-            Case Else
-
-                tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.SinDefinir
-
-        End Select
+        tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.ReferenciaOperativaNormal
 
         If tipoPrefijo_ = ControladorRecursosAduanales.TiposReferenciasOperativas.SinDefinir Then
 
@@ -685,40 +985,45 @@ Public Class Ges022_001_Referencia
         Return Nothing
 
     End Function
+    Protected Sub SeleccionarUnidadMedida_Click(sender As Object, e As EventArgs)
 
-    Public Function CargaPatente() As List(Of SelectOption)
+        Dim tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad = TiposUnidad.Comercial
 
-        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+        Dim top_ As Int32 = 0
 
-        Dim patentes_ = From data In recursos_.patentes
-                        Where data.archivado = False And data.estado = 1
-                        Select data._idpatente, data.agenteaduanal
+        Dim lista_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(tipoUnidad_, scUnidadMedida.SuggestedText, top_)
 
-        If patentes_.Count > 0 Then
+        If lista_.Count > 0 Then
 
-            Dim soPatentes_ As New List(Of SelectOption)
-
-            For index_ As Int32 = 0 To patentes_.Count - 1
-
-                soPatentes_.Add(New SelectOption With
-                             {.Value = patentes_(index_)._idpatente,
-                              .Text = patentes_(index_)._idpatente.ToString & " - " & patentes_(index_).agenteaduanal})
-
-            Next
-
-            Return soPatentes_
+            scUnidadMedida.DataSource = ControladorUnidadesMedida.ToSelectOption(lista_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
 
         End If
 
-        Return Nothing
+    End Sub
+    Protected Sub SeleccionarUnidadMedidaMulti_Click(sender As Object, e As EventArgs)
 
-    End Function
+        Dim tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad = TiposUnidad.Comercial
+
+        Dim top_ As Int32 = 0
+
+        Dim lista_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(tipoUnidad_, scUnidadMedida.SuggestedText, top_)
+
+        If lista_.Count > 0 Then
+
+            scUnidadMedidaMulti.DataSource = ControladorUnidadesMedida.ToSelectOption(lista_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
+
+        End If
+
+    End Sub
+    Protected Sub SeleccionarPais_Click(sender As Object, e As EventArgs)
+
+
+
+    End Sub
 
     Protected Sub InicializaCliente(ByVal datosCliente_ As OperacionGenerica)
 
         icRFC.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
-
-        icCURP.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_CURP_CLIENTE).Valor
 
         'icBancoPago.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CP_CVE_BANCO_PAGO).Valor
 

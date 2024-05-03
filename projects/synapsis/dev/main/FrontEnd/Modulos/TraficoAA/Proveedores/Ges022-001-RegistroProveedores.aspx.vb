@@ -20,6 +20,7 @@ Imports Sax.Web
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals
 'Imports Rec.Globals.Empresa
+Imports Rec.Globals.Controllers.Nuevo
 Imports Rec.Globals.Controllers
 
 Imports Rec.Globals.Utils
@@ -52,6 +53,7 @@ Imports Rec.Globals.RegimenFiscal64
 Imports Rec.Globals.Bus64
 Imports Rec.Globals.Contacto64
 Imports System.Linq.Expressions
+Imports System.Linq
 #End Region
 
 Public Class Ges022_001_RegistroProveedores
@@ -82,7 +84,7 @@ Public Class Ges022_001_RegistroProveedores
     Private _tagwatcher As TagWatcher
 
     Private _paisDomicilios As List(Of PaisDomicilio)
-    Private _listaDomicilios, _ultimoDomicilio As List(Of Domicilio)
+    Private _listaDomicilios, _ultimoDomicilio As List(Of Rec.Globals.Domicilio64.Domicilio)
     Private _opcionesLista As List(Of SelectOption)
 
     Private _pillboxControl As PillboxControl
@@ -126,7 +128,7 @@ Public Class Ges022_001_RegistroProveedores
 
             __SYSTEM_MODULE_FORM.Label = "Proveedores Extranjeros"
 
-            _controladorEmpresas = New ControladorEmpresas(_espacioTrabajo,
+            _controladorEmpresas = New Rec.Globals.Controllers.Nuevo.ControladorEmpresas(_espacioTrabajo,
                                                            IControladorEmpresas.TiposEmpresas.Internacional)
 
             fbcPais.Visible = True
@@ -190,7 +192,7 @@ Public Class Ges022_001_RegistroProveedores
 
         _espacioTrabajo = HttpContext.Current.Session("EspacioTrabajoExtranet")
 
-        _controladorEmpresas = New ControladorEmpresas(_espacioTrabajo,
+        _controladorEmpresas = New Rec.Globals.Controllers.Nuevo.ControladorEmpresas(_espacioTrabajo,
                                                        IControladorEmpresas.TiposEmpresas.Nacional)
 
         _listaEmpresasNacionales = New List(Of EmpresaNacional)
@@ -207,7 +209,7 @@ Public Class Ges022_001_RegistroProveedores
 
         _espacioTrabajo = HttpContext.Current.Session("EspacioTrabajoExtranet")
 
-        _controladorEmpresas = New ControladorEmpresas(_espacioTrabajo,
+        _controladorEmpresas = New Rec.Globals.Controllers.Nuevo.ControladorEmpresas(_espacioTrabajo,
                                                        IControladorEmpresas.TiposEmpresas.Internacional)
 
         _controladorEmpresas.PaisEmpresa = icCvePais.Value
@@ -1089,7 +1091,7 @@ Public Class Ges022_001_RegistroProveedores
 
             If _tagwatcher.Status = TypeStatus.Ok Then
 
-                _listaDomicilios = DirectCast(_tagwatcher.ObjectReturned, List(Of Domicilio))
+                _listaDomicilios = DirectCast(_tagwatcher.ObjectReturned, List(Of Rec.Globals.Domicilio64.Domicilio))
 
                 SetVars("_listaDomicilios", _listaDomicilios)
 
@@ -1439,7 +1441,7 @@ Public Class Ges022_001_RegistroProveedores
 
         End If
 
-            ListarDomiciliosConfiguracion()
+        ListarDomiciliosConfiguracion()
 
     End Sub
 
@@ -1656,12 +1658,12 @@ Public Class Ges022_001_RegistroProveedores
 
         If _urlType Then
 
-            _controladorEmpresas = New ControladorEmpresas(_espacioTrabajo,
+            _controladorEmpresas = New Rec.Globals.Controllers.Nuevo.ControladorEmpresas(_espacioTrabajo,
                                                      IControladorEmpresas.TiposEmpresas.Internacional)
 
         Else
 
-            _controladorEmpresas = New ControladorEmpresas(_espacioTrabajo,
+            _controladorEmpresas = New Rec.Globals.Controllers.Nuevo.ControladorEmpresas(_espacioTrabajo,
                                                      IControladorEmpresas.TiposEmpresas.Nacional)
 
         End If
@@ -1700,13 +1702,13 @@ Public Class Ges022_001_RegistroProveedores
 
     Sub ListarDomiciliosConfiguracion()
 
-        _listaDomicilios = New List(Of Domicilio)
+        _listaDomicilios = New List(Of Rec.Globals.Domicilio64.Domicilio)
 
         _opcionesLista = New List(Of SelectOption)
 
         _pillboxControl = New PillboxControl
 
-        _ultimoDomicilio = New List(Of Domicilio)
+        _ultimoDomicilio = New List(Of Rec.Globals.Domicilio64.Domicilio)
 
         If GetVars("_empresa") IsNot Nothing Then
 
@@ -1755,7 +1757,7 @@ Public Class Ges022_001_RegistroProveedores
 
                 If _tagwatcher.Status = TypeStatus.Ok Then
 
-                    _listaDomicilios = DirectCast(_tagwatcher.ObjectReturned, List(Of Domicilio))
+                    _listaDomicilios = DirectCast(_tagwatcher.ObjectReturned, List(Of Rec.Globals.Domicilio64.Domicilio))
 
                     SetVars("_listaDomicilios", _listaDomicilios)
 
@@ -1863,7 +1865,7 @@ Public Class Ges022_001_RegistroProveedores
     End Sub
 
 
-    Sub CargarTarjeteroDomicilio(ByVal ultimoDomicilio_ As List(Of Domicilio))
+    Sub CargarTarjeteroDomicilio(ByVal ultimoDomicilio_ As List(Of Rec.Globals.Domicilio64.Domicilio))
 
         _pillboxControl = DirectCast(pbDetalleProveedor, PillboxControl)
 
@@ -1975,7 +1977,7 @@ Public Class Ges022_001_RegistroProveedores
 
         _pillboxControl = New PillboxControl
 
-        _listaDomicilios = New List(Of Domicilio)
+        _listaDomicilios = New List(Of Rec.Globals.Domicilio64.Domicilio)
 
         InicializarControladoresNacionales()
 
@@ -2016,7 +2018,7 @@ Public Class Ges022_001_RegistroProveedores
 
                                             If seleccionConfig_ <> 0 Then
 
-                                                .rfcs = New List(Of Rfc)
+                                                .rfcs = New List(Of Rec.Globals.Rfc64.Rfc)
 
                                             End If
 
@@ -2045,7 +2047,7 @@ Public Class Ges022_001_RegistroProveedores
 
                                                 If seleccionConfig_ <> 0 Then
 
-                                                    .curps = New List(Of Curp)
+                                                    .curps = New List(Of Rec.Globals.Curp64.Curp)
 
                                                 End If
 
@@ -2062,7 +2064,7 @@ Public Class Ges022_001_RegistroProveedores
 
                                         If swcEditarDomicilio.Checked Or seleccionConfig_ <> 0 Then
 
-                                            Dim domicilioNuevo_ = New Domicilio
+                                            Dim domicilioNuevo_ = New Rec.Globals.Domicilio64.Domicilio
 
                                             With domicilioNuevo_
 
@@ -2102,7 +2104,7 @@ Public Class Ges022_001_RegistroProveedores
                                                                     From {New PaisDomicilio _
                                                                     With {.idpais = New ObjectId(pillbox_.GetControlValue(icIdPais)),
                                                                            .sec = 1,
-                                                                           .domicilios = New List(Of Domicilio),
+                                                                           .domicilios = New List(Of Rec.Globals.Domicilio64.Domicilio),
                                                                            .pais = pillbox_.GetControlValue(icCvePais),
                                                                            .paisPresentacion = pillbox_.GetControlValue(icPais),
                                                                            .estado = 1,
@@ -2194,7 +2196,7 @@ Public Class Ges022_001_RegistroProveedores
 
         _pillboxControl = New PillboxControl
 
-        _listaDomicilios = New List(Of Domicilio)
+        _listaDomicilios = New List(Of Rec.Globals.Domicilio64.Domicilio)
 
         _pillboxControl = DirectCast(pbDetalleProveedor, PillboxControl)
 
@@ -2256,7 +2258,7 @@ Public Class Ges022_001_RegistroProveedores
 
                                         If swcEditarDomicilio.Checked Or seleccionConfig_ <> 0 Then
 
-                                            Dim domicilioNuevo_ = New Domicilio
+                                            Dim domicilioNuevo_ = New Rec.Globals.Domicilio64.Domicilio
 
                                             With domicilioNuevo_
 
@@ -2296,7 +2298,7 @@ Public Class Ges022_001_RegistroProveedores
                                                                     From {New PaisDomicilio _
                                                                     With {.idpais = New ObjectId(pillbox_.GetControlValue(icIdPais)),
                                                                            .sec = 1,
-                                                                           .domicilios = New List(Of Domicilio) From {(domicilioNuevo_)},
+                                                                           .domicilios = New List(Of Rec.Globals.Domicilio64.Domicilio) From {(domicilioNuevo_)},
                                                                            .pais = pillbox_.GetControlValue(icCvePais),
                                                                            .paisPresentacion = pillbox_.GetControlValue(icPais),
                                                                            .estado = 1,
@@ -2393,9 +2395,9 @@ Public Class Ges022_001_RegistroProveedores
 
 
 
-    Private Function GenerarEstructuraRfc(ByRef rfc_ As String) As Rfc
+    Private Function GenerarEstructuraRfc(ByRef rfc_ As String) As Rec.Globals.Rfc64.Rfc
 
-        Dim rfcEstructura_ = New Rfc
+        Dim rfcEstructura_ = New Rec.Globals.Rfc64.Rfc
 
         With rfcEstructura_
 
@@ -2415,9 +2417,9 @@ Public Class Ges022_001_RegistroProveedores
 
     End Function
 
-    Private Function GenerarEstructuraCurp(ByRef curp_ As String) As Curp
+    Private Function GenerarEstructuraCurp(ByRef curp_ As String) As Rec.Globals.Curp64.Curp
 
-        Dim curpEstructura_ = New Curp
+        Dim curpEstructura_ = New Rec.Globals.Curp64.Curp
 
         With curpEstructura_
 

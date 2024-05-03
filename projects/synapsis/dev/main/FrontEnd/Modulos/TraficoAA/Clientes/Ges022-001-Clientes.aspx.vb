@@ -36,6 +36,7 @@ Imports Rec.Globals.Utils
 Imports System.IO
 Imports Syn.CustomBrokers.Controllers
 Imports System.Web.Script.Serialization
+Imports System.Linq
 
 #End Region
 
@@ -52,7 +53,7 @@ Public Class Ges022_001_Clientes
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _controladorEmpresas As ControladorEmpresas
+    'Private _controladorEmpresas As ControladorEmpresas
 
     Private _tipoObjeto As Type
 
@@ -249,66 +250,66 @@ Public Class Ges022_001_Clientes
 
             '  ██████inicio███████        Logica de negocios local      ████████████████████████
 
-            _controladorEmpresas = New ControladorEmpresas
+            '_controladorEmpresas = New ControladorEmpresas
 
-            With _controladorEmpresas
+            'With _controladorEmpresas
 
-                .t_CURP = t_CURP.Value
+            '    .t_CURP = t_CURP.Value
 
-                .t_Calle = t_Calle.Value
+            '    .t_Calle = t_Calle.Value
 
-                .t_NumeroExt = t_NumeroExt.Value
+            '    .t_NumeroExt = t_NumeroExt.Value
 
-                .t_NumeroInt = t_NumeroInt.Value
+            '    .t_NumeroInt = t_NumeroInt.Value
 
-                .t_Colonia = t_Colonia.Value
+            '    .t_Colonia = t_Colonia.Value
 
-                .t_Ciudad = t_Ciudad.Value
+            '    .t_Ciudad = t_Ciudad.Value
 
-                .t_Estado = t_Estado.Value
+            '    .t_Estado = t_Estado.Value
 
-                .t_Pais = t_Pais.Value
+            '    .t_Pais = t_Pais.Value
 
-                .i_Cve_Empresa = i_Cve_Empresa.Text
+            '    .i_Cve_Empresa = i_Cve_Empresa.Text
 
-                .t_RFC = t_RFC.Value
+            '    .t_RFC = t_RFC.Value
 
-                .s_tipoPersona = s_tipoPersona.Checked
+            '    .s_tipoPersona = s_tipoPersona.Checked
 
-                .s_Extranjero = s_Extranjero.Checked
+            '    .s_Extranjero = s_Extranjero.Checked
 
-                .esNuevoDomicilio = Not s_Domicilios.Visible
+            '    .esNuevoDomicilio = Not s_Domicilios.Visible
 
-                If GetVars("_empresa") IsNot Nothing Then
+            '    If GetVars("_empresa") IsNot Nothing Then
 
-                    _empresa = GetVars("_empresa")
+            '        _empresa = GetVars("_empresa")
 
-                    tagwatcher_ = .ActualizaEmpresa(_empresa, session_)
+            '        tagwatcher_ = .ActualizaEmpresa(_empresa, session_)
 
-                    If s_Domicilios.Visible = True Then
+            '        If s_Domicilios.Visible = True Then
 
-                        SetVars("_secDomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
+            '            SetVars("_secDomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
 
-                    End If
+            '        End If
 
-                Else
+            '    Else
 
-                    tagwatcher_ = .NuevaEmpresa(session_)
+            '        tagwatcher_ = .NuevaEmpresa(session_)
 
-                    If tagwatcher_.Status = TypeStatus.Ok Then
+            '        If tagwatcher_.Status = TypeStatus.Ok Then
 
-                        _empresa = tagwatcher_.ObjectReturned
+            '            _empresa = tagwatcher_.ObjectReturned
 
-                        'Grabamos la instancia en la session
-                        SetVars("_empresa", _empresa)
+            '            'Grabamos la instancia en la session
+            '            SetVars("_empresa", _empresa)
 
-                    End If
+            '        End If
 
-                End If
+            '    End If
 
-                '  ████████fin█████████       Logica de negocios local       ███████████████████████
+            '    '  ████████fin█████████       Logica de negocios local       ███████████████████████
 
-            End With
+            'End With
 
 
         Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
@@ -326,7 +327,7 @@ Public Class Ges022_001_Clientes
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
         '************** TEMPORAL ********** (Este segmento se colocará al interior de DocomentoElectronico y como una propiedad en el CMF) ***********
-        Dim secuencia_ As New Secuencia _
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
                   With {.anio = 2022,
                         .environment = 0,
                         .mes = 0,
@@ -416,41 +417,41 @@ Public Class Ges022_001_Clientes
             '.SetOK()
 
             'Actualizamos los datos del objeto empresa en session
-            _controladorEmpresas = New ControladorEmpresas
+            '_controladorEmpresas = New ControladorEmpresas
 
-            With _controladorEmpresas
+            'With _controladorEmpresas
 
-                .t_CURP = t_CURP.Value
+            '    .t_CURP = t_CURP.Value
 
-                .t_Calle = t_Calle.Value
+            '    .t_Calle = t_Calle.Value
 
-                .t_NumeroExt = t_NumeroExt.Value
+            '    .t_NumeroExt = t_NumeroExt.Value
 
-                .t_NumeroInt = t_NumeroInt.Value
+            '    .t_NumeroInt = t_NumeroInt.Value
 
-                .t_Colonia = t_Colonia.Value
+            '    .t_Colonia = t_Colonia.Value
 
-                .t_Ciudad = t_Ciudad.Value
+            '    .t_Ciudad = t_Ciudad.Value
 
-                .t_Estado = t_Estado.Value
+            '    .t_Estado = t_Estado.Value
 
-                .t_Pais = t_Pais.Value
+            '    .t_Pais = t_Pais.Value
 
-                .i_Cve_Empresa = i_Cve_Empresa.Text
+            '    .i_Cve_Empresa = i_Cve_Empresa.Text
 
-                .t_RFC = t_RFC.Value
+            '    .t_RFC = t_RFC.Value
 
-                .s_tipoPersona = s_tipoPersona.Checked
+            '    .s_tipoPersona = s_tipoPersona.Checked
 
-                .s_Extranjero = s_Extranjero.Checked
+            '    .s_Extranjero = s_Extranjero.Checked
 
-                .esNuevoDomicilio = Not s_Domicilios.Visible
+            '    .esNuevoDomicilio = Not s_Domicilios.Visible
 
-                tagwatcher_ = .ActualizaEmpresa(GetVars("_empresa"), session_)
+            '    tagwatcher_ = .ActualizaEmpresa(GetVars("_empresa"), session_)
 
-                '  ████████fin█████████        Logica de negocios local      ███████████████████████
+            '    '  ████████fin█████████        Logica de negocios local      ███████████████████████
 
-            End With
+            'End With
 
         Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
 
@@ -505,11 +506,11 @@ Public Class Ges022_001_Clientes
 
             Dim listOptionsDomicilios_ As New List(Of SelectOption)
 
-            SetVars("_empresa", ControladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
-                                                .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
-                                                listOptionsDomicilios_,
-                                                domicilio_))
-            _empresa = GetVars("_empresa")
+            'SetVars("_empresa", ControladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
+            '                                    .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
+            '                                    listOptionsDomicilios_,
+            '                                    domicilio_))
+            '_empresa = GetVars("_empresa")
 
             'If .Attribute(CamposClientes.CP_ID_EMPRESA).Valor IsNot Nothing Then
 
@@ -605,17 +606,17 @@ Public Class Ges022_001_Clientes
 
                             If result_.Count > 0 Then
 
-                                Dim domicilio_ = ControladorEmpresas.BuscarDomicilio(i_Cve_Empresa.Value,
-                                                                                         Convert.ToInt32(s_Domicilios.Value),
-                                                                                         empresasTemporales_)
+                                'Dim domicilio_ = ControladorEmpresas.BuscarDomicilio(i_Cve_Empresa.Value,
+                                '                                                         Convert.ToInt32(s_Domicilios.Value),
+                                '                                                         empresasTemporales_)
 
-                                t_Calle.Value = domicilio_.calle
-                                t_NumeroExt.Value = domicilio_.numeroexterior
-                                t_NumeroInt.Value = domicilio_.numerointerior
-                                t_CP.Value = domicilio_.cp
-                                t_Colonia.Value = domicilio_.colonia
-                                t_Ciudad.Value = domicilio_.ciudad
-                                t_Pais.Value = domicilio_.pais
+                                't_Calle.Value = domicilio_.calle
+                                't_NumeroExt.Value = domicilio_.numeroexterior
+                                't_NumeroInt.Value = domicilio_.numerointerior
+                                't_CP.Value = domicilio_.cp
+                                't_Colonia.Value = domicilio_.colonia
+                                't_Ciudad.Value = domicilio_.ciudad
+                                't_Pais.Value = domicilio_.pais
 
                             End If
 
@@ -763,11 +764,11 @@ Public Class Ges022_001_Clientes
 
         Dim empresasTemporales_ As New List(Of Empresa)
 
-        Dim lista_ As List(Of SelectOption) = ControladorEmpresas.BuscarEmpresas(empresasTemporales_, i_Cve_Empresa.Text)
+        'Dim lista_ As List(Of SelectOption) = ControladorEmpresas.BuscarEmpresas(empresasTemporales_, i_Cve_Empresa.Text)
 
         SetVars("_empresasTemporal", empresasTemporales_)
 
-        i_Cve_Empresa.DataSource = lista_
+        'i_Cve_Empresa.DataSource = lista_
 
     End Sub
 
@@ -779,74 +780,74 @@ Public Class Ges022_001_Clientes
 
             Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
 
-            If empresasTemporales_ IsNot Nothing And
-                Not IsNumeric(empresasTemporales_) Then
+            'If empresasTemporales_ IsNot Nothing And
+            '    Not IsNumeric(empresasTemporales_) Then
 
-                If i_Cve_Empresa.Value <> "" Then
+            '    If i_Cve_Empresa.Value <> "" Then
 
-                    If IsNumeric(i_Cve_Empresa.Value) Then
+            '        If IsNumeric(i_Cve_Empresa.Value) Then
 
-                        If i_Cve_Empresa.Value <> -1 Then
+            '            If i_Cve_Empresa.Value <> -1 Then
 
-                            Dim result_ = From data In empresasTemporales_
-                                          Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
-                            'Select data.rfc, data.curp
+            '                Dim result_ = From data In empresasTemporales_
+            '                              Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
+            '                'Select data.rfc, data.curp
 
-                            If result_.Count > 0 Then
+            '                If result_.Count > 0 Then
 
-                                SetVars("_empresa", result_(0))
+            '                    SetVars("_empresa", result_(0))
 
-                                t_RFC.Value = result_(0).rfc
+            '                    t_RFC.Value = result_(0).rfc
 
-                                t_CURP.Value = result_(0).curp
+            '                    t_CURP.Value = result_(0).curp
 
-                                Dim domicilios_ = ControladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
-                                                               empresasTemporales_)
+            '                    'Dim domicilios_ = ControladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
+            '                    '                               empresasTemporales_)
 
-                                .DataSource = domicilios_
+            '                    .DataSource = domicilios_
 
-                                If domicilios_.Count > 0 Then
+            '                    If domicilios_.Count > 0 Then
 
-                                    .Value = domicilios_(0).Value
+            '                        .Value = domicilios_(0).Value
 
-                                    s_EditarDomicilio.Visible = True
+            '                        s_EditarDomicilio.Visible = True
 
-                                    s_SeleccionarDomicilio.Checked = True
+            '                        s_SeleccionarDomicilio.Checked = True
 
-                                    VerificaCheckDomicilio()
+            '                        VerificaCheckDomicilio()
 
-                                End If
+            '                    End If
 
-                            End If
+            '                End If
 
-                        End If
+            '            End If
 
-                    End If
-                Else
+            '        End If
+            '    Else
 
-                    t_RFC.Value = Nothing
+            '        t_RFC.Value = Nothing
 
-                    t_CURP.Value = Nothing
+            '        t_CURP.Value = Nothing
 
-                    s_EditarDomicilio.Checked = False
+            '        s_EditarDomicilio.Checked = False
 
-                    s_Domicilios.DataSource = Nothing
+            '        s_Domicilios.DataSource = Nothing
 
-                    VerificaCheckDomicilio(3)
+            '        VerificaCheckDomicilio(3)
 
-                End If
+            '    End If
 
-            Else
+            'Else
 
-                .Options.Clear()
+            '    .Options.Clear()
 
-                .DataSource = Nothing
+            '    .DataSource = Nothing
 
-                t_RFC.Value = Nothing
+            '    t_RFC.Value = Nothing
 
-                t_CURP.Value = Nothing
+            '    t_CURP.Value = Nothing
 
-            End If
+            'End If
 
         End With
 

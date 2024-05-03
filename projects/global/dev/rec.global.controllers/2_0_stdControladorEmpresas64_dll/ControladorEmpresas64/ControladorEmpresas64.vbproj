@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Controllers</RootNamespace>
+    <RootNamespace>Rec.Globals.Controllers.Nuevo</RootNamespace>
     <AssemblyName>Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>

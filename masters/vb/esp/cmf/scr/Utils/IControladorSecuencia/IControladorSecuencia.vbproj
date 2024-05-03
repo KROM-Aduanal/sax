@@ -83,11 +83,6 @@
       <HintPath>..\..\..\..\sax2.0\bin\Utils\Rec.Globals.Utils.ISecuencia.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Utils.ISecuencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\sax2.0\bin\Utils\Rec.Globals.Utils.ISecuencia64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

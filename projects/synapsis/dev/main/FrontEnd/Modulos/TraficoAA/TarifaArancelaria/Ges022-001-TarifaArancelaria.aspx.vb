@@ -53,7 +53,7 @@ Public Class Ges022_001_TarifaArancelaria
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _controladorEmpresas As ControladorEmpresas
+    'Private _controladorEmpresas As ControladorEmpresas
 
     Private _tipoObjeto As Type
 

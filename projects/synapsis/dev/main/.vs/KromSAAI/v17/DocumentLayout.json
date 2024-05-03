@@ -3,26 +3,21 @@
   "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\referencias\\ges022-001-referencias.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\referencias\\ges022-001-referencias.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|C:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\referencias\\ges022-001-referencias.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\referencias\\ges022-001-referencias.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB4480D2-292C-4A59-AFB7-1B8DC886CA18}|..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdconstructorproducto64_dll\\constructorproducto64\\constructorproducto64.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{BE8CE878-D072-4CEB-869F-7FA7EBF15ED6}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\web\\1_0_stdControladorBackend64_dll\\ControladorBackend64\\ControladorBackend64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\web\\1_0_stdcontroladorbackend64_dll\\controladorbackend64\\controladorbackend.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\productos\\ges022-001-registroproductos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\productos\\ges022-001-registroproductos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{2C1C3532-F913-4F5B-BDF8-C625272BDC19}|..\\controllers\\syn.documentos\\1_0_stdConstructorReferencia64_dll\\ConstructorReferencia64\\ConstructorReferencia64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdconstructorreferencia64_dll\\constructorreferencia64\\constructorreferencia64.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E5BA7A8-2BF3-406E-BFC0-F69EF53D1E12}|..\\controllers\\syn.documentos\\1_0_stdConstructorProveedorOperativo64_dll\\ConstructorProveedorOperativo64\\ConstructorProveedorOperativo64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdconstructorproveedoroperativo64_dll\\constructorproveedoroperativo64\\constructorproveedoroperativo.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{FE980B48-440E-4E7B-858A-30F10387E57A}|..\\controllers\\syn.custombrokers\\1_0_stdControladorReferencias64_dll\\ControladorReferencias64\\ControladorReferencias64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdcontroladorreferencias64_dll\\controladorreferencias64\\controladorreferencias.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB5FFD0B-C909-4372-A4E3-F7709CA7677C}|..\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.nucleo\\1_0_stdrecursoscomercioexterior64_dll\\recursoscomercioexterior64\\recursoscomercioexterior64\\recursoscomercioexterior64.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
@@ -35,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,18 +39,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{757affbd-aba2-4a34-a9d0-98e3035e33ef}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
@@ -83,11 +66,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
             },
             {
               "$type": "Bookmark",
@@ -95,109 +78,92 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Ges022-001-RegistroProveedores.aspx.designer.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.designer.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.designer.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.designer.vb",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.designer.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAwLYBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T17:36:36.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Ges022-001-RegistroProductos.aspx.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Productos\\Ges022-001-RegistroProductos.aspx.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Productos\\Ges022-001-RegistroProductos.aspx.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Productos\\Ges022-001-RegistroProductos.aspx.vb",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Productos\\Ges022-001-RegistroProductos.aspx.vb",
-              "ViewState": "AQIAADsAAAAAAAAAAAAYwFEAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T17:33:40.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Ges022-001-RegistroProveedores.aspx",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-03-05T16:09:50.929Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ConstructorProducto64.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "RelativeDocumentMoniker": "..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "RelativeToolTip": "..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAowHoAAAAzAAAA",
+              "Title": "ControladorBackend.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\web\\1_0_stdControladorBackend64_dll\\ControladorBackend64\\ControladorBackend.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\web\\1_0_stdControladorBackend64_dll\\ControladorBackend64\\ControladorBackend.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\web\\1_0_stdControladorBackend64_dll\\ControladorBackend64\\ControladorBackend.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\web\\1_0_stdControladorBackend64_dll\\ControladorBackend64\\ControladorBackend.vb",
+              "ViewState": "AQIAAOIAAAAAAAAAAAAIwPsAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T17:23:17.297Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Ges022-001-RegistroProveedores.aspx.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "ViewState": "AQIAAHUCAAAAAAAAAAAiwJMCAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T16:09:43.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RecursosComercioExterior64.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
-              "RelativeDocumentMoniker": "..\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
-              "RelativeToolTip": "..\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAAAH0AAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T17:12:43.887Z",
+              "WhenOpened": "2024-05-02T23:29:48.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ConstructorProveedorOperativo.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProveedorOperativo64_dll\\ConstructorProveedorOperativo64\\ConstructorProveedorOperativo.vb",
-              "RelativeDocumentMoniker": "..\\controllers\\syn.documentos\\1_0_stdConstructorProveedorOperativo64_dll\\ConstructorProveedorOperativo64\\ConstructorProveedorOperativo.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProveedorOperativo64_dll\\ConstructorProveedorOperativo64\\ConstructorProveedorOperativo.vb",
-              "RelativeToolTip": "..\\controllers\\syn.documentos\\1_0_stdConstructorProveedorOperativo64_dll\\ConstructorProveedorOperativo64\\ConstructorProveedorOperativo.vb",
-              "ViewState": "AQIAAKsAAAAAAAAAAAAkwLgAAAA1AAAA",
+              "Title": "RecursosComercioExterior64.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
+              "RelativeDocumentMoniker": "..\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
+              "RelativeToolTip": "..\\controllers\\syn.nucleo\\1_0_stdRecursosComercioExterior64_dll\\RecursosComercioExterior64\\RecursosComercioExterior64\\RecursosComercioExterior64.vb",
+              "ViewState": "AQIAAJkCAAAAAAAAAAAgwLUCAABoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-03-05T15:40:19.143Z",
+              "WhenOpened": "2024-05-02T23:58:50.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ControladorReferencias.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdControladorReferencias64_dll\\ControladorReferencias64\\ControladorReferencias.vb",
+              "RelativeDocumentMoniker": "..\\controllers\\syn.custombrokers\\1_0_stdControladorReferencias64_dll\\ControladorReferencias64\\ControladorReferencias.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdControladorReferencias64_dll\\ControladorReferencias64\\ControladorReferencias.vb",
+              "RelativeToolTip": "..\\controllers\\syn.custombrokers\\1_0_stdControladorReferencias64_dll\\ControladorReferencias64\\ControladorReferencias.vb",
+              "ViewState": "AQIAAGcAAAAAAAAAAAA4wCsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-02T15:42:12.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConstructorReferencia64.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorReferencia64_dll\\ConstructorReferencia64\\ConstructorReferencia64.vb",
+              "RelativeDocumentMoniker": "..\\controllers\\syn.documentos\\1_0_stdConstructorReferencia64_dll\\ConstructorReferencia64\\ConstructorReferencia64.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorReferencia64_dll\\ConstructorReferencia64\\ConstructorReferencia64.vb",
+              "RelativeToolTip": "..\\controllers\\syn.documentos\\1_0_stdConstructorReferencia64_dll\\ConstructorReferencia64\\ConstructorReferencia64.vb",
+              "ViewState": "AQIAAO0AAAAAAAAAAAAcwAQBAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-04-25T15:58:22.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ges022-001-Referencias.aspx",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx",
+              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx",
+              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-04-24T18:18:44.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ges022-001-Referencias.aspx.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx.vb",
+              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx.vb",
+              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Referencias\\Ges022-001-Referencias.aspx.vb",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAswLkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-04-18T18:57:12.983Z",
               "EditorCaption": ""
             }
           ]

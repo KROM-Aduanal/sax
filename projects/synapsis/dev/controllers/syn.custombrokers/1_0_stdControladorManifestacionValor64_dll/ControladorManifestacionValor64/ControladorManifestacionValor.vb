@@ -340,10 +340,10 @@ Public Class ControladorManifestacionValor
 
                 With _ManifestacionesValor(iterador_)
 
-                    .Seccion(SMV4).Attribute(CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO).Valor =
-                                                        pedimento_.Seccion(ANS1).Attribute(CamposPedimento.CA_NUM_PEDIMENTO_COMPLETO).Valor
+                    .Seccion(SMV4).Attribute(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO).Valor =
+                                                        pedimento_.Seccion(ANS1).Attribute(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO).Valor
 
-                    .Seccion(SMV4).Attribute(CamposPedimento.CA_FECHA_PEDIM_ORIGINAL).Valor =
+                    .Seccion(SMV4).Attribute(CamposPedimento.CA_FECHA_PEDIMENTO_ORIGINAL).Valor =
                                                         pedimento_.Seccion(ANS14).Attribute(CamposPedimento.CA_FECHA_ENTRADA).Valor
 
                     .FolioDocumento = "PRUEBA" + iterador_.ToString()

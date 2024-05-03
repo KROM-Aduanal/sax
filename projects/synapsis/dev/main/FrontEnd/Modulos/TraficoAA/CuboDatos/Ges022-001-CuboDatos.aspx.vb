@@ -21,6 +21,7 @@ Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
 Imports Cube.Interpreters
+Imports System.Linq
 
 Public Class Ges022_001_CuboDatos
     Inherits ControladorBackend
@@ -520,7 +521,7 @@ Public Class Ges022_001_CuboDatos
 
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        Dim secuencia_ As New Secuencia _
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
               With {.anio = 0,
                     .environment = Statements.GetOfficeOnline()._id,
                     .mes = 0,

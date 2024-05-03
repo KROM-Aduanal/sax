@@ -5,7 +5,7 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports MongoDB.Driver.Linq
 Imports Wma.Exceptions
-Imports Rec.Globals.Controllers.IControladorEmpresas.TipoEstructura
+Imports Rec.Globals.Controllers.Nuevo.IControladorEmpresas.TipoEstructura
 
 Imports Rec.Globals.PaisDomicilio64
 Imports Rec.Globals.TaxId64

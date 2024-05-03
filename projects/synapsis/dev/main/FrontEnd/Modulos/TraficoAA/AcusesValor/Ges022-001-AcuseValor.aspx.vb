@@ -1,4 +1,5 @@
-﻿Imports gsol.Web.Components
+﻿Imports System.Linq
+Imports gsol.Web.Components
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Rec.Globals
@@ -584,7 +585,7 @@ Public Class Ges022_001_AcuseValor
 
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        Dim secuencia_ As New Secuencia _
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
               With {.anio = 0,
                     .environment = Statements.GetOfficeOnline()._id,
                     .mes = 0,

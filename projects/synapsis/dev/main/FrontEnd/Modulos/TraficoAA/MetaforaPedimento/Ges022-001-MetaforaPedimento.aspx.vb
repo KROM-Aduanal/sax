@@ -28,6 +28,7 @@ Imports Syn.CustomBrokers.Controllers
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 Imports Rec.Globals
 Imports Syn.CustomBrokers.Controllers.reportes
+Imports System.Linq
 
 #End Region
 
@@ -1045,7 +1046,7 @@ Public Class Ges022_001_MetaforaPedimento
                                                  ByVal tipoFijo_ As TipoFijo,
                                                  ByVal inputPrefijo_ As SelectControl) As String
 
-        Dim secuencia_ As New Secuencia
+        Dim secuencia_ As New Syn.Operaciones.Secuencia
 
         Select Case tipoSecuencia_
 

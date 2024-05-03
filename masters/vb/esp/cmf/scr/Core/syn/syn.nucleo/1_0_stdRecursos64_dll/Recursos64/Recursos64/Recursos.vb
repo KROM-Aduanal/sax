@@ -149,6 +149,7 @@ Namespace Syn.Nucleo
 
             <EnumMember> <Description("ObjectId Cliente")> CP_OBJECTID_CLIENTE = 2059
             <EnumMember> <Description("Secuencia de Cliente")> CP_CVE_CLIENTE = 2060
+            <EnumMember> <Description("RFC de Facturación")> CP_RFC_FACTURACION = 2061
 
             'CP_ACTIVO_PAGO
 
