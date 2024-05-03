@@ -189,7 +189,7 @@ Public Class CubeController
 
     End Function
 
-    Function FindSignatureRule(listacontextos_ As List(Of Framing), rules_ As String, firma_ As String) As String
+    Function FindSignatureRule(listacontextos_ As List(Of roomcontext), rules_ As String, firma_ As String) As String
 
         Dim listarules_ = listacontextos_.Find(Function(ch) ch.firmacontext = firma_ And ch.firmacontext <> "")
 
@@ -449,334 +449,365 @@ Public Class CubeController
 
             Dim newObjectId_ = ObjectId.GenerateNewId
 
-            Dim roomCurrent_ As Room = Nothing
+            Dim roomCurrent_ As room = Nothing
+
+            Dim roomfoud_ As Boolean = False
 
             operationsDB_.Aggregate.
                           Match(Function(e) e.roomname.ToUpper.Contains(cubeDestin_.ToUpper & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), "")) Or e._id = idRoom_).
                           ToList.ForEach(Sub(rooms_)
 
-                                             Dim roomHistory_ As New RoomHistory With {._id = ObjectId.GenerateNewId,
-                                                                                       .rules = roomRules_,
-                                                                                       .roomname = roomName_,
-                                                                                       .description = descriptionRules_,
-                                                                                       .addresses = New List(Of Framing) From {New Framing With
-                                                                                                                                                   {
-                                                                                                                                                      ._idcontext = ObjectId.GenerateNewId,
-                                                                                                                                                      .context = "home",
-                                                                                                                                                      .firmacontext = Nothing,
-                                                                                                                                                      .rules = Nothing,
-                                                                                                                                                      .ref = Nothing,
-                                                                                                                                                      .loc = New List(Of Int32) From {12, 1005},
-                                                                                                                                                      .cached = Nothing,
-                                                                                                                                                      .result = Nothing,
-                                                                                                                                                      .status = Nothing,
-                                                                                                                                                      .timelife = Nothing
-                                                                                                                                                   },
-                                                                                                                               New Framing With
-                                                                                                                                                   {
-                                                                                                                                                      ._idcontext = ObjectId.GenerateNewId,
-                                                                                                                                                      .context = "resourcerequired",
-                                                                                                                                                      .firmacontext = Nothing,
-                                                                                                                                                      .rules = Nothing,
-                                                                                                                                                      .ref = params_,
-                                                                                                                                                      .loc = Nothing,
-                                                                                                                                                      .cached = Nothing,
-                                                                                                                                                      .result = Nothing,
-                                                                                                                                                      .status = Nothing,
-                                                                                                                                                      .timelife = Nothing
-                                                                                                                                                    }
-                                                                                        },
-                                                                                       .messages = rooms_.messages,
-                                                                                       .status = rooms_.status,
-                                                                                       .contenttype = rooms_.contenttype,
-                                                                                       .reason = reason_,
-                                                                                       .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                                                                       }
+                                             If (rooms_._id <> idRoom_) Then
 
-                                             If idUser_ <> Nothing Then
+                                                 roomfoud_ = True
 
-                                                 roomHistory_._iduser = idUser_
-
-
-                                             End If
-
-                                             If userName_ <> "" Then
-
-                                                 roomHistory_.username = userName_
-
-
-                                             End If
-
-                                             If rooms_.historical Is Nothing Then
-
-                                                 roomHistoryList_.Add(roomHistory_)
                                              Else
 
-                                                 roomHistoryList_.AddRange(rooms_.historical)
+                                                 Dim roomHistory_ As New roomhistory With {._id = ObjectId.GenerateNewId,
+                                           .rules = roomRules_,
+                                           .roomname = roomName_,
+                                           .description = descriptionRules_,
+                                           .addresses = New List(Of roomcontext) From {New roomcontext With
+                                                                                                       {
+                                                                                                          ._idcontext = ObjectId.GenerateNewId,
+                                                                                                          .context = "home",
+                                                                                                          .firmacontext = Nothing,
+                                                                                                          .rules = Nothing,
+                                                                                                          .ref = Nothing,
+                                                                                                          .loc = New List(Of Int32) From {12, 1005},
+                                                                                                          .cached = Nothing,
+                                                                                                          .result = Nothing,
+                                                                                                          .status = Nothing,
+                                                                                                          .timelife = Nothing
+                                                                                                       },
+                                                                                   New roomcontext With
+                                                                                                       {
+                                                                                                          ._idcontext = ObjectId.GenerateNewId,
+                                                                                                          .context = "resourcerequired",
+                                                                                                          .firmacontext = Nothing,
+                                                                                                          .rules = Nothing,
+                                                                                                          .ref = params_,
+                                                                                                          .loc = Nothing,
+                                                                                                          .cached = Nothing,
+                                                                                                          .result = Nothing,
+                                                                                                          .status = Nothing,
+                                                                                                          .timelife = Nothing
+                                                                                                        }
+                                            },
+                                           .messages = rooms_.messages,
+                                           .status = rooms_.status,
+                                           .contenttype = rooms_.contenttype,
+                                           .reason = reason_,
+                                           .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                           }
 
-                                                 valorPresentacion_ = rooms_.historical(0).roomname
+                                                 If idUser_ <> Nothing Then
 
-                                                 If enviado_ = "on" Then
-
-                                                     roomHistoryList_.Insert(0, roomHistory_)
-
-                                                     valorPresentacion_ = roomHistory_.roomname
+                                                     roomHistory_._iduser = idUser_
 
 
                                                  End If
 
+                                                 If userName_ <> "" Then
+
+                                                     roomHistory_.username = userName_
+
+
+                                                 End If
+
+                                                 If rooms_.historical Is Nothing Then
+
+                                                     roomHistoryList_.Add(roomHistory_)
+                                                 Else
+
+                                                     roomHistoryList_.AddRange(rooms_.historical)
+
+                                                     valorPresentacion_ = rooms_.historical(0).roomname
+
+                                                     If enviado_ = "on" Then
+
+                                                         roomHistoryList_.Insert(0, roomHistory_)
+
+                                                         valorPresentacion_ = roomHistory_.roomname
+
+
+                                                     End If
+
+
+                                                 End If
+
+                                                 If rooms_.awaitingupdates Is Nothing Then
+
+                                                     roomawait_.Add(roomHistory_)
+                                                 Else
+
+                                                     roomawait_.AddRange(rooms_.awaitingupdates)
+
+                                                     roomawait_.Insert(0, roomHistory_)
+
+                                                 End If
+
+                                                 newObjectId_ = rooms_._id
+
+                                                 roomawait_(0).status = enviado_
+
+                                                 rooms_.awaitingupdates = roomawait_
+
+                                                 roomCurrent_ = rooms_
 
                                              End If
 
-                                             If rooms_.awaitingupdate Is Nothing Then
 
-                                                 roomawait_.Add(roomHistory_)
-                                             Else
-
-                                                 roomawait_.AddRange(rooms_.awaitingupdate)
-
-                                                 roomawait_.Insert(0, roomHistory_)
-
-                                             End If
-
-                                             newObjectId_ = rooms_._id
-
-                                             roomawait_(0).status = enviado_
-
-                                             rooms_.awaitingupdate = roomawait_
-
-                                             roomCurrent_ = rooms_
 
 
 
                                          End Sub)
 
-            If roomCurrent_ Is Nothing Then
+            If roomfoud_ Then
 
-                roomCurrent_ = New Room With
-                               {._id = newObjectId_,
-                                 .roomname = cubeDestin_ & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), ""),
-                                 .rules = roomRules_,
-                                 .description = descriptionRules_,
-                                 .required = True,
-                                 .fieldsrequired = New List(Of String),
-                                 .type = "warning",
-                                 .addresses = New List(Of Framing) From
-                                                                   {
-                                                                      New Framing With
-                                                                                  {
-                                                                                    ._idcontext = ObjectId.GenerateNewId,
-                                                                                    .context = "home",
-                                                                                    .firmacontext = Nothing,
-                                                                                    .rules = Nothing,
-                                                                                    .ref = Nothing,
-                                                                                    .loc = New List(Of Int32) From {12, 1005},
-                                                                                    .cached = Nothing,
-                                                                                    .result = Nothing,
-                                                                                    .status = Nothing,
-                                                                                    .timelife = Nothing
-                                                                                    },
-                                                                      New Framing With
-                                                                                  {
-                                                                                    ._idcontext = ObjectId.GenerateNewId,
-                                                                                    .context = "resourcerequired",
-                                                                                    .firmacontext = Nothing,
-                                                                                    .rules = Nothing,
-                                                                                    .ref = params_,
-                                                                                    .loc = Nothing,
-                                                                                     .cached = Nothing,
-                                                                                     .result = Nothing,
-                                                                                     .status = Nothing,
-                                                                                     .timelife = Nothing
-                                                                                   }
-                                                                    },
-                                 .status = status_,
-                                 .messages = New List(Of String),
-                                 .contenttype = contenttype_.ToLower,
-                                 .awaitingupdate = roomawait_,
-                                 .historical = roomHistoryList_
-                                 }
+                _status = New TagWatcher
+
+                SwicthedProjectSax(13)
+
+
+
+                _status.ObjectReturned = roomCurrent_
+
+                _status.SetOK()
+
 
             Else
 
-                If roomCurrent_.awaitingupdate IsNot Nothing Then
+                If roomCurrent_ Is Nothing Then
 
-                    If (roomCurrent_.awaitingupdate.Count > 0) Then
+                    roomCurrent_ = New room With
+                                   {._id = newObjectId_,
+                                     .roomname = cubeDestin_ & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), ""),
+                                     .rules = roomRules_,
+                                     .description = descriptionRules_,
+                                     .required = True,
+                                     .fieldsrequired = New List(Of String),
+                                     .type = "warning",
+                                     .addresses = New List(Of roomcontext) From
+                                                                       {
+                                                                          New roomcontext With
+                                                                                      {
+                                                                                        ._idcontext = ObjectId.GenerateNewId,
+                                                                                        .context = "home",
+                                                                                        .firmacontext = Nothing,
+                                                                                        .rules = Nothing,
+                                                                                        .ref = Nothing,
+                                                                                        .loc = New List(Of Int32) From {12, 1005},
+                                                                                        .cached = Nothing,
+                                                                                        .result = Nothing,
+                                                                                        .status = Nothing,
+                                                                                        .timelife = Nothing
+                                                                                        },
+                                                                          New roomcontext With
+                                                                                      {
+                                                                                        ._idcontext = ObjectId.GenerateNewId,
+                                                                                        .context = "resourcerequired",
+                                                                                        .firmacontext = Nothing,
+                                                                                        .rules = Nothing,
+                                                                                        .ref = params_,
+                                                                                        .loc = Nothing,
+                                                                                         .cached = Nothing,
+                                                                                         .result = Nothing,
+                                                                                         .status = Nothing,
+                                                                                         .timelife = Nothing
+                                                                                       }
+                                                                        },
+                                     .status = status_,
+                                     .messages = New List(Of String),
+                                     .contenttype = contenttype_.ToLower,
+                                     .awaitingupdates = roomawait_,
+                                     .historical = roomHistoryList_
+                                     }
 
-                        Dim roomTemp_ = roomCurrent_.awaitingupdate(0)
+                Else
 
-                        If enviado_ = "on" Then
+                    If roomCurrent_.awaitingupdates IsNot Nothing Then
 
-                            roomCurrent_.roomname = roomTemp_.roomname
-                            roomCurrent_.rules = roomTemp_.rules
-                            roomCurrent_.addresses = roomTemp_.addresses
-                            roomCurrent_.description = roomTemp_.description
-                            roomCurrent_.messages = roomTemp_.messages
-                            roomCurrent_.contenttype = roomTemp_.contenttype
-                            roomCurrent_.awaitingupdate(0).status = "on"
-                            roomCurrent_.historical = roomHistoryList_
+                        If (roomCurrent_.awaitingupdates.Count > 0) Then
+
+                            Dim roomTemp_ = roomCurrent_.awaitingupdates(0)
+
+                            If enviado_ = "on" Then
+
+                                roomCurrent_.roomname = roomTemp_.roomname
+                                roomCurrent_.rules = roomTemp_.rules
+                                roomCurrent_.addresses = roomTemp_.addresses
+                                roomCurrent_.description = roomTemp_.description
+                                roomCurrent_.messages = roomTemp_.messages
+                                roomCurrent_.contenttype = roomTemp_.contenttype
+                                roomCurrent_.awaitingupdates(0).status = "on"
+                                roomCurrent_.historical = roomHistoryList_
+
+                            End If
 
                         End If
 
                     End If
 
-                End If
-
-
-            End If
-
-
-            If roomHistoryList_.Count = 0 Then
-
-                roomHistoryList_.Add(New RoomHistory With {._id = ObjectId.GenerateNewId,
-                                          .rules = roomRules_,
-                                          .description = descriptionRules_,
-                                          .roomname = roomName_,
-                                          .addresses = roomCurrent_.addresses,
-                                          .messages = roomCurrent_.messages,
-                                          .status = roomCurrent_.status,
-                                          .contenttype = roomCurrent_.contenttype,
-                                          .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                          .reason = "ALTA"
-                                          })
-                If idUser_ <> Nothing Then
-
-                    roomHistoryList_(0)._iduser = idUser_
-
 
                 End If
 
-                If userName_ <> "" Then
 
-                    roomHistoryList_(0).username = userName_
+                If roomHistoryList_.Count = 0 Then
+
+                    roomHistoryList_.Add(New roomhistory With {._id = ObjectId.GenerateNewId,
+                                              .rules = roomRules_,
+                                              .description = descriptionRules_,
+                                              .roomname = roomName_,
+                                              .addresses = roomCurrent_.addresses,
+                                              .messages = roomCurrent_.messages,
+                                              .status = roomCurrent_.status,
+                                              .contenttype = roomCurrent_.contenttype,
+                                              .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                              .reason = "ALTA"
+                                              })
+                    If idUser_ <> Nothing Then
+
+                        roomHistoryList_(0)._iduser = idUser_
+
+
+                    End If
+
+                    If userName_ <> "" Then
+
+                        roomHistoryList_(0).username = userName_
+
+
+                    End If
+
+                    roomCurrent_.historical = roomHistoryList_
+
+                Else
+
 
 
                 End If
 
-                roomCurrent_.historical = roomHistoryList_
 
-            Else
+                If roomCurrent_.historical.Count > 3 Then
 
+                    roomCurrent_.historical.RemoveRange(3, roomCurrent_.historical.Count - 3)
+
+                End If
+
+                'If roomawait_.Count = 0 Then
+
+                '    roomawait_.Add(New RoomHistory With {._id = ObjectId.GenerateNewId,
+                '                              .rules = roomCurrent_.rules,
+                '                              .description = roomCurrent_.description,
+                '                              .roomname = roomCurrent_.roomname,
+                '                              .addresses = roomCurrent_.addresses,
+                '                              .messages = roomCurrent_.messages,
+                '                              .status = roomCurrent_.status,
+                '                              .contenttype = roomCurrent_.contenttype,
+                '                              .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                '                              .reason = "ALTA"
+                '                              })
+                '    If idUser_ <> Nothing Then
+
+                '        roomawait_(0)._iduser = idUser_
+
+
+                '    End If
+
+                '    If userName_ <> "" Then
+
+                '        roomawait_(0).username = userName_
+
+
+                '    End If
+
+                '    roomCurrent_.awaitingupdate = roomawait_
+
+                'End If
+
+
+                If roomCurrent_.awaitingupdates.Count > 3 Then
+
+                    roomCurrent_.awaitingupdates.RemoveRange(3, roomCurrent_.awaitingupdates.Count - 3)
+
+                End If
+
+
+                Dim updateDefinition_ = Builders(Of room).
+                                        Update.
+                                       Set(Function(e) e.roomname, roomCurrent_.roomname.ToUpper).
+                                       Set(Function(e) e.rules, roomCurrent_.rules).
+                                       Set(Function(e) e.description, roomCurrent_.description).
+                                       Set(Function(e) e.required, roomCurrent_.required).
+                                       Set(Function(e) e.fieldsrequired, roomCurrent_.fieldsrequired).
+                                       Set(Function(e) e.type, roomCurrent_.type).
+                                       Set(Function(e) e.addresses, roomCurrent_.addresses).
+                                       Set(Function(e) e.status, roomCurrent_.status).
+                                       Set(Function(e) e.messages, roomCurrent_.messages).
+                                       Set(Function(e) e.contenttype, roomCurrent_.contenttype).
+                                       Set(Function(e) e.awaitingupdates, roomCurrent_.awaitingupdates).
+                                       Set(Function(e) e.historical, roomCurrent_.historical)
+
+                operationsDB_.UpdateOne(Function(e) e._id = roomCurrent_._id,
+                                        updateDefinition_,
+                                        New UpdateOptions With {.IsUpsert = True})
+
+                OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
+
+
+
+                Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of roomresource)("", 7)
+
+
+
+                Dim roomResource_ As New roomresource With {
+                                                            ._id = ObjectId.GenerateNewId,
+                                                            .roomname = roomCurrent_.roomname,
+                                                            .description = roomCurrent_.description,
+                                                            .status = roomCurrent_.status,
+                                                            .contenttype = roomCurrent_.contenttype,
+                                                            .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                            .rolid = rolId_,
+                                                            .branchname = GetCubeSource(rolId_),
+                                                            .idroom = roomCurrent_._id,
+                                                            .username = userName_,
+                                                            .valorpresentacion = valorPresentacion_
+                                                             }
+
+                Dim updateDefinitionResource_ = Builders(Of roomresource).
+                                        Update.
+                                       Set(Function(e) e.roomname, roomResource_.roomname.ToUpper).
+                                       Set(Function(e) e.description, roomResource_.description).
+                                       Set(Function(e) e.status, roomResource_.status).
+                                       Set(Function(e) e.contenttype, roomResource_.contenttype).
+                                       Set(Function(e) e.createat, roomResource_.createat).
+                                       Set(Function(e) e.rolid, roomResource_.rolid).
+                                       Set(Function(e) e.branchname, roomResource_.branchname).
+                                       Set(Function(e) e.idroom, roomResource_.idroom).
+                                       Set(Function(e) e.username, roomResource_.username).
+                                       Set(Function(e) e.valorpresentacion, roomResource_.valorpresentacion.ToUpper)
+
+                operationsDBResource_.UpdateOne(Function(e) e.idroom = roomResource_.idroom,
+                                        updateDefinitionResource_,
+                                        New UpdateOptions With {.IsUpsert = True})
+
+
+                roomCurrent_.historical(0).createat = DateTime.Now
+
+                _status = New TagWatcher() With {.ObjectReturned = roomCurrent_}
+
+                SwicthedProjectSax(13)
+
+                _status.SetOK()
 
 
             End If
-
-
-            If roomCurrent_.historical.Count > 3 Then
-
-                roomCurrent_.historical.RemoveRange(3, roomCurrent_.historical.Count - 3)
-
-            End If
-
-            'If roomawait_.Count = 0 Then
-
-            '    roomawait_.Add(New RoomHistory With {._id = ObjectId.GenerateNewId,
-            '                              .rules = roomCurrent_.rules,
-            '                              .description = roomCurrent_.description,
-            '                              .roomname = roomCurrent_.roomname,
-            '                              .addresses = roomCurrent_.addresses,
-            '                              .messages = roomCurrent_.messages,
-            '                              .status = roomCurrent_.status,
-            '                              .contenttype = roomCurrent_.contenttype,
-            '                              .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-            '                              .reason = "ALTA"
-            '                              })
-            '    If idUser_ <> Nothing Then
-
-            '        roomawait_(0)._iduser = idUser_
-
-
-            '    End If
-
-            '    If userName_ <> "" Then
-
-            '        roomawait_(0).username = userName_
-
-
-            '    End If
-
-            '    roomCurrent_.awaitingupdate = roomawait_
-
-            'End If
-
-
-            If roomCurrent_.awaitingupdate.Count > 3 Then
-
-                roomCurrent_.awaitingupdate.RemoveRange(3, roomCurrent_.awaitingupdate.Count - 3)
-
-            End If
-
-
-            Dim updateDefinition_ = Builders(Of Room).
-                                    Update.
-                                   Set(Function(e) e.roomname, roomCurrent_.roomname.ToUpper).
-                                   Set(Function(e) e.rules, roomCurrent_.rules).
-                                   Set(Function(e) e.description, roomCurrent_.description).
-                                   Set(Function(e) e.required, roomCurrent_.required).
-                                   Set(Function(e) e.fieldsrequired, roomCurrent_.fieldsrequired).
-                                   Set(Function(e) e.type, roomCurrent_.type).
-                                   Set(Function(e) e.addresses, roomCurrent_.addresses).
-                                   Set(Function(e) e.status, roomCurrent_.status).
-                                   Set(Function(e) e.messages, roomCurrent_.messages).
-                                   Set(Function(e) e.contenttype, roomCurrent_.contenttype).
-                                   Set(Function(e) e.awaitingupdate, roomCurrent_.awaitingupdate).
-                                   Set(Function(e) e.historical, roomCurrent_.historical)
-
-            operationsDB_.UpdateOne(Function(e) e._id = roomCurrent_._id,
-                                    updateDefinition_,
-                                    New UpdateOptions With {.IsUpsert = True})
-
-            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
-
-
-
-            Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of RoomResource)("", 7)
-
-
-
-            Dim roomResource_ As New RoomResource With {
-                                                        ._id = ObjectId.GenerateNewId,
-                                                        .roomname = roomCurrent_.roomname,
-                                                        .description = roomCurrent_.description,
-                                                        .rules = roomCurrent_.rules,
-                                                        .status = roomCurrent_.status,
-                                                        .contenttype = roomCurrent_.contenttype,
-                                                        .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                        .rolId_ = rolId_,
-                                                        .cubeSource_ = GetCubeSource(rolId_),
-                                                        ._idroom = roomCurrent_._id,
-                                                        .username = userName_,
-                                                        .valorpresentacion = valorPresentacion_
-                                                         }
-
-            Dim updateDefinitionResource_ = Builders(Of RoomResource).
-                                    Update.
-                                   Set(Function(e) e.roomname, roomResource_.roomname.ToUpper).
-                                   Set(Function(e) e.description, roomResource_.description).
-                                   Set(Function(e) e.rules, roomResource_.rules).
-                                   Set(Function(e) e.status, roomResource_.status).
-                                   Set(Function(e) e.contenttype, roomResource_.contenttype).
-                                   Set(Function(e) e.createat, roomResource_.createat).
-                                   Set(Function(e) e.rolId_, roomResource_.rolId_).
-                                   Set(Function(e) e.cubeSource_, roomResource_.cubeSource_).
-                                   Set(Function(e) e._idroom, roomResource_._idroom).
-                                   Set(Function(e) e.username, roomResource_.username).
-                                   Set(Function(e) e.valorpresentacion, roomResource_.valorpresentacion.ToUpper)
-
-            operationsDBResource_.UpdateOne(Function(e) e._idroom = roomResource_._idroom,
-                                    updateDefinitionResource_,
-                                    New UpdateOptions With {.IsUpsert = True})
-
-
-            roomCurrent_.historical(0).createat = DateTime.Now
-
-            _status = New TagWatcher() With {.ObjectReturned = roomCurrent_}
-
         End Using
 
-        SwicthedProjectSax(13)
 
-        _status.SetOK()
+
+
 
         Return _status
 
@@ -1043,13 +1074,12 @@ Public Class CubeController
                                                                   ._id = ObjectId.GenerateNewId,
                                                                   .roomname = room_.roomname,
                                                                   .description = room_.description,
-                                                                  .rules = room_.rules,
                                                                   .status = room_.status,
                                                                   .contenttype = room_.contenttype,
                                                                   .createat = DateTime.Now,
-                                                                  .rolId_ = rolId_,
-                                                                  .cubeSource_ = GetCubeSource(rolId_),
-                                                                  ._idroom = room_._id,
+                                                                  .rolid = rolId_,
+                                                                  .branchname = GetCubeSource(rolId_),
+                                                                  .idroom = room_._id,
                                                                   .username = "originalfourier@gmail.com",
                                                                   .valorpresentacion = valorPresentacion_
                                                                    })
@@ -1163,13 +1193,13 @@ Public Class CubeController
 
 
 
-                OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, _roomsResource(0).rolId_)
+                OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, _roomsResource(0).rolid)
 
                 _rooms = New List(Of Room)
 
-                _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of Room)("", _roomsResource(0).rolId_).
+                _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _roomsResource(0).rolid).
                                                      Aggregate.
-                                                     Match(Function(ch) ch._id = _roomsResource(0)._idroom).
+                                                     Match(Function(ch) ch._id = _roomsResource(0).idroom).
                                                      ToList)
 
                 Dim found_ = True
@@ -1318,7 +1348,7 @@ Public Class CubeController
 
                 _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of RoomResource)("", rolId_).
                                                  Aggregate.
-                                                 Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.cubeSource_.Equals(token_)).
+                                                 Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.branchname.Equals(token_)).
                                                  Limit(cuenta_).
                                                  ToList)
 

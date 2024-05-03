@@ -53,8 +53,6 @@ export class WCFEditor extends HTMLDivElement {
                 
                 const characters_ = content_.replace(/\[13\]/g, '\n').split('');
 
-                console.log(characters_);
-
                 characters_.forEach(character_ => {
 
                     if (character_ === '+' || character_ === '-' || character_ === '*' || character_ === '/' || character_ === ',' || character_ === '-' || character_ === '(' || character_ === ')' || character_ === '^' || character_ === '=' || character_ === '>' || character_ === '<' || character_ === '}') {

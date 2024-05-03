@@ -119,13 +119,14 @@
         <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM"   HasAutoSave="false" Label="Reglas del Cubo" OnCheckedChanged="MarcarPagina">
             <Buttonbar runat="server" OnClick="EventosBotonera" OnLoad="ColocaAutorizar" >
                 <DropdownButtons >
-                    <GWC:ButtonItem Text="Solicitar Autorización"/>
+                    <GWC:ButtonItem Text="Solicitar Autorización" Visible="false" ID="bi_SolicitarAutorizacion"/>
                     <GWC:ButtonItem Text="Limpiar"/>
                     <GWC:ButtonItem Text="Descargar"/>
                     <GWC:ButtonItem Text="Imprimir"/>
                     <GWC:ButtonItem Text="Mandar por Correo"/>
                     <GWC:ButtonItem Text="Autorizar" Visible="false" ID="bi_SudoAutorizar"/>
                     <GWC:ButtonItem Text="Desechar" Visible="false" ID="bi_SudoDesechar"/>
+                    <GWC:ButtonItem Text="Comparar" Visible="false" ID="bi_Comparar"/>
                 </DropdownButtons>
             </Buttonbar>   
             <Fieldsets >
@@ -145,12 +146,13 @@
 
                                 </div>
                                 <div >
-                                    
-                                    <gwc-userdata title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
+                                     <asp:Panel runat="server"  ID="p_userdata" Visible="true">
+                                         <gwc-userdata title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
+                                     </asp:Panel>
                                    
                                     <GWC:ButtonControl runat="server" Label="Por Autorizar" ID="bc_PorAutorizar" CssClass="bcporautorizar" Visible="false"/>
-                                    <GWC:ButtonControl runat="server" Label="Verificado" ID="bc_Verificado" CssClass="swcverificado" Visible="false"/>
-                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online" ID="swc_Online"/>
+                                    <GWC:ButtonControl runat="server" Label="Verificado" ID="bc_Verificado" CssClass="swcverificado" Visible="false" />
+                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online" ID="swc_Online" OnLoad="RevisaVerificado"/>
                                 </div>
                                 <div>
                                     <div is="wc-feditor" contenteditable="true"></div>
@@ -175,6 +177,7 @@
 
                                 <div>
 
+                                      <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22" ID="bc_SourceCubeChange"/>
                                       <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server" ID="bc_FunctionChange"  OnClick="NewChangeContent"/>
                                       <GWC:ButtonControl CssClass="cubo-btn-variable" runat="server" ID="bc_VarChange" Visible="False" OnClick="NewChangeContent"/>
                                       <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"  ID="ic_RoomNameNew" />
@@ -182,20 +185,29 @@
                                 </div>
                                 <div>
 
-                                      <GWC:InputControl runat="server" CssClass="cubo-input-search2 mt-3" Label="Razón por la que se modifica"  ID="ic_changeReason" />
+                                    <GWC:InputControl runat="server" CssClass="cubo-input-search2 mt-3" Label="Razón por la que se modifica"  ID="ic_changeReason" />
+                                   
+                                    <GWC:ButtonControl runat="server" Label="Por Autorizar" ID="bc_PorAutorizarNueva" CssClass="bcporautorizar" Visible="false"/>
+                                    <GWC:ButtonControl runat="server" Label="Verificado" ID="bc_VerificadoNueva" CssClass="swcverificado" Visible="false"/>
+                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online" ID="swc_OnlineNueva" OnLoad="RevisaVerificado"/>
 
                                 </div>
                                 <div>
                                     <div is="wc-feditor" contenteditable="true"></div>
                                     <asp:TextBox ID="tb_FormulaNueva" runat="server" CssClass="feditor-formula-nueva"></asp:TextBox>
                                 </div>
+                                <div>
+                                    <GWC:ButtonControl runat="server" Label="Limpiar"  CssClass="iralimpiar" OnClick="LimpiarFormulaCubo" ID="bc_LimpiarFormulaEditar"/>
+                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPruebaEditar" CssClass="iraformulacabulidad"  OnClick="IrVerificarFormula" Enabled="false"/>
+                                </div>
+
 
                             </asp:Panel>
 
 
                             <%-- FIN DISEÑO COMPONENTE --%>
                         </asp:Panel>
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-messages">
+                        <asp:Panel runat="server" CssClass="col-md-12 col-xs-6 wc-cubo-messages">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Mensajes" CssClass="fieldset-subtitle"></asp:Label>
                             <GWC:TabbarControl runat="server">
@@ -239,14 +251,14 @@
                 <GWC:FieldsetControl runat="server" Label="Información" ID="fscinformacion" >
                     <ListControls>
                    
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-description">
+                        <asp:Panel runat="server" CssClass="col-md-12 col-xs-6 wc-cubo-description" ID="p_descriptions">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Descripción" CssClass="fieldset-subtitle" ></asp:Label>
                             <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea" ID="ic_DescripcionRules"/>
 
                             <%-- FIN DISEÑO COMPONENTE --%>
                         </asp:Panel>
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-comments">
+                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-comments" Visible="false" ID="p_historico">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Histórico" CssClass="fieldset-subtitle"></asp:Label>
                             <ul>
@@ -263,7 +275,7 @@
                 </GWC:FieldsetControl>
 
                         
-               <GWC:FieldsetControl runat="server"  Label="Prueba de Fórmulas" ID="fscProbarFormulas" CssClass="formulariocabulidad">
+               <GWC:FieldsetControl runat="server"  Label="Prueba de Fórmulas" ID="fscProbarFormulas" CssClass="formulariocabulidad" Visible="false">
                     <ListControls>
 
  
@@ -298,9 +310,15 @@
 
      localStorage.setItem('checarInputs', 'NO');
 
+     localStorage.setItem('ValorNuevo', '');
+
      document.addEventListener('click', function (event) {
 
          var bc_EleaborarPrueba_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
+
+         if (!bc_EleaborarPrueba_) {
+             bc_EleaborarPrueba_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPruebaEditar_bc_ElaborarPruebaEditar');
+         }
 
          if (bc_EleaborarPrueba_.disabled)
 
@@ -310,12 +328,17 @@
 
              bc_EleaborarPrueba_.style.backgroundColor = 'var(--tintColor) ';
 
+
          if (event.target.parentNode.classList.contains('iraformulacabulidad')) {
 
              var feditor_ = document.querySelector('.feditor-formula-actual');
 
-             if (feditor_.disabled) 
+             if (feditor_) {
 
+                 if (feditor_.disabled)
+
+                     feditor_ = document.querySelector('.feditor-formula-nueva');
+             } else
                  feditor_ = document.querySelector('.feditor-formula-nueva');
 
              if (feditor_.value == "") {
@@ -332,6 +355,7 @@
                      bc_EleaborarPrueba_.style.backgroundColor = '#cecdcd';
 
                      bc_EleaborarPrueba_.disabled = true;
+
 
                  } else {
 
@@ -382,8 +406,13 @@
 
              var feditor_ = document.querySelector('.feditor-formula-actual');
 
-             if (feditor_.disabled) 
+             if (feditor_) {
+
+                 if (feditor_.disabled)
+                     feditor_ = document.querySelector('.feditor-formula-nueva');
+             } else
                  feditor_ = document.querySelector('.feditor-formula-nueva');
+
 
              if (feditor_.value == "") {
 
@@ -395,6 +424,7 @@
                  const content_ = document.querySelector('.content-wrapper-page');
 
                  const fieldset_ = document.querySelector('.fieldset-subtitle');
+
 
 
                  if (content_) {
@@ -411,6 +441,11 @@
 
          //myDiv.dataset.nthChild;
 
+         var bc_verificadog_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_Verificado_bc_Verificado');
+
+         if (bc_verificadog_)
+             console.log(bc_verificadog_);
+
          var algo_ = document.querySelectorAll("[is=wc-input]");
          //var algo_ = document.getElementsByName('ctl00$contentBody$__SYSTEM_MODULE_FORM$fscProbarFormulas$cc_ValoresOperandos$operandName_$operandName_');
        //  console.log("Nodos:" + algo_.length);
@@ -421,6 +456,7 @@
 
          var icChangeReason_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_ic_changeReason_ic_changeReason');
 
+         if(icRoomName_)
          icRoomName_.style.width = '800px';
 
          if (icChangeReason_) {
@@ -430,18 +466,43 @@
      
          //alert(algo_.style.width);
          const componentes_ = document.querySelectorAll("[is=wc-feditor]");
-         const componente_ =componentes_[0];
-         const componenteNuevo_ = componentes_[1];
+
+         var componente_
+         var componenteNuevo_
+
+         if (componentes_.length === 1) {
+             componente_ = componentes_[0];
+             componenteNuevo_ = null;
+         } else {
+
+             componente_ = componentes_[0];
+             componenteNuevo_ = componentes_[1];
+
+         }
 
          if (event.target === componente_ || event.target === componenteNuevo_) {
 
              var feditor_ = document.querySelector(".feditor-formula-actual");
 
-             if (feditor_.disabled)
+
+
+             if (feditor_) {
+                 if (feditor_.disabled)
+
+                     feditor_ = document.querySelector('.feditor-formula-nueva');
+             }
+             else {
 
                  feditor_ = document.querySelector('.feditor-formula-nueva');
 
+             }
+
+
              var bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
+
+             if (!bc_ircabulidad_)
+                 bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPruebaEditar_bc_ElaborarPruebaEditar');
+
 
              //console.log(bc_ircabulidad_);
 
@@ -452,6 +513,7 @@
                  bc_ircabulidad_.style.backgroundColor = '#cecdcd';
 
                  bc_ircabulidad_.disabled = true;
+
              }
              else {
 
@@ -459,19 +521,54 @@
 
                      var bc_limpiar_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_LimpiarFormula_bc_LimpiarFormula');
 
+                     if(!bc_limpiar_)
+                         bc_limpiar_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_LimpiarFormulaEditar_bc_LimpiarFormulaEditar');
+
                      bc_limpiar_.style.backgroundColor = '#cecdcd';
 
                      bc_limpiar_.disabled = true;
+
 
                      bc_ircabulidad_.style.backgroundColor = '#cecdcd';
 
                      bc_ircabulidad_.disabled = true;
 
+                     var bc_verificado_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_Verificado_bc_Verificado');
+
+                     if(bc_verificado_)
+                         console.log(bc_verificado_);
+
+                     if (bc_verificado_)
+                         bc_verificado_.style.visibility = 'hidden';
+
+
                  } else {
+
+                     var valorOld = localStorage.getItem('ValorNuevo');
+                     var valorNew = feditor_.value;
+
+                     if (valorOld !== valorNew) {
+
+                         var bc_verificado_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_Verificado_bc_Verificado');
+
+                         if (!bc_verificado_)
+                             bc_verificado_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_VerificadoNueva_bc_VerificadoNueva');
+
+                         console.log(bc_verificado_);
+                         if (bc_verificado_) {
+                             bc_verificado_.style.visibility = 'hidden';
+                             bc_verificado_.style.display = 'none';
+                             bc_verificado_.disabled = true;
+                         }
+                     }
+
+
+                     localStorage.setItem('ValorNuevo', valorNew);
 
                      bc_ircabulidad_.style.backgroundColor = 'var(--tintColor)';
 
                      bc_ircabulidad_.disabled = false;
+
                  }
                  //bc_ircabulidad_.style.backgroundImage = 'url("/FrontEnd/Librerias/Krom/imgs/matrazc.png")';
                  //bc_ircabulidad_.style.backgroundPosition = 'left center';

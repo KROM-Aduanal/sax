@@ -1,6 +1,7 @@
 /*CUBO*/
 .wc-cubo-formulas {
     width: 100%;
+   
 }
 /*TOP CONTENT*/
 .wc-cubo-formulas > div:nth-child(1) {
@@ -268,6 +269,14 @@
     display: block;
     font-size: 75%;
     opacity: .7;
+}
+
+
+.swc-online {
+    margin: 0 auto;
+    position: relative;
+    bottom: 0;
+    right: calc(0-2*var(--tamanio));
 }
 
 /**/

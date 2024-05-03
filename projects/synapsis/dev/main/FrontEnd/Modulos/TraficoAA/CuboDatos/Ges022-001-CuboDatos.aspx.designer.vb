@@ -41,6 +41,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
 
     '''<summary>
+    '''Control bi_SolicitarAutorizacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_SolicitarAutorizacion As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
     '''Control bi_SudoAutorizar.
     '''</summary>
     '''<remarks>
@@ -57,6 +66,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bi_SudoDesechar As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
+    '''Control bi_Comparar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_Comparar As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
     '''Control fscformulas.
@@ -120,6 +138,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ic_RoomName As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control p_userdata.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents p_userdata As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''Control bc_PorAutorizar.
@@ -194,6 +221,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents p_FormulaNueva As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
+    '''Control bc_SourceCubeChange.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bc_SourceCubeChange As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
     '''Control bc_FunctionChange.
     '''</summary>
     '''<remarks>
@@ -230,6 +266,33 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents ic_changeReason As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
+    '''Control bc_PorAutorizarNueva.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bc_PorAutorizarNueva As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
+    '''Control bc_VerificadoNueva.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bc_VerificadoNueva As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
+    '''Control swc_OnlineNueva.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents swc_OnlineNueva As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
     '''Control tb_FormulaNueva.
     '''</summary>
     '''<remarks>
@@ -237,6 +300,24 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents tb_FormulaNueva As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control bc_LimpiarFormulaEditar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bc_LimpiarFormulaEditar As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
+    '''Control bc_ElaborarPruebaEditar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bc_ElaborarPruebaEditar As Global.Gsol.Web.Components.ButtonControl
 
     '''<summary>
     '''Control fscinformacion.
@@ -248,6 +329,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents fscinformacion As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control p_descriptions.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents p_descriptions As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''Control ic_DescripcionRules.
     '''</summary>
     '''<remarks>
@@ -255,6 +345,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ic_DescripcionRules As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control p_historico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents p_historico As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''Control fscProbarFormulas.

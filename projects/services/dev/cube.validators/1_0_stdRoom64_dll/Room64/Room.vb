@@ -1,7 +1,7 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
 
-Public Class Room
+Public Class room
     Public Property _id As ObjectId
     <BsonIgnoreIfNull>
     Public Property roomname As String
@@ -14,7 +14,7 @@ Public Class Room
     <BsonIgnoreIfNull>
     Public Property fieldsrequired As List(Of String)
     <BsonIgnoreIfNull>
-    Public Property addresses As List(Of Framing)
+    Public Property addresses As List(Of roomcontext)
     <BsonIgnoreIfNull>
     Public Property messages As List(Of String)
     <BsonIgnoreIfNull>
@@ -24,13 +24,13 @@ Public Class Room
     <BsonIgnoreIfNull>
     Public Property contenttype As String
     <BsonIgnoreIfNull>
-    Public Property awaitingupdate As List(Of RoomHistory)
+    Public Property awaitingupdates As List(Of roomhistory)
     <BsonIgnoreIfNull>
-    Public Property historical As List(Of RoomHistory)
+    Public Property historical As List(Of roomhistory)
 
 End Class
 
-Public Class Framing
+Public Class roomcontext
 
     <BsonIgnoreIfNull>
     Public Property _idcontext As ObjectId
@@ -60,7 +60,7 @@ Public Class Framing
 
 End Class
 
-Public Class RunnedSurround
+Public Class runnedsurround
 
     <BsonIgnoreIfNull>
     Public Property _id As ObjectId
@@ -90,7 +90,7 @@ Public Class RunnedSurround
 
 End Class
 
-Public Class RoomHistory
+Public Class roomhistory
 
     Public Property _id As ObjectId
     <BsonIgnoreIfNull>
@@ -100,7 +100,7 @@ Public Class RoomHistory
     <BsonIgnoreIfNull>
     Public Property rules As String
     <BsonIgnoreIfNull>
-    Public Property addresses As List(Of Framing)
+    Public Property addresses As List(Of roomcontext)
     <BsonIgnoreIfNull>
     Public Property messages As List(Of String)
     <BsonIgnoreIfNull>
@@ -119,7 +119,7 @@ Public Class RoomHistory
 End Class
 
 
-Public Class RoomResource
+Public Class roomresource
 
     Public Property _id As ObjectId
     <BsonIgnoreIfNull>
@@ -127,23 +127,25 @@ Public Class RoomResource
     <BsonIgnoreIfNull>
     Public Property description As String
     <BsonIgnoreIfNull>
-    Public Property rules As String
-    <BsonIgnoreIfNull>
     Public Property status As String
     <BsonIgnoreIfNull>
     Public Property contenttype As String
     <BsonIgnoreIfNull>
     Public Property createat As DateTime
     <BsonIgnoreIfNull>
-    Public Property rolId_ As Int32
+    Public Property rolid As Int32
     <BsonIgnoreIfNull>
-    Public Property cubeSource_ As String
+    Public Property branchname As String
     <BsonIgnoreIfNull>
-    Public Property _iduser As ObjectId
+    Public Property iduser As ObjectId
     <BsonIgnoreIfNull>
     Public Property username As String
     <BsonIgnoreIfNull>
-    Public Property _idroom As ObjectId
+    Public Property idroom As ObjectId
+    <BsonIgnoreIfNull>
+    Public Property areatype As Int32
+    <BsonIgnoreIfNull>
+    Public Property companyid As Int32
     <BsonIgnoreIfNull>
     Public Property valorpresentacion As String
 
