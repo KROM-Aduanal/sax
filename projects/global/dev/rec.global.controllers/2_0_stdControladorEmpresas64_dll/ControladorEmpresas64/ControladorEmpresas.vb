@@ -10,10 +10,47 @@ Imports Rec.Globals.Utils.Secuencias
 Imports Wma.Exceptions.TagWatcher
 Imports Syn.Nucleo.Recursos
 Imports Syn.Nucleo
+Imports MongoDB.Bson.Serialization
 
 
 Public Class ControladorEmpresas
     Implements IControladorEmpresas, IDisposable
+
+    '********************** DUMMIES *************************************************
+
+    '********************* EMPRESA INTERNACIONAL *************************************
+
+    ''INSTANCIAR LA CLASE PARA EMPRESAS INTERNACIONALES
+    'Dim _controladorEmpresas = New Rec.Globals.Controllers.Empresas.ControladorEmpresas(_espacioTrabajo,
+    '                                               Rec.Globals.Controllers.Empresas.IControladorEmpresas.TiposEmpresas.Internacional)
+
+    ''ES IMPORTANTE AGREGAR EL PAÍS CON EL QUE VA A TRABAJAR ESA EMPRESA
+    '_controladorEmpresas.PaisEmpresa = "ESP"
+
+
+    ' _tagwatcher = _controladorEmpresas.Consultar("PROVEEDOR CHINO")
+    '_tagwatcher = _controladorEmpresas.ConsultarUna(New ObjectId("662bc88ac4054e506baeb4e6"))
+
+    'NOTA: Recordar que esta forma de consumir el controlador " New Rec.Globals.Controllers.Empresas" es temporal
+
+    ' ****************** EMPRESA NACIONAL **********************************
+
+    ''INSTANCIAR PARA UNA EMPRESA NACIONAL
+    'Dim _controladorEmpresas = New Rec.Globals.Controllers.Empresas.ControladorEmpresas(_espacioTrabajo,
+    ' Rec.Globals.Controllers.Empresas.IControladorEmpresas.TiposEmpresas.Nacional)
+
+    ''FORMA DE TRABAJAR DE FORMA LOCAL POR DEFECTO EL CONTROLADOR TIENE UNA MODALIDAD EXTRINSECA
+    '_controladorEmpresas.Modalidad = IControladorEmpresas.Modalidades.Intrinseca
+
+    ''ES IMPORTANTE LLENAR LA PROPIEDAD ListaEmpresas
+    ''POR DEFAULT YA SE ENCUENTRA INICIALIZADA
+    ' _controladorEmpresas.ListaEmpresas.Add(_tagwatcher.ObjectReturned(0))
+
+    '_controladorEmpresas.ConsultarDomicilios(New ObjectId("661d5b65272307d7f2f8e3dc"))
+
+    ' _controladorEmpresas.ConsultarDomicilio(New ObjectId("662bc88ac4054e506baeb4e6"),
+    ' New ObjectId("662bd665aa793757435ee7ac"))
+
 
 #Region "PROPIEDADES PRIVADAS"
 
@@ -568,17 +605,9 @@ Public Class ControladorEmpresas
 
                 If session_ IsNot Nothing Then
 
-                    ' Try
-
                     result_ = operationsDB_.UpdateOneAsync(session_, filter_, setStructureOfSubs_, New UpdateOptions With {.IsUpsert = True}).Result
 
-                        'Catch ex As Exception
-
-                        '    ModificarEmpresaInternacional(empresaInternacional_)
-
-                        'End Try
-
-                        Else
+                Else
 
                     Try
 
@@ -675,10 +704,8 @@ Public Class ControladorEmpresas
 
     End Function
 
-
     Private Function ConsultarEmpresa(Of T)(ByVal cveEmpresa_ As ObjectId) _
                                               As TagWatcher
-
         With Estado
 
             Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
@@ -692,7 +719,7 @@ Public Class ControladorEmpresas
 
                 If result_.Count > 0 Then
 
-                    .ObjectReturned = result_(0)
+                    .ObjectReturned = result_.FirstOrDefault()
 
                     .SetOK()
 
@@ -739,7 +766,6 @@ Public Class ControladorEmpresas
 
     End Function
 
-
     Private Function ConsultarDomiciliosExternos(Of T)(ByVal cveEmpresa_ As ObjectId) _
         As TagWatcher
 
@@ -756,21 +782,15 @@ Public Class ControladorEmpresas
 
                 Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList().AsEnumerable
 
-                Dim empresa_ = DirectCast(result_, List(Of Empresa))
+                Dim empresa_ = DirectCast(result_.FirstOrDefault, IEmpresa)
 
-                empresa_.ForEach(Sub(item_)
+                For Each domicilio_ In empresa_.paisesdomicilios.
+                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                SelectMany(Function(y) y.domicilios)
 
-                                     Dim domiciliosExteriores_ = item_.paisesdomicilios.
-                                     Where(Function(x) x.pais = PaisEmpresa).
-                                     Select(Function(y) y.domicilios)
+                    ListaDomicilios.Add(domicilio_)
 
-                                     For Each domicilio_ In domiciliosExteriores_
-
-                                         ListaDomicilios = domicilio_
-
-                                     Next
-
-                                 End Sub)
+                Next
 
                 If ListaDomicilios.Count > 0 Then
 
@@ -792,30 +812,18 @@ Public Class ControladorEmpresas
 
     End Function
 
-
     Private Function ConsultarDomiciliosInternos(ByVal cveEmpresa_ As ObjectId,
                                                  ByVal pais_ As String) _
                                                  As TagWatcher
-
         ListaDomicilios = New List(Of Domicilio)
 
         With Estado
 
-            Dim domicilios_ = ListaEmpresas.
+            ListaDomicilios = ListaEmpresas.
                     Where(Function(t) t._id = cveEmpresa_).
-                    Select(Function(z) z.paisesdomicilios.
-                    Where(Function(a) a.pais = pais_).
-                    Select(Function(b) b.domicilios)).AsEnumerable
-
-            For Each item_ In domicilios_
-
-                For Each i_ In item_
-
-                    ListaDomicilios = i_
-
-                Next
-
-            Next
+                    SelectMany(Function(z) z.paisesdomicilios).
+                    Where(Function(x) x.pais = pais_).
+                    SelectMany(Function(x) x.domicilios).ToList()
 
             If ListaDomicilios.Count > 0 Then
 
@@ -849,26 +857,22 @@ Public Class ControladorEmpresas
                 Dim filter_ = Builders(Of T).Filter.Eq(Of ObjectId)("_id", idEmpresa_) And
                               Builders(Of T).Filter.Eq(Of Boolean)("estado", 1)
 
-
                 Dim result_ = operationsDB_.Find(filter_).Limit(1).ToList().AsEnumerable
 
-                Dim empresa_ = DirectCast(result_, List(Of Empresa))
+                Dim empresa_ = DirectCast(result_.FirstOrDefault, IEmpresa)
 
+                For Each domicilio_ In empresa_.paisesdomicilios.
+                                                Where(Function(x) x.pais = PaisEmpresa).
+                                                SelectMany(Function(y) y.domicilios).
+                                                Where(Function(x) x._iddomicilio = idDomicilio_)
 
-                empresa_.ForEach(Sub(item_)
+                    ListaDomicilios.Add(domicilio_)
 
-                                     Dim domiciliosExteriores_ = item_.paisesdomicilios.Where(Function(x) x.pais = PaisEmpresa).
-                                                                                        Select(Function(y) y.domicilios).AsEnumerable.ToList()
-
-                                     domiciliosExteriores_.ForEach(Sub(i_)
-
-                                                                       ListaDomicilios.Add(i_.Where(Function(x) x._iddomicilio = idEmpresa_))
-
-                                                                   End Sub)
-                                 End Sub)
-
+                Next
 
                 If ListaDomicilios.Count > 0 Then
+
+
 
                     .ObjectReturned = ListaDomicilios
 
@@ -898,27 +902,12 @@ Public Class ControladorEmpresas
             If ListaEmpresas IsNot Nothing And
                         ListaEmpresas.Count <> 0 Then
 
-                Dim domicilioInt_ = ListaEmpresas.
+                ListaDomicilios = ListaEmpresas.
                                     Where(Function(t) t._id = cveEmpresa_).
-                                    Select(Function(z) z.paisesdomicilios.
+                                    SelectMany(Function(z) z.paisesdomicilios).
                                     Where(Function(a) a.pais = PaisEmpresa).
-                                    Select(Function(b) b.domicilios.
-                                    Where(Function(y) y._iddomicilio = cveDomicilio_)))
-
-
-                For Each domicilio_ In domicilioInt_
-
-                    For Each item_ In domicilio_
-
-                        For Each i_ In item_
-
-                            ListaDomicilios.Add(i_)
-
-                        Next
-
-                    Next
-
-                Next
+                                    SelectMany(Function(b) b.domicilios).
+                                    Where(Function(c) c._iddomicilio = cveDomicilio_).ToList()
 
                 If ListaDomicilios.Count > 0 Then
 
@@ -1051,6 +1040,58 @@ Public Class ControladorEmpresas
         Return Estado
 
     End Function
+
+    'Private Function ConsultarDomicilioExterno(Of T)(ByVal idEmpresa_ As ObjectId,
+    '                                            ByVal idDomicilio_ As ObjectId) _
+    '                                            As TagWatcher
+    '    ListaDomicilios = New List(Of Domicilio)
+
+    '    With Estado
+
+    '        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+
+    '            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of T)(GetType(T).Name)
+
+    ''CUANDO VA POR TODOS LOS DOMICILIOS
+    'Dim result_ = operationsDB_.Aggregate().
+    '                            Match(filter_).
+    '                            Unwind("paisesdomicilios").
+    '                            Match(New BsonDocument("paisesdomicilios.pais", PaisEmpresa)).
+    '                            Project(New BsonDocument("_id", 0)).
+    '                            Project(New BsonDocument("domicilio", "$paisesdomicilios.domicilios")).ToList()
+
+    'CUANDO VA POR UN SOLO DOMICILIO
+    '            Dim result_ = operationsDB_.Aggregate().
+    '                                        Match(New BsonDocument("_id", idEmpresa_)).
+    '                                        Unwind("paisesdomicilios").
+    '                                        Unwind("paisesdomicilios.domicilios").
+    '                                        Match(New BsonDocument("paisesdomicilios.domicilios._iddomicilio", idDomicilio_)).
+    '                                        Project(New BsonDocument("_id", 0)).
+    '                                        Project(New BsonDocument("domicilio", "$paisesdomicilios.domicilios")).ToList().AsEnumerable
+
+    '            If result_.Count > 0 Then
+
+    '                ListaDomicilios.Add(BsonSerializer.
+    '                                    Deserialize(Of Domicilio)(result_.FirstOrDefault.Elements.ElementAt(0).Value.ToBson))
+
+    '                .ObjectReturned = ListaDomicilios
+
+    '                .SetOK()
+
+    '            Else
+
+    '                .SetOKBut(Me, "Empresa no contiene domicilios")
+
+    '            End If
+
+    '        End Using
+
+    '    End With
+
+    '    Return Estado
+
+    'End Function
+
 
 #End Region
 
@@ -1672,6 +1713,8 @@ Public Class ControladorEmpresas
                                  Implements IControladorEmpresas.ConsultarUna
         '''
         '''Obtiene el DOCUMENTO de la EMPRESA solicitada por medio de su OBJECT ID dentro del TAGWATCHER
+        '''Si utiliza el modo intrinseco, debe llenar la propiedad ListaEmpresas
+        '''Con al menos una empresa
         '''
 
         With Estado
@@ -1694,7 +1737,15 @@ Public Class ControladorEmpresas
 
                     Case IControladorEmpresas.Modalidades.Intrinseca
 
-                        ConsultarEmpresaInterna(cveEmpresa_)
+                        If ListaEmpresas.Count > 0 Then
+
+                            ConsultarEmpresaInterna(cveEmpresa_)
+
+                        Else
+
+                            .SetError(Me, "Lista de empresas vacía")
+
+                        End If
 
                 End Select
 
@@ -1716,6 +1767,8 @@ Public Class ControladorEmpresas
 
         '''
         '''Obtiene los domicilios de una Empresa
+        '''Si utiliza el modo intrínseco
+        '''Debe llenar la propiedad ListaEmpresa con al menos una empresa
         '''
 
         With Estado
@@ -1769,6 +1822,8 @@ Public Class ControladorEmpresas
 
         '''
         '''Obtiene el domicilio de una Empresa
+        '''En modo intrinseco, utilizar la propiedad de ListaEmpresas
+        '''Para que el controlador pueda trabajar
         '''
 
         With Estado
@@ -1793,7 +1848,15 @@ Public Class ControladorEmpresas
 
                         Case IControladorEmpresas.Modalidades.Intrinseca
 
-                            ConsultarDomicilioInterno(idEmpresa_, idDomicilio_)
+                            If ListaEmpresas.Count > 0 Then
+
+                                ConsultarDomicilioInterno(idEmpresa_, idDomicilio_)
+
+                            Else
+
+                                .SetError(Me, "Lista de empresas vacías")
+
+                            End If
 
                     End Select
 

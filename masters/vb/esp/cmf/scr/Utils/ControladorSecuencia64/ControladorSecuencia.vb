@@ -76,7 +76,7 @@ Public Class ControladorSecuencia
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
-            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Secuencia)("Reg000SecuenciasPruebas")
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Secuencia)("Reg000Secuencias")
 
             With secuencia_
 
