@@ -5,6 +5,8 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Rec.Globals
 Imports Rec.Globals.Controllers
+Imports Rec.Globals.Controllers.Empresas
+Imports Rec.Globals.Empresas
 Imports Rec.Globals.Utils
 Imports Sax.Web
 Imports Syn.CustomBrokers.Controllers
@@ -72,8 +74,6 @@ Public Class Ges003_001_FacturasComerciales
         '  Generales
 
         fbcIncoterm.DataEntity = New krom.Anexo22()
-
-
 
         ' Datos del proveedor
 
@@ -525,9 +525,35 @@ Public Class Ges003_001_FacturasComerciales
 
         Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
 
-        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcCliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcCliente.Text,
+                                                                  New Filtro _
+                                                                  With {.IdSeccion = SeccionesClientes.SCS1,
+                                                                  .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
 
         fbcCliente.DataSource = lista_
+
+    End Sub
+
+
+    Protected Sub fbcProducto_TextChanged(sender As Object, e As EventArgs)
+
+        ''DIP
+        ''
+
+        Dim controlador_ As New ControladorBusqueda(Of ConstructorProducto)
+
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcProducto.Text,
+                                                                  New Filtro _
+                                                                  With {.IdSeccion = SeccionesProducto.SPTO5,
+                                                                  .IdCampo = CamposProducto.CP_NUMERO_PARTE})
+
+        fbcProducto.DataSource = lista_
+
+    End Sub
+
+    Protected Sub fbcProducto_Click(sender As Object, e As EventArgs)
+
+        DisplayMessage("Triunfando como siempre", StatusMessage.Info)
 
     End Sub
 
@@ -575,7 +601,9 @@ Public Class Ges003_001_FacturasComerciales
 
         Dim controlador_ As New CtrlProveedoresOperativos()
 
-        controlador_._tipoOperacion = IIf(swcTipoOperacion.Checked, CtrlProveedoresOperativos.TipoOperacion.Importacion, CtrlProveedoresOperativos.TipoOperacion.Exportacion)
+        controlador_._tipoOperacion = IIf(swcTipoOperacion.Checked,
+                                          CtrlProveedoresOperativos.TipoOperacion.Importacion,
+                                          CtrlProveedoresOperativos.TipoOperacion.Exportacion)
 
         Dim tagwatcher_ = controlador_.BuscarProveedores(sender.Text, False)
 
