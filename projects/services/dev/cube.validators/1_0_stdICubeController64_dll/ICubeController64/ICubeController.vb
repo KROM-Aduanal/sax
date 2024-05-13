@@ -79,13 +79,19 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function GetRoomNamesResource(Optional token_ As String = "") As TagWatcher
 
+    Function GetFieldsNamesResource() As TagWatcher
+
     Function GetRoom(idRoom_ As ObjectId, rolId_ As Int32) As TagWatcher
 
     Function RunRoom(Of T)(roomname_ As String, params_ As Dictionary(Of String, T)) As ValidatorReport
 
     Function ActualizaClase(Of T)(Origen As String) As T
 
+    Function CamposExcelMongo(excelFilePath_ As String) As String
+
     Sub FillRoomResource()
+
+    Sub UpdateRoomResource()
 
 #End Region
 

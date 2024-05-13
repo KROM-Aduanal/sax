@@ -1,23 +1,25 @@
 /*CUBO*/
 .wc-cubo-formulas {
     width: 100%;
-   
+  
 }
 /*TOP CONTENT*/
-.wc-cubo-formulas > div:nth-child(1) {
-    border: 1px solid #cecdcd;
-    border-radius: 20px;
-    display: flex;
-    overflow: hidden;
-}
-.wc-cubo-formulas > div:nth-child(1) input[type="submit"] {
-    height: 40px;
-    border: 0;
-    outline: 0;
-    width: 60px;
-    color: #ffffff;
-    text-align: center;
-}
+    .wc-cubo-formulas > div:nth-child(1) {
+        border: 1px solid #cecdcd;
+        border-radius: 20px;
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        height: 40px;
+    }
+        .wc-cubo-formulas > div:nth-child(1)  input[type="submit"] {
+            height: 40px;
+            border: 0;
+            outline: 0;
+            width: 60px;
+            color: #ffffff;
+            text-align: center;
+        }
 
     .wc-cubo-formulas > div:nth-child(6) {
         border: 1px solid #cecdcd;
@@ -28,10 +30,15 @@
 
 
 
-    .wc-cubo-formulas > div:nth-child(1) .cubo-btn input {
+    .wc-cubo-formulas > div:nth-child(1)  .cubo-btn input {
         border-radius: 20px 0 0 20px;
         opacity: .7;
         border-right: 1px solid rgba(255,255,255,0.035);
+        margin: 0 !important;
+        /*        padding: 0 !important;
+        box-sizing: border-box;
+        float: left;
+        left: 0 !important;*/
     }
 
     .wc-cubo-formulas > div:nth-child(1) .cubo-btn-formula input {
@@ -41,9 +48,13 @@
         background-repeat: no-repeat;
         background-size: 30px;
         border-left: 1px solid rgba(0,0,0,0.035);
+        margin: 0 !important;
+        /*        padding: 0 !important;
+        box-sizing: border-box;
+        float: left;*/
     }
 
-    .wc-cubo-formulas > div:nth-child(1) .cubo-btn-variable input {
+    .wc-cubo-formulas > div:nth-child(1)  .cubo-btn-variable input {
         border-radius: 0 20px 20px 0;
         background-image: url('../../imgs/variable.png');
         background-position: center;
@@ -52,37 +63,64 @@
         border-left: 1px solid rgba(0,0,0,0.035);
         --tintColors: #d2167e;
         background-color: var(--tintColors);
-    }
-
-    .wc-cubo-formulas > div:nth-child(1) .cubo-input-search input {
-        border: 0 !important;
-        height: 40px;
         margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+        float: left;
     }
 
-    .wc-cubo-formulas > div:nth-child(1) .cubo-input-search .wc-input {
+    .wc-cubo-formulas > div:nth-child(1)  .cubo-input-search {
+        border: 0 !important;
+        height: 30px;
+        margin: 0 !important;
+        width: 90% !important;
+    }
+
+        .wc-cubo-formulas > div:nth-child(1)  .cubo-input-search input {
+            border: 0 !important;
+            height: 30px;
+            margin: 0 !important;
+            width: 90% !important;
+        }
+
+        .wc-cubo-formulas > div:nth-child(1)  .cubo-input-search .wc-input {
+            margin: 0 4px !important;
+            min-height: 30px !important;
+            width: 90% !important;
+        }
+
+    /*.wc-cubo-formulas > div:nth-child(4) .cubo-input-search2 textarea {
+        border: 1px solid #cecdcd !important;
+        height: 10px;*/
+        /*  margin: 0 4px !important;*/
+        /*border-radius: 20px !important;
+        margin-top: 8px;
+        width: 100% !important;
+    }
+
+    .wc-cubo-formulas > div:nth-child(4) .cubo-input-search2 .wc-input {
         margin: 0 4px !important;
-        min-height: 40px !important;
+        min-height: 30px !important;
+        width: 100% !important;
+        
+    }*/
+
+.cubo-input-search2 textarea {
+    border: 1px solid #cecdcd !important;
+    height: 10px;
+    /*  margin: 0 4px !important;*/
+    border-radius: 20px !important;
+    margin-top: 8px;
+    text-indent: 20px;
+    width: 100% !important;
+}
+
+     .cubo-input-search2 .wc-input {
+        margin: 0 4px !important;
+        min-height: 30px !important;
+        width: 100% !important;
     }
 
-    .wc-cubo-formulas > div:nth-child(7) .cubo-input-search2 input {
-        border: 14px !important;
-        height: 40px;
-        margin: 4px !important;
-        border-width: 4px 2px 1px 3px;
-        margin-bottom: 80px;
-        background-color: aqua;
-        color: blueviolet;
-    }
-
-    .wc-cubo-formulas > div:nth-child(7) .cubo-input-search2 .wc-input {
-        margin: 4px !important;
-        min-height: 40px !important;
-        border-width: 4px 2px 1px 3px;
-        margin-bottom: 80px;
-        background-color: aqua;
-        color:blueviolet;
-    }
 /*SECOND TOP CONTENT*/
 .wc-cubo-formulas > div:nth-child(2) {
     display: flex;
@@ -247,8 +285,14 @@
 */
 
 
-
 /**/
+.cubo-input-search {
+    border: 0 !important;
+    height: 20px;
+    margin: 0 !important;
+    width: 150px !important;
+}
+
 
 .wc-userdata {
 
@@ -271,112 +315,185 @@
     opacity: .7;
 }
 
+/*@media(min-width:400px) {
+    .swc-online {
+        position: relative;
+        left: 50px;
+    }
+}
+
+@media(min-width: 576px) {
+    .swc-online {
+        position: relative;
+        left: 50px;
+    }
+}
+
+
+@media(min-width:760px) {
+    .swc-online {
+        position: relative;
+        left: 700px;
+    }
+}
+
+@media(min-width:992px) {
+    .swc-online {
+        position: relative;
+        left: 700px;
+    }
+}
+
+@media(min-width:1200px) {
+    .swc-online {
+        position: relative;
+        left: 900px;
+    }
+}*/
+
 
 .swc-online {
-    margin: 0 auto;
     position: relative;
-    bottom: 0;
-    right: calc(0-2*var(--tamanio));
+    bottom: 9px;
 }
 
-/**/
+    .wc-comment {
+    }
 
-.wc-comment {
+        .wc-comment > div:nth-child(1) {
+            display: flex;
+            align-items: center;
+        }
 
-}
+        .wc-comment li > div:nth-child(1) img {
+            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
 
-.wc-comment > div:nth-child(1) {
-    display: flex;
-    align-items: center;
-}
+        .wc-comment li > div:nth-child(1) small {
+            display: block;
+            font-size: 75%;
+            opacity: .7;
+        }
 
-.wc-comment li > div:nth-child(1) img {
-    object-fit: cover;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 4px;
-}
-
-.wc-comment li > div:nth-child(1) small {
-    display: block;
-    font-size: 75%;
-    opacity: .7;
-}
-
-.wc-comment li > div:nth-child(2) {
-    text-align: justify;
-    padding-top: 4px;
-    padding-right: 16px;
-}
+        .wc-comment li > div:nth-child(2) {
+            text-align: justify;
+            padding-top: 4px;
+            padding-right: 16px;
+        }
 
 
-.fscformulascabulidad {
-}
+    .fscformulascabulidad {
+    }
 
-/*.formulasabulidad {
+    /*.formulasabulidad {
     left: 1000px;
 }*/
 
-.wc-cubo-formulas > div:nth-child(4) .iraformulacabulidad input {
-    background-position:left center;
-    background-repeat: no-repeat;
-    background-image: url('../../imgs/matraz.png');
-    background-size: 17%;
-    --tintColorss: #cecdcd;
-    background-color: var(--tintColorss);
-}
+    .wc-cubo-formulas > div:nth-child(4) .iraformulacabulidad input {
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-image: url('../../imgs/matraz.png');
+        background-size: 17%;
+        --tintColorss: #cecdcd;
+        background-color: var(--tintColorss);
+    }
 
-.wc-cubo-formulas > div:nth-child(4) .iralimpiar input {
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-image: url('../../imgs/eraser.png');
+    .wc-cubo-formulas > div:nth-child(4) .iralimpiar input {
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-image: url('../../imgs/eraser.png');
+    }
 
-}
 
-
-/*.iralimpiar input {
+    /*.iralimpiar input {
     background-position: left center;
     background-repeat: no-repeat;
     background-image: url('../../imgs/eraser.png');
 
 }*/
 
-.probarformulacabulidad {
-}
+    .probarformulacabulidad {
+    }
 
-.feditor-formula-actual {
-}
+    .feditor-formula-actual {
+    }
 
-.feditor-formula-nueva {
+    .feditor-formula-nueva {
+    }
 
-}
-
-.catalogopendacabulidad {
-}
+    .catalogopendacabulidad {
+    }
 
 .swcverificado input {
-    margin-top: 10%;
-    background-image: url('../../imgs/checkeds.png');
+    background-image: url('../../imgs/checkeds3.png');
+    background-position: center;
     background-repeat: no-repeat;
-    background-position-y: 6px;
-    border-radius: 0 0px 0px 0;
-    --tintColorswc: #09a183;
-    background-color: var(--tintColorswc);
+    background-size: 70%;
+    background-color: steelblue;
+    display: block;
+    position: relative;
+    top: 1%;
+    width: 0.4px;
+    height: 7%;
+    border:0px solid #000000;
+    border-radius: 100%;
+    opacity: .9;
 }
+
+
 
 .bcporautorizar input {
-    margin-top: 10%;
-    background-image: url('../../imgs/relojarena.png');
+    background-image: url('../../imgs/desbloquear.png');
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 17%;
-    background-position: left center;
-    border-radius: 0 0px 0px 0;
-    --tintColorbcp: #efc257;
-    background-color: var(--tintColorbcp);
+    background-size: 70%;
+    background-color: #FFBF00;
+    display: block;
+    position: relative;
+    top: 1%;
+    width: 0.4px;
+    height: 7%;
+    border: 0px solid #000000;
+    border-radius: 100%;
+    opacity: .9;
 }
 
-.formcontrolcabulidad{
-
+.swcverificado {
+  
 }
+
+
+/*.wc-cubo-formulas strong label span {
+    background-image: url('../../imgs/tachuela.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-50%);
+    border: 2px solid #000000;
+    border-radius: 50%;
+    opacity: .5;
+}*/
+/*    .bcporautorizar input {
+        margin-top: 10%;
+        background-image: url('../../imgs/relojarena.png');
+        background-repeat: no-repeat;
+        background-size: 17%;
+        background-position: left center;
+        border-radius: 0 0px 0px 0;
+        --tintColorbcp: #efc257;
+        background-color: var(--tintColorbcp);
+    }*/
+
+    .formcontrolcabulidad {
+    }
 

@@ -1534,9 +1534,11 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\b_reply.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\b_unlock.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\check.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\checkeds.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\close.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\cloud_download.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\cloud_upload.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\controlar.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\copiar.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\copy.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\date.png" />
@@ -1567,6 +1569,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\nouser.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\preview-arrow.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\preview.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\relojarena.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\save.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\search.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\searchB.png" />
@@ -1576,6 +1579,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\tachuela.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\time.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\undo.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\unlocked.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\up.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\uparrow.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\userkrom.jpeg" />

@@ -32,6 +32,8 @@ Public Class MathematicalInterpreterNCalc
 
     Private _expressionNCalc As NCalc.Expression
 
+    Private _validFields As List(Of String)
+
 #End Region
 
 #Region "Properties"
@@ -70,7 +72,6 @@ Public Class MathematicalInterpreterNCalc
 
 
 
-
 #End Region
 
 
@@ -78,7 +79,8 @@ Public Class MathematicalInterpreterNCalc
 
     Sub New()
 
-        _customFunctions = New List(Of String) From {"ASIGNAR",
+        _customFunctions = New List(Of String) From {"AHORA",
+                                                     "ASIGNAR",
                                                      "EN",
                                                      "ESBLANCO",
                                                      "ESPACIOS",
@@ -125,9 +127,81 @@ Public Class MathematicalInterpreterNCalc
 
         _operandsTemp = SetOperands()
 
+
+
         _reports = New ValidatorReport
 
     End Sub
+
+    Public Function ExistFields(expresion_ As String, fields_ As List(Of String)) As Boolean Implements IMathematicalInterpreter.ExistFields
+
+        Dim paramErrorName_ As New List(Of String)
+
+        Dim result_ As Boolean = True
+
+        For Each fied_ In fields_
+
+            Dim fieldName_ = fied_
+
+            Dim pointIndex = fieldName_.LastIndexOf(".")
+
+            If pointIndex <> -1 Then
+
+                Dim integerParse_ As Int16
+
+                If Integer.TryParse(fieldName_.Substring(pointIndex + 1), integerParse_) Then
+
+                    fieldName_ = fieldName_.Substring(0, pointIndex)
+
+                End If
+
+                If fieldName_.IndexOf(".") <> -1 Then
+
+                    If _validFields.IndexOf(fieldName_.ToUpper) = -1 Then
+
+                        result_ = False
+
+                        paramErrorName_.Add(fieldName_)
+
+                    End If
+
+                End If
+
+            End If
+
+
+
+        Next
+
+
+        _reports = New ValidatorReport
+
+        If paramErrorName_.Count > 0 Then
+
+            Dim fieldErros_ As String = ""
+
+            For Each field_ In paramErrorName_
+
+                fieldErros_ &= field_ & Chr(13)
+
+            Next
+
+            _reports.SetHeaderReport("Nombre de campos inválidos",
+                                                 DateTime.Now,
+                                                AdviceTypesReport.Alert,
+                                                 AdviceTypesReport.Alert,
+                                                fieldErros_,
+                                                fieldErros_,
+                                                expresion_, "")
+
+            _reports.ShowMessageError()
+
+
+        End If
+
+        Return result_
+
+    End Function
 
     Public Function RunExpression(Of T)(expression_ As String,
                                          constantValues_ As Dictionary(Of String,
@@ -150,55 +224,110 @@ Public Class MathematicalInterpreterNCalc
 
         Dim paramValues_ As New Dictionary(Of String, Object)
 
+        Dim paramErrorName_ As New List(Of String)
+
         For Each constanvalue_ In constantValues_
 
-            Dim doubleParse_ As Double = 0
+            Dim fieldName_ = constanvalue_.Key
 
-            If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
+            Dim pointIndex = fieldName_.LastIndexOf(".")
 
-                If doubleParse_ < 1 Then
+            If pointIndex <> -1 Then
 
-                    paramValues_.Add(constanvalue_.Key, doubleParse_)
+                Dim integerParse_ As Int16
+
+                If Integer.TryParse(fieldName_.Substring(pointIndex + 1), integerParse_) Then
+
+                    fieldName_ = fieldName_.Substring(0, pointIndex)
+
+                End If
+
+                If _validFields.IndexOf(fieldName_.ToUpper) = -1 And fieldName_.IndexOf(".") <> -1 Then
+
+
+                    paramErrorName_.Add(fieldName_)
 
                 Else
 
-                    If constanvalue_.Value.ToString(0) = "0" Then
+                    Dim doubleParse_ As Double = 0
 
-                        paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+                    If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
+
+                        If doubleParse_ < 1 Then
+
+                            paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                        Else
+
+                            If constanvalue_.Value.ToString(0) = "0" Then
+
+                                paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+
+                            Else
+
+                                paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                            End If
+
+                        End If
+
 
                     Else
 
-                        paramValues_.Add(constanvalue_.Key, doubleParse_)
+                        paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
 
                     End If
 
                 End If
 
-
-            Else
-
-                paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
-
             End If
 
 
+
         Next
-
-        _expressionNCalc = New NCalc.Expression(newExpression_) With {.Parameters = paramValues_}
-
-        AddHandler _expressionNCalc.EvaluateFunction, RunFunctionHandler(paramValues_)
 
         Dim result_
 
         _reports = New ValidatorReport
 
-        Try
+        If paramErrorName_.Count > 0 Then
 
-            result_ = _expressionNCalc.Evaluate
+            Dim fieldErros_ As String = ""
 
-            If result_.ToString.Contains(ChrW(&H221E)) Then
+            For Each field_ In paramErrorName_
 
-                _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
+                fieldErros_ &= field_ & Chr(13)
+
+            Next
+
+            _reports.SetHeaderReport("Nombre de campos inválidos",
+                                                 DateTime.Now,
+                                                AdviceTypesReport.Alert,
+                                                 AdviceTypesReport.Alert,
+                                                fieldErros_,
+                                                fieldErros_,
+                                                expression_, newExpression_)
+
+            _reports.ShowMessageError()
+
+            result_ = ""
+
+        Else
+
+
+            _expressionNCalc = New NCalc.Expression(newExpression_) With {.Parameters = paramValues_}
+
+            AddHandler _expressionNCalc.EvaluateFunction, RunFunctionHandler(paramValues_)
+
+
+
+            Try
+
+                result_ = _expressionNCalc.Evaluate
+
+                If result_.ToString.Contains(ChrW(&H221E)) Then
+
+                    _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
                                      DateTime.Now,
                                     AdviceTypesReport.Alert,
                                      AdviceTypesReport.Alert,
@@ -206,25 +335,25 @@ Public Class MathematicalInterpreterNCalc
                                     "Infinito",
                                     expression_, newExpression_)
 
-                _reports.ShowMessageError()
+                    _reports.ShowMessageError()
 
-            Else
+                Else
 
-                If result_.ToString = "NaN" Then
+                    If result_.ToString = "NaN" Then
 
-                    Dim posicion_ = newExpression_.IndexOf("Sqrt")
+                        Dim posicion_ = newExpression_.IndexOf("Sqrt")
 
-                    If posicion_ > 0 Then
+                        If posicion_ > 0 Then
 
-                        Dim expresionSqrt_ = New NCalc.Expression(GetExpressionInside(newExpression_.Substring(posicion_ + 4, newExpression_.Length - posicion_ - 4)))
+                            Dim expresionSqrt_ = New NCalc.Expression(GetExpressionInside(newExpression_.Substring(posicion_ + 4, newExpression_.Length - posicion_ - 4)))
 
-                        AddHandler expresionSqrt_.EvaluateFunction, RunFunctionHandler(paramValues_)
-
-
-                        If expresionSqrt_.Evaluate < 0 Then
+                            AddHandler expresionSqrt_.EvaluateFunction, RunFunctionHandler(paramValues_)
 
 
-                            _reports.SetHeaderReport(result_.ToString & " Número Imaginario ",
+                            If expresionSqrt_.Evaluate < 0 Then
+
+
+                                _reports.SetHeaderReport(result_.ToString & " Número Imaginario ",
                                             DateTime.Now,
                                             AdviceTypesReport.Alert,
                                             AdviceTypesReport.Alert,
@@ -232,9 +361,9 @@ Public Class MathematicalInterpreterNCalc
                                             "Número Imaginario",
                                             expression_, newExpression_)
 
-                        Else
+                            Else
 
-                            _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
+                                _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
                              DateTime.Now,
                              AdviceTypesReport.Alert,
                              AdviceTypesReport.Alert,
@@ -242,11 +371,11 @@ Public Class MathematicalInterpreterNCalc
                                "Indeterminación",
                               expression_, newExpression_)
 
-                        End If
+                            End If
 
-                    Else
+                        Else
 
-                        _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
+                            _reports.SetHeaderReport(result_.ToString & " División Entre 0 ",
                                         DateTime.Now,
                                         AdviceTypesReport.Alert,
                                         AdviceTypesReport.Alert,
@@ -254,77 +383,80 @@ Public Class MathematicalInterpreterNCalc
                                         "Indeterminación",
                                          expression_, newExpression_)
 
+                        End If
+
+                        _reports.ShowMessageError()
+
                     End If
 
-                    _reports.ShowMessageError()
+
 
                 End If
 
+            Catch ex_ As NCalc.EvaluationException
 
+                If Array.FindAll(expression_.ToCharArray(), Function(ch) ch = "'").Count Mod 2 = 1 Then
 
-            End If
-
-        Catch ex_ As NCalc.EvaluationException
-
-            If Array.FindAll(expression_.ToCharArray(), Function(ch) ch = "'").Count Mod 2 = 1 Then
-
-                _reports.SetHeaderReport("Falta una comilla(') de cierre",
+                    _reports.SetHeaderReport("Falta una comilla(') de cierre",
                                          DateTime.Now,
                                         AdviceTypesReport.Alert,
                                          AdviceTypesReport.Alert,
                                         "Falta una comilla(') de cierre",
                                         "-2146232832",
                                         expression_, newExpression_)
-            Else
-                _reports.SetHeaderReport(ex_.Message,
+                Else
+                    _reports.SetHeaderReport(ex_.Message,
                 DateTime.Now,
                 AdviceTypesReport.Alert,
                 AdviceTypesReport.Alert,
                 ex_.Message,
                 ex_.HResult,
                 expression_, newExpression_)
-            End If
+                End If
 
 
 
-            _reports.ShowMessageError()
+                _reports.ShowMessageError()
 
-            'MsgBox(ex_.HResult & Chr(13) & _reports.title & Chr(13) & newExpression_)
+                'MsgBox(ex_.HResult & Chr(13) & _reports.title & Chr(13) & newExpression_)
 
-            result_ = ""
+                result_ = ""
 
-        Catch ex_ As Exception
+            Catch ex_ As Exception
 
-            Dim algo_ = Array.FindAll(expression_.Split(""), Function(ch) ch = "'").Count
+                Dim algo_ = Array.FindAll(expression_.Split(""), Function(ch) ch = "'").Count
 
-            If Array.FindAll(expression_.ToCharArray(), Function(ch) ch = "'").Count Mod 2 = 1 Then
+                If Array.FindAll(expression_.ToCharArray(), Function(ch) ch = "'").Count Mod 2 = 1 Then
 
-                _reports.SetHeaderReport("Falta una comilla(') de cierre",
+                    _reports.SetHeaderReport("Falta una comilla(') de cierre",
                                          DateTime.Now,
                                         AdviceTypesReport.Alert,
                                          AdviceTypesReport.Alert,
                                         "Falta una comilla(') de cierre",
                                         "-2146232832",
                                         expression_, newExpression_)
-            Else
+                Else
 
 
-                _reports.SetHeaderReport(ex_.Message,
+                    _reports.SetHeaderReport(ex_.Message,
                                      DateTime.Now,
                                     AdviceTypesReport.Alert,
                                      AdviceTypesReport.Alert,
                                     ex_.Message,
                                     ex_.HResult,
                                     expression_, newExpression_)
-            End If
+                End If
 
 
-            _reports.ShowMessageError()
+                _reports.ShowMessageError()
 
 
-            result_ = ""
+                result_ = ""
 
-        End Try
+            End Try
+
+        End If
+
 
         Return result_
 
@@ -1616,6 +1748,33 @@ finalExpression_.Length - 1)
 
     End Function
 
+    Sub SetValidFields(campos_ As List(Of String)) Implements IMathematicalInterpreter.SetValidFields
+
+        _validFields = campos_
+
+    End Sub
+
+    Function GetValidFields() As List(Of String) Implements IMathematicalInterpreter.GetValidFields
+
+        Return _validFields
+
+    End Function
+
+    Function FormatToTwoDigits(number_ As String) As String
+
+        If number_.Length = 1 Then
+
+            Return "0" & number_
+
+        Else
+
+            Return number_.Substring(number_.Length - 2, 2)
+
+        End If
+
+
+    End Function
+
     Private Function RunFunctionHandler(values_ As Dictionary(Of String, Object)) As EvaluateFunctionHandler
 
         Dim procedure_ = Sub(functionName_ As String,
@@ -1626,6 +1785,14 @@ finalExpression_.Length - 1)
                              Dim resultIsDouble_ As Boolean = True
 
                              Select Case functionName_.ToUpper
+
+                                 Case "AHORA"
+
+                                     Dim now_ = Date.Today.Year & "/" & FormatToTwoDigits(Date.Today.Month) & "/" & FormatToTwoDigits(Date.Today.Day)
+
+                                     functionParameters_.Result = now_
+
+                                     resultIsDouble_ = False
 
                                  Case "ASIGNAR"
 

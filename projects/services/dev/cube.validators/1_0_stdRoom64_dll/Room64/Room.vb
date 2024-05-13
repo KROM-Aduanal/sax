@@ -150,3 +150,30 @@ Public Class roomresource
     Public Property valorpresentacion As String
 
 End Class
+
+
+Public Class validfields
+
+    Public Property _id As ObjectId
+    <BsonIgnoreIfNull>
+    Public Property section As String
+    <BsonIgnoreIfNull>
+    Public Property sectionexcel As String
+    <BsonIgnoreIfNull>
+    Public Property sectionfield As String
+    <BsonIgnoreIfNull>
+    Public Property valorpresentacion As String
+    <BsonIgnoreIfNull>
+    Public Property details As Nullable
+
+    <BsonIgnoreIfNull>
+    Public Property status As String
+    <BsonIgnoreIfNull>
+    Public Property contentype As String
+    <BsonIgnoreIfNull>
+    Public Property archivado As Boolean
+    <BsonIgnoreIfNull>
+    Public Property estado As Int32
+
+
+End Class

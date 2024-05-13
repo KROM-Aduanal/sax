@@ -187,12 +187,28 @@
             "type": "Unique",
             "linkedresources": [
                 {
-                    "info": "Colección para Cubos CDI",
+                    "info": "Colección para Nombres de las recámaras en general",
                     "name": "Reg000CubeNames"
                 }
             ]
-        }            
-    ],
+        },
+        {
+
+            "_id": 8,
+            "info": "Colección para Recursos de los Cubos",
+            "name": "Reg000ValidFields",
+            "level": 3,
+            "rolnamelinked": "bigdataops",
+            "collection": "Reg000ValidFields",
+            "type": "Unique",
+            "linkedresources": [
+                {
+                    "info": "Colección para nombre de los campos de las secciones",
+                    "name": "Reg000ValidFields"
+                }
+            ]
+        }  
+     ],
     "endpoints": [
         {
             "_id": 1,
@@ -391,12 +407,14 @@
                                                 "_id": 7,
                                                 "status": "on",
                                                 "rolname": "bigdataops",
-                                                "info": "Main bigdata database (dockers CubeRooms CDI)",
+                                                "info": "Main bigdata database (dockers CubeSource)",
                                                 "name": "CubeResource",
                                                 "officesuffix": false,
                                                 "credentialId": 2,
                                                 "endpointId": 1
-                                        }                   ]
+                                        }       
+                                    
+                                    ]
             }
         },
         "sql": {

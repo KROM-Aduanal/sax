@@ -1,4 +1,6 @@
-﻿Imports System.Linq.Expressions
+﻿Imports System.Collections.Specialized.BitVector32
+Imports System.Linq.Expressions
+Imports System.Web.UI.WebControls
 Imports Cube.Interpreters
 Imports Cube.ValidatorReport
 Imports gsol.basededatos
@@ -22,10 +24,9 @@ Public Class CubeController
 #Region "Attrubutes"
 
     Private _scope As List(Of ICubeController.ContainedCubes)
+    Private _rooms As List(Of room)
 
-    Private _rooms As List(Of Room)
-
-    Private _roomsResource As List(Of RoomResource)
+    Private _roomsResource As List(Of roomresource)
 
     Private _status As TagWatcher
 
@@ -35,19 +36,19 @@ Public Class CubeController
 
 
 
-#End Region
 
+
+#End Region
 #Region "Properties"
 
-    Public Property rooms As List(Of Room) Implements ICubeController.rooms
+    Public Property rooms As List(Of room) Implements ICubeController.rooms
 
         Get
-
             Return _rooms
 
         End Get
 
-        Set(value As List(Of Room))
+        Set(value As List(Of room))
 
             _rooms = value
 
@@ -105,6 +106,12 @@ Public Class CubeController
 
 #Region "Methods"
 
+    Sub New()
+
+        _interpreter = New MathematicalInterpreterNCalc
+
+    End Sub
+
     Function ActualizaClase(Of T)(Origen As String) As T Implements ICubeController.ActualizaClase
 
         Dim objetoDeserializado As T = Newtonsoft.Json.JsonConvert.DeserializeObject(Of T)(Origen)
@@ -161,7 +168,7 @@ Public Class CubeController
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-            _enlaceDatos.GetMongoCollection(Of Room)("", rolId_).Aggregate.
+            _enlaceDatos.GetMongoCollection(Of room)("", rolId_).Aggregate.
                               Project(Function(ch) New With {
                                                                ch._id,
                                                                ch.roomname,
@@ -221,11 +228,13 @@ Public Class CubeController
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-                _enlaceDatos.GetMongoCollection(Of Room)("", rolId_).Aggregate.
+                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).Aggregate.
                               Match(Function(s) s.contenttype.Equals("operando")).ToList.
                               ForEach(Sub(room_)
 
-                                          operands_.AddRange(FindSignatureRule(room_.addresses, room_.rules, firma_).Split(New String() {"="}, 2, StringSplitOptions.None).ToList())
+                                          ' If(room_)
+
+                                          operands_.AddRange(New List(Of String) From {room_.roomname.Substring(room_.roomname.IndexOf(".") + 1), FindSignatureRule(room_.addresses, room_.rules, firma_)})
 
                                       End Sub)
 
@@ -318,7 +327,7 @@ Public Class CubeController
 
     Public Function GetRoom(idRoom_ As ObjectId, rolId_ As Int32) As TagWatcher Implements ICubeController.GetRoom
 
-        Dim rooms_ As New List(Of Room)
+        Dim rooms_ As New List(Of room)
 
         Dim sax_ = SwicthedProjectSax(16)
 
@@ -331,7 +340,7 @@ Public Class CubeController
 
 
 
-            _enlaceDatos.GetMongoCollection(Of Room)("", rolId_).
+            _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
                                   Aggregate.Match(Function(ch) ch._id = idRoom_).
                                   ToList.
                                   ForEach(Sub(room_)
@@ -441,11 +450,11 @@ Public Class CubeController
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-            Dim operationsDB_ = _enlaceDatos.GetMongoCollection(Of Room)("", rolId_)
+            Dim operationsDB_ = _enlaceDatos.GetMongoCollection(Of room)("", rolId_)
 
-            Dim roomHistoryList_ As New List(Of RoomHistory)
+            Dim roomHistoryList_ As New List(Of roomhistory)
 
-            Dim roomawait_ As New List(Of RoomHistory)
+            Dim roomawait_ As New List(Of roomhistory)
 
             Dim newObjectId_ = ObjectId.GenerateNewId
 
@@ -454,7 +463,7 @@ Public Class CubeController
             Dim roomfoud_ As Boolean = False
 
             operationsDB_.Aggregate.
-                          Match(Function(e) e.roomname.ToUpper.Contains(cubeDestin_.ToUpper & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), "")) Or e._id = idRoom_).
+                          Match(Function(e) e.roomname.Equals(cubeDestin_.ToUpper & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), "")) Or e._id = idRoom_).
                           ToList.ForEach(Sub(rooms_)
 
                                              If (rooms_._id <> idRoom_) Then
@@ -465,7 +474,7 @@ Public Class CubeController
 
                                                  Dim roomHistory_ As New roomhistory With {._id = ObjectId.GenerateNewId,
                                            .rules = roomRules_,
-                                           .roomname = roomName_,
+                                           .roomname = cubeDestin_.ToUpper & "." & roomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), ""),
                                            .description = descriptionRules_,
                                            .addresses = New List(Of roomcontext) From {New roomcontext With
                                                                                                        {
@@ -495,8 +504,8 @@ Public Class CubeController
                                                                                                         }
                                             },
                                            .messages = rooms_.messages,
-                                           .status = rooms_.status,
-                                           .contenttype = rooms_.contenttype,
+                                           .status = status_,
+                                           .contenttype = contenttype_.ToLower,
                                            .reason = reason_,
                                            .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                            }
@@ -520,18 +529,34 @@ Public Class CubeController
                                                      roomHistoryList_.Add(roomHistory_)
                                                  Else
 
-                                                     roomHistoryList_.AddRange(rooms_.historical)
+                                                     If rooms_.historical.Count = 0 Then
 
-                                                     valorPresentacion_ = rooms_.historical(0).roomname
+                                                         roomHistoryList_.Add(roomHistory_)
 
-                                                     If enviado_ = "on" Then
 
-                                                         roomHistoryList_.Insert(0, roomHistory_)
+                                                     Else
 
-                                                         valorPresentacion_ = roomHistory_.roomname
+                                                         roomHistoryList_.AddRange(rooms_.historical)
 
+                                                         valorPresentacion_ = rooms_.historical(0).roomname.Substring(rooms_.historical(0).roomname.IndexOf(".") + 1)
+
+                                                         If enviado_ = "on" Then
+
+                                                             roomHistoryList_.Insert(0, roomHistory_)
+
+                                                             valorPresentacion_ = roomHistory_.roomname.Substring(roomHistory_.roomname.IndexOf(".") + 1)
+
+
+                                                         End If
+
+                                                         If valorPresentacion_ = Nothing Then
+
+                                                             valorPresentacion_ = rooms_.roomname.Substring(rooms_.roomname.IndexOf(".") + 1)
+
+                                                         End If
 
                                                      End If
+
 
 
                                                  End If
@@ -539,6 +564,9 @@ Public Class CubeController
                                                  If rooms_.awaitingupdates Is Nothing Then
 
                                                      roomawait_.Add(roomHistory_)
+
+
+
                                                  Else
 
                                                      roomawait_.AddRange(rooms_.awaitingupdates)
@@ -626,6 +654,8 @@ Public Class CubeController
 
                 Else
 
+
+
                     If roomCurrent_.awaitingupdates IsNot Nothing Then
 
                         If (roomCurrent_.awaitingupdates.Count > 0) Then
@@ -642,12 +672,15 @@ Public Class CubeController
                                 roomCurrent_.contenttype = roomTemp_.contenttype
                                 roomCurrent_.awaitingupdates(0).status = "on"
                                 roomCurrent_.historical = roomHistoryList_
+                                roomCurrent_.status = "on"
 
                             End If
 
                         End If
 
                     End If
+
+
 
 
                 End If
@@ -684,9 +717,25 @@ Public Class CubeController
 
                 Else
 
+                    If roomCurrent_.historical Is Nothing Then
 
+                        roomCurrent_.historical = roomHistoryList_
+
+                    Else
+
+                        If roomCurrent_.historical.Count = 0 Then
+
+                            roomCurrent_.historical = roomHistoryList_
+
+                        Else
+
+
+                        End If
+
+                    End If
 
                 End If
+
 
 
                 If roomCurrent_.historical.Count > 3 Then
@@ -813,240 +862,11 @@ Public Class CubeController
 
     End Function
 
-    'Public Function SetFormula(Of T)(idRoom_ As ObjectId, NewroomName_ As String, roomRules_ As String, cubeDestin_ As String, contenttype_ As String, descriptionRules_ As String, status_ As String, Optional idUser_ As ObjectId = Nothing, Optional userName_ As String = "") As TagWatcher Implements ICubeController.SetFormula
-
-    '    Dim params_ As New List(Of String) From {cubeDestin_ & "." & NewroomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), "")}
-
-    '    'Dim contenttype_ = "formulas"
-
-
-
-    '    If contenttype_.ToUpper = "FÓRMULA" OrElse contenttype_ = "fórmula" Then
-
-    '        contenttype_ = "formula"
-
-    '    End If
-
-    '    If roomRules_.IndexOf(".csv") > -1 Then
-
-    '        contenttype_ = "csv"
-
-    '        roomRules_ = GetCsv(NewroomName_, roomRules_).ObjectReturned
-
-    '    Else
-
-    '        Dim mateController_ As IMathematicalInterpreter = New MathematicalInterpreterNCalc
-
-    '        params_.AddRange(mateController_.GetParams(roomRules_))
-
-    '    End If
-
-    '    Dim outputDatabaseName_ As String = ""
-
-    '    Dim outputCollectionName_ As String = ""
-
-    '    Dim sax_ = SwicthedProjectSax(16)
-
-    '    Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
-
-    '        Dim rolId_ = GetRolCubeId(cubeDestin_)
-
-    '        OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
-
-    '        Dim operationsDB_ = _enlaceDatos.GetMongoCollection(Of Room)("", rolId_)
-
-    '        Dim roomHistoryList_ As New List(Of RoomHistory)
-
-    '        Dim newObjectId_ = ObjectId.GenerateNewId
-
-    '        operationsDB_.Aggregate.
-    '                      Match(Function(e) e._id = idRoom_).
-    '                      ToList.ForEach(Sub(rooms_)
-
-    '                                         Dim roomHistory_ As New RoomHistory With {._id = ObjectId.GenerateNewId,
-    '                                                                                   .rules = roomRules_,
-    '                                                                                   .roomname = rooms_.roomname,
-    '                                                                                   .description = descriptionRules_,
-    '                                                                                   .addresses = rooms_.addresses,
-    '                                                                                   .messages = rooms_.messages,
-    '                                                                                   .status = rooms_.status,
-    '                                                                                   .contenttype = rooms_.contenttype,
-    '                                                                                   .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-    '                                                                                   }
-
-    '                                         If idUser_ <> Nothing Then
-
-    '                                             roomHistory_._iduser = idUser_
-
-
-    '                                         End If
-
-    '                                         If userName_ <> "" Then
-
-    '                                             roomHistory_.username = userName_
-
-
-    '                                         End If
-
-    '                                         If rooms_.historical Is Nothing Then
-
-    '                                             roomHistoryList_.Add(roomHistory_)
-    '                                         Else
-
-    '                                             roomHistoryList_.AddRange(rooms_.historical)
-
-    '                                             roomHistoryList_.Insert(0, roomHistory_)
-
-    '                                         End If
-
-    '                                         newObjectId_ = rooms_._id
-
-    '                                     End Sub)
-
-    '        Dim room_ = New Room With
-    '                            {._id = newObjectId_,
-    '                              .roomname = cubeDestin_ & "." & NewroomName_.ToUpper.Replace(" ", "").Replace(Chr(160), "").Replace(Chr(13), "").Replace(Chr(10), ""),
-    '                              .rules = roomRules_,
-    '                              .description = descriptionRules_,
-    '                              .required = True,
-    '                              .fieldsrequired = New List(Of String),
-    '                              .type = "warning",
-    '                              .addresses = New List(Of Framing) From
-    '                                                                {
-    '                                                                   New Framing With
-    '                                                                               {
-    '                                                                                 ._idcontext = ObjectId.GenerateNewId,
-    '                                                                                 .context = "home",
-    '                                                                                 .firmacontext = Nothing,
-    '                                                                                 .rules = Nothing,
-    '                                                                                 .ref = Nothing,
-    '                                                                                 .loc = New List(Of Int32) From {12, 1005},
-    '                                                                                 .cached = Nothing,
-    '                                                                                 .result = Nothing,
-    '                                                                                 .status = Nothing,
-    '                                                                                 .timelife = Nothing
-    '                                                                                 },
-    '                                                                   New Framing With
-    '                                                                               {
-    '                                                                                 ._idcontext = ObjectId.GenerateNewId,
-    '                                                                                 .context = "resourcerequired",
-    '                                                                                 .firmacontext = Nothing,
-    '                                                                                 .rules = Nothing,
-    '                                                                                 .ref = params_,
-    '                                                                                 .loc = Nothing,
-    '                                                                                  .cached = Nothing,
-    '                                                                                  .result = Nothing,
-    '                                                                                  .status = Nothing,
-    '                                                                                  .timelife = Nothing
-    '                                                                                }
-    '                                                                 },
-    '                              .status = status_,
-    '                              .messages = New List(Of String),
-    '                              .contenttype = contenttype_.ToLower,
-    '                              .historical = roomHistoryList_
-    '                              }
-
-    '        If roomHistoryList_.Count = 0 Then
-
-    '            roomHistoryList_.Add(New RoomHistory With {._id = ObjectId.GenerateNewId,
-    '                                      .rules = roomRules_,
-    '                                      .description = descriptionRules_,
-    '                                      .roomname = room_.roomname,
-    '                                      .addresses = room_.addresses,
-    '                                      .messages = room_.messages,
-    '                                      .status = room_.status,
-    '                                      .contenttype = room_.contenttype,
-    '                                      .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-    '                                      })
-    '            room_.historical = roomHistoryList_
-
-    '        End If
-
-
-    '        If room_.historical.Count > 3 Then
-
-    '            room_.historical.RemoveRange(3, room_.historical.Count - 3)
-
-    '        End If
-
-
-    '        Dim updateDefinition_ = Builders(Of Room).
-    '                                Update.
-    '                               Set(Function(e) e.roomname, room_.roomname.ToUpper).
-    '                               Set(Function(e) e.rules, room_.rules).
-    '                               Set(Function(e) e.description, room_.description).
-    '                               Set(Function(e) e.required, room_.required).
-    '                               Set(Function(e) e.fieldsrequired, room_.fieldsrequired).
-    '                               Set(Function(e) e.type, room_.type).
-    '                               Set(Function(e) e.addresses, room_.addresses).
-    '                               Set(Function(e) e.status, room_.status).
-    '                               Set(Function(e) e.messages, room_.messages).
-    '                               Set(Function(e) e.contenttype, room_.contenttype).
-    '                               Set(Function(e) e.historical, room_.historical)
-
-
-    '        operationsDB_.UpdateOne(Function(e) e._id = room_._id,
-    '                                updateDefinition_,
-    '                                New UpdateOptions With {.IsUpsert = True})
-
-    '        OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
-
-
-
-    '        Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of RoomResource)("", 7)
-
-    '        Dim roomResource_ As New RoomResource With {
-    '                                                    ._id = ObjectId.GenerateNewId,
-    '                                                    .roomname = room_.roomname,
-    '                                                    .description = room_.description,
-    '                                                    .rules = room_.rules,
-    '                                                    .status = room_.status,
-    '                                                    .contenttype = room_.contenttype,
-    '                                                    .createat = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-    '                                                    .rolId_ = rolId_,
-    '                                                    .cubeSource_ = GetCubeSource(rolId_),
-    '                                                    ._idroom = room_._id,
-    '                                                    .username = userName_,
-    '                                                    .valorpresentacion = NewroomName_
-    '                                                     }
-
-    '        Dim updateDefinitionResource_ = Builders(Of RoomResource).
-    '                                Update.
-    '                               Set(Function(e) e.roomname, roomResource_.roomname.ToUpper).
-    '                               Set(Function(e) e.description, roomResource_.description).
-    '                               Set(Function(e) e.rules, roomResource_.rules).
-    '                               Set(Function(e) e.status, roomResource_.status).
-    '                               Set(Function(e) e.contenttype, roomResource_.contenttype).
-    '                               Set(Function(e) e.createat, roomResource_.createat).
-    '                               Set(Function(e) e.rolId_, roomResource_.rolId_).
-    '                               Set(Function(e) e.cubeSource_, roomResource_.cubeSource_).
-    '                               Set(Function(e) e._idroom, roomResource_._idroom).
-    '                               Set(Function(e) e.username, roomResource_.username).
-    '                               Set(Function(e) e.valorpresentacion, roomResource_.valorpresentacion.ToUpper)
-
-    '        operationsDBResource_.UpdateOne(Function(e) e._idroom = roomResource_._idroom,
-    '                                updateDefinitionResource_,
-    '                                New UpdateOptions With {.IsUpsert = True})
-
-
-    '        room_.historical(0).createat = DateTime.Now
-
-    '        _status = New TagWatcher() With {.ObjectReturned = room_}
-
-    '    End Using
-
-    '    SwicthedProjectSax(13)
-
-    '    _status.SetOK()
-
-    '    Return _status
-
-    'End Function
 
 
     Public Sub FillRoomResource() Implements ICubeController.FillRoomResource
 
-        Dim resourceRooms_ As New List(Of RoomResource)
+        Dim resourceRooms_ As New List(Of roomresource)
 
         Dim sax_ = SwicthedProjectSax(16)
 
@@ -1063,14 +883,14 @@ Public Class CubeController
 
 
 
-                _enlaceDatos.GetMongoCollection(Of Room)("", rolId_).
+                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
                                   Aggregate.
                                   ToList.
                                   ForEach(Sub(room_)
 
                                               Dim valorPresentacion_ = room_.roomname.Substring(room_.roomname.IndexOf(".") + 1)
 
-                                              resourceRooms_.Add(New RoomResource With {
+                                              resourceRooms_.Add(New roomresource With {
                                                                   ._id = ObjectId.GenerateNewId,
                                                                   .roomname = room_.roomname,
                                                                   .description = room_.description,
@@ -1095,7 +915,82 @@ Public Class CubeController
 
             For Each resourceRoom_ In resourceRooms_
 
-                _enlaceDatos.GetMongoCollection(Of RoomResource)("", 7).InsertOne(resourceRoom_)
+                _enlaceDatos.GetMongoCollection(Of roomresource)("", 7).InsertOne(resourceRoom_)
+
+            Next
+
+
+
+        End Using
+
+
+        SwicthedProjectSax(13)
+
+    End Sub
+
+    Public Sub UpdateRoomResource() Implements ICubeController.UpdateRoomResource
+
+        Dim resourceRooms_ As New List(Of roomresource)
+
+        Dim sax_ = SwicthedProjectSax(16)
+
+        Dim cuenta_ = 15
+
+        Dim rolId_ = 1
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+
+            While rolId_ <= 6
+
+
+                OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
+
+
+                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+                                  Aggregate.
+                                  ToList.
+                                  ForEach(Sub(room_)
+
+                                              Dim valorPresentacion_ = room_.roomname.Substring(room_.roomname.IndexOf(".") + 1)
+
+                                              resourceRooms_.Add(New roomresource With {
+                                                                  ._id = ObjectId.GenerateNewId,
+                                                                  .roomname = room_.roomname,
+                                                                  .description = room_.description,
+                                                                  .status = room_.status,
+                                                                  .contenttype = room_.contenttype,
+                                                                  .createat = DateTime.Now,
+                                                                  .rolid = rolId_,
+                                                                  .branchname = GetCubeSource(rolId_),
+                                                                  .idroom = room_._id,
+                                                                  .username = "originalfourier@gmail.com",
+                                                                  .valorpresentacion = valorPresentacion_
+                                                                   })
+
+
+                                          End Sub)
+
+                rolId_ += 1
+
+            End While
+
+
+            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
+
+            Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of roomresource)("", 7)
+
+            For Each resourceRoom_ In resourceRooms_
+
+
+                Dim updateDefinitionResource_ = Builders(Of roomresource).
+                                        Update.
+                                       Set(Function(e) e.roomname, resourceRoom_.roomname.ToUpper).
+                                       Set(Function(e) e.valorpresentacion, resourceRoom_.valorpresentacion.ToUpper)
+
+                operationsDBResource_.UpdateOne(Function(e) e.idroom = resourceRoom_.idroom,
+                                        updateDefinitionResource_,
+                                        New UpdateOptions With {.IsUpsert = True})
 
             Next
 
@@ -1126,7 +1021,7 @@ Public Class CubeController
             Dim database_ = noSQL_.servers.nosql.mongodb.rol.FindAll(Function(ch) ch.rolname = roots_(0).rolnamelinked)(0)
 
             Dim conexion As IMongoClient = New MongoClient("mongodb://" & endPoint_.ip & ":" & endPoint_.port)
-            conexion.GetDatabase(database_.name).GetCollection(Of Room)(roots_(0).linkedresources(0).name).Aggregate.
+            conexion.GetDatabase(database_.name).GetCollection(Of room)(roots_(0).linkedresources(0).name).Aggregate.
                                                                        Project(Function(ch) New With {
                                                                                              ch._id,
                                                                                              ch.roomname,
@@ -1158,7 +1053,7 @@ Public Class CubeController
 
         Dim parametros_ As New List(Of String)
 
-        _roomsResource = New List(Of RoomResource)
+        _roomsResource = New List(Of roomresource)
 
         Dim sax_ = SwicthedProjectSax(16)
 
@@ -1171,7 +1066,7 @@ Public Class CubeController
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
 
-            _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of RoomResource)("", rolId_).
+            _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
                                                  Aggregate.
                                                  Match(Function(ch) ch.roomname.Equals(roomname_)).
                                                  ToList)
@@ -1195,7 +1090,7 @@ Public Class CubeController
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, _roomsResource(0).rolid)
 
-                _rooms = New List(Of Room)
+                _rooms = New List(Of room)
 
                 _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _roomsResource(0).rolid).
                                                      Aggregate.
@@ -1275,7 +1170,7 @@ Public Class CubeController
 
     Public Function GetRoomNames(Optional token_ As String = "") As TagWatcher Implements ICubeController.GetRoomNames
 
-        _rooms = New List(Of Room)
+        _rooms = New List(Of room)
 
         Dim sax_ = SwicthedProjectSax(16)
 
@@ -1289,16 +1184,15 @@ Public Class CubeController
 
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
-
                 If token_ = "" Then
 
-                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of Room)("", rolId_).
+                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", rolId_).
                                       Aggregate.
                                       Limit(cuenta_).
                                       ToList)
                 Else
 
-                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of Room)("", rolId_).
+                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", rolId_).
                                                  Aggregate.
                                                  Match(Function(ch) ch.roomname.ToUpper.Contains(token_.ToUpper)).
                                                  Limit(cuenta_).
@@ -1325,8 +1219,7 @@ Public Class CubeController
     End Function
 
     Function GetRoomNamesResource(Optional token_ As String = "") As TagWatcher Implements ICubeController.GetRoomNamesResource
-
-        _roomsResource = New List(Of RoomResource)
+        _roomsResource = New List(Of roomresource)
 
         Dim sax_ = SwicthedProjectSax(16)
 
@@ -1339,14 +1232,13 @@ Public Class CubeController
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
             If token_ = "" Then
-
-                _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of RoomResource)("", rolId_).
+                _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
                                       Aggregate.
                                       Limit(cuenta_).
                                       ToList)
             Else
 
-                _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of RoomResource)("", rolId_).
+                _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
                                                  Aggregate.
                                                  Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.branchname.Equals(token_)).
                                                  Limit(cuenta_).
@@ -1368,7 +1260,166 @@ Public Class CubeController
 
     End Function
 
+    Function SetFieldsNamesResource(Section_ As String, Campo_ As String) As TagWatcher
 
+        Dim validfields_ = New List(Of validfields)
+
+        Dim sax_ = SwicthedProjectSax(16)
+
+        Dim cuenta_ = 15
+
+        Dim rolId_ = 7
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+
+            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
+            Dim operationsvalidfields_ = _enlaceDatos.GetMongoCollection(Of validfields)("", 8)
+
+            Dim sections_ = Section_.Split(",")
+
+            For Each sectionAux_ In sections_
+
+
+                Dim numsection_ = sectionAux_.Replace(" ", "").Replace(",", "").Replace(Chr(34), "")
+
+                Dim indexSection_ = numsection_.IndexOf("S")
+
+                If indexSection_ <> -1 Then
+
+
+                    numsection_ = numsection_.Substring(indexSection_ + 1)
+
+                    validfields_.Clear()
+
+                    validfields_.AddRange(operationsvalidfields_.
+                                                 Aggregate.
+                                                 Match(Function(ch) ch.valorpresentacion.Equals("S" & numsection_ & "." & Campo_)).
+                                                 ToList)
+
+
+
+
+                    If validfields_.Count = 0 Then
+
+                        validfields_.Add(New validfields With {
+                                                            ._id = ObjectId.GenerateNewId,
+                                                            .section = "ANS" & numsection_,
+                                                            .sectionexcel = "S" & numsection_,
+                                                            .sectionfield = Campo_,
+                                                            .valorpresentacion = "S" & numsection_ & "." & Campo_,
+                                                            .details = Nothing,
+                                                            .status = "on",
+                                                            .contentype = "PEDIMENTO",
+                                                            .archivado = False,
+                                                            .estado = 1
+                                                             })
+
+                        Dim updateDefinition_ = Builders(Of validfields).
+                                       Update.
+                                      Set(Function(e) e.section, validfields_(0).section).
+                                      Set(Function(e) e.sectionexcel, validfields_(0).sectionexcel).
+                                      Set(Function(e) e.sectionfield, validfields_(0).sectionfield).
+                                      Set(Function(e) e.valorpresentacion, validfields_(0).valorpresentacion).
+                                      Set(Function(e) e.status, validfields_(0).status).
+                                      Set(Function(e) e.contentype, validfields_(0).contentype).
+                                      Set(Function(e) e.archivado, validfields_(0).archivado).
+                                      Set(Function(e) e.estado, validfields_(0).estado)
+
+                        operationsvalidfields_.UpdateOne(Function(e) e._id = validfields_(0)._id,
+                                        updateDefinition_,
+                                        New UpdateOptions With {.IsUpsert = True})
+
+                    End If
+
+                End If
+
+            Next
+
+        End Using
+
+
+        SwicthedProjectSax(13)
+
+        _status = New TagWatcher() With {.ObjectReturned = validfields_}
+
+        Return _status
+
+    End Function
+
+    Function GetFieldsNamesResource() As TagWatcher Implements ICubeController.GetFieldsNamesResource
+
+        Dim validfields_ = New List(Of String)
+
+        Dim sax_ = SwicthedProjectSax(16)
+
+        Dim cuenta_ = 15
+
+        Dim rolId_ = 7
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+
+            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
+            Dim operationsvalidfields_ = _enlaceDatos.GetMongoCollection(Of validfields)("", 8)
+
+            operationsvalidfields_.
+                                                 Aggregate.ToList.ForEach(Sub(campos_)
+                                                                              validfields_.Add(campos_.valorpresentacion)
+                                                                          End Sub)
+
+
+
+
+
+        End Using
+
+
+        SwicthedProjectSax(13)
+
+        _status = New TagWatcher() With {.ObjectReturned = validfields_}
+
+        Return _status
+
+    End Function
+
+    Public Function CamposExcelMongo(excelFilePath_ As String) As String Implements ICubeController.CamposExcelMongo
+
+
+        Dim csvData_ As String = System.IO.File.ReadAllText(excelFilePath_)
+
+        Dim lines_ As String() = csvData_.Split(New String() {System.Environment.NewLine},
+                                                    StringSplitOptions.RemoveEmptyEntries)
+
+        Dim headers_ As String() = lines_(0).Split(","c)
+
+        Dim result_ As New List(Of Dictionary(Of String, String))
+
+        For fila_ As Integer = 1 To lines_.Length - 1
+
+            Dim dictionaryLines_ As New Dictionary(Of String, String)
+
+            Dim currentLine_ As String() = lines_(fila_).Split(New String() {","}, 2, StringSplitOptions.None)
+
+            For column_ As Integer = 0 To headers_.Length - 1
+
+                dictionaryLines_.Add(headers_(column_),
+                                         currentLine_(column_))
+
+            Next
+
+            result_.Add(dictionaryLines_)
+
+        Next
+
+        For Each elemento_ In result_
+
+            SetFieldsNamesResource(elemento_("ID Seccion"), elemento_("Nombre Sistema"))
+        Next
+
+        Return ""
+
+    End Function
     Public Function GetReports() As ValidatorReport Implements ICubeController.GetReports
         Throw New NotImplementedException()
     End Function
@@ -1612,6 +1663,30 @@ Public Class CubeController
     Public Function Clone() As Object Implements ICloneable.Clone
         Throw New NotImplementedException()
     End Function
+
+
+    'Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+    '    ' Activar el sistema de búsqueda de palabras clave
+    '    Dim palabrasSugeridas As List(Of String) = BuscarPalabrasClave(TextBox1.Text)
+
+    '    ' Mostrar las palabras sugeridas en un diálogo
+    '    Dim dialogo As New Dialog
+    '    Dim listaPalabras As New ListBox()
+    '    listaPalabras.Items.AddRange(palabrasSugeridas.ToArray())
+    '    dialogo.Controls.Add(listaPalabras)
+    '    dialogo.ShowDialog()
+
+    '    ' Si el usuario selecciona una palabra clave, insertarla en el código
+    '    If dialogo.DialogResult = DialogResult.OK Then
+    '        Dim palabraSeleccionada As String = listaPalabras.SelectedItem
+    '        TextBox1.Text &= palabraSeleccionada
+    '    End If
+    'End Sub
+
+    'Private Function BuscarPalabrasClave(texto As String) As List(Of String)
+    '    ' Implementar la lógica de búsqueda de palabras clave
+    '    ' ...
+    'End Function
 
 #End Region
 
