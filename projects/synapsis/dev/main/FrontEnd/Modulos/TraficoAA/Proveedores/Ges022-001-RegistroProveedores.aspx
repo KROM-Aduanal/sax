@@ -44,7 +44,11 @@
                             <GWC:InputControl runat="server" CssClass="m-0 p-0" Type="Hide" ID="cveEmpresa" Label="CveRazonsocial" />
                             <GWC:InputControl runat="server" CssClass="m-0 p-0" Type="Hide" ID="idEmpresa" Label="idEmpresa" />
                             <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-12 col-md-10 col-lg-5 mb-5 pt-3" ID="fcRazonSocial" KeyField="_id" DisplayField="razonsocial" Label="Razón social" Rules="required|maxlegth[120]" OnClick="fcRazonSocial_Click" OnTextChanged="fcRazonSocial_TextChanged"/>                        
+<<<<<<< HEAD
                             <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-12 col-md-9 col-lg-3 mb-5 pt-3" ID="fbcPais" Label="País" RequiredSelect="true" OnTextChanged="fbcPais_TextChanged" OnClick="fbcPais_Click" Visible="False"/>
+=======
+                            <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-12 col-md-9 col-lg-3 mb-5 pt-3" ID="fbcPais" Label="País" RequiredSelect="true" Template="" OnTextChanged="fbcPais_TextChanged" OnClick="fbcPais_Click" Visible="False"/>
+>>>>>>> develop
                             <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-12 col-md-3 col-lg-2 mb-5 pt-3 d-flex justify-content-center" Enabled="False" ID="swcTipoUso" Label="Tipo de uso" OnText="Importación" OffText="Exportación" Checked="False" OnCheckedChanged="swcTipoUso_CheckedChanged"/>
                     </ListControls>
                 </GWC:FieldsetControl>

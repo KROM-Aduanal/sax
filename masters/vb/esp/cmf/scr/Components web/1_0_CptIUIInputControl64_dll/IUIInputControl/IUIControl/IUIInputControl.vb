@@ -13,6 +13,8 @@ Public Interface IUIInputControl
 
     Property Locked As Boolean
 
+    Property Signature As String
+
 #End Region
 
 #Region "Metodos"

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Controllers</RootNamespace>
+    <RootNamespace>Rec.Globals.Controllers.Empresas</RootNamespace>
     <AssemblyName>Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
@@ -107,9 +107,14 @@
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.Contacto64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.Controllers.IControladorEmpresas64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rec.Globals.Controllers.ControladorPaises64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorEmpresas64.2.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorPaises64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Controllers.IControladorEmpresas.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.IControladorEmpresas.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Curp64.2.0.0.0">
@@ -132,16 +137,16 @@
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.EmpresaNacional64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.IEmpresa64.2.0.0.0">
-      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresa64.2.0.0.0.dll</HintPath>
+    <Reference Include="Rec.Globals.IEmpresa.2.0.0.0">
+      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresa.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.IEmpresaInternacional64.2.0.0.0">
-      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresaInternacional64.2.0.0.0.dll</HintPath>
+    <Reference Include="Rec.Globals.IEmpresaInternacional.2.0.0.0">
+      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresaInternacional.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Rec.Globals.IEmpresaNacional64.2.0.0.0">
-      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresaNacional64.2.0.0.0.dll</HintPath>
+    <Reference Include="Rec.Globals.IEmpresaNacional.2.0.0.0">
+      <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.IEmpresaNacional.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Pais64.0.0.0.0">
@@ -162,6 +167,27 @@
     </Reference>
     <Reference Include="Rec.Globals.TaxId64.2.0.0.0">
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.TaxId64.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Utils.ControladorSecuencia64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.ControladorSecuencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Utils.IControladorSecuencia.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.IControladorSecuencia.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Utils.ISecuencia.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.ISecuencia.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Utils.Secuencia64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.Secuencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.Recursos64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Recursos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Utils.Organismo64.2.0.0.0">
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Utils.Organismo64.2.0.0.0.dll</HintPath>

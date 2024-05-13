@@ -32,7 +32,11 @@
     render() {
 
         const tintColor = this.getAttribute('TintColor') ? this.getAttribute('TintColor') : '#6c4fd3';
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> develop
         this.innerHTML = `
             <li class="wc-comment ${this.getAttribute("CssClass")}" style="--tintColor:${tintColor};">
                 <div class="wc-userdata">

@@ -28,6 +28,22 @@ Public Class UIInputControl
 
     End Property
 
+    Public Overridable Property Signature As String Implements IUIInputControl.Signature
+
+        Get
+
+            Return ViewState("Signature")
+
+        End Get
+
+        Set(value As String)
+
+            ViewState("Signature") = value
+
+        End Set
+
+    End Property
+
 #End Region
 
 #Region "Metodos"

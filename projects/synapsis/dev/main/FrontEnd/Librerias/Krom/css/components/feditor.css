@@ -1,6 +1,7 @@
 /*CUBO*/
 .wc-cubo-formulas {
     width: 100%;
+<<<<<<< HEAD
   
 }
 /*TOP CONTENT*/
@@ -121,6 +122,46 @@
         width: 100% !important;
     }
 
+=======
+}
+/*TOP CONTENT*/
+.wc-cubo-formulas > div:nth-child(1) {
+    border: 1px solid #cecdcd;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+.wc-cubo-formulas > div:nth-child(1) input[type="submit"] {
+    height: 40px;
+    border: 0;
+    outline: 0;
+    width: 60px;
+    color: #ffffff;
+    text-align: center;
+}
+.wc-cubo-formulas > div:nth-child(1) .cubo-btn input {
+    border-radius: 20px 0 0 20px;
+    opacity: .7;
+    border-right: 1px solid rgba(255,255,255,0.035);
+}
+.wc-cubo-formulas > div:nth-child(1) .cubo-btn-formula input {
+    border-radius: 0 20px 20px 0;
+    background-image: url('../../imgs/function.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    border-left: 1px solid rgba(0,0,0,0.035);
+}
+.wc-cubo-formulas > div:nth-child(1) .cubo-input-search input {
+    border: 0 !important;
+    height: 40px;
+    margin: 0 !important;
+}
+.wc-cubo-formulas > div:nth-child(1) .cubo-input-search .wc-input {
+    margin: 0 4px !important;
+    min-height: 40px !important;
+}
+>>>>>>> develop
 /*SECOND TOP CONTENT*/
 .wc-cubo-formulas > div:nth-child(2) {
     display: flex;
@@ -176,14 +217,18 @@
     color: #af1a1d;
 }
 
+<<<<<<< HEAD
 .constante {
     color: #09a183;
 }
 
+=======
+>>>>>>> develop
 .parentesis {
     color: #09a183;
 }
 
+<<<<<<< HEAD
 .operador {
     color: #094da1;
 }
@@ -192,6 +237,8 @@
     color: #2e2c2c;
 }
 
+=======
+>>>>>>> develop
 /*CUBO MESSAGES*/
 
 .wc-cubo-messages textarea {
@@ -224,9 +271,15 @@
     list-style: none;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     max-height: 400px;
     overflow-y: auto;
     position: relative;
+=======
+    max-height:400px;
+    overflow-y: auto;
+    position:relative;
+>>>>>>> develop
 }
 
 .wc-cubo-comments ul:before {
@@ -285,6 +338,7 @@
 */
 
 
+<<<<<<< HEAD
 /**/
 .cubo-input-search {
     border: 0 !important;
@@ -293,6 +347,10 @@
     width: 150px !important;
 }
 
+=======
+
+/**/
+>>>>>>> develop
 
 .wc-userdata {
 
@@ -315,6 +373,7 @@
     opacity: .7;
 }
 
+<<<<<<< HEAD
 /*@media(min-width:400px) {
     .swc-online {
         position: relative;
@@ -497,3 +556,35 @@
     .formcontrolcabulidad {
     }
 
+=======
+/**/
+
+.wc-comment {
+
+}
+
+.wc-comment > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.wc-comment li > div:nth-child(1) img {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.wc-comment li > div:nth-child(1) small {
+    display: block;
+    font-size: 75%;
+    opacity: .7;
+}
+
+.wc-comment li > div:nth-child(2) {
+    text-align: justify;
+    padding-top: 4px;
+    padding-right: 16px;
+}
+>>>>>>> develop

@@ -5,6 +5,8 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Rec.Globals
 Imports Rec.Globals.Controllers
+Imports Rec.Globals.Controllers.Empresas
+Imports Rec.Globals.Empresas
 Imports Rec.Globals.Utils
 Imports Sax.Web
 Imports Syn.CustomBrokers.Controllers
@@ -38,7 +40,7 @@ Public Class Ges003_001_FacturasComerciales
 
     Private _sistema As New Syn.Utils.Organismo
 
-    Private _icontroladorEmpresas64 As IControladorEmpresas64
+    'Private _icontroladorEmpresas64 As IControladorEmpresas64
 
 #End Region
 
@@ -72,8 +74,6 @@ Public Class Ges003_001_FacturasComerciales
         '  Generales
 
         fbcIncoterm.DataEntity = New krom.Anexo22()
-
-
 
         ' Datos del proveedor
 
@@ -132,11 +132,11 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CA_NUMERO_FACTURA, Texto, longitud_:=40)
         [Set](dbcNumFacturaCOVE, CA_NUMERO_FACTURA, propiedadDelControl_:=PropiedadesControl.Valor)
         '                                     Item(CamposCOVE.CA_NUMERO_COVE, Texto, longitud_:=40)
-        [Set](dbcNumFacturaCOVE, CA_NUMERO_AcuseValor, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](dbcNumFacturaCOVE, CA_NUMERO_ACUSEVALOR, propiedadDelControl_:=PropiedadesControl.ValueDetail)
         '                                     Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha)
         [Set](icFechaFactura, CA_FECHA_FACTURA)
         '                                     Item(CamposCOVE.CA_FECHA_COVE, Fecha)
-        [Set](icFechaCOVE, CA_FECHA_AcuseValor)
+        [Set](icFechaCOVE, CA_FECHA_ACUSEVALOR)
         '                                     Item(CamposClientes.CA_RAZON_SOCIAL, Texto, longitud_:=120)
         [Set](fbcCliente, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
         '                                     Item(CamposClientes.CA_TAX_ID, Texto, longitud_:=11)
@@ -525,9 +525,35 @@ Public Class Ges003_001_FacturasComerciales
 
         Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
 
-        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcCliente.Text, New Filtro With {.IdSeccion = SeccionesClientes.SCS1, .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcCliente.Text,
+                                                                  New Filtro _
+                                                                  With {.IdSeccion = SeccionesClientes.SCS1,
+                                                                  .IdCampo = CamposClientes.CA_RAZON_SOCIAL})
 
         fbcCliente.DataSource = lista_
+
+    End Sub
+
+
+    Protected Sub fbcProducto_TextChanged(sender As Object, e As EventArgs)
+
+        ''DIP
+        ''
+
+        Dim controlador_ As New ControladorBusqueda(Of ConstructorProducto)
+
+        Dim lista_ As List(Of SelectOption) = controlador_.Buscar(fbcProducto.Text,
+                                                                  New Filtro _
+                                                                  With {.IdSeccion = SeccionesProducto.SPTO5,
+                                                                  .IdCampo = CamposProducto.CP_NUMERO_PARTE})
+
+        fbcProducto.DataSource = lista_
+
+    End Sub
+
+    Protected Sub fbcProducto_Click(sender As Object, e As EventArgs)
+
+        DisplayMessage("Triunfando como siempre", StatusMessage.Info)
 
     End Sub
 
@@ -575,7 +601,9 @@ Public Class Ges003_001_FacturasComerciales
 
         Dim controlador_ As New CtrlProveedoresOperativos()
 
-        controlador_._tipoOperacion = IIf(swcTipoOperacion.Checked, CtrlProveedoresOperativos.TipoOperacion.Importacion, CtrlProveedoresOperativos.TipoOperacion.Exportacion)
+        controlador_._tipoOperacion = IIf(swcTipoOperacion.Checked,
+                                          CtrlProveedoresOperativos.TipoOperacion.Importacion,
+                                          CtrlProveedoresOperativos.TipoOperacion.Exportacion)
 
         Dim tagwatcher_ = controlador_.BuscarProveedores(sender.Text, False)
 

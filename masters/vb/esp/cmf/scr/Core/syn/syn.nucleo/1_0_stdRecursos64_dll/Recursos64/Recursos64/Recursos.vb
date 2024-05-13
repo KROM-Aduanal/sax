@@ -74,6 +74,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Nombre del país")> CA_PAIS = 1015
             <EnumMember> <Description("ObjectID Domicilio")> CP_ID_DOMICILIO = 1016
             <EnumMember> <Description("Secuencia Domicilio")> CP_SEC_DOMICILIO = 1017
+            <EnumMember> <Description("ObjectIdPaís")> CA_ID_PAIS = 1018
 
         End Enum
 
@@ -288,6 +289,12 @@ Namespace Syn.Nucleo
             AlCentro = 1
             AlDerecha = 2
             AlJustificado = 3
+        End Enum
+
+        Public Enum SecuenciasRecursos
+
+            Empresas
+
         End Enum
 
 #End Region

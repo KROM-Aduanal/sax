@@ -259,7 +259,6 @@ Public Class Ges022_001_CuboDatos
         '''
 
 
-
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()

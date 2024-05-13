@@ -1,14 +1,10 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
-Imports Rec.Globals.Bus64
-Imports Rec.Globals.Contacto64
-Imports Rec.Globals.Empresa64
-Imports Rec.Globals.IEmpresa64
-Imports Rec.Globals.IEmpresaInternacional64
-Imports Rec.Globals.PaisDomicilio64
-Imports Rec.Globals.TaxId64
+Imports Rec.Globals.Empresas
 
+
+<Serializable()>
 Public Class EmpresaInternacional : Inherits Empresa
     Implements IEmpresa, IEmpresaInternacional, IDisposable
 
