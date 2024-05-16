@@ -79,10 +79,10 @@
                 <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
                     <ListControls>
 
-                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6" ID="dbcNumFacturaCOVE" Label="Número de factura/Folio fiscal" LabelDetail="COVE" OnClick="dbcNumFacturaCOVE_Click"/>
+                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6" ID="dbcNumFacturaCOVE" Label="Número de factura/Folio fiscal" LabelDetail="Acuse de valor" OnClick="dbcNumFacturaCOVE_Click"/>
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 px-0 mt-2 py-5">
                             <GWC:InputControl runat="server" CssClass="col-xs-6 col-md-6 mt-5" ID="icFechaFactura" Rules="require" Type="Text" Format="Calendar" Name="icFechaFactura" Label="Fecha de factura" />
-                            <GWC:InputControl runat="server" CssClass="col-xs-6 col-md-6 mt-5" ID="icFechaCOVE" Type="Text" Format="Calendar" Name="icFechaCOVE" Label="Fecha de COVE" />
+                            <GWC:InputControl runat="server" CssClass="col-xs-6 col-md-6 mt-5" ID="icFechaCOVE" Type="Text" Format="Calendar" Name="icFechaCOVE" Label="Fecha de acuse de valor" />
                         </asp:Panel>
                         <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mt-2 mb-5" ID="fbcCliente" Label="Cliente" HasDetails="true" Rules="required" RequiredSelect="true" OnTextChanged="fbcCliente_TextChanged" OnClick="fbcCliente_Click"/>
                         <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mt-2 mb-5" ID="fbcIncoterm" Label="Incoterm" HasDetails="true" Rules="required" RequiredSelect="true" KeyField="i_Cve_TerminoFacturacion" DisplayField="t_ValorPresentacion" Dimension="Vt022TerminosFacturacionA14"/>
@@ -91,7 +91,7 @@
                             <GWC:SwitchControl runat="server" ID="swcTipoOperacion" CssClass="col-xs-12 col-md-4 mb-5 p-0 d-flex justify-content-center" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" OnCheckedChanged="swcTipoOperacion_CheckedChanged" />
                         </asp:Panel>
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 mt-4 mb-2 p-0">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-8 mt-2 mb-5" ID="icPesoTotal" Type="Text" Format="Real" Name="icPesoTotal" Label="Peso Total (Kg)" />
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-8 mt-2 mb-5" ID="icPesoTotal" Type="Text" Format="Real" Name="icPesoTotal" Label="Peso total (Kg)" />
                             <GWC:SwitchControl runat="server" CssClass="col-xs-6 col-md-2 mb-5 p-0 d-flex justify-content-center" ID="swcEnajenacion" Label="Enajenación" OnText="Sí" OffText="No" />
                             <GWC:SwitchControl runat="server" CssClass="col-xs-6 col-md-2 mb-5 p-0 d-flex justify-content-center" ID="swcSubdivision" Label="Subdivisión" OnText="Sí" OffText="No" />
                         </asp:Panel>
@@ -105,8 +105,8 @@
                             <GWC:SelectControl runat="server" CssClass="col-xs-4 col-md-4 p-0" ID="scMonedaMercancia" SearchBarEnabled="true" LocalSearch="false" Label="Moneda" OnTextChanged="CargaMoneda_TextChanged" OnClick="SeleccionarMoneda_Click">
                             </GWC:SelectControl>
                         </asp:Panel>
-                        <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mt-1 mb-5" ID="fbcOrdenCompra" Label="Orden de compra" HasDetails="false" />
-                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mt-1 mb-5" ID="icSerieFolioFactura" Type="Text" Name="icSerieFolioFactura" Label="Serie/folio de la factura" />
+                        <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-3 mt-1 mb-5" ID="fbcOrdenCompra" Label="Orden de compra de cliente" HasDetails="false" />
+                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mt-1 mb-5" ID="icSerieFolioFactura" Type="Text" Name="icSerieFolioFactura" Label="Serie/folio de la factura" />
 
                     </ListControls>
                 </GWC:FieldsetControl>
@@ -127,7 +127,7 @@
                                 </GWC:SelectControl>
                                 <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 mt-2 mb-5 p-0">
                                     <GWC:SwitchControl runat="server" ID="swcFungeCertificado" CssClass="col-xs-12 col-md-4 mt-2 mb-5 p-0 d-flex justify-content-center" Label="Funge como certificado" OnText="Sí" OffText="No" Checked="false" OnCheckedChanged="swcFungeCertificado_CheckedChanged"/>
-                                    <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-8 mt-4 mb-5 p-0" ID="fbcProveedorCertificado" Label="Proveedor Certifica Origen" HasDetails="false" OnClick="fbcProveedor_Click" OnTextChanged="fbcProveedor_TextChanged"/>
+                                    <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-8 mt-4 mb-5 p-0" ID="fbcProveedorCertificado" Label="Proveedor certifica origen" HasDetails="false" OnClick="fbcProveedor_Click" OnTextChanged="fbcProveedor_TextChanged"/>
                                 </asp:Panel>
                             </div>
                         </asp:Panel>
@@ -161,10 +161,10 @@
                                 </asp:Panel>
                                 <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 p-0">
                                     <div class="col-xs-12 col-md-6 mt-3 p-0">
-                                        <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" ID="fbcProducto" Label="Número de parte/alias" HasDetails="true" RequiredSelect="true" />
+                                        <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-12 mb-5" ID="fbcProducto" Label="Número de parte/alias" HasDetails="true" RequiredSelect="true" OnTextChanged="fbcProducto_TextChanged" OnClick="fbcProducto_Click"/>
                                         <GWC:InputControl runat="server" ID="icDescripcionPartida" CssClass="col-xs-12 col-md-12 mt-5 mb-5 solid-textarea" Type="TextArea" Name="icDescripcionPartida" Label="Descripción" />
-                                        <GWC:SwitchControl runat="server" ID="swcAplicaCOVE" CssClass="col-xs-12 col-md-12 mt-2 mb-5 d-flex justify-content-end" Label="Aplicar a COVE" OnText="Sí" OffText="No" OnCheckedChanged="swcAplicaCOVE_CheckedChanged"/>
-                                        <GWC:InputControl runat="server" ID="icDescripcionCOVE" CssClass="col-xs-12 col-md-12 mt-3 mb-5 solid-textarea" Type="TextArea" Name="icDescripcionCOVE" Label="Descripción COVE" />
+                                        <GWC:SwitchControl runat="server" ID="swcAplicaCOVE" CssClass="col-xs-12 col-md-12 mt-2 mb-5 d-flex justify-content-end" Label="Aplicar a acuse de valor" OnText="Sí" OffText="No" OnCheckedChanged="swcAplicaCOVE_CheckedChanged"/>
+                                        <GWC:InputControl runat="server" ID="icDescripcionCOVE" CssClass="col-xs-12 col-md-12 mt-3 mb-5 solid-textarea" Type="TextArea" Name="icDescripcionCOVE" Label="Descripción acuse de valor" />
                                     </div>
                                     <div class="col-xs-12 col-md-6 mt-3 p-0">
                                         <GWC:InputControl runat="server" ID="icCantidadComercial" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" Format="Real" Name="icCantidadComercial" Label="Cantidad comercial" />
@@ -257,7 +257,7 @@
                     </ListControls>
                 </GWC:FieldsetControl>
 
-                <GWC:FieldsetControl runat="server" ID="fscSubdivision" Label="Subdivisión" Visible="true">
+<%--                <GWC:FieldsetControl runat="server" ID="fscSubdivision" Label="Subdivisión" Visible="true">
                     <ListControls>
 
                         <GWC:CatalogControl ID="catSubdivision" runat="server" KeyField="Catalogo_Subdivision">
@@ -273,7 +273,7 @@
                         </GWC:CatalogControl>
 
                     </ListControls>
-                </GWC:FieldsetControl>
+                </GWC:FieldsetControl>--%>
 
             </Fieldsets>
         </GWC:FormControl>

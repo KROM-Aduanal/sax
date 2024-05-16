@@ -15,6 +15,8 @@ Public Class ControladorSecuencia
 
     Private disposedValue As Boolean
 
+    Private _limite As Int32
+
 #End Region
 
 #Region "Propiedades públicas"
@@ -37,6 +39,14 @@ Public Class ControladorSecuencia
 
         _Secuencia = New Secuencia
         _Estado = New TagWatcher
+        _limite = 1
+
+    End Sub
+    Sub New(ByVal limite_ As Int32)
+
+        _Secuencia = New Secuencia
+        _Estado = New TagWatcher
+        _limite = limite_
 
     End Sub
 
@@ -76,7 +86,7 @@ Public Class ControladorSecuencia
 
         Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
-            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Secuencia)("Reg000SecuenciasPruebas")
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Secuencia)("Reg000Secuencias")
 
             With secuencia_
 
@@ -93,7 +103,7 @@ Public Class ControladorSecuencia
                 And (Builders(Of Secuencia).Filter.Eq(Function(x) x.estado, .estado))
 
                 Dim updateStatements_ = Builders(Of Secuencia).Update.
-                                        Inc(Of Int32)(Function(x) x.sec, 1).
+                                        Inc(Of Int32)(Function(x) x.sec, _limite).
                                         Set(Function(x) x.nombre, .nombre).
                                         Set(Function(x) x.compania, .compania).
                                         Set(Function(x) x.area, .area).
@@ -132,6 +142,8 @@ Public Class ControladorSecuencia
 
                     If result_ IsNot Nothing Then
 
+                        result_.secuenciaAnterior = result_.sec - _limite
+
                         .SetOK()
 
                         .ObjectReturned = result_
@@ -147,6 +159,8 @@ Public Class ControladorSecuencia
                         result_ = operationsDB_.FindOneAndUpdate(filter_, updateStatements_, opciones_)
 
                         If result_ IsNot Nothing Then
+
+                            result_.secuenciaAnterior = result_.sec - _limite
 
                             .SetOK()
 

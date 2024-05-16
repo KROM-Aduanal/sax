@@ -2442,7 +2442,7 @@ Public Class Ges022_001_RegistroProveedores
     Private Function GenerarSecuenciaInterna(ByVal tipoSecuencia_ As String) _
     As Secuencia
 
-        _controladorSecuencias = New ControladorSecuencia
+        _controladorSecuencias = New ControladorSecuencia(5)
 
         _tagwatcher = New TagWatcher
 
