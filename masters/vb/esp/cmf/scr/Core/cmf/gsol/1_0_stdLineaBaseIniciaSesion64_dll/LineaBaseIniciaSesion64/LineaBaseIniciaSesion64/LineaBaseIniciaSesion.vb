@@ -644,12 +644,18 @@ Namespace gsol
                 rutaBinario_ = rutaBinario_ & "\" & usuario_ & "_" & aplicacion_ & "_" & divisionEmpresarial_ & "_blasterlogon.bin"
 
             Else
-                ' Se es web IIS se guardará en ruta de logs
-                'Actualizado para producción
-                'rutaBinario_ = Environ("USERPROFILE") & "\" & usuario_ & "_" & aplicacion_ & "_" & divisionEmpresarial_ & "_blasterlogon.bin"
-                rutaBinario_ = rutaBinario_ & usuario_ & "_" & aplicacion_ & "_" & divisionEmpresarial_ & "_blasterlogon.bin"
+                If aplicacion_ = 12 Then
+
+                    ' Se es web IIS se guardará en ruta de logs
+                    'Actualizado para producción
+                    'rutaBinario_ = Environ("USERPROFILE") & "\" & usuario_ & "_" & aplicacion_ & "_" & divisionEmpresarial_ & "_blasterlogon.bin"
+                    rutaBinario_ = rutaBinario_ & usuario_ & "_" & aplicacion_ & "_" & divisionEmpresarial_ & "_blasterlogon.bin"
+
+
+                End If
 
             End If
+
 
             Try
 
@@ -699,8 +705,6 @@ Namespace gsol
 
 
 
-
-
                                 Else
                                     'En caso de no coincidir, procedemos a borrar el binario por seguridad
                                     System.IO.File.Delete(rutaBinario_)
@@ -747,10 +751,25 @@ Namespace gsol
 
                     Else
 
-                        'En caso de una sesión Web y de no encontrar los binarios, no podrá iniciar sesión
-                        'Return sectores_
+                        If aplicacion_ = 13 Then ' Si es Synapsis, creará una imagen dinamica para la sesión
 
-                        Return Nothing
+                            GeneradorEspacioTrabajo(usuario_,
+                                            grupoEmpresarial_,
+                                            divisionEmpresarial_,
+                                            aplicacion_,
+                                            rutaBinario_,
+                                            sectores_)
+
+                        Else ' Solo para KBW
+
+                            'En caso de una sesión Web y de no encontrar los binarios, no podrá iniciar sesión
+                            'Return sectores_
+
+                            Return Nothing
+
+                        End If
+
+
 
                     End If
 

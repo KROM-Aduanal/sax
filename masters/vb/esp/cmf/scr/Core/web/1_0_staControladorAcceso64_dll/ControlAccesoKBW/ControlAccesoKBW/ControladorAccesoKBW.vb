@@ -100,7 +100,9 @@ Public Class ControladorAccesoKBW
 
         Dim _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
 
-        Dim appid_ As Integer = 12 '_statements.GetAppOnLine().saxidapp
+        Dim appid_ As Integer = _statements.GetAppOnLine().saxidapp
+
+        '12 '_statements.GetAppOnLine().saxidapp
 
         _userProfile = _wsSesion.GetProfileWorkSpace(_espacioTrabajoExtranet,
                                                      datosUsuario_("usuario"),

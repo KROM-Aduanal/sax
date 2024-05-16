@@ -3,15 +3,11 @@
   "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\facturascomerciales\\ges003-001-facturascomerciales.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\facturascomerciales\\ges003-001-facturascomerciales.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rosariorr\\AppData\\Local\\Temp\\.vsdbgsrc\\8d41ed339667415366f1f158c92afdd75061a124800e3bdfb3366db67516df40\\EnlaceDatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7CDB6A7-9B9E-4365-BEAA-90BCBAE4814E}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\lnk\\gsol.krom\\1_0_stdenlacedatos64_dll\\enlacedatos64\\enlacedatos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}|..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas64.vbproj|c:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdcontroladorempresas64_dll\\controladorempresas64\\controladorempresas.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
@@ -23,17 +19,13 @@
       "AbsoluteMoniker": "D:0:0:{32A80D9D-D342-4428-B551-C64242DAC378}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\icontroladorsecuencia\\icontroladorsecuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4A784CF-4F27-44A5-AC3E-509553861931}|..\\controllers\\syn.custombrokers\\1_0_stdControladorTIGIE64_dll\\ControladorTIGIE64\\ControladorTIGIE64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdcontroladortigie64_dll\\controladortigie64\\controladortigie.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{3789DC59-4CE0-4D44-9B46-43D4C2ADB339}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\secuencia64\\secuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5C277CE-A013-4454-849E-BFA6EACD1040}|..\\..\\..\\global\\dev\\rec.global.controllers\\1_0_stdControladorBusqueda64_dll\\ControladorBusqueda64\\ControladorBusqueda64.vbproj|c:\\sax\\projects\\global\\dev\\rec.global.controllers\\1_0_stdcontroladorbusqueda64_dll\\controladorbusqueda64\\controladorbusqueda.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{04211E23-85A8-4195-AC83-D0118784E610}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\isecuencia\\isecuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB4480D2-292C-4A59-AFB7-1B8DC886CA18}|..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdconstructorproducto64_dll\\constructorproducto64\\constructorproducto64.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|C:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\facturascomerciales\\ges003-001-facturascomerciales.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\facturascomerciales\\ges003-001-facturascomerciales.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{4E21979D-B933-4494-91F1-4CCBABBB42DD}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\cmf\\gsol\\1_0_stdlineabaseiniciasesion64_dll\\lineabaseiniciasesion64\\lineabaseiniciasesion64\\lineabaseiniciasesion.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,7 +35,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
@@ -107,132 +99,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ControladorEmpresas.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "ToolTip": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "RelativeToolTip": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-07T02:57:58.466Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Ges003-001-FacturasComerciales.aspx.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx.vb",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx.vb",
-              "ViewState": "AQIAABMCAAAAAAAAAAAuwCcCAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-02T16:57:04.986Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ControladorTIGIE.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdControladorTIGIE64_dll\\ControladorTIGIE64\\ControladorTIGIE.vb",
-              "RelativeDocumentMoniker": "..\\controllers\\syn.custombrokers\\1_0_stdControladorTIGIE64_dll\\ControladorTIGIE64\\ControladorTIGIE.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdControladorTIGIE64_dll\\ControladorTIGIE64\\ControladorTIGIE.vb",
-              "RelativeToolTip": "..\\controllers\\syn.custombrokers\\1_0_stdControladorTIGIE64_dll\\ControladorTIGIE64\\ControladorTIGIE.vb",
-              "ViewState": "AQIAALQPAAAAAAAAAAAAAMYPAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-07T17:46:10.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IControladorSecuencia.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-07T18:32:19.667Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Ges022-001-RegistroProveedores.aspx.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEEAAAAAAAAA",
+              "Title": "EnlaceDatos.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
+              "ViewState": "AQIAACwCAAAAAAAAAAApwG4CAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-07T03:04:04.899Z",
+              "WhenOpened": "2024-05-15T19:04:37.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnlaceDatos.cs",
-              "DocumentMoniker": "C:\\Users\\rosariorr\\AppData\\Local\\Temp\\.vsdbgsrc\\8d41ed339667415366f1f158c92afdd75061a124800e3bdfb3366db67516df40\\EnlaceDatos.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Users\\rosariorr\\AppData\\Local\\Temp\\.vsdbgsrc\\8d41ed339667415366f1f158c92afdd75061a124800e3bdfb3366db67516df40\\EnlaceDatos.cs",
-              "ToolTip": "C:\\Users\\rosariorr\\AppData\\Local\\Temp\\.vsdbgsrc\\8d41ed339667415366f1f158c92afdd75061a124800e3bdfb3366db67516df40\\EnlaceDatos.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Users\\rosariorr\\AppData\\Local\\Temp\\.vsdbgsrc\\8d41ed339667415366f1f158c92afdd75061a124800e3bdfb3366db67516df40\\EnlaceDatos.cs [Solo lectura]",
-              "ViewState": "AQIAABwBAAAAAAAAAAAowDkBAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T21:56:07.345Z",
-              "EditorCaption": " [Solo lectura]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ControladorSecuencia.vb",
               "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
               "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
               "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAAF8BAAA1AAAA",
+              "ViewState": "AQIAAJkAAAAAAAAAAAAIwJgAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-07T17:59:21.758Z",
+              "WhenOpened": "2024-05-15T17:53:00.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Secuencia.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBEAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-15T17:52:06.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISecuencia.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-15T17:51:01.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IControladorSecuencia.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
+              "ViewState": "AQIAADsAAAAAAAAAAAAUwAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-15T17:40:44.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ges022-001-RegistroProveedores.aspx.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
+              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb*",
+              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb*",
+              "ViewState": "AQIAACQJAAAAAAAAAAAQwCsJAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-15T17:32:49.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ControladorEmpresas.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
+              "ToolTip": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
+              "RelativeToolTip": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
+              "ViewState": "AQIAAJ4CAAAAAAAAAAAWwKcCAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-15T18:00:38.156Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ControladorBusqueda.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\1_0_stdControladorBusqueda64_dll\\ControladorBusqueda64\\ControladorBusqueda.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\global\\dev\\rec.global.controllers\\1_0_stdControladorBusqueda64_dll\\ControladorBusqueda64\\ControladorBusqueda.vb",
-              "ToolTip": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\1_0_stdControladorBusqueda64_dll\\ControladorBusqueda64\\ControladorBusqueda.vb",
-              "RelativeToolTip": "..\\..\\..\\global\\dev\\rec.global.controllers\\1_0_stdControladorBusqueda64_dll\\ControladorBusqueda64\\ControladorBusqueda.vb",
-              "ViewState": "AQIAAFsAAAAAAAAAAADwv1AAAAAuAAAA",
+              "Title": "LineaBaseIniciaSesion.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
+              "ViewState": "AQIAAD0DAAAAAAAAAAAIwIYDAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-06T21:51:09.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ConstructorProducto64.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "RelativeDocumentMoniker": "..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "RelativeToolTip": "..\\controllers\\syn.documentos\\1_0_stdConstructorProducto64_dll\\ConstructorProducto64\\ConstructorProducto64.vb",
-              "ViewState": "AQIAAHUAAAAAAAAAAAAwwF0AAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-06T17:56:35.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Ges003-001-FacturasComerciales.aspx",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\FacturasComerciales\\Ges003-001-FacturasComerciales.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-05-02T16:29:17.788Z",
+              "WhenOpened": "2024-05-15T16:52:48.258Z",
               "EditorCaption": ""
             }
           ]
