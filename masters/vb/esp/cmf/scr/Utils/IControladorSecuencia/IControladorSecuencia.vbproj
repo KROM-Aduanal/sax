@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{32A80D9D-D342-4428-B551-C64242DAC378}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Utils</RootNamespace>
+    <RootNamespace>Rec.Globals.Utils.Secuencias</RootNamespace>
     <AssemblyName>Rec.Globals.Utils.IControladorSecuencia.0.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>

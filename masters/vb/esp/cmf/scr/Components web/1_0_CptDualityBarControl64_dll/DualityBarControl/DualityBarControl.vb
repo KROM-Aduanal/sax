@@ -100,9 +100,14 @@ Public Class DualityBarControl
 
                 End If
 
+                _textValue.Enabled = value
+
+            Else
+
+                MyBase.Enabled = value
+
             End If
 
-            MyBase.Enabled = value
 
         End Set
 
@@ -198,6 +203,12 @@ Public Class DualityBarControl
             .ID = ID
 
             .Attributes.Add("placeholder", Label)
+
+            'If Value IsNot Nothing Then
+
+            '    .Enabled = False
+
+            'End If
 
         End With
 

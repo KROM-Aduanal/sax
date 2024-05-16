@@ -79,6 +79,7 @@ Public Class Ges022_001_Referencia
             .addFilter(SeccionesReferencias.SREF1, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, "Pedimento")
             .addFilter(SeccionesReferencias.SREF2, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
 
+
         End With
 
         'If Not Page.IsPostBack Then
@@ -194,6 +195,7 @@ Public Class Ges022_001_Referencia
         scPatente.Enabled = False
         scClaveDocumento.Enabled = False
         scRegimen.Enabled = False
+        dbcReferencia.Enabled = False
         Dim x = scRegimen.Enabled
 
         fbcCliente.Enabled = False
@@ -237,6 +239,8 @@ Public Class Ges022_001_Referencia
             icFechaEta.Visible = False
 
             icFechaRevalidacion.Visible = False
+
+
 
         End If
 
@@ -352,6 +356,10 @@ Public Class Ges022_001_Referencia
 
         _controladorReferencias = New ControladorReferencias
 
+        Dim x = ccDocumentos.Columns
+
+        Dim y = ccGuias.Columns
+
         dbcReferencia.Value = dbcReferencia.Value & _controladorReferencias.GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
 
         Return New TagWatcher(Ok)
@@ -383,6 +391,10 @@ Public Class Ges022_001_Referencia
 
     'EVENTOS PARA MODIFICACIÓN DE DATOS
     Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        Dim x = ccDocumentos.Columns
+
+        Dim y = ccGuias.Columns
 
         Return New TagWatcher(1) 'tagwatcher_
 
@@ -458,7 +470,13 @@ Public Class Ges022_001_Referencia
 
         Dim swMultiple = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_GUIA_MULTIPLE).Valor
 
+        Dim tip = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_TIPO_DOCUMENTO).Valor
+
         Dim fuente_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+        Dim x = scRegimen
+
+        Dim y = ccDocumentos
 
         If swMultiple Then
 
@@ -526,6 +544,7 @@ Public Class Ges022_001_Referencia
 
         Documentos.Visible = True
 
+        scGuias.Enabled = False
 
 
     End Sub
@@ -554,16 +573,62 @@ Public Class Ges022_001_Referencia
 
     Protected Sub btGuardarDocumento_OnClick(sender As Object, e As EventArgs)
 
-        ccDocumentos.SetRow(Sub(catalogRow_ As CatalogRow)
-                                Dim listaObjetos As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumento.Value)
-                                catalogRow_.SetIndice(ccDocumentos.KeyField, 0)
-                                catalogRow_.SetColumn(icArchivo, New SelectOption With {.Value = listaObjetos(0).SelectToken("fileId").ToString, .Text = listaObjetos(0).SelectToken("fileName").ToString})
-                                catalogRow_.SetColumn(icTipoArchivo, New SelectOption With {.Value = scTipoDocumentos.Value, .Text = scTipoDocumentos.Text})
-                            End Sub)
-        '
-        ccDocumentos.CatalogDataBinding()
+        Dim listaDocumentos_ As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumento.Value)
+
+        For Each documento_ In listaDocumentos_
+
+            ccDocumentos.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                    catalogRow_.SetIndice(ccDocumentos.KeyField, 0)
+
+                                    catalogRow_.SetColumn(icArchivo, New SelectOption With {.Value = documento_.SelectToken("fileId").ToString, .Text = documento_.SelectToken("fileName").ToString})
+
+                                    catalogRow_.SetColumn(icTipoArchivo, New SelectOption With {.Value = scTipoDocumentos.Value, .Text = scTipoDocumentos.Text})
+
+                                End Sub)
+
+            ccDocumentos.CatalogDataBinding()
+
+
+        Next
 
         ccDocumento.Visible = False
+
+        Dim x = fcDocumento
+
+        _controladorReferencias = New ControladorReferencias
+
+        _controladorReferencias.CrearPrereferencia(New MemoryStream)
+
+    End Sub
+
+    Protected Sub btGuardarDocumentos_OnClick(sender As Object, e As EventArgs)
+
+        Dim listaDocumentos_ As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumentos.Value)
+
+        For Each documento_ In listaDocumentos_
+
+            ccDocumentos.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                    catalogRow_.SetIndice(ccDocumentos.KeyField, 0)
+
+                                    catalogRow_.SetColumn(icArchivo, New SelectOption With {.Value = documento_.SelectToken("fileId").ToString, .Text = documento_.SelectToken("fileName").ToString})
+
+                                    catalogRow_.SetColumn(icTipoArchivo, New SelectOption With {.Value = scTipoDocumentosFijo.Value, .Text = scTipoDocumentosFijo.Text})
+
+                                End Sub)
+
+            ccDocumentos.DataSource = ccDocumentos.DataSource
+
+            ccDocumentos.CatalogDataBindingUpdate()
+
+
+        Next
+
+
+        fcDocumentos.Value = Nothing
+
+        scTipoDocumentosFijo.Value = ""
 
     End Sub
 
@@ -673,7 +738,7 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
-    Protected Sub icRutaDocumento_ChooseFile2(sender As PropiedadesDocumento, e As EventArgs)
+    Protected Sub icRutaDocumentos_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
 
         Dim id = ObjectId.GenerateNewId().ToString
 

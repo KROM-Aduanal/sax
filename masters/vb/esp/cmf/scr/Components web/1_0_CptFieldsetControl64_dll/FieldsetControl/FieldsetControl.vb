@@ -171,7 +171,11 @@ Public Class FieldsetControl
 
                 For Each control_ As Object In _ListControls
 
-                    control_.Enabled = Enabled
+                    'If control_.Enabled Is Nothing Then
+
+                    '    control_.Enabled = Enabled
+
+                    'End If
 
                     _fieldsetContainer.Controls.Add(control_)
 

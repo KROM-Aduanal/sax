@@ -85,6 +85,14 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Ia.Pln.ControllerDocumentAnalyzer64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Pln.ControllerDocumentAnalyzer64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ia.Pln.IControllerDocumentAnalyzer64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Pln.IControllerDocumentAnalyzer64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="IConexiones">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll</HintPath>
       <Private>False</Private>
@@ -124,9 +132,11 @@
     </Reference>
     <Reference Include="Rec.Globals.Utils.ISecuencia.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.ISecuencia.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Utils.Secuencia64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Utils\Rec.Globals.Utils.Secuencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\main\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>

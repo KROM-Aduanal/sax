@@ -24,19 +24,27 @@ Imports Sax.Web.ControladorBackend.Datos
 Imports Sax.Web.ControladorBackend.Cookies
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
-Imports Rec.Globals
+Imports Rec.Globals.con
 Imports Rec.Globals.Empresa
 Imports Rec.Globals.Controllers
+Imports Rec.Globals.Controllers.Empresas
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
 Imports gsol.krom.Anexo22.Vt022AduanaSeccionA01
 Imports System.Globalization
 Imports Syn.Documento.Componentes.Campo
 Imports Rec.Globals.Utils
+Imports Rec.Globals.Empresas
 Imports System.IO
 Imports Syn.CustomBrokers.Controllers
 Imports System.Web.Script.Serialization
 Imports System.Linq
+Imports gsol
+Imports System.Security.Cryptography
+Imports Rec.Globals
+
+
+
 
 #End Region
 
@@ -49,15 +57,19 @@ Public Class Ges022_001_Clientes
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-    Private _empresa As Empresa
+    Private _empresa As Rec.Globals.Empresas.EmpresaNacional
 
     Private _sistema As New Syn.Utils.Organismo
 
-    'Private _controladorEmpresas As ControladorEmpresas
+    Private _controladorEmpresas As Rec.Globals.Controllers.Empresas.ControladorEmpresas
 
     Private _tipoObjeto As Type
 
     Private _cdocumentos As New ControladorDocumento
+
+    Private _espacioTrabajo As EspacioTrabajo
+
+    Private _tipoPersona As Int32
 
     Private _t As Boolean
 
@@ -80,10 +92,26 @@ Public Class Ges022_001_Clientes
 
         End With
 
+        _espacioTrabajo = New EspacioTrabajo
+
+        _espacioTrabajo = HttpContext.Current.Session("EspacioTrabajoExtranet")
+
+        _controladorEmpresas = New Rec.Globals.Controllers.Empresas.ControladorEmpresas(_espacioTrabajo, Rec.Globals.Controllers.Empresas.IControladorEmpresas.TiposEmpresas.Nacional)
+
     End Sub
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
+
+        If s_tipoPersona.Checked Then
+
+            _tipoPersona = 1
+
+        Else
+
+            _tipoPersona = 2
+
+        End If
 
         [Set](i_Cve_Empresa, CP_CVE_EMPRESA, propiedadDelControl_:=PropiedadesControl.Valor)
 
@@ -97,7 +125,7 @@ Public Class Ges022_001_Clientes
 
         [Set](t_CURP, CA_CURP_CLIENTE)
 
-        [Set](Convert.ToInt32(IIf(s_tipoPersona.Checked, TiposPersona.Moral, TiposPersona.Fisica)), CP_TIPO_PERSONA, TiposDato.Entero)
+        [Set](_tipoPersona, CP_TIPO_PERSONA, TiposDato.Entero)
 
         [Set](s_Habilitado, CP_CLIENTE_HABILITADO)
 
@@ -250,66 +278,159 @@ Public Class Ges022_001_Clientes
 
             '  ██████inicio███████        Logica de negocios local      ████████████████████████
 
-            '_controladorEmpresas = New ControladorEmpresas
 
-            'With _controladorEmpresas
 
-            '    .t_CURP = t_CURP.Value
 
-            '    .t_Calle = t_Calle.Value
 
-            '    .t_NumeroExt = t_NumeroExt.Value
+            If GetVars("_empresa") IsNot Nothing Then
 
-            '    .t_NumeroInt = t_NumeroInt.Value
+                _empresa = GetVars("_empresa")
 
-            '    .t_Colonia = t_Colonia.Value
+                Dim empresa_ As EmpresaNacional = GetVars("_empresa")
 
-            '    .t_Ciudad = t_Ciudad.Value
+                Dim sec_ = GetVars("_secDomicilio")
 
-            '    .t_Estado = t_Estado.Value
+                With empresa_
 
-            '    .t_Pais = t_Pais.Value
+                    .paisesdomicilios(0).pais = t_Pais.Value
 
-            '    .i_Cve_Empresa = i_Cve_Empresa.Text
+                    .razonsocial = i_Cve_Empresa.Text
 
-            '    .t_RFC = t_RFC.Value
+                    .tipopersona = s_tipoPersona.Checked
 
-            '    .s_tipoPersona = s_tipoPersona.Checked
+                    If s_tipoPersona.Checked = False Then
 
-            '    .s_Extranjero = s_Extranjero.Checked
+                        If .curp <> t_CURP.Value Then
 
-            '    .esNuevoDomicilio = Not s_Domicilios.Visible
+                            Dim secCurp_ = .curps.Count
 
-            '    If GetVars("_empresa") IsNot Nothing Then
+                            If secCurp_ = 0 Then
 
-            '        _empresa = GetVars("_empresa")
+                                .curps = New List(Of Rec.Globals.Empresas.Curp)
 
-            '        tagwatcher_ = .ActualizaEmpresa(_empresa, session_)
+                            Else
 
-            '        If s_Domicilios.Visible = True Then
+                                secCurp_ += 1
 
-            '            SetVars("_secDomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
+                            End If
 
-            '        End If
+                            Dim curpNuevo_ As New Rec.Globals.Empresas.Curp(t_CURP.Value, secCurp_)
 
-            '    Else
+                            ._idcurp = curpNuevo_.idcurp
+                            .curp = curpNuevo_.curp
+                            .curps.Add(curpNuevo_)
+                            .curpNuevo = True
 
-            '        tagwatcher_ = .NuevaEmpresa(session_)
+                        End If
 
-            '        If tagwatcher_.Status = TypeStatus.Ok Then
+                    Else
 
-            '            _empresa = tagwatcher_.ObjectReturned
+                        .curpNuevo = False
 
-            '            'Grabamos la instancia en la session
-            '            SetVars("_empresa", _empresa)
+                    End If
 
-            '        End If
+                    If .rfc <> t_RFC.Value Then
 
-            '    End If
+                        Dim secRfc_ = .rfc.Count
 
-            '    '  ████████fin█████████       Logica de negocios local       ███████████████████████
+                        If secRfc_ = 0 Then
 
-            'End With
+                            .rfcs = New List(Of Rec.Globals.Empresas.Rfc)
+
+                        Else
+
+                            secRfc_ += 1
+
+                        End If
+
+                        Dim rfcNuevo_ As New Rec.Globals.Empresas.Rfc(t_RFC.Value, secRfc_)
+
+                        ._idrfc = rfcNuevo_.idrfc
+                        .rfc = rfcNuevo_.rfc
+                        .rfcs.Add(rfcNuevo_)
+                        .rfcNuevo = True
+
+                    End If
+
+                    If s_EditarDomicilio.Checked Then
+
+                        Dim domicilioNuevo_ As New Rec.Globals.Empresas.Domicilio(t_Calle.Value,
+                                                                                 .paisesdomicilios(0).domicilios.Count + 1,
+                                                                                  t_NumeroExt.Value,
+                                                                                  t_NumeroInt.Value,
+                                                                                  t_Colonia.Value,
+                                                                                  t_CP.Value, t_Ciudad.Value, pais_:=t_Pais.Value)
+
+                        .paisesdomicilios.Last.domicilios.Add(domicilioNuevo_)
+
+                    End If
+
+                    If s_SeleccionarDomicilio.Checked = False Then
+
+                        Dim domicilioNuevo_ As New Rec.Globals.Empresas.Domicilio(t_Calle.Value,
+                                                                                 .paisesdomicilios(0).domicilios.Count + 1,
+                                                                                  t_NumeroExt.Value,
+                                                                                  t_NumeroInt.Value,
+                                                                                  t_Colonia.Value,
+                                                                                  t_CP.Value, t_Ciudad.Value, pais_:=t_Pais.Value)
+
+                        .paisesdomicilios.Last.domicilios.Add(domicilioNuevo_)
+
+                    End If
+
+                    '  ████████fin█████████        Logica de negocios local      ███████████████████████
+
+                End With
+
+                tagwatcher_ = _controladorEmpresas.Modificar(empresa_, session_)
+
+                If s_Domicilios.Visible = True Then
+
+                    SetVars("_secdomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
+
+                End If
+
+            Else
+
+                Dim empresa_ As EmpresaNacional
+
+                Dim domicilioNuevo_ As New Rec.Globals.Empresas.Domicilio(t_Calle.Value,
+                                                                                  1,
+                                                                                  t_NumeroExt.Value,
+                                                                                  t_NumeroInt.Value,
+                                                                                  t_Colonia.Value,
+                                                                                  t_CP.Value, t_Ciudad.Value,
+                                                                                  pais_:=t_Pais.Value)
+
+                If s_tipoPersona.Checked = False Then
+
+                    empresa_ = _controladorEmpresas.EstructuraEmpresaNacional(i_Cve_Empresa.Text,
+                                                                            t_RFC.Value,
+                                                                            domicilioNuevo_,
+                                                                            IEmpresaNacional.TiposPersona.Fisica,
+                                                                            t_CURP.Value)
+
+                Else
+
+                    empresa_ = _controladorEmpresas.EstructuraEmpresaNacional(i_Cve_Empresa.Text,
+                                                                            t_RFC.Value,
+                                                                            domicilioNuevo_,
+                                                                            IEmpresaNacional.TiposPersona.Moral)
+
+                End If
+
+                tagwatcher_ = _controladorEmpresas.Agregar(empresa_, True, session_)
+
+                If tagwatcher_.Status = TypeStatus.Ok Then
+
+                    _empresa = tagwatcher_.ObjectReturned
+
+                    'grabamos la instancia en la session
+                    SetVars("_empresa", _empresa)
+
+                End If
+
+            End If
 
 
         Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
@@ -354,25 +475,26 @@ Public Class Ges022_001_Clientes
 
         If _empresa IsNot Nothing Then : [Set](_empresa._id, CP_ID_EMPRESA) : End If
 
-        Dim domicilio_ As Int32 = GetVars("_secDomicilio")
+        Dim domicilio_ As Int32 = _empresa.paisesdomicilios(0).domicilios.Last.sec
 
         [Set](domicilio_, CamposDomicilio.CP_SEC_DOMICILIO, tipoDato_:=TiposDato.Entero)
         '.Attribute(CamposDomicilio.CP_SEC_DOMICILIO).Valor = GetVars("_secDomicilio")
 
-        If _empresa IsNot Nothing Then : [Set](_empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio, CamposDomicilio.CP_ID_DOMICILIO) : End If
+        If _empresa IsNot Nothing Then : [Set](_empresa.paisesdomicilios.Item(0).domicilios.Find(Function(x) x.sec = domicilio_)._iddomicilio, CamposDomicilio.CP_ID_DOMICILIO) : End If
         ''.Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
 
         If s_Domicilios.Visible = True Then
 
-            With _empresa.domicilios(GetVars("_secDomicilio"))
+            With _empresa.paisesdomicilios.Item(0).domicilios.Find(Function(x) x.sec = GetVars("_secDomicilio"))
                 [Set](.calle, CA_CALLE)
                 [Set](.numeroexterior, CA_NUMERO_EXTERIOR)
                 [Set](.numerointerior, CA_NUMERO_INTERIOR)
-                [Set](.cp, CA_CODIGO_POSTAL)
+                [Set](.codigopostal, CA_CODIGO_POSTAL)
                 [Set](.colonia, CA_COLONIA)
                 [Set](.ciudad, CA_CIUDAD)
-                [Set](.pais, CA_PAIS)
             End With
+            [Set](_empresa.paisesdomicilios.Item(0).pais, CA_PAIS)
+
 
         End If
 
@@ -410,48 +532,98 @@ Public Class Ges022_001_Clientes
 
         If session_ IsNot Nothing Then
 
-            '  ██████inicio███████        Logica de negocios local      ████████████████████████
+            Dim empresa_ As EmpresaNacional = GetVars("_empresa")
 
-            'tagwatcher_ = New TagWatcher
+            Dim sec_ = GetVars("_secDomicilio")
 
-            '.SetOK()
+            _empresa = empresa_
 
-            'Actualizamos los datos del objeto empresa en session
-            '_controladorEmpresas = New ControladorEmpresas
+            With empresa_
 
-            'With _controladorEmpresas
+                .paisesdomicilios(0).pais = t_Pais.Value
 
-            '    .t_CURP = t_CURP.Value
+                .razonsocial = i_Cve_Empresa.Text
 
-            '    .t_Calle = t_Calle.Value
+                .tipopersona = s_tipoPersona.Checked
 
-            '    .t_NumeroExt = t_NumeroExt.Value
+                If s_tipoPersona.Checked = False Then
 
-            '    .t_NumeroInt = t_NumeroInt.Value
+                    If .curp <> t_CURP.Value Then
 
-            '    .t_Colonia = t_Colonia.Value
+                        Dim secCurp_ = .curps.Count
 
-            '    .t_Ciudad = t_Ciudad.Value
+                        If secCurp_ = 0 Then
 
-            '    .t_Estado = t_Estado.Value
+                            .curps = New List(Of Rec.Globals.Empresas.Curp)
 
-            '    .t_Pais = t_Pais.Value
+                        Else
 
-            '    .i_Cve_Empresa = i_Cve_Empresa.Text
+                            secCurp_ += 1
 
-            '    .t_RFC = t_RFC.Value
+                        End If
 
-            '    .s_tipoPersona = s_tipoPersona.Checked
+                        Dim curpNuevo_ As New Rec.Globals.Empresas.Curp(t_CURP.Value, secCurp_)
 
-            '    .s_Extranjero = s_Extranjero.Checked
+                        ._idcurp = curpNuevo_.idcurp
+                        .curp = curpNuevo_.curp
+                        .curps.Add(curpNuevo_)
+                        .curpNuevo = True
 
-            '    .esNuevoDomicilio = Not s_Domicilios.Visible
+                    End If
 
-            '    tagwatcher_ = .ActualizaEmpresa(GetVars("_empresa"), session_)
+                Else
 
-            '    '  ████████fin█████████        Logica de negocios local      ███████████████████████
+                    .curpNuevo = False
 
-            'End With
+                End If
+
+                If .rfc <> t_RFC.Value Then
+
+                    Dim secRfc_ = .rfc.Count
+
+                    If secRfc_ = 0 Then
+
+                        .rfcs = New List(Of Rec.Globals.Empresas.Rfc)
+
+                    Else
+
+                        secRfc_ += 1
+
+                    End If
+
+                    Dim rfcNuevo_ As New Rec.Globals.Empresas.Rfc(t_RFC.Value, secRfc_)
+
+                    ._idrfc = rfcNuevo_.idrfc
+                    .rfc = rfcNuevo_.rfc
+                    .rfcs.Add(rfcNuevo_)
+                    .rfcNuevo = True
+
+                End If
+
+                If validarCambiosDomicilio() Then
+
+                    Dim domicilioNuevo_ As New Rec.Globals.Empresas.Domicilio(t_Calle.Value,
+                                                                             .paisesdomicilios(0).domicilios.Count + 1,
+                                                                              t_NumeroExt.Value,
+                                                                              t_NumeroInt.Value,
+                                                                              t_Colonia.Value,
+                                                                              t_CP.Value, t_Ciudad.Value, pais_:=t_Pais.Value)
+
+                    .paisesdomicilios.Last.domicilios.Add(domicilioNuevo_)
+
+                End If
+
+                '  ████████fin█████████        Logica de negocios local      ███████████████████████
+
+            End With
+
+            tagwatcher_ = _controladorEmpresas.Modificar(empresa_, session_)
+
+            If s_Domicilios.Visible = True Then
+
+                SetVars("_secdomicilio", Convert.ToInt32(s_Domicilios.Value) - 1)
+
+            End If
 
         Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
 
@@ -475,7 +647,7 @@ Public Class Ges022_001_Clientes
             .Attribute(CamposClientes.CP_ID_EMPRESA).Valor = _empresa._id
 
             ''Datos del domicilio
-            .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.domicilios(GetVars("_secDomicilio"))._iddomicilio
+            .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor = _empresa.paisesdomicilios.Item(0).domicilios.Find(Function(x) x.sec = GetVars("_secDomicilio"))._iddomicilio
 
         End With
 
@@ -499,18 +671,16 @@ Public Class Ges022_001_Clientes
 
     'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
     Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
-
         With documentoElectronico_
 
-            Dim domicilio_ As New domicilio
+            Dim domicilio_ As New Rec.Globals.Empresas.Domicilio
 
             Dim listOptionsDomicilios_ As New List(Of SelectOption)
 
-            'SetVars("_empresa", ControladorEmpresas.BuscarEmpresa(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor,
-            '                                    .Attribute(CamposDomicilio.CP_ID_DOMICILIO).Valor,
-            '                                    listOptionsDomicilios_,
-            '                                    domicilio_))
-            '_empresa = GetVars("_empresa")
+            Dim empresa_ = _controladorEmpresas.ConsultarUna(.Attribute(CamposClientes.CP_ID_EMPRESA).Valor).ObjectReturned
+
+            SetVars("_empresa", empresa_)
+            _empresa = GetVars("_empresa")
 
             'If .Attribute(CamposClientes.CP_ID_EMPRESA).Valor IsNot Nothing Then
 
@@ -527,6 +697,19 @@ Public Class Ges022_001_Clientes
     End Sub
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
+
+        Dim tipoPersona_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_TIPO_PERSONA).Valor
+
+        If tipoPersona_ = 1 Then
+
+            s_tipoPersona.Checked = True
+
+        Else
+
+            s_tipoPersona.Checked = False
+
+        End If
+
 
         s_SeleccionarDomicilio.Checked = True
 
@@ -589,7 +772,7 @@ Public Class Ges022_001_Clientes
 
         If s_EditarDomicilio.Checked Then
 
-            Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
+            Dim empresasTemporales_ As List(Of EmpresaNacional) = GetVars("_empresasTemporal")
 
             If empresasTemporales_ IsNot Nothing And
                         Not IsNumeric(empresasTemporales_) Then
@@ -602,21 +785,23 @@ Public Class Ges022_001_Clientes
 
                             Dim result_ = From data In empresasTemporales_
                                           Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
-                                          Select data.rfc, data.curp
+                            'Select data.rfc, data.curp
 
                             If result_.Count > 0 Then
 
-                                'Dim domicilio_ = ControladorEmpresas.BuscarDomicilio(i_Cve_Empresa.Value,
-                                '                                                         Convert.ToInt32(s_Domicilios.Value),
-                                '                                                         empresasTemporales_)
+                                Dim dom As Rec.Globals.Empresas.Domicilio = result_(0).paisesdomicilios(0).domicilios.Where(Function(x) x.sec = s_Domicilios.Value).First
 
-                                't_Calle.Value = domicilio_.calle
-                                't_NumeroExt.Value = domicilio_.numeroexterior
-                                't_NumeroInt.Value = domicilio_.numerointerior
-                                't_CP.Value = domicilio_.cp
-                                't_Colonia.Value = domicilio_.colonia
-                                't_Ciudad.Value = domicilio_.ciudad
-                                't_Pais.Value = domicilio_.pais
+
+                                Dim domicilio_ As Rec.Globals.Empresas.Domicilio = _controladorEmpresas.ConsultarDomicilio(result_(0)._id, dom._iddomicilio).ObjectReturned(0)
+                                t_Calle.Value = domicilio_.calle
+                                t_NumeroExt.Value = domicilio_.numeroexterior
+                                t_NumeroInt.Value = domicilio_.numerointerior
+                                t_CP.Value = domicilio_.codigopostal
+                                t_Colonia.Value = domicilio_.colonia
+                                t_Ciudad.Value = domicilio_.ciudad
+                                t_Pais.Value = result_(0).paisesdomicilios(0).pais
+
+                                SetVars("_secDomicilio", domicilio_.sec)
 
                             End If
 
@@ -762,13 +947,25 @@ Public Class Ges022_001_Clientes
 
     Protected Sub i_Cve_Empresa_TextChanged(sender As Object, e As EventArgs)
 
-        Dim empresasTemporales_ As New List(Of Empresa)
+        Dim empresas_ As List(Of EmpresaNacional) = _controladorEmpresas.Consultar(i_Cve_Empresa.Text).ObjectReturned
 
-        'Dim lista_ As List(Of SelectOption) = ControladorEmpresas.BuscarEmpresas(empresasTemporales_, i_Cve_Empresa.Text)
+        Dim lista_ As New List(Of SelectOption)
 
-        SetVars("_empresasTemporal", empresasTemporales_)
+        If empresas_ IsNot Nothing Then
 
-        'i_Cve_Empresa.DataSource = lista_
+            For Each empresa_ In empresas_
+
+                lista_.Add(New SelectOption With {.Value = empresa_._idempresa, .Text = empresa_.razonsocial})
+
+            Next
+
+        End If
+
+        Dim empresasTemporales_ = lista_
+
+        SetVars("_empresasTemporal", empresas_)
+
+        i_Cve_Empresa.DataSource = lista_
 
     End Sub
 
@@ -778,80 +975,135 @@ Public Class Ges022_001_Clientes
 
             .Options.Clear()
 
-            Dim empresasTemporales_ As List(Of Empresa) = GetVars("_empresasTemporal")
+            Dim empresasTemporales_ As List(Of EmpresaNacional) = GetVars("_empresasTemporal")
 
-            'If empresasTemporales_ IsNot Nothing And
-            '    Not IsNumeric(empresasTemporales_) Then
+            If empresasTemporales_ IsNot Nothing And
+                Not IsNumeric(empresasTemporales_) Then
 
-            '    If i_Cve_Empresa.Value <> "" Then
+                If i_Cve_Empresa.Value <> "" Then
 
-            '        If IsNumeric(i_Cve_Empresa.Value) Then
+                    If IsNumeric(i_Cve_Empresa.Value) Then
 
-            '            If i_Cve_Empresa.Value <> -1 Then
+                        If i_Cve_Empresa.Value <> -1 Then
 
-            '                Dim result_ = From data In empresasTemporales_
-            '                              Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
-            '                'Select data.rfc, data.curp
+                            Dim result_ = From data In empresasTemporales_
+                                          Where data._idempresa = i_Cve_Empresa.Value And data.estado = 1
+                            'Select data.rfc, data.curp
 
-            '                If result_.Count > 0 Then
+                            If result_.Count > 0 Then
 
-            '                    SetVars("_empresa", result_(0))
+                                SetVars("_empresa", result_(0))
 
-            '                    t_RFC.Value = result_(0).rfc
+                                t_RFC.Value = result_(0).rfc
 
-            '                    t_CURP.Value = result_(0).curp
+                                t_CURP.Value = result_(0).curp
 
-            '                    'Dim domicilios_ = ControladorEmpresas.BuscarDomicilios(i_Cve_Empresa.Value,
-            '                    '                               empresasTemporales_)
+                                Dim domicilios_ As List(Of Rec.Globals.Empresas.Domicilio) = _controladorEmpresas.ConsultarDomicilios(result_(0)._id).ObjectReturned
 
-            '                    .DataSource = domicilios_
+                                Dim domiciliosOption_ As New List(Of SelectOption)
 
-            '                    If domicilios_.Count > 0 Then
+                                Dim stringdomicilio_ As String
 
-            '                        .Value = domicilios_(0).Value
 
-            '                        s_EditarDomicilio.Visible = True
 
-            '                        s_SeleccionarDomicilio.Checked = True
+                                For Each domicilio In domicilios_
 
-            '                        VerificaCheckDomicilio()
+                                    With domicilio
 
-            '                    End If
+                                        stringdomicilio_ = .calle & " " &
+                                                       .numeroexterior & " " &
+                                                       .codigopostal & " " &
+                                                       .colonia & " " &
+                                                       .ciudad & " "
+                                    End With
 
-            '                End If
+                                    domiciliosOption_.Add(New SelectOption With {.Value = domicilio.sec, .Text = domicilio.domicilioPresentacion})
+                                Next
 
-            '            End If
+                                .DataSource = domiciliosOption_
 
-            '        End If
-            '    Else
+                                If domicilios_.Count > 0 Then
 
-            '        t_RFC.Value = Nothing
+                                    .Value = domicilios_(0).sec
 
-            '        t_CURP.Value = Nothing
+                                    s_EditarDomicilio.Visible = True
 
-            '        s_EditarDomicilio.Checked = False
+                                    s_SeleccionarDomicilio.Checked = True
 
-            '        s_Domicilios.DataSource = Nothing
+                                    VerificaCheckDomicilio()
 
-            '        VerificaCheckDomicilio(3)
+                                End If
 
-            '    End If
+                            End If
 
-            'Else
+                        End If
 
-            '    .Options.Clear()
+                    End If
+                Else
 
-            '    .DataSource = Nothing
+                    t_RFC.Value = Nothing
 
-            '    t_RFC.Value = Nothing
+                    t_CURP.Value = Nothing
 
-            '    t_CURP.Value = Nothing
+                    s_EditarDomicilio.Checked = False
 
-            'End If
+                    s_Domicilios.DataSource = Nothing
+
+                    VerificaCheckDomicilio(3)
+
+                End If
+
+            Else
+
+                .Options.Clear()
+
+                .DataSource = Nothing
+
+                t_RFC.Value = Nothing
+
+                t_CURP.Value = Nothing
+
+            End If
 
         End With
 
     End Sub
+
+    Private Function validarCambiosDomicilio() As Boolean
+
+        Dim diferencia_ = False
+
+        Dim domicilio_ As Rec.Globals.Empresas.Domicilio = _empresa.paisesdomicilios.Last.domicilios.Last
+
+        If domicilio_.calle <> t_Calle.Value Then
+
+            diferencia_ = True
+
+        ElseIf domicilio_.numeroexterior <> t_NumeroExt.Value Then
+
+            diferencia_ = True
+
+        ElseIf domicilio_.numerointerior <> t_NumeroInt.Value Then
+
+            diferencia_ = True
+
+        ElseIf domicilio_.colonia <> t_Colonia.Value Then
+
+            diferencia_ = True
+
+        ElseIf domicilio_.codigopostal <> t_CP.Value Then
+
+            diferencia_ = True
+
+        ElseIf domicilio_.ciudad <> t_Ciudad.Value Then
+
+            diferencia_ = True
+
+        End If
+
+        Return diferencia_
+
+    End Function
 
 #End Region
 

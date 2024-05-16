@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{24E39000-4ADD-4283-B016-0F9090574A48}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals</RootNamespace>
+    <RootNamespace>Rec.Globals.Empresas</RootNamespace>
     <AssemblyName>Rec.Globals.IEmpresa.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
@@ -43,7 +43,7 @@
     <OptionStrict>Off</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
+    <OptionInfer>Off</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MongoDB.Bson">

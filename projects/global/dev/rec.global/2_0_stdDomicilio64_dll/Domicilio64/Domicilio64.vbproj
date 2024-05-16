@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{86895146-1CD7-4661-9A09-8D4B91C5993F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Domicilio64</RootNamespace>
+    <RootNamespace>Rec.Globals.Empresas</RootNamespace>
     <AssemblyName>Rec.Globals.Domicilio64.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5D93F6E2-5A9A-4C2B-BE89-0B1FE857A192}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Rfc64</RootNamespace>
+    <RootNamespace>Rec.Globals.Empresas</RootNamespace>
     <AssemblyName>Rec.Globals.Rfc64.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>

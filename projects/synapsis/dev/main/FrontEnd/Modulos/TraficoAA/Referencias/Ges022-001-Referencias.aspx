@@ -7,7 +7,7 @@
 
     <% If IsPopup = False Then %>
 
-    <GWC:FindbarControl Label="Buscar Referencia" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="AntesDeCambiarEmpresa" />
+    <GWC:FindbarControl Label="Buscar Referencia" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="BusquedaGeneral"  />
 
     <% End If %>
 </asp:Content>
@@ -44,7 +44,7 @@
 
                         <GWC:CardControl runat="server" ID="ccDocumento" Visible="false" CssClass="col-xs-12 col-md-6 mb-5">
                             <listcontrols>
-                                <asp:Label runat="server" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="Agregar documento" style="text-align:center; color:#432776"/>
+                                <asp:Label runat="server" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="Arrastra un documento para iniciar" style="text-align:left; color:#432776"/>
                                 <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-9" ID="fcDocumento" OnChooseFile="icRutaDocumento_ChooseFile" Dragable="True" />
                                 <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3" ID="scTipoDocumentos" Label="Tipo de documento">
                                     <Options>
@@ -53,7 +53,7 @@
                                 </GWC:SelectControl>
                                 <GWC:ButtonControl runat="server" ID="btGuardarDocumento" Label="Agregar" OnClick="btGuardarDocumento_OnClick"/>
                             </listcontrols>
-                        </GWC:CardControl>
+                        </GWC:CardControl> 
                         <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="dbcReferencia" Label="Referencia Aduanal" LabelDetail="Pedimento Aduanal" OnClick="dbcReferencia_Click"/>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="icOriginal" Label="Original" Type="Text" Visible="false" />
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-4 mb-5">                        
@@ -61,7 +61,8 @@
                             <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcRectificacion" Label="Rectificación" OnText="Si" OffText="No" OnCheckedChanged="swcRectificacion_CheckedChanged"></GWC:SwitchControl>
                             <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" Rules="required" OnCheckedChanged="swcTipoOperacion_CheckedChanged"></GWC:SwitchControl>
                         </asp:Panel>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" Value="IMD" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Rules="required" 
+                        
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" Value="IMD" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" 
                                            ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="i_Cve_ClavePedimento" DisplayField ="t_Cve_Pedimento" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
@@ -103,8 +104,8 @@
                     <ListControls>
                                       
                         <GWC:FindboxControl runat="server" CssClass ="col-xs-12 col-md-6 mb-5" ID="fbcCliente" Label ="Cliente" KeyField ="_id" DisplayField ="CA_RAZON_SOCIAL" OnTextChanged ="fbcCliente_TextChanged" OnClick ="fbcCliente_Click" Rules="required"/>
-                        <GWC:InputControl runat ="server" CssClass ="col-xs-12 col-md-6 mb-5" ID="icRFC" Label ="RFC" Type ="Text" Enabled="true"/>
-                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="icRFCFacturacion" Label="RFC Facturación" Type="Text" Rules="maxlegth[13]" Enabled="true"/>
+                        <GWC:InputControl runat ="server" CssClass ="col-xs-12 col-md-6 mb-5" ID="icRFC" Label ="RFC" Type ="Text" Enabled="false"/>
+                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="icRFCFacturacion" Label="RFC Facturación" Type="Text" Rules="maxlegth[13]" Enabled="false"/>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="icBancoPago" Label="Banco asignado para pago" Type="Text"/> 
                                             
                     </ListControls>
@@ -209,9 +210,20 @@
                 </GWC:FieldsetControl>
 
                 <GWC:FieldsetControl runat="server" ID="Documentos" Label="Documentos" Visible="false">
-                    <ListControls>                        
+                    <ListControls>  
+                        <asp:Panel runat="server" CssClass="w-100">
+                            <div style="width:60%">
+                                <GWC:FileControl runat="server" CssClass="col-xs-12 col-md-9" ID="fcDocumentos" OnChooseFile="icRutaDocumentos_ChooseFile" Dragable="True" />
+                                <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3" ID="scTipoDocumentosFijo" Label="Tipo de documento">
+                                    <Options>
+                                        <GWC:SelectOption Value="1" Text="BL"/>
+                                    </Options>
+                                </GWC:SelectControl>
+                                <GWC:ButtonControl runat="server" ID="ButtonControl1" Label="Agregar" OnClick="btGuardarDocumentos_OnClick"/>
+                            </div>
+                        </asp:Panel>
 
-                        <GWC:CatalogControl ID="ccDocumentos" runat="server" KeyField="indice" CssClass="w-100 mt-5 mb-5 p-0" CanAdd="false" CanClone="false">
+                        <GWC:CatalogControl ID="ccDocumentos" runat="server" KeyField="indice" CssClass="w-100 mt-5 mb-5 p-0" CanAdd="true" CanClone="false">
 
                             <Columns>
 

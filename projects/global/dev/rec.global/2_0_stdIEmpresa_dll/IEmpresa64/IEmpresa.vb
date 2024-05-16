@@ -1,7 +1,6 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
-Imports Rec.Globals.Contacto64
-Imports Rec.Globals.PaisDomicilio64
+Imports Rec.Globals.Empresas
 
 Public Interface IEmpresa
 

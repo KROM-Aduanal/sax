@@ -12,11 +12,12 @@ Imports MongoDB.Driver.Linq.Processors
 Imports Wma.Exceptions.TagWatcher
 Imports Syn.Utils
 Imports Rec.Globals.Utils
+Imports Rec.Globals.Utils.Secuencias
 
 Public Class ControladorReferencias
     Implements IControladorReferencias, ICloneable, IDisposable
 
-    'Private _transformer As IControllerDocumentAnalyzer
+    Private _transformer As IControllerDocumentAnalyzer
 
     Private _controladorSecuencia As IControladorSecuencia
 
@@ -33,7 +34,7 @@ Public Class ControladorReferencias
 
         _Referencia = New List(Of Referencia)
 
-        '_transformer = New ControllerDocumentAnalyzer
+        _transformer = New ControllerDocumentAnalyzer
 
         _controladorSecuencia = New ControladorSecuencia
 
@@ -85,7 +86,7 @@ Public Class ControladorReferencias
 
         If (documento_.Count > 0) Then
 
-            '_Estado = _transformer.DocumentAnalyzer(Of Referencia)(documento_)
+            _Estado = _transformer.DocumentAnalyzer(Of Referencia)(documento_)
 
         Else
 
@@ -109,7 +110,7 @@ Public Class ControladorReferencias
 
             x.Add(documento_)
 
-            '_Estado = _transformer.DocumentAnalyzer(Of Object)(x)
+            _Estado = _transformer.DocumentAnalyzer(Of Object)(x)
 
         Else
 

@@ -619,6 +619,8 @@ Public Class SelectControl
 
             .AutoPostBack = True
 
+            .Enabled = Enabled
+
             .Attributes.Add("class", "d-none")
 
             .Attributes.Add("is", "wc-select")

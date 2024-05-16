@@ -1,7 +1,6 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
-Imports Rec.Globals.Bus64
-Imports Rec.Globals.TaxId64
+Imports Rec.Globals.Empresas
 
 Public Interface IEmpresaInternacional
 

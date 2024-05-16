@@ -1,10 +1,8 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions
-Imports Rec.Globals.Domicilio64
-Imports Rec.Globals
-Imports Rec.Globals.IEmpresaNacional64
-Imports Rec.Globals.IEmpresaInternacional64
+Imports Rec.Globals.Empresas
+
 
 Public Interface IControladorEmpresas
 
@@ -54,8 +52,7 @@ Public Interface IControladorEmpresas
     Property ListaEmpresas As List(Of IEmpresa)
 
     Property ListaDomicilios As List(Of Domicilio)
-
-    ReadOnly Property Estado As TagWatcher
+    Property Estado As TagWatcher
 
 #End Region
 
@@ -102,6 +99,33 @@ Public Interface IControladorEmpresas
     Function ArchivarDomicilios(ByVal objectIdEmpresa As ObjectId,
                                 ByVal listaObjectIdDomicilio_ As List(Of ObjectId)) _
                                 As TagWatcher
+
+    Function EstructuraEmpresaNacional() _
+        As IEmpresaNacional
+
+    Function EstructuraEmpresaNacional(ByVal razonSocial_ As String,
+                                       ByVal rfc_ As String,
+                                       Optional ByVal tipoPersona_ As IEmpresaNacional.TiposPersona = IEmpresaNacional.TiposPersona.Moral,
+                                       Optional ByVal curp_ As String = Nothing) _
+                                       As IEmpresaNacional
+
+    Function EstructuraEmpresaNacional(ByVal razonSocial_ As String,
+                                       ByVal rfc_ As String,
+                                       ByVal domicilio_ As Domicilio,
+                                       Optional ByVal tipoPersona_ As IEmpresaNacional.TiposPersona = IEmpresaNacional.TiposPersona.Moral,
+                                       Optional ByVal curp_ As String = Nothing) _
+                                       As IEmpresaNacional
+    Function EstructuraEmpresaInternacional() _
+        As IEmpresaInternacional
+
+    Function EstructuraEmpresaInternacional(ByVal razonSocial_ As String) _
+                                        As IEmpresaInternacional
+
+    Function EstructuraEmpresaInternacional(ByVal razonSocial_ As String,
+                                            ByVal domicilio_ As Domicilio,
+                                            ByVal taxid_ As String) _
+                                            As IEmpresaInternacional
+
 #End Region
 
 End Interface

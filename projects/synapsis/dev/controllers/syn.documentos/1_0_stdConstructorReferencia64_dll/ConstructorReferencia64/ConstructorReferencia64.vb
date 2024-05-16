@@ -285,6 +285,10 @@ Namespace Syn.Documento
 
         End Function
 
+        Public Function Clone() As Object Implements ICloneable.Clone
+            Throw New NotImplementedException()
+        End Function
+
 #End Region
 
     End Class

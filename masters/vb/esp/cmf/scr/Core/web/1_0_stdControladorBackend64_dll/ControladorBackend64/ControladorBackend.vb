@@ -237,7 +237,39 @@ Public Class ControladorBackend
 
         Else
 
+            Dim continuar = True
+
+            If Formulario IsNot Nothing Then
+
+                For Each fieldset_ As Object In DirectCast(Formulario.Controls(0), System.Web.UI.UpdatePanel).ContentTemplateContainer.Controls
+
+                    For indice_ As Int32 = 0 To fieldset_.Controls.Count - 1
+
+                        If fieldset_.Controls(indice_).GetType().Name = "FieldsetControl" Then
+
+                            For Each control_ As Object In DirectCast(fieldset_.Controls(indice_), FieldsetControl).ListControls
+
+                                If fieldset_.Disabled = control_.Enabled Then
+
+                                    continuar = False
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    Next
+
+                Next
+
+            End If
+
+            'If continuar Then
+
             ActivaControles(GetVars("ActivaControles", False))
+
+            'End If
 
             InicializaTarjeteros()
 
@@ -451,6 +483,8 @@ Public Class ControladorBackend
 
     Public Sub ActivaControles(Optional ByVal activar_ As Boolean = True)
 
+        Dim controlinicial As New List(Of Object)
+
         If Formulario IsNot Nothing Then
 
             For Each fieldset_ As Object In DirectCast(Formulario.Controls(0), System.Web.UI.UpdatePanel).ContentTemplateContainer.Controls
@@ -499,7 +533,46 @@ Public Class ControladorBackend
 
                             Else
 
-                                control_.Enabled = activar_
+                                If Session("formulario") Is Nothing Then
+
+                                    If control_.Enabled = False Then
+
+                                        controlinicial.Add(control_)
+
+                                    End If
+
+                                End If
+
+                                If activar_ = False Then
+
+                                    control_.Enabled = activar_
+
+                                Else
+
+                                    If GetVars("edicion") = False Then
+
+                                        Dim x = Session("formulario")
+
+                                        For Each ctrl In x
+
+                                            If ctrl.ID = control_.Id Then
+
+                                                control_.Enabled = ctrl.Enabled
+
+                                                Exit For
+
+                                            Else
+
+                                                control_.Enabled = activar_
+
+                                            End If
+
+                                        Next
+
+                                    End If
+
+                                End If
+
 
                             End If
 
@@ -510,6 +583,12 @@ Public Class ControladorBackend
                 Next
 
             Next
+
+            If Session("formulario") Is Nothing Then
+
+                Session("formulario") = controlinicial
+
+            End If
 
         End If
 
@@ -1034,7 +1113,7 @@ Public Class ControladorBackend
 
     Public Overridable Async Function ProcesarTransaccion(Of T)() As Task(Of TagWatcher)
 
-        Dim tagwatcher_ As TagWatcher
+        Dim tagwatcher_ As New TagWatcher
 
         Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
@@ -1686,6 +1765,8 @@ Public Class ControladorBackend
 
                 Buscador.Text = Nothing
 
+                SetVars("formulario", Nothing)
+
                 SetVars("ActivaControles", True) : ActivaControles(GetVars("ActivaControles"))
 
                 PreparaBotonera(Open)
@@ -1721,6 +1802,8 @@ Public Class ControladorBackend
                 PreparaBotonera(Open)
 
                 BotoneraClicEditar()
+
+                SetVars("edicion", True)
 
             Case 4 'Archivar
 

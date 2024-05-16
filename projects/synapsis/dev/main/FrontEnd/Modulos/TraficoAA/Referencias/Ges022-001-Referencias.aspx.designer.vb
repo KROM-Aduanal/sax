@@ -284,6 +284,33 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents Documentos As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control fcDocumentos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fcDocumentos As Global.Gsol.Web.Components.FileControl
+
+    '''<summary>
+    '''Control scTipoDocumentosFijo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoDocumentosFijo As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control ButtonControl1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonControl1 As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
     '''Control ccDocumentos.
     '''</summary>
     '''<remarks>
