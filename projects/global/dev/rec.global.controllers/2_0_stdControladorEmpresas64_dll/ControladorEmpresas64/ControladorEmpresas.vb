@@ -674,8 +674,8 @@ Public Class ControladorEmpresas
                                              ByRef limiteResultados_ As Int32) As TagWatcher
         With Estado
 
-            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos _
-                                             With {.EspacioTrabajo = _espacioTrabajo}
+            Using iEnlace_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = _espacioTrabajo}
+
 
                 Dim operationsdb_ = iEnlace_.GetMongoCollection(Of T)(GetType(T).Name)
 

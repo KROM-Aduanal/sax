@@ -3820,7 +3820,7 @@ Public Class Ges022_001_RegistroProveedores
 
         'tipoSecuencia_ = 1 Proveedor nacional, 2 Proveedor internacional
 
-        _controladorSecuencias = New ControladorSecuencia
+        _controladorSecuencias = New ControladorSecuencia(20)
 
         _tagwatcher = New TagWatcher
 

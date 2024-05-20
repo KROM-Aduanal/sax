@@ -6,6 +6,9 @@ Public Interface ISecuencia
     <BsonId>
     Property _id As ObjectId
 
+    <BsonIgnoreIfNull>
+    Property secuenciaAnterior As Int32
+
     Property sec As Int32
 
     <BsonIgnoreIfNull>
