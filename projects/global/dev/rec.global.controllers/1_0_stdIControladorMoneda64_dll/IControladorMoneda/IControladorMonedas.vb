@@ -74,6 +74,9 @@ Public Interface IControladorMonedas : Inherits IDisposable
     Function BuscarMonedas(token_ As String, Optional monedaId_ As ObjectId = Nothing,
                            Optional formato_ As String = "cvedefault",
                            Optional ByVal ilimit_ As Int32 = 5) As List(Of MonedaGlobal)
+
+    Function GetCveMoneys(Optional formato_ As String = "cvedefault",
+                          Optional ByVal ilimit_ As Int32 = 5) As List(Of String)
     'Function DevuelveUltimaMoneda() As MonedaGlobal
     Function ObtenerTipodeCambio(clave_ As String, Optional monedaId_ As ObjectId = Nothing, Optional monedaCambio_ As String = "USD", Optional nombre_ As String = "",
                                  Optional inicial_ As DateTime = Nothing,

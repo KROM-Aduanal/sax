@@ -34,7 +34,7 @@ Public Class CubeController
 
     Private _interpreter As IMathematicalInterpreter
 
-
+    Private _fieldmiss As List(Of String)
 
 
 
@@ -102,6 +102,20 @@ Public Class CubeController
 
     End Property
 
+    Public Property fieldmiss As List(Of String) Implements ICubeController.fieldmiss
+
+        Get
+            fieldmiss = _fieldmiss
+
+        End Get
+        Set(value As List(Of String))
+
+            _fieldmiss = value
+
+        End Set
+
+    End Property
+
 #End Region
 
 #Region "Methods"
@@ -109,6 +123,8 @@ Public Class CubeController
     Sub New()
 
         _interpreter = New MathematicalInterpreterNCalc
+
+
 
     End Sub
 
@@ -1130,9 +1146,7 @@ Public Class CubeController
 
                     _interpreter = New MathematicalInterpreterNCalc
 
-                    _status = New TagWatcher()
-
-                    _status.ObjectReturned = _interpreter.RunExpression(Of T)(_rooms(0).rules, params_)
+                    _status = New TagWatcher() With {.ObjectReturned = _interpreter.RunExpression(Of T)(_rooms(0).rules, params_)}
 
                     _status.SetOK()
 
@@ -1218,7 +1232,7 @@ Public Class CubeController
 
     End Function
 
-    Function GetRoomNamesResource(Optional token_ As String = "") As TagWatcher Implements ICubeController.GetRoomNamesResource
+    Function GetRoomNamesResource(Optional token_ As String = "", Optional typeSearch_ As Int16 = 1) As TagWatcher Implements ICubeController.GetRoomNamesResource
         _roomsResource = New List(Of roomresource)
 
         Dim sax_ = SwicthedProjectSax(16)
@@ -1238,11 +1252,31 @@ Public Class CubeController
                                       ToList)
             Else
 
-                _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
-                                                 Aggregate.
-                                                 Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.branchname.Equals(token_)).
-                                                 Limit(cuenta_).
-                                                 ToList)
+                If typeSearch_ = 1 Then
+
+                    _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
+                                     Aggregate.
+                                     Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.branchname.Equals(token_)).
+                                     Limit(cuenta_).
+                                     ToList)
+
+                Else
+
+                    _roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
+                                 Aggregate.
+                                 Match(token_.Replace("^", "").Replace(" ", "")).
+                                 Limit(cuenta_).
+                                 ToList)
+
+                End If
+
+
+
+                '_roomsResource.AddRange(_enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
+                '                 Aggregate.
+                '                 Match(Function(ch) ch.valorpresentacion.ToUpper.Contains(token_.ToUpper) Or ch.branchname.Equals(token_)).
+                '                 Limit(cuenta_).
+                '                 ToList)
 
             End If
 
@@ -1357,6 +1391,8 @@ Public Class CubeController
 
         Dim rolId_ = 7
 
+        _fieldmiss = New List(Of String)
+
         Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
@@ -1366,16 +1402,32 @@ Public Class CubeController
             operationsvalidfields_.
                                                  Aggregate.ToList.ForEach(Sub(campos_)
                                                                               validfields_.Add(campos_.valorpresentacion)
+                                                                              If _fieldmiss.IndexOf(campos_.sectionfield) = -1 Then
+                                                                                  _fieldmiss.Add(campos_.sectionfield)
+                                                                              End If
+
+
                                                                           End Sub)
 
 
 
+            _enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
+                              Aggregate.ToList.ForEach(Sub(campos_)
 
+                                                           _fieldmiss.Remove(campos_.valorpresentacion)
+
+                                                       End Sub)
 
         End Using
 
 
+
+
         SwicthedProjectSax(13)
+
+
+
+        _interpreter.SetValidFields(validfields_)
 
         _status = New TagWatcher() With {.ObjectReturned = validfields_}
 

@@ -41,20 +41,7 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
 
     '''<summary>
-<<<<<<< HEAD
     '''Control bi_SolicitarAutorizacion.
-=======
-    '''Control fEditor.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fEditor As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control fscGenerales.
->>>>>>> develop
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
@@ -90,6 +77,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents bi_Comparar As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
+    '''Control bi_QuitarComparar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_QuitarComparar As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
     '''Control bi_LeerCSV.
     '''</summary>
     '''<remarks>
@@ -97,6 +93,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bi_LeerCSV As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
+    '''Control bi_ProbarRuta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_ProbarRuta As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
     '''Control fscformulas.
@@ -115,6 +120,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents p_formulillas As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control l_RulesOld.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents l_RulesOld As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control p_FormulaActual.
@@ -151,6 +165,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bc_Var As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
+    '''Control fbc_RoomName.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fbc_RoomName As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control ic_RoomName.
@@ -241,6 +264,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents p_actualizacionformula As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control l_RulesNew.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents l_RulesNew As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control p_FormulaNueva.

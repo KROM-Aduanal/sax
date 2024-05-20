@@ -12,7 +12,6 @@ export class WCFEditor extends HTMLDivElement {
 
             this._input = this.nextElementSibling;
 
-<<<<<<< HEAD
 
             this._component.addEventListener('keypress', function (event) {
 
@@ -47,7 +46,7 @@ export class WCFEditor extends HTMLDivElement {
 
                 const variablesRegex_ = /(?:[^']|^)([A-Z_]+[0-9]*)(?=[^']*|$)/g;
 
-                const keywords_ = ['AHORA','ASIGNAR', 'EN', 'ESBLANCO', 'ESPACIOS', 'EXISTE', 'EXTRAE', 'LARGO', 'O', 'RANGO', 'RED', 'REDONDEAR',
+                const keywords_ = ['AHORA','ASIGNAR', "COINCIDIR", 'EN', 'ENLISTAR', 'ESBLANCO', 'ESPACIOS', 'EXISTE', 'EXTRAE', 'LARGO', 'O', 'RANGO', 'RED', 'REDONDEAR',
                     'ROOM', 'SETROOM', 'SI', 'SUMAR', 'SUMAR.SI', 'TRUNC', 'TRUNCAR', 'Y'];
 
 
@@ -164,45 +163,10 @@ export class WCFEditor extends HTMLDivElement {
                     this._input.value = wordFinal_; // this.innerText;
 
                     setCursorAtEndAfterChange(this, beforeSpan_, afterSpan_);
-=======
-            this._component.addEventListener('input', function () {
-
-                let content_ = this.innerText;
-
-                const operadoresRegex_ = /([-+*/,:<>])/g;
-
-                content_ = content_.replace(operadoresRegex_, ' $1 ');
-
-                const variablesRegex_ = /(?:[^']|^)([A-Z_]+[0-9]*)(?=[^']*|$)/g;
-
-                content_ = content_.replace(variablesRegex_, '<span class="variable">$&</span>');
-
-                const keywords_ = ['SUMAR', 'RESTAR', 'MULTIPLICAR', 'DIVIDIR', 'RED', 'TRUNC', 'SI', 'RANGO'];
-
-                keywords_.forEach(keyword_ => {
-
-                    const keywordRegex_ = new RegExp(`\\b${keyword_}\\b`, 'g');
-
-                    content_ = content_.replace(keywordRegex_, '<span class="keyword">' + keyword_ + '</span>');
-
-                });
-
-                const parentesisRegex_ = /[\(\)]/g;
-
-                content_ = content_.replace(parentesisRegex_, '<span class="parentesis">$&</span>');
-
-                this.innerHTML = content_;
-
-                this._input.value = this.innerText;
-
-                setEndOfContenteditable(this);
-                //setCursorAtLastPosition(this)
->>>>>>> develop
 
             });
 
 
-<<<<<<< HEAD
             function setCursorAtEndAfterChange(contentEditableElement, beforeSpan_, afterSpan_) {
                 var range, selection;
 
@@ -225,13 +189,35 @@ export class WCFEditor extends HTMLDivElement {
 
                     var changeindex_ = 0;
 
+                   
                     while (changeindex_ < tamanio_) {
-                        if (before_[changeindex_] !== after_[changeindex_]) {
+
+                        var spanIndex_ = before_[changeindex_].search('>');
+
+                        var characterbefore_ = before_[changeindex_].substring(spanIndex_ + 1);
+
+                        spanIndex_ = after_[changeindex_].search('>');
+
+                        var characterafter_ = after_[changeindex_].substring(spanIndex_ + 1);
+
+                        if (characterbefore_ !== characterafter_) {
+
                             cuenta_++;
+
                             if (before_.length < after_.length) {
 
-                                if (before_[changeindex_] !== after_[changeindex_ + 1])
+                                var spanIndex_ = before_[changeindex_].search('>');
+
+                                var characterbefore_ = before_[changeindex_].substring(spanIndex_ + 1);
+
+                                spanIndex_ = after_[changeindex_+1].search('>');
+
+                                var characterafter_ = after_[changeindex_+1].substring(spanIndex_ + 1);
+
+                                if (characterbefore_ !== characterafter_) {
                                     cuenta_++;
+
+                                }
                                 else
                                     cuenta_ = 7;
                                 changeindex_ = tamanio_ + 1000;
@@ -240,8 +226,18 @@ export class WCFEditor extends HTMLDivElement {
                             else
                                 if (before_.length > after_.length) {
 
-                                    if (before_[changeindex_ + 1] !== after_[changeindex_])
+                                    var spanIndex_ = before_[changeindex_+1].search('>');
+
+                                    var characterbefore_ = before_[changeindex_+1].substring(spanIndex_ + 1);
+
+                                    spanIndex_ = after_[changeindex_].search('>');
+
+                                    var characterafter_ = after_[changeindex_].substring(spanIndex_ + 1);
+
+                                    if (characterbefore_ !== characterafter_) {
                                         cuenta_++;
+
+                                    }
                                     else
                                         cuenta_ = 7;
                                     changeindex_ = tamanio_ + 1000;
@@ -253,11 +249,16 @@ export class WCFEditor extends HTMLDivElement {
                         } else changeindex_++;
                     }
 
-                        if (cuenta_===2)
+                    if (cuenta_===2)
                             changeforce_ = true;
 
                  
                     selection = window.getSelection();
+
+                    console.log("Cuenta:" + cuenta_);
+                    console.log(before_);
+                    console.log(after_);
+                    //console.log(cambios__);
 
                     if (selection.rangeCount > 0) {
 
@@ -282,11 +283,20 @@ export class WCFEditor extends HTMLDivElement {
 
                             while (found_ < tamanio_) {
 
-                                if (before_[found_] !== after_[found_]) {
+                                var spanIndex_ = before_[found_].search('>');
+
+                                var characterbefore_ = before_[found_].substring(spanIndex_ + 1);
+
+                                spanIndex_ = after_[found_].search('>');
+
+                                var characterafter_ = after_[found_].substring(spanIndex_ + 1);
+
+
+                                if (characterbefore_ !== characterafter_) {
 
                                     if (before_.length < after_.length)
 
-                                        indice_ = found_ + 1;
+                                        indice_ = found_ +1;
 
                                     else
 
@@ -299,6 +309,8 @@ export class WCFEditor extends HTMLDivElement {
                                     found_++;
                             }
                         }
+
+                        console.log(indice_);
 
                         if (indice_ === 0)
                             indice_ = after_.length-1;
@@ -317,22 +329,10 @@ export class WCFEditor extends HTMLDivElement {
 
                         // If there is no selection, place the cursor at the end
                         range.collapse(false);
-=======
-            /*function setCursorAtLastPosition(contentEditableElement) {
-                var selection, range;
-
-                if (window.getSelection) {
-                    selection = window.getSelection();
-                    if (selection.rangeCount > 0) {
-                        range = selection.getRangeAt(0).cloneRange();
-                        range.setStart(selection.focusNode, selection.focusOffset);
-                        range.collapse(true);
->>>>>>> develop
                         selection.removeAllRanges();
                         selection.addRange(range);
                     }
                 } else if (document.selection) {
-<<<<<<< HEAD
                     range = document.createRange();
                     range.selectNodeContents(contentEditableElement);
                     range = document.body.createTextRange();
@@ -357,47 +357,6 @@ export class WCFEditor extends HTMLDivElement {
                 }
             }
 
-=======
-                    range = document.selection.createRange();
-                    range.moveStart('character', -1);
-                    range.moveStart('character', 1);
-                    range.collapse(false);
-                    range.select();
-                }
-            }*/
-
-
-            function setEndOfContenteditable(contentEditableElement) {
-
-                var range, selection;
-
-                if (document.createRange)
-                {
-                    range = document.createRange();
-
-                    range.selectNodeContents(contentEditableElement);
-
-                    range.collapse(false);
-
-                    selection = window.getSelection();
-
-                    selection.removeAllRanges();
-
-                    selection.addRange(range);
-                }
-                else if (document.selection)
-                {
-                    range = document.body.createTextRange();
-
-                    range.moveToElementText(contentEditableElement);
-
-                    range.collapse(false);
-
-                    range.select();
-                }
-
-            }
->>>>>>> develop
 
             if (this._input.value) {
 

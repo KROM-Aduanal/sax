@@ -81,7 +81,9 @@ Public Class MathematicalInterpreterNCalc
 
         _customFunctions = New List(Of String) From {"AHORA",
                                                      "ASIGNAR",
+                                                     "COINCIDIR",
                                                      "EN",
+                                                     "ENLISTAR",
                                                      "ESBLANCO",
                                                      "ESPACIOS",
                                                      "EXISTE",
@@ -720,7 +722,7 @@ Public Class MathematicalInterpreterNCalc
 
         Dim parenthesisCount_, parenthesisCountTruncate_ As New List(Of String)
 
-        expression_ = SeparateSentences(expression_.Replace(Chr(34), "'"))
+        expression_ = SeparateSentences(expression_.Replace(Chr(34), "'").Replace("[13]", ""))
 
         Dim operandList_ = GetListFormula(expression_)
 
@@ -1812,14 +1814,80 @@ finalExpression_.Length - 1)
 
                                      result_ = 1
 
+                                 Case "COINCIDIR"
+
+                                     Dim sentencesIn_ As String = ""
+
+                                     For Each parameter_ In functionParameters_.Parameters.Take(functionParameters_.Parameters.Count - 1)
+
+                                         If TypeOf parameter_.Evaluate Is List(Of String) Then
+
+                                             For Each minilist_ In parameter_.Evaluate
+
+                                                 sentencesIn_ &= "'" & minilist_ & "',"
+
+                                             Next
+
+                                         Else
+
+                                             sentencesIn_ &= "'" & parameter_.Evaluate & "',"
+
+                                         End If
+
+                                     Next
+
+                                     Dim paramterLast_ = functionParameters_.Parameters.Last
+
+                                     Select Case paramterLast_.Evaluate
+
+                                         Case 0
+
+                                             sentencesIn_ = "in(" & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
+
+                                         Case 1
+
+                                         Case 2
+
+                                         Case Else
+
+                                             sentencesIn_ = "in(" & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
+
+
+                                     End Select
+
+
+
+                                     Dim expression_ = New NCalc.Expression(sentencesIn_)
+
+
+                                     expression_.Parameters = values_
+
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+
+
+                                     functionParameters_.Result = expression_.Evaluate
+
+                                     resultIsDouble_ = False
+
                                  Case "EN"
 
                                      Dim sentencesIn_ As String = ""
 
                                      For Each parameter_ In functionParameters_.Parameters
 
+                                         If TypeOf parameter_.Evaluate Is List(Of String) Then
 
-                                         sentencesIn_ &= "'" & parameter_.Evaluate & "',"
+                                             For Each minilist_ In parameter_.Evaluate
+
+                                                 sentencesIn_ &= "'" & minilist_ & "',"
+
+                                             Next
+
+                                         Else
+
+                                             sentencesIn_ &= "'" & parameter_.Evaluate & "',"
+
+                                         End If
 
                                      Next
 
@@ -1837,6 +1905,27 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = False
 
+                                 Case "ENLISTAR"
+
+                                             Dim list_ As New List(Of String)
+
+                                             For Each parameter_ In functionParameters_.Parameters
+
+                                                 Dim wordList_ = parameter_.Evaluate.ToString.Split(",")
+
+                                                 For Each word_ In wordList_
+
+                                                     list_.Add(word_)
+
+                                                 Next
+
+
+                                             Next
+
+                                             functionParameters_.Result = list_
+
+                                             resultIsDouble_ = False
+
                                  Case "ESBLANCO"
 
                                      Dim firstParameter_ As String = functionParameters_.
@@ -1844,530 +1933,533 @@ finalExpression_.Length - 1)
                                                             First.
                                                             Evaluate
 
-                                     If firstParameter_ <> "" Then
+                                             If firstParameter_ <> "" Then
 
-                                         functionParameters_.Result = False
+                                                 functionParameters_.Result = False
 
-                                     Else
+                                             Else
 
-                                         functionParameters_.Result = True
+                                                 functionParameters_.Result = True
 
-                                     End If
+                                             End If
 
 
-                                     resultIsDouble_ = False
+                                             resultIsDouble_ = False
 
-                                 Case "ESPACIOS"
+                                         Case "ESPACIOS"
 
-                                     Dim firstParameter_ As String = functionParameters_.
+                                             Dim firstParameter_ As String = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
-                                     Dim sinEspcacios_ As String = ""
+                                             Dim sinEspcacios_ As String = ""
 
 
-                                     For Each caracter_ In firstParameter_
+                                             For Each caracter_ In firstParameter_
 
-                                         If caracter_ <> " " Then
+                                                 If caracter_ <> " " Then
 
-                                             sinEspcacios_ &= caracter_
+                                                     sinEspcacios_ &= caracter_
 
-                                         End If
+                                                 End If
 
-                                     Next
+                                             Next
 
-                                     functionParameters_.Result = sinEspcacios_
+                                             functionParameters_.Result = sinEspcacios_
 
-                                     resultIsDouble_ = False
+                                             resultIsDouble_ = False
 
-                                 Case "EXTRAE"
+                                         Case "EXTRAE"
 
-                                     Dim firstParameter_ As String = functionParameters_.
+                                             Dim firstParameter_ As String = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
 
-                                     Dim secondParameter_ = functionParameters_.
+                                             Dim secondParameter_ = functionParameters_.
                                                             Parameters(1).
                                                             Evaluate
 
-                                     Dim thirdParameter_ = functionParameters_.
+                                             Dim thirdParameter_ = functionParameters_.
                                                             Parameters.
                                                             Last.Evaluate
 
 
-                                     functionParameters_.Result = firstParameter_.SubString(secondParameter_ - 1, thirdParameter_)
+                                             functionParameters_.Result = firstParameter_.Substring(secondParameter_ - 1, thirdParameter_)
 
-                                     resultIsDouble_ = False
+                                             resultIsDouble_ = False
 
-                                 Case "LARGO"
+                                         Case "LARGO"
 
-                                     Dim firstParameter_ As String = functionParameters_.
+                                             Dim firstParameter_ As String = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
 
-                                     result_ = firstParameter_.Length
+                                             result_ = firstParameter_.Length
 
-                                     resultIsDouble_ = True
+                                             resultIsDouble_ = True
 
 
-                                 Case "O"
+                                         Case "O"
 
-                                     Dim resultO_ = ""
+                                             Dim resultO_ = ""
 
-                                     For Each parameter_ In functionParameters_.
+                                             For Each parameter_ In functionParameters_.
                                                                    Parameters
 
-                                         resultO_ &= parameter_.
+                                                 resultO_ &= parameter_.
                                                           ParsedExpression.
                                                           ToString & " or "
 
-                                     Next
+                                             Next
 
-                                     resultO_ = resultO_.Substring(0, resultO_.Length - 4)
+                                             resultO_ = resultO_.Substring(0, resultO_.Length - 4)
 
-                                     Dim expression_ = New NCalc.Expression(resultO_)
+                                             Dim expression_ = New NCalc.Expression(resultO_)
 
-                                     expression_.Parameters = values_
+                                             expression_.Parameters = values_
 
-                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                             AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
-                                     functionParameters_.Result = expression_.Evaluate
+                                             functionParameters_.Result = expression_.Evaluate
 
-                                     resultIsDouble_ = False
+                                             resultIsDouble_ = False
 
-                                 Case "RED"
+                                         Case "RED"
 
-                                     Dim firstParameter_ = functionParameters_.
+                                             Dim firstParameter_ = functionParameters_.
                                                             Parameters.
                                                             First
 
-                                     Dim expression_ = New NCalc.Expression("Round(" &
+                                             Dim expression_ = New NCalc.Expression("Round(" &
                                                                               (firstParameter_.Evaluate() - 0.01).
                                                                               ToString &
                                                                               ",0)")
 
-                                     result_ = CDbl(expression_.Evaluate)
+                                             result_ = CDbl(expression_.Evaluate)
 
-                                 Case "ROOM"
+                                         Case "ROOM"
 
-                                     Dim paramPosition_ = 0
+                                             Dim paramPosition_ = 0
 
-                                     Dim firstParameter_ = functionParameters_.Parameters.First
+                                             Dim firstParameter_ = functionParameters_.Parameters.First
 
-                                     Dim list_ = firstParameter_.ParsedExpression.ToString.Split(New Char() {" "c})
+                                             Dim list_ = firstParameter_.ParsedExpression.ToString.Split(New Char() {" "c})
 
-                                     Dim cubeName_ = list_(0)
+                                             Dim cubeName_ = list_(0)
 
-                                     Dim operation_ = ""
+                                             Dim operation_ = ""
 
-                                     Dim parameters_ As New List(Of String)
+                                             Dim parameters_ As New List(Of String)
 
-                                     Dim cube_ As ICubeController = New CubeController
+                                             Dim cube_ As ICubeController = New CubeController
 
-                                     Dim lastParameter_ As String = ""
+                                             Dim lastParameter_ As String = ""
 
-                                     parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
+                                             parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
 
-                                     operation_ = parameters_(0)
+                                             operation_ = parameters_(0)
 
-                                     parameters_.RemoveAt(0)
+                                             parameters_.RemoveAt(0)
 
-                                     For Each parametro_ In parameters_
+                                             For Each parametro_ In parameters_
 
-                                         If paramPosition_ > 0 AndAlso
+                                                 If paramPosition_ > 0 AndAlso
                                                     paramPosition_ < functionParameters_.Parameters.Count Then
 
-                                             Dim fileCsv_ = functionParameters_.
+                                                     Dim fileCsv_ = functionParameters_.
                                                                        Parameters(paramPosition_).
                                                                        Evaluate.
                                                                        ToString
 
-                                             If fileCsv_.IndexOf(".csv") >= 0 Then
+                                                     If fileCsv_.IndexOf(".csv") >= 0 Then
 
-                                                 'ConvertJsonCsv(operacion_,
-                                                 '                   Archivocsv_)
+                                                         'ConvertJsonCsv(operacion_,
+                                                         '                   Archivocsv_)
 
-                                                 Exit For
+                                                         Exit For
 
-                                             Else
+                                                     Else
 
-                                                 If values_.ContainsKey(parametro_.ToString & ".0") Then
+                                                         If values_.ContainsKey(parametro_.ToString & ".0") Then
 
-                                                     values_(parametro_.ToString & ".0") = functionParameters_.
+                                                             values_(parametro_.ToString & ".0") = functionParameters_.
                                                                                                           Parameters(paramPosition_).
                                                                                                           Evaluate
 
-                                                 Else
+                                                         Else
 
-                                                     values_.Add(parametro_.ToString & ".0",
+                                                             values_.Add(parametro_.ToString & ".0",
                                                                                 functionParameters_.
                                                                                 Parameters(paramPosition_).
                                                                                 Evaluate)
 
+                                                         End If
+
+                                                     End If
+
+                                                     lastParameter_ = parametro_
+
                                                  End If
 
-                                             End If
+                                                 paramPosition_ += 1
 
-                                             lastParameter_ = parametro_
+                                             Next
 
-                                         End If
-
-                                         paramPosition_ += 1
-
-                                     Next
-
-                                     If paramPosition_ > 0 And paramPosition_ < functionParameters_.Parameters.Count - 1 Then
+                                             If paramPosition_ > 0 And paramPosition_ < functionParameters_.Parameters.Count - 1 Then
 
 
 
-                                         For position_ = 1 To functionParameters_.Parameters.Count - paramPosition_
+                                                 For position_ = 1 To functionParameters_.Parameters.Count - paramPosition_
 
-                                             values_(lastParameter_.ToString & "." & position_) = functionParameters_.
+                                                     values_(lastParameter_.ToString & "." & position_) = functionParameters_.
                                                                                                           Parameters(position_ + paramPosition_ - 1).
                                                                                                           Evaluate
 
-                                         Next
+                                                 Next
 
-                                     End If
+                                             End If
 
-                                     Dim expressionRoom_ = New NCalc.Expression(GetExpression(operation_,
+                                             Dim expressionRoom_ = New NCalc.Expression(GetExpression(operation_,
                                                                                                   values_))
 
-                                     expressionRoom_.Parameters = values_
+                                             expressionRoom_.Parameters = values_
 
-                                     AddHandler expressionRoom_.EvaluateFunction, RunFunctionHandler(values_)
+                                             AddHandler expressionRoom_.EvaluateFunction, RunFunctionHandler(values_)
 
-                                     Dim resultRoom_ = expressionRoom_.Evaluate
+                                             Dim resultRoom_ = expressionRoom_.Evaluate
 
-                                     If Not Double.TryParse(resultRoom_, result_) Then
+                                             If Not Double.TryParse(resultRoom_, result_) Then
 
-                                         functionParameters_.Result = resultRoom_
+                                                 functionParameters_.Result = resultRoom_
 
-                                         resultIsDouble_ = False
+                                                 resultIsDouble_ = False
 
-                                     End If
+                                             End If
 
-                                 Case "SETROOM"
+                                         Case "SETROOM"
 
-                                     Dim firstParameter_ = functionParameters_.
+                                             Dim firstParameter_ = functionParameters_.
                                                             Parameters.
                                                             First
 
-                                     Dim list_ = firstParameter_.
+                                             Dim list_ = firstParameter_.
                                                           ParsedExpression.
                                                           ToString.
                                                           Split(New Char() {" "c})
 
-                                     Dim cubeName_ = list_(0)
+                                             Dim cubeName_ = list_(0)
 
-                                     Dim rules_ = functionParameters_.
+                                             Dim rules_ = functionParameters_.
                                                           Parameters(1).
                                                           Evaluate.
                                                           ToString
 
-                                     Dim contenttype_ = "formulas"
+                                             Dim contenttype_ = "formulas"
 
-                                     If rules_.IndexOf(".csv") > -1 Then
+                                             If rules_.IndexOf(".csv") > -1 Then
 
-                                         contenttype_ = "csv"
+                                                 contenttype_ = "csv"
 
-                                         rules_ = ConvertCsvJson(functionParameters_.
+                                                 rules_ = ConvertCsvJson(functionParameters_.
                                                                          Parameters(1).
                                                                          Evaluate.
                                                                          ToString)
 
-                                     End If
+                                             End If
 
-                                     Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
+                                             Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos With
                                               {.EspacioTrabajo = System.Web.HttpContext.Current.Session("EspacioTrabajoExtranet")}
 
-                                         Dim endPoint_ = Sax.SaxStatements.GetInstance().GetEndPoint("project", 13)
+                                                 Dim endPoint_ = Sax.SaxStatements.GetInstance().GetEndPoint("project", 13)
 
-                                         Dim operationsDB_ As IMongoCollection(Of Room) =
-                                                     _enlaceDatos.GetMongoCollection(Of Room)(New MongoClient("mongodb://" & endPoint_.ip & ":" & endPoint_.port), "CUBEROOMS")
+                                                 Dim operationsDB_ As IMongoCollection(Of room) =
+                                                     _enlaceDatos.GetMongoCollection(Of room)(New MongoClient("mongodb://" & endPoint_.ip & ":" & endPoint_.port), "CUBEROOMS")
 
 
 
-                                         Dim updateDefinition_ = Builders(Of Room).
+                                                 Dim updateDefinition_ = Builders(Of room).
                                                                                      Update.
                                                                                      Set(Function(e) e.rules, rules_).
                                                                                      Set(Function(e) e.contenttype, contenttype_)
 
-                                         Dim filter_ = Builders(Of Room).
+                                                 Dim filter_ = Builders(Of room).
                                                                Filter.
                                                                Eq(Function(e) e.roomname,
                                                                               cubeName_.Substring(1,
                                                                                                 cubeName_.Length - 2))
 
-                                         operationsDB_.UpdateOne(filter_,
+                                                 operationsDB_.UpdateOne(filter_,
                                                                     updateDefinition_)
 
-                                     End Using
+                                             End Using
 
-                                     MsgBox("ROOM UPDATED")
+                                             MsgBox("ROOM UPDATED")
 
-                                 Case "SUMAR"
+                                         Case "SUMAR"
 
-                                     For Each parametro_ In functionParameters_.Parameters
+                                             For Each parametro_ In functionParameters_.Parameters
 
-                                         result_ += CDbl(parametro_.Evaluate())
+                                                 result_ += CDbl(parametro_.Evaluate())
 
-                                     Next
+                                             Next
 
-                                 Case "SUMAR.SI"
+                                         Case "SUMAR.SI"
 
-                                     Dim lastParameter_ = functionParameters_.
+                                             Dim lastParameter_ = functionParameters_.
                                                            Parameters.
                                                            Last
 
-                                     Dim listParameter_ = lastParameter_.
+                                             Dim listParameter_ = lastParameter_.
                                                           ParsedExpression.
                                                           ToString.
                                                           Split(New Char() {" "c})
 
-                                     Dim operandName_ = listParameter_(0)
+                                             Dim operandName_ = listParameter_(0)
 
-                                     If operandName_.IndexOf("[") > 0 Then
+                                             If operandName_.IndexOf("[") > 0 Then
 
-                                         operandName_ = listParameter_(0).
+                                                 operandName_ = listParameter_(0).
                                                            Substring(2,
                                                                      listParameter_(0).
                                                                      LastIndexOf(".") - 2)
 
-                                     End If
+                                             End If
 
-                                     Dim valueOperand_ = listParameter_(2)
+                                             Dim valueOperand_ = listParameter_(2)
 
-                                     If valueOperand_.IndexOf("[") > 0 Then
+                                             If valueOperand_.IndexOf("[") > 0 Then
 
-                                         valueOperand_ = listParameter_(2).
+                                                 valueOperand_ = listParameter_(2).
                                                           Substring(2,
                                                                     listParameter_(2).
                                                                     LastIndexOf(".") - 2)
 
-                                     End If
+                                             End If
 
-                                     Dim operator_ = listParameter_(1)
+                                             Dim operator_ = listParameter_(1)
 
-                                     Dim doubleParse_ As Double
+                                             Dim doubleParse_ As Double
 
-                                     operandName_ = IIf(Double.TryParse(operandName_,
+                                             operandName_ = IIf(Double.TryParse(operandName_,
                                                                            doubleParse_),
                                                            doubleParse_,
                                                            operandName_)
 
-                                     valueOperand_ = IIf(Double.TryParse(valueOperand_,
+                                             valueOperand_ = IIf(Double.TryParse(valueOperand_,
                                                                           doubleParse_),
                                                           doubleParse_,
                                                           valueOperand_)
 
-                                     Dim operandCount_ = 0
+                                             Dim operandCount_ = 0
 
-                                     For Each parameter_ In functionParameters_.
+                                             For Each parameter_ In functionParameters_.
                                                                     Parameters.
                                                                     Take(functionParameters_.Parameters.Count - 1)
 
-                                         Dim generalName_ = SetValuesOperands(operandName_,
+                                                 Dim generalName_ = SetValuesOperands(operandName_,
                                                                                             operandCount_,
                                                                                             values_,
                                                                                             False)
 
-                                         Dim generalValue = SetValuesOperands(valueOperand_,
+                                                 Dim generalValue = SetValuesOperands(valueOperand_,
                                                                                           operandCount_,
                                                                                           values_,
                                                                                           False)
 
-                                         Dim expresionString = generalName_ &
+                                                 Dim expresionString = generalName_ &
                                                                        operator_ &
                                                                        generalValue
 
-                                         Dim auxName_ = SetValuesOperands(operandName_,
+                                                 Dim auxName_ = SetValuesOperands(operandName_,
                                                                                         operandCount_,
                                                                                         values_,
                                                                                         False,
                                                                                         False)
 
-                                         Dim auxValue_ = SetValuesOperands(valueOperand_,
+                                                 Dim auxValue_ = SetValuesOperands(valueOperand_,
                                                                                        operandCount_,
                                                                                        values_,
                                                                                        False,
                                                                                        False)
 
-                                         Dim evaluate_ As Boolean = False
+                                                 Dim evaluate_ As Boolean = False
 
-                                         If values_.Keys.Contains(auxName_) Then
+                                                 If values_.Keys.Contains(auxName_) Then
 
-                                             evaluate_ = True
+                                                     evaluate_ = True
 
-                                         Else
+                                                 Else
 
-                                             auxName_ = SetValuesOperands(operandName_,
+                                                     auxName_ = SetValuesOperands(operandName_,
                                                                                         0,
                                                                                         values_,
                                                                                         False,
                                                                                         False)
 
-                                             generalName_ = SetValuesOperands(operandName_,
+                                                     generalName_ = SetValuesOperands(operandName_,
                                                                                             0,
                                                                                             values_,
                                                                                             False)
 
-                                             expresionString = generalName_ &
+                                                     expresionString = generalName_ &
                                                                        operator_ &
                                                                        generalValue
 
-                                             If values_.
+                                                     If values_.
                                                         Keys.
                                                         Contains(auxName_) Then
 
-                                                 evaluate_ = True
+                                                         evaluate_ = True
 
-                                             Else
+                                                     Else
 
-                                                 If Double.TryParse(auxName_,
+                                                         If Double.TryParse(auxName_,
                                                                             doubleParse_) Then
+
+                                                             evaluate_ = True
+
+                                                         Else
+
+                                                             evaluate_ = False
+
+                                                         End If
+
+
+                                                     End If
+
+                                                 End If
+
+                                                 If values_.
+                                                    Keys.
+                                                    Contains(auxValue_) Then
 
                                                      evaluate_ = True
 
                                                  Else
 
-                                                     evaluate_ = False
-
-                                                 End If
-
-
-                                             End If
-
-                                         End If
-
-                                         If values_.
-                                                    Keys.
-                                                    Contains(auxValue_) Then
-
-                                             evaluate_ = True
-
-                                         Else
-
-                                             auxValue_ = SetValuesOperands(valueOperand_,
+                                                     auxValue_ = SetValuesOperands(valueOperand_,
                                                                                        0,
                                                                                        values_,
                                                                                        False,
                                                                                        False)
 
-                                             generalValue = SetValuesOperands(valueOperand_,
+                                                     generalValue = SetValuesOperands(valueOperand_,
                                                                                           0,
                                                                                           values_,
                                                                                           False)
 
-                                             expresionString = generalName_ &
+                                                     expresionString = generalName_ &
                                                                        operator_ &
                                                                        generalValue
 
-                                             If values_.
+                                                     If values_.
                                                         Keys.
                                                         Contains(auxValue_) Then
 
-                                                 evaluate_ = True
-                                             Else
+                                                         evaluate_ = True
+                                                     Else
 
-                                                 If Double.TryParse(auxValue_,
+                                                         If Double.TryParse(auxValue_,
                                                                             doubleParse_) Then
 
-                                                     evaluate_ = True
+                                                             evaluate_ = True
 
-                                                 Else
+                                                         Else
 
-                                                     evaluate_ = False
+                                                             evaluate_ = False
+
+                                                         End If
+
+
+                                                     End If
 
                                                  End If
 
 
-                                             End If
+                                                 If evaluate_ Then
 
-                                         End If
+                                                     Dim expressionSI_ = New NCalc.Expression(expresionString)
 
-
-                                         If evaluate_ Then
-
-                                             Dim expressionSI_ = New NCalc.Expression(expresionString)
-
-                                             If Not Double.TryParse(auxName_,
+                                                     If Not Double.TryParse(auxName_,
                                                                             doubleParse_) Then
 
-                                                 expressionSI_.Parameters(auxName_) = values_(auxName_)
+                                                         expressionSI_.Parameters(auxName_) = values_(auxName_)
 
-                                             End If
+                                                     End If
 
-                                             If Not Double.TryParse(auxValue_,
+                                                     If Not Double.TryParse(auxValue_,
                                                                             doubleParse_) Then
 
-                                                 expressionSI_.Parameters(auxValue_) = values_(auxValue_)
+                                                         expressionSI_.Parameters(auxValue_) = values_(auxValue_)
 
-                                             End If
+                                                     End If
 
-                                             evaluate_ = expressionSI_.Evaluate()
+                                                     evaluate_ = expressionSI_.Evaluate()
 
-                                         End If
+                                                 End If
 
 
-                                         If evaluate_ Then
+                                                 If evaluate_ Then
 
-                                             result_ += CDbl(parameter_.Evaluate())
+                                                     result_ += CDbl(parameter_.Evaluate())
 
-                                         End If
+                                                 End If
 
-                                         operandCount_ += 1
+                                                 operandCount_ += 1
 
-                                     Next
+                                             Next
 
-                                 Case "TRUNC"
+                                         Case "TRUNC"
 
-                                     Dim firstParameter_ = functionParameters_.Parameters.First
+                                             Dim firstParameter_ = functionParameters_.Parameters.First
 
-                                     Dim expression_ = New NCalc.Expression("Truncate((" &
+                                             Dim expression_ = New NCalc.Expression("Truncate((" &
                                                                               firstParameter_.
                                                                               Evaluate().
                                                                               ToString &
                                                                               ")*10000)/10000")
 
 
-                                     expression_.Parameters = values_
+                                             expression_.Parameters = values_
 
-                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                             AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
-                                     result_ = CDbl(expression_.Evaluate)
+                                             result_ = CDbl(expression_.Evaluate)
 
 
-                                 Case "Y"
+                                         Case "Y"
 
-                                     Dim resultY_ = ""
+                                             Dim resultY_ = ""
 
-                                     For Each parameter_ In functionParameters_.
+                                             For Each parameter_ In functionParameters_.
                                                                    Parameters
 
-                                         resultY_ &= parameter_.
+                                                 resultY_ &= parameter_.
                                                           ParsedExpression.
                                                           ToString & " and "
 
-                                     Next
+                                             Next
 
-                                     resultY_ = resultY_.Substring(0, resultY_.Length - 5)
+                                             resultY_ = resultY_.Substring(0, resultY_.Length - 5)
 
-                                     Dim expression_ = New NCalc.Expression(resultY_)
+                                             Dim expression_ = New NCalc.Expression(resultY_)
 
-                                     expression_.Parameters = values_
+                                             expression_.Parameters = values_
 
-                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                             AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
-                                     functionParameters_.Result = expression_.Evaluate
+                                             functionParameters_.Result = expression_.Evaluate
 
-                                     resultIsDouble_ = False
+                                             resultIsDouble_ = False
 
-                             End Select
 
-                             If _customFunctions.
+
+
+                                     End Select
+
+                                     If _customFunctions.
                                         Any(Function(ch) functionName_.ToUpper = ch) And resultIsDouble_ Then
 
                                  functionParameters_.Result = result_

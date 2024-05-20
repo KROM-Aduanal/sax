@@ -402,6 +402,49 @@ Public Class Organismo
 
     End Function
 
+
+    Public Function ObtenerSelectOption(elementList_ As List(Of String)) As List(Of SelectOption)
+
+        Dim temporal_ As New List(Of SelectOption)
+
+        Dim cuenta_ As Int16 = 0
+
+
+        For Each element_ In elementList_
+
+            temporal_.Add(New SelectOption With {.Value = cuenta_,
+                                                 .Indice = cuenta_,
+                                                 .Text = element_})
+
+            cuenta_ += 1
+
+        Next
+
+        Return temporal_
+
+    End Function
+
+    Public Function GetPredicates(sentence_ As String) As Predicate(Of String)
+
+        Dim listString_ = sentence_.ToString.Split(" ")
+
+        Dim listmatch_ As New List(Of Predicate(Of String))
+
+        For Each string_ In listString_
+
+            listmatch_.Add(Function(ch) ch.Contains(string_))
+
+        Next
+
+        Return CombinePredicates(listmatch_)
+
+    End Function
+
+    Public Function CombinePredicates(Of T)(predicates As List(Of Predicate(Of T))) As Predicate(Of T)
+
+        Return Function(item) predicates.All(Function(p) p(item))
+
+    End Function
     Public Function ObtenerRutaCampo(ByVal documentoElectronico_ As DocumentoElectronico,
                                      idUnicoSeccion_ As Integer,
                                      idUnicoCampo_ As Integer) As String

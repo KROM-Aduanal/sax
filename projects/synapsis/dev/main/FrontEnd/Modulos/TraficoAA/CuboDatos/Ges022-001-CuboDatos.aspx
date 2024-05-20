@@ -7,109 +7,11 @@
 
          <% If IsPopup = False Then %>
 
-<<<<<<< HEAD
                <GWC:FindbarControl Label="Buscar Gajo" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
 
          <% End If %> 
 
 
-=======
-<style>
-    /*
-    .cl_Secciones {
-        opacity: .6;
-        color: #757575;      
-        font-size: 24px;
-        font-weight: bold;
-    }
-        
-    .cl_Tarjeta {      
-        font-size: 24px;
-        font-weight: bold;   
-        color: #432776;               
-        display: flex;        
-	    justify-content: center;
-        align-items: center;   
-            
-    }
-
-    .cl_Num__Tarjeta {
-        background-color: #432776;            
-        color: #fff;
-        display: flex;        
-        border-radius: 50%;           
-	    justify-content: center;            
-        align-items: center;
-        width: 60px;
-        height: 60px;
-    }
-
-    .cl_Num__Tarjeta {
-        font-size: 2.4em;
-        font-weight: bold;
-    }
-
-    .sc__Subdivision {
-        display: block !important;
-        border:1px solid red !important;
-            
-            
-    }
-
-    .customsizetextarea {
-        height: 2.4em;
-    }
-    .ALGODON{
-
-    }
-
-    @media(min-width:400px){
-            .ALGODON{
-                                justify-content: flex-start;
-                                             
-            }
-
-    }
-    @media(min-width: 576px){
-            .ALGODON{
-                                justify-content: flex-start;
-                                            
-            }
-
-    }
-
-
-    @media(min-width:760px){
-            .ALGODON{
-                justify-content: flex-start;
-                            
-            }
-
-    }
-
-    @media(min-width:992px){
-            .ALGODON{
-                justify-content: flex-start;
-                             
-            margin-left:20px;                     
- 
-            }
-
-    }
-
-            @media(min-width:1200px){
-            .ALGODON{
-                justify-content: flex-start;
-                             
-            margin-left:20px;                     
-            }
-
-    }*/
-
-       
-</style>
-
->>>>>>> develop
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentCompanyList" runat="server">
@@ -129,7 +31,7 @@
 
         <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM"   HasAutoSave="false" Label="Reglas del Cubo" OnCheckedChanged="MarcarPagina">
 
-            <Buttonbar runat="server" OnClick="EventosBotonera" OnLoad="ColocaAutorizar" >
+            <Buttonbar runat="server" OnClick="EventosBotonera" OnLoad="ColocaAutorizar" CssClass="botoneracabulidad" ID="bb_botonera" >
 
                 <DropdownButtons >
 
@@ -147,14 +49,18 @@
 
                     <GWC:ButtonItem Text="Desechar" Visible="false" ID="bi_SudoDesechar"/>
 
-                    <GWC:ButtonItem Text="Comparar" Visible="false" ID="bi_Comparar"/>
+                    <GWC:ButtonItem Text="Comparar" Visible="false" ID="bi_Comparar"  />
 
-                    <GWC:ButtonItem Text="Leer CSV"  ID="bi_LeerCSV"/>
+                    <GWC:ButtonItem Text="Quitar Comparación" Visible="false" ID="bi_QuitarComparar"/>
+
+                    <GWC:ButtonItem Text="Leer CSV"  ID="bi_LeerCSV" Visible="true" />
+
+                     <GWC:ButtonItem Text="Probar Ruta de Validación"  ID="bi_ProbarRuta" Visible="true" />
+
 
                 </DropdownButtons>
 
             </Buttonbar>   
-<<<<<<< HEAD
 
             <Fieldsets >
 
@@ -165,7 +71,7 @@
                         <asp:Panel runat="server" CssClass="col-md-12 col-xs-6" ID="p_formulillas">
 
                             <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle"></asp:Label>
+                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesOld"></asp:Label>
 
                             <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_FormulaActual">
 
@@ -177,7 +83,9 @@
 
                                           <GWC:ButtonControl CssClass="cubo-btn-variable" runat="server" ID="bc_Var" Visible="false" OnClick="CambioContenido"/>
 
-                                          <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"  ID="ic_RoomName" Visible="true" />
+                                          <GWC:FindboxControl runat="server" ID="fbc_RoomName" CssClass="cubo-fbc-search" KeyField="_id" DisplayField="campo" RequiredSelect="true" Label="Escriba quí el nombre de la habitación" Visible="true" OnTextChanged="fbc_RoomName_TextChanged"/>
+
+                                          <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"  ID="ic_RoomName" Visible="false" />
                                            
                                           <GWC:ButtonControl runat="server" Label="" ID="bc_PorAutorizar" CssClass="bcporautorizar" Visible="true" Enabled="false" ForeColor="DarkGray"/>
 
@@ -189,7 +97,7 @@
 
                                 <div >
 
-                                            <GWC:SelectControl runat="server" ID="sc_BranchNames"  SearchBarEnabled="false" LocalSearch="false" Rules="required" visible="false" OnSelectedIndexChanged="ChangeCubeSource" >
+                                            <GWC:SelectControl runat="server" ID="sc_BranchNames"  SearchBarEnabled="false" LocalSearch="false" Rules="required" visible="false"  OnSelectedIndexChanged="ChangeCubeSource" >
 
                                                      <Options >
 
@@ -242,137 +150,11 @@
 
                             <%-- FIN DISEÑO COMPONENTE --%>
 
-=======
-            <Fieldsets>
-                 <GWC:FieldsetControl runat="server" Label="Formulas">
-                    <ListControls>
-                        <asp:Panel runat="server" CssClass="col-xs-6">
-                            <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle"></asp:Label>
-                            <asp:Panel runat="server" CssClass="wc-cubo-formulas">
-
-                                <div>
-                                    <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22"/>
-                                    <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server"/>
-                                    <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"/>
-                                </div>
-                                <div>
-                                    <gwc-userdata title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png"></gwc-userdata>
-                                   
-                                    <GWC:SwitchControl runat="server" OffText="Offline" OnText="Online"/>
-                                </div>
-                                <div>
-                                    <div is="wc-feditor" contenteditable="true"></div>
-                                    <asp:TextBox ID="fEditor" runat="server"></asp:TextBox>
-                                </div>
-                                <div>
-                                    <GWC:ButtonControl runat="server" Label="Limpiar"/>
-                                    <GWC:ButtonControl runat="server" Label="Verificar"/>
-                                </div>
-
-                            </asp:Panel>
-
-                            <%-- FIN DISEÑO COMPONENTE --%>
-                        </asp:Panel>
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-messages">
-                            <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Mensajes" CssClass="fieldset-subtitle"></asp:Label>
-                            <GWC:TabbarControl runat="server">
-                                <Tabs>
-                                    <GWC:TabItem Text="Alertas"/>
-                                    <GWC:TabItem Text="Advertencias"/>
-                                    <GWC:TabItem Text="Información"/>
-                                </Tabs>
-                                <TabsSections>
-                                    <GWC:FieldsetControl runat="server">
-                                        <ListControls>
-                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
-                                            <asp:Panel runat="server">
-                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
-                                            </asp:Panel>
-                                        </ListControls>
-                                    </GWC:FieldsetControl>
-                                    <GWC:FieldsetControl runat="server">
-                                        <ListControls>
-                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
-                                            <asp:Panel runat="server">
-                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
-                                            </asp:Panel>
-                                        </ListControls>
-                                    </GWC:FieldsetControl>
-                                    <GWC:FieldsetControl runat="server">
-                                        <ListControls>
-                                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
-                                            <asp:Panel runat="server">
-                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
-                                            </asp:Panel>
-                                        </ListControls>
-                                    </GWC:FieldsetControl>
-                                </TabsSections>
-                            </GWC:TabbarControl>
-                            
-                            <%-- FIN DISEÑO COMPONENTE --%>
-                        </asp:Panel>
-                    </ListControls>
-                </GWC:FieldsetControl>
-                <GWC:FieldsetControl runat="server" Label="Información">
-                    <ListControls>
-                   
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-description">
-                            <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Descripción" CssClass="fieldset-subtitle"></asp:Label>
-                            <GWC:InputControl runat="server" CssClass="w-100" Type="TextArea"/>
-
-                            <%-- FIN DISEÑO COMPONENTE --%>
-                        </asp:Panel>
-                        <asp:Panel runat="server" CssClass="col-xs-6 wc-cubo-comments">
-                            <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Histórico" CssClass="fieldset-subtitle"></asp:Label>
-                            <ul>
-                                <gwc-comment title="Roberto Carlos" date="hace 3 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
-                               
-                                <gwc-comment title="Roberto Carlos2" date="hace 2 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>
-                                
-                                <gwc-comment title="Roberto Carlos3" date="hace 1 días" image="/FrontEnd/Librerias/Krom/imgs/nouser.png" Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500"></gwc-comment>                              
-                            </ul>
-
-                            <%-- FIN DISEÑO COMPONENTE --%>
-                        </asp:Panel>
-                    </ListControls>
-                </GWC:FieldsetControl>
-
-                        
-               <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
-                    <ListControls>
-
-                       
-
-                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 px-0 mt-2 py-5">
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 solid-textarea p-0 justify-content-start" ID="ic_RoomName" Type="Text" Format="SinDefinir" Name="ic_RoomName" Label="Nombre del Gajo" />
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 p-0 d-flex justify-content-end" ID="sc_TipoRegla" Name="sc_TipoRegla" Label="Tipo de regla"  SearchBarEnabled="false" LocalSearch="false" Rules="required"  >
-                                  <Options >
-                                         <GWC:SelectOption Value="1" Text="Fórmula"/>
-                                         <GWC:SelectOption Value="2" Text="Operando"/>
-                                         <GWC:SelectOption Value="3" Text="Archivo CSV"/>
-                                         <GWC:SelectOption Value="4" Text="Archivo JSON"/>
-                                  </Options>
-                            </GWC:SelectControl>
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mt-2 mb-5 p-0 d-flex justify-content-end" ID="sc_DestinoCubo" Name="sc_DestinoCubo" Label="Cubo destino"  SearchBarEnabled="false" LocalSearch="false" Rules="required"  >
-                                  <Options >
-                                         <GWC:SelectOption Value="1" Text="A22"/>
-                                         <GWC:SelectOption Value="2" Text="VOCE"/>
-                                         <GWC:SelectOption Value="3" Text="UCC"/>
-                                         <GWC:SelectOption Value="4" Text="UCAA"/>
-                                         <GWC:SelectOption Value="5" Text="UAA"/>
-                                         <GWC:SelectOption Value="6" Text="CDI"/>
-                                  </Options>
-                            </GWC:SelectControl>
->>>>>>> develop
                         </asp:Panel>
 
                         <asp:Panel runat="server" CssClass="col-md-6 col-xs-6" ID="p_actualizacionformula" Visible="False">
                             <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle"></asp:Label>
+                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesNew"></asp:Label>
 
                             <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_FormulaNueva">
 
@@ -399,7 +181,7 @@
 
                                     <asp:Panel runat="server"  ID="p_userchange" Visible="true"  >
 
-                                         <gwc-userdata title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
+                                         <gwc-userdata ID="algo_" title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
 
                                     </asp:Panel>
 
@@ -839,7 +621,11 @@
          } else
              tamanio_ = 4;
 
-         const element3 = document.querySelector('.swcverificado');
+         const element3 = document.querySelector('.botoneracabulidad');
+
+        // element3.style.borderBottomColor = '#cecdcd';
+
+        //this.closest('.row').setAttribute('style', 'border-color:#cecdcd !important;');
 
        //  const element4 = document.querySelector('.swc-online');
 

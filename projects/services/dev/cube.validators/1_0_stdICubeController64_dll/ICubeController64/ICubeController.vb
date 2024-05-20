@@ -41,6 +41,8 @@ Public Interface ICubeController : Inherits IDisposable
 
     Property reports As ValidatorReport
 
+    Property fieldmiss As List(Of String)
+
 
 #End Region
 
@@ -77,7 +79,7 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function GetRoomNames(Optional token_ As String = "") As TagWatcher
 
-    Function GetRoomNamesResource(Optional token_ As String = "") As TagWatcher
+    Function GetRoomNamesResource(Optional token_ As String = "", Optional typeSearch_ As Int16 = 1) As TagWatcher
 
     Function GetFieldsNamesResource() As TagWatcher
 

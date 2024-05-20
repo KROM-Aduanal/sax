@@ -368,6 +368,8 @@ Public Class Ges022_001_AcuseValor
 
         PreparaTarjetero(PillboxControl.ToolbarModality.Simple, pb_PartidasAcuseValor)
 
+        SetVars("prueba_", False)
+
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -1064,12 +1066,14 @@ Public Class Ges022_001_AcuseValor
 
         'Dim listaValores = _ControladorFactura.ListaCamposFacturaComercial("0155524864", secciones_)
 
-        'Dim Algo = _ControladorMonedas.TiposdeCambio(0)
+        Dim Algo = _icontroladorMonedas.GetCveMoneys("cveCOVE", 1000)
         'Dim Algo3 = _ControladorMonedas.FactoresCambioRecientes(0)
 
         'Dim fecha_ As Date = Date.Parse("26/02/2024")
         'Dim algo_ = _icontroladorMonedas.
         '                        ObtenerFactorTipodeCambio("MXP", fecha_)
+
+
 
 
         If Not Checallenado() Then
@@ -1160,9 +1164,9 @@ Public Class Ges022_001_AcuseValor
 
                     Dim identificacionPersona_, tipoIdentificador_ As String
 
-                    If DirectCast(listaResultado_.Item(9), Campo).Valor IsNot Nothing Then
+                    If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
 
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
+                        identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
 
                         tipoIdentificador_ = "TAXID"
 
@@ -1428,39 +1432,39 @@ Public Class Ges022_001_AcuseValor
                                                        pillbox_.SetFiled(False)
                                                        ' If indice_ + 1 = 0 Then
 
-                                                       If DirectCast(partidaFactura_.Nodos(12).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                       If DirectCast(partidaFactura_.Nodos(13).Nodos(0), Campo).Valor IsNot Nothing Then
 
                                                            descripcionesAcuseValor_ = DirectCast(partidaFactura_.
-                                                                                                 Nodos(12).
+                                                                                                 Nodos(13).
                                                                                                  Nodos(0),
                                                                                                  Campo).Valor
 
                                                        End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(14).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                       If DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).Valor IsNot Nothing Then
 
                                                            cantidadAcuseValor_ = DirectCast(partidaFactura_.
-                                                                                            Nodos(14).
+                                                                                            Nodos(15).
                                                                                             Nodos(0),
                                                                                             Campo).Valor
 
                                                        End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                       If DirectCast(partidaFactura_.Nodos(9).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           precioUnitario_ = DirectCast(partidaFactura_.Nodos(8).Nodos(0), Campo).Valor
-
-                                                       End If
-
-                                                       If DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           total_ = DirectCast(partidaFactura_.Nodos(4).Nodos(0), Campo).Valor
+                                                           precioUnitario_ = DirectCast(partidaFactura_.Nodos(9).Nodos(0), Campo).Valor
 
                                                        End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).Valor IsNot Nothing Then
+                                                       If DirectCast(partidaFactura_.Nodos(5).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE((DirectCast(partidaFactura_.Nodos(15).Nodos(0), Campo).ValorPresentacion),, 1)
+                                                           total_ = DirectCast(partidaFactura_.Nodos(5).Nodos(0), Campo).Valor
+
+                                                       End If
+
+                                                       If DirectCast(partidaFactura_.Nodos(16).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                           unidades_ = _controladorUnidadesMedida.BuscarUnidadesCOVE((DirectCast(partidaFactura_.Nodos(16).Nodos(0), Campo).ValorPresentacion),, 1)
 
                                                        Else
 
@@ -1468,27 +1472,27 @@ Public Class Ges022_001_AcuseValor
 
                                                        End If
 
-                                                       If DirectCast(partidaFactura_.Nodos(22).Nodos(0), Campo).Valor IsNot Nothing Then
-
-                                                           numeroSerie_ = DirectCast(partidaFactura_.Nodos(indice_ - 1).Nodos(22).Nodos(0), Campo).Valor
-
-                                                       End If
-
                                                        If DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           marca_ = DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor
+                                                           numeroSerie_ = DirectCast(partidaFactura_.Nodos(23).Nodos(0), Campo).Valor
 
                                                        End If
 
                                                        If DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           modelo_ = DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor
+                                                           marca_ = DirectCast(partidaFactura_.Nodos(24).Nodos(0), Campo).Valor
 
                                                        End If
 
                                                        If DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor IsNot Nothing Then
 
-                                                           subModelo_ = DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor
+                                                           modelo_ = DirectCast(partidaFactura_.Nodos(25).Nodos(0), Campo).Valor
+
+                                                       End If
+
+                                                       If DirectCast(partidaFactura_.Nodos(26).Nodos(0), Campo).Valor IsNot Nothing Then
+
+                                                           subModelo_ = DirectCast(partidaFactura_.Nodos(26).Nodos(0), Campo).Valor
 
                                                        End If
 
@@ -2244,6 +2248,16 @@ Public Class Ges022_001_AcuseValor
         sc_SelloCliente.Enabled = True
 
         ic_PatenteAduanal.Enabled = True
+
+    End Sub
+
+    Sub DeshabilitarInput()
+
+        If GetVars("prueba_") IsNot Nothing Then
+
+            ic_Prueba.Enabled = GetVars("prueba_")
+
+        End If
 
     End Sub
 
