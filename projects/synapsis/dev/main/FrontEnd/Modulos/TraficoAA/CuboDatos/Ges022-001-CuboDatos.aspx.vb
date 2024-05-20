@@ -2553,7 +2553,7 @@ Public Class Ges022_001_CuboDatos
 
         Dim lista_ As List(Of SelectOption)
 
-        lista_ = _organismo.ObtenerSelectOption(_ctrlCube.fieldmiss.FindAll(_organismo.GetPredicates(sender.Text.ToString.ToUpper)))
+        lista_ = _organismo.ObtenerSelectOption(_ctrlCube.fieldmiss.FindAll(_organismo.GetPredicates(sender.Text)))
 
         If lista_ Is Nothing Then
 

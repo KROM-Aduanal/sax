@@ -324,8 +324,7 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptButtonControl64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Gsol.Web.Components.CptCardControl64.0.0.0.0, Version=1.0.8824.30385, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Gsol.Web.Components.CptCardControl64.0.0.0.0">
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Components web\Gsol.Web.Components.CptCardControl64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
@@ -852,14 +851,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.CampoGenerico64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
-<<<<<<< HEAD
-=======
     <Reference Include="Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.DecoradorCampo64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
->>>>>>> develop
     <Reference Include="Syn.Documento.Componentes.Nodo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.Componentes.Nodo64.0.0.0.0.dll</HintPath>
@@ -1627,7 +1623,6 @@
     <Content Include="FrontEnd\Librerias\Krom\css\components\catalog.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\checkbox.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\collection.css" />
-    <Content Include="FrontEnd\Librerias\Krom\css\components\feditor.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\dualitybar.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\feditor.css" />
     <Content Include="FrontEnd\Librerias\Krom\css\components\file.css" />
@@ -1666,6 +1661,7 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\date.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\delete.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\deleteB.png" />
+    <Content Include="FrontEnd\Librerias\Krom\imgs\desbloquear.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\done.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\down.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\edit.png" />
@@ -1704,15 +1700,12 @@
     <Content Include="FrontEnd\Librerias\Krom\imgs\unlocked.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\up.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\uparrow.png" />
-<<<<<<< HEAD
     <Content Include="FrontEnd\Librerias\Krom\imgs\userkrom.jpeg" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\variable.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_close.png" />
-=======
     <Content Include="FrontEnd\Librerias\Krom\imgs\variable.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_close.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_close_outline.png" />
->>>>>>> develop
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_lock.png" />
     <Content Include="FrontEnd\Librerias\Krom\imgs\w_reply.png" />
     <Content Include="FrontEnd\Librerias\Krom\js\Components.js" />
