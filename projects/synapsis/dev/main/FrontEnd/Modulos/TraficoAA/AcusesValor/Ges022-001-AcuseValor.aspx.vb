@@ -1128,7 +1128,7 @@ Public Class Ges022_001_AcuseValor
 
                     SetVars("IDS", idFactura_)
 
-                    Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(6), Campo).Valor)
+                    Dim idMoneda = ObjectId.Parse(DirectCast(listaResultado_.Item(7), Campo).Valor)
 
                     sc_TipoMoneda.DataSource.RemoveAll(Function(ch) ch.Value <> "")
 
@@ -1164,21 +1164,21 @@ Public Class Ges022_001_AcuseValor
 
                     Dim identificacionPersona_, tipoIdentificador_ As String
 
-                    If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
+                    If DirectCast(listaResultado_.Item(9), Campo).Valor IsNot Nothing Then
 
-                        identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
+                        identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
 
                         tipoIdentificador_ = "TAXID"
 
                     Else
 
-                        If DirectCast(listaResultado_.Item(11), Campo).Valor IsNot Nothing Then
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
+                        If DirectCast(listaResultado_.Item(10), Campo).Valor IsNot Nothing Then
+                            identificacionPersona_ = DirectCast(listaResultado_.Item(10), Campo).Valor.ToString
 
                             tipoIdentificador_ = "RFC"
                         Else
 
-                            identificacionPersona_ = DirectCast(listaResultado_.Item(9), Campo).Valor.ToString
+                            identificacionPersona_ = DirectCast(listaResultado_.Item(11), Campo).Valor.ToString
 
                             tipoIdentificador_ = "RAZONSOCIAL"
 
@@ -2251,15 +2251,6 @@ Public Class Ges022_001_AcuseValor
 
     End Sub
 
-    Sub DeshabilitarInput()
-
-        If GetVars("prueba_") IsNot Nothing Then
-
-            ic_Prueba.Enabled = GetVars("prueba_")
-
-        End If
-
-    End Sub
 
 #End Region
 

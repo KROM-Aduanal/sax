@@ -910,9 +910,34 @@ Public Class Organismo
                                                Else
                                                    For cadena_ = 1 To estatus_.ElementCount - 2
 
-                                                       bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).
+                                                       If estatus_.GetElement("campo" & cadena_).Value = BsonNull.Value Then
+
+                                                           Dim nodoNull_ =
+                                               BsonSerializer.Deserialize(Of Nodo)(estatus_.GetElement("campo1").Value.AsBsonDocument)
+
+                                                           While nodoNull_.DescripcionTipoNodo <> "Campo"
+
+                                                               nodoNull_ = nodoNull_.Nodos(0)
+
+                                                           End While
+
+                                                           DirectCast(nodoNull_, Campo).Valor = ""
+
+                                                           DirectCast(nodoNull_, Campo).ValorPresentacion = ""
+
+                                                           DirectCast(nodoNull_, Campo).Nombre = "campo" & cadena_
+
+                                                           bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).Add(nodoNull_)
+
+
+                                                       Else
+                                                           bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).
                                                        Add(BsonSerializer.Deserialize(Of Nodo) _
                                                        (estatus_.GetElement("campo" & cadena_).Value.AsBsonDocument))
+
+                                                       End If
+
+
 
                                                    Next
 
