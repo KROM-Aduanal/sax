@@ -164,8 +164,25 @@ Public Class ControladorMonedas
 
             If token_.Length <= 3 Then
 
-                aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "', Clave:'" & formato_ & "'}}},"
 
+                If formato_ = "cvedefault" Then
+
+                    aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "'}}},"
+
+                Else
+
+                    If token_.Length = 0 Then
+
+                        aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{ Clave:'" & formato_ & "'}}},"
+
+                    Else
+
+                        aliasmonedas_ = aliasmonedas_ & "{'aliasmoneda':{$elemMatch:{Valor:'" & token_.ToUpper & "', Clave:'" & formato_ & "'}}},"
+
+                    End If
+
+
+                End If
             End If
 
             aliasmonedas_ = aliasmonedas_ & "{$and:[{$or:[" & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaesp", "", "", "") & "," & _recursosGenerales.SeparacionPalabras(token_, "nombremonedaing", "", "", "") & "]},{'aliasmoneda':{$elemMatch:{Valor:{$ne:''}, Clave:'" & formato_ & "'}}}]},"
@@ -690,7 +707,28 @@ Public Class ControladorMonedas
     End Function
 
 
+    Function GetCveMoneys(Optional formato_ As String = "cvedefault",
+                          Optional ByVal ilimit_ As Int32 = 5) As List(Of String) Implements IControladorMonedas.GetCveMoneys
 
+        Dim listMoney_ As New List(Of String)
+
+        Using iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+            Dim operationsDB_ = iEnlace_.GetMongoCollection(Of MonedaGlobal)("Reg000Monedas")
+
+            operationsDB_.Aggregate().Match("{'aliasmoneda':{$elemMatch:{ Clave:'" & formato_ & "'}}}").Project(Function(e) New With {
+                                            Key .MoneyName = e.aliasmoneda(2).Clave
+                                         }).Limit(ilimit_).
+                    ToList().ForEach(Sub(moneda_)
+
+                                         listMoney_.Add(moneda_.MoneyName)
+
+                                     End Sub)
+        End Using
+
+        Return listMoney_
+
+    End Function
 
 
 #End Region
