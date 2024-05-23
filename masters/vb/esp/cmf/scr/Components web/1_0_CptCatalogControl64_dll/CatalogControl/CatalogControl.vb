@@ -460,6 +460,26 @@ Public Class CatalogControl
 
     End Sub
 
+    Public Sub CatalogDataBindingUpdate()
+
+        If (DataSource Is Nothing) Then
+
+            DataSource = DataRows
+
+        Else
+
+            For Each data_ In DataSource
+
+                DataRows.Add(data_)
+
+            Next
+
+            DataSource = DataRows
+
+        End If
+
+    End Sub
+
     Public Sub ClearRows()
 
         DataRows = New List(Of Object)
