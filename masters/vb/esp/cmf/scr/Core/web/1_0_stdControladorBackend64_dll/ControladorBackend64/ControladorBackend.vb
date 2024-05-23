@@ -453,7 +453,7 @@ Public Class ControladorBackend
 
     End Sub
 
-    Public Sub ActivaControles(Optional ByVal activar_ As Boolean = True)
+    Public Sub ActivaControles(Optional ByVal activar_ As Boolean = True) 'Prueba de bloqueos
 
         _bloqueos_edicion = AgregarComponentesBloqueadosEdicion()
 
