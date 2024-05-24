@@ -100,9 +100,13 @@ Public Class DualityBarControl
 
                 End If
 
-            End If
+                _textValue.Enabled = value
 
-            MyBase.Enabled = value
+            Else
+
+                MyBase.Enabled = value
+
+            End If
 
         End Set
 

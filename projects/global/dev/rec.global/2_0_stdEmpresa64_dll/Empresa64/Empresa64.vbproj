@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{74FF2477-57B8-433A-96A8-2D2FEAD16200}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Rec.Globals.Empresa64</RootNamespace>
+    <RootNamespace>Rec.Globals.Empresas</RootNamespace>
     <AssemblyName>Rec.Globals.Empresa64.2.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
@@ -99,10 +99,6 @@
     <Reference Include="Rec.Globals.Contacto64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\rec.globals\Rec.Globals.Contacto64.2.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0">
-      <HintPath>..\..\..\..\lib\rec.globals.controllers\Rec.Globals.Controllers.ControladorEmpresas64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Curp64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

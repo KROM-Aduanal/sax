@@ -50,8 +50,8 @@ Public Interface IControladorSecuencia
                      ByVal compania_ As Int32,
                      ByVal area_ As Int32,
                      ByVal subtipoSecuencia_ As Int32,
-                     ByVal prefijo_ As Int32,
-                     ByVal subfijo_ As Int32,
+                     ByVal prefijo_ As String,
+                     ByVal sufijo_ As String,
                      Optional session_ As IClientSessionHandle = Nothing) _
                      As TagWatcher
     Function Generar(ByVal secuencia_ As ISecuencia,

@@ -117,6 +117,10 @@ Public Class ControladorBackend
 
     Private _caracteristicas As New List(Of Caracteristica)
 
+    Private _bloqueos_edicion As List(Of WebControl)
+
+    Private _bloqueos_iniciales As List(Of WebControl)
+
     '******************* O P E R A C I O N   G E N E R I C A *************************
     'Private _operacionGenerica As OperacionGenerica
 
@@ -449,7 +453,11 @@ Public Class ControladorBackend
 
     End Sub
 
-    Public Sub ActivaControles(Optional ByVal activar_ As Boolean = True)
+    Public Sub ActivaControles(Optional ByVal activar_ As Boolean = True) 'Prueba de bloqueos
+
+        _bloqueos_edicion = AgregarComponentesBloqueadosEdicion()
+
+        _bloqueos_iniciales = AgregarComponentesBloqueadosInicial()
 
         If Formulario IsNot Nothing Then
 
@@ -467,6 +475,12 @@ Public Class ControladorBackend
 
                                     childcontrol_.Enabled = activar_
 
+                                    If activar_ = True Then
+
+                                        BloquearCampo(childcontrol_)
+
+                                    End If
+
                                 Next
 
                             ElseIf control_.GetType = GetType(PillboxControl) Then
@@ -474,6 +488,12 @@ Public Class ControladorBackend
                                 For Each childcontrol_ As Object In DirectCast(control_, PillboxControl).ListControls
 
                                     childcontrol_.Enabled = activar_
+
+                                    If activar_ = True Then
+
+                                        BloquearCampo(childcontrol_)
+
+                                    End If
 
                                 Next
 
@@ -486,6 +506,12 @@ Public Class ControladorBackend
                                     For Each childcontrol_ As Object In .Columns
 
                                         childcontrol_.Enabled = activar_
+
+                                        If activar_ = True Then
+
+                                            BloquearCampo(childcontrol_)
+
+                                        End If
 
                                     Next
 
@@ -501,6 +527,12 @@ Public Class ControladorBackend
 
                                 control_.Enabled = activar_
 
+                                If activar_ = True Then
+
+                                    BloquearCampo(control_)
+
+                                End If
+
                             End If
 
                         Next
@@ -513,7 +545,53 @@ Public Class ControladorBackend
 
         End If
 
+        If GetVars("edicion") = True Then
+
+            SetVars("edicion", False)
+
+        End If
+
     End Sub
+
+    Private Function BloquearCampo(control_ As Object)
+
+        If _bloqueos_iniciales IsNot Nothing Then
+
+            For Each bloq In _bloqueos_iniciales
+
+                If control_.ID = bloq.ID Then
+
+                    control_.Enabled = False
+
+                End If
+
+            Next
+
+        End If
+
+        If control_.Enabled = True Then
+
+            If GetVars("edicion") = True Then
+
+                If _bloqueos_edicion IsNot Nothing Then
+
+                    For Each bloq In _bloqueos_edicion
+
+                        If control_.ID = bloq.ID Then
+
+                            control_.Enabled = False
+
+                        End If
+
+                    Next
+
+                End If
+
+            End If
+
+        End If
+
+    End Function
 
     Private Function PaginaMarcada(ByVal pagina_ As String) As Boolean
 
@@ -1241,6 +1319,18 @@ Public Class ControladorBackend
 
     End Sub
 
+    Public Overridable Function AgregarComponentesBloqueadosInicial() As List(Of WebControl)
+
+        Return New List(Of WebControl)
+
+    End Function
+
+    Public Overridable Function AgregarComponentesBloqueadosEdicion() As List(Of WebControl)
+
+        Return New List(Of WebControl)
+
+    End Function
+
     Public Overridable Sub LimpiaSesion()
 
     End Sub
@@ -1721,6 +1811,8 @@ Public Class ControladorBackend
                 PreparaBotonera(Open)
 
                 BotoneraClicEditar()
+
+                SetVars("edicion", True)
 
             Case 4 'Archivar
 

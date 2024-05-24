@@ -12,6 +12,9 @@ Public Class Secuencia
     Public Property _id As ObjectId _
         Implements ISecuencia._id
 
+    Public Property secuenciaAnterior As Integer _
+        Implements ISecuencia.secuenciaAnterior
+
     Public Property sec As Integer _
         Implements ISecuencia.sec
 
@@ -50,4 +53,5 @@ Public Class Secuencia
 
     Public Property estado As Integer _
         Implements ISecuencia.estado
+
 End Class

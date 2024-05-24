@@ -291,6 +291,12 @@ Namespace Syn.Nucleo
             AlJustificado = 3
         End Enum
 
+        Public Enum SecuenciasRecursos
+
+            Empresas
+
+        End Enum
+
 #End Region
 
 #Region "Funciones"
