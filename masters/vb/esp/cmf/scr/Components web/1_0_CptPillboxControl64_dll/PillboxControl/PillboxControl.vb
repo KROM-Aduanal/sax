@@ -1483,7 +1483,7 @@ Public Class PillBox
 
         End If
 
-        Return False
+        Return control_.Checked
 
     End Function
 
