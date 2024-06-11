@@ -95,6 +95,7 @@ Public Class MathematicalInterpreterNCalc
                                                      "RED",
                                                      "REDONDEAR",
                                                      "ROOM",
+                                                     "SECUENCIA",
                                                      "SETROOM",
                                                      "SI",
                                                      "SUMAR",
@@ -604,7 +605,7 @@ Public Class MathematicalInterpreterNCalc
 
     Public Function GetParams(expression_ As String) As List(Of String) Implements IMathematicalInterpreter.GetParams
 
-        Dim listOperand_ = GetListFormula(expression_.Replace(Chr(34), "'"))
+        Dim listOperand_ = GetListFormula(expression_.Replace("[13]", Chr(13)).Replace(Chr(34), "'"))
 
         listOperand_ = GetListOperandOperator(listOperand_)
 
@@ -1944,24 +1945,24 @@ finalExpression_.Length - 1)
 
                                  Case "ENLISTAR"
 
-                                             Dim list_ As New List(Of String)
+                                     Dim list_ As New List(Of String)
 
-                                             For Each parameter_ In functionParameters_.Parameters
+                                     For Each parameter_ In functionParameters_.Parameters
 
-                                                 Dim wordList_ = parameter_.Evaluate.ToString.Split(",")
+                                         Dim wordList_ = parameter_.Evaluate.ToString.Split(",")
 
-                                                 For Each word_ In wordList_
+                                         For Each word_ In wordList_
 
-                                                     list_.Add(word_)
+                                             list_.Add(word_.Trim(" ").Trim(Chr(160)))
 
-                                                 Next
+                                         Next
 
 
-                                             Next
+                                     Next
 
-                                             functionParameters_.Result = list_
+                                     functionParameters_.Result = list_
 
-                                             resultIsDouble_ = False
+                                     resultIsDouble_ = False
 
                                  Case "ESBLANCO"
 
@@ -2184,6 +2185,34 @@ finalExpression_.Length - 1)
                                          End If
 
                                      End If
+
+                                 Case "SECUENCIA"
+
+
+                                     Dim list_ As New List(Of String)
+
+                                     If functionParameters_.Parameters.Count = 1 Then
+
+                                         For secuencia_ = 1 To functionParameters_.Parameters.First.Evaluate
+
+                                             list_.Add(secuencia_)
+
+                                         Next
+
+                                     Else
+
+                                         For secuencia_ = functionParameters_.Parameters.First.Evaluate To functionParameters_.Parameters.Last.Evaluate
+
+                                             list_.Add(secuencia_)
+
+                                         Next
+
+
+                                     End If
+
+                                     functionParameters_.Result = list_
+
+                                     resultIsDouble_ = False
 
 
                                  Case "SETROOM"
