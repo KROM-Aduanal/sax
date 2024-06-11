@@ -1076,7 +1076,7 @@ Public Class Ges022_001_AcuseValor
 
         'Dim listaValores = _ControladorFactura.ListaCamposFacturaComercial("0155524864", secciones_)
 
-        Dim Algo = _icontroladorMonedas.GetCveMoneys("cveCOVE", 1000)
+        'Dim Algo = _icontroladorMonedas.GetCveMoneys("cveCOVE", 1000)
         'Dim Algo3 = _ControladorMonedas.FactoresCambioRecientes(0)
 
         'Dim fecha_ As Date = Date.Parse("26/02/2024")

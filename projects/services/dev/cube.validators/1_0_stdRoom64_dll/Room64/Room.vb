@@ -179,3 +179,58 @@ Public Class validfields
 
 
 End Class
+
+
+Public Class validationpanel
+
+    Public Property _id As ObjectId
+    <BsonIgnoreIfNull>
+    Public Property fieldenum As Integer  ' ENUM CamposPedimento
+    <BsonIgnoreIfNull>
+    Public Property fieldname As String
+    <BsonIgnoreIfNull>
+    Public Property taked As Boolean
+    <BsonIgnoreIfNull>
+    Public Property routeenum As Integer    ' ENUM     ValidationRoute
+    <BsonIgnoreIfNull>
+    Public Property routedescription As String
+    <BsonIgnoreIfNull>
+    Public Property details As CreationDetails
+
+    <BsonIgnoreIfNull>
+    Public Property type As String
+    <BsonIgnoreIfNull>
+    Public Property filed As Boolean
+    <BsonIgnoreIfNull>
+    Public Property status As String
+    <BsonIgnoreIfNull>
+    Public Property estado As Int32
+
+
+End Class
+
+Public Class CreationDetails
+
+    Public Property _idcreation As ObjectId
+    <BsonIgnoreIfNull>
+    Public Property _iduser As ObjectId
+    <BsonIgnoreIfNull>
+    Public Property username As String
+    <BsonIgnoreIfNull>
+    Public Property enviroment As Integer
+    <BsonIgnoreIfNull>
+    Public Property companyid As Integer
+    <BsonIgnoreIfNull>
+    Public Property areatype As String
+
+    <BsonIgnoreIfNull>
+    Public Property value As String
+    <BsonIgnoreIfNull>
+    Public Property erroremited As String
+    <BsonIgnoreIfNull>
+    Public Property errortype As Integer
+    <BsonIgnoreIfNull>
+    Public Property rolid As Int32
+
+
+End Class

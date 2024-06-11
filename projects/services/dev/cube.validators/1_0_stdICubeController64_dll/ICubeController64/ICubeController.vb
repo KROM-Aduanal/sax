@@ -91,6 +91,8 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function CamposExcelMongo(excelFilePath_ As String) As String
 
+    Function GetValidFieldsOn(sentence_ As String) As TagWatcher
+
     Sub FillRoomResource()
 
     Sub UpdateRoomResource()

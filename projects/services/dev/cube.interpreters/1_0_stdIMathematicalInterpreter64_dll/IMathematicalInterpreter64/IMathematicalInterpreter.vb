@@ -64,7 +64,6 @@ Public Interface IMathematicalInterpreter : Inherits IDisposable
     Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), interprete_ As InterpreterTypes) As T
 
     Function GetReportFull() As ValidatorReport
-
     Function GetParams(expression_ As String) As List(Of String)
 
     Sub SetValidFields(campos_ As List(Of String))
