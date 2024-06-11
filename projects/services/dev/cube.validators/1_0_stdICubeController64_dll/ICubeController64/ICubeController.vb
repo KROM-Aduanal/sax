@@ -51,7 +51,7 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function ValidateFields(Of T)(values_ As Dictionary(Of String, T)) As ValidatorReport
 
-    Function ValidateFields(Of T)(documentoElectronico_ As DocumentoElectronico) As ValidatorReport
+    Function ValidateFields(Of T)(campos_ As List(Of String), documentoElectronico_ As DocumentoElectronico, ruta_ As Integer) As ValidatorReport
 
     Function SetCsv(roomName_ As String, csvFilePath_ As String) As TagWatcher
 

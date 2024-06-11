@@ -154,6 +154,16 @@ Public Class Ges022_001_AcuseValor
 
     End Sub
 
+    Public Overrides Function AgregarComponentesBloqueadosInicial() As List(Of WebControl)
+
+        Dim lista_ As New List(Of WebControl)
+
+        lista_.Add(ic_Prueba)
+
+        Return lista_
+
+    End Function
+
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 

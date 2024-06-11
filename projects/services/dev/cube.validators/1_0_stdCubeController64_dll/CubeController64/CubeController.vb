@@ -143,7 +143,7 @@ Public Class CubeController
         Throw New NotImplementedException()
     End Function
 
-    Public Function ValidateFields(Of T)(documentoElectronico_ As DocumentoElectronico) As ValidatorReport Implements ICubeController.ValidateFields
+    Public Function ValidateFields(Of T)(campos_ As List(Of String), documentoElectronico_ As DocumentoElectronico, ruta_ As Integer) As ValidatorReport Implements ICubeController.ValidateFields
         Throw New NotImplementedException()
     End Function
 
@@ -430,7 +430,7 @@ Public Class CubeController
 
         'Dim contenttype_ = "formulas"
 
-
+        Dim updateRaiz_ As Boolean = False
 
         If contenttype_.ToUpper = "FÓRMULA" OrElse contenttype_ = "fórmula" Then
 
@@ -460,13 +460,13 @@ Public Class CubeController
 
         Dim valorPresentacion_ As String = roomName_
 
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+        Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos
 
             Dim rolId_ = GetRolCubeId(cubeDestin_)
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-            Dim operationsDB_ = _enlaceDatos.GetMongoCollection(Of room)("", rolId_)
+            Dim operationsDB_ = enlaceDatos_.GetMongoCollection(Of room)("", rolId_)
 
             Dim roomHistoryList_ As New List(Of roomhistory)
 
@@ -667,7 +667,7 @@ Public Class CubeController
                                      .awaitingupdates = roomawait_,
                                      .historical = roomHistoryList_
                                      }
-
+                    updateRaiz_ = True
                 Else
 
 
@@ -689,6 +689,8 @@ Public Class CubeController
                                 roomCurrent_.awaitingupdates(0).status = "on"
                                 roomCurrent_.historical = roomHistoryList_
                                 roomCurrent_.status = "on"
+
+                                updateRaiz_ = True
 
                             End If
 
@@ -822,7 +824,7 @@ Public Class CubeController
 
 
 
-                Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of roomresource)("", 7)
+                Dim operationsDBResource_ = enlaceDatos_.GetMongoCollection(Of roomresource)("", 7)
 
 
 
@@ -859,6 +861,16 @@ Public Class CubeController
 
 
                 roomCurrent_.historical(0).createat = DateTime.Now
+
+                If updateRaiz_ Then
+
+                    Dim operationsvalidfields_ = enlaceDatos_.GetMongoCollection(Of validfields)("", 8)
+
+                    operationsvalidfields_.
+                    UpdateMany(Function(e) e.sectionfield.Equals(roomResource_.valorpresentacion.ToUpper),
+                                 Builders(Of validfields).Update.Set(Function(ch) ch.status, "off"))
+
+                End If
 
                 _status = New TagWatcher() With {.ObjectReturned = roomCurrent_}
 
@@ -1381,7 +1393,7 @@ Public Class CubeController
 
     End Function
 
-    Function GetFieldsNamesResource() As TagWatcher Implements ICubeController.GetFieldsNamesResource
+    Function SetFieldsNamesResourceOff(campo_ As String) As TagWatcher
 
         Dim validfields_ = New List(Of String)
 
@@ -1399,24 +1411,15 @@ Public Class CubeController
 
             Dim operationsvalidfields_ = _enlaceDatos.GetMongoCollection(Of validfields)("", 8)
 
-            operationsvalidfields_.
-                                                 Aggregate.ToList.ForEach(Sub(campos_)
-                                                                              validfields_.Add(campos_.valorpresentacion)
-                                                                              If _fieldmiss.IndexOf(campos_.sectionfield) = -1 Then
-                                                                                  _fieldmiss.Add(campos_.sectionfield)
-                                                                              End If
-
-
-                                                                          End Sub)
 
 
 
             _enlaceDatos.GetMongoCollection(Of roomresource)("", rolId_).
-                              Aggregate.ToList.ForEach(Sub(campos_)
-
-                                                           _fieldmiss.Remove(campos_.valorpresentacion)
-
-                                                       End Sub)
+                         Aggregate.ToList.ForEach(Sub(campos_)
+                                                      operationsvalidfields_.
+                                                      UpdateMany(Function(e) e.sectionfield.Equals(campos_.valorpresentacion),
+                                                                   Builders(Of validfields).Update.Set(Function(ch) ch.status, "off"))
+                                                  End Sub)
 
         End Using
 
@@ -1430,6 +1433,64 @@ Public Class CubeController
         _interpreter.SetValidFields(validfields_)
 
         _status = New TagWatcher() With {.ObjectReturned = validfields_}
+
+        Return _status
+
+    End Function
+
+    Function GetFieldsNamesResource() As TagWatcher Implements ICubeController.GetFieldsNamesResource
+
+        Dim validFields_ As New List(Of String)
+
+        Dim sax_ = SwicthedProjectSax(16)
+
+        Dim cuenta_ = 15
+
+        Dim rolId_ = 7
+
+        _fieldmiss = New List(Of String)
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+
+            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
+            Dim operationsvalidfields_ = _enlaceDatos.GetMongoCollection(Of validfields)("", 8)
+
+            operationsvalidfields_.
+                          Aggregate.
+                          ToList.ForEach(Sub(campo_)
+
+                                             validFields_.Add(campo_.valorpresentacion)
+
+                                             If campo_.status = "on" Then
+
+                                                 If _fieldmiss.IndexOf(campo_.sectionfield) = -1 Then
+
+                                                     _fieldmiss.Add(campo_.sectionfield)
+
+                                                 End If
+
+
+                                             End If
+
+
+                                         End Sub)
+
+
+
+
+        End Using
+
+
+
+
+        SwicthedProjectSax(13)
+
+
+
+        _interpreter.SetValidFields(validFields_)
+
+        _status = New TagWatcher() With {.ObjectReturned = validFields_}
 
         Return _status
 
@@ -1468,7 +1529,7 @@ Public Class CubeController
 
             SetFieldsNamesResource(elemento_("ID Seccion"), elemento_("Nombre Sistema"))
         Next
-
+        ' SetFieldsNamesResourceOff()
         Return ""
 
     End Function

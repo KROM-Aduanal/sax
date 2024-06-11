@@ -147,6 +147,8 @@ Public Class roomresource
     <BsonIgnoreIfNull>
     Public Property companyid As Int32
     <BsonIgnoreIfNull>
+    Public Property enviroment As Int32
+    <BsonIgnoreIfNull>
     Public Property valorpresentacion As String
 
 End Class
