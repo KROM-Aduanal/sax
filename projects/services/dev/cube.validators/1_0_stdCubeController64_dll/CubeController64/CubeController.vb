@@ -123,8 +123,7 @@ Public Class CubeController
     Sub New()
 
         _interpreter = New MathematicalInterpreterNCalc
-        GetFieldsNamesResource()
-        _interpreter.addOperands(GetOperands().ObjectReturned)
+
 
 
     End Sub
@@ -251,7 +250,7 @@ Public Class CubeController
 
                                           ' If(room_)
 
-                                          operands_.AddRange(New List(Of String) From {room_.roomname.Substring(room_.roomname.IndexOf(".") + 1), FindSignatureRule(room_.addresses, room_.rules, firma_).Replace("[13]", Chr(13))})
+                                          operands_.AddRange(New List(Of String) From {room_.roomname.Substring(room_.roomname.IndexOf(".") + 1), FindSignatureRule(room_.addresses, room_.rules, firma_)})
 
                                       End Sub)
 
@@ -447,9 +446,9 @@ Public Class CubeController
 
         Else
 
+            Dim mateController_ As IMathematicalInterpreter = New MathematicalInterpreterNCalc
 
-
-            params_.AddRange(_interpreter.GetParams(roomRules_))
+            params_.AddRange(mateController_.GetParams(roomRules_))
 
         End If
 
@@ -1132,7 +1131,7 @@ Public Class CubeController
 
                 For Each param_ In _rooms(0).addresses(1).ref.Skip(1)
 
-                    Dim newParam_ = ""
+
 
                     For Each key_ In params_.Keys
 
@@ -1144,21 +1143,6 @@ Public Class CubeController
 
                         Else
 
-                            If key_ = param_ Then
-
-                                If Not params_.ContainsKey(key_ & ".0") Then
-
-                                    newParam_ = key_
-
-                                    found_ = True
-
-                                    Exit For
-
-                                End If
-
-
-                            End If
-
                             found_ = False
 
                             mensaje_ &= param_ & Chr(13)
@@ -1167,70 +1151,22 @@ Public Class CubeController
 
                     Next
 
-                    If newParam_ <> "" Then
-
-                        params_(newParam_ & ".0") = params_(newParam_)
-
-                        params_.Remove(newParam_)
-
-                    End If
-
                 Next
 
                 If found_ Then
 
-                    If _interpreter Is Nothing Then
 
-                        _interpreter = New MathematicalInterpreterNCalc
-
-                        GetFieldsNamesResource()
-
-                    End If
-
-
+                    _interpreter = New MathematicalInterpreterNCalc
 
                     _status = New TagWatcher() With {.ObjectReturned = _interpreter.RunExpression(Of T)(_rooms(0).rules, params_)}
 
                     _status.SetOK()
 
-
-                    If TypeOf _status.ObjectReturned Is Dictionary(Of String, String) Then
-
-                        _reports.result = New List(Of String)
-
-                        For Each key_ In status.ObjectReturned.Keys
-
-                            _reports.result.Add("[" & key_ & "," & status.ObjectReturned(key_))
-
-                        Next
-
-
-                    Else
-
-                        _reports.result = New List(Of String)
-
-                        If TypeOf _status.ObjectReturned Is List(Of String) Then
-
-
-
-                            _reports.result = _status.ObjectReturned
-
-
-                        Else
-
-                            _reports.result.Add(_status.ObjectReturned)
-
-                        End If
-
-                    End If
-
-
-
-
+                    _reports.result = _status.ObjectReturned
 
                 Else
 
-                        _reports = New ValidatorReport
+                    _reports = New ValidatorReport
 
                     _reports.SetHeaderReport("Parámetros no encontrados",
                                              DateTime.Now,
@@ -1445,48 +1381,6 @@ Public Class CubeController
                 End If
 
             Next
-
-        End Using
-
-
-        SwicthedProjectSax(13)
-
-        _status = New TagWatcher() With {.ObjectReturned = validfields_}
-
-        Return _status
-
-    End Function
-
-    Function GetValidFieldsOn(sentence_ As String) As TagWatcher Implements ICubeController.GetValidFieldsOn
-
-        Dim validfields_ = New List(Of String)
-
-        Dim sax_ = SwicthedProjectSax(16)
-
-        Dim filtro_ As FilterDefinition(Of validfields) = Builders(Of validfields).Filter.Eq(Of String)("status", "on")
-
-        For Each word_ In sentence_.Split(" ")
-
-            filtro_ = filtro_ And Builders(Of validfields).Filter.Regex("sectionfield", New BsonRegularExpression(word_, "i"))
-
-        Next
-
-        _fieldmiss = New List(Of String)
-
-        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
-
-            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
-
-            _enlaceDatos.GetMongoCollection(Of validfields)("", 8).
-                         Aggregate.Match(filtro_).ToList.ForEach(Sub(campos_)
-
-                                                                     If validfields_.IndexOf(campos_.sectionfield) = -1 Then
-
-                                                                         validfields_.Add(campos_.sectionfield)
-
-                                                                     End If
-
-                                                                 End Sub)
 
         End Using
 
