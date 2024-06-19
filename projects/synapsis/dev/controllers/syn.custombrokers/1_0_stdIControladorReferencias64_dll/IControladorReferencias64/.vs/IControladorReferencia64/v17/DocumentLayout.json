@@ -1,0 +1,111 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdIControladorReferencia64_dll\\IControladorReferencia64\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|IControladorReferencia64||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4A784CF-4F27-44A5-AC3E-509553861931}|IControladorReferencia64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdicontroladorreferencia64_dll\\icontroladorreferencia64\\controladorreferencias.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{F4A784CF-4F27-44A5-AC3E-509553861931}|IControladorReferencia64.vbproj|solutionrelative:controladorreferencias.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4A784CF-4F27-44A5-AC3E-509553861931}|IControladorReferencia64.vbproj|c:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdicontroladorreferencia64_dll\\icontroladorreferencia64\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|8998e48e-b89a-4034-b66e-353d8c1fdc2e"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IControladorReferencia64",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdIControladorReferencia64_dll\\IControladorReferencia64\\IControladorReferencia64.vbproj",
+              "RelativeDocumentMoniker": "IControladorReferencia64.vbproj",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdIControladorReferencia64_dll\\IControladorReferencia64\\IControladorReferencia64.vbproj",
+              "RelativeToolTip": "IControladorReferencia64.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-02T15:14:12.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ControladorReferencias.vb",
+              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdIControladorReferencia64_dll\\IControladorReferencia64\\ControladorReferencias.vb",
+              "RelativeDocumentMoniker": "ControladorReferencias.vb",
+              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\controllers\\syn.custombrokers\\1_0_stdIControladorReferencia64_dll\\IControladorReferencia64\\ControladorReferencias.vb",
+              "RelativeToolTip": "ControladorReferencias.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAUwCMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-05-02T15:12:20.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{2bb8137c-bac8-4d04-820a-c52b5d5b82da}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{757affbd-aba2-4a34-a9d0-98e3035e33ef}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0504ff91-9d61-11d0-a794-00a0c9110051}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{28836128-fc2c-11d2-a433-00c04f72d18a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ecb7191a-597b-41f5-9843-03a4cf275dde}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{be4d7042-ba3f-11d2-840e-00c04f9902c1}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
