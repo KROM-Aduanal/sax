@@ -93,6 +93,8 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function GetValidFieldsOn(sentence_ As String) As TagWatcher
 
+    Function GetSectionsResource(fieldName_ As String) As TagWatcher
+
     Sub FillRoomResource()
 
     Sub UpdateRoomResource()

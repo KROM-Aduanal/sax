@@ -104,6 +104,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents bi_ProbarRuta As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
+    '''Control bi_ObtenerSecciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_ObtenerSecciones As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
     '''Control fscformulas.
     '''</summary>
     '''<remarks>

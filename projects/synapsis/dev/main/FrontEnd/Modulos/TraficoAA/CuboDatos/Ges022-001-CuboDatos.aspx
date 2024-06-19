@@ -57,6 +57,8 @@
 
                      <GWC:ButtonItem Text="Probar Ruta de Validación"  ID="bi_ProbarRuta" Visible="true" />
 
+                     <GWC:ButtonItem Text="Obtener Secciones de un Campo"  ID="bi_ObtenerSecciones" Visible="true" />
+
 
                 </DropdownButtons>
 

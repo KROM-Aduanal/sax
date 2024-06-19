@@ -1,4 +1,5 @@
-﻿Imports System.Web.Routing
+﻿Imports System.Reflection.Emit
+Imports System.Web.Routing
 Imports System.Windows.Forms
 Imports Cube.Interpreters
 Imports Cube.Validators
@@ -487,43 +488,80 @@ Public Class Ges022_001_CuboDatos
                                 _idRoom = GetVars("_idRoom")
 
 
-                                Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_, branchName_, rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), reason_:=ic_changeReason.Value)
+                                Dim ejecutar_ = True
 
-                                If tagwatcher_.ObjectReturned IsNot Nothing Then
+                                If rulesType_ = "formula" Then
 
-                                    Dim room_ As room = tagwatcher_.ObjectReturned
+                                    Dim valor_ = GetVars("resultTest_")
 
-                                    ColocaHistorial(room_.historical)
 
-                                    DisplayMessage("Regla asignada satisfactoriamente", Ok)
 
-                                    SetVars("_userName", _userName)
+                                    If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
-                                    SetVars("_accionDate", _accionDate)
+                                        ejecutar_ = False
 
-                                    If tb_Formula.Enabled = True Then
+                                        DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
 
-                                        _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+                                    Else
 
+                                        If GetVars("resultTest_").ToString = "OK" OrElse GetVars("resultTest_").ToString = "BAD" Then
+
+                                        Else
+
+                                            ejecutar_ = False
+
+                                            DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+                                        End If
+
+                                    End If
+                                End If
+
+
+
+
+
+                                If ejecutar_ Then
+
+                                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_, branchName_, rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), reason_:=ic_changeReason.Value)
+
+                                    If tagwatcher_.ObjectReturned IsNot Nothing Then
+
+                                        Dim room_ As room = tagwatcher_.ObjectReturned
+
+                                        ColocaHistorial(room_.historical)
+
+                                        DisplayMessage("Regla asignada satisfactoriamente", Ok)
+
+                                        SetVars("_userName", _userName)
+
+                                        SetVars("_accionDate", _accionDate)
+
+                                        If tb_Formula.Enabled = True Then
+
+                                            _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+
+
+
+                                        End If
+
+                                        SetVars("_interpreterController", _ctrlInterpreter)
+
+                                        SetVars("_cubeController", _ctrlCube)
+
+
+                                    Else
+
+
+
+                                        DisplayMessage("Ya existe una racámara con nombre " & roomName_ & " en " & branchName_, TypeStatus.OkBut)
 
 
                                     End If
 
-                                    SetVars("_interpreterController", _ctrlInterpreter)
-
-                                    SetVars("_cubeController", _ctrlCube)
-
-
-                                Else
-
-
-
-                                    DisplayMessage("Ya existe una racámara con nombre " & roomName_ & " en " & branchName_, TypeStatus.OkBut)
-
-
                                 End If
 
                             End If
+
 
 
                         End If
@@ -773,27 +811,62 @@ Public Class Ges022_001_CuboDatos
 
                             _idRoom = GetVars("_idRoom")
 
-                            Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_, GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="sent", reason_:=ic_changeReason.Value)
+                            Dim ejecutar_ = True
 
-                            If tagwatcher_.Status = Ok Then
+                            If rulesType_ = "formula" Then
 
-                                Dim room_ As room = tagwatcher_.ObjectReturned
-
-                                ColocaHistorial(room_.historical)
-
-                                DisplayMessage("Su solicitud ha sido enviada", TypeStatus.OkInfo)
-
-                                SetVars("_userName", _userName)
-
-                                SetVars("_accionDate", _accionDate)
+                                Dim valor_ = GetVars("resultTest_")
 
 
-                                bc_PendienteAutorizacion_.Enabled = True
 
-                                bi_SolicitarAutorizacion.Visible = False
+                                If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
+                                    ejecutar_ = False
+
+                                    DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.Errors)
+
+                                Else
+
+                                    If GetVars("resultTest_").ToString = "OK" OrElse GetVars("resultTest_").ToString = "BAD" Then
+
+                                    Else
+
+                                        ejecutar_ = False
+
+                                        DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+                                    End If
+
+                                End If
 
                             End If
+
+
+                            If ejecutar_ Then
+
+                                Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_.Replace("[13]", vbCrLf), GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="sent", reason_:=ic_changeReason.Value)
+
+                                If tagwatcher_.Status = Ok Then
+
+                                    Dim room_ As room = tagwatcher_.ObjectReturned
+
+                                    ColocaHistorial(room_.historical)
+
+                                    DisplayMessage("Su solicitud ha sido enviada", TypeStatus.OkInfo)
+
+                                    SetVars("_userName", _userName)
+
+                                    SetVars("_accionDate", _accionDate)
+
+
+                                    bc_PendienteAutorizacion_.Enabled = True
+
+                                    bi_SolicitarAutorizacion.Visible = False
+
+
+                                End If
+
+                            End If
+
 
 
                         Else
@@ -885,28 +958,63 @@ Public Class Ges022_001_CuboDatos
 
                     _idRoom = GetVars("_idRoom")
 
-                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_.Replace("[13]", vbCrLf), GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="on", reason_:=ic_changeReason.Value)
+                    Dim ejecutar_ = True
 
-                    If tagwatcher_.Status = Ok Then
+                    If rulesType_ = "formula" Then
 
-                        Dim room_ As room = tagwatcher_.ObjectReturned
-
-                        ColocaHistorial(room_.historical)
+                        Dim valor_ = GetVars("resultTest_")
 
 
-                        DisplayMessage("El cambio ha sido autorizado", TypeStatus.Ok)
 
-                        SetVars("_userName", _userName)
+                        If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
-                        SetVars("_accionDate", _accionDate)
+                            ejecutar_ = False
 
-                        _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+                            DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
 
-                        SetVars("_interpreterController", _ctrlInterpreter)
+                        Else
 
+                            If GetVars("resultTest_").ToString = "OK" OrElse GetVars("resultTest_").ToString = "BAD" Then
 
+                            Else
+
+                                ejecutar_ = False
+
+                                DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+                            End If
+
+                        End If
 
                     End If
+
+                    If ejecutar_ Then
+
+
+                        Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_.Replace("[13]", vbCrLf), GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="on", reason_:=ic_changeReason.Value)
+
+                        If tagwatcher_.Status = Ok Then
+
+                            Dim room_ As room = tagwatcher_.ObjectReturned
+
+                            ColocaHistorial(room_.historical)
+
+
+                            DisplayMessage("El cambio ha sido autorizado", TypeStatus.Ok)
+
+                            SetVars("_userName", _userName)
+
+                            SetVars("_accionDate", _accionDate)
+
+                            _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+
+                            SetVars("_interpreterController", _ctrlInterpreter)
+
+
+
+                        End If
+
+                    End If
+
 
                 Else
 
@@ -1010,7 +1118,7 @@ Public Class Ges022_001_CuboDatos
 
                 ChecaBotonComparar()
 
-                PreparaBotonera(FormControl.ButtonbarModality.Draft)
+                PreparaBotonera(FormControl.ButtonbarModality.Open)
 
                 ic_RoomName.Enabled = False
 
@@ -1020,13 +1128,13 @@ Public Class Ges022_001_CuboDatos
 
                 bc_PorAutorizar.Visible = False
 
-                bc_VerificadoNueva.Enabled = True
+                bc_VerificadoNueva.Visible = True
 
-                bc_PorAutorizarNueva.Enabled = True
+                bc_PorAutorizarNueva.Visible = True
 
-                l_RulesNew.Text = "Regla Vigente"
+                l_RulesNew.Text = "Regla Nueva"
 
-                l_RulesOld.Text = "Regla Nueva"
+                l_RulesOld.Text = "Regla Vigente"
 
 
 
@@ -1061,7 +1169,7 @@ Public Class Ges022_001_CuboDatos
 
                 ChecaBotonComparar()
 
-                PreparaBotonera(FormControl.ButtonbarModality.Draft)
+                PreparaBotonera(FormControl.ButtonbarModality.Open)
 
 
             Case 16 ' Esta Opción era para leer el CSV
@@ -1083,12 +1191,21 @@ Public Class Ges022_001_CuboDatos
 
                 'End If
 
-                'Dim diccionary_ As New Dictionary(Of String, Object) From {{"S1.CA_TIPO_OPERACION.0", "1"}}
-                'Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.PRUEBALUPITA", diccionary_)
+                Dim dictionary_ As New Dictionary(Of String, Object) From {{"S1.CA_TIPO_OPERACION.0", "1"}}
+                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.PRUEBALUPITA", dictionary_)
 
-                'Dim algo_ = _ctrlCube.status.ObjectReturned
+                Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
 
-                'Dim algo_2 = 4
+                Dim diccionarioNuevo_ As New Dictionary(Of String, List(Of String))
+
+                For Each elemento_ In diccionarioCubo_.Keys
+
+                    diccionarioNuevo_.Add(elemento_, diccionarioCubo_(elemento_).Split(",").ToList)
+
+
+                Next
+
+                Dim algo_ = 5
 
             Case 17 ' Esta opción era para probar la ruta de validación
 
@@ -1135,6 +1252,32 @@ Public Class Ges022_001_CuboDatos
                 'resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA21, pedimento_)
 
                 'resultado_.ShowMessageError()
+
+            Case 18  ' Esta opción nos dirá en que secciones se usa un campo del pedimento
+
+
+                If tb_Formula.Text <> "" Then
+
+                    Dim algo_ = _ctrlCube.GetSectionsResource(tb_Formula.Text)
+
+                    DisplayMessage(algo_.ObjectReturned, StatusMessage.Info)
+
+                End If
+
+                ' Obtener el control TextBox
+                'Dim textBox As TextBox = Me.tb_Formula
+
+                '' Obtener la posición inicial de la selección
+                'Dim startPos As Integer = tb_Formula.SelectionStart
+
+                '' Obtener la longitud de la selección
+                'Dim selectionLength As Integer = textBox.SelectionLength
+
+                '' Extraer el texto seleccionado
+                'Dim selectedText As String = textBox.Text.Substring(startPos, selectionLength)
+
+                '' Mostrar el texto seleccionado
+                'MessageBox.Show(selectedText)
 
 
 
@@ -1466,6 +1609,8 @@ Public Class Ges022_001_CuboDatos
 
         bc_PorAutorizarNueva.Enabled = False
 
+        l_RulesNew.Text = "Regla"
+
 
         If sender_.Value.ToString() <> "" Then
 
@@ -1602,6 +1747,8 @@ Public Class Ges022_001_CuboDatos
 
                     Else
 
+
+
                         Dim roomNameNew_ As String = rooms_(0).awaitingupdates(0).roomname
 
                         ic_RoomNameNew.Value = roomNameNew_.Substring(roomNameNew_.IndexOf(".") + 1)
@@ -1657,6 +1804,11 @@ Public Class Ges022_001_CuboDatos
 
                             bc_VarChange.Enabled = False
 
+                        Else
+
+                            l_RulesNew.Text = "Regla Borrador"
+
+
                         End If
 
                     End If
@@ -1682,6 +1834,10 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
+            SetVars("_bcComparar", 2)
+
+            ChecaBotonComparar()
+
             SetVars("_cubeSource", branchname_)
 
             CargaEncontradolModulo()
@@ -1690,9 +1846,7 @@ Public Class Ges022_001_CuboDatos
 
 
 
-            SetVars("_bcComparar", 2)
 
-            ChecaBotonComparar()
 
 
             'bc_Verificado.Visible = False
@@ -1854,6 +2008,18 @@ Public Class Ges022_001_CuboDatos
 
     Sub VerificarFormula()
 
+
+        Dim tipoRegla_ As Boolean
+
+        If p_actualizacionformula.Visible Then
+
+            tipoRegla_ = bc_FunctionChange.Visible
+
+        Else
+
+            tipoRegla_ = bc_Function.Visible
+
+        End If
 
 
         Dim formulaFormato_ As String = tb_Formula.Text.Replace("[13]", vbCrLf)
@@ -2066,13 +2232,47 @@ Public Class Ges022_001_CuboDatos
 
                 Next
 
+                SetVars("resultTest_", "BADBAD")
+
                 DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+
 
             Else
 
                 If TypeOf resultado_ IsNot List(Of String) Then
 
-                    DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
+                    If TypeOf resultado_ IsNot List(Of List(Of String)) Then
+
+                        SetVars("resultTest_", resultado_)
+
+                        'DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
+                        DisplayMessage(resultado_.ToString, TypeStatus.OkInfo)
+
+                    Else
+
+                        Dim listValue_ = resultado_(0)
+
+                        Dim listText_ = resultado_(1)
+
+                        Dim index_ = 0
+
+                        Dim stringFinal_ = ""
+
+                        For Each element_ In listValue_
+
+                            stringFinal_ &= "[" & element_ & "==" & listText_(index_) & "],"
+
+                            index_ += 1
+
+                        Next
+
+
+
+                        DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                    End If
+
 
                 Else
 
@@ -2082,6 +2282,8 @@ Public Class Ges022_001_CuboDatos
 
                         stringFinal_ &= element_ & ","
                     Next
+
+                    SetVars("resultTest_", "BADBAD")
 
                     DisplayMessage(stringFinal_, TypeStatus.OkInfo)
 
@@ -2820,23 +3022,23 @@ Public Class Ges022_001_CuboDatos
 
         End Select
 
-        For Each button_ In __SYSTEM_MODULE_FORM.Buttonbar.DropdownButtons
+        'For Each button_ In __SYSTEM_MODULE_FORM.Buttonbar.DropdownButtons
 
-            If button_.ID = bi_Comparar.ID Then
+        '    If button_.ID = bi_Comparar.ID Then
 
-                button_ = bi_Comparar
+        '        button_ = bi_Comparar
 
-            Else
+        '    Else
 
-                If button_.ID = bi_QuitarComparar.ID Then
+        '        If button_.ID = bi_QuitarComparar.ID Then
 
-                    button_ = bi_QuitarComparar
+        '            button_ = bi_QuitarComparar
 
-                End If
+        '        End If
 
-            End If
+        '    End If
 
-        Next
+        'Next
 
         'For Each contol_ In __SYSTEM_MODULE_FORM.Fieldsets
 
@@ -2848,6 +3050,12 @@ Public Class Ges022_001_CuboDatos
 
 
     End Sub
+
+    Sub SaveCubeFormula()
+
+
+    End Sub
+
 
 
 #End Region
