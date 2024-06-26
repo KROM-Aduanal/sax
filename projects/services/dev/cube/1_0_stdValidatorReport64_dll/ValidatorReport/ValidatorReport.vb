@@ -15,6 +15,8 @@ Public Class ValidatorReport
 
         Cube = 2
 
+        Route = 3
+
     End Enum
 
     Enum AdviceTypesReport
@@ -46,7 +48,7 @@ Public Class ValidatorReport
 
     Property _iduser As ObjectId
 
-    Property result As String
+    Property result As Object
 
 #End Region
 
@@ -289,6 +291,23 @@ Public Class ValidatorReport
                                                                               })
 
         End If
+
+    End Sub
+
+    Public Sub SetDetailReport(adviceTypeError_ As AdviceTypesReport,
+                                     description_ As String,
+                                     valuesource_ As String,
+                                     errortype_ As [Enum]
+                                     )
+
+        details = New List(Of ItemReport) From {New ItemReport With {.advicetypeerror = adviceTypeError_,
+                                                                          .descriptionerrortype = adviceTypeError_.ToString,
+                                                                          .description = description_,
+                                                                          .valuesourceitem = valuesource_,
+                                                                          .errortype = errortype_,
+                                                                          .numberitem = 1
+                                                                          }}
+
 
     End Sub
 

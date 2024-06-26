@@ -50,6 +50,15 @@ Partial Public Class Ges022_001_AcuseValor
     Protected WithEvents fscGenerales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control ic_Prueba.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ic_Prueba As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
     '''Control dbc_NumFacturaAcuseValor.
     '''</summary>
     '''<remarks>
