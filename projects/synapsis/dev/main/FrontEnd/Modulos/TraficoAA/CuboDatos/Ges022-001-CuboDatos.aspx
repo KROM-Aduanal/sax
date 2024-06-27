@@ -7,7 +7,7 @@
 
          <% If IsPopup = False Then %>
 
-               <GWC:FindbarControl Label="Buscar Gajo" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
+               <GWC:FindbarControl Label="Buscar recámara" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
 
          <% End If %> 
 
@@ -56,6 +56,8 @@
                     <GWC:ButtonItem Text="Leer CSV"  ID="bi_LeerCSV" Visible="true" />
 
                      <GWC:ButtonItem Text="Probar Ruta de Validación"  ID="bi_ProbarRuta" Visible="true" />
+
+                     <GWC:ButtonItem Text="Obtener Secciones de un Campo"  ID="bi_ObtenerSecciones" Visible="true" />
 
 
                 </DropdownButtons>
@@ -706,18 +708,6 @@
          return tieneLetra_;
      }
 
-     function getNthChild(element) {
-         let count = 1;
-         const parent = element.parentElement;
-         for (const child of parent.children) {
-             if (child === element) {
-                 return count;
-             }
-             console.log(child);
-             count++;
-         }
-         return -1; // Elemento no encontrado
-     }
 
 
  </script>

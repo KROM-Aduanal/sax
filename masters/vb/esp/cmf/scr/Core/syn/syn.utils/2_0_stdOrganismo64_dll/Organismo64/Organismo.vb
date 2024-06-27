@@ -166,6 +166,122 @@ Public Class Organismo
 
     End Function
 
+    Public Sub GetHistoricalUser(Of T As {Class, New})(historical As List(Of T), ByRef accionDate_ As List(Of String), ByRef userName_ As List(Of String), userLimit_ As Int32)
+
+        Dim cuenta_ = 1
+
+        For Each roomhstory_ In historical
+
+            If cuenta_ <= userLimit_ Then
+
+                Dim user As T = TryCast(roomhstory_, T)
+
+                If user IsNot Nothing Then
+
+                    userName_(cuenta_ - 1) = DirectCast(GetType(T).GetProperty("username").GetValue(user), String)
+
+                    accionDate_(cuenta_ - 1) = DirectCast(GetType(T).GetProperty("createat").GetValue(user), String)
+
+                End If
+
+            Else
+
+                Exit For
+
+            End If
+
+
+            cuenta_ += 1
+
+        Next
+
+    End Sub
+
+    Public Function DateDiffUX(initial_ As DateTime, final_ As DateTime, Optional tipoConstruccion_ As Integer = 1) As String 'DateDiffUX param tipo de construcción, 
+
+
+        Dim pastedTime As TimeSpan
+
+        Dim currentUser_ As String
+
+
+        pastedTime = final_ - initial_
+
+        Select Case tipoConstruccion_
+
+            Case 1
+
+                If pastedTime.Days > 0 Then
+
+                    If pastedTime.Days = 1 Then
+
+                        currentUser_ = "Hace 1 día"
+
+                    Else
+
+                        currentUser_ = "Hace " & pastedTime.Days & " días"
+
+                    End If
+
+                Else
+
+                    If pastedTime.Hours > 0 Then
+
+                        If pastedTime.Hours = 1 Then
+
+                            currentUser_ = "Hace 1 hr"
+
+                        Else
+
+                            currentUser_ = "Hace " & pastedTime.Hours & " hrs"
+
+                        End If
+
+                    Else
+
+                        If pastedTime.Minutes > 0 Then
+
+                            If pastedTime.Minutes = 1 Then
+
+                                currentUser_ = "Hace 1 min"
+
+                            Else
+
+                                currentUser_ = "Hace " & pastedTime.Minutes & " mins"
+
+                            End If
+
+                        Else
+
+
+                            If pastedTime.Seconds = 1 Then
+
+                                currentUser_ = "Hace 1s"
+
+                            Else
+
+                                currentUser_ = "Hace " & pastedTime.Seconds & "s"
+
+                            End If
+
+                        End If
+
+                    End If
+
+                End If
+
+            Case Else
+
+                currentUser_ = "Hace 1s"
+
+        End Select
+
+
+
+        Return currentUser_
+
+    End Function
+
     Public Function SeparacionPalabras(oracion_ As String,
                                        campo_ As String,
                                        anexo_ As String,
@@ -299,6 +415,49 @@ Public Class Organismo
         Next
 
         Return temporal_
+
+    End Function
+
+    Public Function ObtenerSelectOption(elementList_ As List(Of String)) As List(Of SelectOption)
+
+        Dim temporal_ As New List(Of SelectOption)
+
+        Dim cuenta_ As Int16 = 0
+
+
+        For Each element_ In elementList_
+
+            temporal_.Add(New SelectOption With {.Value = cuenta_,
+                                                 .Indice = cuenta_,
+                                                 .Text = element_})
+
+            cuenta_ += 1
+
+        Next
+
+        Return temporal_
+
+    End Function
+
+    Public Function GetPredicates(sentence_ As String, Optional separator_ As String = " ") As Predicate(Of String)
+
+        Dim listString_ = sentence_.ToString.Split(separator_)
+
+        Dim listmatch_ As New List(Of Predicate(Of String))
+
+        For Each string_ In listString_
+
+            listmatch_.Add(Function(ch) ch.Contains(string_))
+
+        Next
+
+        Return CombinePredicates(listmatch_)
+
+    End Function
+
+    Public Function CombinePredicates(Of T)(predicates As List(Of Predicate(Of T))) As Predicate(Of T)
+
+        Return Function(item) predicates.All(Function(p) p(item))
 
     End Function
 
@@ -767,9 +926,34 @@ Public Class Organismo
                                                Else
                                                    For cadena_ = 1 To estatus_.ElementCount - 2
 
-                                                       bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).
+                                                       If estatus_.GetElement("campo" & cadena_).Value = BsonNull.Value Then
+
+                                                           Dim nodoNull_ =
+                                               BsonSerializer.Deserialize(Of Nodo)(estatus_.GetElement("campo1").Value.AsBsonDocument)
+
+                                                           While nodoNull_.DescripcionTipoNodo <> "Campo"
+
+                                                               nodoNull_ = nodoNull_.Nodos(0)
+
+                                                           End While
+
+                                                           DirectCast(nodoNull_, Campo).Valor = ""
+
+                                                           DirectCast(nodoNull_, Campo).ValorPresentacion = ""
+
+                                                           DirectCast(nodoNull_, Campo).Nombre = "campo" & cadena_
+
+                                                           bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).Add(nodoNull_)
+
+
+                                                       Else
+                                                           bulkCamposPedidos_(estatus_.GetElement("FolioDocumento").Value.ToString).
                                                        Add(BsonSerializer.Deserialize(Of Nodo) _
                                                        (estatus_.GetElement("campo" & cadena_).Value.AsBsonDocument))
+
+                                                       End If
+
+
 
                                                    Next
 

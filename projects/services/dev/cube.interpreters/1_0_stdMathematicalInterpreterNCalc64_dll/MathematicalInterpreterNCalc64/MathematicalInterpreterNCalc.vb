@@ -81,24 +81,30 @@ Public Class MathematicalInterpreterNCalc
 
         _customFunctions = New List(Of String) From {"AHORA",
                                                      "ASIGNAR",
+                                                     "BUSCARV",
                                                      "COINCIDIR",
+                                                     "CONCATENAR",
                                                      "DENTRO",
+                                                     "DICCIONARIO",
                                                      "EN",
                                                      "ENLISTAR",
                                                      "ESBLANCO",
                                                      "ESPACIOS",
-                                                     "EXISTE",
                                                      "EXTRAE",
+                                                     "HOY",
                                                      "LARGO",
+                                                     "NO",
                                                      "O",
                                                      "RANGO",
                                                      "RED",
                                                      "REDONDEAR",
                                                      "ROOM",
+                                                     "SECUENCIA",
                                                      "SETROOM",
                                                      "SI",
                                                      "SUMAR",
                                                      "SUMAR.SI",
+                                                     "SUSTITUIR",
                                                      "TRUNC",
                                                      "TRUNCAR",
                                                      "Y"}
@@ -108,6 +114,7 @@ Public Class MathematicalInterpreterNCalc
                                                     "N",
                                                     "Truncate",
                                                     "Sqrt",
+                                                    "not",
                                                     "Pow"}
 
         _operators = New List(Of String) From {"(",
@@ -124,8 +131,11 @@ Public Class MathematicalInterpreterNCalc
                                                 "/",
                                                 "^",
                                                 "~",
+                                                "&",
                                                 " and ",
-                                                " or "
+                                                " or ",
+                                                "!",
+                                                "not "
                                                 }
 
         _operandsTemp = SetOperands()
@@ -141,6 +151,12 @@ Public Class MathematicalInterpreterNCalc
         Dim paramErrorName_ As New List(Of String)
 
         Dim result_ As Boolean = True
+
+        If _validFields Is Nothing Then
+
+            _validFields = New List(Of String)
+
+        End If
 
         For Each fied_ In fields_
 
@@ -222,7 +238,7 @@ Public Class MathematicalInterpreterNCalc
 
         End If
 
-        Dim newExpression_ = GetExpression(expression_.Replace(Chr(34), "'"),
+        Dim newExpression_ = GetExpression(expression_.Replace(Chr(34), "'").Replace("\r", " "),
                                            constantValues_)
 
         Dim paramValues_ As New Dictionary(Of String, Object)
@@ -254,36 +270,55 @@ Public Class MathematicalInterpreterNCalc
 
                     Dim doubleParse_ As Double = 0
 
-                    If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
+                    If constanvalue_.Value Is Nothing Then
 
-                        If doubleParse_ < 1 Then
+                        paramValues_.Add(constanvalue_.Key, "")
 
-                            paramValues_.Add(constanvalue_.Key, doubleParse_)
+                    Else
+
+                        If TypeOf constanvalue_.Value Is List(Of String) Then
+
+                            paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
 
                         Else
 
-                            If constanvalue_.Value.ToString(0) = "0" Then
 
-                                paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+                            If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
+
+                                If doubleParse_ < 0 Or constanvalue_.Value.ToString.IndexOf(".") <> -1 Then
+
+                                    paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                                Else
+
+                                    If constanvalue_.Value.ToString(0) = "0" Then
+
+                                        paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+
+                                    Else
+
+                                        paramValues_.Add(constanvalue_.Key, doubleParse_)
+
+                                    End If
+
+                                End If
+
+
 
                             Else
 
-                                paramValues_.Add(constanvalue_.Key, doubleParse_)
+                                paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
 
                             End If
 
                         End If
 
-
-                    Else
-
-                        paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
-
                     End If
+
 
                 End If
 
-            End If
+                End If
 
 
 
@@ -318,10 +353,9 @@ Public Class MathematicalInterpreterNCalc
         Else
 
 
-            _expressionNCalc = New NCalc.Expression(newExpression_) With {.Parameters = paramValues_}
+            _expressionNCalc = New NCalc.Expression(newExpression_.Replace("&", " and ")) With {.Parameters = paramValues_}
 
             AddHandler _expressionNCalc.EvaluateFunction, RunFunctionHandler(paramValues_)
-
 
 
             Try
@@ -482,7 +516,7 @@ Public Class MathematicalInterpreterNCalc
 
     End Function
 
-    Public Function GetReportFull() As ValidatorReport Implements IMathematicalInterpreter.GetReportFull
+    Public Function GetReportFul() As ValidatorReport Implements IMathematicalInterpreter.GetReportFull
 
         Return _reports
 
@@ -604,7 +638,7 @@ Public Class MathematicalInterpreterNCalc
 
     Public Function GetParams(expression_ As String) As List(Of String) Implements IMathematicalInterpreter.GetParams
 
-        Dim listOperand_ = GetListFormula(expression_.Replace(Chr(34), "'"))
+        Dim listOperand_ = GetListFormula(expression_.Replace("[13]", Chr(13)).Replace(Chr(34), "'"))
 
         listOperand_ = GetListOperandOperator(listOperand_)
 
@@ -620,23 +654,87 @@ Public Class MathematicalInterpreterNCalc
 
         For Each operand_ In listOperand_
 
+            Dim index_ As Int16 = 0
 
-            operand_ = operand_.Replace(" ", "").Replace(vbCrLf, "").Replace(vbLf, "").Replace(Chr(34), "'")
+            Dim number_ As Int32
 
-            If Not listOperadTemp_.Contains(operand_) Then
+            Dim found_ = False
 
-                If operand_.Length > 0 Then
+            While index_ < operand_.Length And Not found_
 
-                    If operand_(0) <> "'" And operand_ <> "SI" And operand_ <> "RED" Then 'And operand_.IndexOf(".") > 0 Then
 
-                        listOperadTemp_.Add(operand_)
+                If Int32.TryParse(operand_(index_), number_) And index_ Mod 2 = 0 Then
+
+                    found_ = True
+
+                Else
+
+                    index_ += 1
 
                     End If
 
 
+            End While
+
+            If found_ Then
+
+                Dim initial_ = operand_.Substring(index_, operand_.Length - index_)
+
+                If Int32.TryParse(initial_, number_) Then
+
+                    Dim position_ = _operandsTemp.IndexOf(operand_.Substring(0, index_))
+
+                    If position_ > -1 Then
+
+                        Dim operandNew_ = _operandsTemp(position_ + 1)
+
+                        For index_ = 0 To initial_ - 1
+
+
+                            If listOperadTemp_.IndexOf(operandNew_) = -1 Then
+
+                                listOperadTemp_.Add(operandNew_ & "." & index_)
+
+                            End If
+
+                        Next
+
+                    Else
+
+                        found_ = False
+
+                    End If
+
+                Else
+
+                    found_ = False
+
+                End If
+
+
+            End If
+
+            If Not found_ Then
+
+                operand_ = operand_.Replace(" ", "").Replace(vbCrLf, "").Replace(vbLf, "").Replace(Chr(34), "'").Replace("[13]", Chr(13))
+
+                If Not listOperadTemp_.Contains(operand_) Then
+
+                    If operand_.Length > 0 Then
+
+                        If operand_(0) <> "'" And operand_ <> "SI" And operand_ <> "RED" Then 'And operand_.IndexOf(".") > 0 Then
+
+                            listOperadTemp_.Add(operand_)
+
+                        End If
+
+
+                    End If
+
                 End If
 
             End If
+
 
         Next
 
@@ -1033,6 +1131,11 @@ finalExpression_.Length - 1)
 
                                     operand_ = " or "
 
+                                Case "not"
+
+                                    operand_ = "not "
+
+
                                 Case Else
 
                                     operand_ = GetValueOperand(operand_).Replace(Chr(34), "'")
@@ -1054,7 +1157,15 @@ finalExpression_.Length - 1)
 
                                     Else
 
-                                        listOperand_.Add(operand_ & ",SI")
+                                        If operand_.ToUpper = "NOT" Or operand_.ToUpper = " NOT" Or operand_.ToUpper = "NOT " Or operand_.ToUpper = " NOT " Then
+                                            operand_ = "not "
+                                            listOperand_.Add(operand_ & ",NO")
+
+                                        Else
+                                            listOperand_.Add(operand_ & ",SI")
+
+                                        End If
+
 
                                     End If
 
@@ -1563,7 +1674,12 @@ finalExpression_.Length - 1)
 
             Dim posicionOperator_ = expresion_.IndexOf(operator_)
 
-            If (expresion_.IndexOf("'") < posicionOperator_ And expresion_.Substring(1).IndexOf("'") > posicionOperator_) Or posicionOperator_ = -1 Then
+            Dim initialQuote_ = expresion_.IndexOf("'")
+
+            Dim finalQuote_ = expresion_.Substring(1).IndexOf("'") + initialQuote_ + 1
+
+
+            If (initialQuote_ < posicionOperator_ And finalQuote_ > posicionOperator_) Or posicionOperator_ = -1 Then
 
                 Return False
 
@@ -1791,7 +1907,22 @@ finalExpression_.Length - 1)
 
                                  Case "AHORA"
 
-                                     Dim now_ = Date.Today.Year & "/" & FormatToTwoDigits(Date.Today.Month) & "/" & FormatToTwoDigits(Date.Today.Day)
+                                     Dim countParameters_ = functionParameters_.
+                                                          Parameters.Count
+
+
+                                     Dim now_ = Date.Today.Year & "/" & FormatToTwoDigits(Date.Today.Month) & "/" & FormatToTwoDigits(Date.Today.Day) & " " &
+                                               FormatToTwoDigits(DateTime.Now.Hour) & ":" & FormatToTwoDigits(DateTime.Now.Minute) & ":" & FormatToTwoDigits(DateTime.Now.Second)
+
+
+                                     If countParameters_ > 0 Then
+
+                                         now_ = now_.Replace("/", functionParameters_.
+                                                          Parameters.First.Evaluate)
+
+
+                                     End If
+
 
                                      functionParameters_.Result = now_
 
@@ -1813,41 +1944,153 @@ finalExpression_.Length - 1)
 
                                      _operandsTemp.Add(secondParameter_)
 
-                                     result_ = 1
+                                     functionParameters_.Result = "VALOR ASIGNADO, " & Chr(34) & firstParameter_ & Chr(34) & " SE RECONOCE COMO " & Chr(34) & secondParameter_ & Chr(34)
+
+                                     resultIsDouble_ = False
+
+                                 Case "BUSCARV"
+
+                                     Dim firstParameter_ = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+
+                                     Dim secondParameter_ = functionParameters_.
+                                                            Parameters(1).
+                                                            Evaluate
+
+                                     Dim thirdParameter_ = functionParameters_.
+                                                            Parameters(2).
+                                                            Evaluate
+                                     Dim fourthParameter_ = functionParameters_.
+                                                            Parameters(3).
+                                                            Evaluate
+                                     Dim search_ = functionParameters_.
+                                                            Parameters.
+                                                            Last.
+                                                            Evaluate
+
+                                     Dim value_, text_ As New List(Of String)
+
+                                     Dim position_ As Int32 = 0
+
+                                     For Each element_ In fourthParameter_
+
+                                         If element_.Contains(firstParameter_) Then
+
+                                             value_.Add(secondParameter_(position_))
+
+                                             text_.Add(thirdParameter_(position_))
+
+                                         End If
+
+                                         position_ += 1
+
+                                     Next
+
+                                     Dim listresult_ As New List(Of List(Of String))
+
+                                     listresult_.Add(value_)
+
+                                     listresult_.Add(text_)
+
+                                     functionParameters_.Result = listresult_
+
+                                     resultIsDouble_ = False
+
 
                                  Case "COINCIDIR"
 
                                      Dim sentencesIn_ As String = ""
 
-                                     For Each parameter_ In functionParameters_.Parameters.Take(functionParameters_.Parameters.Count - 1)
+                                     Dim found_ As Boolean = False
 
-                                         If TypeOf parameter_.Evaluate Is List(Of String) Then
+                                     Dim paramterLast_ = functionParameters_.Parameters.Last.Evaluate
 
-                                             For Each minilist_ In parameter_.Evaluate
-
-                                                 sentencesIn_ &= "'" & minilist_ & "',"
-
-                                             Next
-
-                                         Else
-
-                                             sentencesIn_ &= "'" & parameter_.Evaluate & "',"
-
-                                         End If
-
-                                     Next
-
-                                     Dim paramterLast_ = functionParameters_.Parameters.Last
-
-                                     Select Case paramterLast_.Evaluate
+                                     Select Case paramterLast_
 
                                          Case 0
+
+                                             For Each parameter_ In functionParameters_.Parameters.Take(functionParameters_.Parameters.Count - 1)
+
+                                                 If TypeOf parameter_.Evaluate Is List(Of String) Then
+
+                                                     For Each minilist_ In parameter_.Evaluate
+
+                                                         sentencesIn_ &= "'" & minilist_ & "',"
+
+                                                     Next
+
+                                                 Else
+
+                                                     sentencesIn_ &= "'" & parameter_.Evaluate & "',"
+
+                                                 End If
+
+                                             Next
 
                                              sentencesIn_ = "in(" & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
 
                                          Case 1
 
-                                         Case 2
+                                             Dim first_ As String = functionParameters_.Parameters.First.Evaluate
+
+                                             For Each parameter_ In functionParameters_.Parameters.Take(functionParameters_.Parameters.Count - 1)
+
+                                                 If TypeOf parameter_.Evaluate Is List(Of String) Then
+
+                                                     For Each minilist_ In parameter_.Evaluate
+
+                                                         If first_ > minilist_ Then
+
+                                                             found_ = True
+                                                         End If
+
+                                                     Next
+
+                                                 Else
+
+
+                                                     If first_ > parameter_.Evaluate Then
+
+                                                         found_ = True
+
+                                                     End If
+
+                                                 End If
+
+                                             Next
+
+                                         Case -1
+
+
+                                             Dim first_ As String = functionParameters_.Parameters.First.Evaluate
+
+                                             For Each parameter_ In functionParameters_.Parameters.Take(functionParameters_.Parameters.Count - 1)
+
+                                                 If TypeOf parameter_.Evaluate Is List(Of String) Then
+
+                                                     For Each minilist_ In parameter_.Evaluate
+
+                                                         If first_ < minilist_ Then
+
+                                                             found_ = True
+                                                         End If
+
+                                                     Next
+
+                                                 Else
+
+
+                                                     If first_ < parameter_.Evaluate Then
+
+                                                         found_ = True
+
+                                                     End If
+
+                                                 End If
+
+                                             Next
 
                                          Case Else
 
@@ -1856,33 +2099,86 @@ finalExpression_.Length - 1)
 
                                      End Select
 
+                                     If paramterLast_ = 0 OrElse paramterLast_ = 1 OrElse paramterLast_ = -1 Then
+
+                                         Dim expression_ = New NCalc.Expression(sentencesIn_)
 
 
-                                     Dim expression_ = New NCalc.Expression(sentencesIn_)
+                                         expression_.Parameters = values_
+
+                                         AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
 
-                                     expression_.Parameters = values_
+                                         functionParameters_.Result = expression_.Evaluate
 
-                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                     Else
+
+                                         functionParameters_.Result = found_
+
+                                     End If
 
 
-                                     functionParameters_.Result = expression_.Evaluate
 
                                      resultIsDouble_ = False
 
-                                 Case "DENTRO"
+                                 Case "CONCATENAR"
 
                                      Dim sentencesIn_ As String = ""
 
                                      For Each parameter_ In functionParameters_.Parameters
 
-                                         If TypeOf parameter_.Evaluate Is List(Of String) Then
+                                         Dim valor_ = parameter_.Evaluate
 
-                                             For Each minilist_ In parameter_.Evaluate
+                                         If TypeOf valor_ Is List(Of String) Then
 
-                                                 sentencesIn_ &= "'" & minilist_ & "',"
+                                             For Each minilist_ In valor_
+
+                                                 sentencesIn_ &= minilist_
 
                                              Next
+
+                                         Else
+
+                                             sentencesIn_ &= parameter_.Evaluate
+
+                                         End If
+
+                                     Next
+
+
+                                     functionParameters_.Result = sentencesIn_
+
+                                     resultIsDouble_ = False
+
+                                 Case "DENTRO"
+
+                                     Dim encontrado_ As Boolean = False
+
+                                     Dim sentencesIn_ As String = ""
+
+                                     Dim elemento_ As String = functionParameters_.Parameters.First.Evaluate
+
+                                     For Each parameter_ In functionParameters_.Parameters.Skip(1)
+
+                                         Dim valor_ = parameter_.Evaluate
+
+                                         If TypeOf valor_ Is List(Of String) Then
+
+                                             Dim valorAux_ As List(Of String) = valor_
+
+                                             'For Each minilist_ In parameter_.Evaluate
+
+                                             '    sentencesIn_ &= "'" & minilist_ & "',"
+
+                                             'Next
+                                             If valorAux_.IndexOf(elemento_) > -1 Then
+
+                                                 encontrado_ = True
+
+                                                 Exit For
+
+                                             End If
+
 
                                          Else
 
@@ -1892,17 +2188,52 @@ finalExpression_.Length - 1)
 
                                      Next
 
-                                     sentencesIn_ = "in(" & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
+                                     If encontrado_ OrElse sentencesIn_ = "" Then
 
-                                     Dim expression_ = New NCalc.Expression(sentencesIn_)
+                                         functionParameters_.Result = encontrado_
 
-
-                                     expression_.Parameters = values_
-
-                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                     Else
 
 
-                                     functionParameters_.Result = expression_.Evaluate
+
+                                         sentencesIn_ = "in('" & elemento_ & "'," & sentencesIn_.Substring(0, sentencesIn_.Length - 1) & ")"
+
+                                         Dim expression_ = New NCalc.Expression(sentencesIn_)
+
+
+                                         expression_.Parameters = values_
+
+                                         AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+
+                                         functionParameters_.Result = expression_.Evaluate
+
+                                     End If
+
+                                     resultIsDouble_ = False
+
+                                 Case "DICCIONARIO"
+
+
+                                     Dim elements_ As List(Of String) = functionParameters_.Parameters.First.Evaluate
+
+                                     Dim separator_ As String = functionParameters_.Parameters(1).Evaluate
+
+                                     Dim dictionary_ As New Dictionary(Of String, String)
+
+
+                                     For Each element_ In elements_
+
+                                         Dim keyValue_ = element_.Split(separator_)
+
+                                         Dim key_ = keyValue_(0).Trim(" ")
+
+                                         Dim value_ = keyValue_(1).Trim(" ")
+
+                                         dictionary_.Add(key_, value_)
+
+                                     Next
+
+                                     functionParameters_.Result = dictionary_
 
                                      resultIsDouble_ = False
 
@@ -1944,33 +2275,90 @@ finalExpression_.Length - 1)
 
                                  Case "ENLISTAR"
 
-                                             Dim list_ As New List(Of String)
+                                     Dim list_ As New List(Of String)
 
-                                             For Each parameter_ In functionParameters_.Parameters
+                                     Dim separator_ As String
 
-                                                 Dim wordList_ = parameter_.Evaluate.ToString.Split(",")
+                                     Dim parameter_
 
-                                                 For Each word_ In wordList_
+                                     Dim total_ = functionParameters_.Parameters.Count - 1
 
-                                                     list_.Add(word_)
+                                     If total_ = -1 Then
 
-                                                 Next
+                                         separator_ = ","
+
+                                         parameter_ = ","
+
+                                     Else
 
 
-                                             Next
+                                         parameter_ = functionParameters_.Parameters.Last.Evaluate
 
-                                             functionParameters_.Result = list_
+                                     End If
 
-                                             resultIsDouble_ = False
+                                     If TypeOf parameter_ Is List(Of String) Then
+
+                                         separator_ = ","
+
+                                     Else
+
+                                         separator_ = parameter_.ToString
+
+                                         If separator_ <> "," And separator_ <> "|" And separator_ <> "{}" And separator_ <> "#" Then
+
+                                             separator_ = ","
+
+                                         Else
+
+                                             total_ -= 1
+
+                                         End If
+
+
+                                     End If
+
+
+                                     For index_ As Integer = 0 To total_
+
+                                         Dim value_ = functionParameters_.Parameters(index_).Evaluate
+
+                                         Dim wordList_ As New List(Of String)
+
+                                         If TypeOf value_ Is List(Of String) Then
+
+                                             wordList_ = value_
+
+                                         Else
+
+                                             wordList_ = functionParameters_.Parameters(index_).Evaluate.ToString.Split(separator_).ToList
+
+                                         End If
+
+                                         For Each word_ In wordList_
+
+                                             list_.Add(word_.Trim(" ").Trim(Chr(160)).Replace("\r", ""))
+
+                                         Next
+
+
+                                     Next
+
+                                     functionParameters_.Result = list_
+
+                                     resultIsDouble_ = False
 
                                  Case "ESBLANCO"
 
-                                     Dim firstParameter_ As String = functionParameters_.
+                                     Dim firstParameter_ = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
 
-                                             If firstParameter_ <> "" Then
+                                     If TypeOf firstParameter_ Is List(Of String) OrElse TypeOf firstParameter_ Is Dictionary(Of String, String) Then
+
+                                         If firstParameter_ IsNot Nothing Then
+
+                                             If firstParameter_.Count > 0 Then
 
                                                  functionParameters_.Result = False
 
@@ -1980,65 +2368,181 @@ finalExpression_.Length - 1)
 
                                              End If
 
+                                         Else
 
-                                             resultIsDouble_ = False
+                                                 functionParameters_.Result = True
 
-                                         Case "ESPACIOS"
+                                         End If
 
-                                             Dim firstParameter_ As String = functionParameters_.
+                                     Else
+
+                                         If firstParameter_.ToString <> "" Then
+
+                                             functionParameters_.Result = False
+
+                                         Else
+
+                                             functionParameters_.Result = True
+
+                                         End If
+
+                                     End If
+
+
+
+
+                                     resultIsDouble_ = False
+
+                                 Case "ESPACIOS"
+
+                                     Dim firstParameter_ As String = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
-                                             Dim sinEspcacios_ As String = ""
+                                     Dim sinEspcacios_ As String = ""
 
+                                     Dim encontroCaracter_ = False
 
-                                             For Each caracter_ In firstParameter_
+                                     For Each caracter_ In firstParameter_
 
-                                                 If caracter_ <> " " Then
+                                         If encontroCaracter_ Then
 
-                                                     sinEspcacios_ &= caracter_
+                                             sinEspcacios_ &= caracter_
 
-                                                 End If
+                                         Else
 
-                                             Next
+                                             If caracter_ <> " " And Asc(caracter_) <> 160 Then
 
-                                             functionParameters_.Result = sinEspcacios_
+                                                 encontroCaracter_ = True
 
-                                             resultIsDouble_ = False
+                                                 sinEspcacios_ &= caracter_
 
-                                         Case "EXTRAE"
+                                             End If
 
-                                             Dim firstParameter_ As String = functionParameters_.
+                                         End If
+
+                                     Next
+
+                                     firstParameter_ = sinEspcacios_
+
+                                     sinEspcacios_ = ""
+
+                                     encontroCaracter_ = False
+
+                                     For Each caracter_ In firstParameter_.Reverse
+
+                                         If encontroCaracter_ Then
+
+                                             sinEspcacios_ = caracter_ & sinEspcacios_
+
+                                         Else
+
+                                             If caracter_ <> " " And Asc(caracter_) <> 160 Then
+
+                                                 encontroCaracter_ = True
+
+                                                 sinEspcacios_ = caracter_ & sinEspcacios_
+
+                                             End If
+
+                                         End If
+
+                                     Next
+
+                                     functionParameters_.Result = sinEspcacios_
+
+                                     resultIsDouble_ = False
+
+                                 Case "EXTRAE"
+
+                                     Dim firstParameter_ As String = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
 
-                                             Dim secondParameter_ = functionParameters_.
+                                     Dim secondParameter_ = functionParameters_.
                                                             Parameters(1).
                                                             Evaluate
 
-                                             Dim thirdParameter_ = functionParameters_.
+                                     Dim thirdParameter_ = functionParameters_.
                                                             Parameters.
                                                             Last.Evaluate
 
 
-                                             functionParameters_.Result = firstParameter_.Substring(secondParameter_ - 1, thirdParameter_)
+                                     functionParameters_.Result = firstParameter_.Substring(secondParameter_ - 1, thirdParameter_)
 
-                                             resultIsDouble_ = False
+                                     resultIsDouble_ = False
 
-                                         Case "LARGO"
+                                 Case "HOY"
 
-                                             Dim firstParameter_ As String = functionParameters_.
+                                     Dim firstParameter_ As String
+
+                                     If functionParameters_.Parameters.Count = 0 Then
+
+                                         firstParameter_ = ""
+
+                                     Else
+
+                                         firstParameter_ = functionParameters_.
+                                                          Parameters.
+                                                          First.
+                                                          Evaluate
+
+                                     End If
+
+
+                                     Dim date_ As String = DateTime.Now.ToString("yyyy/MM/dd")
+
+                                     If firstParameter_ <> "" Then
+
+                                         date_ = date_.Replace("/", firstParameter_)
+
+
+                                     End If
+
+                                     functionParameters_.Result = date_
+
+                                     resultIsDouble_ = False
+
+
+                                 Case "LARGO"
+
+
+
+                                     Dim firstParameter_ = functionParameters_.
                                                             Parameters.
                                                             First.
                                                             Evaluate
 
-                                             result_ = firstParameter_.Length
+                                     If TypeOf firstParameter_ Is List(Of String) Then
 
-                                             resultIsDouble_ = True
+                                         result_ = firstParameter_.Count
+
+                                     Else
 
 
-                                         Case "O"
+                                         result_ = firstParameter_.Length
+
+                                     End If
+
+
+
+
+                                     resultIsDouble_ = True
+
+
+                                 Case "NO"
+
+                                     Dim firstParameter_ As Boolean = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+
+                                     functionParameters_.Result = Not firstParameter_
+
+                                     resultIsDouble_ = False
+
+                                 Case "O"
 
                                              Dim resultO_ = ""
 
@@ -2061,9 +2565,10 @@ finalExpression_.Length - 1)
 
                                              functionParameters_.Result = expression_.Evaluate
 
-                                             resultIsDouble_ = False
+                                     resultIsDouble_ = False
 
-                                         Case "RED"
+
+                                 Case "RED"
 
                                              Dim firstParameter_ = functionParameters_.
                                                             Parameters.
@@ -2090,13 +2595,14 @@ finalExpression_.Length - 1)
 
                                              Dim parameters_ As New List(Of String)
 
-                                             Dim cube_ As ICubeController = New CubeController
+                                     Dim cube_ As ICubeController = New CubeController
 
-                                             Dim lastParameter_ As String = ""
+                                     Dim lastParameter_ As String = ""
 
-                                             parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
+                                     parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
 
-                                             operation_ = parameters_(0)
+
+                                     operation_ = parameters_(0)
 
                                              parameters_.RemoveAt(0)
 
@@ -2158,10 +2664,10 @@ finalExpression_.Length - 1)
 
                                              End If
 
-                                             Dim expressionRoom_ = New NCalc.Expression(GetExpression(operation_,
+                                     Dim expressionRoom_ = New NCalc.Expression(GetExpression(operation_.Replace(Chr(13), "").Replace(vbCrLf, "").Replace(Chr(160), "").Replace("\r", ""),
                                                                                                   values_))
 
-                                             expressionRoom_.Parameters = values_
+                                     expressionRoom_.Parameters = values_
 
                                              AddHandler expressionRoom_.EvaluateFunction, RunFunctionHandler(values_)
 
@@ -2184,6 +2690,34 @@ finalExpression_.Length - 1)
                                          End If
 
                                      End If
+
+                                 Case "SECUENCIA"
+
+
+                                     Dim list_ As New List(Of String)
+
+                                     If functionParameters_.Parameters.Count = 1 Then
+
+                                         For secuencia_ = 1 To functionParameters_.Parameters.First.Evaluate
+
+                                             list_.Add(secuencia_)
+
+                                         Next
+
+                                     Else
+
+                                         For secuencia_ = functionParameters_.Parameters.First.Evaluate To functionParameters_.Parameters.Last.Evaluate
+
+                                             list_.Add(secuencia_)
+
+                                         Next
+
+
+                                     End If
+
+                                     functionParameters_.Result = list_
+
+                                     resultIsDouble_ = False
 
 
                                  Case "SETROOM"
@@ -2302,182 +2836,200 @@ finalExpression_.Length - 1)
 
                                              Dim operandCount_ = 0
 
-                                             For Each parameter_ In functionParameters_.
-                                                                    Parameters.
-                                                                    Take(functionParameters_.Parameters.Count - 1)
+                                     For Each parameter_ In functionParameters_.
+                                                            Parameters.
+                                                            Take(functionParameters_.Parameters.Count - 1)
 
-                                                 Dim generalName_ = SetValuesOperands(operandName_,
-                                                                                            operandCount_,
-                                                                                            values_,
-                                                                                            False)
+                                         Dim generalName_ = SetValuesOperands(operandName_,
+                                                                                    operandCount_,
+                                                                                    values_,
+                                                                                    False)
 
-                                                 Dim generalValue = SetValuesOperands(valueOperand_,
-                                                                                          operandCount_,
-                                                                                          values_,
-                                                                                          False)
+                                         Dim generalValue = SetValuesOperands(valueOperand_,
+                                                                                  operandCount_,
+                                                                                  values_,
+                                                                                  False)
 
-                                                 Dim expresionString = generalName_ &
-                                                                       operator_ &
-                                                                       generalValue
+                                         Dim expresionString = generalName_ &
+                                                               operator_ &
+                                                               generalValue
 
-                                                 Dim auxName_ = SetValuesOperands(operandName_,
-                                                                                        operandCount_,
-                                                                                        values_,
-                                                                                        False,
-                                                                                        False)
+                                         Dim auxName_ = SetValuesOperands(operandName_,
+                                                                                operandCount_,
+                                                                                values_,
+                                                                                False,
+                                                                                False)
 
-                                                 Dim auxValue_ = SetValuesOperands(valueOperand_,
-                                                                                       operandCount_,
-                                                                                       values_,
-                                                                                       False,
-                                                                                       False)
+                                         Dim auxValue_ = SetValuesOperands(valueOperand_,
+                                                                               operandCount_,
+                                                                               values_,
+                                                                               False,
+                                                                               False)
 
-                                                 Dim evaluate_ As Boolean = False
+                                         Dim evaluate_ As Boolean = False
 
-                                                 If values_.Keys.Contains(auxName_) Then
+                                         If values_.Keys.Contains(auxName_) Then
 
-                                                     evaluate_ = True
+                                             evaluate_ = True
 
-                                                 Else
+                                         Else
 
-                                                     auxName_ = SetValuesOperands(operandName_,
-                                                                                        0,
-                                                                                        values_,
-                                                                                        False,
-                                                                                        False)
+                                             auxName_ = SetValuesOperands(operandName_,
+                                                                                0,
+                                                                                values_,
+                                                                                False,
+                                                                                False)
 
-                                                     generalName_ = SetValuesOperands(operandName_,
-                                                                                            0,
-                                                                                            values_,
-                                                                                            False)
+                                             generalName_ = SetValuesOperands(operandName_,
+                                                                                    0,
+                                                                                    values_,
+                                                                                    False)
 
-                                                     expresionString = generalName_ &
-                                                                       operator_ &
-                                                                       generalValue
+                                             expresionString = generalName_ &
+                                                               operator_ &
+                                                               generalValue
 
-                                                     If values_.
-                                                        Keys.
-                                                        Contains(auxName_) Then
+                                             If values_.
+                                                Keys.
+                                                Contains(auxName_) Then
 
-                                                         evaluate_ = True
+                                                 evaluate_ = True
 
-                                                     Else
+                                             Else
 
-                                                         If Double.TryParse(auxName_,
-                                                                            doubleParse_) Then
-
-                                                             evaluate_ = True
-
-                                                         Else
-
-                                                             evaluate_ = False
-
-                                                         End If
-
-
-                                                     End If
-
-                                                 End If
-
-                                                 If values_.
-                                                    Keys.
-                                                    Contains(auxValue_) Then
+                                                 If Double.TryParse(auxName_,
+                                                                    doubleParse_) Then
 
                                                      evaluate_ = True
 
                                                  Else
 
-                                                     auxValue_ = SetValuesOperands(valueOperand_,
-                                                                                       0,
-                                                                                       values_,
-                                                                                       False,
-                                                                                       False)
-
-                                                     generalValue = SetValuesOperands(valueOperand_,
-                                                                                          0,
-                                                                                          values_,
-                                                                                          False)
-
-                                                     expresionString = generalName_ &
-                                                                       operator_ &
-                                                                       generalValue
-
-                                                     If values_.
-                                                        Keys.
-                                                        Contains(auxValue_) Then
-
-                                                         evaluate_ = True
-                                                     Else
-
-                                                         If Double.TryParse(auxValue_,
-                                                                            doubleParse_) Then
-
-                                                             evaluate_ = True
-
-                                                         Else
-
-                                                             evaluate_ = False
-
-                                                         End If
-
-
-                                                     End If
+                                                     evaluate_ = False
 
                                                  End If
 
 
-                                                 If evaluate_ Then
+                                             End If
 
-                                                     Dim expressionSI_ = New NCalc.Expression(expresionString)
+                                         End If
 
-                                                     If Not Double.TryParse(auxName_,
-                                                                            doubleParse_) Then
+                                         If values_.
+                                            Keys.
+                                            Contains(auxValue_) Then
 
-                                                         expressionSI_.Parameters(auxName_) = values_(auxName_)
+                                             evaluate_ = True
 
-                                                     End If
+                                         Else
 
-                                                     If Not Double.TryParse(auxValue_,
-                                                                            doubleParse_) Then
+                                             auxValue_ = SetValuesOperands(valueOperand_,
+                                                                               0,
+                                                                               values_,
+                                                                               False,
+                                                                               False)
 
-                                                         expressionSI_.Parameters(auxValue_) = values_(auxValue_)
+                                             generalValue = SetValuesOperands(valueOperand_,
+                                                                                  0,
+                                                                                  values_,
+                                                                                  False)
 
-                                                     End If
+                                             expresionString = generalName_ &
+                                                               operator_ &
+                                                               generalValue
 
-                                                     evaluate_ = expressionSI_.Evaluate()
+                                             If values_.
+                                                Keys.
+                                                Contains(auxValue_) Then
+
+                                                 evaluate_ = True
+                                             Else
+
+                                                 If Double.TryParse(auxValue_,
+                                                                    doubleParse_) Then
+
+                                                     evaluate_ = True
+
+                                                 Else
+
+                                                     evaluate_ = False
 
                                                  End If
 
 
-                                                 If evaluate_ Then
+                                             End If
 
-                                                     result_ += CDbl(parameter_.Evaluate())
+                                         End If
 
-                                                 End If
 
-                                                 operandCount_ += 1
+                                         If evaluate_ Then
 
-                                             Next
+                                             Dim expressionSI_ = New NCalc.Expression(expresionString)
 
-                                         Case "TRUNC"
+                                             If Not Double.TryParse(auxName_,
+                                                                    doubleParse_) Then
 
-                                             Dim firstParameter_ = functionParameters_.Parameters.First
+                                                 expressionSI_.Parameters(auxName_) = values_(auxName_)
 
-                                             Dim expression_ = New NCalc.Expression("Truncate((" &
+                                             End If
+
+                                             If Not Double.TryParse(auxValue_,
+                                                                    doubleParse_) Then
+
+                                                 expressionSI_.Parameters(auxValue_) = values_(auxValue_)
+
+                                             End If
+
+                                             evaluate_ = expressionSI_.Evaluate()
+
+                                         End If
+
+
+                                         If evaluate_ Then
+
+                                             result_ += CDbl(parameter_.Evaluate())
+
+                                         End If
+
+                                         operandCount_ += 1
+
+                                     Next
+
+                                 Case "SUSTITUIR"
+
+
+
+                                     Dim parameters_ = functionParameters_.Parameters
+
+                                     Dim sentence_ As String = parameters_(0).Evaluate
+
+                                     Dim charOld_ As String = parameters_(1).Evaluate
+
+                                     Dim charNew_ As String = parameters_(2).Evaluate
+
+                                     functionParameters_.Result = sentence_.Replace(charOld_, charNew_)
+
+                                     resultIsDouble_ = False
+
+                                 Case "TRUNC"
+
+
+                                     Dim firstParameter_ = functionParameters_.Parameters.First
+
+                                     Dim expression_ = New NCalc.Expression("Truncate((" &
                                                                               firstParameter_.
                                                                               Evaluate().
                                                                               ToString &
                                                                               ")*10000)/10000")
 
 
-                                             expression_.Parameters = values_
+                                     expression_.Parameters = values_
 
-                                             AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
+                                     AddHandler expression_.EvaluateFunction, RunFunctionHandler(values_)
 
-                                             result_ = CDbl(expression_.Evaluate)
+                                     result_ = CDbl(expression_.Evaluate)
 
 
-                                         Case "Y"
+
+                                 Case "Y"
 
                                              Dim resultY_ = ""
 

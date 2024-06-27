@@ -119,9 +119,9 @@
             <Fieldsets>
                <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
                     <ListControls>
-                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mt-2 mb-5" ID="ic_Prueba" Rules="require" Type="Text" Name="ic_Prueba" Label="Expedición Documento" />
+                            <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mt-2 mb-5" ID="ic_Prueba" Rules="require" Type="Text" Name="ic_Prueba" Label="Componente de Prueba" />
 
-                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6" ID="dbc_NumFacturaAcuseValor" Label="Folio del Documento" LabelDetail="Acuse de Valor" OnClick="dbc_NumFacturaAcuseValor_Click" OnLoad="DeshabilitarInput"/>
+                        <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6" ID="dbc_NumFacturaAcuseValor" Label="Folio del Documento" LabelDetail="Acuse de Valor" OnClick="dbc_NumFacturaAcuseValor_Click" />
                         <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 px-0 mt-2 py-5">
                             <GWC:SwitchControl runat="server" ID="swc_TipoOperacion" CssClass="col-xs-6 col-md-3 mb-5 p-0  d-flex ALGODON" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true"  />
                             <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-5 mt-2 mb-5 p-0 d-flex justify-content-end" ID="sc_TipoDocumento" Label="Tipo de documento" Enabled="false" SearchBarEnabled="false" LocalSearch="false" Rules="required"  >

@@ -207,4 +207,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\..\..\..\..\..\..\..\projects\synapsis\dev\main\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\..\..\..\..\..\projects\synapsis\dev\main\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

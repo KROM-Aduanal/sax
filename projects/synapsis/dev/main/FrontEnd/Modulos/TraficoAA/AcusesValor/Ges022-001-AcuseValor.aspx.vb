@@ -154,6 +154,16 @@ Public Class Ges022_001_AcuseValor
 
     End Sub
 
+    Public Overrides Function AgregarComponentesBloqueadosInicial() As List(Of WebControl)
+
+        Dim lista_ As New List(Of WebControl)
+
+        lista_.Add(ic_Prueba)
+
+        Return lista_
+
+    End Function
+
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
@@ -1066,7 +1076,7 @@ Public Class Ges022_001_AcuseValor
 
         'Dim listaValores = _ControladorFactura.ListaCamposFacturaComercial("0155524864", secciones_)
 
-        Dim Algo = _icontroladorMonedas.GetCveMoneys("cveCOVE", 1000)
+        'Dim Algo = _icontroladorMonedas.GetCveMoneys("cveCOVE", 1000)
         'Dim Algo3 = _ControladorMonedas.FactoresCambioRecientes(0)
 
         'Dim fecha_ As Date = Date.Parse("26/02/2024")
