@@ -117,9 +117,12 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Sin definir")> SREF0 = 0
             <EnumMember> <Description("Generales")> SREF1 = 1
             <EnumMember> <Description("Cliente")> SREF2 = 2
-            <EnumMember> <Description("Detalles Cliente")> SREF3 = 3
-            <EnumMember> <Description("Seguimiento")> SREF4 = 4
-            <EnumMember> <Description("Datos Adicionales")> SREF5 = 5
+            <EnumMember> <Description("Tracking")> SREF3 = 3
+            <EnumMember> <Description("Fechas")> SREF4 = 4
+            <EnumMember> <Description("Guias")> SREF5 = 5
+            <EnumMember> <Description("Documentos")> SREF6 = 6
+            <EnumMember> <Description("Detalle guías múltiples")> SREF7 = 7
+            <EnumMember> <Description("Detalle guía simple")> SREF8 = 8
         End Enum
 
         Public Enum SeccionesProvedorOperativo
@@ -652,77 +655,52 @@ Namespace Syn.Nucleo
             'GENERALES
             <EnumMember> <Description("SIN DEFINIR")> SIN_DEFINIR = 1100
 
-            '#############################  CAMPOS ÚNICOS DE LA AUTORIDAD ##################################
             <EnumMember> <Description("REFERENCIA")> CP_REFERENCIA = 1101
-            <EnumMember> <Description("NUMERO DE PEDIMENTO")> CP_PEDIMENTO = 1102
-            <EnumMember> <Description("ORIGINAL")> CP_ORIGINAL = 1103
-            <EnumMember> <Description("TIPO DE OPERACION")> CP_TIPO_OPERACION = 1104
-            <EnumMember> <Description("TIPO DE REFERENCIA")> CP_TIPO_REFERENCIA = 1105
-            <EnumMember> <Description("MATERIAL PELIGROSO")> CP_MATERIAL_PELIROSO = 1106
-            <EnumMember> <Description("RECTIFICACION")> CP_RECTIFICACION = 1107
-            <EnumMember> <Description("PREFIJO")> CP_PREFIJO = 1108
-            <EnumMember> <Description("TIPO DE CARGA/LOTE")> CP_TIPO_CARGA = 1109
-            <EnumMember> <Description("MODALIDAD/ADUANA/PATENTE")> CP_MODALIDAD_ADUANA_PATENTE2 = 1110
-            <EnumMember> <Description("REGIMEN")> CP_REGIMEN = 1111
-            <EnumMember> <Description("TIPO DE DOCUMENTO")> CA_TIPO_DOCUMENTO = 1112
-            <EnumMember> <Description("CLAVE DEL DOCUMENTO")> CP_CLAVE_DOCUMENTO = 1113
-            <EnumMember> <Description("ADUANA DE ENTRADA/SALIDA")> CP_ADUANA_ENTRADA_SALIDA = 1114
-            <EnumMember> <Description("ADUANA DE DESPACHO")> CP_ADUANA_DESPACHO = 1115
-            <EnumMember> <Description("DESTINO MERCANCIA")> CP_DESTINO_MERCANCIA = 1116
-            <EnumMember> <Description("EJECUTIVO DE CUENTA")> CP_EJECUTIVO_CUENTA = 1117
-            <EnumMember> <Description("CLAVE DEL IMPORTADOR/EXPORTADOR")> CP_ID_IOE = 1118
-            <EnumMember> <Description("NOMBRE, DENOMINACIÓN SOCIAL DEL IMPORTADOR/EXPORTADOR")> CA_RAZON_SOCIAL_IOE = 1119
-            <EnumMember> <Description("RFC DEL IMPORTADOR/EXPORTADOR")> CA_RFC_DEL_IOE = 1120
-            <EnumMember> <Description("CURP DEL IMPORTADOR/EXPORTADOR")> CA_CURP_DEL_IOE = 1121
-            <EnumMember> <Description("RFC FACTURACION.")> CP_RFC_FACTURACION_IOE = 1122
-            <EnumMember> <Description("BANCO DE PAGO DEL IMPORTADOR/EXPORTADOR")> CA_BANCO_PAGO_IOE = 1123
-            <EnumMember> <Description("DESCRIPCION_DETALLE")> CP_DESCRIPCION_DETALLE = 1124
-            <EnumMember> <Description("TIPO_DETALLE")> CP_TIPO_DETALLE = 1125
-            <EnumMember> <Description("FECHA ETA")> CP_FECHA_ETA = 1126
-            <EnumMember> <Description("ES ENTRADA")> CP_ES_ENTRADA = 1127
-            <EnumMember> <Description("ES PAGO ANTICIPADO")> CP_ES_PAGO_ANTICIPADO = 1128
-            <EnumMember> <Description("FECHA RECEPCIÓN DE DOCUMENTOS")> CP_FECHA_RECEPCION_DOCUMENTOS = 1129
-
-            'MODALIDAD
-            '<EnumMember><Description("REFERENCIA")> CP_REFERENCIA = 1
-            '<EnumMember><Description("NUM. PEDIMENTO. COMPLETO")> CA_NUM_PEDIMENTO_COMPLETO = 2
-            '<EnumMember><Description("TIPO DOCUMENTO")> CA_TIPO_DOCUMENTO = 3
-            '<EnumMember><Description("T.OPER.")> CA_T_OPER = 4
-            '<EnumMember><Description("MODALIDAD")> CA_MODALIDAD = 5 'Q
-            '<EnumMember><Description("DESTINO/ORIGEN")> CA_DESTINO_ORIGEN = 6 'P
-            '<EnumMember><Description("ADUANA E/S")> CA_ADUANA_E_S = 7
-            '<EnumMember><Description("MATERIAL PELIGROSO")> CA_MATERIAL_PELIGROSO = 8
-            '<EnumMember><Description("RECTIFICACION")> CA_RECTIFICACION = 9
-            '<EnumMember><Description("ORIGEN")> CA_ORIGEN = 10 'Que es?
-            '<EnumMember><Description("TIPO REFERENCIA")> CA_TIPO_REFERENCIA = 11
-            '<EnumMember><Description("CVE. PEDIMENTO.")> CA_CVE_PEDIMENTO = 12
-            '<EnumMember><Description("REGIMEN")> CA_REGIMEN = 13
-            '<EnumMember><Description("EJECUTIVO DE CUENTA")> CP_EJECUTIVO_DE_CUENTA = 14
-            '<EnumMember><Description("DOMICILIO DEL IMPORTADOR / EXPORTADOR")> CA_DOMICILIO_IOE = 18 'F
-            '<EnumMember><Description("CLAVE DE LA SECCIÓN ADUANERA DE DESPACHO")> CA_CLAVE_SAD = 19 'Que es?
-            '<EnumMember><Description("TIPO DE CARGA/LOTE")> CA_TIPO_CARGA = 20
-
-            '<EnumMember><Description("NÚMERO DE CLIENTE")> CP_NUMERO_CLIENTE = 27
-            '<EnumMember><Description("NOMBRE, DENOMINACIÓN O RAZ. SOC.")> CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_AA = 28
-            '<EnumMember><Description("CURP.")> CA_CURP_AA_O_REP_LEGAL = 30
-            '<EnumMember><Description("RFC IMPORTADOR/EXPORTADOR.")> CA_RFC_IOE = 31
-            '<EnumMember><Description("MODALIDAD/ADUANA/PATENTE")> CP_MODALIDAD_ADUANA_PATENTE = 32
-            '<EnumMember><Description("MODALIDAD")> CP_MODALIDAD = 33
-
-            '<EnumMember><Description("FECHA ENTRADA")> CA_FECHA_ENTRADA = 21
-            '<EnumMember><Description("FECHA PAGO")> CA_FECHA_PAGO = 22
-            '<EnumMember><Description("FECHA EXTRACCIÓN")> CA_FECHA_EXTRACCION = 23
-            '<EnumMember><Description("FECHA PRESENTACION")> CA_FECHA_PRESENTACION = 24
-            '<EnumMember><Description("FECHA IMP.EUA/CAN")> CA_FECHA_IMP_EUA_CAN = 25
-            '<EnumMember><Description("FECHA ORIGINAL")> CA_FECHA_ORIGINAL = 26
-
-            '<EnumMember><Description("ATA")> CP_ATA = 35
-            '<EnumMember><Description("REVALIDACION")> CP_REVALIDACION = 36
-            '<EnumMember><Description("PAGO PEDIMENTO")> CP_PAGO_PEDIMENTO = 37
-            '<EnumMember><Description("DESPACHO")> CP_DESPACHO = 38
-            '<EnumMember><Description("REGISTRO")> CP_REGISTRO = 39
-            '<EnumMember><Description("RECEPCION DE DOCS")> CP_RECEPCION_DOCS = 40
-            '<EnumMember><Description("PREVIO")> CP_PREVIO = 41
+            <EnumMember> <Description("MATERIAL PELIGROSO")> CP_MATERIAL_PELIGROSO = 1102
+            <EnumMember> <Description("RECTIFICACION")> CP_RECTIFICACION = 1103
+            <EnumMember> <Description("TIPO DE PEDIMENTO")> CA_TIPO_PEDIMENTO = 1104
+            <EnumMember> <Description("DESADUANAMIENTO")> CP_DESADUANAMIENTO = 1105
+            <EnumMember> <Description("DESCRIPCION MERCANCIA COMPLETA")> CP_DESCRIPCION_MERCANCIA_COMPLETA = 1106
+            <EnumMember> <Description("TIPO CARGA AGENCIA")> CP_TIPO_CARGA_AGENCIA = 1107
+            <EnumMember> <Description("FECHA DE APERTURA")> CP_FECHA_APERTURA = 1108
+            <EnumMember> <Description("FECHA DE LA PROFORMA")> CP_FECHA_PROFORMA = 1109
+            <EnumMember> <Description("FECHA DE CIERRE")> CP_FECHA_CIERRE = 1110
+            <EnumMember> <Description("FECHA DE PAGO")> CP_FECHA_PAGO = 1111
+            <EnumMember> <Description("FECHA ULTIMO DESPACHO")> CP_FECHA_ULTIMO_DESPACHO = 1112
+            <EnumMember> <Description("FECHA PRESENTACION")> CP_FECHA_PRESENTACION = 1113
+            <EnumMember> <Description("FECHA SALIDA")> CP_FECHA_SALIDA = 1114
+            <EnumMember> <Description("FECHA DE PREVIO")> CP_FECHA_PREVIO = 1115
+            <EnumMember> <Description("FECHA DE ETD")> CP_FECHA_ETD = 1116
+            <EnumMember> <Description("FECHA DE CIERRE FISICO")> CP_FECHA_CIERRE_FISICO = 1117
+            <EnumMember> <Description("FECHA DE ETA")> CP_FECHA_ETA = 1118
+            <EnumMember> <Description("FECHA DE REVALIDACION")> CP_FECHA_REVALIDACION = 1119
+            <EnumMember> <Description("NUMERO GUIA")> CP_NUMERO_GUIA = 1120
+            <EnumMember> <Description("TRANSPORTISTA")> CP_TRANSPORTISTA = 1121
+            <EnumMember> <Description("PAIS")> CP_PAIS = 1122
+            <EnumMember> <Description("TIPO DE CARGA")> CP_TIPO_CARGA = 1123
+            <EnumMember> <Description("PESO BRUTO")> CP_PESOBRUTO = 1124
+            <EnumMember> <Description("UNIDAD DE MEDIDA")> CP_UNIDADMEDIDA = 1125
+            <EnumMember> <Description("RECINTO FISCAL")> CP_RECINTO_FISCAL = 1126
+            <EnumMember> <Description("TIPO DE GUIA")> CP_TIPO_GUIA = 1127
+            <EnumMember> <Description("FECHA SALIDA DE ORIGEN")> CP_FECHA_SALIDA_ORIGEN = 1128
+            <EnumMember> <Description("DESCRIPCION MERCANCIA")> CP_DESCRIPCION_MERCANCIA = 1129
+            <EnumMember> <Description("ID DOCUMENTO")> CP_ID_DOCUMENTO = 1130
+            <EnumMember> <Description("NOMBRE DOCUMENTO")> CP_NOMBRE_DOCUMENTO = 1131
+            <EnumMember> <Description("TIPO DOCUMENTO")> CP_TIPO_DOCUMENTO = 1132
+            <EnumMember> <Description("ESTADO REFERENCIA")> CP_ESTADO_REFERENCIA = 1133
+            <EnumMember> <Description("SW DESPACHO")> CP_SW_DESADUANAMIENTO = 1134
+            <EnumMember> <Description("GUIA MULTIPLE")> CP_GUIA_MULTIPLE = 1135
+            <EnumMember> <Description("NUMERO GUIA")> CP_NUMERO_GUIA_MULTIPLE = 1136
+            <EnumMember> <Description("TRANSPORTISTA")> CP_TRANSPORTISTA_MULTIPLE = 1137
+            <EnumMember> <Description("PAIS")> CP_PAIS_MULTIPLE = 1138
+            <EnumMember> <Description("TIPO DE CARGA")> CP_TIPO_CARGA_MULTIPLE = 1139
+            <EnumMember> <Description("PESO BRUTO")> CP_PESOBRUTO_MULTIPLE = 1140
+            <EnumMember> <Description("UNIDAD DE MEDIDA")> CP_UNIDADMEDIDA_MULTIPLE = 1141
+            <EnumMember> <Description("TIPO DE GUIA")> CP_TIPO_GUIA_MULTIPLE = 1142
+            <EnumMember> <Description("FECHA SALIDA DE ORIGEN")> CP_FECHA_SALIDA_ORIGEN_MULTIPLE = 1143
+            <EnumMember> <Description("DESCRIPCION MERCANCIA")> CP_DESCRIPCION_MERCANCIA_MULTIPLE = 1144
+            <EnumMember> <Description("NOMBRE DEL CONSIGNATARIO")> CP_CONSIGNATARIO = 1145
+            <EnumMember> <Description("NOMBRE DEL CONSIGNATARIO")> CP_CONSIGNATARIO_MULTIPLE = 1146
 
         End Enum
 

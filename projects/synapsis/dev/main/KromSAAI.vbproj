@@ -517,6 +517,11 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Ia.Pln.IControllerChatGPT64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Pln.IControllerChatGPT64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="IConexiones, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll</HintPath>
@@ -550,6 +555,11 @@
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\netstandard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.1.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Bus64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -769,6 +779,11 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorRecursosAduanalesGral64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ControladorReferencias64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorReferencias64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Custombrokers.Controllers.ControladorUnidadesMedida64.0.0.0.0">
       <HintPath>..\..\libs\bin\controllers\Syn.Custombrokers.Controllers.ControladorUnidadesMedida64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -795,6 +810,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IControladorManifestacionValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorManifestacionValor64.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IControladorReferencias64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorReferencias64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -825,6 +845,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Referencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Referencia64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.Reportes.IRepresentacionPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

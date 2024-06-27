@@ -9,6 +9,10 @@ Imports Syn.Documento.Componentes.Nodo
 Imports MongoDB.Bson.Serialization
 Imports System.Globalization
 Imports System.Text
+Imports System.IO
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports PdfiumViewer
 
 Public Class Organismo
     Inherits System.Web.UI.Page
@@ -979,6 +983,78 @@ Public Class Organismo
         Return bulkCamposPedidos_
 
     End Function
+
+    Public Function ConvertirPDFaByte(pdfMemory As MemoryStream) As List(Of Byte())
+
+        Dim lista_ As New List(Of Byte())
+
+        Using pdfDocument_ As PdfDocument = PdfDocument.Load(pdfMemory)
+
+            For page_ As Integer = 0 To pdfDocument_.PageCount - 1
+
+                Using image As Image = RenderPageToImage(pdfDocument_, page_, 450)
+
+                    Using bitmap As New Bitmap(image)
+
+                        Using brightImage As Bitmap = AdjustBrightness(bitmap, 1.3)
+
+                            Using newMemoryStream_ As New MemoryStream()
+
+                                brightImage.Save(newMemoryStream_, ImageFormat.Png)
+
+                                lista_.Add(newMemoryStream_.ToArray())
+
+                            End Using
+
+                        End Using
+
+                    End Using
+
+                End Using
+
+            Next
+
+        End Using
+
+        Return lista_
+
+    End Function
+
+    Private Function RenderPageToImage(pdfDocument As PdfDocument, pageIndex As Integer, dpi As Integer) As Image
+
+        Return pdfDocument.Render(pageIndex, dpi, dpi, PdfRenderFlags.Grayscale)
+
+    End Function
+
+    Private Function AdjustBrightness(original As Bitmap, brightness As Single) As Bitmap
+
+        Dim adjustedImage As New Bitmap(original.Width, original.Height)
+
+        Using g As Graphics = Graphics.FromImage(adjustedImage)
+
+            ' Create color matrix
+            Dim brightnessMatrix As Single()() = {
+                New Single() {brightness, 0, 0, 0, 0},
+                New Single() {0, brightness, 0, 0, 0},
+                New Single() {0, 0, brightness, 0, 0},
+                New Single() {0, 0, 0, 1, 0},
+                New Single() {0, 0, 0, 0, 1}
+            }
+
+            Dim colorMatrix As New Imaging.ColorMatrix(brightnessMatrix)
+
+            Dim imageAttributes As New Imaging.ImageAttributes()
+
+            imageAttributes.SetColorMatrix(colorMatrix)
+
+            g.DrawImage(original, New Rectangle(0, 0, original.Width, original.Height), 0, 0, original.Width, original.Height, GraphicsUnit.Pixel, imageAttributes)
+
+        End Using
+
+        Return adjustedImage
+
+    End Function
+
     '    Public Function ActualizaMultiplesCampos(Of T)(builder_ As UpdateDefinitionBuilder(Of T), objeto_ As T) As UpdateDefinition(Of T)
 
     '        Dim propiedades_ = objeto_.GetType().GetProperties()

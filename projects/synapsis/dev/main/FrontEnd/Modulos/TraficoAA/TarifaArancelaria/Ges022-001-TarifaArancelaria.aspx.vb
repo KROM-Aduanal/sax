@@ -24,7 +24,7 @@ Imports Sax.Web.ControladorBackend.Cookies
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals
-Imports Rec.Globals.Empresa
+Imports Rec.Globals.Empresa64
 Imports Rec.Globals.Controllers
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
@@ -60,15 +60,66 @@ Public Class Ges022_001_TarifaArancelaria
     Public Property Tratados As List(Of List(Of TratadoItem))
 
     'Public Property Cupos As List(Of CupoItem)
-    Public Property IEPS As List(Of IepsItem)
-    Public Property Cuotas As List(Of CuotaItem)
-    Public Property Precios As List(Of PrecioItem)
-    Public Property Permisos As List(Of PermisoItem)
-    Public Property Normas As List(Of NormaItem)
+    Public ReadOnly Property IEPS As List(Of IepsItem)
+
+        Get
+
+            Return IIf(Session("IEPS") IsNot Nothing, Session("IEPS"), New List(Of IepsItem))
+
+        End Get
+
+    End Property
+    Public ReadOnly Property Cuotas As List(Of CuotaItem)
+
+        Get
+
+            Return IIf(Session("Cuotas") IsNot Nothing, Session("Cuotas"), New List(Of CuotaItem))
+
+        End Get
+
+    End Property
+    Public ReadOnly Property Precios As List(Of PrecioItem)
+
+        Get
+
+            Return IIf(Session("Precios") IsNot Nothing, Session("Precios"), New List(Of PrecioItem))
+
+        End Get
+
+    End Property
+    Public ReadOnly Property Permisos As List(Of PermisoItem)
+
+        Get
+
+            Return IIf(Session("Permisos") IsNot Nothing, Session("Permisos"), New List(Of PermisoItem))
+
+        End Get
+
+    End Property
+    Public ReadOnly Property Normas As List(Of NormaItem)
+
+        Get
+
+            Return IIf(Session("Normas") IsNot Nothing, Session("Normas"), New List(Of NormaItem))
+
+        End Get
+
+    End Property
+
     'Public Property Anexos As List(Of AnexoItem)
     'Public Property Embargos As List(Of EmbargoItem)
     'Public Property CuposMinimos As List(Of CupoMinimoItem)
-    Public Property Padrones As List(Of PadronItem)
+
+    Public ReadOnly Property Padrones As List(Of PadronItem)
+
+        Get
+
+            Return IIf(Session("Padrones") IsNot Nothing, Session("Padrones"), New List(Of PadronItem))
+
+        End Get
+
+    End Property
+
 
 #End Region
 
@@ -103,39 +154,32 @@ Public Class Ges022_001_TarifaArancelaria
             Session("catTLCAN") = Nothing
             Session("catTLCUE") = Nothing
 
-            '_fsCupo.Visible = False
-            _fsImpuestoEspecial.Visible = False
-            _fsCuotasCompensatorias.Visible = False
-            _fsPreciosEstimados.Visible = False
-            _fsPermisos.Visible = False
-            _fsNormas.Visible = False
-            '_fsAnexos.Visible = False
-            '_fsEmbargos.Visible = False
-            '_fsCuposMinimos.Visible = False
-            _fsPadronSctorial.Visible = False
+            'fscCupo.Visible = False
+            fscImpuestoEspecial.Visible = False
+            fscCuotasCompensatorias.Visible = False
+            fscPreciosEstimados.Visible = False
+            fscPermisos.Visible = False
+            fscNormas.Visible = False
+            'fscAnexos.Visible = False
+            'fscEmbargos.Visible = False
+            'fscCuposMinimos.Visible = False
+            fscPadronSctorial.Visible = False
 
-            cat_tlcan.DataSource = Nothing
+            ccTMEC.DataSource = Nothing
 
-            cat_tlcue.DataSource = Nothing
+            ccTLCUEM.DataSource = Nothing
 
         Else
 
-            IEPS = IIf(Session("IEPS") IsNot Nothing, Session("IEPS"), New List(Of IepsItem))
-            Cuotas = IIf(Session("Cuotas") IsNot Nothing, Session("Cuotas"), New List(Of CuotaItem))
-            Precios = IIf(Session("Precios") IsNot Nothing, Session("Precios"), New List(Of PrecioItem))
-            Permisos = IIf(Session("Permisos") IsNot Nothing, Session("Permisos"), New List(Of PermisoItem))
-            Normas = IIf(Session("Normas") IsNot Nothing, Session("Normas"), New List(Of NormaItem))
-            Padrones = IIf(Session("Padrones") IsNot Nothing, Session("Padrones"), New List(Of PadronItem))
+            ccTMEC.DataSource = Session("catTMEC")
+            ccTLCUEM.DataSource = Session("catTLCUEM")
 
-            cat_tlcan.DataSource = Session("catTLCAN")
-            cat_tlcue.DataSource = Session("catTLCUE")
-
-            _fsImpuestoEspecial.Visible = IIf(IEPS.Count = 0, False, True)
-            _fsCuotasCompensatorias.Visible = IIf(Cuotas.Count = 0, False, True)
-            _fsPreciosEstimados.Visible = IIf(Precios.Count = 0, False, True)
-            _fsPermisos.Visible = IIf(Permisos.Count = 0, False, True)
-            _fsNormas.Visible = IIf(Normas.Count = 0, False, True)
-            _fsPadronSctorial.Visible = IIf(Padrones.Count = 0, False, True)
+            fscImpuestoEspecial.Visible = IIf(IEPS.Count = 0, False, True)
+            fscCuotasCompensatorias.Visible = IIf(Cuotas.Count = 0, False, True)
+            fscPreciosEstimados.Visible = IIf(Precios.Count = 0, False, True)
+            fscPermisos.Visible = IIf(Permisos.Count = 0, False, True)
+            fscNormas.Visible = IIf(Normas.Count = 0, False, True)
+            fscPadronSctorial.Visible = IIf(Padrones.Count = 0, False, True)
 
         End If
 
@@ -146,54 +190,35 @@ Public Class Ges022_001_TarifaArancelaria
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
-        [Set](db_FraccionArancelaria, CA_NUMERO_FRACCION_ARANCELARIA, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](db_FraccionArancelaria, CA_NUMERO_NICO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](dbcFraccionArancelaria, CA_NUMERO_FRACCION_ARANCELARIA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](dbcFraccionArancelaria, CA_NUMERO_NICO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
 
-        [Set](sw_TipoMaterialPeligroso, CA_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
-        [Set](sw_TipoMaterialVulnerable, CA_MATERIAL_VULNERABLE, propiedadDelControl_:=PropiedadesControl.Checked)
-        [Set](sw_TipoMaterialSensible, CA_MATERIAL_SENSIBLE, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](swcTipoMaterialPeligroso, CA_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](swcTipoMaterialVulnerable, CA_MATERIAL_VULNERABLE, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](swcTipoMaterialSensible, CA_MATERIAL_SENSIBLE, propiedadDelControl_:=PropiedadesControl.Checked)
 
-        [Set](txt_Fraccion, CA_FRACCION_ARANCELARIA, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](txt_Nico, CA_NICO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFraccion, CA_FRACCION_ARANCELARIA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icNico, CA_NICO, propiedadDelControl_:=PropiedadesControl.Valor)
 
-        [Set](txt_Publicacion, CA_FECHA_PUBLICACION, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](txt_EntradaVigor, CA_FECHA_ENTRADA_VIGOR, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaPublicacion, CA_FECHA_PUBLICACION, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icFechaEntradaVigor, CA_FECHA_ENTRADA_VIGOR, propiedadDelControl_:=PropiedadesControl.Valor)
 
-        [Set](t_Seccion, CA_SECCION, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](t_Capitulo, CA_CAPITULO, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](t_Partida, CA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Valor)
-        [Set](t_Subpartida, CA_SUBPARTIDA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icSeccion, CA_SECCION, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icCapitulo, CA_CAPITULO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icPartida, CA_PARTIDA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icSubpartida, CA_SUBPARTIDA, propiedadDelControl_:=PropiedadesControl.Valor)
 
-        [Set](txt_UnidadMedida, CA_UNIDAD_MEDIDA, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icUnidadMedida, CA_UNIDAD_MEDIDA, propiedadDelControl_:=PropiedadesControl.Valor)
 
         Return New TagWatcher(1)
 
     End Function
 
-
-    Public Overrides Sub BotoneraClicNuevo()
-
-        'ClonarTarifaSysExpert()
-
-    End Sub
-
     Public Overrides Sub BotoneraClicGuardar()
 
+        'Comentado porque se supone no de haber alta de registros
         'ProcesarOperacion(Of Something)()
         'If Not ProcesarTransaccion(Of ConstructorTIGIE)().Status = TypeStatus.Errors Then : End If
-
-    End Sub
-
-    Public Overrides Sub BotoneraClicEditar()
-
-    End Sub
-
-    Public Overrides Sub BotoneraClicBorrar()
-
-    End Sub
-
-    Public Overrides Sub BotoneraClicOtros(IndexSelected_ As Integer)
-
 
     End Sub
 
@@ -294,9 +319,49 @@ Public Class Ges022_001_TarifaArancelaria
     'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
     Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        sw_TipoOperacion.Checked = True
+        swcTipoOperacion.Checked = True
 
         FillForm(documentoElectronico_)
+
+        Dim checkedItems = New List(Of Integer)
+
+        If Session("IEPS").Count > 0 Then
+
+            checkedItems.Add(0)
+
+        End If
+
+        If Session("Cuotas").Count > 0 Then
+
+            checkedItems.Add(4)
+
+        End If
+
+        If Session("Precios").Count > 0 Then
+
+            checkedItems.Add(6)
+
+        End If
+
+        If Session("Permisos").Count > 0 Then
+
+            checkedItems.Add(8)
+
+        End If
+
+        If Session("Normas").Count > 0 Then
+
+            checkedItems.Add(1)
+
+        End If
+
+        If Session("Padrones").Count > 0 Then
+
+            checkedItems.Add(9)
+
+        End If
+
+        gcRegulacionesRequeridas.CheckedItems = checkedItems
 
     End Sub
 
@@ -313,23 +378,25 @@ Public Class Ges022_001_TarifaArancelaria
         Session("Permisos") = Nothing
         Session("Normas") = Nothing
         Session("Padrones") = Nothing
-        Session("catTLCAN") = Nothing
-        Session("catTLCUE") = Nothing
+        Session("catTMEC") = Nothing
+        Session("catTLCUEM") = Nothing
 
-        '_fsCupo.Visible = False
-        _fsImpuestoEspecial.Visible = False
-        _fsCuotasCompensatorias.Visible = False
-        _fsPreciosEstimados.Visible = False
-        _fsPermisos.Visible = False
-        _fsNormas.Visible = False
-        '_fsAnexos.Visible = False
-        '_fsEmbargos.Visible = False
-        '_fsCuposMinimos.Visible = False
-        _fsPadronSctorial.Visible = False
+        'fscCupo.Visible = False
+        fscImpuestoEspecial.Visible = False
+        fscCuotasCompensatorias.Visible = False
+        fscPreciosEstimados.Visible = False
+        fscPermisos.Visible = False
+        fscNormas.Visible = False
+        'fscAnexos.Visible = False
+        'fscEmbargos.Visible = False
+        'fscCuposMinimos.Visible = False
+        fscPadronSctorial.Visible = False
 
-        cat_tlcan.DataSource = Nothing
+        ccTMEC.DataSource = Nothing
 
-        cat_tlcue.DataSource = Nothing
+        ccTLCUEM.DataSource = Nothing
+
+        gcRegulacionesRequeridas.CheckedItems = Nothing
 
     End Sub
 
@@ -342,8 +409,8 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Overrides Sub Limpiar()
 
-        txt_ValorIVA.Value = Nothing
-        txt_ValorImpuestoGeneral.Value = Nothing
+        icValorIVA.Value = Nothing
+        icValorImpuestoGeneral.Value = Nothing
 
     End Sub
 
@@ -366,21 +433,21 @@ Public Class Ges022_001_TarifaArancelaria
         Session("Permisos") = Nothing
         Session("Normas") = Nothing
         Session("Padrones") = Nothing
-        Session("catTLCAN") = Nothing
-        Session("catTLCUE") = Nothing
+        Session("catTMEC") = Nothing
+        Session("catTLCUEM") = Nothing
 
-        Dim seccionTarifaArancelaria_ As SeccionesTarifaArancelaria = IIf(sw_TipoOperacion.Checked = True, SeccionesTarifaArancelaria.TIGIE2, SeccionesTarifaArancelaria.TIGIE3)
+        Dim seccionTarifaArancelaria_ As SeccionesTarifaArancelaria = IIf(swcTipoOperacion.Checked = True, SeccionesTarifaArancelaria.TIGIE2, SeccionesTarifaArancelaria.TIGIE3)
 
         'Encabezado
-        txt_Fraccion.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FRACCION_ARANCELARIA).Valor
-        txt_Nico.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NICO).Valor
-        db_FraccionArancelaria.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NUMERO_FRACCION_ARANCELARIA).Valor
-        db_FraccionArancelaria.ValueDetail = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NUMERO_NICO).Valor
-        txt_Publicacion.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_PUBLICACION).Valor
-        txt_EntradaVigor.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_ENTRADA_VIGOR).Valor
+        icFraccion.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FRACCION_ARANCELARIA).Valor
+        icNico.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NICO).Valor
+        dbcFraccionArancelaria.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NUMERO_FRACCION_ARANCELARIA).Valor
+        dbcFraccionArancelaria.ValueDetail = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_NUMERO_NICO).Valor
+        icFechaPublicacion.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_PUBLICACION).Valor
+        icFechaEntradaVigor.Value = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_ENTRADA_VIGOR).Valor
         'documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE1).Attribute(CA_FECHA_FIN).Valor
 
-        'txt_FranjaRegionFonteriza
+        'icFranjaRegionFonteriza
         'Impuestos
         Dim impuestos = documentoElectronico_.Seccion(SeccionesTarifaArancelaria.TIGIE19)
 
@@ -390,11 +457,11 @@ Public Class Ges022_001_TarifaArancelaria
 
                 If .Attribute(CA_NOMBRE_IMPUESTO).Valor = "IMPUESTO GENERAL DE IMPORTACION/EXPORTACION." Then
 
-                    txt_ValorImpuestoGeneral.Value = .Attribute(CA_VALOR_IMPUESTO).Valor
+                    icValorImpuestoGeneral.Value = .Attribute(CA_VALOR_IMPUESTO).Valor
 
                 ElseIf .Attribute(CA_NOMBRE_IMPUESTO).Valor = "IMPUESTO AL VALOR AGREGADO." Then
 
-                    txt_ValorIVA.Value = .Attribute(CA_VALOR_IMPUESTO).Valor
+                    icValorIVA.Value = .Attribute(CA_VALOR_IMPUESTO).Valor
 
                 End If
 
@@ -403,13 +470,13 @@ Public Class Ges022_001_TarifaArancelaria
         Next
 
         'Unidad de medida
-        txt_UnidadMedida.Value = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Attribute(CA_UNIDAD_MEDIDA).Valor
+        icUnidadMedida.Value = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Attribute(CA_UNIDAD_MEDIDA).Valor
 
         'Tratados
         Dim tratados = documentoElectronico_.Seccion(seccionTarifaArancelaria_).Seccion(SeccionesTarifaArancelaria.TIGIE4).Seccion(SeccionesTarifaArancelaria.TIGIE6)
 
-        Dim catTLCAN As New List(Of Dictionary(Of String, String))
-        Dim catTLCUE As New List(Of Dictionary(Of String, String))
+        Dim catTMEC As New List(Of Dictionary(Of String, String))
+        Dim catTLCUEM As New List(Of Dictionary(Of String, String))
 
         For indice_ As Int32 = 1 To tratados.CantidadPartidas
 
@@ -423,33 +490,31 @@ Public Class Ges022_001_TarifaArancelaria
 
                     With paises.Partida(indice2_)
 
-                        If tratado = "TLCAN" Then
+                        If tratado = "TMEC" Then
 
-                            catTLCAN.Add(New Dictionary(Of String, String) From {
+                            catTMEC.Add(New Dictionary(Of String, String) From {
                                {"indice", indice2_},
-                               {"c1_txt_Paises", .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor},
-                               {"c1_txt_Sector", ""},
-                               {"c1_txt_Arancel", .Attribute(CA_ARANCEL).Valor},
-                               {"c1_txt_Observacion", .Attribute(CA_OBSERVACION).Valor},
-                               {"c1_txt_Publicacion", .Attribute(CA_FECHA_PUBLICACION).Valor},
-                               {"c1_txt_EntradaVigor", .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor}
+                               {"icPaisesTmec", .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor},
+                               {"icClaveTmec", ""},
+                               {"icArancelTmec", .Attribute(CA_ARANCEL).Valor},
+                               {"icPublicacionTmec", .Attribute(CA_FECHA_PUBLICACION).Valor},
+                               {"icEntradaVigorTmec", .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor}
                            })
-                            '{"c1_txt_Preferencia", ""},
+
 
                         End If
 
-                        If tratado = "TLCUE" Then
+                        If tratado = "TLCUEM" Then
 
-                            catTLCUE.Add(New Dictionary(Of String, String) From {
+                            catTLCUEM.Add(New Dictionary(Of String, String) From {
                                {"indice", indice2_},
-                               {"c2_txt_Paises", .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor},
-                               {"c2_txt_Sector", ""},
-                               {"c2_txt_Arancel", .Attribute(CA_ARANCEL).Valor},
-                               {"c2_txt_Observacion", .Attribute(CA_OBSERVACION).Valor},
-                               {"c2_txt_Publicacion", .Attribute(CA_FECHA_PUBLICACION).Valor},
-                               {"c2_txt_EntradaVigor", .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor}
+                               {"icPaisesTlcuem", .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor},
+                               {"icClaveTlcuem", ""},
+                               {"icArancelTlcuem", .Attribute(CA_ARANCEL).Valor},
+                               {"icPublicacionTlcuem", .Attribute(CA_FECHA_PUBLICACION).Valor},
+                               {"icEntradaVigorTlcuem", .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor}
                            })
-                            '{"c2_txt_Preferencia", ""},
+
                         End If
 
                     End With
@@ -460,13 +525,13 @@ Public Class Ges022_001_TarifaArancelaria
 
         Next
 
-        Session("catTLCAN") = catTLCAN
+        Session("catTMEC") = catTMEC
 
-        Session("catTLCUE") = catTLCUE
+        Session("catTLCUEM") = catTLCUEM
 
-        cat_tlcan.DataSource = Session("catTLCAN")
+        ccTMEC.DataSource = Session("catTMEC")
 
-        cat_tlcue.DataSource = Session("catTLCUE")
+        ccTLCUEM.DataSource = Session("catTLCUEM")
 
         'Cupos
         'IEPS
@@ -614,560 +679,12 @@ Public Class Ges022_001_TarifaArancelaria
 
         Session("Padrones") = dataPadrones_
 
-
-        IEPS = IIf(Session("IEPS") IsNot Nothing, Session("IEPS"), New List(Of IepsItem))
-        Cuotas = IIf(Session("Cuotas") IsNot Nothing, Session("Cuotas"), New List(Of CuotaItem))
-        Precios = IIf(Session("Precios") IsNot Nothing, Session("Precios"), New List(Of PrecioItem))
-        Permisos = IIf(Session("Permisos") IsNot Nothing, Session("Permisos"), New List(Of PermisoItem))
-        Normas = IIf(Session("Normas") IsNot Nothing, Session("Normas"), New List(Of NormaItem))
-        Padrones = IIf(Session("Padrones") IsNot Nothing, Session("Padrones"), New List(Of PadronItem))
-
-        _fsImpuestoEspecial.Visible = IIf(IEPS.Count = 0, False, True)
-        _fsCuotasCompensatorias.Visible = IIf(Cuotas.Count = 0, False, True)
-        _fsPreciosEstimados.Visible = IIf(Precios.Count = 0, False, True)
-        _fsPermisos.Visible = IIf(Permisos.Count = 0, False, True)
-        _fsNormas.Visible = IIf(Normas.Count = 0, False, True)
-        _fsPadronSctorial.Visible = IIf(Padrones.Count = 0, False, True)
-
-    End Sub
-
-    Private Sub ClonarTarifaSysExpert()
-
-        'exportare la lista de las fracciones para ejecutar un loop de esas una a una e ir cargado los datos desde mi db local, hay que cargar una copia que me dara rosa de sysexpert
-        'VTIGIE_Nico_Fraccion_Relacion  de aqui jalare las id de fraccion para ejecutar el query uno a uno
-
-        Dim fracciones As DataTable = ConsultaLibre("select top(10) * from [SysExpert].[dbo].[VTIGIE_Nico_Fraccion_Relacion]")
-
-        For Each row As DataRow In fracciones.Rows
-
-            Dim query = My.Computer.FileSystem.ReadAllText("C:\temp\test.txt")
-
-            query = query.Replace("{{idFraccion}}", row.Item("idFraccion"))
-            'query = query.Replace("{{idFraccion}}", "10789")
-
-            Dim data = XMLDecode(Of List(Of NicoItem))("TIGIE", queryString:=query)
-
-            Dim nico As NicoItem = data(0)
-
-            Dim doc_ As DocumentoElectronico = New ConstructorTIGIE()
-
-            With doc_
-
-                .FolioDocumento = nico.Importacion.Fraccion
-
-                .FolioOperacion = nico.Nico
-
-                .IdCliente = 0
-
-                .NombreCliente = ""
-
-                'Encabezado
-                With .Seccion(SeccionesTarifaArancelaria.TIGIE1)
-                    .Attribute(CA_NUMERO_FRACCION_ARANCELARIA).Valor = nico.Importacion.Fraccion
-                    .Attribute(CA_NUMERO_NICO).Valor = nico.Nico
-                    .Attribute(CA_FRACCION_ARANCELARIA).Valor = nico.Importacion.DescripcionFraccion
-                    .Attribute(CA_NICO).Valor = nico.DescripcionNico
-                    .Attribute(CA_FECHA_PUBLICACION).Valor = nico.Importacion.FechaPublicacion
-                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = nico.Importacion.FechaInicioVigencia
-                    .Attribute(CA_FECHA_FIN).Valor = nico.Importacion.FechaFinVigencia
-                End With
-                'Importacion
-                With .Seccion(SeccionesTarifaArancelaria.TIGIE2)
-                    'Unidad de Medida [tiene datos extras]
-                    If nico.Importacion.UnidadesDeMedida IsNot Nothing Then
-                        .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.Unidad
-                    End If
-                    'Impuestos
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
-
-                        Dim impuestos = nico.Importacion.Impuestos
-
-                        If impuestos.Count > 0 Then
-
-                            For Each impuesto As ImpuestoItem In impuestos
-
-                                With .Partida(doc_)
-                                    .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
-                                    .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
-                                    .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
-                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
-                                    .Attribute(CA_FECHA_FIN).Valor = impuesto.FechaFinVigencia
-                                End With
-
-                            Next
-
-                        End If
-
-                    End With
-                    'Regulaciones Arancelarias
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
-
-                        'Tratados
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
-
-                            Dim tratados = nico.Importacion.Tratados
-
-                            If tratados.Count > 0 Then
-
-                                Dim listTratados As New Dictionary(Of String, List(Of TratadoItem))
-
-                                For Each tratado As TratadoItem In tratados
-
-                                    If listTratados.ContainsKey(tratado.ClaveTratado) Then
-
-                                        listTratados(tratado.ClaveTratado).Add(tratado)
-
-                                    Else
-
-                                        listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
-
-                                    End If
-
-                                Next
-
-                                For Each kvp As KeyValuePair(Of String, List(Of TratadoItem)) In listTratados
-
-                                    With .Partida(doc_)
-
-                                        .Attribute(CA_NOMBRE_CORTO_TRATADO).Valor = kvp.Key
-
-                                        With .Seccion(SeccionesTarifaArancelaria.TIGIE7)
-
-                                            For Each t As TratadoItem In kvp.Value
-
-                                                With .Partida(doc_)
-
-                                                    .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
-                                                    .Attribute(CA_ARANCEL).Valor = t.Tasa
-                                                    .Attribute(CA_PREFERENCIA).Valor = t.Tasa
-                                                    .Attribute(CA_OBSERVACION).Valor = t.Nota
-                                                    .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
-                                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
-                                                    .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
-
-                                                End With
-
-                                            Next
-
-                                        End With
-
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-
-                        'Cupos Arancel [sin tablas]
-                        'IEPS
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE9)
-
-                            Dim ipes = nico.Importacion.IEPS
-
-                            If ipes.Count > 0 Then
-
-                                For Each iepsItem As IepsItem In ipes
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_OBSERVACION).Valor = iepsItem.Nota
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Cuotas Compensatorias
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE10)
-
-                            Dim cuotas = nico.Importacion.CuotasCompensatorias
-
-                            If cuotas.Count > 0 Then
-
-                                For Each cuota As CuotaItem In cuotas
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_EMPRESA).Valor = cuota.NombreEmpresa
-                                        .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = cuota.NombrePais
-                                        .Attribute(CA_CUOTA).Valor = cuota.Tasa
-                                        .Attribute(CA_TIPO).Valor = cuota.TipoCuota
-                                        .Attribute(CA_ACOTACION).Valor = cuota.Nota
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = cuota.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = cuota.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = cuota.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Precios Estimados
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE11)
-
-                            Dim precios = nico.Importacion.PreciosEstimados
-
-                            If precios.Count > 0 Then
-
-                                For Each precio As PrecioItem In precios
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_PRECIO).Valor = precio.PrecioEstimado
-                                        .Attribute(CA_UNIDAD_MEDIDA).Valor = precio.DescripcionUM
-                                        .Attribute(CA_DESCRIPCION).Valor = precio.DetalleProducto
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = precio.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = precio.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = precio.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                    End With
-                    'Regulaciones no Arancelarias
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
-                        'Permisos
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
-
-                            Dim permisos = nico.Importacion.Permisos
-
-                            If permisos.Count > 0 Then
-
-                                For Each permiso As PermisoItem In permisos
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_CLAVE).Valor = permiso.ClavePermiso
-                                        .Attribute(CA_PERMISO).Valor = permiso.Descripcion
-                                        .Attribute(CA_ACOTACION).Valor = permiso.Particularidad
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = permiso.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = permiso.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = permiso.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Normas
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
-
-                            Dim normas = nico.Importacion.Normas
-
-                            If normas.Count > 0 Then
-
-                                For Each norma As NormaItem In normas
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_NORMA).Valor = norma.NOM
-                                        .Attribute(CA_DESCRIPCION).Valor = norma.Descripcion
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Anexos [todo esta metido en un campo y una sola tabla]
-                        'Embargos [todo esta metido en un campo y una sola tabla]
-                        'Cupos Mínimos [sin tablas]
-                        'Padron Sectoreal
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
-
-                            Dim padrones = nico.Importacion.PadronSectorial
-
-                            If padrones.Count > 0 Then
-
-                                For Each padron As PadronItem In padrones
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_SECTOR).Valor = padron.Sector
-                                        .Attribute(CA_DESCRIPCION).Valor = padron.Notas
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-
-                    End With
-                End With
-                '----------------------------------------------------------------------------------------------------------------------------------------------------------------
-                'Exportacion
-                With .Seccion(SeccionesTarifaArancelaria.TIGIE3)
-
-                    'Unidad de Medida [tiene datos extras]
-                    If nico.Exportacion.UnidadesDeMedida IsNot Nothing Then
-                        .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Exportacion.UnidadesDeMedida.Value.Unidad
-                    End If
-                    'Impuestos
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
-
-                        Dim impuestos = nico.Exportacion.Impuestos
-
-                        If impuestos.Count > 0 Then
-
-                            For Each impuesto As ImpuestoItem In impuestos
-
-                                With .Partida(doc_)
-                                    .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
-                                    .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
-                                    .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
-                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
-                                    .Attribute(CA_FECHA_FIN).Valor = impuesto.FechaFinVigencia
-                                End With
-
-                            Next
-
-                        End If
-
-                    End With
-                    'Regulaciones Arancelarias
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
-
-                        'Tratados
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
-
-                            Dim tratados = nico.Exportacion.Tratados
-
-                            If tratados.Count > 0 Then
-
-                                Dim listTratados As New Dictionary(Of String, List(Of TratadoItem))
-
-                                For Each tratado As TratadoItem In tratados
-
-                                    If listTratados.ContainsKey(tratado.ClaveTratado) Then
-
-                                        listTratados(tratado.ClaveTratado).Add(tratado)
-
-                                    Else
-
-                                        listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
-
-                                    End If
-
-                                Next
-
-                                For Each kvp As KeyValuePair(Of String, List(Of TratadoItem)) In listTratados
-
-                                    With .Partida(doc_)
-
-                                        .Attribute(CA_NOMBRE_CORTO_TRATADO).Valor = kvp.Key
-
-                                        With .Seccion(SeccionesTarifaArancelaria.TIGIE7)
-
-                                            For Each t As TratadoItem In kvp.Value
-
-                                                With .Partida(doc_)
-
-                                                    .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
-                                                    .Attribute(CA_ARANCEL).Valor = t.Tasa
-                                                    .Attribute(CA_PREFERENCIA).Valor = t.Tasa
-                                                    .Attribute(CA_OBSERVACION).Valor = t.Nota
-                                                    .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
-                                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
-                                                    .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
-
-                                                End With
-
-                                            Next
-
-                                        End With
-
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-
-                        'Cupos Arancel [sin tablas]
-                        'IEPS
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE9)
-
-                            Dim ipes = nico.Exportacion.IEPS
-
-                            If ipes.Count > 0 Then
-
-                                For Each iepsItem As IepsItem In ipes
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_OBSERVACION).Valor = iepsItem.Nota
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Cuotas Compensatorias
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE10)
-
-                            Dim cuotas = nico.Exportacion.CuotasCompensatorias
-
-                            If cuotas.Count > 0 Then
-
-                                For Each cuota As CuotaItem In cuotas
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_EMPRESA).Valor = cuota.NombreEmpresa
-                                        .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = cuota.NombrePais
-                                        .Attribute(CA_CUOTA).Valor = cuota.Tasa
-                                        .Attribute(CA_TIPO).Valor = cuota.TipoCuota
-                                        .Attribute(CA_ACOTACION).Valor = cuota.Nota
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = cuota.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = cuota.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = cuota.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Precios Estimados
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE11)
-
-                            Dim precios = nico.Exportacion.PreciosEstimados
-
-                            If precios.Count > 0 Then
-
-                                For Each precio As PrecioItem In precios
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_PRECIO).Valor = precio.PrecioEstimado
-                                        .Attribute(CA_UNIDAD_MEDIDA).Valor = precio.DescripcionUM
-                                        .Attribute(CA_DESCRIPCION).Valor = precio.DetalleProducto
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = precio.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = precio.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = precio.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                    End With
-                    'Regulaciones no Arancelarias
-                    With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
-                        'Permisos
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
-
-                            Dim permisos = nico.Exportacion.Permisos
-
-                            If permisos.Count > 0 Then
-
-                                For Each permiso As PermisoItem In permisos
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_CLAVE).Valor = permiso.ClavePermiso
-                                        .Attribute(CA_PERMISO).Valor = permiso.Descripcion
-                                        .Attribute(CA_ACOTACION).Valor = permiso.Particularidad
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = permiso.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = permiso.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = permiso.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Normas
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
-
-                            Dim normas = nico.Exportacion.Normas
-
-                            If normas.Count > 0 Then
-
-                                For Each norma As NormaItem In normas
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_NORMA).Valor = norma.NOM
-                                        .Attribute(CA_DESCRIPCION).Valor = norma.Descripcion
-                                        .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
-                                        .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
-                                        .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-                        'Anexos [todo esta metido en un campo y una sola tabla]
-                        'Embargos [todo esta metido en un campo y una sola tabla]
-                        'Cupos Mínimos [sin tablas]
-                        'Padron Sectoreal
-                        With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
-
-                            Dim padrones = nico.Exportacion.PadronSectorial
-
-                            If padrones.Count > 0 Then
-
-                                For Each padron As PadronItem In padrones
-
-                                    With .Partida(doc_)
-                                        .Attribute(CA_SECTOR).Valor = padron.Sector
-                                        .Attribute(CA_DESCRIPCION).Valor = padron.Notas
-                                    End With
-
-                                Next
-
-                            End If
-
-                        End With
-
-                    End With
-
-                End With
-
-            End With
-
-            CloneDocumentoInMongo(doc_)
-
-        Next row
-
-
-    End Sub
-
-    Private Async Sub CloneDocumentoInMongo(object1_ As Object)
-
-        Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
-
-        Using session_ = Await iEnlace_.GetMongoClient().StartSessionAsync().ConfigureAwait(False)
-
-            Using enlaceDatos_ As IEnlaceDatos =
-                New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
-
-                Using _entidadDatos As IEntidadDatos = object1_
-
-                    Dim tagWatcher_ As TagWatcher = enlaceDatos_.AgregarDatos(_entidadDatos, Nothing, session_)
-
-                    If tagWatcher_.Status = Ok Then
-
-
-
-                    Else
-
-
-                    End If
-
-                End Using
-
-            End Using
-
-        End Using
-
+        fscImpuestoEspecial.Visible = IIf(IEPS.Count = 0, False, True)
+        fscCuotasCompensatorias.Visible = IIf(Cuotas.Count = 0, False, True)
+        fscPreciosEstimados.Visible = IIf(Precios.Count = 0, False, True)
+        fscPermisos.Visible = IIf(Permisos.Count = 0, False, True)
+        fscNormas.Visible = IIf(Normas.Count = 0, False, True)
+        fscPadronSctorial.Visible = IIf(Padrones.Count = 0, False, True)
 
     End Sub
 
@@ -1180,6 +697,546 @@ Public Class Ges022_001_TarifaArancelaria
         End If
 
     End Sub
+
+    'Private Sub ClonarTarifaSysExpert()
+
+    '    'exportare la lista de las fracciones para ejecutar un loop de esas una a una e ir cargado los datos desde mi db local, hay que cargar una copia que me dara rosa de sysexpert
+    '    'VTIGIE_Nico_Fraccion_Relacion  de aqui jalare las id de fraccion para ejecutar el query uno a uno
+
+    '    Dim fracciones As DataTable = ConsultaLibre("select top(10) * from [SysExpert].[dbo].[VTIGIE_Nico_Fraccion_Relacion]")
+
+    '    For Each row As DataRow In fracciones.Rows
+
+    '        Dim query = My.Computer.FileSystem.ReadAllText("C:\temp\test.txt")
+
+    '        query = query.Replace("{{idFraccion}}", row.Item("idFraccion"))
+    '        'query = query.Replace("{{idFraccion}}", "10789")
+
+    '        Dim data = XMLDecode(Of List(Of NicoItem))("TIGIE", queryString:=query)
+
+    '        Dim nico As NicoItem = data(0)
+
+    '        Dim doc_ As DocumentoElectronico = New ConstructorTIGIE()
+
+    '        With doc_
+
+    '            .FolioDocumento = nico.Importacion.Fraccion
+
+    '            .FolioOperacion = nico.Nico
+
+    '            .IdCliente = 0
+
+    '            .NombreCliente = ""
+
+    '            'Encabezado
+    '            With .Seccion(SeccionesTarifaArancelaria.TIGIE1)
+    '                .Attribute(CA_NUMERO_FRACCION_ARANCELARIA).Valor = nico.Importacion.Fraccion
+    '                .Attribute(CA_NUMERO_NICO).Valor = nico.Nico
+    '                .Attribute(CA_FRACCION_ARANCELARIA).Valor = nico.Importacion.DescripcionFraccion
+    '                .Attribute(CA_NICO).Valor = nico.DescripcionNico
+    '                .Attribute(CA_FECHA_PUBLICACION).Valor = nico.Importacion.FechaPublicacion
+    '                .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = nico.Importacion.FechaInicioVigencia
+    '                .Attribute(CA_FECHA_FIN).Valor = nico.Importacion.FechaFinVigencia
+    '            End With
+    '            'Importacion
+    '            With .Seccion(SeccionesTarifaArancelaria.TIGIE2)
+    '                'Unidad de Medida [tiene datos extras]
+    '                If nico.Importacion.UnidadesDeMedida IsNot Nothing Then
+    '                    .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Importacion.UnidadesDeMedida.Value.Unidad
+    '                End If
+    '                'Impuestos
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
+
+    '                    Dim impuestos = nico.Importacion.Impuestos
+
+    '                    If impuestos.Count > 0 Then
+
+    '                        For Each impuesto As ImpuestoItem In impuestos
+
+    '                            With .Partida(doc_)
+    '                                .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
+    '                                .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
+    '                                .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
+    '                                .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
+    '                                .Attribute(CA_FECHA_FIN).Valor = impuesto.FechaFinVigencia
+    '                            End With
+
+    '                        Next
+
+    '                    End If
+
+    '                End With
+    '                'Regulaciones Arancelarias
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
+
+    '                    'Tratados
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
+
+    '                        Dim tratados = nico.Importacion.Tratados
+
+    '                        If tratados.Count > 0 Then
+
+    '                            Dim listTratados As New Dictionary(Of String, List(Of TratadoItem))
+
+    '                            For Each tratado As TratadoItem In tratados
+
+    '                                If listTratados.ContainsKey(tratado.ClaveTratado) Then
+
+    '                                    listTratados(tratado.ClaveTratado).Add(tratado)
+
+    '                                Else
+
+    '                                    listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
+
+    '                                End If
+
+    '                            Next
+
+    '                            For Each kvp As KeyValuePair(Of String, List(Of TratadoItem)) In listTratados
+
+    '                                With .Partida(doc_)
+
+    '                                    .Attribute(CA_NOMBRE_CORTO_TRATADO).Valor = kvp.Key
+
+    '                                    With .Seccion(SeccionesTarifaArancelaria.TIGIE7)
+
+    '                                        For Each t As TratadoItem In kvp.Value
+
+    '                                            With .Partida(doc_)
+
+    '                                                .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
+    '                                                .Attribute(CA_ARANCEL).Valor = t.Tasa
+    '                                                .Attribute(CA_PREFERENCIA).Valor = t.Tasa
+    '                                                .Attribute(CA_OBSERVACION).Valor = t.Nota
+    '                                                .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
+    '                                                .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
+    '                                                .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
+
+    '                                            End With
+
+    '                                        Next
+
+    '                                    End With
+
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+
+    '                    'Cupos Arancel [sin tablas]
+    '                    'IEPS
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE9)
+
+    '                        Dim ipes = nico.Importacion.IEPS
+
+    '                        If ipes.Count > 0 Then
+
+    '                            For Each iepsItem As IepsItem In ipes
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_OBSERVACION).Valor = iepsItem.Nota
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Cuotas Compensatorias
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE10)
+
+    '                        Dim cuotas = nico.Importacion.CuotasCompensatorias
+
+    '                        If cuotas.Count > 0 Then
+
+    '                            For Each cuota As CuotaItem In cuotas
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_EMPRESA).Valor = cuota.NombreEmpresa
+    '                                    .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = cuota.NombrePais
+    '                                    .Attribute(CA_CUOTA).Valor = cuota.Tasa
+    '                                    .Attribute(CA_TIPO).Valor = cuota.TipoCuota
+    '                                    .Attribute(CA_ACOTACION).Valor = cuota.Nota
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = cuota.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = cuota.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = cuota.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Precios Estimados
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE11)
+
+    '                        Dim precios = nico.Importacion.PreciosEstimados
+
+    '                        If precios.Count > 0 Then
+
+    '                            For Each precio As PrecioItem In precios
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_PRECIO).Valor = precio.PrecioEstimado
+    '                                    .Attribute(CA_UNIDAD_MEDIDA).Valor = precio.DescripcionUM
+    '                                    .Attribute(CA_DESCRIPCION).Valor = precio.DetalleProducto
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = precio.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = precio.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = precio.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                End With
+    '                'Regulaciones no Arancelarias
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
+    '                    'Permisos
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
+
+    '                        Dim permisos = nico.Importacion.Permisos
+
+    '                        If permisos.Count > 0 Then
+
+    '                            For Each permiso As PermisoItem In permisos
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_CLAVE).Valor = permiso.ClavePermiso
+    '                                    .Attribute(CA_PERMISO).Valor = permiso.Descripcion
+    '                                    .Attribute(CA_ACOTACION).Valor = permiso.Particularidad
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = permiso.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = permiso.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = permiso.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Normas
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
+
+    '                        Dim normas = nico.Importacion.Normas
+
+    '                        If normas.Count > 0 Then
+
+    '                            For Each norma As NormaItem In normas
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_NORMA).Valor = norma.NOM
+    '                                    .Attribute(CA_DESCRIPCION).Valor = norma.Descripcion
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Anexos [todo esta metido en un campo y una sola tabla]
+    '                    'Embargos [todo esta metido en un campo y una sola tabla]
+    '                    'Cupos Mínimos [sin tablas]
+    '                    'Padron Sectoreal
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
+
+    '                        Dim padrones = nico.Importacion.PadronSectorial
+
+    '                        If padrones.Count > 0 Then
+
+    '                            For Each padron As PadronItem In padrones
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_SECTOR).Valor = padron.Sector
+    '                                    .Attribute(CA_DESCRIPCION).Valor = padron.Notas
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+
+    '                End With
+    '            End With
+    '            '----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    '            'Exportacion
+    '            With .Seccion(SeccionesTarifaArancelaria.TIGIE3)
+
+    '                'Unidad de Medida [tiene datos extras]
+    '                If nico.Exportacion.UnidadesDeMedida IsNot Nothing Then
+    '                    .Attribute(CA_UNIDAD_MEDIDA).Valor = nico.Exportacion.UnidadesDeMedida.Value.Unidad
+    '                End If
+    '                'Impuestos
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE19)
+
+    '                    Dim impuestos = nico.Exportacion.Impuestos
+
+    '                    If impuestos.Count > 0 Then
+
+    '                        For Each impuesto As ImpuestoItem In impuestos
+
+    '                            With .Partida(doc_)
+    '                                .Attribute(CA_NOMBRE_IMPUESTO).Valor = impuesto.Contribucion
+    '                                .Attribute(CA_VALOR_IMPUESTO).Valor = impuesto.Tasa
+    '                                .Attribute(CA_FECHA_PUBLICACION).Valor = impuesto.FechaPublicacion
+    '                                .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = impuesto.FechaInicioVigencia
+    '                                .Attribute(CA_FECHA_FIN).Valor = impuesto.FechaFinVigencia
+    '                            End With
+
+    '                        Next
+
+    '                    End If
+
+    '                End With
+    '                'Regulaciones Arancelarias
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE4)
+
+    '                    'Tratados
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE6)
+
+    '                        Dim tratados = nico.Exportacion.Tratados
+
+    '                        If tratados.Count > 0 Then
+
+    '                            Dim listTratados As New Dictionary(Of String, List(Of TratadoItem))
+
+    '                            For Each tratado As TratadoItem In tratados
+
+    '                                If listTratados.ContainsKey(tratado.ClaveTratado) Then
+
+    '                                    listTratados(tratado.ClaveTratado).Add(tratado)
+
+    '                                Else
+
+    '                                    listTratados.Add(tratado.ClaveTratado, New List(Of TratadoItem) From {tratado})
+
+    '                                End If
+
+    '                            Next
+
+    '                            For Each kvp As KeyValuePair(Of String, List(Of TratadoItem)) In listTratados
+
+    '                                With .Partida(doc_)
+
+    '                                    .Attribute(CA_NOMBRE_CORTO_TRATADO).Valor = kvp.Key
+
+    '                                    With .Seccion(SeccionesTarifaArancelaria.TIGIE7)
+
+    '                                        For Each t As TratadoItem In kvp.Value
+
+    '                                            With .Partida(doc_)
+
+    '                                                .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = t.NombrePais
+    '                                                .Attribute(CA_ARANCEL).Valor = t.Tasa
+    '                                                .Attribute(CA_PREFERENCIA).Valor = t.Tasa
+    '                                                .Attribute(CA_OBSERVACION).Valor = t.Nota
+    '                                                .Attribute(CA_FECHA_PUBLICACION).Valor = t.FechaPublicacion
+    '                                                .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = t.FechaIncioVigencia
+    '                                                .Attribute(CA_FECHA_FIN).Valor = t.FechaFinVigencia
+
+    '                                            End With
+
+    '                                        Next
+
+    '                                    End With
+
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+
+    '                    'Cupos Arancel [sin tablas]
+    '                    'IEPS
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE9)
+
+    '                        Dim ipes = nico.Exportacion.IEPS
+
+    '                        If ipes.Count > 0 Then
+
+    '                            For Each iepsItem As IepsItem In ipes
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_OBSERVACION).Valor = iepsItem.Nota
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Cuotas Compensatorias
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE10)
+
+    '                        Dim cuotas = nico.Exportacion.CuotasCompensatorias
+
+    '                        If cuotas.Count > 0 Then
+
+    '                            For Each cuota As CuotaItem In cuotas
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_EMPRESA).Valor = cuota.NombreEmpresa
+    '                                    .Attribute(CamposTarifaArancelaria.CA_PAIS).Valor = cuota.NombrePais
+    '                                    .Attribute(CA_CUOTA).Valor = cuota.Tasa
+    '                                    .Attribute(CA_TIPO).Valor = cuota.TipoCuota
+    '                                    .Attribute(CA_ACOTACION).Valor = cuota.Nota
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = cuota.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = cuota.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = cuota.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Precios Estimados
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE11)
+
+    '                        Dim precios = nico.Exportacion.PreciosEstimados
+
+    '                        If precios.Count > 0 Then
+
+    '                            For Each precio As PrecioItem In precios
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_PRECIO).Valor = precio.PrecioEstimado
+    '                                    .Attribute(CA_UNIDAD_MEDIDA).Valor = precio.DescripcionUM
+    '                                    .Attribute(CA_DESCRIPCION).Valor = precio.DetalleProducto
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = precio.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = precio.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = precio.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                End With
+    '                'Regulaciones no Arancelarias
+    '                With .Seccion(SeccionesTarifaArancelaria.TIGIE5)
+    '                    'Permisos
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE13)
+
+    '                        Dim permisos = nico.Exportacion.Permisos
+
+    '                        If permisos.Count > 0 Then
+
+    '                            For Each permiso As PermisoItem In permisos
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_CLAVE).Valor = permiso.ClavePermiso
+    '                                    .Attribute(CA_PERMISO).Valor = permiso.Descripcion
+    '                                    .Attribute(CA_ACOTACION).Valor = permiso.Particularidad
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = permiso.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = permiso.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = permiso.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Normas
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE14)
+
+    '                        Dim normas = nico.Exportacion.Normas
+
+    '                        If normas.Count > 0 Then
+
+    '                            For Each norma As NormaItem In normas
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_NORMA).Valor = norma.NOM
+    '                                    .Attribute(CA_DESCRIPCION).Valor = norma.Descripcion
+    '                                    .Attribute(CA_FECHA_PUBLICACION).Valor = norma.FechaPublicacion
+    '                                    .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor = norma.FechaInicioVigencia
+    '                                    .Attribute(CA_FECHA_FIN).Valor = norma.FechaFinVigencia
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+    '                    'Anexos [todo esta metido en un campo y una sola tabla]
+    '                    'Embargos [todo esta metido en un campo y una sola tabla]
+    '                    'Cupos Mínimos [sin tablas]
+    '                    'Padron Sectoreal
+    '                    With .Seccion(SeccionesTarifaArancelaria.TIGIE18)
+
+    '                        Dim padrones = nico.Exportacion.PadronSectorial
+
+    '                        If padrones.Count > 0 Then
+
+    '                            For Each padron As PadronItem In padrones
+
+    '                                With .Partida(doc_)
+    '                                    .Attribute(CA_SECTOR).Valor = padron.Sector
+    '                                    .Attribute(CA_DESCRIPCION).Valor = padron.Notas
+    '                                End With
+
+    '                            Next
+
+    '                        End If
+
+    '                    End With
+
+    '                End With
+
+    '            End With
+
+    '        End With
+
+    '        CloneDocumentoInMongo(doc_)
+
+    '    Next row
+
+
+    'End Sub
+
+    'Private Async Sub CloneDocumentoInMongo(object1_ As Object)
+
+    '    Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+    '    Using session_ = Await iEnlace_.GetMongoClient().StartSessionAsync().ConfigureAwait(False)
+
+    '        Using enlaceDatos_ As IEnlaceDatos =
+    '            New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
+
+    '            Using _entidadDatos As IEntidadDatos = object1_
+
+    '                Dim tagWatcher_ As TagWatcher = enlaceDatos_.AgregarDatos(_entidadDatos, Nothing, session_)
+
+    '                If tagWatcher_.Status = Ok Then
+
+
+
+    '                Else
+
+
+    '                End If
+
+    '            End Using
+
+    '        End Using
+
+    '    End Using
+
+
+    'End Sub
 
 #End Region
 

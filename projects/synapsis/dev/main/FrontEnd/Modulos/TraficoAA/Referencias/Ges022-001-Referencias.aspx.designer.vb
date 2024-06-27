@@ -50,6 +50,42 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents Generales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control ccDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ccDocumento As Global.Gsol.Web.Components.CardControl
+
+    '''<summary>
+    '''Control fcDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fcDocumento As Global.Gsol.Web.Components.FileControl
+
+    '''<summary>
+    '''Control scTipoDocumentos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoDocumentos As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control btGuardarDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btGuardarDocumento As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
     '''Control dbcReferencia.
     '''</summary>
     '''<remarks>
@@ -66,15 +102,6 @@ Partial Public Class Ges022_001_Referencia
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icOriginal As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control swcTipoOperacion.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control swcMaterialPeligroso.
@@ -95,40 +122,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents swcRectificacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
-    '''Control scTipoReferencia.
+    '''Control swcTipoOperacion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scTipoReferencia As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scPrefijo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scPrefijo As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scTipoCarga.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scTipoCarga As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scPatente.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scPatente As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control scRegimen.
@@ -140,15 +140,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scRegimen As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scTipoDocumento.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scTipoDocumento As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
     '''Control scClaveDocumento.
     '''</summary>
     '''<remarks>
@@ -158,33 +149,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scClaveDocumento As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scAduanaEntradaSalida.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scAduanaEntradaSalida As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scAduanaDespacho.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scAduanaDespacho As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scDestinoMercancia.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scDestinoMercancia As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
     '''Control scEjecutivoCuenta.
     '''</summary>
     '''<remarks>
@@ -192,6 +156,51 @@ Partial Public Class Ges022_001_Referencia
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents scEjecutivoCuenta As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scPrefijo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPrefijo As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scPatente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPatente As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTipoDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoDocumento As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTipoCarga.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoCarga As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icDescripcionCompleta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icDescripcionCompleta As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control Cliente.
@@ -221,15 +230,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icRFC As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icCURP.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icCURP As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control icRFCFacturacion.
     '''</summary>
     '''<remarks>
@@ -248,85 +248,310 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icBancoPago As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control ccCDetallesliente.
+    '''Control TrackingExpo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ccCDetallesliente As Global.Gsol.Web.Components.CatalogControl
+    Protected WithEvents TrackingExpo As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control scTipoDato.
+    '''Control TrackingImpo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scTipoDato As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents TrackingImpo As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control icNumero.
+    '''Control Documentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icNumero As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents Documentos As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control Seguimiento.
+    '''Control fcDocumentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Seguimiento As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fcDocumentos As Global.Gsol.Web.Components.FileControl
 
     '''<summary>
-    '''Control swcEntrada.
+    '''Control scTipoDocumentosFijo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents swcEntrada As Global.Gsol.Web.Components.SwitchControl
+    Protected WithEvents scTipoDocumentosFijo As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scPagoAnticipado.
+    '''Control ButtonControl1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scPagoAnticipado As Global.Gsol.Web.Components.SwitchControl
+    Protected WithEvents ButtonControl1 As Global.Gsol.Web.Components.ButtonControl
 
     '''<summary>
-    '''Control icFechaETA.
+    '''Control ccDocumentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icFechaETA As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents ccDocumentos As Global.Gsol.Web.Components.CatalogControl
 
     '''<summary>
-    '''Control icFechaETD.
+    '''Control icArchivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icFechaETD As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icArchivo As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control icFechaATA.
+    '''Control icTipoArchivo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icFechaATA As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icTipoArchivo As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control Guia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Guia As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control scRecintoFiscal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scRecintoFiscal As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scGuias.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scGuias As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
+    '''Control pnGuia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnGuia As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control icNumeroGuia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icNumeroGuia As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scTransportista.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTransportista As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scPais.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPais As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icTipoCargaGuia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icTipoCargaGuia As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scPesoBruto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPesoBruto As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scUnidadMedida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scUnidadMedida As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTipoGuia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoGuia As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icConsignatario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icConsignatario As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icFechaSalidaOrigen.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaSalidaOrigen As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icDescripcionMercancia.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icDescripcionMercancia As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control ccGuias.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ccGuias As Global.Gsol.Web.Components.CatalogControl
+
+    '''<summary>
+    '''Control icNumeroGuiaMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icNumeroGuiaMulti As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scTransportistaMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTransportistaMulti As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scPaisMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPaisMulti As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTipoGuiaMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoGuiaMulti As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icTipoCargaGuiaMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icTipoCargaGuiaMulti As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scPesoBrutoMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scPesoBrutoMulti As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control scUnidadMedidaMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scUnidadMedidaMulti As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icFechaSalidaOrigenMulti.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaSalidaOrigenMulti As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control Fechas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Fechas As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control icFechaEta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaEta As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icFechaRevalidacion.
@@ -338,51 +563,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icFechaRevalidacion As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icFechaRegistro.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icFechaRegistro As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icFechaPagoPedimento.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icFechaPagoPedimento As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icFechaDespacho.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icFechaDespacho As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control DatosAdicionales.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DatosAdicionales As Global.Gsol.Web.Components.FieldsetControl
-
-    '''<summary>
-    '''Control icFechaRecepcionDocumentos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icFechaRecepcionDocumentos As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control icFechaPrevio.
     '''</summary>
     '''<remarks>
@@ -392,11 +572,38 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icFechaPrevio As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control scTipoPrevio.
+    '''Control icFechaPresentacion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scTipoPrevio As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents icFechaPresentacion As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icFechaSalida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaSalida As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icFechaEtd.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaEtd As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icFechaCierreFisico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icFechaCierreFisico As Global.Gsol.Web.Components.InputControl
 End Class

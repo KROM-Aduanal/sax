@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorReferencias64", "ControladorReferencias64.vbproj", "{F4A784CF-4F27-44A5-AC3E-509553861931}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4A784CF-4F27-44A5-AC3E-509553861931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A784CF-4F27-44A5-AC3E-509553861931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A784CF-4F27-44A5-AC3E-509553861931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A784CF-4F27-44A5-AC3E-509553861931}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C63DB982-0A8E-4B5A-BFD0-373B4DE893C0}
+	EndGlobalSection
+EndGlobal
