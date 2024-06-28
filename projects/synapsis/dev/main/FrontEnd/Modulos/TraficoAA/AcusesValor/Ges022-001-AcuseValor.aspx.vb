@@ -158,7 +158,7 @@ Public Class Ges022_001_AcuseValor
 
         Dim lista_ As New List(Of WebControl)
 
-        lista_.Add(ic_Prueba)
+        ' lista_.Add(ic_Prueba)
 
         Return lista_
 

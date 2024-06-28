@@ -1,4 +1,5 @@
-﻿Imports System.Reflection.Emit
+﻿Imports System.Net.NetworkInformation
+Imports System.Reflection.Emit
 Imports System.Web.Routing
 Imports System.Windows.Forms
 Imports Cube.Interpreters
@@ -30,8 +31,6 @@ Public Class Ges022_001_CuboDatos
     Private _ctrlValidationRoute As IValidationRouteController
 
     Private _ctrlCube As ICubeController
-
-    Private _ctrlInterpreter As IMathematicalInterpreter
 
     Private _idRoom As ObjectId
 
@@ -177,16 +176,6 @@ Public Class Ges022_001_CuboDatos
 
         End If
 
-        _ctrlInterpreter = GetVars("_interpreterController")
-
-        If _ctrlInterpreter Is Nothing Then
-
-            _ctrlInterpreter = New MathematicalInterpreterNCalc
-
-
-
-
-        End If
 
         _ctrlCube = GetVars("_cubeController")
 
@@ -195,9 +184,6 @@ Public Class Ges022_001_CuboDatos
         If _ctrlCube Is Nothing Then
 
             _ctrlCube = New CubeController
-
-
-            _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
 
 
         End If
@@ -216,7 +202,6 @@ Public Class Ges022_001_CuboDatos
 
         SetVars("_cubeController", _ctrlCube)
 
-        SetVars("_interpreterController", _ctrlInterpreter)
 
         SetVars("_organismo", _organismo)
 
@@ -452,35 +437,25 @@ Public Class Ges022_001_CuboDatos
 
                     Else
 
-                        _ctrlInterpreter = GetVars("_interpreterController")
-
-                        If _ctrlInterpreter Is Nothing Then
-
-                            _ctrlInterpreter = New MathematicalInterpreterNCalc
-
-                            _ctrlCube = GetVars("_cubeController")
-
-                            If _ctrlCube Is Nothing Then
-
-                                _ctrlCube = New CubeController
-
-                                _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
-
-                            End If
 
 
+                        _ctrlCube = GetVars("_cubeController")
 
-                            SetVars("_interpreterController", _ctrlInterpreter)
+                        If _ctrlCube Is Nothing Then
+
+                            _ctrlCube = New CubeController
 
                         End If
 
-                        If rulesType_ = "formula" AndAlso _ctrlInterpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count = 0 Then
+
+
+                        If rulesType_ = "formula" AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count = 0 Then
 
                             DisplayMessage("Nombre inválido para una habitación de tipo fórmula", TypeStatus.OkBut)
 
                         Else
 
-                            If rulesType_ <> "formula" AndAlso _ctrlInterpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count > 0 Then
+                            If rulesType_ <> "formula" AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count > 0 Then
 
                                 DisplayMessage("Has seleccionado variable y ese nombre está reservado para una habitación de tipo fórmula", TypeStatus.OkBut)
 
@@ -522,7 +497,17 @@ Public Class Ges022_001_CuboDatos
 
                                 If ejecutar_ Then
 
-                                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_, branchName_, rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), reason_:=ic_changeReason.Value)
+                                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                                                                      roomName_,
+                                                                                      rules_,
+                                                                                      branchName_,
+                                                                                      rulesType_,
+                                                                                      ic_DescripcionRules.Value,
+                                                                                      status_,
+                                                                                      CrearListaMensages,
+                                                                                      Nothing,
+                                                                                      userName_:=loginUsuario_("WebServiceUserID"),
+                                                                                      reason_:=ic_changeReason.Value)
 
                                     If tagwatcher_.ObjectReturned IsNot Nothing Then
 
@@ -538,16 +523,12 @@ Public Class Ges022_001_CuboDatos
 
                                         If tb_Formula.Enabled = True Then
 
-                                            _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+                                            _ctrlCube.GetFieldsNamesResource()
 
+                                            SetVars("_cubeController", _ctrlCube)
 
 
                                         End If
-
-                                        SetVars("_interpreterController", _ctrlInterpreter)
-
-                                        SetVars("_cubeController", _ctrlCube)
-
 
                                     Else
 
@@ -843,7 +824,18 @@ Public Class Ges022_001_CuboDatos
 
                             If ejecutar_ Then
 
-                                Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_.Replace("[13]", vbCrLf), GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="sent", reason_:=ic_changeReason.Value)
+                                Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                                                                  roomName_,
+                                                                                  rules_.Replace("[13]",
+                                                                                                 vbCrLf),
+                                                                                  GetVars("_cubeSource"),
+                                                                                  rulesType_,
+                                                                                  ic_DescripcionRules.Value,
+                                                                                  status_, CrearListaMensages,
+                                                                                  Nothing,
+                                                                                  userName_:=loginUsuario_("WebServiceUserID"),
+                                                                                  enviado_:="sent",
+                                                                                  reason_:=ic_changeReason.Value)
 
                                 If tagwatcher_.Status = Ok Then
 
@@ -990,7 +982,19 @@ Public Class Ges022_001_CuboDatos
                     If ejecutar_ Then
 
 
-                        Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_.Replace("[13]", vbCrLf), GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="on", reason_:=ic_changeReason.Value)
+                        Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                                                          roomName_,
+                                                                          rules_.Replace("[13]",
+                                                                                         vbCrLf),
+                                                                          GetVars("_cubeSource"),
+                                                                          rulesType_,
+                                                                          ic_DescripcionRules.Value,
+                                                                          status_,
+                                                                          CrearListaMensages,
+                                                                          Nothing,
+                                                                          userName_:=loginUsuario_("WebServiceUserID"),
+                                                                          enviado_:="on",
+                                                                          reason_:=ic_changeReason.Value)
 
                         If tagwatcher_.Status = Ok Then
 
@@ -1005,10 +1009,9 @@ Public Class Ges022_001_CuboDatos
 
                             SetVars("_accionDate", _accionDate)
 
-                            _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+                            _ctrlCube.GetFieldsNamesResource()
 
-                            SetVars("_interpreterController", _ctrlInterpreter)
-
+                            SetVars("_cubeController", _ctrlCube)
 
 
                         End If
@@ -1074,7 +1077,21 @@ Public Class Ges022_001_CuboDatos
 
                     _idRoom = GetVars("_idRoom")
 
-                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom, roomName_, rules_, GetVars("_cubeSource"), rulesType_, ic_DescripcionRules.Value, status_, Nothing, userName_:=loginUsuario_("WebServiceUserID"), enviado_:="off", reason_:=ic_changeReason.Value)
+                    Dim algo_ As InputControl = fsc_Alertas.ListControls(0)
+
+
+
+                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                                                      roomName_,
+                                                                      rules_,
+                                                                      GetVars("_cubeSource"),
+                                                                      rulesType_,
+                                                                      ic_DescripcionRules.Value, status_,
+                                                                     CrearListaMensages,
+                                                                     Nothing,
+                                                                     userName_:=loginUsuario_("WebServiceUserID"),
+                                                                     enviado_:="off",
+                                                                     reason_:=ic_changeReason.Value)
 
                     If tagwatcher_.Status = Ok Then
 
@@ -1143,8 +1160,6 @@ Public Class Ges022_001_CuboDatos
 
                 SetVars("_bcComparar", 2)
 
-
-
                 p_formulillas.Visible = False
 
                 p_formulillas.CssClass = "col-md-12 col-xs-12"
@@ -1165,7 +1180,6 @@ Public Class Ges022_001_CuboDatos
                 l_RulesNew.Text = "Regla"
 
                 l_RulesOld.Text = "Regla"
-
 
                 ChecaBotonComparar()
 
@@ -1191,19 +1205,26 @@ Public Class Ges022_001_CuboDatos
 
                 'End If
 
-                Dim dictionary_ As New Dictionary(Of String, Object) From {{"S1.CA_TIPO_OPERACION.0", "1"}}
-                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.PRUEBALUPITA", dictionary_)
+                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}}
+                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
 
-                Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
+                Dim diccionarioCubo_ As Dictionary(Of String, List(Of String)) = _ctrlCube.status.ObjectReturned
 
-                Dim diccionarioNuevo_ As New Dictionary(Of String, List(Of String))
+                'MsgBox(DirectCast(fsc_Alertas.ListControls(0), InputControl).Value)
 
-                For Each elemento_ In diccionarioCubo_.Keys
+                'Dim dictionary_ As New Dictionary(Of String, Object) From {{"NumeroContenedor.0", "8"}}
+                'Dim report_ = _ctrlCube.RunRoom(Of Object)("SI(NumeroContenedor=8,500,300)", dictionary_)
 
-                    diccionarioNuevo_.Add(elemento_, diccionarioCubo_(elemento_).Split(",").ToList)
+                'Dim diccionarioCubo_ = _ctrlCube.status.ObjectReturned
+
+                'Dim diccionarioNuevo_ As New Dictionary(Of String, List(Of String))
+
+                'For Each elemento_ In diccionarioCubo_.Keys
+
+                '    diccionarioNuevo_.Add(elemento_, diccionarioCubo_(elemento_).Split(",").ToList)
 
 
-                Next
+                ' Next
 
                 Dim algo_ = 5
 
@@ -1530,37 +1551,23 @@ Public Class Ges022_001_CuboDatos
 
         tb_FormulaNueva.Text = ""
 
-        _ctrlInterpreter = GetVars("_interpreterController")
-
-        If _ctrlInterpreter Is Nothing Then
-
-            _ctrlInterpreter = New MathematicalInterpreterNCalc
-
-
-
-
-        End If
-
-        _ctrlCube = GetVars("_cubeController")
-
-
 
         If _ctrlCube Is Nothing Then
 
             _ctrlCube = New CubeController
 
-
-
-
-
         End If
 
-        _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
+
+        DirectCast(fsc_Alertas.ListControls(0), InputControl).Value = ""
+
+        DirectCast(fsc_Advertencias.ListControls(0), InputControl).Value = ""
+
+        DirectCast(fsc_Información.ListControls(0), InputControl).Value = ""
+
+        _ctrlCube.GetFieldsNamesResource()
 
         SetVars("_cubeController", _ctrlCube)
-
-        SetVars("_interpreterController", _ctrlInterpreter)
-
 
         PreparaBotonera(FormControl.ButtonbarModality.Default)
 
@@ -1600,6 +1607,8 @@ Public Class Ges022_001_CuboDatos
     Public Sub CargarGajo(sender_ As Object, e As EventArgs)
 
         Dim roomsResource_ As Dictionary(Of ObjectId, roomresource) = GetVars("_roomdictionary_")
+
+        Dim messages_ As List(Of String)
 
         bc_Verificado.Enabled = False
 
@@ -1719,6 +1728,8 @@ Public Class Ges022_001_CuboDatos
 
             bc_SourceCubeChange.Label = roomResource_.branchname
 
+            messages_ = rooms_(0).messages
+
 
             bi_SudoAutorizar.Visible = False
 
@@ -1737,6 +1748,8 @@ Public Class Ges022_001_CuboDatos
                         ic_changeReason.Value = ""
 
                         bc_SourceCubeChange.Label = roomResource_.branchname
+
+                        messages_ = rooms_(0).messages
 
 
                         bc_PorAutorizar.Enabled = False
@@ -1758,6 +1771,9 @@ Public Class Ges022_001_CuboDatos
                         ic_changeReason.Value = rooms_(0).awaitingupdates(0).reason
 
                         branchname_ = roomNameNew_.Substring(0, roomNameNew_.IndexOf("."))
+
+                        messages_ = rooms_(0).awaitingupdates(0).messages
+
 
                         bc_SourceCubeChange.Label = branchname_
 
@@ -1845,8 +1861,23 @@ Public Class Ges022_001_CuboDatos
             SetVars("_bc_porautorizar", "SI")
 
 
+            If messages_.Count = 0 Then
 
+                DirectCast(fsc_Alertas.ListControls(0), InputControl).Value = ""
 
+                DirectCast(fsc_Advertencias.ListControls(0), InputControl).Value = ""
+
+                DirectCast(fsc_Información.ListControls(0), InputControl).Value = ""
+
+            Else
+
+                DirectCast(fsc_Alertas.ListControls(0), InputControl).Value = messages_(0)
+
+                DirectCast(fsc_Advertencias.ListControls(0), InputControl).Value = messages_(1)
+
+                DirectCast(fsc_Información.ListControls(0), InputControl).Value = messages_(2)
+
+            End If
 
 
             'bc_Verificado.Visible = False
@@ -2033,28 +2064,14 @@ Public Class Ges022_001_CuboDatos
             Dim formula_ As String
 
 
-            _ctrlInterpreter = GetVars("_interpreterController")
-
-            If _ctrlInterpreter Is Nothing Then
-
-                _ctrlInterpreter = New MathematicalInterpreterNCalc
-
-                SetVars("_interpreterController", _ctrlInterpreter)
-
-            End If
-
             _ctrlCube = GetVars("_cubeController")
 
             If _ctrlCube Is Nothing Then
 
                 _ctrlCube = New CubeController
 
-                _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
-
             End If
 
-
-            _ctrlInterpreter.addOperands(_ctrlCube.GetOperands().ObjectReturned)
 
             Dim Values_ = New Dictionary(Of String, Object)
 
@@ -2072,7 +2089,7 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-            params_ = _ctrlInterpreter.GetParams(formula_)
+            params_ = _ctrlCube.interpreter.GetParams(formula_)
 
 
             Dim rnd_ As New Random()
@@ -2220,15 +2237,23 @@ Public Class Ges022_001_CuboDatos
             cc_ValoresOperandos.CatalogDataBinding()
 
 
-            Dim resultado_ = _ctrlInterpreter.RunExpression(Of Object)(formula_, Values_)
+            Dim resultado_ = _ctrlCube.interpreter.RunExpression(Of Object)(formula_, Values_)
 
-            If TypeOf resultado_ Is Dictionary(Of String, String) Then
+            If TypeOf resultado_ Is Dictionary(Of String, List(Of String)) Then
 
                 Dim stringFinal_ = ""
 
                 For Each element_ In resultado_.Keys
 
-                    stringFinal_ &= "[" & element_ & "==" & resultado_(element_) & "],"
+                    Dim stringJoin_ = ""
+
+                    For Each elementList In resultado_(element_)
+
+                        stringJoin_ &= elementList & ","
+
+                    Next
+
+                    stringFinal_ &= "[" & element_ & "==" & stringJoin_.Substring(0, stringJoin_.Length - 1) & "],"
 
                 Next
 
@@ -2236,56 +2261,124 @@ Public Class Ges022_001_CuboDatos
 
                 DisplayMessage(stringFinal_, TypeStatus.OkInfo)
 
-
-
             Else
 
-                If TypeOf resultado_ IsNot List(Of String) Then
-
-                    If TypeOf resultado_ IsNot List(Of List(Of String)) Then
-
-                        SetVars("resultTest_", resultado_)
-
-                        'DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
-                        DisplayMessage(resultado_.ToString, TypeStatus.OkInfo)
-
-                    Else
-
-                        Dim listValue_ = resultado_(0)
-
-                        Dim listText_ = resultado_(1)
-
-                        Dim index_ = 0
-
-                        Dim stringFinal_ = ""
-
-                        For Each element_ In listValue_
-
-                            stringFinal_ &= "[" & element_ & "==" & listText_(index_) & "],"
-
-                            index_ += 1
-
-                        Next
-
-
-
-                        DisplayMessage(stringFinal_, TypeStatus.OkInfo)
-
-                    End If
-
-
-                Else
+                If TypeOf resultado_ Is Dictionary(Of String, String) Then
 
                     Dim stringFinal_ = ""
 
-                    For Each element_ In resultado_
+                    For Each element_ In resultado_.Keys
 
-                        stringFinal_ &= element_ & ","
+                        stringFinal_ &= "[" & element_ & "==" & resultado_(element_) & "],"
+
                     Next
 
                     SetVars("resultTest_", "BADBAD")
 
                     DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+
+
+                Else
+
+                    If TypeOf resultado_ IsNot List(Of String) Then
+
+                        If TypeOf resultado_ IsNot List(Of List(Of String)) Then
+
+
+                            Dim messageResult_ As String = resultado_
+
+                            Select Case resultado_.ToString
+
+                                Case "OK"
+
+
+                                    Dim informationResult_ = DirectCast(fsc_Información.ListControls(0), InputControl).Value
+
+                                    If informationResult_ <> "" Then
+
+                                        messageResult_ = informationResult_
+
+
+                                    End If
+
+
+                                Case "BAD"
+
+
+                                    Dim alertResult_ = DirectCast(fsc_Alertas.ListControls(0), InputControl).Value
+
+                                    If alertResult_ <> "" Then
+
+                                        messageResult_ = alertResult_
+
+                                    End If
+
+                                Case Else
+
+                                    messageResult_ = resultado_
+
+                            End Select
+
+
+                            For Each key_ In Values_.Keys
+
+                                messageResult_ = messageResult_.Replace("$" & key_, Values_(key_))
+
+                                Dim pointPos_ = key_.LastIndexOf(".")
+
+                                If pointPos_ <> -1 Then
+
+                                    messageResult_ = messageResult_.Replace("$" & key_.Substring(0, pointPos_), Values_(key_))
+
+                                End If
+
+                            Next
+
+                            SetVars("resultTest_", resultado_)
+
+                            'DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
+                            DisplayMessage(messageResult_.ToString, TypeStatus.OkInfo)
+
+                        Else
+
+                            Dim listValue_ = resultado_(0)
+
+                            Dim listText_ = resultado_(1)
+
+                            Dim index_ = 0
+
+                            Dim stringFinal_ = ""
+
+                            For Each element_ In listValue_
+
+                                stringFinal_ &= "[" & element_ & "==" & listText_(index_) & "],"
+
+                                index_ += 1
+
+                            Next
+
+
+
+                            DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                        End If
+
+
+                    Else
+
+                        Dim stringFinal_ = ""
+
+                        For Each element_ In resultado_
+
+                            stringFinal_ &= element_ & ","
+                        Next
+
+                        SetVars("resultTest_", "BADBAD")
+
+                        DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                    End If
 
                 End If
 
@@ -2294,7 +2387,9 @@ Public Class Ges022_001_CuboDatos
 
 
 
-            Dim report_ = _ctrlInterpreter.GetReportFull
+
+
+            Dim report_ = _ctrlCube.interpreter.GetReportFull
 
             If report_.getTitle = "" Then
 
@@ -2400,27 +2495,14 @@ Public Class Ges022_001_CuboDatos
            (formulaNuevaFormato_ <> "" AndAlso
            tb_FormulaNueva.Enabled)) Then
 
-            _ctrlInterpreter = GetVars("_interpreterController")
-
-            If _ctrlInterpreter Is Nothing Then
-
-                _ctrlInterpreter = New MathematicalInterpreterNCalc
-
-                SetVars("_interpreterController", _ctrlInterpreter)
-
-            End If
-
             _ctrlCube = GetVars("_cubeController")
 
             If _ctrlCube Is Nothing Then
 
                 _ctrlCube = New CubeController
 
-                _ctrlInterpreter.SetValidFields(_ctrlCube.GetFieldsNamesResource().ObjectReturned)
 
             End If
-
-            _ctrlInterpreter.addOperands(_ctrlCube.GetOperands().ObjectReturned)
 
             Dim Values_ = New Dictionary(Of String, Object)
 
@@ -2434,13 +2516,13 @@ Public Class Ges022_001_CuboDatos
 
             If tb_Formula.Enabled Then
 
-                params_ = _ctrlInterpreter.GetParams(formulaFormato_)
+                params_ = _ctrlCube.interpreter.GetParams(formulaFormato_)
 
                 botonformula_ = bc_Function
 
             Else
 
-                params_ = _ctrlInterpreter.GetParams(formulaNuevaFormato_)
+                params_ = _ctrlCube.interpreter.GetParams(formulaNuevaFormato_)
 
                 fomula_ = formulaNuevaFormato_
 
@@ -2448,7 +2530,7 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-            If _ctrlInterpreter.ExistFields(fomula_, params_) Then
+            If _ctrlCube.interpreter.ExistFields(fomula_, params_) Then
 
 
                 Dim rnd_ As New Random()
@@ -3051,10 +3133,14 @@ Public Class Ges022_001_CuboDatos
 
     End Sub
 
-    Sub SaveCubeFormula()
+    Function CrearListaMensages() As List(Of String)
 
+        Return New List(Of String) From
+               {DirectCast(fsc_Alertas.ListControls(0), InputControl).Value,
+               DirectCast(fsc_Advertencias.ListControls(0), InputControl).Value,
+               DirectCast(fsc_Información.ListControls(0), InputControl).Value}
 
-    End Sub
+    End Function
 
 
 

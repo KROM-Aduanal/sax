@@ -445,6 +445,24 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControladorAccesoKBW", "..\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LineaBaseIniciaSesion64", "..\..\..\..\masters\vb\esp\cmf\scr\Core\cmf\gsol\1_0_stdLineaBaseIniciaSesion64_dll\LineaBaseIniciaSesion64\LineaBaseIniciaSesion64\LineaBaseIniciaSesion64.vbproj", "{4E21979D-B933-4494-91F1-4CCBABBB42DD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{43659B71-A17A-421A-A226-740D2A4D3602}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ValidationRouteController64", "..\..\..\services\dev\cube.validators\1_0_stdValidationRouteController64_dll\ValidationRouteController64\ValidationRouteController64.vbproj", "{5BD01893-7896-498A-9BB1-AAC9B80352E3}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IValidationRouteController64", "..\..\..\services\dev\cube.validators\1_0_stdIValidationRouteController64_dll\IValidationRouteController64\IValidationRouteController64.vbproj", "{84C204FD-EDA8-4694-911B-D0E3F76FD50F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ICubeController64", "..\..\..\services\dev\cube.validators\1_0_stdICubeController64_dll\ICubeController64\ICubeController64.vbproj", "{A822B6BA-4695-47A9-9514-B8D3B8363A96}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CubeController64", "..\..\..\services\dev\cube.validators\1_0_stdCubeController64_dll\CubeController64\CubeController64.vbproj", "{8456BA71-60DE-403D-9AE9-D952CE5939F4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Room64", "..\..\..\services\dev\cube.validators\1_0_stdRoom64_dll\Room64\Room64.vbproj", "{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MathematicalInterpreterNCalc64", "..\..\..\services\dev\cube.interpreters\1_0_stdMathematicalInterpreterNCalc64_dll\MathematicalInterpreterNCalc64\MathematicalInterpreterNCalc64.vbproj", "{513DA76E-510E-40E0-BA4D-37334E7F19A3}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IMathematicalInterpreter64", "..\..\..\services\dev\cube.interpreters\1_0_stdIMathematicalInterpreter64_dll\IMathematicalInterpreter64\IMathematicalInterpreter64.vbproj", "{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ValidatorReport64", "..\..\..\services\dev\cube\1_0_stdValidatorReport64_dll\ValidatorReport\ValidatorReport64.vbproj", "{2F0B7DE7-74B0-4836-900B-C41D28DD4658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1207,6 +1225,38 @@ Global
 		{4E21979D-B933-4494-91F1-4CCBABBB42DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E21979D-B933-4494-91F1-4CCBABBB42DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E21979D-B933-4494-91F1-4CCBABBB42DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD01893-7896-498A-9BB1-AAC9B80352E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD01893-7896-498A-9BB1-AAC9B80352E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD01893-7896-498A-9BB1-AAC9B80352E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD01893-7896-498A-9BB1-AAC9B80352E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C204FD-EDA8-4694-911B-D0E3F76FD50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C204FD-EDA8-4694-911B-D0E3F76FD50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C204FD-EDA8-4694-911B-D0E3F76FD50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C204FD-EDA8-4694-911B-D0E3F76FD50F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A822B6BA-4695-47A9-9514-B8D3B8363A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A822B6BA-4695-47A9-9514-B8D3B8363A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A822B6BA-4695-47A9-9514-B8D3B8363A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A822B6BA-4695-47A9-9514-B8D3B8363A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513DA76E-510E-40E0-BA4D-37334E7F19A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513DA76E-510E-40E0-BA4D-37334E7F19A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513DA76E-510E-40E0-BA4D-37334E7F19A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513DA76E-510E-40E0-BA4D-37334E7F19A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0B7DE7-74B0-4836-900B-C41D28DD4658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0B7DE7-74B0-4836-900B-C41D28DD4658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0B7DE7-74B0-4836-900B-C41D28DD4658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0B7DE7-74B0-4836-900B-C41D28DD4658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1427,6 +1477,14 @@ Global
 		{3D6DEA6F-9E73-4BAF-BB5D-24D1AC609B82} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
 		{AD76A9B5-1523-49E5-BE7E-AE1ACEF422EA} = {5C5345BE-5AFD-4D15-B191-8F36EFA8981E}
 		{4E21979D-B933-4494-91F1-4CCBABBB42DD} = {5C5345BE-5AFD-4D15-B191-8F36EFA8981E}
+		{5BD01893-7896-498A-9BB1-AAC9B80352E3} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{84C204FD-EDA8-4694-911B-D0E3F76FD50F} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{A822B6BA-4695-47A9-9514-B8D3B8363A96} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{E2E2C9E6-24E6-4DAF-9F29-D09165D70E16} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{513DA76E-510E-40E0-BA4D-37334E7F19A3} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{A46A02DD-0F34-4FB2-91E4-FE3CE9FD1F1B} = {43659B71-A17A-421A-A226-740D2A4D3602}
+		{2F0B7DE7-74B0-4836-900B-C41D28DD4658} = {43659B71-A17A-421A-A226-740D2A4D3602}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DB70D15-1726-4FC9-95C9-1DF3E9509B26}
