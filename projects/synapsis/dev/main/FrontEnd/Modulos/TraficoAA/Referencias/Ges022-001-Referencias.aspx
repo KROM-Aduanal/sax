@@ -63,33 +63,16 @@
                             <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" Rules="required" OnCheckedChanged="swcTipoOperacion_CheckedChanged"></GWC:SwitchControl>
                         </asp:Panel>
                         
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" Value="IMD" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" 
-                                           ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="i_Cve_ClavePedimento" DisplayField ="t_ClaveDescripcion" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="i_Cve_ClavePedimento" DisplayField ="t_Cve_Pedimento" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" 
+                                           ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scEjecutivoCuenta" Label="Ejecutivo de cuenta" KeyField ="i_Cve_EjecutivosMisEmpresas" DisplayField ="t_NombreCompleto" Dimension ="EjecutivosMiEmpresa">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPrefijo" Label="Prefijo" OnSelectedIndexChanged="scPrefijo_SelectedIndexChanged" Visible ="false">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="false">
-                            <Options>
-                                <GWC:SelectOption Value="1" Text="Marítimo | Veracruz 430 | Jesús Enrique Gómez Reyes 3945"/>
-                                <GWC:SelectOption Value="2" Text="Marítimo | Veracruz 430 | Luis Enrique de la Cruz Reyes 3921"/>
-                                <GWC:SelectOption Value="3" Text="Marítimo | Tuxpan 421 | Rolando Reyes Kuri 3210"/>
-                                <GWC:SelectOption Value="4" Text="Marítimo | Altamira 810 | Sergio Álvarez Ramírez 3931"/>
-                                <GWC:SelectOption Value="5" Text="Marítimo | Lázaro Cárdenas 510 | Luis Enrique de la Cruz Reyes 3921"/>
-                                <GWC:SelectOption Value="6" Text="Marítimo | Lázaro Cárdenas 510 | Sergio Álvarez Ramírez 3931"/>
-                                <GWC:SelectOption Value="7" Text="Marítimo | Manzanillo 160 | Luis Enrique de la Cruz Reyes 3921"/>
-                                <GWC:SelectOption Value="8" Text="Marítimo | Manzanillo 160 | Sergio Álvarez Ramírez 3931"/>
-                                <GWC:SelectOption Value="9" Text="Terrestre | Nuevo Laredo 240 | Jesús Enrique Gómez Reyes 3945"/>
-                                <GWC:SelectOption Value="10" Text="Terrestre | Nuevo Laredo 240 | Sergio Álvarez Ramírez 3931"/>
-                                <GWC:SelectOption Value="11" Text="Terrestre | Colombia 800 | Jesús Enrique Gómez Reyes 3945"/>
-                                <GWC:SelectOption Value="12" Text="Aereo | AICM 470 | Luis Enrique de la Cruz Reyes 3921"/>
-                                <GWC:SelectOption Value="13" Text="Aereo | AICM 470 | Jesús Enrique Gómez Reyes 3945"/>
-                                <GWC:SelectOption Value="14" Text="Aereo | Toluca 650 | Rolando Reyes Kuri 3210"/>
-                                <GWC:SelectOption Value="15" Text="Aereo | AIFA 850 | Luis Enrique de la Cruz Reyes 3921"/>
-                            </Options>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoDocumento" SearchBarEnabled="true" Label="Tipo de pedimento" OnClick ="scTipoDocumento_Click" OnSelectedIndexChanged="scTipoDocumento_SelectedIndexChanged" Rules="required">
                         </GWC:SelectControl>

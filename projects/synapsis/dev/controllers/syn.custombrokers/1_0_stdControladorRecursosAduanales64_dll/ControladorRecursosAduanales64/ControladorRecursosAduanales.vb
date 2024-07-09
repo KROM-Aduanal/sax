@@ -92,6 +92,9 @@ Public Class ControladorRecursosAduanales
     <BsonIgnoreIfNull>
     Property prefijosenviroment As List(Of prefijosenviroment)
 
+    <BsonIgnoreIfNull>
+    Property modalidadaduanapatente As List(Of AduanasPatentes)
+
 
     Sub New()
 
@@ -144,6 +147,18 @@ Public Class AduanaSeccionModalidad
 
 End Class
 
+Public Class AduanasPatentes
+    Property _idmodalidadaduanapatente As Int32
+    Property _idaduanaseccion As Int32
+    Property ciudad As String
+    Property modalidad As String
+    Property estado As Int16 = 1
+
+    Property archivado As Boolean = False
+    Property agenteaduanal As String
+    Property _idpatente As Int32
+
+End Class
 
 Public Class PatenteAduanal
     Property _idpatente As Int32

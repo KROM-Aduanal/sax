@@ -158,6 +158,8 @@ Public Class Ges022_001_Referencia
 
         icRFC.Enabled = False
 
+        dbcReferencia.EnabledButton = False
+
     End Sub
 
     Public Overrides Sub BotoneraClicGuardar()
@@ -217,6 +219,9 @@ Public Class Ges022_001_Referencia
 
 
         End If
+
+
+        dbcReferencia.EnabledButton = True
 
     End Sub
 
@@ -359,13 +364,27 @@ Public Class Ges022_001_Referencia
     'EVENTOS PARA LA INSERCIÓN DE DATOS
     Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
+        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
+
+        Dim seccionesPatente_ = From data In modalidadSeccionPatente_.modalidadaduanapatente
+                                Where data._idmodalidadaduanapatente.ToString.Equals(scPatente.Value)
+                                Select data._idaduanaseccion, data.patente
+
+        If seccionesPatente_.Count > 0 Then
+
+            Dim seccion_ As String = seccionesPatente_(0)._idaduanaseccion.ToString
+
+            Dim patente_ = seccionesPatente_(0).patente.ToString
+
+            [Set](seccion_, CamposPedimento.CA_ADUANA_ENTRADA_SALIDA)
+
+            [Set](patente_, CamposPedimento.CA_PATENTE,)
+
+        End If
+
 
 
         _controladorReferencias = New ControladorReferencias
-
-        Dim x = ccDocumentos.Columns
-
-        Dim y = ccGuias.Columns
 
         dbcReferencia.Value = dbcReferencia.Value & _controladorReferencias.GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
 
@@ -398,10 +417,6 @@ Public Class Ges022_001_Referencia
 
     'EVENTOS PARA MODIFICACIÓN DE DATOS
     Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
-
-        Dim x = ccDocumentos.Columns
-
-        Dim y = ccGuias.Columns
 
         Return New TagWatcher(1) 'tagwatcher_
 
@@ -477,13 +492,9 @@ Public Class Ges022_001_Referencia
 
         Dim swMultiple = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_GUIA_MULTIPLE).Valor
 
-        Dim tip = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_TIPO_DOCUMENTO).Valor
+        'Dim tip = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_TIPO_DOCUMENTO).Valor
 
         Dim fuente_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-
-        Dim x = scRegimen
-
-        Dim y = ccDocumentos
 
         If swMultiple Then
 
@@ -616,68 +627,70 @@ Public Class Ges022_001_Referencia
             Case 1
                 referencia = _controladorReferencias.CrearPrereferencia(memoryStream_, Ia.Pln.IControllerChatGPT.DocumentoCargado.BL).ObjectReturned
 
+                If referencia._importacion._guia._listaGuias(0)._guia.Equals("MEDUET7473626") Then
+
+                    icNumeroGuia.Value = "MEDUE7473626"
+
+                Else
+
+                    icNumeroGuia.Value = referencia._importacion._guia._listaGuias(0)._guia
+
+                End If
+                scTransportista.Value = referencia._importacion._guia._listaGuias(0)._transportista
+                scPais.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._pais}}
+                scPais.Value = 1
+                scUnidadMedida.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._unidadMedida}}
+                scUnidadMedida.Value = 1
+                scTipoGuia.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Master"}}
+                scTipoGuia.Value = 1
+                scTipoGuia.ToolTip = "Sugerido por sistema, confirmar"
+                scTipoGuia.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scTipoGuia.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+                icTipoCargaGuia.Value = referencia._importacion._guia._listaGuias(0)._tipoCarga
+                scPesoBruto.Value = referencia._importacion._guia._listaGuias(0).perBruto
+                icFechaSalidaOrigen.Value = referencia._importacion._guia._listaGuias(0)._salidaOrigen
+                icDescripcionMercancia.Value = referencia._importacion._guia._listaGuias(0)._descripcionMercancia
+                icConsignatario.Value = referencia._importacion._guia._listaGuias(0)._consignatario
+
+                ccDocumento.Visible = False
+
+                scRegimen.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "IMD", .Text = "IMD - DEFINITIVO DE IMPORTACIÓN."}}
+                scRegimen.Value = "IMD"
+                scRegimen.ToolTip = "Sugerido por sistema, confirmar"
+                scRegimen.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scRegimen.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
+                scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 8, .Text = "A1"}}
+                scClaveDocumento.Value = 8
+                scClaveDocumento.ToolTip = "Sugerido por sistema, confirmar"
+                scClaveDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scClaveDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
+                scPatente.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Marítimo | Veracruz 430 | Jesús Gómez Reyes 3945"}}
+                scPatente.Value = 1
+                scPatente.ToolTip = "Sugerido por sistema, confirmar"
+                scPatente.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scPatente.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
+                scTipoDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Normal"}}
+                scTipoDocumento.Value = 1
+                scTipoDocumento.ToolTip = "Sugerido por sistema, confirmar"
+                scTipoDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scTipoDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
+                scEjecutivoCuenta.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 4711, .Text = "SAHAIRA ELIZABETH VILLANUEVA CONTRERAS"}}
+                scEjecutivoCuenta.Value = 4711
+                scEjecutivoCuenta.ToolTip = "Sugerido por sistema, confirmar"
+                scEjecutivoCuenta.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
+                scEjecutivoCuenta.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
+                DisplayMessage("Documento agregado y sugerencias realizadas")
+
             Case 2
                 facturaComercial = _controladorReferencias.CrearPrereferencia(memoryStream_, Ia.Pln.IControllerChatGPT.DocumentoCargado.FacturaImportacion).ObjectReturned
         End Select
 
-        If referencia._importacion._guia._listaGuias(0)._guia.Equals("MEDUET7473626") Then
 
-            icNumeroGuia.Value = "MEDUE7473626"
-
-        Else
-
-            icNumeroGuia.Value = referencia._importacion._guia._listaGuias(0)._guia
-
-        End If
-        scTransportista.Value = referencia._importacion._guia._listaGuias(0)._transportista
-        scPais.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._pais}}
-        scPais.Value = 1
-        scUnidadMedida.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._unidadMedida}}
-        scUnidadMedida.Value = 1
-        scTipoGuia.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Master"}}
-        scTipoGuia.Value = 1
-        scTipoGuia.ToolTip = "Sugerido por sistema, confirmar"
-        scTipoGuia.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scTipoGuia.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-        icTipoCargaGuia.Value = referencia._importacion._guia._listaGuias(0)._tipoCarga
-        scPesoBruto.Value = referencia._importacion._guia._listaGuias(0).perBruto
-        icFechaSalidaOrigen.Value = referencia._importacion._guia._listaGuias(0)._salidaOrigen
-        icDescripcionMercancia.Value = referencia._importacion._guia._listaGuias(0)._descripcionMercancia
-        icConsignatario.Value = referencia._importacion._guia._listaGuias(0)._consignatario
-
-        ccDocumento.Visible = False
-
-        scRegimen.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "IMD", .Text = "IMD - DEFINITIVO DE IMPORTACIÓN."}}
-        scRegimen.Value = "IMD"
-        scRegimen.ToolTip = "Sugerido por sistema, confirmar"
-        scRegimen.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scRegimen.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-
-        scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 8, .Text = "A1"}}
-        scClaveDocumento.Value = 8
-        scClaveDocumento.ToolTip = "Sugerido por sistema, confirmar"
-        scClaveDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scClaveDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-
-        scPatente.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Marítimo | Veracruz 430 | Jesús Gómez Reyes 3945"}}
-        scPatente.Value = 1
-        scPatente.ToolTip = "Sugerido por sistema, confirmar"
-        scPatente.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scPatente.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-
-        scTipoDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Normal"}}
-        scTipoDocumento.Value = 1
-        scTipoDocumento.ToolTip = "Sugerido por sistema, confirmar"
-        scTipoDocumento.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scTipoDocumento.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-
-        scEjecutivoCuenta.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 4711, .Text = "SAHAIRA ELIZABETH VILLANUEVA CONTRERAS"}}
-        scEjecutivoCuenta.Value = 4711
-        scEjecutivoCuenta.ToolTip = "Sugerido por sistema, confirmar"
-        scEjecutivoCuenta.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
-        scEjecutivoCuenta.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
-
-        DisplayMessage("Documento agregado y sugerencias realizadas")
 
         scRegimen.ShowToolTip()
         scClaveDocumento.ShowToolTip()
@@ -1072,6 +1085,7 @@ Public Class Ges022_001_Referencia
                              {.Value = aduanasSecciones_(index_)._idaduanaseccion,
                               .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
 
+
             Next
 
             Return aduanaSeccionModalidad_
@@ -1172,6 +1186,12 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
+    Protected Sub scModalidadAduanaPatente_Click(sender As Object, e As EventArgs)
+
+        scPatente.DataSource = ModalidadSeccionPatente()
+
+    End Sub
+
     Protected Sub InicializaCliente(ByVal datosCliente_ As OperacionGenerica)
 
         icRFC.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
@@ -1181,6 +1201,37 @@ Public Class Ges022_001_Referencia
         icRFCFacturacion.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
     End Sub
+
+    Private Function ModalidadSeccionPatente() As List(Of SelectOption)
+
+        Dim _modalidadSeccionPatente = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+
+        SetVars("modalidadSeccionPatente", _modalidadSeccionPatente)
+
+        Dim aduanasSeccionesPatente_ = From data In _modalidadSeccionPatente.modalidadaduanapatente
+                                       Where data.archivado = False And data.estado = 1
+                                       Select data._idmodalidadaduanapatente, data.modalidad, data.ciudad, data._idaduanaseccion, data.agenteaduanal, data.patente
+
+        If aduanasSeccionesPatente_.Count > 0 Then
+
+            Dim dataSource_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To aduanasSeccionesPatente_.Count - 1
+
+                dataSource_.Add(New SelectOption With
+                             {.Value = aduanasSeccionesPatente_(index_)._idmodalidadaduanapatente,
+                              .Text = aduanasSeccionesPatente_(index_).modalidad & "|" & aduanasSeccionesPatente_(index_).ciudad & "-" & aduanasSeccionesPatente_(index_)._idaduanaseccion &
+                              "|" & aduanasSeccionesPatente_(index_).agenteaduanal & "-" & aduanasSeccionesPatente_(index_).patente})
+
+            Next
+
+            Return dataSource_
+
+        End If
+
+        Return Nothing
+
+    End Function
 
 #End Region
 
