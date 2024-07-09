@@ -41,6 +41,15 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents __SYSTEM_MODULE_FORM As Global.Gsol.Web.Components.FormControl
 
     '''<summary>
+    '''Control btGuiasM.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btGuiasM As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
     '''Control Generales.
     '''</summary>
     '''<remarks>
@@ -131,15 +140,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
-    '''Control scRegimen.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scRegimen As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
     '''Control scClaveDocumento.
     '''</summary>
     '''<remarks>
@@ -147,6 +147,15 @@ Partial Public Class Ges022_001_Referencia
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents scClaveDocumento As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scRegimen.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scRegimen As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control scEjecutivoCuenta.

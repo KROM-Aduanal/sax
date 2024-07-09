@@ -23,17 +23,26 @@
 	padding-right:24px !important;
 }
 
-input:not(:placeholder-shown) + div + div + label, textarea:not(:placeholder-shown) + div + label {
+input:not(:placeholder-shown) + div + div + label{
 	top: -4px;
 	opacity: 1;
 }
 
-input:not(:placeholder-shown) + div + label, textarea:not(:placeholder-shown) + label {
+input:not(:placeholder-shown) + div + label {
 	top: -4px;
 	opacity: 1;
 }
+textarea:not(:placeholder-shown) + div + label {
+	top: -14px;
+	opacity: 1;
+}
 
-input:not(:disabled):not(:placeholder-shown) + div + div + label, textarea:not(:placeholder-shown) + div + label {
+textarea:not(:placeholder-shown) + div + div + label {
+	top: -14px;
+	opacity: 1;
+}
+
+input:not(:disabled):not(:placeholder-shown) + div + div + label, textarea:not(:placeholder-shown) + div + div + label {
 	color: var(--tintColor);
 }
 

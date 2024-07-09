@@ -112,6 +112,40 @@ Public Class DualityBarControl
 
     End Property
 
+    Public Property EnabledButton As Boolean
+
+        Get
+
+            Return MyBase.Enabled
+
+        End Get
+
+        Set(value As Boolean)
+
+            If _barButton IsNot Nothing Then
+
+                If value = True Then
+
+                    _barButton.Attributes.Remove("disabled")
+
+                Else
+
+                    _barButton.Attributes.Add("disabled", "disabled")
+
+                End If
+
+                _barButton.Enabled = value
+
+            Else
+
+                MyBase.Enabled = value
+
+            End If
+
+        End Set
+
+    End Property
+
     Public Property TintColor As Color
 
 #End Region
