@@ -93,7 +93,7 @@ Public Class ControladorRecursosAduanales
     Property prefijosenviroment As List(Of prefijosenviroment)
 
     <BsonIgnoreIfNull>
-    Property modalidadaduanapatente As List(Of AduanasPatentes)
+    Property aduanaspatentes As List(Of AduanasPatentes)
 
 
     Sub New()
