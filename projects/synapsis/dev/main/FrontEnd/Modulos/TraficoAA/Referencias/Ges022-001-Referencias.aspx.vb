@@ -366,15 +366,15 @@ Public Class Ges022_001_Referencia
 
         Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
 
-        Dim seccionesPatente_ = From data In modalidadSeccionPatente_.modalidadaduanapatente
+        Dim seccionesPatente_ = From data In modalidadSeccionPatente_.aduanaspatentes
                                 Where data._idmodalidadaduanapatente.ToString.Equals(scPatente.Value)
-                                Select data._idaduanaseccion, data.patente
+                                Select data._idaduanaseccion, data._idpatente
 
         If seccionesPatente_.Count > 0 Then
 
             Dim seccion_ As String = seccionesPatente_(0)._idaduanaseccion.ToString
 
-            Dim patente_ = seccionesPatente_(0).patente.ToString
+            Dim patente_ = seccionesPatente_(0)._idpatente.ToString
 
             [Set](seccion_, CamposPedimento.CA_ADUANA_ENTRADA_SALIDA)
 
@@ -1208,9 +1208,9 @@ Public Class Ges022_001_Referencia
 
         SetVars("modalidadSeccionPatente", _modalidadSeccionPatente)
 
-        Dim aduanasSeccionesPatente_ = From data In _modalidadSeccionPatente.modalidadaduanapatente
+        Dim aduanasSeccionesPatente_ = From data In _modalidadSeccionPatente.aduanaspatentes
                                        Where data.archivado = False And data.estado = 1
-                                       Select data._idmodalidadaduanapatente, data.modalidad, data.ciudad, data._idaduanaseccion, data.agenteaduanal, data.patente
+                                       Select data._idmodalidadaduanapatente, data.modalidad, data.ciudad, data._idaduanaseccion, data.agenteaduanal, data._idpatente
 
         If aduanasSeccionesPatente_.Count > 0 Then
 
@@ -1221,7 +1221,7 @@ Public Class Ges022_001_Referencia
                 dataSource_.Add(New SelectOption With
                              {.Value = aduanasSeccionesPatente_(index_)._idmodalidadaduanapatente,
                               .Text = aduanasSeccionesPatente_(index_).modalidad & "|" & aduanasSeccionesPatente_(index_).ciudad & "-" & aduanasSeccionesPatente_(index_)._idaduanaseccion &
-                              "|" & aduanasSeccionesPatente_(index_).agenteaduanal & "-" & aduanasSeccionesPatente_(index_).patente})
+                              "|" & aduanasSeccionesPatente_(index_).agenteaduanal & "-" & aduanasSeccionesPatente_(index_)._idpatente})
 
             Next
 
