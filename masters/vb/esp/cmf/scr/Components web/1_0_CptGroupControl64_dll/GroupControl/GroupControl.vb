@@ -2,6 +2,7 @@
 Imports System.Drawing
 Imports System.Security.Permissions
 Imports System.Web
+Imports System.Web.Script.Serialization
 Imports System.Web.UI
 Imports System.Web.UI.HtmlControls
 Imports System.Web.UI.WebControls
@@ -37,6 +38,8 @@ Public Class GroupControl
 
 #Region "Propiedades"
 
+    Private _group As HtmlGenericControl
+
     Private Shared ReadOnly EventCheckedChange As New Object()
 
     Property Columns As ColumnNumber = ColumnNumber.X1
@@ -51,6 +54,44 @@ Public Class GroupControl
     Public Property SelectedIndex As Integer
 
     Public Property IsCheckedSelectedIndex As Boolean
+
+    Public WriteOnly Property CheckedItems As List(Of Integer)
+
+        Set(value As List(Of Integer))
+
+            EnsureChildControls()
+
+            Dim index_ = 0
+
+            For Each control_ As Object In _group.Controls
+
+                Dim checkbox_ = control_.Controls(0)
+
+                If value IsNot Nothing Then
+
+                    If value.Contains(index_) = True Then
+
+                        DirectCast(checkbox_, CheckBox).Checked = True
+
+                    Else
+
+                        DirectCast(checkbox_, CheckBox).Checked = False
+
+                    End If
+
+                Else
+
+                    DirectCast(checkbox_, CheckBox).Checked = False
+
+                End If
+
+                index_ += 1
+
+            Next
+
+        End Set
+
+    End Property
 
 #End Region
 
@@ -112,15 +153,11 @@ Public Class GroupControl
 
 #Region "Renderizado"
 
-    Protected Overrides Sub CreateChildControls()
+    Private Sub SettingGroupControls()
 
-        Dim container_ = New HtmlGenericControl("div")
+        _group = New HtmlGenericControl("div")
 
-        container_.Attributes.Add("class", CssClass)
-
-        Dim group_ = New HtmlGenericControl("div")
-
-        With group_
+        With _group
 
             Dim bordered_ = If(_Bordered, " group-boders", "")
 
@@ -162,6 +199,15 @@ Public Class GroupControl
 
         End With
 
+    End Sub
+
+    Protected Overrides Sub CreateChildControls()
+
+        SettingGroupControls()
+
+        Dim container_ = New HtmlGenericControl("div")
+
+        container_.Attributes.Add("class", CssClass)
 
         If _ListItems.Count Then
 
@@ -171,9 +217,9 @@ Public Class GroupControl
 
                 If _Type = TypeControl.Checkbox Then
 
-                    Dim componente_ As New HtmlGenericControl("label")
+                    Dim label_ As New HtmlGenericControl("label")
 
-                    With componente_
+                    With label_
 
                         .Attributes.Add("class", "wc-checkbox d-flex position-relative mb-3")
 
@@ -183,9 +229,9 @@ Public Class GroupControl
 
                         End If
 
-                        Dim userControl_ As New CheckBox
+                        Dim checkbox_ As New CheckBox
 
-                        With userControl_
+                        With checkbox_
 
                             .CausesValidation = False
 
@@ -199,19 +245,19 @@ Public Class GroupControl
 
                         End With
 
-                        .Controls.Add(userControl_)
+                        .Controls.Add(checkbox_)
 
                         .Controls.Add(New LiteralControl("    <span text='" & control_.Text & "' class='d-flex align-items-center'></span>"))
 
                     End With
 
-                    group_.Controls.Add(componente_)
+                    _group.Controls.Add(label_)
 
                 Else
 
-                    Dim componente_ As New HtmlGenericControl("label")
+                    Dim label_ As New HtmlGenericControl("label")
 
-                    With componente_
+                    With label_
 
                         .Attributes.Add("class", "wc-radio d-flex position-relative mb-3")
 
@@ -221,9 +267,9 @@ Public Class GroupControl
 
                         End If
 
-                        Dim userControl_ As New RadioButton
+                        Dim radio_ As New RadioButton
 
-                        With userControl_
+                        With radio_
 
                             .CausesValidation = False
 
@@ -239,13 +285,13 @@ Public Class GroupControl
 
                         End With
 
-                        .Controls.Add(userControl_)
+                        .Controls.Add(radio_)
 
                         .Controls.Add(New LiteralControl("    <span text='" & control_.Text & "' class='d-flex align-items-center'></span>"))
 
                     End With
 
-                    group_.Controls.Add(componente_)
+                    _group.Controls.Add(label_)
 
                 End If
 
@@ -255,7 +301,7 @@ Public Class GroupControl
 
         End If
 
-        container_.Controls.Add(group_)
+        container_.Controls.Add(_group)
 
         Me.Controls.Add(container_)
 
