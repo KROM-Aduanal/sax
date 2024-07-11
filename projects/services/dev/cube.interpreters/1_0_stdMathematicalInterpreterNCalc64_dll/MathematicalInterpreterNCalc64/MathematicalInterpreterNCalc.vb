@@ -82,7 +82,6 @@ Public Class MathematicalInterpreterNCalc
         _customFunctions = New List(Of String) From {"AHORA",
                                                      "ASIGNAR",
                                                      "BUSCARV",
-                                                     "BUSCARDICCIONARIO",
                                                      "COINCIDIR",
                                                      "CONCATENAR",
                                                      "DENTRO",
@@ -96,6 +95,7 @@ Public Class MathematicalInterpreterNCalc
                                                      "LARGO",
                                                      "NO",
                                                      "O",
+                                                     "OBTENERVALOR",
                                                      "RANGO",
                                                      "RED",
                                                      "REDONDEAR",
@@ -1949,32 +1949,6 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = False
 
-                                 Case "BUSCARDICCIONARIO"
-
-                                     Dim firstParameter_ = functionParameters_.
-                                                            Parameters.
-                                                            First.
-                                                            Evaluate
-                                     Dim secondParameter_ As String = functionParameters_.
-                                                            Parameters(1).
-                                                            Evaluate
-
-                                     If TypeOf firstParameter_ Is Dictionary(Of String, String) Then
-
-                                         Dim dictionary_ As Dictionary(Of String, String) = firstParameter_
-
-                                         functionParameters_.Result = dictionary_(secondParameter_)
-
-                                     Else
-
-                                         Dim dictionary_ As Dictionary(Of String, List(Of String)) = firstParameter_
-
-                                         functionParameters_.Result = dictionary_(secondParameter_)
-
-                                     End If
-
-                                     resultIsDouble_ = False
-
                                  Case "BUSCARV"
 
                                      Dim firstParameter_ = functionParameters_.
@@ -2667,6 +2641,31 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = False
 
+                                 Case "OBTENERVALOR"
+
+                                     Dim firstParameter_ = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+                                     Dim secondParameter_ As String = functionParameters_.
+                                                            Parameters(1).
+                                                            Evaluate
+
+                                     If TypeOf firstParameter_ Is Dictionary(Of String, String) Then
+
+                                         Dim dictionary_ As Dictionary(Of String, String) = firstParameter_
+
+                                         functionParameters_.Result = dictionary_(secondParameter_)
+
+                                     Else
+
+                                         Dim dictionary_ As Dictionary(Of String, List(Of String)) = firstParameter_
+
+                                         functionParameters_.Result = dictionary_(secondParameter_)
+
+                                     End If
+
+                                     resultIsDouble_ = False
 
                                  Case "RED"
 
