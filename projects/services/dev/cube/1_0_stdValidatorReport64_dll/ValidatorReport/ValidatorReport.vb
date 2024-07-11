@@ -50,6 +50,8 @@ Public Class ValidatorReport
 
     Property result As Object
 
+    Property messages As List(Of String)
+
 #End Region
 
 
@@ -324,6 +326,9 @@ Public Class ValidatorReport
                         itemreport_.descriptionerrortype.ToString
 
         Next
+
+
+
 
         MsgBox(mensaje_)
 

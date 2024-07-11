@@ -1,4 +1,5 @@
-﻿Imports MongoDB.Bson
+﻿Imports Cube.Interpreters
+Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Syn.Documento
 Imports Wma.Exceptions
@@ -35,13 +36,16 @@ Public Interface ICubeController : Inherits IDisposable
 
     Property scope As List(Of ContainedCubes)
 
-    Property rooms As List(Of Room)
+    Property rooms As List(Of room)
 
     Property status As TagWatcher
 
     Property reports As ValidatorReport
 
     Property fieldmiss As List(Of String)
+
+
+    Property interpreter As IMathematicalInterpreter
 
 
 #End Region
@@ -65,11 +69,9 @@ Public Interface ICubeController : Inherits IDisposable
 
     Function GetOperands(Optional firma_ As String = "") As TagWatcher
 
-    Function SetFormula(Of T)(idRoom_ As ObjectId, roomName_ As String, roomRules_ As String, cubeDestin_ As String, contenType_ As String, descriptionRules_ As String, status_ As String, Optional idUser_ As ObjectId = Nothing, Optional userName_ As String = "", Optional enviado_ As String = "unsent", Optional reason_ As String = "") As TagWatcher
+    Function SetFormula(Of T)(idRoom_ As ObjectId, roomName_ As String, roomRules_ As String, cubeDestin_ As String, contenType_ As String, descriptionRules_ As String, status_ As String, messages_ As List(Of String), Optional idUser_ As ObjectId = Nothing, Optional userName_ As String = "", Optional enviado_ As String = "unsent", Optional reason_ As String = "") As TagWatcher
 
     ' Function SetFormula(Of T)(idRoom_ As ObjectId, NewroomName_ As String, roomRules_ As String, cubeDestin_ As String, contenttype_ As String, descriptionRules_ As String, status_ As String, Optional idUser_ As ObjectId = Nothing, Optional userName_ As String = "") As TagWatcher
-
-    Function RunRoom(Of T)(roomName_ As String, params_ As String) As ValidatorReport
 
     Function GetReports() As ValidatorReport
 

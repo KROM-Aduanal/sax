@@ -82,6 +82,7 @@ Public Class MathematicalInterpreterNCalc
         _customFunctions = New List(Of String) From {"AHORA",
                                                      "ASIGNAR",
                                                      "BUSCARV",
+                                                     "BUSCARDICCIONARIO",
                                                      "COINCIDIR",
                                                      "CONCATENAR",
                                                      "DENTRO",
@@ -1948,6 +1949,32 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = False
 
+                                 Case "BUSCARDICCIONARIO"
+
+                                     Dim firstParameter_ = functionParameters_.
+                                                            Parameters.
+                                                            First.
+                                                            Evaluate
+                                     Dim secondParameter_ As String = functionParameters_.
+                                                            Parameters(1).
+                                                            Evaluate
+
+                                     If TypeOf firstParameter_ Is Dictionary(Of String, String) Then
+
+                                         Dim dictionary_ As Dictionary(Of String, String) = firstParameter_
+
+                                         functionParameters_.Result = dictionary_(secondParameter_)
+
+                                     Else
+
+                                         Dim dictionary_ As Dictionary(Of String, List(Of String)) = firstParameter_
+
+                                         functionParameters_.Result = dictionary_(secondParameter_)
+
+                                     End If
+
+                                     resultIsDouble_ = False
+
                                  Case "BUSCARV"
 
                                      Dim firstParameter_ = functionParameters_.
@@ -2216,24 +2243,93 @@ finalExpression_.Length - 1)
 
                                      Dim elements_ As List(Of String) = functionParameters_.Parameters.First.Evaluate
 
-                                     Dim separator_ As String = functionParameters_.Parameters(1).Evaluate
+                                     Dim elementSecond_ = functionParameters_.Parameters(1).Evaluate
 
-                                     Dim dictionary_ As New Dictionary(Of String, String)
+                                     If functionParameters_.Parameters.Count = 3 Then
+
+                                         Dim separatorList_ As String = functionParameters_.Parameters(2).Evaluate
+
+                                         Dim dictionary_ As New Dictionary(Of String, List(Of String))
+
+                                         If TypeOf elementSecond_ Is String Then
+
+                                             Dim separator_ As String = elementSecond_
+
+                                             For Each element_ In elements_
+
+                                                 Dim keyValue_ = element_.Split(separator_)
+
+                                                 Dim key_ = keyValue_(0).Trim(" ")
+
+                                                 Dim value_ = keyValue_(1).Trim(" ")
+
+                                                 dictionary_.Add(key_, value_.Split(separatorList_).ToList)
+
+                                             Next
+
+                                         Else
+
+                                             Dim index_ = 0
+
+                                             For Each element_ In elements_
+
+                                                 Dim key_ = element_
+
+                                                 Dim value_ As String = elementSecond_(index_)
+
+                                                 dictionary_.Add(key_, value_.Split(separatorList_).ToList)
+
+                                                 index_ += 1
+
+                                             Next
+
+                                         End If
+
+                                         functionParameters_.Result = dictionary_
+
+                                     Else
 
 
-                                     For Each element_ In elements_
+                                         Dim dictionary_ As New Dictionary(Of String, String)
 
-                                         Dim keyValue_ = element_.Split(separator_)
+                                         If TypeOf elementSecond_ Is String Then
 
-                                         Dim key_ = keyValue_(0).Trim(" ")
+                                             Dim separator_ As String = elementSecond_
 
-                                         Dim value_ = keyValue_(1).Trim(" ")
 
-                                         dictionary_.Add(key_, value_)
+                                             For Each element_ In elements_
 
-                                     Next
+                                                 Dim keyValue_ = element_.Split(separator_)
 
-                                     functionParameters_.Result = dictionary_
+                                                 Dim key_ = keyValue_(0).Trim(" ")
+
+                                                 Dim value_ = keyValue_(1).Trim(" ")
+
+                                                 dictionary_.Add(key_, value_)
+
+                                             Next
+
+                                         Else
+
+                                             Dim index_ = 0
+
+                                             For Each element_ In elements_
+
+                                                 Dim key_ = element_
+
+                                                 dictionary_.Add(key_, elementSecond_(index_))
+
+                                                 index_ += 1
+
+                                             Next
+
+
+                                         End If
+
+                                         functionParameters_.Result = dictionary_
+
+                                     End If
+
 
                                      resultIsDouble_ = False
 
@@ -2304,7 +2400,7 @@ finalExpression_.Length - 1)
 
                                          separator_ = parameter_.ToString
 
-                                         If separator_ <> "," And separator_ <> "|" And separator_ <> "{}" And separator_ <> "#" Then
+                                         If separator_ <> "," And separator_ <> "|" And separator_ <> "{}" And separator_ <> "#" And separator_ <> ";" Then
 
                                              separator_ = ","
 
@@ -2370,28 +2466,38 @@ finalExpression_.Length - 1)
 
                                          Else
 
-                                                 functionParameters_.Result = True
+                                             functionParameters_.Result = True
 
                                          End If
 
                                      Else
 
-                                         If firstParameter_.ToString <> "" Then
+                                         If firstParameter_ Is Nothing Then
 
                                              functionParameters_.Result = False
 
                                          Else
 
-                                             functionParameters_.Result = True
+                                             If firstParameter_.ToString <> "" Then
+
+                                                 functionParameters_.Result = False
+
+                                             Else
+
+                                                 functionParameters_.Result = True
+
+                                             End If
 
                                          End If
+
 
                                      End If
 
 
 
 
-                                     resultIsDouble_ = False
+
+                                         resultIsDouble_ = False
 
                                  Case "ESPACIOS"
 
@@ -2507,8 +2613,6 @@ finalExpression_.Length - 1)
 
                                  Case "LARGO"
 
-
-
                                      Dim firstParameter_ = functionParameters_.
                                                             Parameters.
                                                             First.
@@ -2525,11 +2629,7 @@ finalExpression_.Length - 1)
 
                                      End If
 
-
-
-
                                      resultIsDouble_ = True
-
 
                                  Case "NO"
 
@@ -2581,19 +2681,19 @@ finalExpression_.Length - 1)
 
                                              result_ = CDbl(expression_.Evaluate)
 
-                                         Case "ROOM"
+                                 Case "ROOM"
 
-                                             Dim paramPosition_ = 0
+                                     Dim paramPosition_ = 0
 
-                                             Dim firstParameter_ = functionParameters_.Parameters.First
+                                     Dim firstParameter_ = functionParameters_.Parameters.First
 
-                                             Dim list_ = firstParameter_.ParsedExpression.ToString.Split(New Char() {" "c})
+                                     Dim list_ = firstParameter_.ParsedExpression.ToString.Split(New Char() {" "c})
 
-                                             Dim cubeName_ = list_(0)
+                                     Dim cubeName_ = list_(0)
 
-                                             Dim operation_ = ""
+                                     Dim operation_ = ""
 
-                                             Dim parameters_ As New List(Of String)
+                                     Dim parameters_ As New List(Of String)
 
                                      Dim cube_ As ICubeController = New CubeController
 
@@ -2601,10 +2701,9 @@ finalExpression_.Length - 1)
 
                                      parameters_ = cube_.GetFormula(cubeName_).ObjectReturned
 
-
                                      operation_ = parameters_(0)
 
-                                             parameters_.RemoveAt(0)
+                                     parameters_.RemoveAt(0)
 
                                              For Each parametro_ In parameters_
 
@@ -2673,7 +2772,9 @@ finalExpression_.Length - 1)
 
                                      Dim resultRoom_ = expressionRoom_.Evaluate
 
-                                     If TypeOf resultRoom_ Is List(Of String) Then
+                                     If TypeOf resultRoom_ Is List(Of String) OrElse
+                                        TypeOf resultRoom_ Is Dictionary(Of String, List(Of String)) OrElse
+                                        TypeOf resultRoom_ Is Dictionary(Of String, String) Then
 
                                          functionParameters_.Result = resultRoom_
 

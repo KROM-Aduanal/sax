@@ -46,6 +46,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0">
+      <HintPath>..\..\..\..\libs\bin\cube.interpreters\Cube.Interpreters.IMathematicalInterpreter64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Cube.ValidatorReport64.0.0.0.0">
       <HintPath>..\..\..\..\libs\bin\cube\Cube.ValidatorReport64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
