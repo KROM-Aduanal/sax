@@ -4417,9 +4417,13 @@ Namespace Gsol.BaseDatos.Operaciones
                 End If
 
             Else
+
                 rigor_ = "="
+
                 char_ = Nothing
+
                 valorindice_ = valorindice_.Replace("%", Nothing)
+
             End If
 
             If filtrarcampo_ Is Nothing Then
@@ -4703,7 +4707,11 @@ Namespace Gsol.BaseDatos.Operaciones
                             Select Case criterio_
 
                                 Case ComponentCriteriaDCKR.TypesCriteria.BetweenValues
-                                    'NOT IMPLEMENTED
+
+                                    commandString_ = "{" & campoColeccion_.Nombre & ":{$in:[" & valor_.Replace("(", "'").Replace(",", "','").Replace(")", "'") & "]}}"
+
+                                    queryDocument_.AddRange(BsonSerializer.Deserialize(Of BsonDocument)(commandString_))
+
                                 Case ComponentCriteriaDCKR.TypesCriteria.Contains
 
                                     commandString_ = "{" & campoColeccion_.Nombre & ":/.*" & valor_ & ".*/i}"
@@ -4721,7 +4729,37 @@ Namespace Gsol.BaseDatos.Operaciones
 
                                 Case ComponentCriteriaDCKR.TypesCriteria.EqualsTo
 
-                                    commandString_ = "{" & campoColeccion_.Nombre & ":/" & valor_ & "/i}"
+                                    Dim dictionary_ = queryDocument_.ToDictionary
+
+                                    If dictionary_.ContainsKey(campoColeccion_.Nombre) Then
+
+                                        Dim valueOld_ = queryDocument_(campoColeccion_.Nombre).AsBsonValue.ToString.Replace("/i", "").Replace("/", "")
+
+                                        commandString_ = "{$or:[{" & campoColeccion_.Nombre & ":/" & valueOld_ & "/i},{ " &
+                                                                    campoColeccion_.Nombre & ":/" & valor_ & "/i}]}"
+
+                                        queryDocument_.Remove(campoColeccion_.Nombre)
+
+                                    Else
+
+                                        If dictionary_.ContainsKey("$or") Then
+
+                                            Dim valueOld_ = queryDocument_("$or").AsBsonValue.ToString
+
+                                            valueOld_ = valueOld_.Substring(1, valueOld_.Length - 2)
+
+                                            commandString_ = "{$or:[" & valueOld_.Replace(Chr(34), "") & ",{ " &
+                                                                        campoColeccion_.Nombre & ":/" & valor_ & "/i}]}"
+
+                                            queryDocument_.Remove("$or")
+
+                                        Else
+
+                                            commandString_ = "{" & campoColeccion_.Nombre & ":/" & valor_ & "/i}"
+
+                                        End If
+
+                                    End If
 
                                     queryDocument_.AddRange(BsonSerializer.Deserialize(Of BsonDocument)(commandString_))
 
@@ -4968,10 +5006,10 @@ Namespace Gsol.BaseDatos.Operaciones
 
                 End If
 
-                If indice_ > 0 And ((palabra_) = "=" Or LCase(palabra_) = "like" Or (palabra_) = ">" Or (palabra_) = "<" Or (palabra_) = ">=" Or (palabra_) = "<=" Or (palabra_) = "<>") Then
+                If indice_ > 0 And ((palabra_) = "=" Or LCase(palabra_) = "like" Or (palabra_) = ">" Or (palabra_) = "<" Or (palabra_) = ">=" Or (palabra_) = "<=" Or (palabra_) = "<>" Or (palabra_) = "in") Then
 
                     If (Not palabras_(indice_ - 1) Is Nothing And Not palabras_(indice_ + 1) Is Nothing) And
-                        (palabras_(indice_ - 1) <> "=" And LCase(palabras_(indice_ + 1)) <> "like" And palabras_(indice_ + 1) <> ">" And palabras_(indice_ + 1) <> "<" And palabras_(indice_ + 1) <> ">=" And palabras_(indice_ + 1) <> "<=" And palabras_(indice_ + 1) <> "<>") Then
+                        (palabras_(indice_ - 1) <> "=" And LCase(palabras_(indice_ + 1)) <> "like" And palabras_(indice_ + 1) <> ">" And palabras_(indice_ + 1) <> "<" And palabras_(indice_ + 1) <> ">=" And palabras_(indice_ + 1) <> "<=" And palabras_(indice_ + 1) <> "<>" And palabras_(indice_ + 1) <> "in") Then
                         'Generamos el objeto binario
                         Select Case palabra_
                             Case "="
@@ -5015,6 +5053,12 @@ Namespace Gsol.BaseDatos.Operaciones
                                                      palabras_(indice_ - 1),
                                                      palabras_(indice_ + 1),
                                                      ComponentCriteriaDCKR.TypesCriteria.LessThanOrEquals)
+                            Case "in"
+
+                                ProcesaTipoDatoYMapeo(queryDocument_,
+                                                     palabras_(indice_ - 1),
+                                                     palabras_(indice_ + 1),
+                                                     ComponentCriteriaDCKR.TypesCriteria.BetweenValues)
 
                             Case "like"
 
