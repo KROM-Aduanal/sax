@@ -219,7 +219,7 @@
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Mensajes" CssClass="fieldset-subtitle"></asp:Label>
 
-                            <GWC:TabbarControl runat="server">
+                            <GWC:TabbarControl runat="server" ID="tbc_Messages" >
 
                                 <Tabs>
 
@@ -233,7 +233,7 @@
 
                                 <TabsSections>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Alertas" >
 
                                         <ListControls>
 
@@ -249,7 +249,7 @@
 
                                     </GWC:FieldsetControl>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Advertencias">
 
                                         <ListControls>
 
@@ -265,7 +265,7 @@
 
                                     </GWC:FieldsetControl>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Información">
 
                                         <ListControls>
 
@@ -273,7 +273,7 @@
 
                                             <asp:Panel runat="server">
 
-                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
+                                            <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
 
                                             </asp:Panel>
 
