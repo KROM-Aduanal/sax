@@ -95,6 +95,24 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents btGuardarDocumento As Global.Gsol.Web.Components.ButtonControl
 
     '''<summary>
+    '''Control ccDespacho.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ccDespacho As Global.Gsol.Web.Components.CardControl
+
+    '''<summary>
+    '''Control btonIr.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btonIr As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
     '''Control dbcReferencia.
     '''</summary>
     '''<remarks>
@@ -104,13 +122,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents dbcReferencia As Global.Gsol.Web.Components.DualityBarControl
 
     '''<summary>
-    '''Control icOriginal.
+    '''Control swcTipoOperacion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icOriginal As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control swcMaterialPeligroso.
@@ -131,13 +149,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents swcRectificacion As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
-    '''Control swcTipoOperacion.
+    '''Control scTipoDocumento.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
+    Protected WithEvents scTipoDocumento As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control scClaveDocumento.
@@ -185,13 +203,22 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scPatente As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scTipoDocumento.
+    '''Control scPatente2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scTipoDocumento As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents scPatente2 As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control icPedimentoOriginal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icPedimentoOriginal As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control scTipoCarga.
@@ -201,6 +228,15 @@ Partial Public Class Ges022_001_Referencia
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents scTipoCarga As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control scTipoDespacho.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scTipoDespacho As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control icDescripcionCompleta.

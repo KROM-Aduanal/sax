@@ -32,6 +32,9 @@ Imports gsol.Web.Components
 Imports Syn.Documento.Componentes
 Imports MongoDB.Bson.Serialization.Attributes
 Imports System.Drawing.Imaging
+Imports gsol.Web.Template
+Imports Sax.Web.ControladorBackend
+
 
 
 
@@ -141,10 +144,11 @@ Public Class Ges022_001_Referencia
         swcTipoOperacion.Checked = True
         ccDocumento.Visible = True
         swcTipoOperacion.Enabled = True
-        swcRectificacion.Enabled = True
+        swcRectificacion.Visible = False
         Fechas.Visible = True
         Guia.Visible = True
         ccGuias.Visible = False
+        ccDespacho.Visible = False
 
         scTipoDocumentos.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "BL"}}
         scTipoDocumentos.Value = 1
@@ -175,6 +179,13 @@ Public Class Ges022_001_Referencia
         ccDocumento.Visible = False
         Fechas.Visible = True
         Guia.Visible = True
+        swcRectificacion.Visible = True
+
+        If scTipoDespacho.Value = 2 Then
+
+            ccDespacho.Visible = True
+
+        End If
 
         If swcTipoOperacion.Checked Then
 
@@ -255,6 +266,7 @@ Public Class Ges022_001_Referencia
         bloqueados_.Add(icRFCFacturacion)
         bloqueados_.Add(icArchivo)
         bloqueados_.Add(icTipoArchivo)
+        bloqueados_.Add(swcRectificacion)
 
         Return bloqueados_
 
@@ -269,11 +281,16 @@ Public Class Ges022_001_Referencia
         bloqueadosEdicion_.Add(scTipoDocumento)
         bloqueadosEdicion_.Add(scEjecutivoCuenta)
         bloqueadosEdicion_.Add(scPatente)
+        bloqueadosEdicion_.Add(scPatente2)
+        bloqueadosEdicion_.Add(icPedimentoOriginal)
+        bloqueadosEdicion_.Add(scTipoCarga)
+        bloqueadosEdicion_.Add(scTipoDespacho)
         bloqueadosEdicion_.Add(scClaveDocumento)
         bloqueadosEdicion_.Add(scRegimen)
         bloqueadosEdicion_.Add(dbcReferencia)
         bloqueadosEdicion_.Add(fbcCliente)
         bloqueadosEdicion_.Add(icBancoPago)
+        bloqueadosEdicion_.Add(swcMaterialPeligroso)
 
         Return bloqueadosEdicion_
 
@@ -283,12 +300,17 @@ Public Class Ges022_001_Referencia
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
+        Dim tipoOp_ As Int32 = IIf(swcTipoOperacion.Checked, ControladorRecursosAduanales.TiposOperacionAduanal.Importacion, ControladorRecursosAduanales.TiposOperacionAduanal.Exportacion)
+
+
         [Set](dbcReferencia, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
         [Set](dbcReferencia, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
-        [Set](swcTipoOperacion, CamposPedimento.CA_TIPO_OPERACION, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](tipoOp_, CamposPedimento.CA_TIPO_OPERACION, tipoDato_:=Campo.TiposDato.Entero)
+        [Set](swcTipoOperacion, CamposPedimento.CA_TIPO_OPERACION, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](swcMaterialPeligroso, CP_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](swcRectificacion, CP_RECTIFICACION, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](scPatente, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)
+        [Set](scPatente2, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)
         [Set](scRegimen, CamposPedimento.CA_REGIMEN)
         [Set](scTipoDocumento, CA_TIPO_PEDIMENTO)
         [Set](scClaveDocumento, CamposPedimento.CA_CVE_PEDIMENTO)
@@ -296,6 +318,8 @@ Public Class Ges022_001_Referencia
         [Set](scEjecutivoCuenta, CamposPedimento.CP_EJECUTIVO_CUENTA)
         [Set](scTipoCarga, CP_TIPO_CARGA_AGENCIA)
         [Set](icDescripcionCompleta, CP_DESCRIPCION_MERCANCIA_COMPLETA)
+        [Set](scTipoDespacho, CP_TIPO_DESPACHO, propiedadDelControl_:=PropiedadesControl.Valor)
+        [Set](icPedimentoOriginal, CP_PEDIMENTO_ORIGINAL)
 
         [Set](fbcCliente, CamposClientes.CP_OBJECTID_CLIENTE)
         [Set](fbcCliente, CamposClientes.CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
@@ -367,7 +391,7 @@ Public Class Ges022_001_Referencia
         Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
 
         Dim seccionesPatente_ = From data In modalidadSeccionPatente_.aduanaspatentes
-                                Where data._idmodalidadaduanapatente.ToString.Equals(scPatente.Value)
+                                Where data._idmodalidadaduanapatente.ToString.Equals(IIf(scTipoDocumento.Value = 4, scPatente2.Value, scPatente.Value))
                                 Select data._idaduanaseccion, data._idpatente
 
         If seccionesPatente_.Count > 0 Then
@@ -417,6 +441,28 @@ Public Class Ges022_001_Referencia
 
     'EVENTOS PARA MODIFICACIÓN DE DATOS
     Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
+
+        If modalidadSeccionPatente_ IsNot Nothing Then
+
+            Dim seccionesPatente_ = From data In modalidadSeccionPatente_.aduanaspatentes
+                                    Where data._idmodalidadaduanapatente.ToString.Equals(IIf(scTipoDocumento.Value = 4, scPatente2.Value, scPatente.Value))
+                                    Select data._idaduanaseccion, data._idpatente
+
+            If seccionesPatente_.Count > 0 Then
+
+                Dim seccion_ As String = seccionesPatente_(0)._idaduanaseccion.ToString
+
+                Dim patente_ = seccionesPatente_(0)._idpatente.ToString
+
+                [Set](seccion_, CamposPedimento.CA_ADUANA_ENTRADA_SALIDA)
+
+                [Set](patente_, CamposPedimento.CA_PATENTE,)
+
+            End If
+
+        End If
 
         Return New TagWatcher(1) 'tagwatcher_
 
@@ -492,7 +538,39 @@ Public Class Ges022_001_Referencia
 
         Dim swMultiple = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_GUIA_MULTIPLE).Valor
 
-        'Dim tip = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CP_TIPO_DOCUMENTO).Valor
+        Dim swTipoOp_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor
+
+        Dim tipoPedimento = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Attribute(CA_TIPO_PEDIMENTO).Valor
+
+        If swTipoOp_ = 1 Then
+
+            swcTipoOperacion.Checked = True
+
+        Else
+
+            swcTipoOperacion.Checked = False
+
+        End If
+
+        If tipoPedimento = 4 Then
+
+            scPatente2.Visible = True
+
+            scPatente.Visible = False
+
+            icPedimentoOriginal.Visible = True
+
+        Else
+
+            scPatente2.Visible = False
+
+            scPatente.Visible = True
+
+            icPedimentoOriginal.Visible = False
+
+        End If
+
+
 
         Dim fuente_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
@@ -701,6 +779,9 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
+    Protected Sub btIr_OnClick(sender As Object, e As EventArgs)
+
+    End Sub
     Protected Sub btGuardarDocumentos_OnClick(sender As Object, e As EventArgs)
 
         Dim listaDocumentos_ As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumentos.Value)
@@ -741,10 +822,14 @@ Public Class Ges022_001_Referencia
 
         If scTipoDocumento.Value IsNot Nothing And scTipoDocumento.Value = 4 Then
 
-            swcRectificacion.Checked = True
+            icPedimentoOriginal.Visible = True
+            scPatente2.Visible = True
+            scPatente.Visible = False
 
         Else
-            swcRectificacion.Checked = False
+            icPedimentoOriginal.Visible = False
+            scPatente2.Visible = False
+            scPatente.Visible = True
 
         End If
 
@@ -910,7 +995,7 @@ Public Class Ges022_001_Referencia
 
         If swcRectificacion.Checked = True Then
 
-            scTipoDocumento_Click(sender, e)
+            'scTipoDocumento_Click(sender, e)
 
             scTipoDocumento.Value = 4
 
@@ -922,7 +1007,7 @@ Public Class Ges022_001_Referencia
 
             scTipoDocumento.Enabled = True
 
-            scTipoDocumento_Click(sender, e)
+            'scTipoDocumento_Click(sender, e)
 
             scTipoDocumento.Value = 1
 
@@ -1106,17 +1191,17 @@ Public Class Ges022_001_Referencia
 
         If tipoDocumento_.Count > 0 Then
 
-            Dim dataSource1_ As New List(Of SelectOption)
+            Dim dataSource_ As New List(Of SelectOption)
 
             For index_ As Int32 = 0 To tipoDocumento_.Count - 1
 
-                dataSource1_.Add(New SelectOption With
+                dataSource_.Add(New SelectOption With
                              {.Value = tipoDocumento_(index_)._idtipodocumento,
                               .Text = tipoDocumento_(index_).descripcioncorta.ToString})
 
             Next
 
-            Return dataSource1_
+            Return dataSource_
 
         End If
 
@@ -1189,6 +1274,7 @@ Public Class Ges022_001_Referencia
     Protected Sub scModalidadAduanaPatente_Click(sender As Object, e As EventArgs)
 
         scPatente.DataSource = ModalidadSeccionPatente()
+        scPatente2.DataSource = scPatente.DataSource
 
     End Sub
 

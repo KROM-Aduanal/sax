@@ -179,7 +179,7 @@ Namespace Syn.Documento
                     Return New List(Of Nodo) From {
                                             Item(CamposReferencia.CP_REFERENCIA, Texto, longitud_:=16),
                                             Item(CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, Texto, longitud_:=21),
-                                            Item(CamposPedimento.CA_TIPO_OPERACION, Booleano),
+                                            Item(CamposPedimento.CA_TIPO_OPERACION, Entero, longitud_:=1),
                                             Item(CamposReferencia.CP_MATERIAL_PELIGROSO, Booleano),
                                             Item(CamposReferencia.CP_RECTIFICACION, Booleano),
                                             Item(CamposPedimento.CA_REGIMEN, Texto, longitud_:=3),
@@ -191,7 +191,9 @@ Namespace Syn.Documento
                                             Item(CamposReferencia.CP_DESADUANAMIENTO, Entero, longitud_:=5),
                                             Item(CamposPedimento.CP_EJECUTIVO_CUENTA, Entero, longitud_:=5),
                                             Item(CamposReferencia.CP_DESCRIPCION_MERCANCIA_COMPLETA, Texto, longitud_:=150),
-                                            Item(CamposReferencia.CP_TIPO_CARGA_AGENCIA, Entero, longitud_:=3)
+                                            Item(CamposReferencia.CP_TIPO_CARGA_AGENCIA, Entero, longitud_:=3),
+                                            Item(CamposReferencia.CP_TIPO_DESPACHO, Entero, longitud_:=3),
+                                            Item(CamposReferencia.CP_PEDIMENTO_ORIGINAL, Texto, longitud_:=21)
                             }
 
                     'Cliente'

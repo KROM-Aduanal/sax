@@ -701,6 +701,8 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("DESCRIPCION MERCANCIA")> CP_DESCRIPCION_MERCANCIA_MULTIPLE = 1144
             <EnumMember> <Description("NOMBRE DEL CONSIGNATARIO")> CP_CONSIGNATARIO = 1145
             <EnumMember> <Description("NOMBRE DEL CONSIGNATARIO")> CP_CONSIGNATARIO_MULTIPLE = 1146
+            <EnumMember> <Description("TIPO DEL DESPACHO")> CP_TIPO_DESPACHO = 1147
+            <EnumMember> <Description("PEDIMENTO ORIGINAL")> CP_PEDIMENTO_ORIGINAL = 1148
 
         End Enum
 
