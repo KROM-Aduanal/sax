@@ -59,7 +59,6 @@ Public Class Ges022_001_TarifaArancelaria
 
     Public Property Tratados As List(Of List(Of TratadoItem))
 
-    'Public Property Cupos As List(Of CupoItem)
     Public ReadOnly Property IEPS As List(Of IepsItem)
 
         Get
@@ -109,6 +108,7 @@ Public Class Ges022_001_TarifaArancelaria
     'Public Property Anexos As List(Of AnexoItem)
     'Public Property Embargos As List(Of EmbargoItem)
     'Public Property CuposMinimos As List(Of CupoMinimoItem)
+    'Public Property Cupos As List(Of CupoItem)  no se implmento
 
     Public ReadOnly Property Padrones As List(Of PadronItem)
 
@@ -366,7 +366,15 @@ Public Class Ges022_001_TarifaArancelaria
     End Sub
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
+        For Each row As PermisoItem In Permisos
 
+            If row.Permiso Is Nothing Then
+
+                row.Permiso = "Sin contenido"
+
+            End If
+
+        Next
 
     End Sub
 
@@ -617,6 +625,7 @@ Public Class Ges022_001_TarifaArancelaria
                 Dim permiso_ = New PermisoItem
 
                 permiso_.ClavePermiso = .Attribute(CA_CLAVE).Valor
+                permiso_.Permiso = "Sin contenido"
                 permiso_.Descripcion = .Attribute(CA_PERMISO).Valor
                 permiso_.Particularidad = .Attribute(CA_ACOTACION).Valor
                 permiso_.FechaPublicacion = .Attribute(CA_FECHA_PUBLICACION).Valor
@@ -642,7 +651,7 @@ Public Class Ges022_001_TarifaArancelaria
                 Dim norma_ = New NormaItem
 
                 norma_.NOM = .Attribute(CA_NORMA).Valor
-                norma_.Descripcion = .Attribute(CA_DESCRIPCION).Valor
+                norma_.Descripcion = IIf(.Attribute(CA_DESCRIPCION).Valor IsNot Nothing And .Attribute(CA_DESCRIPCION).Valor <> "", .Attribute(CA_DESCRIPCION).Valor, "Sin contenido")
                 norma_.FechaPublicacion = .Attribute(CA_FECHA_PUBLICACION).Valor
                 norma_.FechaInicioVigencia = .Attribute(CA_FECHA_ENTRADA_VIGOR).Valor
                 norma_.FechaFinVigencia = .Attribute(CA_FECHA_FIN).Valor

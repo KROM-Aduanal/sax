@@ -2775,7 +2775,7 @@ Public Class ControladorBackend
 
                         caracteristica_.ValorPresentacion = control_.OffText.ToString
 
-                        .Attribute(campoUnico_.IDUnico).ValorPresentacion = control_.OnText.ToString
+                        .Attribute(campoUnico_.IDUnico).ValorPresentacion = control_.OffText.ToString
 
                     End If
 

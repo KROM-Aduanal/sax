@@ -305,8 +305,8 @@ Public Class Ges022_001_Referencia
 
         [Set](dbcReferencia, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
         [Set](dbcReferencia, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
-        [Set](tipoOp_, CamposPedimento.CA_TIPO_OPERACION, tipoDato_:=Campo.TiposDato.Entero)
         [Set](swcTipoOperacion, CamposPedimento.CA_TIPO_OPERACION, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](tipoOp_, CamposPedimento.CA_TIPO_OPERACION, tipoDato_:=Campo.TiposDato.Entero)
         [Set](swcMaterialPeligroso, CP_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](swcRectificacion, CP_RECTIFICACION, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](scPatente, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)

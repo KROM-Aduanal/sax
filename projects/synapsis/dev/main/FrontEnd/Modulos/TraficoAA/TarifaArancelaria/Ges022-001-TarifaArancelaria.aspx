@@ -127,174 +127,164 @@
                 </GWC:FieldsetControl>                      
                 <GWC:FieldsetControl runat="server" ID="fscPreferencias" Label="Tratados" Detail="Preferencias arancelarias">
                     <ListControls>
-                        
-                        <asp:Panel runat="server" CssClass="row no-gutters">
-                            <div class="col-xs-12">
-                                <p>- Sin contenido</p>
-                            </div>
-                        </asp:Panel>
+                        <GWC:FieldsetControl runat="server" ID="fscTratados"  Label="Tratados comerciales" Priority="false" CssClass ="pl-5" Collapsed="true">  
+                            <ListControls>
+                                <GWC:TabbarControl runat="server" ID="tbcTratados" CssClass="col-xs-6"  ToolTip="AP" ToolTipModality="Classic" ToolTipStatus="Ok" ToolTipExpireTime="2">
+                                    <Tabs>       
+                                        <GWC:TabItem Text="AP"/>
+                                        <GWC:TabItem Text="T-MEC"/>
+                                        <GWC:TabItem Text="TLCUEM"/>
+                                        <GWC:TabItem Text="TIPAT"/>
+                                        <GWC:TabItem Text="AELC"/>
+                                        <GWC:TabItem Text="Otros"/>
+                                    </Tabs>
+                                    <TabsSections>
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccAP" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t" ToolTip="AP" ToolTipModality="Classic">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesAp" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveAp" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelAp" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionAp" Format="Calendar" Label="Fecha Publicación"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorAp" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl>
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccTMEC" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesTmec" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveTmec" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelTmec" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionTmec" Format="Calendar" Label="Fecha Publicación"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorTmec" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl>        
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccTLCUEM" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesTlcuem" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveTlcuem" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelTlcuem" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionTlcuem" Format="Calendar" Label="Fecha Publicación"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorTlcuem" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl> 
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccTIPAT" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesTipat" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveTipat" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelTipat" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionTipat" Format="Calendar" Label="Fecha Publicación"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorTipat" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl> 
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccAELC" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesAelc" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveAelc" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelAelc" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionAelc" Format="Calendar" Label="Fecha Publicación"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorAelc" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl> 
+                                        <GWC:FieldsetControl runat="server">
+                                            <ListControls>
+                                                <GWC:CatalogControl runat="server" ID="ccOtros" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
+                                                    <Columns>
+                                                        <GWC:InputControl runat="server" ID="icPaisesOtros" Label="Paises"/>
+                                                        <GWC:InputControl runat="server" ID="icClaveOtros" Label="Clave"/>
+                                                        <GWC:InputControl runat="server" ID="icArancelOtros" Label="Arancel"/>
+                                                        <GWC:InputControl runat="server" ID="icPreferenciaOtros" Label="Preferencia"/>
+                                                        <GWC:InputControl runat="server" ID="icPublicacionOtros" Format="Calendar" Label="Fecha Publicacion"/>
+                                                        <GWC:InputControl runat="server" ID="icEntradaVigorOtros" Format="Calendar" Label="Fecha en Vigor"/>
+                                                    </Columns>
+                                                </GWC:CatalogControl>
+                                            </ListControls>
+                                        </GWC:FieldsetControl> 
 
-                    </ListControls>
-                </GWC:FieldsetControl>
-                <GWC:FieldsetControl runat="server" ID="fscTratados"  Label="Tratados comerciales">  
-                    <ListControls>
-                        <GWC:TabbarControl runat="server" ID="tbcTratados" CssClass="col-xs-6">
-                            <Tabs>       
-                                <GWC:TabItem Text="AP"/>
-                                <GWC:TabItem Text="T-MEC"/>
-                                <GWC:TabItem Text="TLCUEM"/>
-                                <GWC:TabItem Text="TIPAT"/>
-                                <GWC:TabItem Text="AELC"/>
-                                <GWC:TabItem Text="Otros"/>
-                            </Tabs>
-                            <TabsSections>
-                                <GWC:FieldsetControl runat="server">
+                                    </TabsSections>
+                                </GWC:TabbarControl>
+                            </ListControls>
+                        </GWC:FieldsetControl>
+               
+                
+                        <GWC:FieldsetControl runat="server" ID="fscAcuerdoIntegracion" Label="Acuerdo de integración" Priority="false" CssClass ="pl-5" Collapsed="true">  
+                            <ListControls>
+                                <GWC:FieldsetControl runat="server" Label="ALADI" Priority="false" CssClass ="pl-5" Collapsed="true">  
                                     <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccAP" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
+                                        <GWC:CatalogControl runat="server" ID="ccAladi" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
                                             <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesAp" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveAp" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelAp" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionAp" Format="Calendar" Label="Fecha Publicación"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorAp" Format="Calendar" Label="Fecha en Vigor"/>
+                                                <GWC:InputControl runat="server" ID="icPaisAladi" Label="Paises"/>
+                                                <GWC:InputControl runat="server" ID="icSectorAladi" Label="Sector"/>
+                                                <GWC:InputControl runat="server" ID="icArancelAladi" Label="Arancel"/>
+                                                <GWC:InputControl runat="server" ID="icPreferenciaAladi" Label="Preferencia"/>
+                                                <GWC:InputControl runat="server" ID="icObservacionAladi" Label="Observación"/>
+                                                <GWC:InputControl runat="server" ID="icPublicacionAladi" Format="Calendar" Label="Fecha Publicación"/>
+                                                <GWC:InputControl runat="server" ID="icFechaVigorAladi" Format="Calendar" Label="Fecha en Vigor"/>
                                             </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>
                                 </GWC:FieldsetControl>
-                                <GWC:FieldsetControl runat="server">
-                                    <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccTMEC" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesTmec" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveTmec" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelTmec" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionTmec" Format="Calendar" Label="Fecha Publicación"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorTmec" Format="Calendar" Label="Fecha en Vigor"/>
-                                            </Columns>
-                                        </GWC:CatalogControl>
-                                    </ListControls>
-                                </GWC:FieldsetControl>        
-                                <GWC:FieldsetControl runat="server">
-                                    <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccTLCUEM" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesTlcuem" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveTlcuem" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelTlcuem" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionTlcuem" Format="Calendar" Label="Fecha Publicación"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorTlcuem" Format="Calendar" Label="Fecha en Vigor"/>
-                                            </Columns>
-                                        </GWC:CatalogControl>
-                                    </ListControls>
-                                </GWC:FieldsetControl> 
-                                <GWC:FieldsetControl runat="server">
-                                    <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccTIPAT" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesTipat" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveTipat" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelTipat" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionTipat" Format="Calendar" Label="Fecha Publicación"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorTipat" Format="Calendar" Label="Fecha en Vigor"/>
-                                            </Columns>
-                                        </GWC:CatalogControl>
-                                    </ListControls>
-                                </GWC:FieldsetControl> 
-                                <GWC:FieldsetControl runat="server">
-                                    <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccAELC" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesAelc" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveAelc" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelAelc" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionAelc" Format="Calendar" Label="Fecha Publicación"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorAelc" Format="Calendar" Label="Fecha en Vigor"/>
-                                            </Columns>
-                                        </GWC:CatalogControl>
-                                    </ListControls>
-                                </GWC:FieldsetControl> 
-                                <GWC:FieldsetControl runat="server">
-                                    <ListControls>
-                                        <GWC:CatalogControl runat="server" ID="ccOtros" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100">
-                                            <Columns>
-                                                <GWC:InputControl runat="server" ID="icPaisesOtros" Label="Paises"/>
-                                                <GWC:InputControl runat="server" ID="icClaveOtros" Label="Clave"/>
-                                                <GWC:InputControl runat="server" ID="icArancelOtros" Label="Arancel"/>
-                                                <GWC:InputControl runat="server" ID="icPreferenciaOtros" Label="Preferencia"/>
-                                                <GWC:InputControl runat="server" ID="icPublicacionOtros" Format="Calendar" Label="Fecha Publicacion"/>
-                                                <GWC:InputControl runat="server" ID="icEntradaVigorOtros" Format="Calendar" Label="Fecha en Vigor"/>
-                                            </Columns>
-                                        </GWC:CatalogControl>
-                                    </ListControls>
-                                </GWC:FieldsetControl> 
-
-                            </TabsSections>
-                        </GWC:TabbarControl>
-                    </ListControls>
-                </GWC:FieldsetControl>
-               
-                
-                <GWC:FieldsetControl runat="server" ID="fscAcuerdoIntegracion" Label="Acuerdo de integración">
-                    <ListControls>
-                        <GWC:FieldsetControl runat="server" Label="ALADI" Priority="false">
-                            <ListControls>
-                                <GWC:CatalogControl runat="server" ID="ccAladi" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
-                                    <Columns>
-                                        <GWC:InputControl runat="server" ID="icPaisAladi" Label="Paises"/>
-                                        <GWC:InputControl runat="server" ID="icSectorAladi" Label="Sector"/>
-                                        <GWC:InputControl runat="server" ID="icArancelAladi" Label="Arancel"/>
-                                        <GWC:InputControl runat="server" ID="icPreferenciaAladi" Label="Preferencia"/>
-                                        <GWC:InputControl runat="server" ID="icObservacionAladi" Label="Observación"/>
-                                        <GWC:InputControl runat="server" ID="icPublicacionAladi" Format="Calendar" Label="Fecha Publicación"/>
-                                        <GWC:InputControl runat="server" ID="icFechaVigorAladi" Format="Calendar" Label="Fecha en Vigor"/>
-                                    </Columns>
-                                </GWC:CatalogControl>
                             </ListControls>
                         </GWC:FieldsetControl>
-                    </ListControls>
-                </GWC:FieldsetControl>
                
-                <GWC:FieldsetControl runat="server" ID="fscProgramasFomento" Label="Programas de fomento">
-                    <ListControls>
-                        <GWC:FieldsetControl runat="server" Label="PROSEC" Priority="false">
+                        <GWC:FieldsetControl runat="server" ID="fscProgramasFomento" Label="Programas de fomento" Priority="false" CssClass ="pl-5" Collapsed="true">  
                             <ListControls>
-                                <GWC:CatalogControl runat="server" ID="ccProsec" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
-                                    <Columns>
-                                        <GWC:InputControl runat="server" ID="icSectorProsec" Label="Sector"/>
-                                        <GWC:InputControl runat="server" ID="icArancelProsec" Label="Arancel"/>
-                                        <GWC:InputControl runat="server" ID="icNotaProsec" Label="Nota"/>
-                                        <GWC:InputControl runat="server" ID="icPublicacionProsec" Format="Calendar" Label="Fecha Publicación"/>
-                                        <GWC:InputControl runat="server" ID="icFechaVigorProsec" Format="Calendar" Label="Fecha en Vigor"/>
-                                    </Columns>
-                                </GWC:CatalogControl>
+                                <GWC:FieldsetControl runat="server" Label="PROSEC" Priority="false">
+                                    <ListControls>
+                                        <GWC:CatalogControl runat="server" ID="ccProsec" KeyField="indice" Collapsed="true" UserInteraction="false" CssClass="w-100 tbl-t">
+                                            <Columns>
+                                                <GWC:InputControl runat="server" ID="icSectorProsec" Label="Sector"/>
+                                                <GWC:InputControl runat="server" ID="icArancelProsec" Label="Arancel"/>
+                                                <GWC:InputControl runat="server" ID="icNotaProsec" Label="Nota"/>
+                                                <GWC:InputControl runat="server" ID="icPublicacionProsec" Format="Calendar" Label="Fecha Publicación"/>
+                                                <GWC:InputControl runat="server" ID="icFechaVigorProsec" Format="Calendar" Label="Fecha en Vigor"/>
+                                            </Columns>
+                                        </GWC:CatalogControl>
+                                    </ListControls>
+                                </GWC:FieldsetControl>
                             </ListControls>
                         </GWC:FieldsetControl>
-                    </ListControls>
-                </GWC:FieldsetControl>
 
                  
-                <GWC:FieldsetControl runat="server" ID="fscArancelCupo" Label="Arancel cupo">
-                    <ListControls>
-                        <GWC:PillboxControl runat="server" ID="ccArancelCupo" KeyField="indice" CssClass="w-100">
+                        <GWC:FieldsetControl runat="server" ID="fscArancelCupo" Label="Arancel cupo" Priority="false" CssClass ="pl-5" Collapsed="true">  
                             <ListControls>
-                                <GWC:InputControl runat="server" Label="Pais" ID="icPaisArancelCupo" CssClass="col-xs-4"/>
-                                <GWC:InputControl runat="server" Label="Fecha publicacion" Format="Calendar"  ID="icPublicacionArancelCupo" CssClass="col-xs-4"/>
-                                <GWC:InputControl runat="server" Label="Entrada en vigor" Format="Calendar"  ID="icFechaVigorArancelCupo" CssClass="col-xs-4"/>
-                                <GWC:InputControl runat="server" Label="Total" ID="icTotalArancelCupo" CssClass="col-xs-4"/>
-                                <GWC:InputControl runat="server" Label="Medida" ID="icMedidaArancelCupo" CssClass="col-xs-4"/>
-                                <asp:Panel runat="server" CssClass="col-xs-6 p-0">
-                                    <GWC:InputControl runat="server" Label="Arancel" ID="icArancelArancelCupo" CssClass="col-xs-12 mt-4"/>
-                                    <GWC:InputControl runat="server" Label="Arancel fuera" ID="icArancelFueraArancelCupo" CssClass="col-xs-12 mt-4"/>
-                                </asp:Panel>
-                                <asp:Panel runat="server" CssClass="col-xs-6 p-0">
-                                    <GWC:InputControl runat="server" Label="Nota" Type="TextArea" ID="icNotaArancelCupo" CssClass="col-xs-12"/>
-                                </asp:Panel>
+                                <GWC:PillboxControl runat="server" ID="pbcArancelCupo" KeyField="indice" CssClass="w-100">
+                                    <ListControls>
+                                        <GWC:InputControl runat="server" Label="Pais" ID="icPaisArancelCupo" CssClass="col-xs-3 mb-3"/>
+                                        <GWC:InputControl runat="server" Label="Fecha publicacion" Format="Calendar"  ID="icPublicacionArancelCupo" CssClass="col-xs-3 mb-3"/>
+                                        <GWC:InputControl runat="server" Label="Entrada en vigor" Format="Calendar"  ID="icFechaVigorArancelCupo" CssClass="col-xs-3 mb-3"/>
+                                        <GWC:InputControl runat="server" Label="Total" ID="icTotalArancelCupo" CssClass="col-xs-3 mb-3"/>
+                                        <GWC:InputControl runat="server" Label="Medida" ID="icMedidaArancelCupo" CssClass="col-xs-4 mb-4"/>
+                                            <GWC:InputControl runat="server" Label="Arancel" ID="icArancelArancelCupo" CssClass="col-xs-4 mb-4"/>
+                                            <GWC:InputControl runat="server" Label="Arancel fuera" ID="icArancelFueraArancelCupo" CssClass="col-xs-4 mb-4"/>
+                                        <asp:Panel runat="server" CssClass="col-xs-12 p-0">
+                                            <GWC:InputControl runat="server" Label="Nota" Type="TextArea" ID="icNotaArancelCupo" CssClass="col-xs-12 mt-2"/>
+                                        </asp:Panel>
+                                    </ListControls>
+                                </GWC:PillboxControl>
                             </ListControls>
-                        </GWC:PillboxControl>
+                        </GWC:FieldsetControl>          
+                
                     </ListControls>
                 </GWC:FieldsetControl>
-                
-
                 <GWC:FieldsetControl runat="server" ID="fscRequisitos" Label="Requisitos">
                     <ListControls>
                         <GWC:FieldsetControl runat="server" ID="fscCupo" Label="Cupos / país" Visible="false" Priority="false">
@@ -314,11 +304,6 @@
                                         <gwc-label Text="Certificado de cupo por la Secretaría de Economía." Detail="Nota:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel> --%>
-                                <asp:Panel runat="server" CssClass="row no-gutters">
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>
@@ -326,30 +311,24 @@
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If IEPS IsNot Nothing %>
-                                <% For Each row As IepsItem In IEPS %>
+                                    <% For Each row As IepsItem In IEPS %>
                             
-                                    <div class="fieldset col-xs-12">
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="" Detail="Categoría:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Bold="True" Text="" Detail="Tipo:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="" Detail="Tasa:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="" Detail="Cuota:" CssClass="col-xs-12"></gwc-label>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Text="" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="" Detail="Medida:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.Nota%>" Detail="Observación:" CssClass="col-xs-12"></gwc-label>
-                                        </div>                         
-                                    </div> 
+                                        <div class="fieldset col-xs-12">
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Bold="True" Text="" Detail="Categoría:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Bold="True" Text="" Detail="Tipo:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="" Detail="Tasa:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="" Detail="Cuota:" CssClass="col-xs-12"></gwc-label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Text="" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="" Detail="Medida:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.Nota%>" Detail="Observación:" CssClass="col-xs-12"></gwc-label>
+                                            </div>                         
+                                        </div> 
 
-                                <% Next  %>
-                                <% Else %>
-
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-
+                                    <% Next  %>
                                 <% End If %>
                                 </asp:panel>
                             </ListControls>
@@ -358,29 +337,23 @@
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Cuotas IsNot Nothing %>
-                                <% For Each row As CuotaItem In Cuotas %>
+                                    <% For Each row As CuotaItem In Cuotas %>
                             
-                                    <div class="fieldset col-xs-12">
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.NombreEmpresa%>" Detail="Empresa:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Bold="True" Text="<%=row.NombrePais%>" Detail="Pais:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.Tasa%>" Detail="Cuota:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.TipoCuota%>" Detail="Tipo:" CssClass="col-xs-12"></gwc-label>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.Nota%>" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
-                                        </div>                         
-                                    </div> 
+                                        <div class="fieldset col-xs-12">
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Bold="True" Text="<%=row.NombreEmpresa%>" Detail="Empresa:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Bold="True" Text="<%=row.NombrePais%>" Detail="Pais:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.Tasa%>" Detail="Cuota:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.TipoCuota%>" Detail="Tipo:" CssClass="col-xs-12"></gwc-label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.Nota%>" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
+                                            </div>                         
+                                        </div> 
 
-                                <% Next  %>
-                                <% Else %>
-
-                                <div class="col-xs-12">
-                                    <p>- Sin contenido</p>
-                                </div>
-
+                                    <% Next  %>
                                 <% End If %>
                                 </asp:panel>     
                             </ListControls>
@@ -389,27 +362,21 @@
                             <ListControls>                       
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Precios IsNot Nothing %>
-                                <% For Each row As PrecioItem In Precios %>
+                                    <% For Each row As PrecioItem In Precios %>
                             
-                                    <div class="fieldset col-xs-12">
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.PrecioEstimado%>" Detail="Precio:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.DescripcionUM%>" Detail="Unidad:" CssClass="col-xs-12"></gwc-label>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.DetalleProducto%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
-                                        </div>                         
-                                    </div> 
+                                        <div class="fieldset col-xs-12">
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Bold="True" Text="<%=row.PrecioEstimado%>" Detail="Precio:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.DescripcionUM%>" Detail="Unidad:" CssClass="col-xs-12"></gwc-label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.DetalleProducto%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
+                                            </div>                         
+                                        </div> 
 
-                                <% Next  %>
-                                <% Else %>
-
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-
+                                    <% Next  %>
                                 <% End If %>
                                 </asp:panel>   
                             </ListControls>
@@ -418,26 +385,21 @@
                             <ListControls>
                                 <asp:panel runat="server" CssClass="row no-gutters">
                                 <% If Permisos IsNot Nothing %>
-                                <% For Each row As PermisoItem In Permisos %>
+                                    <% For Each row As PermisoItem In Permisos %>
                             
-                                    <div class="fieldset col-xs-12">
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.ClavePermiso%>" Detail="Clave:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.Descripcion%>" Detail="Permiso:" CssClass="col-xs-12"></gwc-label>
+                                        <div class="fieldset col-xs-12">
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Bold="True" Text="<%=row.ClavePermiso%>" Detail="Clave:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.Permiso%>" Detail="Permiso:" CssClass="col-xs-12"></gwc-label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.Particularidad%>" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
+                                            </div>                         
                                         </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.Particularidad%>" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
-                                        </div>                         
-                                    </div>
 
-                                <% Next  %>
-                                <% Else %>
-
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
+                                    <% Next  %>
 
                                 <% End If %>
                                 </asp:panel>
@@ -470,28 +432,23 @@
                         <GWC:FieldsetControl runat="server" ID="fscNormas" Label="Normas" Detail="Normas oficiales mexicanas" Visible="false" Priority="false">
                             <ListControls>                       
                                 <asp:panel runat="server" CssClass="row no-gutters">
-                                <% If Normas IsNot Nothing %>
-                                <% For Each row As NormaItem In Normas %>
+                                <% If Cuotas IsNot Nothing %>
+                                    <% For Each row As NormaItem In Normas %>
                             
-                                    <div class="fieldset col-xs-12">
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Bold="True" Text="<%=row.NOM%>" Detail="NOM:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="<%=row.Descripcion%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
-                                            <gwc-label Text="" Detail="Dato omitido o inexacto:" CssClass="col-xs-12"></gwc-label>
-                                            <gwc-label Text="" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
-                                        </div>                         
-                                    </div> 
+                                        <div class="fieldset col-xs-12">
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Bold="True" Text="<%=row.NOM%>" Detail="NOM:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="<%=row.Descripcion%>" Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6">
+                                                <gwc-label Text="<%=row.FechaPublicacion%>" Detail="Publicación:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="<%=row.FechaInicioVigencia%>" Detail="Entrada en vigor:" CssClass="col-xs-12 col-md-6"></gwc-label>
+                                                <gwc-label Text="Sin contenido" Detail="Dato omitido o inexacto:" CssClass="col-xs-12"></gwc-label>
+                                                <gwc-label Text="Sin contenido" Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
+                                            </div>                         
+                                        </div> 
 
-                                <% Next  %>
-                                <% Else %>
-
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
+                                    <% Next  %>
 
                                 <% End If %>
                                 </asp:panel>
@@ -512,11 +469,6 @@
                                         <gwc-label Text="IX. Tratándose de las siguientes mercancías: k) Juguetes: Juguetes y modelos, con motor, excepto lo comprendido en las  fracciones arancelarias 95030002, 95030003, 95030004, 95030005,  95030006, 95030007, 95030009,95030010, 95030011, 95030012, 95030014, 95030015 y 95030018." Detail="Acotación:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
-                                <asp:Panel runat="server" CssClass="row no-gutters">
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>                
@@ -535,11 +487,6 @@
                                         <gwc-label Text="Láseres, excepto los diodos láser." Detail="Mercancía:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
-                                <asp:Panel runat="server" CssClass="row no-gutters">
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-                                </asp:Panel>
 
                             </ListControls>
                         </GWC:FieldsetControl>
@@ -558,11 +505,6 @@
                                         <gwc-label Text="Rellenos." Detail="Descripción:" CssClass="col-xs-12"></gwc-label>
                                     </asp:Panel>                         
                                 </asp:panel>--%>
-                                <asp:Panel runat="server" CssClass="row no-gutters">
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
-                                </asp:Panel>
                                
                             </ListControls>
                         </GWC:FieldsetControl>
@@ -588,9 +530,6 @@
                                 <% Next  %>
                                 <% Else %>
 
-                                    <div class="col-xs-12">
-                                        <p>- Sin contenido</p>
-                                    </div>
 
                                 <% End If %>
                                 </asp:panel>
