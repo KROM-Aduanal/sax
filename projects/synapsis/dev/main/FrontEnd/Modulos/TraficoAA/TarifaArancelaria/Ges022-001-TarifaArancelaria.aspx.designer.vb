@@ -689,13 +689,13 @@ Partial Public Class Ges022_001_TarifaArancelaria
     Protected WithEvents fscArancelCupo As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control ccArancelCupo.
+    '''Control pbcArancelCupo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ccArancelCupo As Global.Gsol.Web.Components.PillboxControl
+    Protected WithEvents pbcArancelCupo As Global.Gsol.Web.Components.PillboxControl
 
     '''<summary>
     '''Control icPaisArancelCupo.

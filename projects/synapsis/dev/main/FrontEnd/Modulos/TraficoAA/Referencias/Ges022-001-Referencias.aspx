@@ -55,28 +55,46 @@
                                 <GWC:ButtonControl runat="server" ID="btGuardarDocumento" Label="Agregar" OnClick="btGuardarDocumento_OnClick"/>
                             </listcontrols>
                         </GWC:CardControl> 
+                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 p-0 align-content-center align-middle text_align-center">
+                            <div class="col-xs-12 col-md-6 mt-3 p-0" style="margin-bottom:5px;">
+                                 <GWC:CardControl runat="server" ID="ccDespacho" Visible="false" CssClass="col-xs-12 col-md-6 mb-5">
+                                     <listcontrols>
+                                         <asp:Label runat="server" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="¿Deseas ver tu aviso consolidado con las remesas?" style="text-align:left; color:#432776"/>                                 
+                                         <GWC:ButtonControl runat="server" ID="btonIr" Label="Ir" OnClick="btIr_OnClick"/>
+                                     </listcontrols>
+                                 </GWC:CardControl> 
+                            </div>
+                        </asp:Panel>
                         <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="dbcReferencia" Label="Referencia Aduanal" LabelDetail="Pedimento Aduanal" OnClick="dbcReferencia_Click"/>
-                        <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="icOriginal" Label="Original" Type="Text" Visible="false" />
-                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-4 mb-5">                        
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcMaterialPeligroso" Label="Material peligroso" OnText="Si" OffText="No"></GWC:SwitchControl>
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcRectificacion" Label="Rectificación" OnText="Si" OffText="No" OnCheckedChanged="swcRectificacion_CheckedChanged"></GWC:SwitchControl>
-                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 mb-5 " ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" Rules="required" OnCheckedChanged="swcTipoOperacion_CheckedChanged"></GWC:SwitchControl>
+                        <asp:Panel runat="server" CssClass="col-xs-12 col-md-6 mb-5 p-0 d-flex align-items-center jc-center" > 
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-5 p-0" ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" Rules="required" OnCheckedChanged="swcTipoOperacion_CheckedChanged"></GWC:SwitchControl>                       
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-3 p-0" ID="swcMaterialPeligroso" Label="Material peligroso" OnText="Si" OffText="No"></GWC:SwitchControl>
+                            <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 p-0" ID="swcRectificacion" Label="¿Tiene rectificación?" OnText="Si" OffText="No"  Visible="false"></GWC:SwitchControl>
                         </asp:Panel>
                         
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="i_Cve_ClavePedimento" DisplayField ="t_ClaveDescripcion" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoDocumento" SearchBarEnabled="true" Label="Tipo de pedimento" OnClick ="scTipoDocumento_Click" OnSelectedIndexChanged="scTipoDocumento_SelectedIndexChanged" Rules="required">
+                        </GWC:SelectControl>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="t_Cve_Pedimento" DisplayField ="t_ClaveDescripcion" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" 
                                            ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scEjecutivoCuenta" Label="Ejecutivo de cuenta" KeyField ="i_Cve_EjecutivosMisEmpresas" DisplayField ="t_NombreCompleto" Dimension ="EjecutivosMiEmpresa">
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scEjecutivoCuenta" Label="Ejecutivo de cuenta" KeyField ="i_Cve_EjecutivosMisEmpresas" DisplayField ="t_NombreCompleto" Dimension ="EjecutivosMiEmpresa">
                         </GWC:SelectControl>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPrefijo" Label="Prefijo" OnSelectedIndexChanged="scPrefijo_SelectedIndexChanged" Visible ="false">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click">
-                        </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoDocumento" SearchBarEnabled="true" Label="Tipo de pedimento" OnClick ="scTipoDocumento_Click" OnSelectedIndexChanged="scTipoDocumento_SelectedIndexChanged" Rules="required">
-                        </GWC:SelectControl>
+                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click"/>
+                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mb-5" ID="scPatente2" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click"/>
+                            <GWC:InputControl runat ="server" CssClass ="col-xs-12 col-md-2 mb-5" ID="icPedimentoOriginal" Label ="Pedimento original" Type ="Text" Visible="false"/>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoCarga" Label="Tipo de carga/lote" OnClick="scTipoCarga_Click">
+                        </GWC:SelectControl>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3" ID="scTipoDespacho" Label="¿Cómo vas a despachar?">
+                            <Options>
+                                <GWC:SelectOption Value="1" Text="NORMAL"/>
+                                <GWC:SelectOption Value="2" Text="CONSOLIDADO"/>
+                                <GWC:SelectOption Value="3" Text="PARTES II"/>
+                                <GWC:SelectOption Value="4" Text="COPIA SIMPLE"/>
+                            </Options>
                         </GWC:SelectControl>
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 solid-textarea" Type="TextArea" ID="icDescripcionCompleta" Label="Descripción mercancia">
                         </GWC:InputControl>

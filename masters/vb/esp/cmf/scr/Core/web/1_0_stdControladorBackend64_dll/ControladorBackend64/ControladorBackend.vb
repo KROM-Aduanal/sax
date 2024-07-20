@@ -523,6 +523,24 @@ Public Class ControladorBackend
 
                                 DirectCast(control_, FileControl).EnabledButton(activar_)
 
+                            ElseIf control_.GetType = GetType(Panel) Then
+
+                                For Each childcontrol_ As Object In DirectCast(control_, Panel).Controls
+
+                                    If childcontrol_.ID IsNot Nothing Then
+
+                                        childcontrol_.Enabled = activar_
+
+                                        If activar_ = True Then
+
+                                            BloquearCampo(childcontrol_)
+
+                                        End If
+
+                                    End If
+
+                                Next
+
                             Else
 
                                 control_.Enabled = activar_
@@ -555,6 +573,8 @@ Public Class ControladorBackend
 
     Private Function BloquearCampo(control_ As Object)
 
+        Dim x = GetVars("IsEditing")
+
         If _bloqueos_iniciales IsNot Nothing Then
 
             For Each bloq In _bloqueos_iniciales
@@ -571,7 +591,7 @@ Public Class ControladorBackend
 
         If control_.Enabled = True Then
 
-            If GetVars("edicion") = True Then
+            If GetVars("IsEditing") = True Then
 
                 If _bloqueos_edicion IsNot Nothing Then
 
@@ -2719,6 +2739,7 @@ Public Class ControladorBackend
                     End If
 
                 Else
+
                     'Lineas unicas por los selectores
                     caracteristica_.Valor = StringFormat(campoUnico_.TipoDato, valorAsignado_)
 
@@ -2739,6 +2760,24 @@ Public Class ControladorBackend
                     caracteristica_.ValorFirma = valorFirmaAsignado_
 
                     .Attribute(campoUnico_.IDUnico).ValorFirma = valorFirmaAsignado_
+
+                End If
+
+                If caracteristica_.Asignacion = TiposAsignacion.ValorPresentacion And caracteristica_.Control.GetType() = GetType(SwitchControl) Then
+
+                    If control_.Checked Then
+
+                        caracteristica_.ValorPresentacion = control_.OnText.ToString
+
+                        .Attribute(campoUnico_.IDUnico).ValorPresentacion = control_.OnText.ToString
+
+                    Else
+
+                        caracteristica_.ValorPresentacion = control_.OffText.ToString
+
+                        .Attribute(campoUnico_.IDUnico).ValorPresentacion = control_.OffText.ToString
+
+                    End If
 
                 End If
 
@@ -3494,6 +3533,22 @@ Public Class ControladorBackend
                         Return New TagWatcher(0, Me, "Propiedad no soportada para este control")
 
                 End Select
+
+
+
+                If caracteristica_.Asignacion = TiposAsignacion.ValorPresentacion And caracteristica_.Control.GetType() = GetType(SwitchControl) Then
+
+                    If control_.Checked Then
+
+                        caracteristica_.ValorPresentacion = control_.OnText
+
+                    Else
+
+                        caracteristica_.ValorPresentacion = control_.OffText
+
+                    End If
+
+                End If
 
             End With
 
