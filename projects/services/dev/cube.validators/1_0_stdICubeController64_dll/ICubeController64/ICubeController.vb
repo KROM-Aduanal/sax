@@ -24,9 +24,18 @@ Public Interface ICubeController : Inherits IDisposable
 
         Undefined = 0
 
-        RegimenClaveOperacion = 1
+        UndefidedRoom = 1
 
-        IncotermIncrementables = 2
+        UndefinedContentType = 2
+
+        ErrorRuleRules = 3
+
+        UndefinedContext = 4
+
+        ErrorConnection = 5
+
+        UndefinedCube = 6
+
     End Enum
 
 #End Region

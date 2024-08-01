@@ -244,7 +244,7 @@ Public Class ValidatorReport
 
             Case TriggerSourceTypes.Cube
 
-                Dim errortype_ = ICubeController.CubeErrorTypes.RegimenClaveOperacion
+                Dim errortype_ = ICubeController.CubeErrorTypes.ErrorRuleRules
 
                 title = title_
                 datereport = date_
