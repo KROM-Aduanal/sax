@@ -10,8 +10,9 @@
     <AssemblyName>Cube.Validators.CubeController64.0.0.0.0</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +69,11 @@
     </Reference>
     <Reference Include="Cube.Validators.Room64.0.0.0.0">
       <HintPath>..\..\..\..\libs\bin\cube.validators\Cube.Validators.Room64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.ValidationPanel64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\libs\bin\cube.validators\Cube.Validators.ValidationPanel64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="gsol.basededatos.ConexionesNoSQL64.0.0.0.0">

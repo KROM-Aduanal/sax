@@ -28,7 +28,7 @@ Public Class Ges022_001_CuboDatos
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-  '  Private _ctrlValidationRoute As IValidationRouteController
+    ' Private _ctrlValidationRoute As IValidationRouteController
 
     Private _ctrlCube As ICubeController
 
@@ -615,6 +615,8 @@ Public Class Ges022_001_CuboDatos
 
 
         tb_FormulaNueva.Enabled = True
+
+        p_actualizacionformula.Enabled = True
 
         ic_changeReason.Enabled = True
 
@@ -1205,10 +1207,10 @@ Public Class Ges022_001_CuboDatos
 
                 'End If
 
-                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}}
+                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}, {"CP_TIPO_PEDIMENTO.0", "GLOBAL COMPLEMENTARIO"}}
                 Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
 
-                Dim diccionarioCubo_ As Dictionary(Of String, List(Of String)) = _ctrlCube.status.ObjectReturned
+                Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
 
                 'MsgBox(DirectCast(fsc_Alertas.ListControls(0), InputControl).Value)
 
@@ -1226,49 +1228,62 @@ Public Class Ges022_001_CuboDatos
 
                 ' Next
 
+                Dim variable_ As ICubeController = New CubeController
+
+
+                report_ = variable_.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
+
+                diccionarioCubo_ = _ctrlCube.status.ObjectReturned
+
+
+                'ASI ES LA CABULIDAD
+
+                CType(variable_, CubeController).Dispose()
+
+
                 Dim algo_ = 5
 
             Case 17 ' Esta opción era para probar la ruta de validación
 
 
-                ' Dim pedimento_ As New DocumentoElectronico
+                Dim pedimento_ As New DocumentoElectronico
 
-                ' Dim sax_ As Sax.SaxStatements = Sax.SaxStatements.GetInstance(13)
+                Dim sax_ As Sax.SaxStatements = Sax.SaxStatements.GetInstance(13)
 
-                ' 'Dim saxSetting1_ = sax_.SaxSettings(1)
+                'Dim saxSetting1_ = sax_.SaxSettings(1)
 
-                ' 'sax_.SaxSettings(1) = sax_.SaxSettings(2)
+                'sax_.SaxSettings(1) = sax_.SaxSettings(2)
 
-                ' 'sax_.SaxSettings(2) = saxSetting1_
+                'sax_.SaxSettings(2) = saxSetting1_
 
-                ' Dim folioOperacion_ = tb_Formula.Text
+                Dim folioOperacion_ = tb_Formula.Text
 
-                ' If folioOperacion_ = "" Then
+                If folioOperacion_ = "" Then
 
-                '     folioOperacion_ = "RKU24-00000301"
+                    folioOperacion_ = "RKU24-00000301"
 
-                ' End If
+                End If
 
-                ' Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+                Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
 
 
-                '     Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) =
-                '     _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorPedimentoNormal).Name)
-                '     operationsDB_.Aggregate().Match(Function(ch) ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioOperacion.Equals(folioOperacion_)).
-                '     ToList().ForEach(Sub(items)
+                    Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) =
+                    _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorPedimentoNormal).Name)
+                    operationsDB_.Aggregate().Match(Function(ch) ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioOperacion.Equals(folioOperacion_)).
+                    ToList().ForEach(Sub(items)
 
-                '                          pedimento_ = items.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+                                         pedimento_ = items.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
-                '                      End Sub)
+                                     End Sub)
 
-                ' End Using
+                End Using
 
-                ' _ctrlValidationRoute = New ValidationRouteController
+                '_ctrlValidationRoute = New ValidationRouteController
 
-                ' Dim resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA4, pedimento_)
+                'Dim resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA4, pedimento_)
 
-                ' resultado_.ShowMessageError()
+                'resultado_.ShowMessageError()
 
                 'resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA21, pedimento_)
 
@@ -2577,6 +2592,7 @@ Public Class Ges022_001_CuboDatos
 
                 If cc_ValoresOperandos.DataSource IsNot Nothing Then
 
+
                     For Each elementos_ In cc_ValoresOperandos.DataSource
 
                         Dim operandName_ = elementos_("operandName_").ToString
@@ -2975,8 +2991,6 @@ Public Class Ges022_001_CuboDatos
 
     Sub CambioFormula()
 
-
-
         If bc_Verificado.Enabled = False Then
 
             SetVars("_bc_verificado", "NO")
@@ -3141,7 +3155,6 @@ Public Class Ges022_001_CuboDatos
                DirectCast(fsc_Información.ListControls(0), InputControl).Value}
 
     End Function
-
 
 
 #End Region

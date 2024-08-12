@@ -308,7 +308,15 @@ Public Class MathematicalInterpreterNCalc
 
                             Else
 
-                                paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+                                If TypeOf constanvalue_.Value Is String Then
+
+                                    paramValues_.Add(constanvalue_.Key, constanvalue_.Value.ToString.Replace(Chr(160), Chr(32)))
+
+                                Else
+
+                                    paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
+
+                                End If
 
                             End If
 

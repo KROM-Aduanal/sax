@@ -31,7 +31,7 @@
 
         <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM"   HasAutoSave="false" Label="Reglas del Cubo" OnCheckedChanged="MarcarPagina">
 
-            <Buttonbar runat="server" OnClick="EventosBotonera" OnLoad="ColocaAutorizar" CssClass="botoneracabulidad" ID="bb_botonera" >
+            <Buttonbar runat="server" OnClick="EventosBotonera" OnLoad="ColocaAutorizar" CssClass="buttonbarclass" ID="bb_botonera" >
 
                 <DropdownButtons >
 
@@ -623,7 +623,7 @@
          } else
              tamanio_ = 4;
 
-         const element3 = document.querySelector('.botoneracabulidad');
+    //     const element3 = document.querySelector('.botoneracabulidad');
 
         // element3.style.borderBottomColor = '#cecdcd';
 
@@ -631,7 +631,7 @@
 
        //  const element4 = document.querySelector('.swc-online');
 
-         console.log(element3);
+      //   console.log(element3);
 /*         console.log(element3.className);*/
 
        //  element3.className ='cubo-input-search w-40';

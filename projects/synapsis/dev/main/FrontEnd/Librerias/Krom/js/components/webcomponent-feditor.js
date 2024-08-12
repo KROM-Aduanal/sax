@@ -19,10 +19,14 @@ export class WCFEditor extends HTMLDivElement {
                     event.preventDefault(); // Prevent character from being inserted
             });
 
+
             this._component.addEventListener('keydown', function (event) {
                 if (event.key === 'Backspace' || event.key === 'Delete') {
                     if (this._input.disabled)
                         event.preventDefault();
+                } else {
+
+
                 }
             });
 
@@ -51,7 +55,6 @@ export class WCFEditor extends HTMLDivElement {
                                    'ROOM','SECUENCIA', 'SETROOM', 'SI', 'SUMAR', 'SUMAR.SI', 'SUSTITUIR', 'TRUNC', 'TRUNCAR', 'Y'];
 
 
-                
                 const characters_ = content_.replace(/\[13\]/g, '\n').split('');
 
                 characters_.forEach(character_ => {
@@ -161,9 +164,11 @@ export class WCFEditor extends HTMLDivElement {
 
                     const afterSpan_ = contentFinal_;
 
-                    this._input.value = wordFinal_; // this.innerText;
+                this._input.value = wordFinal_; // this.innerText;
 
-                    setCursorAtEndAfterChange(this, beforeSpan_, afterSpan_);
+
+
+                setCursorAtEndAfterChange(this, beforeSpan_, afterSpan_);
 
             });
 
@@ -273,9 +278,9 @@ export class WCFEditor extends HTMLDivElement {
                  
                     selection = window.getSelection();
 
-                    console.log("Cuenta:" + cuenta_);
-                    console.log(before_);
-                    console.log(after_);
+                    //console.log("Cuenta:" + cuenta_);
+                    //console.log(before_);
+                    //console.log(after_);
                     //console.log(cambios__);
 
                     if (selection.rangeCount > 0) {
@@ -330,8 +335,6 @@ export class WCFEditor extends HTMLDivElement {
                             }
                         }
 
-                        console.log(indice_);
-
                         if (found_ === 0 || found_===tamanio_)
                             indice_ = after_.length-1;
 
@@ -339,7 +342,7 @@ export class WCFEditor extends HTMLDivElement {
 
                         lastRange.setStart(contentEditableElement, indice_);
 
-                         selection.removeAllRanges();
+                        selection.removeAllRanges();
 
                         selection.addRange(lastRange);
                         

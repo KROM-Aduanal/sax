@@ -154,9 +154,70 @@ Public Class CubeController
         Return objetoDeserializado
 
     End Function
-    Public Sub Dispose() Implements IDisposable.Dispose
-        Throw New NotImplementedException()
+
+#Region "IDisposable Support"
+
+    Private disposedValue As Boolean ' Para detectar llamadas redundantes
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(disposing As Boolean)
+
+        If Not Me.disposedValue Then
+
+            If disposing Then
+
+                ' TODO: eliminar estado administrado (objetos administrados).
+
+            End If
+
+            'PONES LAS PROPIEDADES DE TU CLASE EN VACÏO
+
+            With Me
+
+                ._fieldmiss = Nothing
+
+                ._interpreter = Nothing
+
+                ._reports = Nothing
+
+                ._rooms = Nothing
+
+                ._scope = Nothing
+
+                ._status = Nothing
+
+                ._roomsResource = Nothing
+
+            End With
+
+            ' TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
+            ' TODO: Establecer campos grandes como Null.
+        End If
+
+        Me.disposedValue = True
+
     End Sub
+
+    ' TODO: invalidar Finalize() sólo si la instrucción Dispose(ByVal disposing As Boolean) anterior tiene código para liberar recursos no administrados.
+    'Protected Overrides Sub Finalize()
+    '    ' No cambie este código. Ponga el código de limpieza en la instrucción Dispose(ByVal disposing As Boolean) anterior.
+    '    Dispose(False)
+    '    MyBase.Finalize()
+    'End Sub
+
+    ' Visual Basic agregó este código para implementar correctamente el modelo descartable.
+    Public Sub Dispose() Implements IDisposable.Dispose
+
+        ' ESTO SERÏA LO QUE PONDRÏAS EN TU DISPOSE PERSONALIZADO
+
+        Dispose(True)
+
+        GC.SuppressFinalize(Me)
+
+    End Sub
+
+#End Region
+
 
     Public Function ValidateFields(Of T)(values_ As Dictionary(Of String, T)) As ValidatorReport Implements ICubeController.ValidateFields
         Throw New NotImplementedException()
@@ -1679,6 +1740,33 @@ Public Class CubeController
 
     End Function
 
+    Function SetValidationPanel(validationPanel_ As validationpanel) As TagWatcher
+
+        Dim sax_ = SwicthedProjectSax(16)
+
+        Dim cuenta_ = 15
+
+        Dim rolId_ = 7
+
+        Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
+
+            OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
+            Dim operationsvalidfields_ = _enlaceDatos.GetMongoCollection(Of validationpanel)("", 9)
+
+            operationsvalidfields_.InsertOne(validationPanel_)
+
+        End Using
+
+
+        SwicthedProjectSax(13)
+
+        _status = New TagWatcher() With {.ObjectReturned = validationPanel_}
+
+        Return _status
+
+    End Function
+
     Public Function CamposExcelMongo(excelFilePath_ As String) As String Implements ICubeController.CamposExcelMongo
 
 
@@ -1955,6 +2043,8 @@ Public Class CubeController
         Return _reports
 
     End Function
+
+
 
     Public Function Clone() As Object Implements ICloneable.Clone
         Throw New NotImplementedException()
