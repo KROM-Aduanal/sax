@@ -115,7 +115,9 @@
 
                                                                <GWC:SelectOption Value="6" Text="CDI"/>
 
-                                                               <GWC:SelectOption Value="7" Text="CANCELAR"/>
+                                                               <GWC:SelectOption Value="7" Text="PREV"/>
+
+                                                               <GWC:SelectOption Value="8" Text="CANCELAR"/>
 
                                                      </Options>
 
@@ -415,7 +417,7 @@
 
                  if (feditor_.disabled) {
 
-                   //  const bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
+                     //  const bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
 
                      bc_EleaborarPrueba_.style.backgroundColor = '#cecdcd';
 
@@ -471,7 +473,7 @@
                      });
                  }
              }
-         } 
+         }
      });
 
      document.addEventListener('input', function (event) {
@@ -575,7 +577,7 @@
                      var bc_verificado_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_Verificado_bc_Verificado');
 
                      if (bc_verificado_)
-                         bc_verificado_.disabled= true;
+                         bc_verificado_.disabled = true;
 
 
                  } else {
@@ -623,29 +625,29 @@
          } else
              tamanio_ = 4;
 
-    //     const element3 = document.querySelector('.botoneracabulidad');
+         //     const element3 = document.querySelector('.botoneracabulidad');
 
-        // element3.style.borderBottomColor = '#cecdcd';
+         // element3.style.borderBottomColor = '#cecdcd';
 
-        //this.closest('.row').setAttribute('style', 'border-color:#cecdcd !important;');
+         //this.closest('.row').setAttribute('style', 'border-color:#cecdcd !important;');
 
-       //  const element4 = document.querySelector('.swc-online');
+         //  const element4 = document.querySelector('.swc-online');
 
-      //   console.log(element3);
-/*         console.log(element3.className);*/
+         //   console.log(element3);
+         /*         console.log(element3.className);*/
 
-       //  element3.className ='cubo-input-search w-40';
+         //  element3.className ='cubo-input-search w-40';
 
-        // console.log(element4);
+         // console.log(element4);
 
-        // element3.className = 'wc-input __component form-group position-relative w-70 mb-3 '
+         // element3.className = 'wc-input __component form-group position-relative w-70 mb-3 '
 
          //element4.style.position = 'relative'; // Establecer la posición absoluta
          //element4.style.left = '900px';
 
-        // console.log(element3.className);
+         // console.log(element3.className);
 
-        
+
 
          //console.log("El tamaño de la cabulidad es:" + tamanio_);
          //console.log(nodos_);
@@ -660,18 +662,18 @@
                  const fieldset_ = document.querySelector('.formulariocabulidad');
 
 
-                if (content_) {
+                 if (content_) {
 
-                    content_.scroll({
-                        top: fieldset_.offsetTop - 22.2,
-                        behavior: 'smooth'
-                    });
-                }
+                     content_.scroll({
+                         top: fieldset_.offsetTop - 22.2,
+                         behavior: 'smooth'
+                     });
+                 }
 
              }
 
          }
-         
+
      });
 
 
@@ -698,7 +700,7 @@
                          break;
                      }
                  } else {
-                     
+
                      // Si no es un número ni un punto, rompemos el ciclo
                      tieneLetra_ = true;
                      break;

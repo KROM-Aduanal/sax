@@ -12,6 +12,7 @@ Imports Rec.Globals.Controllers
 Imports Rec.Globals.Utils
 Imports Sax.Web
 Imports Syn.Documento
+Imports Syn.Nucleo.RecursosComercioExterior
 Imports Syn.Operaciones
 Imports Syn.Utils
 Imports Wma.Exceptions
@@ -28,7 +29,7 @@ Public Class Ges022_001_CuboDatos
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-    ' Private _ctrlValidationRoute As IValidationRouteController
+    '  Private _ctrlValidationRoute As IValidationRouteController
 
     Private _ctrlCube As ICubeController
 
@@ -1207,10 +1208,37 @@ Public Class Ges022_001_CuboDatos
 
                 'End If
 
-                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}, {"CP_TIPO_PEDIMENTO.0", "GLOBAL COMPLEMENTARIO"}}
-                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
+
+                'seccion_ = pedimento_.Seccion(SeccionesPedimento.ANS18)
+
+                'Dim index_ = 0
+
+                'For Each Nodo_ In seccion_.Nodos
+
+                '    sections_ = New List(Of SeccionesPedimento) From {SeccionesPedimento.ANS18}
+
+                '    fields_ = New List(Of CamposPedimento) From {CamposPedimento.CA_CVE_IDENTIFICADOR}
+
+                '    ValidateField(sections_,
+                '              fields_,
+                '              elementMessage_,
+                '              Nodo_,
+                '              message_,
+                '              useNoticed_,
+                '              "",
+                '              False,
+                '              validation_,
+                '              index_,)
+
+                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CABULIDAD.1", 5}, {"RECABULIDAD.1", 9}}
+                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.VARIABLEDEPRUEBA", dictionary_, preferIndex_:=1)
 
                 Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
+
+                'Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}, {"CP_TIPO_PEDIMENTO.0", "GLOBAL COMPLEMENTARIO"}}
+                'Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
+
+                'Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
 
                 'MsgBox(DirectCast(fsc_Alertas.ListControls(0), InputControl).Value)
 
@@ -1275,13 +1303,47 @@ Public Class Ges022_001_CuboDatos
 
                                          pedimento_ = items.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
+                                         'Dim section_ = pedimento_.Seccion(SeccionesPedimento.ANS18)
+
+                                         'Dim chido_ As Boolean = False
+
+                                         'Dim cadena_ As String = ""
+
+                                         'For Each nodo_ In section_.Nodos
+
+                                         '    cadena_ &= nodo_.Attribute(CamposPedimento.CA_CVE_IDENTIFICADOR).Valor &
+                                         '    Chr(13)
+
+                                         '    If nodo_.Attribute(CamposPedimento.CA_CVE_IDENTIFICADOR).Valor = "PC" Then
+
+                                         '        chido_ = True
+
+                                         '        Exit For
+
+                                         '    End If
+                                         'Next
+
+                                         'MsgBox(cadena_)
+
                                      End Sub)
 
                 End Using
 
                 '_ctrlValidationRoute = New ValidationRouteController
 
-                'Dim resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA4, pedimento_)
+                'Dim validationType_ As IValidationRouteController.ValidationRoutes
+
+                'If pedimento_.Seccion(SeccionesPedimento.ANS1).Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = "1" Then
+
+                '    validationType_ = IValidationRouteController.ValidationRoutes.RUVA1
+
+                'Else
+
+                '    validationType_ = IValidationRouteController.ValidationRoutes.RUVA4
+
+                'End If
+
+                'Dim resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(validationType_, pedimento_)
 
                 'resultado_.ShowMessageError()
 
@@ -2274,7 +2336,19 @@ Public Class Ges022_001_CuboDatos
 
                 SetVars("resultTest_", "BADBAD")
 
-                DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+
+                If reportCabulidad_.title <> "" Then
+
+                    reportCabulidad_.ShowMessageError(2, Me)
+
+                Else
+
+                    DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                End If
+
 
             Else
 
@@ -2290,7 +2364,17 @@ Public Class Ges022_001_CuboDatos
 
                     SetVars("resultTest_", "BADBAD")
 
-                    DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+                    Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+
+                    If reportCabulidad_.title <> "" Then
+
+                        reportCabulidad_.ShowMessageError(2, Me)
+
+                    Else
+
+                        DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                    End If
 
 
 
@@ -2353,7 +2437,19 @@ Public Class Ges022_001_CuboDatos
                             SetVars("resultTest_", resultado_)
 
                             'DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
-                            DisplayMessage(messageResult_.ToString, TypeStatus.OkInfo)
+                            '                            DisplayMessage(messageResult_.ToString, TypeStatus.OkInfo)
+
+                            Dim reportInterpreter_ = _ctrlCube.interpreter.GetReportFull
+
+                            If reportInterpreter_.title <> "" Then
+
+                                reportInterpreter_.ShowMessageError(2, Me)
+
+                            Else
+
+                                DisplayMessage(messageResult_.ToString, TypeStatus.OkInfo)
+
+                            End If
 
                         Else
 
@@ -2375,7 +2471,17 @@ Public Class Ges022_001_CuboDatos
 
 
 
-                            DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+                            Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+
+                            If reportCabulidad_.title <> "" Then
+
+                                reportCabulidad_.ShowMessageError(2, Me)
+
+                            Else
+
+                                DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                            End If
 
                         End If
 
@@ -2391,7 +2497,17 @@ Public Class Ges022_001_CuboDatos
 
                         SetVars("resultTest_", "BADBAD")
 
-                        DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+                        Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+
+                        If reportCabulidad_.title <> "" Then
+
+                            reportCabulidad_.ShowMessageError(2, Me)
+
+                        Else
+
+                            DisplayMessage(stringFinal_, TypeStatus.OkInfo)
+
+                        End If
 
                     End If
 
@@ -2703,6 +2819,8 @@ Public Class Ges022_001_CuboDatos
 
                     VerificarFormula()
 
+
+
                 End If
 
             Else
@@ -2716,6 +2834,10 @@ Public Class Ges022_001_CuboDatos
 
                 cc_ValoresOperandos.ClearRows()
                 cc_ValoresOperandos.CatalogDataBinding()
+
+                Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+
+                reportCabulidad_.ShowMessageError(2, Me)
 
             End If
 
@@ -3006,7 +3128,7 @@ Public Class Ges022_001_CuboDatos
 
     Sub ChangeCubeSource()
 
-        If sc_BranchNames.Value <> "7" Then
+        If sc_BranchNames.Value <> "8" Then
 
             bc_SourceCube.Label = sc_BranchNames.Text
 

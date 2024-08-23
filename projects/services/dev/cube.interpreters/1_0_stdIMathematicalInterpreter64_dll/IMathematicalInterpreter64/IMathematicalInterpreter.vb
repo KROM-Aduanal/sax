@@ -59,7 +59,7 @@ Public Interface IMathematicalInterpreter : Inherits IDisposable
 
 #Region "Methods"
 
-    Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T)) As T
+    Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), Optional indexM As Int32 = 0) As T
 
     Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), interprete_ As InterpreterTypes) As T
 
@@ -67,6 +67,9 @@ Public Interface IMathematicalInterpreter : Inherits IDisposable
     Function GetParams(expression_ As String) As List(Of String)
 
     Sub SetValidFields(campos_ As List(Of String))
+
+    Sub SetValidField(field_ As String)
+
 
     Function GetValidFields() As List(Of String)
 
