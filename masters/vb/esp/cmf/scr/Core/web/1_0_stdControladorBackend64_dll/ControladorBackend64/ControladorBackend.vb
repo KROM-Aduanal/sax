@@ -2905,7 +2905,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & "" & "]") 'seccionUnica_.IDUnico
 
             End If
 
@@ -3463,14 +3463,20 @@ Public Class ControladorBackend
                 Else
                     'Lineas unicas por los selectores
 
-                    valorAsignado_ = campoUnico_.Valor
+                    If caracteristica_.Control.GetType() = GetType(SwitchControl) Then
 
-                    caracteristica_.Valor = valorAsignado_
+                    Else
+
+                        valorAsignado_ = campoUnico_.Valor
+
+                        caracteristica_.Valor = valorAsignado_
 
 
-                    valorPresentacionAsignado_ = campoUnico_.ValorPresentacion
+                        valorPresentacionAsignado_ = campoUnico_.ValorPresentacion
 
-                    caracteristica_.ValorPresentacion = valorPresentacionAsignado_
+                        caracteristica_.ValorPresentacion = valorPresentacionAsignado_
+
+                    End If
 
                 End If
 
@@ -3514,7 +3520,11 @@ Public Class ControladorBackend
 
                     Case PropiedadesControl.Checked
 
-                        control_.Checked = valorAsignado_
+                        If caracteristica_.Asignacion <> TiposAsignacion.ValorPresentacion Then
+
+                            control_.Checked = valorAsignado_
+
+                        End If
 
                     Case PropiedadesControl.ValueDetail
 
@@ -3554,7 +3564,7 @@ Public Class ControladorBackend
 
         Else
 
-            Return New TagWatcher(0, Me, "No se encontró el campo [" & campoUnico_.IDUnico & "]")
+            Return New TagWatcher(0, Me, "No se encontró el campo [" & IIf(campoUnico_ Is Nothing, "", "") & "]") 'campoUnico_.IDUnico
 
         End If
 
@@ -3638,7 +3648,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección [" & "" & "]") 'seccionUnica_.IDUnico
 
             End If
 
