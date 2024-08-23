@@ -313,30 +313,60 @@ Public Class ValidatorReport
 
     End Sub
 
-    Sub ShowMessageError()
+    Sub ShowMessageError(Optional typeMessage_ As Int32 = 1, Optional formularioMessage_ As Gsol.Web.Template.FormularioGeneralWeb = Nothing)
 
-        Dim mensaje_ As String = title & Chr(13)
+        Select Case typeMessage_
 
-        For Each itemreport_ In details
+            Case 0
 
-            mensaje_ &= "No. " & itemreport_.numberitem & Chr(9) &
-                        itemreport_.description & Chr(9) &
-                        itemreport_.valuesourceitem & Chr(9) &
-                        itemreport_.errortype.ToString & Chr(9) &
-                        itemreport_.descriptionerrortype.ToString
+            Case 1
 
-        Next
+                Dim mensaje_ As String = title & Chr(13)
+
+                For Each itemreport_ In details
+
+                    mensaje_ &= "No. " & itemreport_.numberitem & Chr(9) &
+                                itemreport_.description & Chr(9) &
+                                itemreport_.valuesourceitem & Chr(9) &
+                                itemreport_.errortype.ToString & Chr(9) &
+                                itemreport_.descriptionerrortype.ToString
+
+                Next
+
+                MsgBox(mensaje_)
+
+            Case 2
+
+                Dim mensaje_ As String = title & Chr(13)
+
+                For Each itemreport_ In details
+
+                    mensaje_ &= "No. " & itemreport_.numberitem & Chr(9) &
+                                itemreport_.description & Chr(9) &
+                                itemreport_.valuesourceitem & Chr(9) &
+                                itemreport_.errortype.ToString & Chr(9) &
+                                itemreport_.descriptionerrortype.ToString
+
+                Next
+
+                formularioMessage_.DisplayMessage(mensaje_.Replace(Chr(13), " ").Replace("'", Chr(34)),
+                                   Gsol.Web.Template.FormularioGeneralWeb.StatusMessage.Fail)
+
+        End Select
 
 
-
-
-        MsgBox(mensaje_)
 
     End Sub
 
-    Public Function getTitle() As String
+    Public Function GetTitle() As String
 
         Return title
+
+    End Function
+
+    Public Function GetDetails() As List(Of ItemReport)
+
+        Return details
 
     End Function
 

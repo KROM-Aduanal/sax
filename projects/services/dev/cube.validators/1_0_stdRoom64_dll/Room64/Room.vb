@@ -186,21 +186,7 @@ Public Class validfields
 
 End Class
 
-Public Class CheckedField
 
-    Property value As String
-
-    Property found As Boolean
-
-    Property required As Boolean
-
-    Property validate As Boolean
-
-    Property roomname As String
-
-    Property formulafieldname As String
-
-End Class
 
 
 

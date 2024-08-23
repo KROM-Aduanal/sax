@@ -37,6 +37,8 @@ Public Class CubeController
 
     Private _fieldmiss As List(Of String)
 
+    Private _rolids As Dictionary(Of Int32, Int32)
+
 
 
 #End Region
@@ -140,10 +142,18 @@ Public Class CubeController
 
     Sub New()
 
+        _rolids = New Dictionary(Of Int32, Int32) From {{1, 1}, {2, 2}, {3, 3}, {4, 4}, {5, 5}, {6, 6}, {8, 10}}
+
         _interpreter = New MathematicalInterpreterNCalc
+
         GetFieldsNamesResource()
 
+    End Sub
 
+    Sub New(cubeSource_ As String)
+
+        _interpreter = New MathematicalInterpreterNCalc
+        GetFieldsNamesResource(cubeSource_)
 
     End Sub
 
@@ -312,19 +322,16 @@ Public Class CubeController
 
         Dim operands_ = New List(Of String)
 
-        Dim rolIds_ As New List(Of Int32) From {1, 2, 3, 4, 5, 6}
-
-
         Dim sax_ = SwicthedProjectSax(16)
 
 
-        For Each rolId_ In rolIds_
+        For Each rolId_ In _rolids.Keys
 
             Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).Aggregate.
+                _enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).Aggregate.
                               Match(Function(s) s.contenttype.Equals("operando")).ToList.
                               ForEach(Sub(room_)
 
@@ -338,6 +345,8 @@ Public Class CubeController
 
         Next
 
+        sax_ = Nothing
+
         SwicthedProjectSax(13)
 
         _status = New TagWatcher() With {.ObjectReturned = operands_}
@@ -346,21 +355,42 @@ Public Class CubeController
 
     End Function
 
-    Private Function SwicthedProjectSax(appId_ As Int32) As Sax.SaxStatements
+    Private Function SwicthedProjectSax(appId_ As Int32, Optional cube_ As String = "") As Sax.SaxStatements
 
         Dim sax_ As Sax.SaxStatements = Sax.SaxStatements.GetInstance(appId_)
 
         Dim saxSetting1_ = sax_.SaxSettings(1)
 
-        sax_.SaxSettings(1) = sax_.SaxSettings(2)
+        If cube_ = "" Then
 
-        sax_.SaxSettings(2) = saxSetting1_
+            sax_.SaxSettings(1) = sax_.SaxSettings(2)
+
+            sax_.SaxSettings(2) = saxSetting1_
+
+        Else
+
+            If saxSetting1_.about <> "cube" Then
+
+                sax_.SaxSettings(1) = sax_.SaxSettings(2)
+
+                sax_.SaxSettings(2) = saxSetting1_
+
+            End If
+
+        End If
+
+
+
 
         Return sax_
 
     End Function
 
     Private Sub OnRol(ByRef roles_ As List(Of Sax.rol), rolId_ As Int32)
+
+        If rolId_ = 10 Then
+            Dim algo_ = 4
+        End If
 
         For Each rol_ In roles_
 
@@ -410,6 +440,10 @@ Public Class CubeController
 
                 rolId_ = 6
 
+            Case "PREV"
+
+                rolId_ = 8
+
             Case Else
 
                 rolId_ = 1
@@ -431,7 +465,7 @@ Public Class CubeController
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-            _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+            _enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).
                                   Aggregate.Match(Function(ch) ch._id = idRoom_).
                                   ToList.
                                   ForEach(Sub(room_)
@@ -483,6 +517,10 @@ Public Class CubeController
             Case 7
 
                 cubeName_ = "Resource"
+
+            Case 8
+
+                cubeName_ = "PREV"
 
             Case Else
 
@@ -563,7 +601,7 @@ Public Class CubeController
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
-            Dim operationsDB_ = enlaceDatos_.GetMongoCollection(Of room)("", rolId_)
+            Dim operationsDB_ = enlaceDatos_.GetMongoCollection(Of room)("", _rolids(rolId_))
 
             Dim roomHistoryList_ As New List(Of roomhistory)
 
@@ -993,18 +1031,16 @@ Public Class CubeController
 
         Dim cuenta_ = 15
 
-        Dim rolId_ = 1
-
         Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
-            While rolId_ <= 6
+            For Each rolId_ In _rolids.Keys
 
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
 
 
-                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+                _enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).
                                   Aggregate.
                                   ToList.
                                   ForEach(Sub(room_)
@@ -1028,9 +1064,7 @@ Public Class CubeController
 
                                           End Sub)
 
-                rolId_ += 1
-
-            End While
+            Next
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
 
@@ -1057,18 +1091,16 @@ Public Class CubeController
 
         Dim cuenta_ = 15
 
-        Dim rolId_ = 1
-
         Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
-            While rolId_ <= 6
+            For Each rolId_ In _rolids.Keys
 
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
 
 
 
-                _enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+                _enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).
                                   Aggregate.
                                   ToList.
                                   ForEach(Sub(room_)
@@ -1092,28 +1124,27 @@ Public Class CubeController
 
                                           End Sub)
 
-                rolId_ += 1
+            Next
 
-            End While
 
 
             OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, 7)
 
-            Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of roomresource)("", 7)
+                Dim operationsDBResource_ = _enlaceDatos.GetMongoCollection(Of roomresource)("", 7)
 
-            For Each resourceRoom_ In resourceRooms_
+                For Each resourceRoom_ In resourceRooms_
 
 
-                Dim updateDefinitionResource_ = Builders(Of roomresource).
+                    Dim updateDefinitionResource_ = Builders(Of roomresource).
                                         Update.
                                        Set(Function(e) e.roomname, resourceRoom_.roomname.ToUpper).
                                        Set(Function(e) e.valorpresentacion, resourceRoom_.valorpresentacion.ToUpper)
 
-                operationsDBResource_.UpdateOne(Function(e) e.idroom = resourceRoom_.idroom,
+                    operationsDBResource_.UpdateOne(Function(e) e.idroom = resourceRoom_.idroom,
                                         updateDefinitionResource_,
                                         New UpdateOptions With {.IsUpsert = True})
 
-            Next
+                Next
 
 
 
@@ -1124,7 +1155,10 @@ Public Class CubeController
 
     End Sub
 
-    Public Function RunRoom(Of T)(roomname_ As String, params_ As Dictionary(Of String, T)) As ValidatorReport Implements ICubeController.RunRoom
+    Public Function RunRoom(Of T)(roomname_ As String,
+                                  params_ As Dictionary(Of String, T),
+                                  Optional ByRef requieredfields_ As List(Of String) = Nothing,
+                                  Optional preferIndex_ As Int32 = -1) As ValidatorReport Implements ICubeController.RunRoom
 
         Dim operacion_ As String = ""
 
@@ -1161,7 +1195,7 @@ Public Class CubeController
                                             roomname_,
                                             "", "", TriggerSourceTypes.Cube)
 
-                    _reports.ShowMessageError()
+                    _reports.ShowMessageError(0)
 
                 Else
 
@@ -1169,7 +1203,7 @@ Public Class CubeController
 
                     _rooms = New List(Of room)
 
-                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _roomsResource(0).rolid).
+                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _rolids(_roomsResource(0).rolid)).
                                                          Aggregate.
                                                          Match(Function(ch) ch._id = _roomsResource(0).idroom).
                                                          ToList)
@@ -1178,9 +1212,13 @@ Public Class CubeController
 
                     Dim mensaje_ As String = ""
 
+                    requieredfields_ = New List(Of String)
+
                     For Each param_ In _rooms(0).addresses(1).ref.Skip(1)
 
                         Dim newParam_ = ""
+
+                        requieredfields_.Add(param_)
 
                         For Each key_ In params_.Keys
 
@@ -1210,14 +1248,19 @@ Public Class CubeController
 
                                     found_ = False
 
-                                    mensaje_ &= param_ & Chr(13)
-
                                 End If
 
                             End If
 
 
+
                         Next
+
+                        If Not found_ Then
+
+                            mensaje_ &= param_ & Chr(13)
+
+                        End If
 
                         If newParam_ <> "" Then
 
@@ -1231,7 +1274,17 @@ Public Class CubeController
 
                     If found_ Then
 
-                        RunRules(Of T)(_rooms(0).rules, params_)
+                        If preferIndex_ = -1 Then
+
+                            RunRules(Of T)(_rooms(0).rules, params_)
+
+                        Else
+
+                            RunRules(Of T)(_rooms(0).rules, params_, preferIndex_)
+
+
+                        End If
+
 
                         If _rooms(0).messages.Count = 0 Then
 
@@ -1257,7 +1310,7 @@ Public Class CubeController
                                                 mensaje_,
                                                 "", "", TriggerSourceTypes.Cube)
 
-                        _reports.ShowMessageError()
+                        _reports.ShowMessageError(0)
 
                     End If
 
@@ -1280,7 +1333,9 @@ Public Class CubeController
 
     End Function
 
-    Private Sub RunRules(Of T)(rules_ As String, params_ As Dictionary(Of String, T))
+    Private Sub RunRules(Of T)(rules_ As String,
+                               params_ As Dictionary(Of String, T),
+                               Optional preferIndex_ As Int32 = -1)
 
         If _interpreter Is Nothing Then
 
@@ -1290,8 +1345,15 @@ Public Class CubeController
 
         End If
 
+        If preferIndex_ = -1 Then
 
-        _status = New TagWatcher() With {.ObjectReturned = _interpreter.RunExpression(Of T)(rules_, params_)}
+            _status = New TagWatcher() With {.ObjectReturned = _interpreter.RunExpression(Of T)(rules_, params_)}
+
+        Else
+
+            _status = New TagWatcher() With {.ObjectReturned = _interpreter.RunExpression(Of T)(rules_, params_, preferIndex_)}
+
+        End If
 
         _status.SetOK()
 
@@ -1354,23 +1416,22 @@ Public Class CubeController
 
         Dim cuenta_ = 15
 
-        Dim rolId_ = 1
-
         Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
 
-            While rolId_ <= 6 And cuenta_ > 0
+            For Each rolId_ In _rolids.Keys
 
 
                 OnRol(sax_.SaxSettings(1).servers.nosql.mongodb.rol, rolId_)
+
                 If token_ = "" Then
 
-                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).
                                       Aggregate.
                                       Limit(cuenta_).
                                       ToList)
                 Else
 
-                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", rolId_).
+                    _rooms.AddRange(_enlaceDatos.GetMongoCollection(Of room)("", _rolids(rolId_)).
                                                  Aggregate.
                                                  Match(Function(ch) ch.roomname.ToUpper.Contains(token_.ToUpper)).
                                                  Limit(cuenta_).
@@ -1381,9 +1442,15 @@ Public Class CubeController
 
                 cuenta_ -= _rooms.Count
 
-                rolId_ += 1
+                If cuenta_ <= 0 Then
 
-            End While
+                    Exit For
+
+                End If
+
+
+
+            Next
 
         End Using
 
@@ -1632,11 +1699,17 @@ Public Class CubeController
 
     End Function
 
-    Function GetFieldsNamesResource() As TagWatcher Implements ICubeController.GetFieldsNamesResource
+    Sub SetValidField(field_ As String) Implements ICubeController.SetValidField
+
+        _interpreter.SetValidField(field_)
+
+    End Sub
+
+    Function GetFieldsNamesResource(Optional cube_ As String = "") As TagWatcher Implements ICubeController.GetFieldsNamesResource
 
         Dim validFields_ As New List(Of String)
 
-        Dim sax_ = SwicthedProjectSax(16)
+        Dim sax_ = SwicthedProjectSax(16, cube_)
 
         Dim cuenta_ = 15
 
@@ -1934,7 +2007,7 @@ Public Class CubeController
                                         "RegimenClaveOperacion",
                                         "", "", TriggerSourceTypes.Cube)
 
-                _reports.ShowMessageError()
+                _reports.ShowMessageError(0)
 
                 expressionOk_ = False
 
@@ -1979,7 +2052,7 @@ Public Class CubeController
                                         "RegimenClaveOperacion",
                                         "", "", TriggerSourceTypes.Cube)
 
-                _reports.ShowMessageError()
+                _reports.ShowMessageError(0)
 
                 expressionOk_ = False
 
@@ -2030,7 +2103,7 @@ Public Class CubeController
                                         "IncotermIncrementables",
                                         "", "", TriggerSourceTypes.Cube)
 
-                _reports.ShowMessageError()
+                _reports.ShowMessageError(0)
 
                 expressionOk_ = False
 
