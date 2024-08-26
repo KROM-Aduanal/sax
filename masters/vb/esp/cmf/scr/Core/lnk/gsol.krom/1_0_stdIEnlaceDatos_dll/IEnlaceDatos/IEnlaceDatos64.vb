@@ -339,6 +339,11 @@ Namespace gsol.krom
                                   ByVal IdUnicoSeccion_ As Integer,
                                   ByVal IdUnicoCampo_ As Integer,
                                   ByVal valor_ As String) As TagWatcher
+        Function BusquedaGeneralDocumento(ByVal objetoDatos_ As DocumentoElectronico,
+                                  ByVal IdUnicoSeccion_ As Integer,
+                                  ByVal IdUnicoCampo_ As Integer,
+                                  ByVal valor_ As String,
+                                  ByVal metadatosFiltro_ As Dictionary(Of [Enum], String)) As TagWatcher
 
 
         Function NotificarSubscriptores(ByVal recurso_ As String,

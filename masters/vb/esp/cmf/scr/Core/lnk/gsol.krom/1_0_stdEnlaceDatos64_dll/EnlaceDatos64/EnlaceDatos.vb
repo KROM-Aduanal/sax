@@ -121,8 +121,235 @@ Namespace gsol.krom
                     }
                 }
 
+            pipeline_.Add(raiz_)
+
+            pipeline_.Add(plancharDatosRaiz_)
+
+            partsRutaNodo_ = partsRutaNodo_.Skip(1).ToArray
+
+            Dim indice_ = 1
+
+            For Each rutaActual_ As String In partsRutaNodo_
+
+                Dim agregarCampo_ = New BsonDocument From {
+                    {
+                        "$addFields", New BsonDocument From {
+                                    {"Nodo" & indice_, If(indice_ = 1, "$Documento.Nodos", "$Nodo" & (indice_ - 1) & ".Nodos")}
+                        }
+                    }
+                }
+
+                Dim plancharDatos_ = New BsonDocument From {
+                {
+                        "$unwind", New BsonDocument From {
+                                    {"path", "$Nodo" & indice_.ToString()},
+                                    {"preserveNullAndEmptyArrays", True}
+                        }
+                    }
+                }
+
+                pipeline_.Add(agregarCampo_)
+
+                pipeline_.Add(plancharDatos_)
+
+                If indice_ < partsRutaNodo_.Count Then
+
+                    indice_ += 1
+
+                End If
+
+            Next
+
+            Dim condicionesConsulta_ = New BsonDocument From {
+                    {
+                        "$match", New BsonDocument From {
+                                    {"estado", 1},
+                                    {"Nodo" & indice_ & ".TipoNodo", 2},
+                                    {"Nodo" & indice_ & ".IDUnico", IdUnicoCampo_},
+                                    {"$or", New BsonArray From {
+                                                New BsonDocument From {
+                                                     {"Nodo" & indice_ & ".Valor", New BsonDocument From {
+                                                                {"$regex", valor_},
+                                                                {"$options", "i"}
+                                                            }
+                                                     }
+                                                },
+                                                New BsonDocument From {
+                                                     {"Nodo" & indice_ & ".ValorPresentacion", New BsonDocument From {
+                                                                {"$regex", valor_},
+                                                                {"$options", "i"}
+                                                            }
+                                                     }
+                                                }
+                                            }
+                                    }
+                        }
+                    }
+                }
+
+
+            Dim camposConsulta_ = New BsonDocument From {
+                    {
+                        "$project", New BsonDocument From {
+                                    {"_id", 1},
+                                    {"FolioOperacion", 1},
+                                    {"FolioDocumento", 1},
+                                    {"NombreCliente", 1},
+                                    {"NombreCampo", "$Nodo" & indice_.ToString() & ".Nombre"},
+                                    {"IDCampo", "$Nodo" & indice_.ToString() & ".IDUnico"},
+                                    {
+                                        "CampoValor", New BsonDocument From {
+                                            {
+                                                "$ifNull", New BsonArray() From {
+                                                    "$Nodo" & indice_.ToString() & ".Valor", "$Nodo" & indice_.ToString() & ".ValorPresentacion"
+                                                }
+                                            }
+                                        }
+                                    }
+                        }
+                    }
+                }
+
+            pipeline_.Add(condicionesConsulta_)
+
+            pipeline_.Add(camposConsulta_)
+
+            Dim limiteRegistros_ = New BsonDocument From {
+                {
+                    "$limit", _limiteResultados
+                }
+            }
+
+
+            pipeline_.Add(limiteRegistros_)
+
+
+            Dim status_ As New TagWatcher
+
+            'Dim tiempoInicialL_ As Long = Nothing
+
+            'Dim tiempoFinalL_ As Long = Nothing
+
+            'Dim tiempoTranscurridoL_ As Long = 0
+
+            'tiempoInicialL_ = ObtenerMilisegundos(DateTime.Now)
+
+
+            'Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
+
+            Dim operacionesDB_ As IMongoCollection(Of OperacionGenerica) = Me.GetMongoCollection(Of OperacionGenerica)(objetoDatos_.GetType.Name)
+
+            Try
+
+                Dim objectResult_ = operacionesDB_.Aggregate(Of BsonDocument)(pipeline_).ToList
+
+                Dim listaResultados_ = New List(Of Object)
+
+                For Each stat As BsonDocument In objectResult_
+
+                    listaResultados_.Add(New Dictionary(Of Object, Object) From {
+                        {"ID", stat.GetElement("_id").Value.ToString},
+                        {"folioOperacion", stat.GetElement("FolioOperacion").Value.ToString},
+                        {"folioDocumento", stat.GetElement("FolioDocumento").Value.ToString},
+                        {"propietario", stat.GetElement("NombreCliente").Value.ToString},
+                        {"valorOperacion", stat.GetElement("CampoValor").Value.ToString}
+                    })
+
+                Next
+
+                status_.SetOK()
+
+                status_.ObjectReturned = listaResultados_
+
+            Catch e As Exception
+
+                status_.SetError(Me, "Error writing to MongoDB: " & e.Message)
+
+            End Try
+
+            'tiempoFinalL_ = ObtenerMilisegundos(DateTime.Now)
+
+            'tiempoTranscurridoL_ = tiempoFinalL_ - tiempoInicialL_
+
+            '_tiempoTranscurridoMilisegundos = tiempoTranscurridoL_
+
+            'iEnlace_.Dispose()
+
+            Return status_
+
+
+        End Function
+
+        Private Function ProduceBusquedaGeneralDocumento(ByVal objetoDatos_ As DocumentoElectronico,
+                                          ByVal IdUnicoSeccion_ As Integer,
+                                          ByVal IdUnicoCampo_ As Integer,
+                                          ByVal valor_ As String,
+                                          ByVal metadatosFiltro_ As Dictionary(Of [Enum], String)) As TagWatcher
+
+
+            Dim operacionesNodo_ = New OperacionesNodos
+
+            operacionesNodo_.CrearPartidasDocumentoElectronico(objetoDatos_)
+
+            Dim rutaNodo_ = operacionesNodo_.ObtenerRutaCampo(objetoDatos_, IdUnicoSeccion_, IdUnicoCampo_)
+
+
+            Dim partsRutaNodo_ As String() = rutaNodo_.Split(".")
+
+            Dim pipeline_ As New List(Of BsonDocument)
+
+            Dim raiz_ As New BsonDocument() From {
+                    {
+                        "$addFields", New BsonDocument From {
+                                {"FolioDocumento", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioDocumento"},
+                                {"NombreCliente", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.NombreCliente"},
+                                {"Metadatos", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Metadatos"},
+                                {"Documento", "$Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Documento.Parts." & partsRutaNodo_(0).ToString()}
+                        }
+                    }
+                }
+
+            Dim plancharDatosRaiz_ = New BsonDocument From {
+                {
+                        "$unwind", New BsonDocument From {
+                                    {"path", "$Documento"},
+                                    {"preserveNullAndEmptyArrays", True}
+                        }
+                    }
+                }
+
+            Dim condicionesConsultaMetadatos_ = New BsonDocument()
+
+            Dim matchConditions = New BsonArray()
+
+            For Each metadatoFiltro_ As [Enum] In metadatosFiltro_.Keys
+
+                Dim idUnico As [Enum] = metadatoFiltro_
+
+                Dim valor As String = metadatosFiltro_(metadatoFiltro_)
+
+                matchConditions.Add(New BsonDocument From {
+                    {
+                        "$elemMatch", New BsonDocument From {
+                            {
+                                "IDUnico", idUnico
+                            },
+                            {
+                                "$or", New BsonArray From {
+                                    New BsonDocument From {{"Valor", valor}},
+                                    New BsonDocument From {{"Valor", Integer.Parse(valor)}}
+                                }
+                            }
+                        }
+                    }
+                })
+            Next
+
+            condicionesConsultaMetadatos_ = New BsonDocument("$match", New BsonDocument("Metadatos", New BsonDocument("$all", matchConditions)))
 
             pipeline_.Add(raiz_)
+
+            pipeline_.Add(condicionesConsultaMetadatos_)
 
             pipeline_.Add(plancharDatosRaiz_)
 
@@ -303,6 +530,47 @@ Namespace gsol.krom
                                                             IdUnicoSeccion_,
                                                             IdUnicoCampo_,
                                                             valor_)
+
+                    'Tiempo de respuesta de la operación a la base de datos
+                    _tiempoTranscurridoMilisegundos = .TiempoTranscurridoMilisegundos
+
+                Else
+
+                    _tagWatcher.SetError(Me, TagWatcher.ErrorTypes.C5_013_00001)
+
+                End If
+
+            End With
+
+            Return _tagWatcher
+
+        End Function
+
+
+        Public Function BusquedaGeneralDocumento(objetoDatos_ As DocumentoElectronico,
+                                                 IdUnicoSeccion_ As Integer,
+                                                 IdUnicoCampo_ As Integer,
+                                                 valor_ As String,
+                                                 metadatosFiltro_ As Dictionary(Of [Enum], String)) As TagWatcher _
+            Implements IEnlaceDatos.BusquedaGeneralDocumento
+
+            _tagWatcher.Clear()
+
+            With _lineaBaseEnlaceDatos
+
+                .LimiteRegistros = _limiteResultados
+
+                .Registros.Clear()
+
+                _dimension = IEnlaceDatos.TiposDimension.SinDefinir
+
+                If Not _espacioTrabajo Is Nothing Then
+
+                    _tagWatcher = ProduceBusquedaGeneralDocumento(objetoDatos_,
+                                                            IdUnicoSeccion_,
+                                                            IdUnicoCampo_,
+                                                            valor_,
+                                                            metadatosFiltro_)
 
                     'Tiempo de respuesta de la operación a la base de datos
                     _tiempoTranscurridoMilisegundos = .TiempoTranscurridoMilisegundos
