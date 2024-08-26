@@ -51,6 +51,8 @@ Public Class FindbarControl
 
     Public Property DataObject As Object
 
+    Public Property MetadatosFilter As Dictionary(Of [Enum], String)
+
     Public Overloads Property Value As String
 
         Get
@@ -300,7 +302,17 @@ Public Class FindbarControl
 
                                 Dim itemList = New List(Of Dictionary(Of Object, Object))
 
-                                Dim status_ = _enlaceDatos.BusquedaGeneralDocumento(documentoElectronico_, idSection, idField, Text)
+                                Dim status_ = Nothing
+
+                                If MetadatosFilter Is Nothing Then
+
+                                    status_ = _enlaceDatos.BusquedaGeneralDocumento(documentoElectronico_, idSection, idField, Text)
+
+                                Else
+
+                                    status_ = _enlaceDatos.BusquedaGeneralDocumento(documentoElectronico_, idSection, idField, Text, MetadatosFilter)
+
+                                End If
 
                                 If status_.Status = TagWatcher.TypeStatus.Ok Then
 
@@ -310,7 +322,17 @@ Public Class FindbarControl
 
                                         dataSourceItem_.Add("Value", item_.Item("ID"))
 
-                                        Dim titleItem_ = item_.Item("valorOperacion") & " | " & item_.Item("folioOperacion")
+                                        Dim titleItem_ = Nothing
+
+                                        If item_.Item("valorOperacion") = item_.Item("folioOperacion") Then
+
+                                            titleItem_ = item_.Item("valorOperacion")
+
+                                        Else
+
+                                            titleItem_ = item_.Item("valorOperacion") & " | " & item_.Item("folioOperacion")
+
+                                        End If
 
                                         Dim indexFound_ = titleItem_.ToLower.IndexOf(Text.ToLower)
 
