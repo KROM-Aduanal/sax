@@ -2351,7 +2351,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2398,7 +2398,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2445,7 +2445,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2490,7 +2490,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2528,7 +2528,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2575,7 +2575,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró el campo [" & idUnico_ & "]")
+                Return New TagWatcher(0, Me, "No se encontró el campo []")
 
             End If
 
@@ -2785,7 +2785,7 @@ Public Class ControladorBackend
 
         Else
 
-            Return New TagWatcher(0, Me, "No se encontró el campo [" & campoUnico_.IDUnico & "]")
+            Return New TagWatcher(0, Me, "No se encontró el campo []")
 
         End If
 
@@ -3109,7 +3109,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
@@ -3191,7 +3191,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
@@ -3342,7 +3342,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
@@ -3789,7 +3789,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
@@ -3843,7 +3843,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
@@ -3940,7 +3940,7 @@ Public Class ControladorBackend
 
             Else
 
-                Return New TagWatcher(0, Me, "No se encontró la sección [" & seccionUnica_.IDUnico & "]")
+                Return New TagWatcher(0, Me, "No se encontró la sección []")
 
             End If
 
