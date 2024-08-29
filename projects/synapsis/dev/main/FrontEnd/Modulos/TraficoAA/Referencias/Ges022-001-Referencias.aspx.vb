@@ -2,48 +2,29 @@
 #Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
 
 'RECURSOS DEL CMF
+Imports System.IO
+Imports gsol
+Imports gsol.krom
+Imports gsol.Web.Components
+Imports MongoDB.Bson
+Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
+'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
+Imports Rec.Globals.Controllers
+Imports Rec.Globals.Utils
+'UTILERIAS/RECURSOS ADICIONALES
+Imports Sax.Web
+Imports Syn.CustomBrokers.Controllers
+Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
+Imports Syn.CustomBrokers.Controllers.ControladorUnidadesMedida
 Imports Syn.Documento
+Imports Syn.Documento.Componentes
+Imports Syn.Nucleo
 Imports Syn.Nucleo.RecursosComercioExterior
-Imports Syn.Operaciones
+Imports Syn.Nucleo.RecursosComercioExterior.CamposReferencia
 Imports Wma.Exceptions
 Imports Wma.Exceptions.TagWatcher
 Imports Wma.Exceptions.TagWatcher.TypeStatus
-Imports Syn.Nucleo.RecursosComercioExterior.CamposReferencia
-
-'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
-Imports Rec.Globals.Controllers
-Imports gsol
-
-'UTILERIAS/RECURSOS ADICIONALES
-Imports Sax.Web
-Imports Rec.Globals.Utils
-Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
-Imports Syn.CustomBrokers.Controllers
-Imports gsol.krom
-Imports MongoDB.Bson
-Imports SharpCompress.Common
-Imports System.IO
-Imports System.Web.Hosting
-Imports Syn.CustomBrokers.Controllers.ControladorUnidadesMedida
-Imports System.Windows.Forms
-Imports System.Linq
-Imports gsol.Web.Components
-Imports Syn.Documento.Componentes
-Imports MongoDB.Bson.Serialization.Attributes
-Imports System.Drawing.Imaging
-Imports gsol.Web.Template
-Imports Sax.Web.ControladorBackend
-
-
-
-
-
-
-
-
-
-
 
 #End Region
 
@@ -62,10 +43,14 @@ Public Class Ges022_001_Referencia
 
     Private _idDocumento As ObjectId
 
+    Private _tipoPedimento As String
+
     Private Enum TipoReferenciaPedimento
+
         Prefijo = 1
         Sufijo
         Completo
+
     End Enum
 
 #End Region
@@ -76,7 +61,6 @@ Public Class Ges022_001_Referencia
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-
     '------ Sobreescrituras del framework Sax ------------
     Public Overrides Sub Inicializa()
 
@@ -84,27 +68,21 @@ Public Class Ges022_001_Referencia
 
             .DataObject = New ConstructorReferencia()
 
-
             .addFilter(SeccionesReferencias.SREF1, CamposReferencia.CP_REFERENCIA, "Referencia")
             .addFilter(SeccionesReferencias.SREF1, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, "Pedimento")
             .addFilter(SeccionesReferencias.SREF2, CamposClientes.CA_RAZON_SOCIAL, "Cliente")
 
-
         End With
 
-        'If Not Page.IsPostBack Then
+        scRegimen.DataEntity = New Anexo22()
 
-        scRegimen.DataEntity = New krom.Anexo22()
+        scClaveDocumento.DataEntity = New Anexo22()
 
-        scClaveDocumento.DataEntity = New krom.Anexo22()
+        scPais.DataEntity = New Anexo22()
 
-        scPais.DataEntity = New krom.Anexo22()
+        scPaisMulti.DataEntity = New Anexo22()
 
-        scPaisMulti.DataEntity = New krom.Anexo22()
-
-        'scAduanaDespacho.DataEntity = New krom.Anexo22
-
-        scEjecutivoCuenta.DataEntity = New krom.Ejecutivos
+        scEjecutivoCuenta.DataEntity = New Ejecutivos
 
         scEjecutivoCuenta.FreeClauses = " and i_Cve_DivisionMiEmpresa = " & Statements.GetOfficeOnline()._id
 
@@ -120,12 +98,7 @@ Public Class Ges022_001_Referencia
 
             pnGuia.Visible = False
 
-
         End If
-
-        '_controladorReferencias = New ControladorReferencias
-
-        'End If
 
         icRFC.Enabled = False
 
@@ -140,23 +113,33 @@ Public Class Ges022_001_Referencia
         End If
 
         swcMaterialPeligroso.Checked = False
+
         swcRectificacion.Checked = False
+
         swcTipoOperacion.Checked = True
-        ccDocumento.Visible = True
         swcTipoOperacion.Enabled = True
+
+        ccDocumento.Visible = True
+
         swcRectificacion.Visible = False
-        Fechas.Visible = True
-        Guia.Visible = True
+
+        fscFechas.Visible = True
+
+        fscGuia.Visible = True
+
         ccGuias.Visible = False
+
         ccDespacho.Visible = False
 
         scTipoDocumentos.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "BL"}}
         scTipoDocumentos.Value = 1
 
-        TrackingExpo.Visible = False
-        TrackingImpo.Visible = False
-        Fechas.Visible = False
-        Documentos.Visible = True
+        fscTrackingExpo.Visible = False
+        fscTrackingImpo.Visible = False
+
+        fscFechas.Visible = False
+
+        fscDocumentos.Visible = True
 
         PreparaControles()
 
@@ -177,8 +160,11 @@ Public Class Ges022_001_Referencia
         InicializaPrefijo()
 
         ccDocumento.Visible = False
-        Fechas.Visible = True
-        Guia.Visible = True
+
+        fscFechas.Visible = True
+
+        fscGuia.Visible = True
+
         swcRectificacion.Visible = True
 
         If scTipoDespacho.Value = 2 Then
@@ -189,11 +175,7 @@ Public Class Ges022_001_Referencia
 
         If swcTipoOperacion.Checked Then
 
-            Guia.Visible = True
-
-            'TrackingImpo.Visible = True
-
-            'TrackingExpo.Visible = False
+            fscGuia.Visible = True
 
             icFechaEtd.Visible = False
 
@@ -209,11 +191,7 @@ Public Class Ges022_001_Referencia
 
         Else
 
-            Guia.Visible = False
-
-            'TrackingExpo.Visible = True
-
-            'TrackingImpo.Visible = False
+            fscGuia.Visible = False
 
             icFechaEtd.Visible = True
 
@@ -227,10 +205,7 @@ Public Class Ges022_001_Referencia
 
             icFechaRevalidacion.Visible = False
 
-
-
         End If
-
 
         dbcReferencia.EnabledButton = True
 
@@ -241,18 +216,13 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
-
     Public Overrides Sub BotoneraClicOtros(ByVal IndexSelected_ As Integer)
-
-
 
         If IndexSelected_ = 10 Then
 
             Dim pdfBytes_ As Byte() = File.ReadAllBytes("C:\TEMP\Ejemplo_BL.pdf")
 
             Dim ms_ As New MemoryStream(pdfBytes_)
-
-            'Dim x = _controladorReferencias.CrearPrereferencia(ms_)
 
         End If
 
@@ -276,32 +246,31 @@ Public Class Ges022_001_Referencia
 
         Dim bloqueadosEdicion_ As New List(Of WebControl)
 
-        bloqueadosEdicion_.Add(swcTipoOperacion)
-        bloqueadosEdicion_.Add(swcRectificacion)
-        bloqueadosEdicion_.Add(scTipoDocumento)
-        bloqueadosEdicion_.Add(scEjecutivoCuenta)
-        bloqueadosEdicion_.Add(scPatente)
-        bloqueadosEdicion_.Add(scPatente2)
-        bloqueadosEdicion_.Add(icPedimentoOriginal)
-        bloqueadosEdicion_.Add(scTipoCarga)
-        bloqueadosEdicion_.Add(scTipoDespacho)
-        bloqueadosEdicion_.Add(scClaveDocumento)
-        bloqueadosEdicion_.Add(scRegimen)
-        bloqueadosEdicion_.Add(dbcReferencia)
-        bloqueadosEdicion_.Add(fbcCliente)
-        bloqueadosEdicion_.Add(icBancoPago)
-        bloqueadosEdicion_.Add(swcMaterialPeligroso)
+        'Aquí debemos validar que se tenga publicada y ya bloquearle los campos que se definan. ¿Cómo se vera un documento electronico publiscado?
+
+        'bloqueadosEdicion_.Add(swcTipoOperacion)
+        'bloqueadosEdicion_.Add(swcRectificacion)
+        'bloqueadosEdicion_.Add(scTipoDocumento)
+        'bloqueadosEdicion_.Add(scEjecutivoCuenta)
+        'bloqueadosEdicion_.Add(scPatente)
+        'bloqueadosEdicion_.Add(icPedimentoOriginal)
+        'bloqueadosEdicion_.Add(scTipoCarga)
+        'bloqueadosEdicion_.Add(scTipoDespacho)
+        'bloqueadosEdicion_.Add(scClaveDocumento)
+        'bloqueadosEdicion_.Add(scRegimen)
+        'bloqueadosEdicion_.Add(dbcReferencia)
+        'bloqueadosEdicion_.Add(fbcCliente)
+        'bloqueadosEdicion_.Add(icBancoPago)
+        'bloqueadosEdicion_.Add(swcMaterialPeligroso)
 
         Return bloqueadosEdicion_
 
     End Function
 
-
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
         Dim tipoOp_ As Int32 = IIf(swcTipoOperacion.Checked, ControladorRecursosAduanales.TiposOperacionAduanal.Importacion, ControladorRecursosAduanales.TiposOperacionAduanal.Exportacion)
-
 
         [Set](dbcReferencia, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
         [Set](dbcReferencia, CamposPedimento.CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
@@ -310,11 +279,9 @@ Public Class Ges022_001_Referencia
         [Set](swcMaterialPeligroso, CP_MATERIAL_PELIGROSO, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](swcRectificacion, CP_RECTIFICACION, propiedadDelControl_:=PropiedadesControl.Checked)
         [Set](scPatente, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)
-        [Set](scPatente2, CamposPedimento.CP_MODALIDAD_ADUANA_PATENTE)
         [Set](scRegimen, CamposPedimento.CA_REGIMEN)
         [Set](scTipoDocumento, CA_TIPO_PEDIMENTO)
         [Set](scClaveDocumento, CamposPedimento.CA_CVE_PEDIMENTO)
-        '[Set](scDesaduanamiento, CP_DESADUANAMIENTO)
         [Set](scEjecutivoCuenta, CamposPedimento.CP_EJECUTIVO_CUENTA)
         [Set](scTipoCarga, CP_TIPO_CARGA_AGENCIA)
         [Set](icDescripcionCompleta, CP_DESCRIPCION_MERCANCIA_COMPLETA)
@@ -326,13 +293,6 @@ Public Class Ges022_001_Referencia
         [Set](icRFC, CamposClientes.CA_RFC_CLIENTE)
         [Set](icRFCFacturacion, CamposClientes.CP_RFC_FACTURACION)
         [Set](icBancoPago, CamposClientes.CP_CVE_BANCO)
-
-        '[Set](icFechaApertura, CP_FECHA_APERTURA)
-        '[Set](icFechaEntrada, CamposPedimento.CA_FECHA_ENTRADA)
-        '[Set](icFechaProforma, CP_FECHA_PROFORMA)
-        '[Set](icFechaCierre, CP_FECHA_CIERRE)
-        '[Set](icFechaPago, CP_FECHA_PAGO)
-        '[Set](icFechaDespacho, CP_FECHA_ULTIMO_DESPACHO)
 
         [Set](icFechaEta, CP_FECHA_ETA, propiedadDelControl_:=PropiedadesControl.Valor)
         [Set](icFechaRevalidacion, CP_FECHA_REVALIDACION, propiedadDelControl_:=PropiedadesControl.Valor)
@@ -382,16 +342,17 @@ Public Class Ges022_001_Referencia
         'GeneraPrefijoReferencia
         dbcReferencia.Value = GeneraReferenciaPedimento(True, False, TipoReferenciaPedimento.Prefijo)
 
-    End Sub
+        MostrarTooltipTipoPedimento(1)
 
+    End Sub
 
     'EVENTOS PARA LA INSERCIÓN DE DATOS
     Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
-        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
+        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("_modalidadSeccionPatente")
 
         Dim seccionesPatente_ = From data In modalidadSeccionPatente_.aduanaspatentes
-                                Where data._idmodalidadaduanapatente.ToString.Equals(IIf(scTipoDocumento.Value = 4, scPatente2.Value, scPatente.Value))
+                                Where data._idmodalidadaduanapatente.ToString.Equals(scPatente.Value)
                                 Select data._idaduanaseccion, data._idpatente
 
         If seccionesPatente_.Count > 0 Then
@@ -405,8 +366,6 @@ Public Class Ges022_001_Referencia
             [Set](patente_, CamposPedimento.CA_PATENTE,)
 
         End If
-
-
 
         _controladorReferencias = New ControladorReferencias
 
@@ -422,7 +381,7 @@ Public Class Ges022_001_Referencia
 
             .FolioDocumento = dbcReferencia.ValueDetail
 
-            .FolioOperacion = dbcReferencia.Value '"RKU22-" & GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, "RKU").ToString.PadLeft(8, "0")
+            .FolioOperacion = dbcReferencia.Value
 
             .IdCliente = 0
 
@@ -438,16 +397,15 @@ Public Class Ges022_001_Referencia
 
     End Function
 
-
     'EVENTOS PARA MODIFICACIÓN DE DATOS
     Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
-        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("modalidadSeccionPatente")
+        Dim modalidadSeccionPatente_ As ControladorRecursosAduanales = GetVars("_modalidadSeccionPatente")
 
         If modalidadSeccionPatente_ IsNot Nothing Then
 
             Dim seccionesPatente_ = From data In modalidadSeccionPatente_.aduanaspatentes
-                                    Where data._idmodalidadaduanapatente.ToString.Equals(IIf(scTipoDocumento.Value = 4, scPatente2.Value, scPatente.Value))
+                                    Where data._idmodalidadaduanapatente.ToString.Equals(scPatente.Value)
                                     Select data._idaduanaseccion, data._idpatente
 
             If seccionesPatente_.Count > 0 Then
@@ -464,7 +422,7 @@ Public Class Ges022_001_Referencia
 
         End If
 
-        Return New TagWatcher(1) 'tagwatcher_
+        Return New TagWatcher(1)
 
     End Function
 
@@ -488,12 +446,10 @@ Public Class Ges022_001_Referencia
 
     End Function
 
-
     'EVENTOS PARA PRESENTACIÓN DE DATOS EN FRONTEND
     Public Overrides Sub PreparaModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
 
     End Sub
-
 
     'EVENTO PARA DATOS EXTRA/AUTOMATICOS
     Protected Function GeneraSecuencia(ByVal nombre_ As String,
@@ -554,23 +510,23 @@ Public Class Ges022_001_Referencia
 
         If tipoPedimento = 4 Then
 
-            scPatente2.Visible = True
-
-            scPatente.Visible = False
-
             icPedimentoOriginal.Visible = True
 
-        Else
+            scRegimen.Visible = True
 
-            scPatente2.Visible = False
+        ElseIf tipoPedimento = 2 Then
 
-            scPatente.Visible = True
+            scRegimen.Visible = False
 
             icPedimentoOriginal.Visible = False
 
+        Else
+
+            icPedimentoOriginal.Visible = False
+
+            scRegimen.Visible = True
+
         End If
-
-
 
         Dim fuente_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
@@ -590,11 +546,7 @@ Public Class Ges022_001_Referencia
 
         If fuente_.Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = True Then
 
-            Guia.Visible = True
-
-            'TrackingImpo.Visible = True
-
-            'TrackingExpo.Visible = False
+            fscGuia.Visible = True
 
             icFechaEtd.Visible = False
 
@@ -608,17 +560,9 @@ Public Class Ges022_001_Referencia
 
             icFechaRevalidacion.Visible = True
 
-
-
-
-
         Else
 
-            Guia.Visible = False
-
-            'TrackingExpo.Visible = True
-
-            'TrackingImpo.Visible = False
+            fscGuia.Visible = False
 
             icFechaEtd.Visible = True
 
@@ -634,14 +578,13 @@ Public Class Ges022_001_Referencia
 
         End If
 
-        Fechas.Visible = True
+        fscFechas.Visible = True
 
         swcRectificacion.Visible = True
 
-        Documentos.Visible = True
+        fscDocumentos.Visible = True
 
         scGuias.Enabled = False
-
 
     End Sub
 
@@ -649,13 +592,18 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
-
     'EVENTOS DE MANTENIMIENTO
     Public Overrides Sub LimpiaSesion()
+
+        SetVars("_modalidadSeccionPatente", Nothing)
 
     End Sub
 
     Public Overrides Sub Limpiar()
+
+        'Ambiguedad en nombres de catalogos y card CC
+        ccGuias.DataSource = Nothing
+        ccDocumentos.DataSource = Nothing
 
     End Sub
 
@@ -692,17 +640,15 @@ Public Class Ges022_001_Referencia
         Next
 
         Dim doc As Byte() = _controladorDocumentos.GetDocument(listaIdsDocumento_(0)).ObjectReturned
-
         Dim memoryStream_ As New MemoryStream(doc)
-
         _controladorReferencias = New ControladorReferencias
-
         Dim referencia As Syn.CustomBrokers.Controllers.Referencia
-
         Dim facturaComercial
 
         Select Case scTipoDocumentos.Value
+
             Case 1
+
                 referencia = _controladorReferencias.CrearPrereferencia(memoryStream_, Ia.Pln.IControllerChatGPT.DocumentoCargado.BL).ObjectReturned
 
                 If referencia._importacion._guia._listaGuias(0)._guia.Equals("MEDUET7473626") Then
@@ -714,22 +660,24 @@ Public Class Ges022_001_Referencia
                     icNumeroGuia.Value = referencia._importacion._guia._listaGuias(0)._guia
 
                 End If
+
                 scTransportista.Value = referencia._importacion._guia._listaGuias(0)._transportista
                 scPais.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._pais}}
                 scPais.Value = 1
                 scUnidadMedida.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = referencia._importacion._guia._listaGuias(0)._unidadMedida}}
                 scUnidadMedida.Value = 1
+
                 scTipoGuia.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = 1, .Text = "Master"}}
                 scTipoGuia.Value = 1
                 scTipoGuia.ToolTip = "Sugerido por sistema, confirmar"
                 scTipoGuia.ToolTipModality = Web.Components.IUIControl.ToolTipModalities.Ondemand
                 scTipoGuia.ToolTipStatus = Web.Components.IUIControl.ToolTipTypeStatus.OkInfo
+
                 icTipoCargaGuia.Value = referencia._importacion._guia._listaGuias(0)._tipoCarga
                 scPesoBruto.Value = referencia._importacion._guia._listaGuias(0).perBruto
                 icFechaSalidaOrigen.Value = referencia._importacion._guia._listaGuias(0)._salidaOrigen
                 icDescripcionMercancia.Value = referencia._importacion._guia._listaGuias(0)._descripcionMercancia
                 icConsignatario.Value = referencia._importacion._guia._listaGuias(0)._consignatario
-
                 ccDocumento.Visible = False
 
                 scRegimen.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "IMD", .Text = "IMD - DEFINITIVO DE IMPORTACIÓN."}}
@@ -765,10 +713,10 @@ Public Class Ges022_001_Referencia
                 DisplayMessage("Documento agregado y sugerencias realizadas")
 
             Case 2
+
                 facturaComercial = _controladorReferencias.CrearPrereferencia(memoryStream_, Ia.Pln.IControllerChatGPT.DocumentoCargado.FacturaImportacion).ObjectReturned
+
         End Select
-
-
 
         scRegimen.ShowToolTip()
         scClaveDocumento.ShowToolTip()
@@ -781,7 +729,10 @@ Public Class Ges022_001_Referencia
 
     Protected Sub btIr_OnClick(sender As Object, e As EventArgs)
 
+        'Falta algo?
+
     End Sub
+
     Protected Sub btGuardarDocumentos_OnClick(sender As Object, e As EventArgs)
 
         Dim listaDocumentos_ As List(Of Newtonsoft.Json.Linq.JObject) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Newtonsoft.Json.Linq.JObject))(fcDocumentos.Value)
@@ -799,15 +750,11 @@ Public Class Ges022_001_Referencia
                                 End Sub)
 
             ccDocumentos.DataSource = ccDocumentos.DataSource
-
             ccDocumentos.CatalogDataBindingUpdate()
-
 
         Next
 
-
         fcDocumentos.Value = Nothing
-
         scTipoDocumentosFijo.Value = ""
 
     End Sub
@@ -818,66 +765,35 @@ Public Class Ges022_001_Referencia
 
     End Sub
 
-    Protected Sub scTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-        If scTipoDocumento.Value IsNot Nothing And scTipoDocumento.Value = 4 Then
-
-            icPedimentoOriginal.Visible = True
-            scPatente2.Visible = True
-            scPatente.Visible = False
-
-        Else
-            icPedimentoOriginal.Visible = False
-            scPatente2.Visible = False
-            scPatente.Visible = True
-
-        End If
-
-    End Sub
-
     Protected Sub swcTipoOperacion_CheckedChanged(sender As Object, e As EventArgs)
 
         If swcTipoOperacion.Checked Then
 
-            Guia.Visible = True
-
-            'TrackingImpo.Visible = True
-
-            'TrackingExpo.Visible = False
-
+            fscGuia.Visible = True
             icFechaEtd.Visible = False
-
             icFechaPresentacion.Visible = False
-
             icFechaSalida.Visible = False
-
             icFechaCierreFisico.Visible = False
-
             icFechaEta.Visible = True
-
             icFechaRevalidacion.Visible = True
 
         Else
 
-            Guia.Visible = False
-
-            'TrackingExpo.Visible = True
-
-            'TrackingImpo.Visible = False
-
+            fscGuia.Visible = False
             icFechaEtd.Visible = True
-
             icFechaPresentacion.Visible = True
-
             icFechaSalida.Visible = True
-
             icFechaCierreFisico.Visible = True
-
             icFechaEta.Visible = False
-
             icFechaRevalidacion.Visible = False
 
         End If
+
+        'Se limpian los selectores de las asistencias
+        scTipoDocumento.DataSource = Nothing
+        scTipoDocumento.Value = Nothing
+        LimpiaAsistencias()
+        MostrarTooltipTipoPedimento(1)
 
     End Sub
 
@@ -886,13 +802,11 @@ Public Class Ges022_001_Referencia
         If scGuias.Checked = True Then
 
             ccGuias.Visible = True
-
             pnGuia.Visible = False
 
         Else
 
             ccGuias.Visible = False
-
             pnGuia.Visible = True
 
         End If
@@ -955,13 +869,9 @@ Public Class Ges022_001_Referencia
 
         End Using
 
-        ' Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
-
     End Sub
 
     Protected Sub fbcCliente_Click(sender As Object, e As EventArgs)
-
-        'Dim controlador_ As New ControladorBusqueda(Of ConstructorCliente)
 
         Using controlador_ = New ControladorBusqueda(Of ConstructorCliente)
 
@@ -986,7 +896,6 @@ Public Class Ges022_001_Referencia
             dbcReferencia.ValueDetail = Mid(Year(Now).ToString, 4, 1) &
                 GeneraSecuencia("Pedimentos", Statements.GetOfficeOnline._id, Year(Now), 0, 3210, 430).ToString.PadLeft(6, "0").ToString
 
-
         End If
 
     End Sub
@@ -995,32 +904,69 @@ Public Class Ges022_001_Referencia
 
         If swcRectificacion.Checked = True Then
 
-            'scTipoDocumento_Click(sender, e)
-
             scTipoDocumento.Value = 4
-
             scTipoDocumento_SelectedIndexChanged(sender, e)
-
             scTipoDocumento.Enabled = False
 
         Else
 
             scTipoDocumento.Enabled = True
-
-            'scTipoDocumento_Click(sender, e)
-
             scTipoDocumento.Value = 1
-
             scTipoDocumento_SelectedIndexChanged(sender, e)
 
         End If
-
 
     End Sub
 
     Protected Sub scTipoDocumento_Click(sender As Object, e As EventArgs)
 
         scTipoDocumento.DataSource = TipoDocumento()
+
+    End Sub
+
+    Protected Sub scTipoDocumento_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        If scTipoDocumento.Value IsNot Nothing And scTipoDocumento.Value = 4 Then
+
+            'Tipo: RECTIFICACIÓN
+            icPedimentoOriginal.Visible = True
+            scRegimen.Visible = True
+            scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "R1", .Text = "R1 - RECTIFICACION DE PEDIMENTOS."}}
+            scClaveDocumento.Value = "R1"
+
+        ElseIf scTipoDocumento.Value = 2 Then
+
+            'Tipo: COMPLEMENTARIO
+            scRegimen.Visible = False
+            scRegimen.DataSource = Nothing
+            scRegimen.Value = Nothing
+            scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "CT", .Text = "CT - PEDIMENTO COMPLEMENTARIO."}}
+            scClaveDocumento.Value = "CT"
+            icPedimentoOriginal.Visible = False
+
+        ElseIf scTipoDocumento.Value = 5 Then
+
+            'Tipo: GLOBAL COMPLEMENTARIO
+            scClaveDocumento.DataSource = New List(Of SelectOption) From {New SelectOption With {.Value = "GC", .Text = "GC - GLOBAL COMPLEMENTARIO."}}
+            scClaveDocumento.Value = "GC"
+            scClaveDocumento.FreeClauses = " and t_Cve_Pedimento = GC"
+            icPedimentoOriginal.Visible = False
+            scRegimen.Visible = True
+
+        Else
+
+            icPedimentoOriginal.Visible = False
+            scRegimen.Visible = True
+
+        End If
+
+        MostrarTooltipClavePedimento()
+
+        scTipoDespacho.ToolTip = "Asistencia aplicada"
+        scTipoDespacho.ToolTipExpireTime = 4
+        scTipoDespacho.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scTipoDespacho.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scTipoDespacho.ShowToolTip()
 
     End Sub
 
@@ -1032,12 +978,360 @@ Public Class Ges022_001_Referencia
 
     Protected Sub AntesDeCambiarEmpresa(ByVal sender As FindbarControl, ByVal e As EventArgs)
 
-        'MsgBox(OperacionGenerica.Id.ToString)
-
         BusquedaGeneral(sender, e)
 
     End Sub
 
+    Protected Sub scClaveDocumento_Click(sender As Object, e As EventArgs)
+
+        'Obtenemos el tipo de pedimento en una variable para aplicar los casos necesarios
+        _tipoPedimento = scTipoDocumento.Text
+
+        'Limpiamos los selectores de asistencias relacionados por si estan llenos o tienen algún dato
+        scClaveDocumento.DataSource = Nothing
+        scClaveDocumento.Value = Nothing
+        scRegimen.DataSource = Nothing
+        scRegimen.Value = Nothing
+
+        If _tipoPedimento <> "" Then
+
+            'Validamos que el tipo de pedimento sea aplicado a asistencia
+            Select Case _tipoPedimento
+
+                Case "RECTIFICACIÓN"
+
+                    scClaveDocumento.FreeClauses = " and t_Cve_Pedimento = R1"
+
+                Case "COMPLEMENTARIO"
+
+                    scClaveDocumento.FreeClauses = " and t_Cve_Pedimento = CT"
+
+                Case "GLOBAL COMPLEMENTARIO"
+
+                    scClaveDocumento.FreeClauses = " and t_Cve_Pedimento = GC"
+
+                Case Else
+
+                    'Abrimos el using para trabajar con el prevalidador de asistencias
+                    Using prevalidadorAsistencia_ As IPrevalidadorAsistencia = New PrevalidadorAsistencia()
+
+                        'Creación del diccionario con los parámetros
+                        Dim parametrosAsistencia_ As New Dictionary(Of String, Object)
+
+                        'Llenado por condición del primer parámetro
+                        If swcTipoOperacion.Checked = True Then
+
+                            parametrosAsistencia_.Add(CamposPedimento.CA_TIPO_OPERACION.ToString, Convert.ToString(TiposOperacionAduanal.Importacion))
+
+                        Else
+
+                            parametrosAsistencia_.Add(CamposPedimento.CA_TIPO_OPERACION.ToString, Convert.ToString(TiposOperacionAduanal.Exportacion))
+
+                        End If
+
+                        'Llenado del segundo parametro
+                        parametrosAsistencia_.Add(CamposPedimento.CP_TIPO_PEDIMENTO.ToString, _tipoPedimento)
+
+                        'Consulta de asistencia
+                        prevalidadorAsistencia_.EstatusAsistencia = prevalidadorAsistencia_.ConsultarAsistencia(IPrevalidador.TiposProcesamiento.AsistirCaptura,
+                                                                                                                IPrevalidador.TiposValidacion.Legal,
+                                                                                                                IPrevalidadorAsistencia.TiposAsistenciaConsultar.AS_PED2,
+                                                                                                                parametrosAsistencia_)
+
+                        If prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.Ok Then
+
+                            'Se extrae el tipo asistencia en una clase para luego extraer por LinQ la lista de claves
+                            Dim asistencia_ As Asistencia = prevalidadorAsistencia_.EstatusAsistencia.ObjectReturned
+                            Dim listaClaves_ = From camposAfectados_ In asistencia_.CamposAfectados("CA_CVE_PEDIMENTO")
+                                               Select camposAfectados_
+
+                            'Se hace el IN O EL = en la clausula libre Del componente que le corresponde
+                            If listaClaves_.Count = 1 Then
+
+                                If listaClaves_(0).ToString <> IPrevalidadorAsistencia.ErroresAsistencia.EAS_001.ToString Then
+
+                                    scClaveDocumento.FreeClauses = " and t_Cve_Pedimento = '" + listaClaves_(0).ToString + "'"
+
+                                Else
+
+                                    DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_001), StatusMessage.Info)
+                                    'Condición para que no muestre información
+                                    scClaveDocumento.FreeClauses = " and i_Cve_Estado = 5"
+
+                                End If
+
+                            Else
+
+                                scClaveDocumento.FreeClauses = " and t_Cve_Pedimento in (" + String.Join(",", listaClaves_) + ")"
+
+                            End If
+
+                        ElseIf prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.OkInfo Then
+
+                            DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Info)
+                            'Condición para que no muestre información
+                            scClaveDocumento.FreeClauses = " and i_Cve_Estado = 5"
+
+                        ElseIf prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.OkBut Then
+
+                            DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Info)
+                            'Condición para que no muestre información
+                            scClaveDocumento.FreeClauses = " and i_Cve_Estado = 5"
+
+                        Else
+
+                            DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Fail)
+                            'Condición para que no muestre información
+                            scClaveDocumento.FreeClauses = " and i_Cve_Estado = 5"
+
+                        End If
+
+                    End Using
+
+            End Select
+
+        Else
+
+            MostrarTooltipTipoPedimento(2)
+            'Condición para que no muestre información
+            scClaveDocumento.FreeClauses = " and i_Cve_Estado = 5"
+
+        End If
+
+
+    End Sub
+
+    Protected Sub scClaveDocumento_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        scRegimen.ToolTip = "Asistencia aplicada"
+        scRegimen.ToolTipExpireTime = 4
+        scRegimen.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scRegimen.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scRegimen.ShowToolTip()
+
+    End Sub
+
+    Protected Sub scRegimen_Click(sender As Object, e As EventArgs)
+
+        'Obtenemos el valor de la clave pedimento
+        Dim clavePedimento_ As String = scClaveDocumento.Value
+
+        If clavePedimento_ <> "" Then
+
+            'Abrimos el using para trabajar con el prevalidador de asistencias
+            Using prevalidadorAsistencia_ As IPrevalidadorAsistencia = New PrevalidadorAsistencia()
+
+                'Creación del diccionario con los parámetros
+                Dim parametrosAsistencia_ As New Dictionary(Of String, Object)
+
+                'Llenado por condición del primer parámetro
+                If swcTipoOperacion.Checked = True Then
+
+                    parametrosAsistencia_.Add(CamposPedimento.CA_TIPO_OPERACION.ToString, Convert.ToString(TiposOperacionAduanal.Importacion))
+
+                Else
+
+                    parametrosAsistencia_.Add(CamposPedimento.CA_TIPO_OPERACION.ToString, Convert.ToString(TiposOperacionAduanal.Exportacion))
+
+                End If
+
+                'Segundo parámetro
+                parametrosAsistencia_.Add(CamposPedimento.CA_CVE_PEDIMENTO.ToString, clavePedimento_)
+
+                'Consulta de asistencia
+                prevalidadorAsistencia_.EstatusAsistencia = prevalidadorAsistencia_.ConsultarAsistencia(IPrevalidador.TiposProcesamiento.AsistirCaptura,
+                                                                                                                IPrevalidador.TiposValidacion.Legal,
+                                                                                                                IPrevalidadorAsistencia.TiposAsistenciaConsultar.AS_PED3,
+                                                                                                                parametrosAsistencia_)
+
+                If prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.Ok Then
+
+                    'Se extrae el tipo asistencia en una clase para luego extraer por LinQ la lista de regimen
+                    Dim asistencia_ As Asistencia = prevalidadorAsistencia_.EstatusAsistencia.ObjectReturned
+
+                    Dim listaRegimen_ = From camposAfectados_ In asistencia_.CamposAfectados("CA_REGIMEN")
+                                        Select camposAfectados_
+
+                    'Se hace el IN O EL = en la clausula libre Del componente que le corresponde
+                    If listaRegimen_.Count = 1 Then
+
+                        If listaRegimen_(0).ToString = IPrevalidadorAsistencia.ErroresAsistencia.EAS_002.ToString Then
+
+
+                        ElseIf listaRegimen_(0).ToString <> IPrevalidadorAsistencia.ErroresAsistencia.EAS_003.ToString Then
+
+                            scRegimen.FreeClauses = " and t_Cve_Regimen = " + listaRegimen_(0).ToString
+
+                        Else
+
+                            DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_003), StatusMessage.Info)
+                            'Condición para que no muestre información
+                            scRegimen.FreeClauses = " and i_Cve_Estado = 5"
+
+                        End If
+
+                    Else
+
+                        scRegimen.FreeClauses = " and t_Cve_Regimen in (" + String.Join(",", listaRegimen_) + ")"
+
+                    End If
+
+                ElseIf prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.OkInfo Then
+
+                    DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Info)
+                    'Condición para que no muestre información
+                    scRegimen.FreeClauses = " and i_Cve_Estado = 5"
+
+                ElseIf prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.OkBut Then
+
+                    DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Info)
+                    'Condición para que no muestre información
+                    scRegimen.FreeClauses = " and i_Cve_Estado = 5"
+
+                Else
+
+                    DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Fail)
+                    'Condición para que no muestre información
+                    scRegimen.FreeClauses = " and i_Cve_Estado = 5"
+
+                End If
+
+            End Using
+
+        Else
+
+            scClaveDocumento.ToolTip = "Debe indicar la clave de pedimento"
+            scClaveDocumento.ToolTipExpireTime = 4
+            scClaveDocumento.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkBut
+            scClaveDocumento.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+            scClaveDocumento.ShowToolTip()
+            'Condición para que no muestre información
+            scRegimen.FreeClauses = " and i_Cve_Estado = 5"
+
+        End If
+
+    End Sub
+
+    Protected Sub scTipoDespacho_Click(sender As Object, e As EventArgs)
+
+        'Obtenemos el tipo de pedimento en una variable para aplicar los casos necesarios
+        _tipoPedimento = scTipoDocumento.Text
+
+        If _tipoPedimento <> "" Then
+
+            Dim recursos_ As ControladorRecursosAduanalesGral = ControladorRecursosAduanalesGral.Buscar(ControladorRecursosAduanalesGral.TiposRecurso.Generales)
+            Dim tiposDespacho_ As IEnumerable(Of TiposDespachoDocumento)
+
+            tiposDespacho_ = From data In recursos_.tiposdespachodocumento
+                             Where data.archivado = False And data.estado = 1 And data._idtipodocumento = scTipoDocumento.Value
+
+            If tiposDespacho_.Count > 0 Then
+
+                Dim listaDespachos_ As New List(Of SelectOption)
+
+                For index_ As Int32 = 0 To tiposDespacho_.Count - 1
+
+                    listaDespachos_.Add(New SelectOption With
+                                 {.Value = tiposDespacho_(index_)._idtipodespacho,
+                                  .Text = tiposDespacho_(index_).descripciondespacho.ToString})
+
+                Next
+
+                If listaDespachos_.Count > 0 Then
+
+                    scTipoDespacho.DataSource = listaDespachos_
+
+                End If
+
+            End If
+
+        Else
+
+            MostrarTooltipTipoPedimento(2)
+
+        End If
+
+    End Sub
+
+    Protected Sub SeleccionarUnidadMedida_Click(sender As Object, e As EventArgs)
+
+        Dim listaUnidades_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(TiposUnidad.Comercial, scUnidadMedida.SuggestedText, 0)
+
+        If listaUnidades_.Count > 0 Then
+
+            scUnidadMedida.DataSource = ControladorUnidadesMedida.ToSelectOption(listaUnidades_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
+
+        End If
+
+    End Sub
+
+    Protected Sub SeleccionarUnidadMedidaMulti_Click(sender As Object, e As EventArgs)
+
+        Dim listaUnidades_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(TiposUnidad.Comercial, scUnidadMedida.SuggestedText, 0)
+
+        If listaUnidades_.Count > 0 Then
+
+            scUnidadMedidaMulti.DataSource = ControladorUnidadesMedida.ToSelectOption(listaUnidades_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
+
+        End If
+
+    End Sub
+
+    Protected Sub SeleccionarPais_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub scModalidadAduanaPatente_Click(sender As Object, e As EventArgs)
+
+        scPatente.DataSource = ModalidadSeccionPatente()
+
+    End Sub
+
+    Sub MostrarTooltipClavePedimento()
+
+        scClaveDocumento.ToolTip = "Asistencia aplicada"
+        scClaveDocumento.ToolTipExpireTime = 4
+        scClaveDocumento.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scClaveDocumento.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scClaveDocumento.ShowToolTip()
+
+    End Sub
+
+    Sub LimpiaAsistencias()
+
+        'Limpiamos los selectores de asistencias por si estan llenos o tiene algún dato
+        scClaveDocumento.DataSource = Nothing
+        scClaveDocumento.Value = Nothing
+        scRegimen.DataSource = Nothing
+        scRegimen.Value = Nothing
+        scTipoDespacho.DataSource = Nothing
+        scTipoDespacho.Value = Nothing
+
+    End Sub
+
+    Sub MostrarTooltipTipoPedimento(ByVal modalidad_ As Integer)
+
+        Select Case modalidad_
+
+            Case 1
+                'Aplica asistencia
+                scTipoDocumento.ToolTip = "Asistencia aplicada"
+                scTipoDocumento.ToolTipExpireTime = 4
+                scTipoDocumento.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+                scTipoDocumento.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+                scTipoDocumento.ShowToolTip()
+
+            Case 2
+                'Requiere del campo
+                scTipoDocumento.ToolTip = "Debe indicar el tipo de pedimento"
+                scTipoDocumento.ToolTipExpireTime = 4
+                scTipoDocumento.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkBut
+                scTipoDocumento.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+                scTipoDocumento.ShowToolTip()
+
+        End Select
+
+    End Sub
 
 #End Region
 
@@ -1048,7 +1342,6 @@ Public Class Ges022_001_Referencia
     '    ██████    3.ControladorSecuencias                         b). Contactos                       ██████
     '    ██████                                                                                        ██████
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
-
 
     Protected Function GeneraReferenciaPedimento(ByVal generaReferencia_ As Boolean, ByVal generaPedimento_ As Boolean, ByVal parte_ As Int16) As String
 
@@ -1064,9 +1357,8 @@ Public Class Ges022_001_Referencia
 
                 Case 3 'Completo
 
-                    Return scPrefijo.Text &
-            Mid(Year(Now).ToString, 3, 2) & "-" &
-            GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
+                    Return scPrefijo.Text & Mid(Year(Now).ToString, 3, 2) & "-" &
+                            GeneraSecuencia("Referencias", Statements.GetOfficeOnline._id, Year(Now), 0, 0, 0, scPrefijo.Value).ToString.PadLeft(8, "0")
 
             End Select
 
@@ -1075,6 +1367,7 @@ Public Class Ges022_001_Referencia
         If generaPedimento_ Then
 
             Select Case parte_
+
                 Case 1 'Prefijo
 
                 Case 2 'Sufijo
@@ -1092,7 +1385,6 @@ Public Class Ges022_001_Referencia
     Protected Sub InicializaPrefijo()
 
         Dim tipoPrefijo_ As Int16
-
         tipoPrefijo_ = ControladorRecursosAduanales.TiposPrefijosEnviroment.ReferenciaOperativaNormal
 
         If tipoPrefijo_ = ControladorRecursosAduanales.TiposReferenciasOperativas.SinDefinir Then
@@ -1102,7 +1394,6 @@ Public Class Ges022_001_Referencia
         Else
 
             Dim prefijodefault_ As Int16 = 0
-
             scPrefijo.DataSource = PrefijosReferencia(tipoPrefijo_, prefijodefault_)
 
             If scPrefijo.DataSource IsNot Nothing And prefijodefault_ <> 0 Then
@@ -1135,7 +1426,6 @@ Public Class Ges022_001_Referencia
                 If primerdefault_ And dato.default Then
 
                     idprefijoDefault_ = dato._idprefijo
-
                     primerdefault_ = False
 
                 End If
@@ -1168,8 +1458,7 @@ Public Class Ges022_001_Referencia
 
                 aduanaSeccionModalidad_.Add(New SelectOption With
                              {.Value = aduanasSecciones_(index_)._idaduanaseccion,
-                              .Text = aduanasSecciones_(index_).modalidad.ToString & "|" & aduanasSecciones_(index_).ciudad & "|" & aduanasSecciones_(index_)._idaduanaseccion.ToString})
-
+                              .Text = aduanasSecciones_(index_).modalidad.ToString & " | " & aduanasSecciones_(index_)._idaduanaseccion & " | " & aduanasSecciones_(index_).ciudad.ToString})
 
             Next
 
@@ -1183,25 +1472,37 @@ Public Class Ges022_001_Referencia
 
     Private Function TipoDocumento() As List(Of SelectOption)
 
+        LimpiaAsistencias()
+
         Dim recursos_ As ControladorRecursosAduanalesGral = ControladorRecursosAduanalesGral.Buscar(ControladorRecursosAduanalesGral.TiposRecurso.Generales)
 
-        Dim tipoDocumento_ = From data In recursos_.tiposdocumento
-                             Where data.archivado = False And data.estado = 1
-                             Select data._idtipodocumento, data.descripcion, data.descripcioncorta
+        Dim tiposDocumentos_ As IEnumerable(Of TiposDocumentoOperacion)
 
-        If tipoDocumento_.Count > 0 Then
+        If swcTipoOperacion.Checked Then
 
-            Dim dataSource_ As New List(Of SelectOption)
+            tiposDocumentos_ = From data In recursos_.tiposdocumentooperacion
+                               Where data.archivado = False And data.estado = 1 And data._idtipooperacion = TiposOperacionAduanal.Importacion
 
-            For index_ As Int32 = 0 To tipoDocumento_.Count - 1
+        Else
 
-                dataSource_.Add(New SelectOption With
-                             {.Value = tipoDocumento_(index_)._idtipodocumento,
-                              .Text = tipoDocumento_(index_).descripcioncorta.ToString})
+            tiposDocumentos_ = From data In recursos_.tiposdocumentooperacion
+                               Where data.archivado = False And data.estado = 1 And data._idtipooperacion = TiposOperacionAduanal.Exportacion
+
+        End If
+
+        If tiposDocumentos_.Count > 0 Then
+
+            Dim listaDocumentos_ As New List(Of SelectOption)
+
+            For index_ As Int32 = 0 To tiposDocumentos_.Count - 1
+
+                listaDocumentos_.Add(New SelectOption With
+                             {.Value = tiposDocumentos_(index_)._idtipodocumento,
+                              .Text = tiposDocumentos_(index_).descripciondocumentocorta.ToString})
 
             Next
 
-            Return dataSource_
+            Return listaDocumentos_
 
         End If
 
@@ -1213,77 +1514,32 @@ Public Class Ges022_001_Referencia
 
         Dim recursos_ As ControladorRecursosAduanalesGral = ControladorRecursosAduanalesGral.Buscar(ControladorRecursosAduanalesGral.TiposRecurso.Anexo22)
 
-        Dim tipoCarga_ = From data In recursos_.tiposcargalote
-                         Where data.archivado = False And data.estado = 1
-                         Select data._idtipocargalote, data.descripcion
+        Dim tiposCarga_ = From data In recursos_.tiposcargalote
+                          Where data.archivado = False And data.estado = 1
+                          Select data._idtipocargalote, data.descripcion
 
-        If tipoCarga_.Count > 0 Then
+        If tiposCarga_.Count > 0 Then
 
-            Dim dataSource1 As New List(Of SelectOption)
+            Dim listaTiposCarga_ As New List(Of SelectOption)
 
-            For index_ As Int32 = 0 To tipoCarga_.Count - 1
+            For index_ As Int32 = 0 To tiposCarga_.Count - 1
 
-                dataSource1.Add(New SelectOption With
-                                {.Value = tipoCarga_(index_)._idtipocargalote,
-                                 .Text = tipoCarga_(index_).descripcion.ToString})
+                listaTiposCarga_.Add(New SelectOption With
+                                {.Value = tiposCarga_(index_)._idtipocargalote,
+                                 .Text = tiposCarga_(index_).descripcion.ToString})
             Next
 
-            Return dataSource1
+            Return listaTiposCarga_
 
         End If
 
         Return Nothing
 
     End Function
-    Protected Sub SeleccionarUnidadMedida_Click(sender As Object, e As EventArgs)
-
-        Dim tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad = TiposUnidad.Comercial
-
-        Dim top_ As Int32 = 0
-
-        Dim lista_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(tipoUnidad_, scUnidadMedida.SuggestedText, top_)
-
-        If lista_.Count > 0 Then
-
-            scUnidadMedida.DataSource = ControladorUnidadesMedida.ToSelectOption(lista_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
-
-        End If
-
-    End Sub
-    Protected Sub SeleccionarUnidadMedidaMulti_Click(sender As Object, e As EventArgs)
-
-        Dim tipoUnidad_ As ControladorUnidadesMedida.TiposUnidad = TiposUnidad.Comercial
-
-        Dim top_ As Int32 = 0
-
-        Dim lista_ As List(Of UnidadMedida) = ControladorUnidadesMedida.BuscarUnidades(tipoUnidad_, scUnidadMedida.SuggestedText, top_)
-
-        If lista_.Count > 0 Then
-
-            scUnidadMedidaMulti.DataSource = ControladorUnidadesMedida.ToSelectOption(lista_, ControladorUnidadesMedida.TipoSelectOption.CveMXnombreoficiales)
-
-        End If
-
-    End Sub
-    Protected Sub SeleccionarPais_Click(sender As Object, e As EventArgs)
-
-
-
-    End Sub
-
-    Protected Sub scModalidadAduanaPatente_Click(sender As Object, e As EventArgs)
-
-        scPatente.DataSource = ModalidadSeccionPatente()
-        scPatente2.DataSource = scPatente.DataSource
-
-    End Sub
 
     Protected Sub InicializaCliente(ByVal datosCliente_ As OperacionGenerica)
 
         icRFC.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
-
-        'icBancoPago.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CP_CVE_BANCO_PAGO).Valor
-
         icRFCFacturacion.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
     End Sub
@@ -1292,7 +1548,7 @@ Public Class Ges022_001_Referencia
 
         Dim _modalidadSeccionPatente = ControladorRecursosAduanales.BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
 
-        SetVars("modalidadSeccionPatente", _modalidadSeccionPatente)
+        SetVars("_modalidadSeccionPatente", _modalidadSeccionPatente)
 
         Dim aduanasSeccionesPatente_ = From data In _modalidadSeccionPatente.aduanaspatentes
                                        Where data.archivado = False And data.estado = 1
@@ -1300,18 +1556,18 @@ Public Class Ges022_001_Referencia
 
         If aduanasSeccionesPatente_.Count > 0 Then
 
-            Dim dataSource_ As New List(Of SelectOption)
+            Dim modalidadesAdunaSeccionPatente_ As New List(Of SelectOption)
 
             For index_ As Int32 = 0 To aduanasSeccionesPatente_.Count - 1
 
-                dataSource_.Add(New SelectOption With
+                modalidadesAdunaSeccionPatente_.Add(New SelectOption With
                              {.Value = aduanasSeccionesPatente_(index_)._idmodalidadaduanapatente,
-                              .Text = aduanasSeccionesPatente_(index_).modalidad & "|" & aduanasSeccionesPatente_(index_).ciudad & "-" & aduanasSeccionesPatente_(index_)._idaduanaseccion &
-                              "|" & aduanasSeccionesPatente_(index_).agenteaduanal & "-" & aduanasSeccionesPatente_(index_)._idpatente})
+                              .Text = aduanasSeccionesPatente_(index_).modalidad & " | " & aduanasSeccionesPatente_(index_)._idaduanaseccion & " - " & aduanasSeccionesPatente_(index_).ciudad &
+                              " | " & aduanasSeccionesPatente_(index_)._idpatente & " - " & aduanasSeccionesPatente_(index_).agenteaduanal})
 
             Next
 
-            Return dataSource_
+            Return modalidadesAdunaSeccionPatente_
 
         End If
 

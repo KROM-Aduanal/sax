@@ -119,5 +119,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursos64_dll\Recursos64\Recursos64\Recursos64.vbproj">
+      <Project>{795CC2E3-A482-44B1-82C2-013AFCB8540F}</Project>
+      <Name>Recursos64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\RecursosComercioExterior64.vbproj">
+      <Project>{AB5FFD0B-C909-4372-A4E3-F7709CA7677C}</Project>
+      <Name>RecursosComercioExterior64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

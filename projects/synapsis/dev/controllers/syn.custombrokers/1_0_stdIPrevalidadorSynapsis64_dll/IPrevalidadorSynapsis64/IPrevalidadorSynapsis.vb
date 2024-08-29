@@ -8,21 +8,19 @@ Public Interface IPrevalidadorSynapsis : Inherits ICloneable, IDisposable
 
 #Region "Propiedades"
 
-    Property Pedimento As DocumentoElectronico
+    Property PedimentoSynapsis As DocumentoElectronico
 
     Property InformePrevalidacion As InformePrevalidacion
 
-    Property CartaInstrucciones As CartaInstruccionesSynapsis
-
-    Property Status As TagWatcher
+    Property EstatusSynapsis As TagWatcher
 
 #End Region
 
 #Region "Metodos"
 
-    Function GenerarInformePrevalidacion(ByVal pedimento_ As Pedimento) As TagWatcher
+    Function CargaDocumentoElectronico(ByVal pedimentoSynpasis_ As DocumentoElectronico) As TagWatcher
 
-    Function GuardarInformePrevalidacion(ByVal pedimento_ As Pedimento) As TagWatcher
+    Function GenerarInformePrevalidacion(ByVal pedimento_ As DocumentoElectronico) As TagWatcher
 
 #End Region
 

@@ -1,0 +1,136 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{830280D9-381E-4D58-A5A3-D6FCB4BE50F9}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\data\\gsol.basededatos.operaciones\\1_0_stalineabasecatalogos64_dll\\lineabasecatalogos64\\lineabasecatalogos64\\lineabasecatalogos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39319F2-79ED-45F7-AF41-BFBBB84645A9}|data{C39319F2-79ED-45F7-AF41-BFBBB84645A9}|LineaBaseCatalogos64||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|KromSAAI||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|4e43f4ab-9f03-4129-95bf-b8ff870af6ab"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830280D9-381E-4D58-A5A3-D6FCB4BE50F9}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\data\\gsol.basededatos.operaciones\\1_0_stalineabasecatalogos64_dll\\lineabasecatalogos64\\lineabasecatalogos64\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|eda661ea-dc61-4750-b3a5-f6e9c74060f5"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{2bb8137c-bac8-4d04-820a-c52b5d5b82da}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{757affbd-aba2-4a34-a9d0-98e3035e33ef}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0504ff91-9d61-11d0-a794-00a0c9110051}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LineaBaseCatalogos.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "ViewState": "AgIAAFsCAAAAAAAAAIA7wGYCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-08-29T17:08:36.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LineaBaseCatalogos64",
+              "DocumentMoniker": "C:\\Sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "ToolTip": "C:\\Sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-29T17:07:10.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KromSAAI",
+              "DocumentMoniker": "C:\\Sax\\projects\\synapsis\\dev\\main\\KromSAAI.vbproj",
+              "RelativeDocumentMoniker": "KromSAAI.vbproj",
+              "ToolTip": "C:\\Sax\\projects\\synapsis\\dev\\main\\KromSAAI.vbproj",
+              "RelativeToolTip": "KromSAAI.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-29T16:57:14.265Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

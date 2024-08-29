@@ -1,4 +1,5 @@
-﻿Imports Wma.Exceptions
+﻿Imports Syn.Nucleo.RecursosComercioExterior
+Imports Wma.Exceptions
 
 Public Class ExepcionValidador : Implements ICloneable
 
@@ -7,20 +8,19 @@ Public Class ExepcionValidador : Implements ICloneable
 
 #Region "Propiedades"
 
-    Property NombreCampo As String
+    Property nombrecampo As String
 
-    Property NombrePresentacion As String
+    Property nombrepresentacion As String
 
-    Property IdCampoUnico As Integer
+    Property idcampounico As Integer
 
-    Property NumeroRegistro As Integer
+    Property numeroregistro As Integer
 
-    Property DescripcionRegistro As String
+    Property descripcionregistro As String
 
-    Property ErroresValidacion As List(Of ErrorValidacion)
+    Property erroresvalidacion As List(Of ErrorValidacion)
 
-    Property Estatus As TagWatcher
-
+    Property estatus As TagWatcher
 
 #End Region
 
@@ -28,9 +28,13 @@ Public Class ExepcionValidador : Implements ICloneable
 
     Public Sub Add()
 
+        Dim prueba_ As New Dictionary(Of CamposPedimento, String) From {{CamposPedimento.CA_ACUSE_VALOR, "Impo"}}
+
     End Sub
 
     Public Sub Delete()
+
+
 
     End Sub
 

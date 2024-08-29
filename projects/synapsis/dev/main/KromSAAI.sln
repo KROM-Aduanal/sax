@@ -461,6 +461,22 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControllerDocumentAnalyzer6
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ControllerChatGPT64", "..\..\..\..\masters\vb\esp\cmf\scr\Core\ia\pln\1_0_stdControllerChatGPT64_dll\ControllerChatGPT64\ControllerChatGPT64.vbproj", "{25BC78EB-E695-4482-A1BB-4B7B74BA992E}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Asistencia64", "..\controllers\syn.custombrokers\1_0_stdAsistencia64_dll\Asistencia64\Asistencia64.vbproj", "{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prevalidador", "Prevalidador", "{13B0218C-32F1-49B5-86EB-A369BD740FBE}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IPrevalidador64", "..\controllers\syn.custombrokers\1_0_stdIPrevalidador64_dll\IPrevalidador64\IPrevalidador64.vbproj", "{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Prevalidador64", "..\controllers\syn.custombrokers\1_0_stdPrevalidador64_dll\Prevalidador64\Prevalidador64.vbproj", "{CCE0BA69-A578-4870-84D3-30D516931A7D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IPrevalidadorAsistencia64", "..\controllers\syn.custombrokers\1_0_stdIPrevalidadorAsistencia64_dll\IPrevalidadorAsistencia64\IPrevalidadorAsistencia64.vbproj", "{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrevalidadorAsistencia64", "..\controllers\syn.custombrokers\1_0_stdPrevalidadorAsistencia64_dll\PrevalidadorAsistencia64\PrevalidadorAsistencia64.vbproj", "{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6A692271-4587-4323-AC04-A950D71CDCCF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CubeController64", "..\..\..\services\dev\cube.validators\1_0_stdCubeController64_dll\CubeController64\CubeController64.vbproj", "{8456BA71-60DE-403D-9AE9-D952CE5939F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1251,6 +1267,30 @@ Global
 		{25BC78EB-E695-4482-A1BB-4B7B74BA992E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25BC78EB-E695-4482-A1BB-4B7B74BA992E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25BC78EB-E695-4482-A1BB-4B7B74BA992E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE0BA69-A578-4870-84D3-30D516931A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE0BA69-A578-4870-84D3-30D516931A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE0BA69-A578-4870-84D3-30D516931A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE0BA69-A578-4870-84D3-30D516931A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1479,6 +1519,13 @@ Global
 		{EF09E089-BEC7-4CF0-BC0B-115813ADAEAE} = {72E04DC4-AD57-4C18-8BD4-FCE59E193DC0}
 		{2F68F3F8-8944-4BB5-BCFF-2B10924D6D72} = {72E04DC4-AD57-4C18-8BD4-FCE59E193DC0}
 		{25BC78EB-E695-4482-A1BB-4B7B74BA992E} = {72E04DC4-AD57-4C18-8BD4-FCE59E193DC0}
+		{A7893D65-5EDB-4EAA-9AAF-DF24D852CDA9} = {13B0218C-32F1-49B5-86EB-A369BD740FBE}
+		{13B0218C-32F1-49B5-86EB-A369BD740FBE} = {8C786625-42E0-438B-8D99-E5CAF2E2BC9D}
+		{2BE6AF86-3CFC-41DA-ADB9-3530ACEDC371} = {13B0218C-32F1-49B5-86EB-A369BD740FBE}
+		{CCE0BA69-A578-4870-84D3-30D516931A7D} = {13B0218C-32F1-49B5-86EB-A369BD740FBE}
+		{00E40811-A39A-4D7B-8404-D7AD9C7A2EDA} = {13B0218C-32F1-49B5-86EB-A369BD740FBE}
+		{DDD6CB37-ED80-4FC9-B809-3C01E7DB4864} = {13B0218C-32F1-49B5-86EB-A369BD740FBE}
+		{8456BA71-60DE-403D-9AE9-D952CE5939F4} = {6A692271-4587-4323-AC04-A950D71CDCCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2DB70D15-1726-4FC9-95C9-1DF3E9509B26}

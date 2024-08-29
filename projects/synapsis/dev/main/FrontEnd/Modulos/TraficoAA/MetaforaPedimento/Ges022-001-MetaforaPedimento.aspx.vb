@@ -20,7 +20,6 @@ Imports Sax.Web
 
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals.Controllers
-Imports Rec.Globals.Controllers.ControladorRecursosAduanales
 
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
 Imports Rec.Globals.Utils
@@ -28,6 +27,7 @@ Imports Syn.CustomBrokers.Controllers
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 Imports Rec.Globals
 Imports Syn.CustomBrokers.Controllers.reportes
+Imports Syn.Nucleo
 
 #End Region
 
@@ -75,39 +75,35 @@ Public Class Ges022_001_MetaforaPedimento
 
         CargaCatalogos()
 
-        AplicarReglasCampoPedimento()
-
     End Sub
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
     Public Overrides Function Configuracion() As TagWatcher
 
+        Dim tipoOp_ As Int32 = IIf(swcTipoOperacion.Checked, TiposOperacionAduanal.Importacion, TiposOperacionAduanal.Exportacion)
+
         ' ** * ** * Generales * ** * **
         [Set](dbcReferenciaPedimento, CP_REFERENCIA, propiedadDelControl_:=PropiedadesControl.Valor)
         [Set](dbcReferenciaPedimento, CA_NUMERO_PEDIMENTO_COMPLETO, propiedadDelControl_:=PropiedadesControl.ValueDetail)
-        'scTipoReferencia
-        'scPrefijoReferencia
-
         [Set](scPatente, CP_MODALIDAD_ADUANA_PATENTE)
         [Set](scPatente.Value, CA_PATENTE)
-
         [Set](scEjecutivoCuenta, CP_EJECUTIVO_CUENTA)
-        [Set](IIf(swcTipoOperacion.Checked, 1, 0), CA_TIPO_OPERACION, TiposDato.Entero)
+        [Set](swcTipoOperacion, CamposPedimento.CA_TIPO_OPERACION, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](tipoOp_, CamposPedimento.CA_TIPO_OPERACION, tipoDato_:=TiposDato.Entero)
         [Set](scClavePedimento, CA_CVE_PEDIMENTO)
         [Set](scRegimen, CA_REGIMEN)
         [Set](scDestinoMercancia, CA_DESTINO_ORIGEN)
         [Set](icTipoCambio, CA_TIPO_CAMBIO)
         [Set](icPesoBruto, CA_PESO_BRUTO)
-        'ver lo del valor a 3 digitos
-        [Set](scAduanaEntradaSalida, CA_ADUANA_ENTRADA_SALIDA)
+        [Set](scAduanaEntradaSalida, CA_ADUANA_ENTRADA_SALIDA)  'ver lo del valor a 3 digitos
         [Set](scAduanaEntradaSalida.Value, CA_CLAVE_SAD)
-
         [Set](scTransporteEntradaSalida, CA_MEDIO_TRANSPORTE)
         [Set](scMedioTransporteArribo, CA_MEDIO_TRANSPORTE_ARRIBO)
         [Set](scMedioTransporteSalida, CA_MEDIO_TRANSPORTE_SALIDA)
         [Set](icValorDolares, CA_VALOR_DOLARES)
         [Set](icValorAduana, CA_VALOR_ADUANA)
         [Set](icPrecioPagado, CA_PRECIO_PAGADO_VALOR_COMERCIAL)
+        [Set](1, CP_TIPO_PEDIMENTO, TiposDato.Entero) 'Se debe cambiar el 1 por el valor que le corresponde cuando se mande de la referencia
 
         If Not String.IsNullOrWhiteSpace(scAduanaEntradaSalida.Value) Then
 
@@ -116,11 +112,17 @@ Public Class Ges022_001_MetaforaPedimento
         End If
 
         Dim informacionAgrupacion_ As InformacionAgrupacion = GetVars("_informacionAgrupacion")
-
         If informacionAgrupacion_ IsNot Nothing Then
 
             [Set](Convert.ToInt32(informacionAgrupacion_.numerototalpartidas), CA_NUMERO_TOTAL_PARTIDAS, TiposDato.Entero)
             [Set](informacionAgrupacion_.fechageneracionagrupacion, CA_ANIO_VALIDACION)
+
+        End If
+
+        Dim rutaValidacion_ As Int32 = GetVars("_rutaValidacion")
+        If rutaValidacion_ <> IPrevalidador.TiposRutaValidacion.RUVA0 Then
+
+            [Set](rutaValidacion_, CP_RUTA_VALIDACION, TiposDato.Entero)
 
         End If
 
@@ -275,7 +277,7 @@ Public Class Ges022_001_MetaforaPedimento
         [Set](icImporteCuentaAduanera, CA_IMPORTE_TOTAL_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icFechaEmisionCuentaAduanera, CA_FECHA_EMISION_CONSTANCIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icPrecioEstimadoCuentaAduanera, CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](icTitulosCuentaAduanera, CA_TITULOS_ASIGNADOS_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icTitulosCuentaAduanera, CA_TITULOS_ASIGNADOS, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icValorUnitario, CA_VALOR_UNITARIO_TITULO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](ccCuentasAduaneras, Nothing, seccion_:=SeccionesPedimento.ANS19)
         ' ** * ** * CuentasAduaneras * ** * **
@@ -284,7 +286,7 @@ Public Class Ges022_001_MetaforaPedimento
         [Set](scPagosVirtualesFormaPago, CA_PAGOS_VIRTUALES_FORMA_PAGO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](scPagosVIrtualesEmisora, CA_NOMBRE_INSTITUCION_EMISORA_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icPagosVirtualesDocumento, CA_NUMERO_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
-        [Set](icPagosVirtualesFechaDocumento, CA_FECHA_EXPOCICION_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        [Set](icPagosVirtualesFechaDocumento, CA_FECHA_EXPEDICION_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icPagosVirtualesImporteDocumento, CA_IMPORTE_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icPagosVirtualesSaldo, CA_SALDO_DISPONIBLE_DOCUMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](icPagosVirtualesImportePedimento, CA_IMPORTE_PAGADO_PEDIMENTO, propiedadDelControl_:=PropiedadesControl.Ninguno)
@@ -415,7 +417,6 @@ Public Class Ges022_001_MetaforaPedimento
 
         [Set](pbcPartidas, Nothing, seccion_:=SeccionesPedimento.ANS24)
 
-
         ' ** * ** * Partidas * ** * **
 
         Return New TagWatcher(1)
@@ -438,7 +439,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub BotoneraClicGuardar()
 
-        'ProcesarOperacion(Of Something)()
         If Not ProcesarTransaccion(Of ConstructorPedimentoNormal)().Status = TypeStatus.Errors Then : End If
 
     End Sub
@@ -464,9 +464,7 @@ Public Class Ges022_001_MetaforaPedimento
 
         If IndexSelected_ = 10 Then
 
-            'pruebas 
-            'MANDAR UNA LISTA
-            'RKU23 - 402
+            'pruebas *MANDAR UNA LISTA *RKU23 - 402
             Dim listaObjectID = New List(Of ObjectId) From {
                 New ObjectId("658492a31e051f4771122bd8")
             }
@@ -527,9 +525,100 @@ Public Class Ges022_001_MetaforaPedimento
 
         End If
 
+        If IndexSelected_ = 11 Then
+
+            Using prevalidador_ As IPrevalidador = New Prevalidador()
+
+                'Validar en que momento si se dejara prevalidar se debe comparar la ruta que ya tenga contra la que se volvio a obtener
+
+                Dim documentoElectronico_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                prevalidador_.ObtenerRutaValidacion(documentoElectronico_)
+
+                If prevalidador_.Estatus.Status = TypeStatus.Ok Then
+
+                    If prevalidador_.Estatus.Status = TypeStatus.Ok Then
+
+                        SetVars("_rutaValidacion", prevalidador_.Estatus.ObjectReturned)
+
+                        DisplayMessage("Prueba realizada con exito se asigno la ruta: " + prevalidador_.Estatus.ObjectReturned.ToString, StatusMessage.Success)
+
+                    End If
+
+                Else
+
+                    DisplayMessage(prevalidador_.Estatus.ErrorDescription, StatusMessage.Fail)
+
+                End If
+
+            End Using
+
+        End If
+
+        If IndexSelected_ = 12 Then
+
+            Using prevalidador_ As IPrevalidador = New Prevalidador()
+
+                'Validar que el pedimento este publicado y se debe comparar la ruta que ya tenga contra la que se volvio a obtener
+
+                Dim documentoElectronico_ = OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                prevalidador_.ObtenerRutaValidacion(documentoElectronico_)
+
+                If prevalidador_.Estatus.Status = TypeStatus.Ok Then
+
+                    If prevalidador_.Estatus.Status = TypeStatus.Ok Then
+
+                        SetVars("_rutaValidacion", prevalidador_.Estatus.ObjectReturned)
+
+                        DisplayMessage("Prueba realizada con exito se asigno la ruta: " + prevalidador_.Estatus.ObjectReturned.ToString, StatusMessage.Success)
+
+                    End If
+
+                Else
+
+                    DisplayMessage(prevalidador_.Estatus.ErrorDescription, StatusMessage.Fail)
+
+                End If
+
+            End Using
+
+        End If
+
     End Sub
 
     'EVENTOS PARA LA INSERCIÓN DE DATOS
+    Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+        'Se deja aquí pero se debe revisar si aplica o no
+        Dim tagwatcher_ As New TagWatcher
+
+        If GetVars("_rutaValidacion") IsNot Nothing Then
+
+            Dim rutaValidacion_ As Int32 = GetVars("_rutaValidacion")
+
+            If rutaValidacion_ <> IPrevalidador.TiposRutaValidacion.RUVA0 Then
+
+                [Set](rutaValidacion_, CP_RUTA_VALIDACION, TiposDato.Entero)
+
+                tagwatcher_.SetOK()
+
+            Else
+
+                tagwatcher_.SetError("No se puede asignar la ruta ya que no se ha definido")
+
+            End If
+
+        Else
+
+            tagwatcher_.SetOK()
+
+        End If
+
+        Return tagwatcher_
+
+    End Function
+
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
         With documentoElectronico_
@@ -544,12 +633,9 @@ Public Class Ges022_001_MetaforaPedimento
 
         End With
 
-        'LimpiaFormatos()
-
     End Sub
 
     'EVENTOS PARA MODIFICACIÓN DE DATOS
-
     Public Overrides Function AntesRealizarModificacion(ByVal session_ As IClientSessionHandle) As TagWatcher
 
         Dim tagwatcher_ As TagWatcher
@@ -574,6 +660,28 @@ Public Class Ges022_001_MetaforaPedimento
 
             End If
 
+            If GetVars("_rutaValidacion") IsNot Nothing Then
+
+                Dim rutaValidacion_ As Int32 = GetVars("_rutaValidacion")
+
+                If rutaValidacion_ <> IPrevalidador.TiposRutaValidacion.RUVA0 Then
+
+                    [Set](rutaValidacion_, CP_RUTA_VALIDACION, TiposDato.Entero)
+
+                    tagwatcher_.SetOK()
+
+                Else
+
+                    tagwatcher_.SetError("No se puede asignar la ruta ya que no se ha definido")
+
+                End If
+
+            Else
+
+                tagwatcher_.SetOK()
+
+            End If
+
         Else  '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Operaciones atómicas sin transacción ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 
 
             tagwatcher_ = New TagWatcher
@@ -587,8 +695,6 @@ Public Class Ges022_001_MetaforaPedimento
     End Function
 
     Public Overrides Sub RealizarModificacion(ByRef documentoElectronico_ As DocumentoElectronico)
-
-        'LimpiaFormatos()
 
     End Sub
 
@@ -613,7 +719,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
 
-
         PreparaTarjetero(PillboxControl.ToolbarModality.Default, pbcPartidas)
 
     End Sub
@@ -622,15 +727,17 @@ Public Class Ges022_001_MetaforaPedimento
 
         PreparaTarjetero(PillboxControl.ToolbarModality.Default, pbcPartidas)
 
-
     End Sub
 
     'EVENTOS DE MANTENIMIENTO
     Public Overrides Sub LimpiaSesion()
 
         'Lógica para limpiar sesiones que sean necearías
-
-        'SetVars("ConstructorTarjetas", Nothing)
+        SetVars("_mediosTransporteArribo", Nothing)
+        SetVars("_mediosTransporteSalida", Nothing)
+        SetVars("_informacionAgrupacion", Nothing)
+        SetVars("_rutaValidacion", Nothing)
+        SetVars("facturasInfo_", Nothing)
 
     End Sub
 
@@ -639,9 +746,10 @@ Public Class Ges022_001_MetaforaPedimento
         ccTasas.DataSource = Nothing
         ccCuadroLiquidacion.DataSource = Nothing
         ccGuias.DataSource = Nothing
+        ccIdentificadores.DataSource = Nothing
+        pbcPartidas.DataSource = Nothing
 
     End Sub
-
 
 #End Region
 
@@ -672,7 +780,215 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
+    Protected Sub scMedioTransporteArribo_Click(sender As Object, e As EventArgs)
 
+        If scAduanaEntradaSalida.Value <> "" And scTransporteEntradaSalida.Value <> "" Then
+
+            scMedioTransporteArribo.FreeClauses = GetVars("_mediosTransporteArribo")
+
+        Else
+
+            If scTransporteEntradaSalida.Value = "" Then
+
+                'Requiere del campo
+                scTransporteEntradaSalida.ToolTip = "Debe seleccionar un dato."
+                scTransporteEntradaSalida.ToolTipExpireTime = 4
+                scTransporteEntradaSalida.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkBut
+                scTransporteEntradaSalida.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+                scTransporteEntradaSalida.ShowToolTip()
+
+            Else
+
+                MostarTooltipAduanaES()
+
+            End If
+
+            'Condición para que no muestre información
+            scMedioTransporteArribo.FreeClauses = " and i_Cve_Estado = 5"
+
+        End If
+
+    End Sub
+
+    Protected Sub scMedioTransporteSalida_Click(sender As Object, e As EventArgs)
+
+        If scAduanaEntradaSalida.Value <> "" And scTransporteEntradaSalida.Value <> "" Then
+
+            scMedioTransporteSalida.FreeClauses = GetVars("_mediosTransporteSalida")
+
+        Else
+
+            If scTransporteEntradaSalida.Value = "" Then
+
+                'Requiere del campo
+                scTransporteEntradaSalida.ToolTip = "Debe seleccionar un dato."
+                scTransporteEntradaSalida.ToolTipExpireTime = 4
+                scTransporteEntradaSalida.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkBut
+                scTransporteEntradaSalida.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+                scTransporteEntradaSalida.ShowToolTip()
+
+            Else
+
+                MostarTooltipAduanaES()
+
+            End If
+
+            'Condición para que no muestre información
+            scMedioTransporteSalida.FreeClauses = " and i_Cve_Estado = 5"
+
+        End If
+
+    End Sub
+
+    Protected Sub scAduanaEntradaSalida_Click(sender As Object, e As EventArgs)
+
+        'Limpiamos asistencias por si cambia la aduana
+        scAduanaEntradaSalida.Value = Nothing
+        scTransporteEntradaSalida.DataSource = Nothing
+        scTransporteEntradaSalida.Value = Nothing
+        scMedioTransporteArribo.DataSource = Nothing
+        scMedioTransporteArribo.Value = Nothing
+        scMedioTransporteSalida.DataSource = Nothing
+        scMedioTransporteSalida.Value = Nothing
+        SetVars("_mediosTransporteSalida", Nothing)
+        SetVars("_mediosTransporteArribo", Nothing)
+
+    End Sub
+
+    Protected Sub scAduanaEntradaSalida_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+        'Aplica asistencia
+        scTransporteEntradaSalida.ToolTip = "Asistencia aplicada"
+        scTransporteEntradaSalida.ToolTipExpireTime = 4
+        scTransporteEntradaSalida.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scTransporteEntradaSalida.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scTransporteEntradaSalida.ShowToolTip()
+
+        scMedioTransporteArribo.ToolTip = "Asistencia aplicada"
+        scMedioTransporteArribo.ToolTipExpireTime = 4
+        scMedioTransporteArribo.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scMedioTransporteArribo.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scMedioTransporteArribo.ShowToolTip()
+
+        scMedioTransporteSalida.ToolTip = "Asistencia aplicada"
+        scMedioTransporteSalida.ToolTipExpireTime = 4
+        scMedioTransporteSalida.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkInfo
+        scMedioTransporteSalida.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scMedioTransporteSalida.ShowToolTip()
+
+    End Sub
+
+    Protected Sub scTransporteEntradaSalida_Click(sender As Object, e As EventArgs)
+
+        If scAduanaEntradaSalida.Value <> "" Then
+
+            'Conexión con la interfaz de prevalidación asistencia
+            Using prevalidadorAsistencia_ As IPrevalidadorAsistencia = New PrevalidadorAsistencia()
+
+                'Creación del diccionario con los parámetros
+                Dim parametrosAsistencia_ As New Dictionary(Of String, Object) From {{CA_ADUANA_ENTRADA_SALIDA.ToString, scAduanaEntradaSalida.Value}}
+
+                'Llamado del método que consulta asistencias
+                prevalidadorAsistencia_.EstatusAsistencia = prevalidadorAsistencia_.ConsultarAsistencia(IPrevalidador.TiposProcesamiento.AsistirCaptura,
+                                                                                                  IPrevalidador.TiposValidacion.Legal,
+                                                                                                  IPrevalidadorAsistencia.TiposAsistenciaConsultar.AS_PED4,
+                                                                                                  parametrosAsistencia_)
+
+                'Validación del estatus para extraer las condiciones o filtros a aplicar
+                If prevalidadorAsistencia_.EstatusAsistencia.Status = TypeStatus.Ok Then
+
+                    'Se extrae el tipo asistencia en una clase para luego extraer por LinQ la lista de regimen
+                    Dim asistencia_ As Asistencia = prevalidadorAsistencia_.EstatusAsistencia.ObjectReturned
+
+                    If asistencia_.CamposAfectados.Count > 1 Then
+
+                        Dim listaMediosTransporte_ = From camposAfectados_ In asistencia_.CamposAfectados("CA_MEDIO_TRANSPORTE")
+                                                     Select camposAfectados_
+
+                        Dim listaMediosTransporteArribo_ = From camposAfectados_ In asistencia_.CamposAfectados("CA_MEDIO_TRANSPORTE_ARRIBO")
+                                                           Select camposAfectados_
+
+                        Dim listaMediosTransporteSalida_ = From camposAfectados_ In asistencia_.CamposAfectados("CA_MEDIO_TRANSPORTE_SALIDA")
+                                                           Select camposAfectados_
+
+                        'Se hace el IN O EL = en la clausula libre Del componente que le corresponde
+                        'Medios de transporte entrada salida 
+                        If listaMediosTransporte_(0).ToString <> IPrevalidadorAsistencia.ErroresAsistencia.EAS_007 Then
+
+                            scTransporteEntradaSalida.FreeClauses = " and t_Cve_MedioTransporte in (" + String.Join(",", listaMediosTransporte_) + ")"
+
+                        Else
+
+                            DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_007), StatusMessage.Fail)
+                            scTransporteEntradaSalida.FreeClauses = " and i_Cve_Estatus = 0"
+
+                        End If
+
+                        'Medios transporte arribo
+                        If listaMediosTransporteArribo_(0).ToString <> IPrevalidadorAsistencia.ErroresAsistencia.EAS_007 Then
+
+                            SetVars("_mediosTransporteArribo", " and t_Cve_MedioTransporte in (" + String.Join(",", listaMediosTransporteArribo_) + ")")
+
+                        Else
+
+                            DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_007), StatusMessage.Fail)
+                            SetVars("_mediosTransporteArribo", " and  i_Cve_Estado = 5")
+
+                        End If
+
+                        'Medios transporte salida
+                        If listaMediosTransporteSalida_(0).ToString <> IPrevalidadorAsistencia.ErroresAsistencia.EAS_007 Then
+
+                            SetVars("_mediosTransporteSalida", " and t_Cve_MedioTransporte in (" + String.Join(",", listaMediosTransporteSalida_) + ")")
+
+                        Else
+
+                            DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_007), StatusMessage.Fail)
+                            SetVars("_mediosTransporteSalida", " and  i_Cve_Estado = 5")
+
+                        End If
+
+                    Else
+
+                        DisplayMessage(Recursos.GetEnumDescription(IPrevalidadorAsistencia.ErroresAsistencia.EAS_003), StatusMessage.Info)
+                        scTransporteEntradaSalida.FreeClauses = " and i_Cve_Estado = 5"
+                        scMedioTransporteSalida.FreeClauses = " and i_Cve_Estado = 5"
+                        scMedioTransporteArribo.FreeClauses = " and i_Cve_Estado = 5"
+
+                    End If
+
+                Else
+
+                    DisplayMessage(prevalidadorAsistencia_.EstatusAsistencia.ErrorDescription, StatusMessage.Fail)
+                    'Condicionamos para que no mande información
+                    scTransporteEntradaSalida.FreeClauses = " and and i_Cve_Estado = 5"
+                    scMedioTransporteSalida.FreeClauses = " and and i_Cve_Estado = 5"
+                    scMedioTransporteArribo.FreeClauses = " and and i_Cve_Estado = 5"
+
+                End If
+
+            End Using
+
+        Else
+
+            MostarTooltipAduanaES()
+            'Condición para que no muestre información
+            scTransporteEntradaSalida.FreeClauses = " and i_Cve_Estado = 5"
+
+        End If
+
+    End Sub
+
+    Sub MostarTooltipAduanaES()
+
+        'Requiere del campo
+        scAduanaEntradaSalida.ToolTip = "Debe indicar la aduana de entrada y salida"
+        scAduanaEntradaSalida.ToolTipExpireTime = 4
+        scAduanaEntradaSalida.ToolTipStatus = IUIControl.ToolTipTypeStatus.OkBut
+        scAduanaEntradaSalida.ToolTipModality = IUIControl.ToolTipModalities.Ondemand
+        scAduanaEntradaSalida.ShowToolTip()
+
+    End Sub
 
 #End Region
 
@@ -708,10 +1024,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Function ConsultaPedimento(ByVal FolioOper_ As String) As DocumentoElectronico
 
-        Using enlaceDatos_ As IEnlaceDatos =
-            New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
-
-            'enlaceDatos_.EspacioTrabajo.DivisionEmpresarial =
+        Using enlaceDatos_ As IEnlaceDatos = New EnlaceDatos With {.EspacioTrabajo = Session("EspacioTrabajoExtranet")}
 
             Dim operacionesDB_ = enlaceDatos_.GetMongoCollection(Of OperacionGenerica)(rootid_:=1)
 
@@ -747,13 +1060,6 @@ Public Class Ges022_001_MetaforaPedimento
 
             ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", "openPDF('" & pdfstring & "','" & FolioOperacion_ & "')", True)
 
-            'Dim iframe = "<iframe src='" & pdfstring & "' name='" & FolioOperacion_ & ".pdf' frameborder='0' style='border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;position:absolute;' allowfullscreen></iframe>"
-
-            'Dim func = "win = window.open() win.document.write(""" & iframe & """) win.document.title=""" & FolioOperacion_ & """"
-
-            'ScriptManager.RegisterStartupScript(Me, Page.GetType, "Script", func, True)
-            ' HttpUtility.UrlEncode(pdfstring)
-
         End If
 
     End Sub
@@ -781,8 +1087,6 @@ Public Class Ges022_001_MetaforaPedimento
         scCuadroLiquidacionConcepto.DataEntity = New Anexo22
 
         scCuadroLiquidacionFP.DataEntity = New Anexo22
-
-        'scPaisTransporte.DataEntity = New Anexo22
 
         scTipoContenedor.DataEntity = New Anexo22
 
@@ -857,7 +1161,6 @@ Public Class Ges022_001_MetaforaPedimento
         'GeneraPrefijoReferencia
         dbcReferenciaPedimento.Value = GeneraReferenciaPedimento(TipoSecuencia.Referencia, TipoFijo.Completo, scPrefijoReferencia)
 
-
     End Sub
 
     Private Sub CargaCliente(ByVal datosCliente_ As OperacionGenerica)
@@ -865,7 +1168,6 @@ Public Class Ges022_001_MetaforaPedimento
         icRFCCliente.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
         icCURP.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_CURP_CLIENTE).Valor
-
 
         icRFCFacturacion.Value = datosCliente_.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.Campo(CamposClientes.CA_RFC_CLIENTE).Valor
 
@@ -875,7 +1177,7 @@ Public Class Ges022_001_MetaforaPedimento
 
     Public Function CargaPatente() As List(Of SelectOption)
 
-        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(ControladorRecursosAduanales.TiposRecurso.Generales)
+        Dim recursos_ As ControladorRecursosAduanales = BuscarRecursosAduanales(TiposRecurso.Generales)
 
         Dim patentes_ = From data In recursos_.patentes
                         Where data.archivado = False And data.estado = 1
@@ -883,17 +1185,17 @@ Public Class Ges022_001_MetaforaPedimento
 
         If patentes_.Count > 0 Then
 
-            Dim soPatentes_ As New List(Of SelectOption)
+            Dim listaPatentes_ As New List(Of SelectOption)
 
             For index_ As Int32 = 0 To patentes_.Count - 1
 
-                soPatentes_.Add(New SelectOption With
+                listaPatentes_.Add(New SelectOption With
                              {.Value = patentes_(index_)._idpatente,
                               .Text = patentes_(index_)._idpatente.ToString & " - " & patentes_(index_).agenteaduanal})
 
             Next
 
-            Return soPatentes_
+            Return listaPatentes_
 
         End If
 
@@ -1193,15 +1495,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Sub
 
-
-    'SISTEMA SIN LUGAR APROPIADO DESIGNADO
-
-    'Private Function ValidarRegimen() As Boolean
-    '    'Solo cuando es autorizado por la Autoridad. 
-    '    Return True
-
-    'End Function
-
     Private Function ValidarIncrementables() As Boolean
 
         'Si no se capturan en el módulo de factura, si deben estar disponibles para capturarlos.
@@ -1232,46 +1525,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-    'Private Function ValidarRfcImportadorExportador() As Boolean
-    '    'Es editable si no ha sido sometido a despacho aduanero, 
-    '    'Que caiga en los supuestos de la regla 6.1.2.
-    '    Return True
-
-    'End Function
-
-    'Private Function ValidarCurpImportadorExportador() As Boolean
-    '    'Es editable si no ha sido sometido a despacho aduanero. 
-    '    Return True
-
-    'End Function
-
-    'Private Function ValidarImportadorExportador() As Boolean
-    '    'Es editable si no ha sido sometido a despacho aduanero, 
-    '    'Que caiga en los supuestos de la regla 6.1.2.
-    '    Return True
-
-    'End Function
-
-    'Private Function ValidarDomicilioImportadorExportador() As Boolean
-    '    'Solo si la razón social/RFC sufrió cambios.
-    '    Return True
-
-    'End Function
-
-    'Private Function ValidarValorAgregadoExportacion() As Boolean
-    '    'Solo para pedimentos clave RT.
-
-    '    If scClavePedimento.Value = "32" Then
-
-    '        Return True
-
-    '    End If
-
-    '    Return False
-
-    'End Function
-
-
     Private Function ValidarDatosPreveedorComprador() As Boolean
         'No es necesario cuando CVE_PEDIMENTO=E1, E2, G1,C3, K2, E3, E4, G2, K3, F3, V3, F8, F9, G6, G7, V8. 
         'Dim clavesPedimento = New List(Of String) From {"59", "11", "6", "66", "75", "56", "61", "36", "33", "37", "42", "38", "44", "76", "69", "14"}
@@ -1280,6 +1533,7 @@ Public Class Ges022_001_MetaforaPedimento
         'End If
 
         If scClavePedimento.Value = "41" Then
+
 
             Return False
 
@@ -1405,7 +1659,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-
     Private Function ValidarDatosContenedores() As Boolean
 
         If scTransporteEntradaSalida.Value = "4" Then
@@ -1493,7 +1746,6 @@ Public Class Ges022_001_MetaforaPedimento
 
     End Function
 
-
     Private Function ValidarDatosPagosVirtuales() As Boolean
         'Solo si FP= 2, 4, 7, 12, 15, 19 y 22
         Return True
@@ -1517,7 +1769,6 @@ Public Class Ges022_001_MetaforaPedimento
         Return True
 
     End Function
-
 
     Private Function ValidarDatosDiferenciasContribuciones() As Boolean
         'Aplica cuando existen diferencias de contribuciones entre el pedimento original y la R1, pero el cálculo debe hacerse en automatico conforme a la fórmula correspondiente.  
@@ -1549,7 +1800,6 @@ Public Class Ges022_001_MetaforaPedimento
         Return False
 
     End Function
-
 
     Private Function ReglasCamposPedimento() As List(Of ReglasCampoPedimento)
 
@@ -3098,6 +3348,61 @@ Public Class Ges022_001_MetaforaPedimento
 
 #End Region
 
+#Region "Comentados por revisar"
+
+    '***********
+
+    'SISTEMA SIN LUGAR APROPIADO DESIGNADO
+
+    'Private Function ValidarRegimen() As Boolean
+    '    'Solo cuando es autorizado por la Autoridad. 
+    '    Return True
+
+    'End Function
+
+    'Private Function ValidarRfcImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero, 
+    '    'Que caiga en los supuestos de la regla 6.1.2.
+    '    Return True
+
+    'End Function
+
+    'Private Function ValidarCurpImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero. 
+    '    Return True
+
+    'End Function
+
+    'Private Function ValidarImportadorExportador() As Boolean
+    '    'Es editable si no ha sido sometido a despacho aduanero, 
+    '    'Que caiga en los supuestos de la regla 6.1.2.
+    '    Return True
+
+    'End Function
+
+    'Private Function ValidarDomicilioImportadorExportador() As Boolean
+    '    'Solo si la razón social/RFC sufrió cambios.
+    '    Return True
+
+    'End Function
+
+    'Private Function ValidarValorAgregadoExportacion() As Boolean
+    '    'Solo para pedimentos clave RT.
+
+    '    If scClavePedimento.Value = "32" Then
+
+    '        Return True
+
+    '    End If
+
+    '    Return False
+
+    'End Function
+
+    '***********
+
+#End Region
+
 End Class
 
 Class ReglasCampoPedimento
@@ -3113,7 +3418,6 @@ Class ReglasCampoPedimento
     Property ReglasRectificacionExportacion As ReglasRectificacionExportacion
 
 End Class
-
 
 Class ReglasImportacion
 

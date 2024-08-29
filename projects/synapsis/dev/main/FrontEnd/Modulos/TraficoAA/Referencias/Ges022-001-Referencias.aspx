@@ -26,6 +26,10 @@
         .wc-pillbox .wc-buttonbar{
             display: none;
         }
+        .bg_Asistencias input{
+            background-color: #f7f2f9;
+            color:black;
+        }
     </style>
     <div class="d-flex">
         <GWC:FormControl runat="server" ID="__SYSTEM_MODULE_FORM" HasAutoSave="true" Label="Referencias" OnCheckedChanged="MarcarPagina" >
@@ -39,7 +43,7 @@
             </Buttonbar>   
 
             <Fieldsets>
-                <GWC:FieldsetControl runat="server" ID="Generales" Label="Generales">
+                <GWC:FieldsetControl runat="server" ID="fscGenerales" Label="Generales">
                     <ListControls>
 
                         <GWC:CardControl runat="server" ID="ccDocumento" Visible="false" CssClass="col-xs-12 col-md-6 mb-5">
@@ -72,36 +76,28 @@
                             <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-4 p-0" ID="swcRectificacion" Label="¿Tiene rectificación?" OnText="Si" OffText="No"  Visible="false"></GWC:SwitchControl>
                         </asp:Panel>
                         
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoDocumento" SearchBarEnabled="true" Label="Tipo de pedimento" OnClick ="scTipoDocumento_Click" OnSelectedIndexChanged="scTipoDocumento_SelectedIndexChanged" Rules="required">
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-3 mb-5" ID="scTipoDocumento" SearchBarEnabled="true" Label="Tipo de pedimento" OnClick ="scTipoDocumento_Click" OnSelectedIndexChanged="scTipoDocumento_SelectedIndexChanged" Rules="required">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="t_Cve_Pedimento" DisplayField ="t_ClaveDescripcion" Dimension ="Vt022ClavesPedimentoA02" Rules="required">
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-3 mb-5" ID="scClaveDocumento" Label="Clave pedimento" KeyField ="t_Cve_Pedimento" DisplayField ="t_ClaveDescripcion" Dimension ="Vt022ClavesPedimentoA02" Rules="required" OnClick="scClaveDocumento_Click" OnSelectedIndexChanged="scClaveDocumento_SelectedIndexChanged">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" 
-                                           ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-3 mb-5" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" Enabled="false" Rules="required" OnClick="scRegimen_Click" ToolTip="Sugerencia del sistema, validar por favor" ToolTipModality="Ondemand" ToolTipStatus="OkInfo">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scEjecutivoCuenta" Label="Ejecutivo de cuenta" KeyField ="i_Cve_EjecutivosMisEmpresas" DisplayField ="t_NombreCompleto" Dimension ="EjecutivosMiEmpresa">
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-3" ID="scTipoDespacho" Label="¿Cómo vas a despachar?" OnClick="scTipoDespacho_Click">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPrefijo" Label="Prefijo" OnSelectedIndexChanged="scPrefijo_SelectedIndexChanged" Visible ="false">
-                        </GWC:SelectControl>
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click"/>
-                            <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-4 mb-5" ID="scPatente2" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click"/>
-                            <GWC:InputControl runat ="server" CssClass ="col-xs-12 col-md-2 mb-5" ID="icPedimentoOriginal" Label ="Pedimento original" Type ="Text" Visible="false"/>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md- mb-5" ID="scPrefijo" Label="Prefijo" OnSelectedIndexChanged="scPrefijo_SelectedIndexChanged" Visible ="false">
+                        </GWC:SelectControl>                        
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scPatente" Label="Modalidad | Aduana | Patente" SearchBarEnabled="true" OnClick="scModalidadAduanaPatente_Click"/>                            
+                        <GWC:InputControl runat ="server" CssClass ="col-xs-12 col-md-3 mb-5" ID="icPedimentoOriginal" Label ="Pedimento original" Type ="Text" Visible="false"/>
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scTipoCarga" Label="Tipo de carga/lote" OnClick="scTipoCarga_Click">
                         </GWC:SelectControl>
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3" ID="scTipoDespacho" Label="¿Cómo vas a despachar?">
-                            <Options>
-                                <GWC:SelectOption Value="1" Text="NORMAL"/>
-                                <GWC:SelectOption Value="2" Text="CONSOLIDADO"/>
-                                <GWC:SelectOption Value="3" Text="PARTES II"/>
-                                <GWC:SelectOption Value="4" Text="COPIA SIMPLE"/>
-                            </Options>
-                        </GWC:SelectControl>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scEjecutivoCuenta" Label="Ejecutivo de cuenta" KeyField ="i_Cve_EjecutivosMisEmpresas" DisplayField ="t_NombreCompleto" Dimension ="EjecutivosMiEmpresa">
+                        </GWC:SelectControl>                                                                      
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-12 solid-textarea" Type="TextArea" ID="icDescripcionCompleta" Label="Descripción mercancia">
                         </GWC:InputControl>
                     </ListControls>
                 </GWC:FieldsetControl>                
 
-                <GWC:FieldsetControl runat="server" ID="Cliente" Label="Cliente">                    
+                <GWC:FieldsetControl runat="server" ID="fscCliente" Label="Cliente">                    
 
                     <ListControls>
                                       
@@ -113,7 +109,7 @@
                     </ListControls>
                 </GWC:FieldsetControl>
 
-                <GWC:FieldsetControl runat="server" ID="TrackingExpo" Label="Tracking" Visible="false">
+                <GWC:FieldsetControl runat="server" ID="fscTrackingExpo" Label="Tracking" Visible="false">
                     <ListControls runat="server">
                         <asp:Panel runat="server" CssClass="w-100">
                             <ul class="timeline2" >
@@ -162,7 +158,7 @@
                     </ListControls>
                 </GWC:FieldsetControl>
 
-                <GWC:FieldsetControl runat="server" ID="TrackingImpo" Label="Tracking" Visible="false">
+                <GWC:FieldsetControl runat="server" ID="fscTrackingImpo" Label="Tracking" Visible="false">
                     <ListControls runat="server" >
                         <asp:Panel runat="server" CssClass="w-100">
                             <ul class="timeline2" style="align-items:center">
@@ -211,7 +207,7 @@
                     </ListControls>
                 </GWC:FieldsetControl>
 
-                <GWC:FieldsetControl runat="server" ID="Documentos" Label="Documentos" Visible="false">
+                <GWC:FieldsetControl runat="server" ID="fscDocumentos" Label="Documentos" Visible="false">
                     <ListControls>  
                         <asp:Panel runat="server" CssClass="w-100">
                             <div style="width:60%">
@@ -240,7 +236,7 @@
                     </ListControls>
                 </GWC:FieldsetControl>
 
-                <GWC:FieldsetControl runat="server" ID="Guia" Label="Guía">
+                <GWC:FieldsetControl runat="server" ID="fscGuia" Label="Guía">
                     <ListControls>     
                         
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" ID="scRecintoFiscal" Label="Recinto fiscal">
@@ -315,7 +311,7 @@
 
 
 
-                <GWC:FieldsetControl runat="server" ID="Fechas" Label="Fechas" Visible="false">
+                <GWC:FieldsetControl runat="server" ID="fscFechas" Label="Fechas" Visible="false">
                     <ListControls>                        
                         <GWC:InputControl runat="server" cssclass="col-xs-12 col-md-6 mb-5" ID="icFechaEta" Label ="ETA (Estimada de arribo)" Type ="Text" Format="Calendar"/>
                         <GWC:InputControl runat="server" cssclass="col-xs-12 col-md-6 mb-5" ID="icFechaRevalidacion" Label ="Revalidación" Type ="Text" Format="Calendar"/>

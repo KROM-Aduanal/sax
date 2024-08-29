@@ -46,19 +46,17 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syn.CustomBrokers.Controllers.CartaInstruccionesSynapsis64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.CartaInstruccionesSynapsis64.0.0.0.0.dll</HintPath>
+    <Reference Include="Cube.Validators.CubeController64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\services\libs\bin\cube.validators\Cube.Validators.CubeController64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cube.Validators.ICubeController64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\services\libs\bin\cube.validators\Cube.Validators.ICubeController64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.InformePrevalidacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformePrevalidacion64.0.0.0.0.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Syn.CustomBrokers.Controllers.Pedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Pedimento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

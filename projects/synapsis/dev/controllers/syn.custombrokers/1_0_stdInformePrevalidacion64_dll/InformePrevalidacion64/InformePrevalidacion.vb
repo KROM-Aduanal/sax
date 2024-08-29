@@ -1,48 +1,41 @@
 ﻿Imports MongoDB.Bson
 Imports Wma.Exceptions
 
-Public Class InformePrevalidacion : Implements ICloneable
-
-#Region "Enums"
-
-    Enum TiposProcesamiento
-        SinDefinir = 0
-    End Enum
-
-    Enum TiposValidacion
-        SinDefinir = 0
-    End Enum
-
-#End Region
+Public Class InformePrevalidacion
 
 #Region "Propiedades"
 
-    Property TipoProcesamiento As TiposProcesamiento
+    Property tipoprocesamiento As IPrevalidador.TiposProcesamiento
 
-    Property TipoValidacion As TiposValidacion
+    Property tipovalidacion As IPrevalidador.TiposValidacion
 
-    Property IdPedimento As ObjectId
+    Property numerooperacion As Integer
 
-    Property NumeroPedimento As String
+    Property _idpedimento As ObjectId
 
-    Property TipoOperacion As [Enum]
+    Property rutavalidacion As IPrevalidador.TiposRutaValidacion
 
-    Property ClavePedimento As String
+    Property numeropedimento As String
 
-    Property Regimen As String
+    Property tipooperacion As Integer
 
-    Property FechaValidacion As Date
+    Property clavepedimento As String
 
-    Property NumeroValidacion As Integer
+    Property regimen As String
 
-    Property AnioValidacion As String
+    Property fechavalidacion As Date
 
-    Property ExepcionesEncontradas As List(Of ExepcionValidador)
+    Property numerovalidacion As Integer
 
-    Property Archivado As Boolean
+    Property aniovalidacion As String
 
-    Property Estatus As TagWatcher
+    Property exepcionesencontradas As List(Of ExepcionValidador)
 
+    Property archivado As Boolean
+
+    Property estatusoperacion As TagWatcher
+
+    Property estatus As TagWatcher
 
 #End Region
 
@@ -51,12 +44,6 @@ Public Class InformePrevalidacion : Implements ICloneable
     Public Function GenerarInformeDetallado() As List(Of ExepcionValidador)
 
         Return Nothing
-
-    End Function
-
-    Public Function Clone() As Object Implements ICloneable.Clone
-
-        Throw New NotImplementedException()
 
     End Function
 
