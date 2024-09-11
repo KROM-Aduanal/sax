@@ -321,7 +321,7 @@ Public Class InputControl
 
             .Attributes.Add("autocomplete", "off")
 
-            .AutoPostBack = True
+            .AutoPostBack = False ' hacer pruebas a ver que se quito con eso jeje
 
         End With
 
