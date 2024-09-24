@@ -10,6 +10,8 @@ Namespace gsol.krom
             t_Cve_Aduana
             t_Cve_Seccion
             t_AduanaSeccionDenominacion
+            t_ClaveDescripcion
+            t_Cve_AduanaSeccion
             f_FechaRegistro
             i_Cve_Estatus
             i_Cve_Estado

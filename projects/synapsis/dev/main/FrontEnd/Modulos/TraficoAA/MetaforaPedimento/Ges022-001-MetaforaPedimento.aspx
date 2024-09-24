@@ -103,13 +103,16 @@
             display: block;
             font-weight: bolder;
             font-size:18px;
-        }
-       
+        }       
         .mxn-label {
             text-align: center;
             padding-top: 8px;
             font-weight: bold;
             opacity: .75;
+        }
+        .bg_Asistencias input{
+            background-color: #f7f2f9;
+            color:black;
         }
     </style>
 
@@ -133,22 +136,22 @@
     <div class="d-flex">
 
         <GWC:FormControl HasAutoSave="true" runat="server" Label="Modulo de pedimento" ID="__SYSTEM_MODULE_FORM" OnCheckedChanged="MarcarPagina">
-
+                        
             <Buttonbar runat="server" OnClick="EventosBotonera">
                 <DropdownButtons>
                     <GWC:ButtonItem Text="Descargar" />
                     <GWC:ButtonItem Text="Imprimir" />
                     <GWC:ButtonItem Text="Mandar por Correo" />
                     <GWC:ButtonItem Text="Generar partidas" />
+                    <GWC:ButtonItem Text="Prevalidar" />
+                    <GWC:ButtonItem Text="Validar" />
                 </DropdownButtons>
             </Buttonbar>
 
             <Fieldsets>
 
-                <GWC:FieldsetControl runat="server" ID="fscDatosGenerales" Label="Generales">
-
+                <GWC:FieldsetControl runat="server" ID="fscDatosGenerales" Label="Generales">                        
                     <ListControls>
-                        
                         <%--CP_REFERENCIA--%>
                         <GWC:DualityBarControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="dbcReferenciaPedimento" Label="Referencia aduanal" LabelDetail="Número de pedimento" />
 
@@ -173,9 +176,9 @@
                         </GWC:SelectControl>
 
                         <%--CA_CVE_TIPO_OPERACION--%>
-                        <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-center jc-center" ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" OnCheckedChanged="swcTipoOperacion_CheckedChanged"/>
+                        <GWC:SwitchControl runat="server" CssClass="col-xs-12 col-md-2 mb-5 d-flex align-items-center jc-center" ID="swcTipoOperacion" Label="Tipo de operación" OnText="Importación" OffText="Exportación" Checked="true" Rules="required" OnCheckedChanged="swcTipoOperacion_CheckedChanged"></GWC:SwitchControl>                       
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scClavePedimento" Label="Clave Pedimento" KeyField="i_Cve_ClavePedimento" DisplayField="t_ClaveDescripcion" Dimension="Vt022ClavesPedimentoA02" OnSelectedIndexChanged="scClavePedimento_SelectedIndexChanged"/>
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scClavePedimento" Label="Clave Pedimento" KeyField="t_Cve_Pedimento" DisplayField="t_ClaveDescripcion" Dimension="Vt022ClavesPedimentoA02" OnSelectedIndexChanged="scClavePedimento_SelectedIndexChanged"/>
 
                         <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-6" ID="scRegimen" Label="Régimen" KeyField="t_Cve_Regimen" DisplayField="t_DescripcionCorta" Dimension="Vt022RegimenesA16" />
 
@@ -185,13 +188,13 @@
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" Type="Text" ID="icPesoBruto" Label="Peso bruto" Rules="onlynumber" />
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scAduanaEntradaSalida" Label="Aduana de entrada/salida" Enabled="false" KeyField="t_Cve_Aduana" DisplayField="t_ClaveDescripcion" Dimension="Vt022AduanaSeccionA01" />
+                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scAduanaEntradaSalida" Label="Aduana de entrada/salida" Enabled="false" KeyField="t_Cve_AduanaSeccion" DisplayField="t_ClaveDescripcion" Dimension="Vt022AduanaSeccionA01" OnClick="scAduanaEntradaSalida_Click" OnSelectedIndexChanged="scAduanaEntradaSalida_SelectedIndexChanged"/>
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scTransporteEntradaSalida" Label="Transporte entrada/salida" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" />
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-6 mb-5" ID="scTransporteEntradaSalida" Label="Transporte entrada/salida" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" OnClick="scTransporteEntradaSalida_Click"/>
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scMedioTransporteArribo" Label="Medio de transporte/arribo" Enabled="false" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" />
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-6 mb-5" ID="scMedioTransporteArribo" Label="Medio de transporte/arribo" Enabled="false" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" OnClick="scMedioTransporteArribo_Click"/>
 
-                        <GWC:SelectControl runat="server" CssClass="col-xs-12 col-md-6 mb-5" ID="scMedioTransporteSalida" Label="Medio de transporte /salida" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" />
+                        <GWC:SelectControl runat="server" CssClass="bg_Asistencias col-xs-12 col-md-6 mb-5" ID="scMedioTransporteSalida" Label="Medio de transporte /salida" KeyField="t_Cve_MedioTransporte" DisplayField="t_ClaveDescripcion" Dimension="Vt022MediosTransporteA03" OnClick="scMedioTransporteSalida_Click"/>
 
                         <GWC:InputControl runat="server" CssClass="col-xs-12 col-md-3 mb-5" Type="Text" ID="icValorDolares" Label="Valor en dólares" Format="Money" Enabled="false" />
 

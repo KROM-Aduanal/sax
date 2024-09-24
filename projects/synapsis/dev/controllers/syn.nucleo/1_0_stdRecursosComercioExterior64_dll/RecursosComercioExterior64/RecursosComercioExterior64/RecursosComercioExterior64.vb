@@ -334,7 +334,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("FECHA DE OPERACION ORIGINAL.")> CA_FECHA_PAGO_ORIGINAL_PARA_COMPENSACION = 101
             <EnumMember> <Description("DEPENDENCIA O INSTITUCION EMISORA.")> CA_NOMBRE_INSTITUCION_EMISORA_DOCUMENTO = 102
             <EnumMember> <Description("NUMERO DEL DOCUMENTO.")> CA_NUMERO_DOCUMENTO = 103
-            <EnumMember> <Description("FECHA DEL DOCUMENTO.")> CA_FECHA_EXPOCICION_DOCUMENTO = 104
+            <EnumMember> <Description("FECHA DEL DOCUMENTO.")> CA_FECHA_EXPEDICION_DOCUMENTO = 104
             <EnumMember> <Description("IMPORTE DEL DOCUMENTO.")> CA_IMPORTE_DOCUMENTO = 105
             <EnumMember> <Description("SALDO DISPONIBLE.")> CA_SALDO_DISPONIBLE_DOCUMENTO = 106
             <EnumMember> <Description("IMPORTE A PAGAR.")> CA_IMPORTE_PAGADO_PEDIMENTO = 107
@@ -449,7 +449,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("MUNICIPIO/CIUDAD DESTINATARIO")> CA_MUNICIPIO_CIUDAD_DESTINATARIO = 210
             <EnumMember> <Description("PAÍS DE DESTINATARIO")> CA_PAIS_DESTINATARIO = 211
             <EnumMember> <Description("CANTIDAD EN UNIDADES DE MEDIDA DE PRECIO ESTIMADO PEDIMENTO")> CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO = 212
-            <EnumMember> <Description("TÍTULOS ASIGNADOS")> CA_TITULOS_ASIGNADOS_PEDIMENTO = 213
+            <EnumMember> <Description("TÍTULOS ASIGNADOS")> CA_TITULOS_ASIGNADOS = 213 'Se le quita pedimento
             <EnumMember> <Description("TOTAL DE BULTOS")> CA_TOTAL_BULTOS = 214
             <EnumMember> <Description("FRACCIÓN ORIGINAL")> CA_FRACCION_ORIGINAL = 215
             <EnumMember> <Description("UNIDAD DE MEDIDA ORIGINAL")> CA_UM_ORIGINAL = 216
@@ -545,12 +545,19 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("EJECUTIVO DE CUENTA")> CP_EJECUTIVO_CUENTA = 1003
             <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_NUMERO_CLIENTE = 1004
 
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ID_CONTRIBUCION = 1005
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ESTADO_CONTRIBUCION = 1006
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ID_PERMISO = 1007
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ESTADO_PERMISO = 100
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ID_IDENTIFICADOR = 1009
-            <EnumMember> <Description("NÚMERO DE CLIENTE")> CP_ESTADO_PARTIDA = 1010
+            <EnumMember> <Description("ID DE LA CONTRIBUCIÓN")> CP_ID_CONTRIBUCION = 1005
+            <EnumMember> <Description("ESTADO DE LA CONTRIBUCIÓN")> CP_ESTADO_CONTRIBUCION = 1006
+            <EnumMember> <Description("ID DEL PERMISO")> CP_ID_PERMISO = 1007
+            <EnumMember> <Description("ESTADO DEL PERMISO")> CP_ESTADO_PERMISO = 1008
+            <EnumMember> <Description("ID DEL IDENTIFICADOR")> CP_ID_IDENTIFICADOR = 1009
+            <EnumMember> <Description("ESTADO DE LA PARTIDA")> CP_ESTADO_PARTIDA = 1010
+            <EnumMember> <Description("RUTA DE VALIDACIÓN")> CP_RUTA_VALIDACION = 1011
+            <EnumMember> <Description("TIPO DE PEDIMENTO")> CP_TIPO_PEDIMENTO = 1012
+            <EnumMember> <Description("FRACCION ARANCELARIA 10 DIGITOS")> CP_FRACCION_ARANCELARIA_PARTIDA = 1013
+            <EnumMember> <Description("APLICA ENAJENACIÓN")> CP_APLICA_ENAJENACION = 1014 'PENDIENTE REVISAR COMO SE APLICARA X FACTURA O POR OPERACIÓN
+            <EnumMember> <Description("TIPO DE PERSONA DEL IMPORTADOR O EXPORTADOR")> CP_TIPO_PERSONA_IOE = 1015
+            <EnumMember> <Description("TIPO DE DESPACHO QUE SE USARA CON RESPECTO A LA REFERENCIA")> CP_TIPO_DESPACHO = 1016
+
 
             '#############################  CAMPOS ÚNICOS PROPIOS ##################################3
 

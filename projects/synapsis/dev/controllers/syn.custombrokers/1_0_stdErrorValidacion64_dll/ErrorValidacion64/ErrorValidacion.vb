@@ -5,34 +5,53 @@ Public Class ErrorValidacion : Implements ICloneable
 #Region "Enums"
 
     Enum TiposCriterios
+
         SinDefinir = 0
+        Sintactito = 1
+        Catalogico = 2
+        Estructural = 3
+        Normativo = 4
+        DatoInexacto = 5
+        UsoCostumbreAA = 6
+        UsoCostumbreCliente = 7
+
     End Enum
 
     Enum Acciones
+        'Este tema no se analizo a profundidad o al menos no tengo nada por ahora.
         SinDefinir = 0
+        Desplegar = 1 'Mostrar lo que puedes realizar
+        Ejecutar = 2 'Corregir lo que se supone esta mal o que se puede resolver
+
     End Enum
 
     Enum TiposMensajes
+
         SinDefinir = 0
+        Advertencia = 1
+        ErrorEncontrado = 2 'quise colocar la palabra error y me marca que es una palabra reservada
+        Informe = 3
+        Incidencia = 4
+
     End Enum
 
 #End Region
 
 #Region "Propiedades"
 
-    Property Tipo As String
+    Property tipo As String
 
-    Property Numero As Integer
+    Property numero As Integer
 
-    Property Descripcion As String
+    Property descripcion As String
 
-    Property TipoCriterio As TiposCriterios
+    Property tipocriterio As TiposCriterios
 
-    Property Accion As Acciones
+    Property accion As Acciones
 
-    Property TipoMensaje As TiposMensajes
+    Property tipomensaje As TiposMensajes
 
-    Property Mensaje As String
+    Property mensaje As String
 
 #End Region
 

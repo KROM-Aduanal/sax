@@ -3,29 +3,19 @@
   "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\proveedores\\ges022-001-registroproveedores.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{830280D9-381E-4D58-A5A3-D6FCB4BE50F9}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\data\\gsol.basededatos.operaciones\\1_0_stalineabasecatalogos64_dll\\lineabasecatalogos64\\lineabasecatalogos64\\lineabasecatalogos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7CDB6A7-9B9E-4365-BEAA-90BCBAE4814E}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\lnk\\gsol.krom\\1_0_stdenlacedatos64_dll\\enlacedatos64\\enlacedatos.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{C39319F2-79ED-45F7-AF41-BFBBB84645A9}|data{C39319F2-79ED-45F7-AF41-BFBBB84645A9}|LineaBaseCatalogos64||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA166BF4-0AFA-48C1-9411-DEE7EA53FD11}|..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas64.vbproj|c:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdcontroladorempresas64_dll\\controladorempresas64\\controladorempresas.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|KromSAAI||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1495192-15BC-4584-8A5F-17BD9B435A5D}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\controladorsecuencia64\\controladorsecuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|4e43f4ab-9f03-4129-95bf-b8ff870af6ab"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32A80D9D-D342-4428-B551-C64242DAC378}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\icontroladorsecuencia\\icontroladorsecuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3789DC59-4CE0-4D44-9B46-43D4C2ADB339}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\secuencia64\\secuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{04211E23-85A8-4195-AC83-D0118784E610}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\utils\\isecuencia\\isecuencia.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4E21979D-B933-4494-91F1-4CCBABBB42DD}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\cmf\\gsol\\1_0_stdlineabaseiniciasesion64_dll\\lineabaseiniciasesion64\\lineabaseiniciasesion64\\lineabaseiniciasesion.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{830280D9-381E-4D58-A5A3-D6FCB4BE50F9}|..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj|c:\\sax\\masters\\vb\\esp\\cmf\\scr\\core\\data\\gsol.basededatos.operaciones\\1_0_stalineabasecatalogos64_dll\\lineabasecatalogos64\\lineabasecatalogos64\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|eda661ea-dc61-4750-b3a5-f6e9c74060f5"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,8 +25,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 20,
+          "SelectedChildIndex": 16,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{2bb8137c-bac8-4d04-820a-c52b5d5b82da}"
@@ -55,6 +57,14 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{0504ff91-9d61-11d0-a794-00a0c9110051}"
             },
             {
@@ -63,11 +73,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
             },
             {
               "$type": "Bookmark",
@@ -75,130 +85,47 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LineaBaseCatalogos.vb",
+              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos.vb",
+              "ViewState": "AgIAAFsCAAAAAAAAAIA7wGMCAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-08-29T17:08:36.669Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EnlaceDatos.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\lnk\\gsol.krom\\1_0_stdEnlaceDatos64_dll\\EnlaceDatos64\\EnlaceDatos.vb",
-              "ViewState": "AQIAACwCAAAAAAAAAAApwG4CAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T19:04:37.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ControladorSecuencia.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ControladorSecuencia64\\ControladorSecuencia.vb",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAIwJgAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T17:53:00.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Secuencia.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\Secuencia64\\Secuencia.vb",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBEAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T17:52:06.187Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ISecuencia.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\ISecuencia\\ISecuencia.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T17:51:01.425Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IControladorSecuencia.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Utils\\IControladorSecuencia\\IControladorSecuencia.vb",
-              "ViewState": "AQIAADsAAAAAAAAAAAAUwAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T17:40:44.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Ges022-001-RegistroProveedores.aspx.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb",
-              "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb*",
-              "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\Proveedores\\Ges022-001-RegistroProveedores.aspx.vb*",
-              "ViewState": "AQIAACQJAAAAAAAAAAAQwCsJAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T17:32:49.59Z",
+              "Title": "LineaBaseCatalogos64",
+              "DocumentMoniker": "C:\\Sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "ToolTip": "C:\\Sax\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\data\\gsol.basededatos.operaciones\\1_0_staLineaBaseCatalogos64_dll\\LineaBaseCatalogos64\\LineaBaseCatalogos64\\LineaBaseCatalogos64.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-29T17:07:10.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ControladorEmpresas.vb",
-              "DocumentMoniker": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "ToolTip": "C:\\sax\\projects\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "RelativeToolTip": "..\\..\\..\\global\\dev\\rec.global.controllers\\2_0_stdControladorEmpresas64_dll\\ControladorEmpresas64\\ControladorEmpresas.vb",
-              "ViewState": "AQIAAJ4CAAAAAAAAAAAWwKcCAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T18:00:38.156Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LineaBaseIniciaSesion.vb",
-              "DocumentMoniker": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
-              "ToolTip": "C:\\sax\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
-              "RelativeToolTip": "..\\..\\..\\..\\masters\\vb\\esp\\cmf\\scr\\Core\\cmf\\gsol\\1_0_stdLineaBaseIniciaSesion64_dll\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion64\\LineaBaseIniciaSesion.vb",
-              "ViewState": "AQIAAD0DAAAAAAAAAAAIwIYDAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-05-15T16:52:48.258Z",
+              "Title": "KromSAAI",
+              "DocumentMoniker": "C:\\Sax\\projects\\synapsis\\dev\\main\\KromSAAI.vbproj",
+              "RelativeDocumentMoniker": "KromSAAI.vbproj",
+              "ToolTip": "C:\\Sax\\projects\\synapsis\\dev\\main\\KromSAAI.vbproj",
+              "RelativeToolTip": "KromSAAI.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-29T16:57:14.265Z",
               "EditorCaption": ""
             }
           ]

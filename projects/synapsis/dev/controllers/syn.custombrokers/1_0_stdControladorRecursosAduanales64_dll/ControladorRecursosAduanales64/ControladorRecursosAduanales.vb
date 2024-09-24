@@ -2,7 +2,6 @@
 Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
-Imports Rec.Globals.Controllers.ControladorRecursosAduanales
 Imports Syn.CustomBrokers.Controllers.ControladorRecursosAduanales
 
 Public Class ControladorRecursosAduanales
@@ -134,7 +133,7 @@ Public Class AduanaSeccionAmbiente
 End Class
 
 Public Class AduanaSeccionModalidad
-    Property _idaduanaseccion As Int32
+    Property _idaduanaseccion As String
     Property ciudad As String
 
     <BsonElement("modalidad")>
@@ -149,7 +148,7 @@ End Class
 
 Public Class AduanasPatentes
     Property _idmodalidadaduanapatente As Int32
-    Property _idaduanaseccion As Int32
+    Property _idaduanaseccion As String
     Property ciudad As String
     Property modalidad As String
     Property estado As Int16 = 1

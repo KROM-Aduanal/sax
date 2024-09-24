@@ -46,9 +46,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syn.CustomBrokers.Controllers.Pedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Syn.CustomBrokers.Controllers.InformePrevalidacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Pedimento64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.InformePrevalidacion64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -58,7 +58,9 @@
       <HintPath>..\..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Foreign\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -119,5 +121,25 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdDocumentoElectronico64_dll\DocumentoElectronico64\DocumentoElectronico64\DocumentoElectronico64.vbproj">
+      <Project>{830BD532-D745-4280-BA19-13F8E904FE5B}</Project>
+      <Name>DocumentoElectronico64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.nucleo\1_0_stdRecursos64_dll\Recursos64\Recursos64\Recursos64.vbproj">
+      <Project>{795CC2E3-A482-44B1-82C2-013AFCB8540F}</Project>
+      <Name>Recursos64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\syn.nucleo\1_0_stdRecursosComercioExterior64_dll\RecursosComercioExterior64\RecursosComercioExterior64\RecursosComercioExterior64.vbproj">
+      <Project>{AB5FFD0B-C909-4372-A4E3-F7709CA7677C}</Project>
+      <Name>RecursosComercioExterior64</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

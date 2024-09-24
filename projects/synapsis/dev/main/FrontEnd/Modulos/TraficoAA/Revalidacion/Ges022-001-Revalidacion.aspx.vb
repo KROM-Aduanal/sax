@@ -318,7 +318,7 @@ Public Class Ges022_001_Revalidacion
 
             Dim documento_ As DocumentoElectronico = tagwacher_.ObjectReturned.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
 
-            txt_Cliente.Value = documento_.Attribute(CamposReferencia.CA_RAZON_SOCIAL_IOE).Valor
+            txt_Cliente.Value = documento_.Attribute(CamposPedimento.CA_RAZON_SOCIAL_IOE).Valor
 
         End If
 

@@ -132,7 +132,6 @@ Namespace Syn.Documento
                              tipoBloque_:=TiposBloque.Cuerpo,
                              conCampos_:=False)
 
-
             'Identificadores (Nivel pedimento)
             ConstruyeSeccion(seccionEnum_:=SeccionesPedimento.ANS18,
                              tipoBloque_:=TiposBloque.Cuerpo,
@@ -345,7 +344,9 @@ Namespace Syn.Documento
                                    Item(CA_NUMERO_SEMANA, Entero, longitud_:=3),
                                    Item(CA_ARCHIVO_VALIDACION, Texto, longitud_:=16),
                                    Item(CA_ACUSE_ELECTRONICO_PAGO, Texto, longitud_:=8),
-                                   Item(CA_ARCHIVO_PAGO, Texto, longitud_:=16)
+                                   Item(CA_ARCHIVO_PAGO, Texto, longitud_:=16),
+                                   Item(CP_TIPO_PEDIMENTO, Entero, longitud_:=2),
+                                   Item(CP_RUTA_VALIDACION, Entero, longitud_:=2)
                                    }
 
                 ' Encabezado para páginas secundarias del pedimento
@@ -451,15 +452,13 @@ Namespace Syn.Documento
                         ' Datos del proveedor o comprador
                 Case SeccionesPedimento.ANS10
 
-
-
                     Return New List(Of Nodo) From {
                                Item(CA_ID_FISCAL_PROVEEDOR, Texto, longitud_:=30),
                                Item(CA_NOMBRE_DENOMINACION_RAZON_SOCIAL_POC, Texto, longitud_:=120),
                                Item(CA_DOMICILIO_POC, Texto, longitud_:=190),
                                Item(CA_VINCULACION, Texto, longitud_:=2),
                                Item(CA_CVE_VINCULACION, Entero, longitud_:=1),
-                                                                              _
+                               Item(CP_APLICA_ENAJENACION, Booleano),
                                Item(CA_CALLE_POC, Texto, longitud_:=80),
                                Item(CA_NUMERO_INTERIOR_POC, Texto, longitud_:=10),
                                Item(CA_NUMERO_EXTERIOR_POC, Texto, longitud_:=10),
@@ -467,7 +466,6 @@ Namespace Syn.Documento
                                Item(CA_MUNICIPIO_CIUDAD_POC, Texto, longitud_:=80),
                                Item(CA_ENTIDAD_FEDERATIVA_POC, Texto, longitud_:=3),
                                Item(CA_PAIS_POC, Texto, 3),
-                                                           _
                                Item(SeccionesPedimento.ANS13, False),
                                Item(CamposGlobales.CP_IDENTITY, Entero)
                          }
@@ -588,7 +586,7 @@ Namespace Syn.Documento
                                Item(CA_IMPORTE_TOTAL_CONSTANCIA, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_FECHA_EMISION_CONSTANCIA, Fecha),
                                Item(CA_CANTIDAD_UMT_PRECIO_ESTIMADO_PEDIMENTO, Real, cantidadEnteros_:=10, cantidadDecimales_:=4),
-                               Item(CA_TITULOS_ASIGNADOS_PEDIMENTO, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
+                               Item(CA_TITULOS_ASIGNADOS, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_VALOR_UNITARIO_TITULO_PEDIMENTO, Real, cantidadEnteros_:=10, cantidadDecimales_:=4)
                          }
 
@@ -635,7 +633,7 @@ Namespace Syn.Documento
                                Item(CA_PAGOS_VIRTUALES_FORMA_PAGO, Entero, 3),
                                Item(CA_NOMBRE_INSTITUCION_EMISORA_DOCUMENTO, Texto, longitud_:=120),
                                Item(CA_NUMERO_DOCUMENTO, Texto, longitud_:=40),
-                               Item(CA_FECHA_EXPOCICION_DOCUMENTO, Fecha),
+                               Item(CA_FECHA_EXPEDICION_DOCUMENTO, Fecha),
                                Item(CA_IMPORTE_DOCUMENTO, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_SALDO_DISPONIBLE_DOCUMENTO, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_IMPORTE_PAGADO_PEDIMENTO, Entero, longitud_:=14)

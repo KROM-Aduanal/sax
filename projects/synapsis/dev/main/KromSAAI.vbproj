@@ -756,6 +756,11 @@
       <HintPath>packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Asistencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Asistencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorAcuseValor64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorAcuseValor64.0.0.0.0.dll</HintPath>
@@ -837,6 +842,16 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IPrevalidador64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPrevalidador64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IPrevalidadorAsistencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPrevalidadorAsistencia64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0.dll</HintPath>
@@ -845,6 +860,16 @@
     <Reference Include="Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Prevalidador64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Prevalidador64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.PrevalidadorAsistencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.PrevalidadorAsistencia64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.Referencia64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

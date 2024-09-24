@@ -50,13 +50,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents btGuiasM As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
-    '''Control Generales.
+    '''Control fscGenerales.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Generales As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscGenerales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control ccDocumento.
@@ -176,13 +176,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scRegimen As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scEjecutivoCuenta.
+    '''Control scTipoDespacho.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scEjecutivoCuenta As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents scTipoDespacho As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control scPrefijo.
@@ -203,15 +203,6 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scPatente As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scPatente2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scPatente2 As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
     '''Control icPedimentoOriginal.
     '''</summary>
     '''<remarks>
@@ -230,13 +221,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents scTipoCarga As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control scTipoDespacho.
+    '''Control scEjecutivoCuenta.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents scTipoDespacho As Global.Gsol.Web.Components.SelectControl
+    Protected WithEvents scEjecutivoCuenta As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control icDescripcionCompleta.
@@ -248,13 +239,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icDescripcionCompleta As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control Cliente.
+    '''Control fscCliente.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Cliente As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscCliente As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control fbcCliente.
@@ -293,31 +284,31 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icBancoPago As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control TrackingExpo.
+    '''Control fscTrackingExpo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TrackingExpo As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscTrackingExpo As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control TrackingImpo.
+    '''Control fscTrackingImpo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TrackingImpo As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscTrackingImpo As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
-    '''Control Documentos.
+    '''Control fscDocumentos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Documentos As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscDocumentos As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control fcDocumentos.
@@ -374,13 +365,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icTipoArchivo As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control Guia.
+    '''Control fscGuia.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Guia As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscGuia As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control scRecintoFiscal.
@@ -581,13 +572,13 @@ Partial Public Class Ges022_001_Referencia
     Protected WithEvents icFechaSalidaOrigenMulti As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control Fechas.
+    '''Control fscFechas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Fechas As Global.Gsol.Web.Components.FieldsetControl
+    Protected WithEvents fscFechas As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control icFechaEta.

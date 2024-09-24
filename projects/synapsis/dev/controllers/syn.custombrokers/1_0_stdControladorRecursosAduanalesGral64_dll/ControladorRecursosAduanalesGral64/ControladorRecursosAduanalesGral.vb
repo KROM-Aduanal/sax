@@ -2,7 +2,6 @@
 Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
-Imports Rec.Globals.Controllers.ControladorRecursosAduanalesGral
 
 Public Class ControladorRecursosAduanalesGral
 
@@ -52,6 +51,15 @@ Public Class ControladorRecursosAduanalesGral
 
     <BsonIgnoreIfNull>
     Property tiposprevios As List(Of TipoPrevio)
+
+    <BsonIgnoreIfNull>
+    Property tiposdocumentooperacion As List(Of TiposDocumentoOperacion)
+
+    <BsonIgnoreIfNull>
+    Property tiposdespachodocumento As List(Of TiposDespachoDocumento)
+
+    <BsonIgnoreIfNull>
+    Property tiposdespacho As List(Of TiposDespacho)
 
 #End Region
 
@@ -186,6 +194,39 @@ Public Class TipoPrevio
 
     Property _idtipoprevio As Int32
     Property descripcion As String
+    Property estado As Int16 = 1
+    Property archivado As Boolean = False
+
+End Class
+
+Public Class TiposDespacho
+
+    Property _idtipodespacho As Int32
+    Property descripcion As String
+    Property estado As Int16 = 1
+    Property archivado As Boolean = False
+
+End Class
+
+Public Class TiposDespachoDocumento
+
+    Property _idtipodespachodocumento As Int32
+    Property _idtipodespacho As Int32
+    Property descripciondespacho As String
+    Property _idtipodocumento As Int32
+    Property descripciondocumento As String
+    Property estado As Int16 = 1
+    Property archivado As Boolean = False
+
+End Class
+
+Public Class TiposDocumentoOperacion
+
+    Property _idtipodocumentooperacion As Int32
+    Property _idtipodocumento As Int32
+    Property descripciondocumentocorta As String
+    Property _idtipooperacion As Int32
+    Property descripciontipooperacion As String
     Property estado As Int16 = 1
     Property archivado As Boolean = False
 
