@@ -411,7 +411,7 @@ End Class
 Public Class PropiedadesDocumento
 
 #Region "Enums"
-
+    ''AQUI
     Enum FormatosArchivo
         SinDefinir = 0
         <EnumMember> <Description("application/pdf")> pdf = 1

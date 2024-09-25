@@ -12,7 +12,7 @@ Imports MongoDB.Bson
 
 Namespace Syn.Documento
 
-    <BsonKnownTypes(GetType(EntidadDatosDocumento))>
+    '<BsonKnownTypes(GetType(EntidadDatosDocumento))>
     <BsonKnownTypes(GetType(ConstructorCliente))>
     <BsonKnownTypes(GetType(ConstructorProducto))>
     <BsonKnownTypes(GetType(ConstructorReferencia))>
@@ -24,6 +24,7 @@ Namespace Syn.Documento
     <BsonKnownTypes(GetType(ConstructorAcuseValor))>
     <BsonKnownTypes(GetType(ConstructorFacturaComercial))>
     <BsonKnownTypes(GetType(ConstructorManifestacionValor))>
+    <BsonKnownTypes(GetType(ConstructorProcesamientoElectDocumentos))>
     <Serializable()>
     Public Class DocumentoElectronico
         Inherits Documento

@@ -61,7 +61,6 @@ Public Interface IControladorFacturaComercial : Inherits IDisposable
 
 #Region "Métodos"
     Sub ReiniciarControlador(Optional ByVal entorno_ As Integer = 1)
-
     Sub CargaFacturas(ByVal documentoDigital_ As MemoryStream)
     Sub CargaFacturas(ByVal documentoDigital_ As List(Of MemoryStream))
 

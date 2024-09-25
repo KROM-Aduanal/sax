@@ -1173,6 +1173,7 @@ Public Class ControladorBackend
 
                     If antesRealizarModificacion_(session_).Status = TypeStatus.Ok Then
 
+
                         Constructores()
 
                         If OperacionGenerica IsNot Nothing Then
@@ -2921,8 +2922,8 @@ Public Class ControladorBackend
                                                                 End If
 
                                                                 If control_.WorksWith IsNot Nothing Then
-
-                                                                    Select Case control_.GetType()
+                                                                    Dim prueba_ = control_.GetType()
+                                                                    Select Case prueba_
 
                                                                         Case GetType(InputControl)
 

@@ -392,7 +392,7 @@ Public Class ControladorMonedas
     Public Function ConsultaMoneda(campos_ As List(Of [Enum]),
                                    Optional ByVal formato_ As String = "cvedefault",
                                    Optional condicion_ As String = "",
-                                  Optional ByVal limite_ As Int32 = 5) As List(Of String) _
+                                   Optional ByVal limite_ As Int32 = 5) As List(Of String) _
                                    Implements IControladorMonedas.ConsultaMoneda
         If _monedas.Count < limite_ Then
 

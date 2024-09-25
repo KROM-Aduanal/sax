@@ -1,7 +1,6 @@
 ﻿
 Imports Syn.Documento.Componentes
 Imports Syn.Nucleo.Recursos
-Imports Syn.Nucleo.RecursosPedimento
 
 Namespace Syn.Documento
 

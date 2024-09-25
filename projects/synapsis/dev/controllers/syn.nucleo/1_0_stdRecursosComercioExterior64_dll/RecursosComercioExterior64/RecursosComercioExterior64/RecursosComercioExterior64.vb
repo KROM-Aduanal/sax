@@ -19,11 +19,12 @@ Namespace Syn.Nucleo
         'SCS = Clientes
         'SFAC = Factura Comercial
         'SPRO = Secciones Proveedor Operativo
+        'SPRI = Secciones Proveedor Internacional
+        'SFACE = Factura Comercial Exportacion
 
         Enum SecuenciasComercioExterior
-
             ProveedoresOperativos
-
+            FacturasComerciales
         End Enum
 
         Enum SeccionesPedimento
@@ -88,7 +89,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Generales")> SFAC1 = 1
             <EnumMember> <Description("Datos del proveedor")> SFAC2 = 2
             <EnumMember> <Description("Datos del destinatario")> SFAC3 = 3
-            <EnumMember> <Description("Partidas")> SFAC4 = 4
+            <EnumMember> <Description("Items de partidas")> SFAC4 = 4
             <EnumMember> <Description("Incrementables")> SFAC5 = 5
             '<EnumMember> <Description("Subdivisión")> SFAC6 = 6
             'Se comenta para que un futuro se pueda dividir la forma de guardar los item de la factura (si es que es optimo)
@@ -211,6 +212,20 @@ Namespace Syn.Nucleo
             '#############################  SECCIONES ÚNICAS  DE LA MANIFESTACIÓN DE VALOR ##################################
 
 
+
+        End Enum
+
+        Public Enum SeccionesProcesamientoElectDocumentos
+            <EnumMember> <Description("Sin definir")> SPED0 = 0
+
+            '#############################  SECCIONES ÚNICAS DEL PROCESAMIENTO ELECTRÓNICO DOCUMENTOS ##################################
+
+            <EnumMember> <Description("Generales")> SPED1 = 1
+            <EnumMember> <Description("Procesar documentos")> SPED2 = 2
+            <EnumMember> <Description("Mensajes documentos procesados")> SPED3 = 3
+            <EnumMember> <Description("Documentos procesados")> SPED4 = 4
+
+            '#############################  SECCIONES ÚNICAS DEL PROCESAMIENTO ELECTRÓNICO DOCUMENTOS ##################################
 
         End Enum
 
@@ -791,13 +806,16 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Orden de compra partida")> CP_ORDEN_COMPRA_PARTIDA = 3057
             <EnumMember> <Description("Moneda precio unitario")> CP_MONEDA_PRECIO_UNITARIO = 3058
             <EnumMember> <Description("Referencia de cliente")> CP_REFERENCIA_CLIENTE = 3059
-
             <EnumMember> <Description("ObjectId Factura Comercial")> CP_OBJECTID_FACTURA = 3060
-
             <EnumMember> <Description("ObjectId Productos")> CP_OBJECTID_PRODUCTOS = 3061
-
             <EnumMember> <Description("ObjectId Fraccion")> CP_OBJECTID_FRACCION = 3062
-
+            <EnumMember> <Description("País destino")> CA_PAIS_DESTINO_PARTIDA = 3063
+            <EnumMember> <Description("Tipo de carga de datos")> CP_TIPO_CARGA_DATOS = 3064
+            <EnumMember> <Description("Bultos")> CP_BULTOS = 3065
+            <EnumMember> <Description("Valor dolares partida")> CA_VALOR_DOLARES_PARTIDA = 3066
+            <EnumMember> <Description("Moneda valor dolares partida")> CP_MONEDA_VALOR_DOLARES_PARTIDA = 3067
+            <EnumMember> <Description("Valor unitario partida")> CA_VALOR_UNITARIO_PARTIDA = 3068
+            <EnumMember> <Description("Moneda valor unitario partida")> CA_MONEDA_VALOR_UNITARIO_PARTIDA = 3069
         End Enum
 
         Public Enum CamposAcuseValor
@@ -841,7 +859,7 @@ Namespace Syn.Nucleo
 
             <EnumMember> <Description("Lista detalle proveedor operativo")> CP_DETALLE_PROVEEDOR = 5005
             <EnumMember> <Description("Identificador detalle proveedor operativo")> CP_SECUENCIA_PROVEEDOR = 5006
-            <EnumMember> <Description("Tax id")> CA_TAX_ID_PROVEEDOR = 5007
+            <EnumMember> <Description("Taxid")> CA_TAX_ID_PROVEEDOR = 5007
             <EnumMember> <Description("RFC")> CA_RFC_PROVEEDOR = 5008
             <EnumMember> <Description("Curp (OPCIONAL)")> CA_CURP_PROVEEDOR = 5009
 
@@ -864,21 +882,21 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Lista de configuraciones")> CP_CONFIGURACIONES = 5024
             <EnumMember> <Description("Identificador del cliente a configurar")> CP_ID_CLIENTE_CONFIGURACION = 5025
             <EnumMember> <Description("Tax id configurado")> CP_TAX_ID_CONFIGURACION = 5026
-            <EnumMember> <Description("RFC configurado")> CP_RFC_PROVEEDOR_CONFIGURACION = 5026
-            <EnumMember> <Description("Identificador del metódo de valoración")> CA_CVE_METODO_VALORACION = 5027
-            <EnumMember> <Description("Metódo de valoración")> CP_METODO_VALORACION = 5028
-            <EnumMember> <Description("Identificador del termino de facturación (INCOTERM)")> CA_CVE_INCOTERM = 5029
-            <EnumMember> <Description("Termino de facturación (INCOTERM)")> CP_INCOTERM = 5030
+            <EnumMember> <Description("RFC configurado")> CP_RFC_PROVEEDOR_CONFIGURACION = 5027
+            <EnumMember> <Description("Identificador del metódo de valoración")> CA_CVE_METODO_VALORACION = 5028
+            <EnumMember> <Description("Metódo de valoración")> CP_METODO_VALORACION = 5029
+            <EnumMember> <Description("Identificador del termino de facturación (INCOTERM)")> CA_CVE_INCOTERM = 5030
+            <EnumMember> <Description("Termino de facturación (INCOTERM)")> CP_INCOTERM = 5031
 
-            <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 5031
-            <EnumMember> <Description("ObjectID Proveedor")> CP_ID_PROVEEDOR = 5032
-            <EnumMember> <Description("Tipo Persona")> CP_TIPO_PERSONA_PROVEEDOR = 5033
-            <EnumMember> <Description("Destinatario")> CP_DESTINATARIO_PROVEEDOR = 5034
+            <EnumMember> <Description("ObjectID Empresa")> CP_ID_EMPRESA = 5032
+            <EnumMember> <Description("ObjectID Proveedor")> CP_ID_PROVEEDOR = 5033
+            <EnumMember> <Description("Tipo Persona")> CP_TIPO_PERSONA_PROVEEDOR = 5034
+            <EnumMember> <Description("Destinatario")> CP_DESTINATARIO_PROVEEDOR = 5035
 
-            <EnumMember> <Description("Id Tax id")> CA_CVE_TAX_ID_PROVEEDOR = 5035
-            <EnumMember> <Description("Id RFC")> CA_CVE_RFC_PROVEEDOR = 5036
-            <EnumMember> <Description("Id Curp")> CA_CVE_CURP_PROVEEDOR = 5037
-
+            <EnumMember> <Description("Id Taxid")> CA_CVE_TAX_ID_PROVEEDOR = 5036
+            <EnumMember> <Description("Id RFC")> CA_CVE_RFC_PROVEEDOR = 5037
+            <EnumMember> <Description("Id Curp")> CA_CVE_CURP_PROVEEDOR = 5038
+            <EnumMember> <Description("Tipo proveedor")> CP_TIPO_PROVEEDOR = 5039
         End Enum
 
         Public Enum CamposDestinatario
@@ -1040,8 +1058,6 @@ Namespace Syn.Nucleo
             'Región del 11000 - 11200
             <EnumMember> <Description("Sin definir")> SIN_DEFINIR = 11000
 
-
-
             <EnumMember> <Description("Número de manifestación")> CA_NUMERO_MANIFESTACION = 11001
             <EnumMember> <Description("Fecha de manifestación")> CA_FECHA_MANIFESTACION = 11002
             <EnumMember> <Description("Presenta anexos")> CA_HAY_ANEXOS = 11003
@@ -1066,6 +1082,28 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("Factura o documento comercial")> CA_FAC_DOC_COMERCIAL_65 = 11022
             <EnumMember> <Description("Importe y moneda")> CA_IMPORTE_MONEDA_65 = 11023
             <EnumMember> <Description("Concepto del cargo")> CA_CONCEPTO_CARGO_65 = 11024
+        End Enum
+
+        Public Enum CamposProcesamientoElectDocumentos
+            'Región del 12000 - 12999
+            <EnumMember> <Description("Sin definir")> SIN_DEFINIR = 12000
+
+            <EnumMember> <Description("Pre-referencia procesamiento electrónico docto")> CP_PREREFERENCIA_DOCUMENTO_PROCESADO = 12001
+            <EnumMember> <Description("Razón social cliente")> CP_RAZON_SOCIAL_CLIENTE = 12002
+            <EnumMember> <Description("Clave cliente")> CP_CLAVE_CLIENTE = 12003
+            <EnumMember> <Description("ObjectId cliente")> CP_OBJECTID_CLIENTE = 12004
+            <EnumMember> <Description("Tipo operación")> CP_TIPO_OPERACION = 12005
+            <EnumMember> <Description("Estado procesamiento electrónico docto")> CP_ESTADO_DOCUMENTO_PROCESADO = 12006
+            <EnumMember> <Description("Clave o secuencia procesamiento electrónico docto")> CP_CLAVE_DOCUMENTO_PROCESADO = 12007
+            <EnumMember> <Description("Tipo de documentos procesar")> CP_TIPO_DOCUMENTO_PROCESADO = 12008
+            <EnumMember> <Description("Documentos procesados")> CP_DOCUMENTO_PROCESADO = 12009
+            <EnumMember> <Description("Detalle documento")> CP_DETALLE_DOCUMENTO_PROCESADO = 12010
+            <EnumMember> <Description("Tipo de detalle documento")> CP_TIPO_DETALLE_DOCUMENTO_PROCESADO = 12011
+            <EnumMember> <Description("Estado de detalle documento procesado")> CP_ESTADO_DETALLE_DOCUMENTO_PROCESADO = 12012
+            <EnumMember> <Description("Documento electronico o coleccion generada")> CP_DOCUMENTO_ELECTRONICO_GENERADO = 12013
+            <EnumMember> <Description("Tipo de procesamiento")> CP_TIPO_PROCESAMIENTO = 12014
+            <EnumMember> <Description("ObjectId documento procesado")> CP_OBJECTID_DOCUMENTO_PROCESADO = 12015
+
         End Enum
 
 #Region "Builders"

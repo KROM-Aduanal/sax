@@ -1,5 +1,5 @@
 ﻿Imports System.Threading.Tasks
-Imports Syn.Documento
+'Imports Syn.Documento
 Imports Wma.Exceptions
 
 Namespace gsol.krom

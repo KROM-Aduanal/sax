@@ -76,7 +76,7 @@ Public Class CardControl
 
             .Attributes.Add("class", "w-100")
 
-            .Controls.Add(New LiteralControl("<div class='wc-card __component position-relative mt-4 mb-4' " & ForeColor.HtmlPropertyColor & ">"))
+            .Controls.Add(New LiteralControl("<div class='wc-card __component position-relative mt-3 mb-3' " & ForeColor.HtmlPropertyColor & ">"))
 
             .Controls.Add(New LiteralControl("<div>"))
 

@@ -13,7 +13,7 @@ Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports Wma.Exceptions.TagWatcher
 Imports Rec.Globals.Utils
-Imports Syn.Utils
+'Imports Syn.Utils
 
 Namespace gsol.krom
     Public Class EnlaceDatos
@@ -620,11 +620,11 @@ Namespace gsol.krom
                                         ByVal claveusuario_ As String,
                                         Optional ByVal session_ As IClientSessionHandle = Nothing) As TagWatcher Implements IEnlaceDatos.FirmarDocumento
 
-            Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
+            'Using controladorFirmaElectronica_ As New ControladorFirmaElectronica()
 
-                Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
+            '    Return controladorFirmaElectronica_.FirmarDocumento(recurso_, iddocumento_, claveusuario_, session_:=session_)
 
-            End Using
+            'End Using
 
         End Function
 

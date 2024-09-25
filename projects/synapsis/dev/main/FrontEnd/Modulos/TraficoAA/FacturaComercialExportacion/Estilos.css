@@ -1,0 +1,172 @@
+﻿/*ESTILOS FACTURA COMERCIAL EXPORTACIÓN*/
+.uppercase {
+    text-transform: uppercase;
+}
+.cl_Secciones {
+    opacity: .6; 
+    color: #757575;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cl_Tarjeta {
+    font-size: 24px;
+    font-weight: bold;
+    color: #432776;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wc-form legend {
+    margin-bottom: 10px !important;
+}
+
+.cl_Num__Tarjeta {
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    box-shadow: -1px 3px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cl_Num__Tarjeta_IA {
+    background-color: #782360;
+}
+
+.cl_Num__Tarjeta_blue {
+    background-color: #432776;
+}
+
+.cl_Num__Tarjeta_gray {
+    background-color: #ababab;
+}
+
+.cl_Num__Tarjeta {
+    font-size: 2.4em;
+    font-weight: bold;
+}
+
+.cl_Num__Tarjeta_partida {
+    background-color: #ababab;
+    color: #fff;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: -1px 3px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.icon_cube_purple {
+    background-color: rgba(67,39,118, 0.8);
+    color: #fff !important;
+    display: flex;
+    border-radius: 12px 0px 0px 12px;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube_purple_active {
+    background-color: rgb(67,39,118);
+    color: #fff !important;
+    display: flex;
+    border-radius: 0px 12px 12px 0px;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px;
+    font-weight: bold;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube_rose_active {
+    background-color: #79145c;
+    color: #fff !important;
+    display: flex;
+    border-radius: 0px 12px 12px 0px;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px;
+    font-weight: bold;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube {
+    background-color: #c6c6c6;
+    color: #fff !important;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px;
+    margin-right: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube_active {
+    background-color: #424242;
+    color: #fff !important;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px;
+    margin-right: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube_green {
+    background-color: #c6c6c6;
+    color: #fff !important;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 5px;
+    margin-right: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon_cube_green_active {
+    background-color: #009688;
+    color: #fff !important;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    padding: 5px;
+    margin-right: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+. switch-cube .wc-switch {
+    margin-top: 0px !important;
+    border: 1px solid red;
+}

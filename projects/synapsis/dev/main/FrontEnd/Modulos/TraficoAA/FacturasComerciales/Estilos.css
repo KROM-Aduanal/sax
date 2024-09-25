@@ -1,0 +1,58 @@
+﻿/*ESTILOS FACTURA COMERCIAL IMPORTACIÓN*/
+.cl_Secciones {
+    opacity: .6;
+    color: #757575;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cl_Tarjeta {
+    font-size: 24px;
+    font-weight: bold;
+    color: #432776;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cl_Num__Tarjeta_principal {
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    box-shadow: -1px 3px 10px 4px rgba(0, 0, 0, 0.2);
+}
+.cl_Num__Tarjeta_IA {
+    background-color: #782360;
+}
+
+.cl_Num__Tarjeta_blue {
+    background-color: #432776;
+}
+
+.cl_Num__Tarjeta_gray {
+    background-color: #ababab;
+}
+
+.cl_Num__Tarjeta {
+    background: #ababab;
+    color: #ffffff;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    box-shadow: -1px 3px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cl_Num__Tarjeta {
+    font-size: 2.4em;
+    font-weight: bold;
+}
+
+.desactive_tarjeta {
+    background-color: #333333;
+}

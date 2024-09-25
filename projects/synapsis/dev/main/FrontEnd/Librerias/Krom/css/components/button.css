@@ -12,6 +12,17 @@
     color: #ffffff;
 }
 
+.wc-button-secondary {
+    --tintColor: #f1f1f1;
+    background-color: var(--tintColor);
+    border: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    cursor: pointer;
+    padding: 8px 24px;
+    border-radius: 18px;
+    color: #ffffff;
+}
+
 .wc-button:hover {
 	background-color: var(--tintColor);
 	filter: grayscale(25%);

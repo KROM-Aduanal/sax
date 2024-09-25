@@ -2,7 +2,7 @@
 Imports MongoDB.Bson.Serialization.Attributes
 Imports Rec.Globals.Empresas
 
-Public Interface IEmpresaNacional
+Public Interface IEmpresaNacional : Inherits IEmpresa
     Enum TiposPersona
 
         Moral = 1
@@ -10,7 +10,6 @@ Public Interface IEmpresaNacional
         Fisica = 2
 
     End Enum
-
 
     <BsonIgnore>
     Property rfcNuevo As Boolean?

@@ -517,6 +517,21 @@
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\web\Gsol.Web.Template.FormularioGeneralWeb64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Ia.Analysis.Analysis64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Analysis.Analysis64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ia.Analysis.AnalysisDocument64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Analysis.AnalysisDocument64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ia.Analysis.IAnalysisDocument.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\ia\Ia.Analysis.IAnalysisDocument.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="IConexiones, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\data\IConexiones.dll</HintPath>
@@ -552,9 +567,27 @@
       <HintPath>bin\netstandard.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rec.Globals.AdditionalDetails64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.AdditionalDetails64.1.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Analysis64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Analysis64.1.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.Bus64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Bus64.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.ConsigneeDetails64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.ConsigneeDetails64.1.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Contacto64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -622,6 +655,11 @@
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Curp64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.Customer64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Customer64.1.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.Domicilio64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Domicilio64.2.0.0.0.dll</HintPath>
@@ -647,6 +685,11 @@
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.EmpresaNacional64.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.FacturaComercial64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.FacturaComercial64.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.IEmpresa.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IEmpresa.2.0.0.0.dll</HintPath>
@@ -662,9 +705,24 @@
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IEmpresaNacional.2.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rec.Globals.IFacturaComercial.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IFacturaComercial.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Rec.Globals.InstitucionBancaria64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.InstitucionBancaria64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.IProcessingAnalysis.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.IProcessingAnalysis.1.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Item64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Item64.1.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.Monedas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -690,6 +748,11 @@
     <Reference Include="Rec.Globals.Rfc64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Rfc64.2.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rec.Globals.Supplier64.1.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\global\lib\rec.globals\Rec.Globals.Supplier64.1.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rec.Globals.TaxId64.2.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -746,6 +809,26 @@
       <HintPath>packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.AdditionalDetails64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.AdditionalDetails64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.CommercialInvoice64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.CommercialInvoice64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.CommercialInvoiceAnalysis64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.CommercialInvoiceAnalysis64.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ConsigneeDetails64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ConsigneeDetails64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorAcuseValor64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorAcuseValor64.0.0.0.0.dll</HintPath>
@@ -759,6 +842,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorManifestacionValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorManifestacionValor64.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ControladorProductos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorProductos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorRecursosAduanales64">
@@ -777,9 +865,19 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.CtrlProveedoresOperativos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Customer64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Customer64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.GeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.GeneradorPartidasPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ICommercialInvoice.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ICommercialInvoice.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Custombrokers.Controllers.IControladorAcuseValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -797,9 +895,24 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorManifestacionValor64.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IControladorProductos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorProductos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ICustomer.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ICustomer.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IGeneradorPartidasPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IItem.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IItem.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IItemFacturaComercial64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -815,6 +928,16 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IPartidaPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ISupplier.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ISupplier.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Item64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Item64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.OperacionesPartidas64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -835,6 +958,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.reportes.RepresentacionPedimento64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Syn.CustomBrokers.Controllers.reportes.RepresentacionPedimento64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.Supplier64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.Supplier64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.Componentes.Campo64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -887,6 +1015,11 @@
       <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercial64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.Documento.ConstructorFacturaComercialExportacion64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorFacturaComercialExportacion64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormal64.0.0.0.0.dll</HintPath>
@@ -894,6 +1027,11 @@
     </Reference>
     <Reference Include="Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0">
       <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.ConstructorProcesamientoElectDocumentos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorProcesamientoElectDocumentos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.ConstructorProducto64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -942,6 +1080,10 @@
     <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\masters\vb\esp\sax2.0\bin\Core\syn\Syn.Documento.DocumentoElectronico64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.EstructuraDocumento64.0.0.0.0">
+      <HintPath>..\..\libs\bin\main\Syn.Documento.EstructuraDocumento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.OperacionGenerica64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -1017,6 +1159,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -1749,11 +1895,17 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\respaldopbm.txt" />
     <Content Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Estilos.css" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Ges022_FacturaComercialExportacion.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\estilos.css" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Ges022_ProveedorExtranjero.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Revalidacion\Ges022-001-Revalidacion.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\TarifaArancelaria\Ges022-001-TarifaArancelaria.aspx" />
@@ -2030,6 +2182,7 @@
     <Content Include="FrontEnd\Librerias\BootstrapV4\fonts\nucleo-outline.woff" />
     <Content Include="FrontEnd\Librerias\BootstrapV4\fonts\nucleo-outline.woff2" />
     <Content Include="FrontEnd\Modulos\Modal.Master" />
+    <Content Include="libman.json" />
     <None Include="My Project\PublishProfiles\KromBaseWeb.pubxml" />
     <None Include="My Project\PublishProfiles\KromSAAIPruebas_Server15.pubxml" />
     <None Include="My Project\PublishProfiles\KromSAAIProduccion_Server21.pubxml" />
@@ -2143,11 +2296,25 @@
       <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Ges022_FacturaComercialExportacion.aspx.designer.vb">
+      <DependentUpon>Ges022_FacturaComercialExportacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Ges022_FacturaComercialExportacion.aspx.vb">
+      <DependentUpon>Ges022_FacturaComercialExportacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">
       <DependentUpon>Ges003-001-FacturasComerciales.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.vb">
       <DependentUpon>Ges003-001-FacturasComerciales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx.designer.vb">
+      <DependentUpon>Ges022_ProcesamientoElectronicoDocumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb">
+      <DependentUpon>Ges022_ProcesamientoElectronicoDocumentos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx.designer.vb">
@@ -2169,6 +2336,13 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx.vb">
       <DependentUpon>Ges022-001-RegistroProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Ges022_ProveedorExtranjero.aspx.designer.vb">
+      <DependentUpon>Ges022_ProveedorExtranjero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Ges022_ProveedorExtranjero.aspx.vb">
+      <DependentUpon>Ges022_ProveedorExtranjero.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx.designer.vb">
@@ -2256,6 +2430,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\masters\vb\esp\cmf\scr\Core\syn\syn.documentos\1_0_stdEstructuraDocumento64_dll\EstructuraDocumento64\EstructuraDocumento64\EstructuraDocumento64.vbproj">
+      <Project>{ED738F07-35D7-4A38-AD29-36DA5C13637A}</Project>
+      <Name>EstructuraDocumento64</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

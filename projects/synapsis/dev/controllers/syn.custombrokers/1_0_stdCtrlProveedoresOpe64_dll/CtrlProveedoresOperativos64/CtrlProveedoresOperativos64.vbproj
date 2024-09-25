@@ -310,4 +310,8 @@
     <Error Condition="!Exists('..\..\..\..\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets'))" />
   </Target>
   <Import Project="..\..\..\..\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets" Condition="Exists('..\..\..\..\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)Syn.CustomBrokers.Controllers.CtrlProveedoresOperativos64.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -321,7 +321,7 @@ Public Class InputControl
 
             .Attributes.Add("autocomplete", "off")
 
-            .AutoPostBack = True
+            '.AutoPostBack = True
 
         End With
 
@@ -389,7 +389,7 @@ Public Class InputControl
 
             .Attributes.Add("placeholder", Label)
 
-            .AutoPostBack = True
+            '.AutoPostBack = True
 
         End With
 
@@ -454,7 +454,7 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
-            .AutoPostBack = True
+            '.AutoPostBack = True
 
         End With
 
@@ -490,7 +490,7 @@ Public Class InputControl
 
             .InputAttributes.Add("class", "d-none")
 
-            .AutoPostBack = True
+            ' .AutoPostBack = True
 
         End With
 
@@ -587,5 +587,6 @@ Public Class InputControl
 #End Region
 
 End Class
+
 
 

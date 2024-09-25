@@ -636,11 +636,9 @@ Public Class PillboxControl
         If jsonData_ IsNot Nothing Then
 
             If jsonData_.Count Then
-
+                Dim pillbox_ As PillBox
                 For Each jsonRow_ As Object In jsonData_
-
-                    Dim pillbox_ As New PillBox
-
+                    pillbox_ = New PillBox
                     pillbox_.Properties.Add(KeyField, jsonRow_.Item(KeyField))
 
                     For Each control_ As Object In _PillboxListControls
@@ -695,6 +693,15 @@ Public Class PillboxControl
 
                             End If
 
+                        ElseIf control_.GetType = GetType(PillboxControl) Then
+
+                            Dim temp_ = DirectCast(control_, PillboxControl)
+
+                            If jsonRow_.ContainsKey(temp_.ID) Then
+
+                                pillbox_.SetControlValue(temp_, jsonRow_.Item(temp_.ID))
+
+                            End If
                         End If
 
                     Next
@@ -704,9 +711,7 @@ Public Class PillboxControl
                     pillbox_.Properties.Add("archivado", jsonRow_.Item("archivado"))
 
                     If Not func_ Is Nothing Then
-
                         func_(pillbox_)
-
                     End If
 
                 Next
@@ -1049,6 +1054,12 @@ Public Class PillboxControl
 
                     pillbox_.SetControlValue(temp_, temp_.DataSource)
 
+                ElseIf control_.GetType = GetType(PillboxControl) Then
+
+                    Dim temp_ = DirectCast(control_, PillboxControl)
+
+                    pillbox_.SetControlValue(temp_, temp_.DataSource)
+
                 End If
 
             End If
@@ -1186,6 +1197,10 @@ Public Class PillboxControl
             _PillboxListControls.Add(root)
 
         ElseIf root.GetType = GetType(CatalogControl) Then
+
+            _PillboxListControls.Add(root)
+
+        ElseIf root.GetType = GetType(PillboxControl) Then
 
             _PillboxListControls.Add(root)
 
@@ -1405,6 +1420,20 @@ Public Class PillBox
 
     End Sub
 
+    Public Sub SetControlValue(ByRef control_ As PillboxControl, value_ As Object)
+
+        If Properties.ContainsKey(control_.ID) Then
+
+            Properties(control_.ID) = value_
+
+        Else
+
+            Properties.Add(control_.ID, value_)
+
+        End If
+
+    End Sub
+
     Public Sub SetIndice(ByVal id_ As String, value_ As Integer)
 
         If Properties.ContainsKey(id_) Then
@@ -1504,6 +1533,18 @@ Public Class PillBox
     End Function
 
     Public Function GetControlValue(ByRef control_ As CatalogControl) As Object
+
+        If Properties.ContainsKey(control_.ID) = True Then
+
+            Return Properties.Item(control_.ID)
+
+        End If
+
+        Return Nothing
+
+    End Function
+
+    Public Function GetControlValue(ByRef control_ As PillboxControl) As Object
 
         If Properties.ContainsKey(control_.ID) = True Then
 

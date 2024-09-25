@@ -2,7 +2,7 @@
 Imports MongoDB.Bson.Serialization.Attributes
 Imports Rec.Globals.Empresas
 
-Public Interface IEmpresaInternacional
+Public Interface IEmpresaInternacional : Inherits IEmpresa
 
     Property taxids As List(Of TaxId)
 

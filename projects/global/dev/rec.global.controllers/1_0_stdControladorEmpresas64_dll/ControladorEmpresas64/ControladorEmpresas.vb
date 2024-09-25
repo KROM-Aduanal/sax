@@ -336,6 +336,7 @@ Public Class ControladorEmpresas
 
         Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
+
         Dim operationsDB_ = iEnlace_.GetMongoCollection(Of Empresa)("Glo007Empresas")
 
         'token_ = Chr(34) & token_ & Chr(34)

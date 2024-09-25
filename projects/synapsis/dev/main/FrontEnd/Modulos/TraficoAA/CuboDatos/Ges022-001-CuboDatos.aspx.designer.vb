@@ -104,6 +104,15 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents bi_ProbarRuta As Global.Gsol.Web.Components.ButtonItem
 
     '''<summary>
+    '''Control bi_ObtenerSecciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bi_ObtenerSecciones As Global.Gsol.Web.Components.ButtonItem
+
+    '''<summary>
     '''Control fscformulas.
     '''</summary>
     '''<remarks>
@@ -390,6 +399,42 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bc_ElaborarPruebaEditar As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
+    '''Control tbc_Messages.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tbc_Messages As Global.Gsol.Web.Components.TabbarControl
+
+    '''<summary>
+    '''Control fsc_Alertas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fsc_Alertas As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control fsc_Advertencias.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fsc_Advertencias As Global.Gsol.Web.Components.FieldsetControl
+
+    '''<summary>
+    '''Control fsc_Información.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fsc_Información As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
     '''Control fscinformacion.

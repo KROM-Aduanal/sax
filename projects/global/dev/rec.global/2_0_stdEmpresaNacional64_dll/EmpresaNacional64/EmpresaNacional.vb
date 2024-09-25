@@ -2,7 +2,6 @@
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Driver
 Imports Rec.Globals.Empresas
-
 <Serializable()>
 Public Class EmpresaNacional : Inherits Empresa
     Implements IEmpresa, IEmpresaNacional, IDisposable

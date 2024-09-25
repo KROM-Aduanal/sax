@@ -149,6 +149,7 @@ Namespace Syn.Nucleo
 
             <EnumMember> <Description("ObjectId Cliente")> CP_OBJECTID_CLIENTE = 2059
             <EnumMember> <Description("Secuencia de Cliente")> CP_CVE_CLIENTE = 2060
+            '<EnumMember> <Description("Domicilio fiscal cliente")> CP_DOMICILIO_FISCAL = 2061
 
             'CP_ACTIVO_PAGO
 
@@ -211,26 +212,17 @@ Namespace Syn.Nucleo
             XMLCOVE = 13
 
             'Otros
-
             Referencia = 14
-
             FacturaComercial = 15
-
             Clientes = 16
-
             ProveedoresOperativos = 17
-
             Revalidacion = 18
-
             Viajes = 19
-
             Productos = 20
-
             TarifaArancelaria = 21
-
             AcuseValor = 22
-
             ManifestacionValor = 23
+            ProcesamientoElectronicoDocumento = 24
         End Enum
 
         'Para representaciones impresas/ formatos PDF
@@ -295,6 +287,15 @@ Namespace Syn.Nucleo
 
             Empresas
 
+        End Enum
+
+        Public Enum TiposDocumentoProcesamientoElectronico
+            SinDefinir = 0
+            FacturaComercialXML = 1
+            FacturaComercialPDF = 2
+            BlPDF = 3
+            PackingListPDF = 4
+            CartaInstruccionesPDF = 5
         End Enum
 
 #End Region

@@ -7,9 +7,20 @@
 
          <% If IsPopup = False Then %>
 
-               <GWC:FindbarControl Label="Buscar Gajo" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
+               <GWC:FindbarControl Label="Buscar recámara" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
 
          <% End If %> 
+
+    <style>
+        .bcporautorizar_cube{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            margin-right: 10px;
+            border: 1px solid red;
+            background-image: image('')
+        }
+    </style>
 
 
 </asp:Content>
@@ -57,6 +68,8 @@
 
                      <GWC:ButtonItem Text="Probar Ruta de Validación"  ID="bi_ProbarRuta" Visible="true" />
 
+                     <GWC:ButtonItem Text="Obtener Secciones de un Campo"  ID="bi_ObtenerSecciones" Visible="true" />
+
 
                 </DropdownButtons>
 
@@ -68,14 +81,19 @@
 
                     <ListControls>
 
-                        <asp:Panel runat="server" CssClass="col-md-12 col-xs-6" ID="p_formulillas">
+                        <asp:Panel runat="server" CssClass="col-lg-12 col-md-12 col-xs-12" ID="p_formulillas">
 
                             <%-- DISEÑO COMPONENTE --%>
-                            <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesOld"></asp:Label>
+                        <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesOld"></asp:Label>
 
-                            <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_FormulaActual">
+                            
+       <%--      <asp:Panel runat="server" CssClass="col-xs-12 col-md-12 col-lg-12 mb-5">
+                            <asp:Label runat="server" ID="l_RulesOld" Text="Regla" Visible="True" CssClass="w-100 cl_Secciones"></asp:Label>
+                        </asp:Panel>--%>
 
-                                <div>
+                            <asp:Panel runat="server" CssClass="wc-cubo-formulas col-lg-12 col-md-12 col-xs-12" ID="p_FormulaActual">
+
+                                <div class="">
 
                                           <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22" ID="bc_SourceCube"  Visible="true" OnClick="ShowBranchNames"/>
 
@@ -86,13 +104,17 @@
                                           <GWC:FindboxControl runat="server" ID="fbc_RoomName" CssClass="cubo-fbc-search" KeyField="_id" DisplayField="campo" RequiredSelect="true" Label="Escriba quí el nombre de la habitación" Visible="true" OnTextChanged="fbc_RoomName_TextChanged"/>
 
                                           <GWC:InputControl runat="server" CssClass="cubo-input-search" Label="Escriba aquí"  ID="ic_RoomName" Visible="false" />
-                                           
-                                          <GWC:ButtonControl runat="server" Label="" ID="bc_PorAutorizar" CssClass="bcporautorizar" Visible="true" Enabled="false" ForeColor="DarkGray"/>
+                                            <GWC:ButtonControl runat="server" Label="" ID="bc_PorAutorizar" CssClass="bcporautorizar" Visible="true" Enabled="false" ForeColor="DarkGray"/>
+                    <%--                     <GWC:ButtonControl runat="server" Label="" ID="bc_PorAutorizar" CssClass="bcporautorizar" Visible="true" Enabled="false" ForeColor="DarkGray"/>--%>
+                                     
+                                  
+                                   <%--              <GWC:ButtonControl runat="server"  ID="bc_PorAutorizarr" CssClass="bcporautorizar_cube_2" Visible="true" Enabled="false" ForeColor="DarkGray" /> 
+                                                     <asp:Label runat='server' ID="bc_PorAutorizar" class='icon_cube  d-flex col-md-1 align-content-center mt-4' Text='<svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 812"><path fill="#ffffff" d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>'></asp:Label>
+                                                 <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 512" style="margin-top:10px"><path fill="#c6c6c6" d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>--%>
+                                                <GWC:ButtonControl runat="server" Label="" ID="bc_Verificado" CssClass="swcverificado" Visible="true" Enabled="false" ForeColor="DarkGray"/>
 
-                                          <GWC:ButtonControl runat="server" Label="" ID="bc_Verificado" CssClass="swcverificado" Visible="true" Enabled="false" ForeColor="DarkGray"/>
-
-                                          <GWC:SwitchControl runat="server"  CssClass="swc-online" OffText="Offline" OnText="Online" ID="swc_Online" Visible="true"  OnLoad="RevisaVerificado"  />
-
+                                            <GWC:SwitchControl runat="server"  CssClass="swc-online " OffText="Offline" OnText="Online" ID="swc_Online" Visible="true"  OnLoad="RevisaVerificado"  />
+                                  
                                 </div>
 
                                 <div >
@@ -152,7 +174,7 @@
 
                         </asp:Panel>
 
-                        <asp:Panel runat="server" CssClass="col-md-6 col-xs-6" ID="p_actualizacionformula" Visible="False">
+                        <asp:Panel runat="server" CssClass="col-lg-12 col-md-6 col-xs-12" ID="p_actualizacionformula" Visible="False">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesNew"></asp:Label>
 
@@ -217,7 +239,7 @@
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Mensajes" CssClass="fieldset-subtitle"></asp:Label>
 
-                            <GWC:TabbarControl runat="server">
+                            <GWC:TabbarControl runat="server" ID="tbc_Messages" >
 
                                 <Tabs>
 
@@ -231,7 +253,7 @@
 
                                 <TabsSections>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Alertas" >
 
                                         <ListControls>
 
@@ -247,7 +269,7 @@
 
                                     </GWC:FieldsetControl>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Advertencias">
 
                                         <ListControls>
 
@@ -263,7 +285,7 @@
 
                                     </GWC:FieldsetControl>
 
-                                    <GWC:FieldsetControl runat="server">
+                                    <GWC:FieldsetControl runat="server" ID="fsc_Información">
 
                                         <ListControls>
 
@@ -271,7 +293,7 @@
 
                                             <asp:Panel runat="server">
 
-                                                <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
+                                            <GWC:SwitchControl runat="server" OffText="Por defecto" OnText="Personalizado"/>
 
                                             </asp:Panel>
 
@@ -706,18 +728,6 @@
          return tieneLetra_;
      }
 
-     function getNthChild(element) {
-         let count = 1;
-         const parent = element.parentElement;
-         for (const child of parent.children) {
-             if (child === element) {
-                 return count;
-             }
-             console.log(child);
-             count++;
-         }
-         return -1; // Elemento no encontrado
-     }
 
 
  </script>

@@ -198,7 +198,7 @@ Public Class Ges022_001_RegistroProductos
         With documentoElectronico_
 
             'HISTORICO CLASIFICACIÓN
-            Dim clasificacionArchivados_ = GetVars("_clasificacionArchivados")
+            Dim clasificacionArchivados_ = ("_clasificacionArchivados")
 
             If clasificacionArchivados_ IsNot Nothing Then
                 'Dictionary(Of String, String)

@@ -70,6 +70,9 @@ Public Class ControladorEmpresas
 
     Private _paisInterno As Pais
 
+    Private _listaEmpresasNacionales As List(Of IEmpresaNacional)
+
+    Private _listaEmpresasInternaciones As List(Of IEmpresaInternacional)
 
 #End Region
 
@@ -141,6 +144,8 @@ Public Class ControladorEmpresas
         Modalidad = modalidad_
 
         PaisEmpresa = paisEmpresa_
+
+        'debe ser dinamique :V
 
         _paisInterno = New Pais _
                        With {
@@ -307,9 +312,9 @@ Public Class ControladorEmpresas
 
                     If empresaResult_.Count > 0 Then
 
-                        ListaEmpresas = New List(Of IEmpresa) From {empresaResult_(0)}
+                        _listaEmpresasNacionales = New List(Of IEmpresaNacional) From {empresaResult_(0)}
 
-                        .ObjectReturned = ListaEmpresas
+                        .ObjectReturned = _listaEmpresasNacionales
 
                         .SetOK()
                     Else
@@ -362,9 +367,9 @@ Public Class ControladorEmpresas
 
                     If empresaResult_.Count > 0 Then
 
-                        ListaEmpresas = New List(Of IEmpresa) From {empresaResult_(0)}
+                        _listaEmpresasInternaciones = New List(Of IEmpresaInternacional) From {empresaResult_(0)}
 
-                        .ObjectReturned = ListaEmpresas
+                        .ObjectReturned = _listaEmpresasInternaciones
 
                         .SetOK()
                     Else
@@ -1991,6 +1996,8 @@ Public Class ControladorEmpresas
                 ListaEmpresas = Nothing
 
                 Empresa = Nothing
+
+                _listaEmpresasNacionales = Nothing
 
             End If
 

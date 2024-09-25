@@ -54,6 +54,11 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\lnk\gsol.krom.CampoVirtual64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="gsol.krom.EnlaceDatos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\lnk\gsol.krom.EnlaceDatos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="gsol.krom.IEnlaceDatos.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\lnk\gsol.krom.IEnlaceDatos.0.0.0.0.dll</HintPath>
@@ -128,8 +133,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)gsol.krom.IEntidadDatos.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

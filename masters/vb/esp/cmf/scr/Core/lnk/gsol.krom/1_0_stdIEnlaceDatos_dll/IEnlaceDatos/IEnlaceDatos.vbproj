@@ -60,6 +60,10 @@
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\data\gsol.basededatos.ConexionesNoSQL64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="gsol.documento.Documentos64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\cmf\gsol.documento.Documentos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Gsol.IEspacioTrabajo.1.0.0.0">
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\cmf\Gsol.IEspacioTrabajo.1.0.0.0.dll</HintPath>
       <Private>False</Private>
@@ -83,6 +87,10 @@
     </Reference>
     <Reference Include="Sax.SaxStatements64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\cmf\Sax.SaxStatements64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.Documento64.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\..\sax2.0\bin\Core\syn\Syn.Documento.Documento64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.DocumentoElectronico64.0.0.0.0">
@@ -157,8 +165,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)gsol.krom.IEnlaceDatos.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
