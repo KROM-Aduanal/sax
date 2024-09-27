@@ -68,6 +68,24 @@ Partial Public Class Ges022_001_RegistroProductos
     Protected WithEvents swcEstadoProducto As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
+    '''Control icMuestraProducto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icMuestraProducto As Global.Gsol.Web.Components.ImageControl
+
+    '''<summary>
+    '''Control fcImagenProducto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fcImagenProducto As Global.Gsol.Web.Components.FileControl
+
+    '''<summary>
     '''Control fscClasificacion.
     '''</summary>
     '''<remarks>
@@ -320,15 +338,6 @@ Partial Public Class Ges022_001_RegistroProductos
     Protected WithEvents icHistoricoFraccion As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icHistoricoNico.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icHistoricoNico As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control icHistoricoMotivo.
     '''</summary>
     '''<remarks>
@@ -345,6 +354,24 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icHistoricoFechaModificacion As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icHistoricoUsuario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icHistoricoUsuario As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icHistoricoOficina.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icHistoricoOficina As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control fscHistorialDescipciones.
@@ -399,4 +426,31 @@ Partial Public Class Ges022_001_RegistroProductos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icHistoricoCliente As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icHistoricoFechaModificacionDescripciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icHistoricoFechaModificacionDescripciones As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icHistoricoUsuarioDescripciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icHistoricoUsuarioDescripciones As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icHistoricoOficinaDescripciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icHistoricoOficinaDescripciones As Global.Gsol.Web.Components.InputControl
 End Class

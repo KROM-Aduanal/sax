@@ -53,11 +53,29 @@ Namespace gsol.krom
 
         'Private _subscriptionsGroup As subscriptionsgroup
 
+        Private _saxappid As Int32?
+
 #End Region
 
 #Region "Constructores"
 
         Sub New()
+
+            Iniciar()
+
+            _saxappid = Sax.SaxStatements.GetInstance.SaxAppIdMaster
+
+        End Sub
+
+        Sub New(ByVal saxappid_ As Int32)
+
+            Iniciar()
+
+            _saxappid = saxappid_
+
+        End Sub
+
+        Private Sub Iniciar()
 
             _registros = New List(Of IEntidadDatos)
 
@@ -73,9 +91,26 @@ Namespace gsol.krom
 
         End Sub
 
+
 #End Region
 
 #Region "Propiedades"
+
+        Property SaxAppId As Int32
+
+            Get
+
+                Return _saxappid
+
+            End Get
+
+            Set(value As Int32)
+
+                _saxappid = value
+
+            End Set
+
+        End Property
 
         'Private _objetoDatos As IConexiones.TiposRepositorio
         Property ObjetoDatos As IConexiones.TiposRepositorio
@@ -2054,4 +2089,3 @@ Namespace gsol.krom
     End Class
 
 End Namespace
-

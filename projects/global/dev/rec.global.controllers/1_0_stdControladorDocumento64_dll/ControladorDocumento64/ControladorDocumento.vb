@@ -415,6 +415,8 @@ Public Class PropiedadesDocumento
     Enum FormatosArchivo
         SinDefinir = 0
         <EnumMember> <Description("application/pdf")> pdf = 1
+        <EnumMember> <Description("image/jpeg")> jpg = 2
+        <EnumMember> <Description("text/xml")> xml = 3
     End Enum
 
     Enum TiposAccesibilidad

@@ -229,11 +229,6 @@ Namespace gsol.krom
 
 #Region "Metodos"
 
-        ' Function GetMongoCollection(Of T)(ByVal rolname_ As String) As IMongoCollection(Of T)
-
-        '--
-
-        'Function GetMongoCollection(Of T)(Optional ByVal resourceName_ As String = Nothing) As IMongoCollection(Of T)
 
         Function GetMongoCollection(Of T)(Optional ByVal resourceName_ As String = Nothing,
                                           Optional ByVal rootid_ As Int32? = Nothing) As IMongoCollection(Of T)
@@ -242,15 +237,14 @@ Namespace gsol.krom
                                           Optional ByVal resorceName_ As String = Nothing,
                                           Optional ByVal rootid_ As Int32? = Nothing) As IMongoCollection(Of T)
 
-        'Function GetMongoCollection(Of T)(ByVal collectiontype_ As Sax.SaxStatements.CollectionTypes,
-        '                                         Optional ByVal rolname_ As IEnlaceDatos.RolNames = IEnlaceDatos.RolNames.bigdata) As IMongoCollection(Of T)
-        'Function GetMongoCollection(Of T)(ByRef imongoClient_ As IMongoClient,
-        '                                         ByVal collectionTypes_ As Sax.SaxStatements.CollectionTypes,
-        '                                         Optional ByVal rolname_ As RolNames = RolNames.bigdata) As IMongoCollection(Of T)
-        'Function GetMongoClient(ByVal rolname_ As RolNames,
-        '                          Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient
+        Function GetMongoCollectionByRootId(Of T)(ByVal rootid_ As Int32,
+                                                  Optional ByVal convertresourcename_ As Boolean = False) As IMongoCollection(Of T)
 
         Function GetMongoClient(Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient
+
+        Function GetMongoClientByRolId(ByVal dbrolid_ As Int32,
+                                       ByVal settingsType_ As Sax.SaxStatements.SettingTypes) As IMongoClient
+
 
         Function CompararActualizar(Of T)(ByVal id_ As ObjectId,
                                           ByVal documentoOriginal_ As DocumentoElectronico,
@@ -258,9 +252,6 @@ Namespace gsol.krom
                                           Optional ByVal collectionType_ As Sax.SaxStatements.CollectionTypes = Sax.SaxStatements.CollectionTypes.OO,
                                           Optional ByVal session_ As IClientSessionHandle = Nothing) As Wma.Exceptions.TagWatcher
 
-        'Sub CambiosDetectadosAsync(Of T)(ByVal listaActualizaciones_ As List(Of String),
-        '                                 ByVal referencia_ As String,
-        '                                 Optional ByVal collectionType_ As Sax.SaxStatements.CollectionTypes = Sax.SaxStatements.CollectionTypes.OO)
 
         Sub CambiosDetectadosAsync(Of T)(ByVal listaActualizaciones_ As List(Of DocumentoElectronicoObjetoActualizador),
                                          ByVal referencia_ As String,

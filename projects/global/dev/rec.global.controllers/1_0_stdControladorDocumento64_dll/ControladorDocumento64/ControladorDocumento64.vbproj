@@ -246,4 +246,8 @@
     <Error Condition="!Exists('..\..\..\..\..\synapsis\dev\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\synapsis\dev\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets'))" />
   </Target>
   <Import Project="..\..\..\..\..\synapsis\dev\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets" Condition="Exists('..\..\..\..\..\synapsis\dev\main\packages\MongoDB.Driver.Core.2.12.1\build\MongoDB.Driver.Core.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\sax\projects\synapsis\dev\main\bin"
+copy "$(TargetDir)Rec.Globals.Controllers.ControladorDocumento64.0.0.0.0.pdb" "C:\sax\projects\synapsis\dev\main\bin"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

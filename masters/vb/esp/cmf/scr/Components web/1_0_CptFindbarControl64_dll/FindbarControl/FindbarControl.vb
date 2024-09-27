@@ -186,6 +186,22 @@ Public Class FindbarControl
 
     End Property
 
+    Public Property CheckBoxs As List(Of CheckBox)
+
+        Get
+
+            Return _checkboxs
+
+        End Get
+
+        Set(value As List(Of CheckBox))
+
+            _checkboxs = value
+
+        End Set
+
+    End Property
+
 
 #End Region
 
@@ -276,7 +292,7 @@ Public Class FindbarControl
 
         If Not String.IsNullOrEmpty(Text) Then
 
-            If DataObject Is Nothing And Filters.Count = 0 Then
+            If DataObject Is Nothing Then
 
                 OnTextChanged(EventArgs.Empty)
 

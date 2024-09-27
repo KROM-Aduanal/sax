@@ -50,8 +50,8 @@ export class WCFEditor extends HTMLDivElement {
 
                 const variablesRegex_ = /(?:[^']|^)([A-Z_]+[0-9]*)(?=[^']*|$)/g;
 
-                const keywords_ = ['AHORA', 'ASIGNAR','BUSCARV', 'COINCIDIR', 'CONCATENAR', 'DENTRO', 'DICCIONARIO',
-                    'ENLISTAR', 'ESBLANCO', 'ESPACIOS', 'EXTRAE', 'HOY', 'LARGO', 'NO', 'O', 'OBTENERVALOR', 'RANGO', 'RED', 'REDONDEAR',
+                const keywords_ = ['ABS','AHORA', 'ASIGNAR','BUSCARV', 'COINCIDIR', 'CONCATENAR', 'DENTRO', 'DICCIONARIO',
+                    'ENLISTAR', 'ESBLANCO', 'ESPACIOS', 'EXTRAE', 'HOY', 'LARGO', 'MEZCLAR', 'NO', 'O', 'OBTENERVALOR', 'RANGO', 'RED', 'REDONDEAR',
                                    'ROOM','SECUENCIA', 'SETROOM', 'SI', 'SUMAR', 'SUMAR.SI', 'SUSTITUIR', 'TRUNC', 'TRUNCAR', 'Y'];
 
 
