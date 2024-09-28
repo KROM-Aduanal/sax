@@ -702,11 +702,21 @@ Public Class Ges022_001_CuboDatos
 
             swc_online_ = swc_Online
 
-            useType_ = scUseType.Value
+            If Not [Enum].TryParse(Of ICubeController.UseType)(scUseType.Value, useType_) Then
+
+                useType_ = ICubeController.UseType.Undefined
+
+            End If
+
+
 
         Else
 
-            useType_ = scUseTypeNew.Value
+            If Not [Enum].TryParse(Of ICubeController.UseType)(scUseTypeNew.Value, useType_) Then
+
+                useType_ = ICubeController.UseType.Undefined
+
+            End If
 
             bc_Verificado.Enabled = False
 
@@ -1207,7 +1217,7 @@ Public Class Ges022_001_CuboDatos
                 '              index_,)
 
                 Dim dictionary_ As New Dictionary(Of String, Object) From {{"CABULIDAD", 5}, {"RECABULIDAD", 9}}
-                Dim report_ = _ctrlCube.RunAssistance(Of Object)("A22.VARIABLEDEPRUEBA", dictionary_)
+                Dim report3_ = _ctrlCube.RunRoom(Of Object)("A22.VARIABLEDEPRUEBA", dictionary_)
 
                 Dim diccionarioCubo_ As Dictionary(Of String, String) '= report_.ObjectReturned
 
@@ -1232,7 +1242,7 @@ Public Class Ges022_001_CuboDatos
 
                 ' Next
 
-                report_ = _ctrlCube.
+                Dim report_ = _ctrlCube.
                           RunAssistance(Of Object)("PREV.AS_PED2",
                                              dictionary_)
 

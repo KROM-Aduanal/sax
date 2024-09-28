@@ -1399,28 +1399,40 @@ updateDefinitionResource_,
 
         _reports = New ValidatorReport
 
-        Dim funcFilter_ As Func(Of roomresource, Boolean)
+        'Dim funcFilter_ As Func(Of roomresource, Boolean)
 
-        If useType_ = ICubeController.UseType.Undefined Then
+        'If useType_ = ICubeController.UseType.Undefined Then
 
-            funcFilter_ = Function(ch) ch.roomname.Equals(roomname_)
+        '    funcFilter_ = Function(ch) ch.roomname.Equals(roomname_)
 
-        Else
+        'Else
 
-            funcFilter_ = Function(ch) ch.roomname.Equals(roomname_) And ch.usetype = useType_.ToString
+        '    funcFilter_ = Function(ch) ch.roomname.Equals(roomname_) And ch.usetype = useType_.ToString
 
-        End If
+        'End If
 
-        Dim filter_ = Builders(Of roomresource).Filter.Where(Function(ch) funcFilter_(ch))
+        'Dim filter_ = Builders(Of roomresource).Filter.Where(Function(ch) funcFilter_(ch))
 
         If roomname_.Contains(".") Then
 
             Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos(ICubeController.EnlaceSax.Cube)
 
-                _roomsResource.AddRange(_enlaceDatos.GetMongoCollectionByRootId(Of roomresource)(ICubeController.RootCube.RoomNames).
-                                                     Aggregate.
-                                                     Match(filter_).
-                                                     ToList)
+                If useType_ = ICubeController.UseType.Undefined Then
+
+                    _roomsResource.AddRange(_enlaceDatos.GetMongoCollectionByRootId(Of roomresource)(ICubeController.RootCube.RoomNames).
+                                                         Aggregate.
+                                                         Match(Function(ch) ch.roomname.Equals(roomname_)).
+                                                         ToList)
+                Else
+
+                    _roomsResource.AddRange(_enlaceDatos.GetMongoCollectionByRootId(Of roomresource)(ICubeController.RootCube.RoomNames).
+                                     Aggregate.
+                                     Match(Function(ch) ch.roomname.Equals(roomname_) And ch.usetype = useType_.ToString).
+                                     ToList)
+
+                End If
+
+
 
                 If _roomsResource.Count = 0 Then
 
