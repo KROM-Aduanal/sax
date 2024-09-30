@@ -589,13 +589,18 @@
             $(() => {
                  
                 const ligas = $('.treeview').find("li a");
+
+                console.log(ligas)
+
                 $.each(ligas, (i, liga) => {
                     if (i == 2) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/Referencias/Ges022-001-Referencias.aspx");
                     if (i == 3) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/FacturasComerciales/Ges003-001-FacturasComerciales.aspx");
                     if (i == 9) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/BusquedaGeneral/BusquedaGeneral.aspx");
                     if (i == 11) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/AcusesValor/Ges022-001-AcuseValor.aspx");
-                    if (i == 12) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/CuboDatos/Ges022-001-CuboDatos.aspx");
-                    if (i == 13) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/Proveedores/Ges022-001-RegistroProveedores.aspx?Type=true");
+                    if (i == 13) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/ProveedorInternacional/Ges022_ProveedorInternacional.aspx");
+                    if (i == 14) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/FacturaComercialExportacion/Ges022_FacturaComercialExportacion.aspx");
+                    if (i == 15) $(liga).attr("href", "/FrontEnd/Modulos/TraficoAA/ProcesamientoElectronicoDocumentos/Ges022_ProcesamientoElectronicoDocumentos.aspx");
+            
 
                 });
 
@@ -603,9 +608,27 @@
 
                 $(".treeview-menu").append(
                     $('<li>').append(
-                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/Proveedores/Ges022-001-RegistroProveedores.aspx?Type=true' }).append([
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/FacturaComercialExportacion/Ges022_FacturaComercialExportacion.aspx' }).append([
                             $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
-                            $('<span>', { text: 'Proveedor Extranjero' })
+                            $('<span>', { text: 'Factura exportación' })
+                        ])
+                    )
+                );
+
+                $(".treeview-menu").append(
+                    $('<li>').append(
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/ProveedorExtranjero/Ges022_ProveedorExtranjero.aspx' }).append([
+                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<span>', { text: 'Prov extranjeros' })
+                        ])
+                    )
+                );
+
+                $(".treeview-menu").append(
+                    $('<li>').append(
+                        $('<a>', { href: '/FrontEnd/Modulos/TraficoAA/ProcesamientoElectronicoDocumentos/Ges022_ProcesamientoElectronicoDocumentos.aspx' }).append([
+                            $('<i>', { class: 'fas fa-circle', style: 'font-size: 12px;margin-right: 6px;' }),
+                            $('<span>', { text: 'Procesamiento' })
                         ])
                     )
                 );

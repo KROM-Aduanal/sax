@@ -776,6 +776,11 @@
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorManifestacionValor64.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.ControladorProductos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorProductos64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.ControladorRecursosAduanales64">
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.ControladorRecursosAduanales64.dll</HintPath>
       <Private>False</Private>
@@ -815,6 +820,11 @@
     <Reference Include="Syn.CustomBrokers.Controllers.IControladorManifestacionValor64, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorManifestacionValor64.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.CustomBrokers.Controllers.IControladorProductos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.CustomBrokers.Controllers.IControladorProductos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.CustomBrokers.Controllers.IControladorReferencias64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -944,6 +954,11 @@
     </Reference>
     <Reference Include="Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0">
       <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorPedimentoNormalPDF64.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syn.Documento.ConstructorProcesamientoElectDocumentos64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\bin\controllers\Syn.Documento.ConstructorProcesamientoElectDocumentos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Syn.Documento.ConstructorProducto64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -1799,11 +1814,14 @@
     <Content Include="FrontEnd\Modulos\TraficoAA\Clientes\respaldopbm.txt" />
     <Content Include="FrontEnd\Modulos\TraficoAA\ConsultasOperaciones\Ges003-001-Consultas.Principal.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\CuboDatos\Ges022-001-CuboDatos.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\MetaforaPedimento\Ges022-001-MetaforaPedimento.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx" />
+    <Content Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Estilos.css" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\Revalidacion\Ges022-001-Revalidacion.aspx" />
     <Content Include="FrontEnd\Modulos\TraficoAA\TarifaArancelaria\Ges022-001-TarifaArancelaria.aspx" />
@@ -2193,6 +2211,10 @@
       <DependentUpon>Ges022-001-CuboDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Ges022_FacturaComercialExportacion.aspx.designer.vb" />
+    <Compile Include="FrontEnd\Modulos\TraficoAA\FacturaComercialExportacion\Ges022_FacturaComercialExportacion.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\FacturasComerciales\Ges003-001-FacturasComerciales.aspx.designer.vb">
       <DependentUpon>Ges003-001-FacturasComerciales.aspx</DependentUpon>
     </Compile>
@@ -2207,6 +2229,12 @@
       <DependentUpon>Ges022-001-MetaforaPedimento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx.designer.vb">
+      <DependentUpon>Ges022_ProcesamientoElectronicoDocumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProcesamientoElectronicoDocumentos\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Productos\Ges022-001-RegistroProductos.aspx.designer.vb">
       <DependentUpon>Ges022-001-RegistroProductos.aspx</DependentUpon>
     </Compile>
@@ -2219,6 +2247,10 @@
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Proveedores\Ges022-001-RegistroProveedores.aspx.vb">
       <DependentUpon>Ges022-001-RegistroProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Ges022_ProveedorExtranjero.aspx.designer.vb" />
+    <Compile Include="FrontEnd\Modulos\TraficoAA\ProveedorExtranjero\Ges022_ProveedorExtranjero.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontEnd\Modulos\TraficoAA\Referencias\Ges022-001-Referencias.aspx.designer.vb">

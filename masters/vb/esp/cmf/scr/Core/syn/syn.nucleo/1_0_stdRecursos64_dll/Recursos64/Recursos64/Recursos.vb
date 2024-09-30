@@ -232,6 +232,7 @@ Namespace Syn.Nucleo
             AcuseValor = 22
 
             ManifestacionValor = 23
+            ProcesamientoElectronicoDocumento = 24
         End Enum
 
         'Para representaciones impresas/ formatos PDF
@@ -296,6 +297,15 @@ Namespace Syn.Nucleo
 
             Empresas
 
+        End Enum
+
+        Public Enum TiposDocumentoProcesamientoElectronico
+            SinDefinir = 0
+            FacturaComercialXML = 1
+            FacturaComercialPDF = 2
+            BlPDF = 3
+            PackingListPDF = 4
+            CartaInstruccionesPDF = 5
         End Enum
 
 #End Region

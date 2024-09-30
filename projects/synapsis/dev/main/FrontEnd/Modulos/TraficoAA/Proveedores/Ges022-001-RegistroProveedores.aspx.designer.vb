@@ -50,6 +50,33 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents fsDatosGenerales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control aviso.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents aviso As Global.Gsol.Web.Components.CardControl
+
+    '''<summary>
+    '''Control Panel2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control lbTitleAviso.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbTitleAviso As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control icClave.
     '''</summary>
     '''<remarks>
@@ -57,15 +84,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icClave As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control scProveedor.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scProveedor As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control cveEmpresa.
@@ -95,15 +113,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents fcRazonSocial As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
-    '''Control fbcPais.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fbcPais As Global.Gsol.Web.Components.FindboxControl
-
-    '''<summary>
     '''Control swcTipoUso.
     '''</summary>
     '''<remarks>
@@ -111,42 +120,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents swcTipoUso As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control fsConfiguracionDomicilio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fsConfiguracionDomicilio As Global.Gsol.Web.Components.FieldsetControl
-
-    '''<summary>
-    '''Control rdSeleccionarDomicilio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents rdSeleccionarDomicilio As Global.Gsol.Web.Components.GroupControl
-
-    '''<summary>
-    '''Control scDomicilios.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scDomicilios As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control swcEditarDomicilio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcEditarDomicilio As Global.Gsol.Web.Components.SwitchControl
 
     '''<summary>
     '''Control fsDetalles.
@@ -158,6 +131,51 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents fsDetalles As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control ConfigurarDomicilios.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ConfigurarDomicilios As Global.Gsol.Web.Components.CardControl
+
+    '''<summary>
+    '''Control Panel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control lbTitle.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbTitle As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control scDomiciliosRegistrados.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scDomiciliosRegistrados As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
+    '''Control btnTipoDomicilio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnTipoDomicilio As Global.Gsol.Web.Components.ButtonControl
+
+    '''<summary>
     '''Control pbDetalleProveedor.
     '''</summary>
     '''<remarks>
@@ -167,13 +185,13 @@ Partial Public Class Ges022_001_RegistroProveedores
     Protected WithEvents pbDetalleProveedor As Global.Gsol.Web.Components.PillboxControl
 
     '''<summary>
-    '''Control lbTarjeta.
+    '''Control lbMercancia.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lbTarjeta As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lbMercancia As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control lbNumero.
@@ -183,15 +201,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lbNumero As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control icTaxId.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icTaxId As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icRFC.
@@ -237,15 +246,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents sectionDomicilio As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''Control lbDomicilio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbDomicilio As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control icCalle.
@@ -372,15 +372,6 @@ Partial Public Class Ges022_001_RegistroProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents icCveCurp As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control icCveTaxId.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icCveTaxId As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control scDomicilio.

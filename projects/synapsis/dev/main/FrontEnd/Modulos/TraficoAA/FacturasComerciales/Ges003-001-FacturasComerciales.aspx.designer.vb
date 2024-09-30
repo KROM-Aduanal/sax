@@ -50,6 +50,33 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents fscGenerales As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control lbModoCapturaIA.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbModoCapturaIA As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control lbModoCapturaManual.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbModoCapturaManual As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control lbModoCapturaManualNuevo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbModoCapturaManualNuevo As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''Control dbcNumFacturaCOVE.
     '''</summary>
     '''<remarks>
@@ -77,6 +104,15 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents icFechaCOVE As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
+    '''Control icSerieFolioFactura.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icSerieFolioFactura As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
     '''Control fbcCliente.
     '''</summary>
     '''<remarks>
@@ -84,15 +120,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents fbcCliente As Global.Gsol.Web.Components.FindboxControl
-
-    '''<summary>
-    '''Control fbcIncoterm.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fbcIncoterm As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control fbcPais.
@@ -104,22 +131,13 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents fbcPais As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
-    '''Control swcTipoOperacion.
+    '''Control fbcIncoterm.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents swcTipoOperacion As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control icPesoTotal.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icPesoTotal As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents fbcIncoterm As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
     '''Control swcEnajenacion.
@@ -176,22 +194,40 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents scMonedaMercancia As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
-    '''Control fbcOrdenCompra.
+    '''Control icPesoTotal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbcOrdenCompra As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents icPesoTotal As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icSerieFolioFactura.
+    '''Control icBultos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icSerieFolioFactura As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icBultos As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icOrdenCompra.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icOrdenCompra As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icReferenciaCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icReferenciaCliente As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control fscProveedor.
@@ -212,6 +248,15 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents fbcProveedor As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
+    '''Control scDomiciliosProveedor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scDomiciliosProveedor As Global.Gsol.Web.Components.SelectControl
+
+    '''<summary>
     '''Control scVinculacion.
     '''</summary>
     '''<remarks>
@@ -228,15 +273,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents scMetodoValoracion As Global.Gsol.Web.Components.SelectControl
-
-    '''<summary>
-    '''Control scDomiciliosProveedor.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents scDomiciliosProveedor As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control swcFungeCertificado.
@@ -257,33 +293,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents fbcProveedorCertificado As Global.Gsol.Web.Components.FindboxControl
 
     '''<summary>
-    '''Control fscDestinatario.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fscDestinatario As Global.Gsol.Web.Components.FieldsetControl
-
-    '''<summary>
-    '''Control fbcDestinatario.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fbcDestinatario As Global.Gsol.Web.Components.FindboxControl
-
-    '''<summary>
-    '''Control icDomicilioDestinario.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icDomicilioDestinario As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
     '''Control fscPartidas.
     '''</summary>
     '''<remarks>
@@ -302,15 +311,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents pbPartidas As Global.Gsol.Web.Components.PillboxControl
 
     '''<summary>
-    '''Control lbTarjeta.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbTarjeta As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control lbNumero.
     '''</summary>
     '''<remarks>
@@ -320,15 +320,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents lbNumero As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lbFactura.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lbFactura As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control fbcProducto.
     '''</summary>
     '''<remarks>
@@ -336,33 +327,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents fbcProducto As Global.Gsol.Web.Components.FindboxControl
-
-    '''<summary>
-    '''Control icDescripcionPartida.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icDescripcionPartida As Global.Gsol.Web.Components.InputControl
-
-    '''<summary>
-    '''Control swcAplicaCOVE.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents swcAplicaCOVE As Global.Gsol.Web.Components.SwitchControl
-
-    '''<summary>
-    '''Control icDescripcionCOVE.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents icDescripcionCOVE As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icCantidadComercial.
@@ -446,15 +410,6 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents icPesoNeto As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control fbcOrdenCompraPartida.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fbcOrdenCompraPartida As Global.Gsol.Web.Components.FindboxControl
-
-    '''<summary>
     '''Control fbcPaisPartida.
     '''</summary>
     '''<remarks>
@@ -473,6 +428,42 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents scMetodoValoracionPartida As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
+    '''Control fbcOrdenCompraPartida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fbcOrdenCompraPartida As Global.Gsol.Web.Components.FindboxControl
+
+    '''<summary>
+    '''Control icDescripcionPartida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icDescripcionPartida As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control swcAplicaCOVE.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents swcAplicaCOVE As Global.Gsol.Web.Components.SwitchControl
+
+    '''<summary>
+    '''Control icDescripcionCOVE.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icDescripcionCOVE As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
     '''Control lbClasificacion.
     '''</summary>
     '''<remarks>
@@ -482,22 +473,22 @@ Partial Public Class Ges003_001_FacturasComerciales
     Protected WithEvents lbClasificacion As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control fbcFraccionArancelaria.
+    '''Control icFraccionArancelaria.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbcFraccionArancelaria As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents icFraccionArancelaria As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control fbcFraccionNico.
+    '''Control icFraccionNico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fbcFraccionNico As Global.Gsol.Web.Components.FindboxControl
+    Protected WithEvents icFraccionNico As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
     '''Control icCantidadTarifa.
