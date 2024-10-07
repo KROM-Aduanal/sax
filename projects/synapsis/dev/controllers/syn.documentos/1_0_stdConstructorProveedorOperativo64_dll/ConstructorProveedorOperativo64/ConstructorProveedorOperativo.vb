@@ -171,32 +171,32 @@ Namespace Syn.Documento
                 'CP_CVE_PROVEEDOR = secuencia para usuarios
                 Case SeccionesProvedorOperativo.SPRO1
                     Return New List(Of Nodo) From {
-                                                    Item(CP_SECUENCIA_PROVEEDOR, Entero),
                                                     Item(CP_CVE_PROVEEDOR, Entero), 'Clave p/usuario, secuencia automática
                                                     Item(CP_CVE_EMPRESA, Entero), 'Clave p/usuario, secuencia...
-                                                    Item(CP_ID_EMPRESA, IdObject), 'Clave mongo ObjectID ( Para mantenimiento con sus dependencias)
-                                                    Item(CA_RAZON_SOCIAL_PROVEEDOR, Texto),
-                                                    Item(CP_TIPO_USO, Texto)
+                                                    Item(CP_ID_EMPRESA, Texto), 'Clave mongo ObjectID ( Para mantenimiento con sus dependencias)
+                                                    Item(CP_TIPO_PROVEEDOR, Texto, useAsMetadata_:=True),
+                                                    Item(CA_RAZON_SOCIAL_PROVEEDOR, Texto, longitud_:=250),
+                                                    Item(CP_TIPO_USO, Texto, useAsMetadata_:=True)
                                                 }
 
                 'Detalle proveedor
                 Case SeccionesProvedorOperativo.SPRO2
                     Return New List(Of Nodo) From {
-                                                    Item(CP_TIPO_PERSONA_PROVEEDOR, Texto),
-                                                    Item(CamposDomicilio.CP_ID_DOMICILIO, Texto),
-                                                    Item(CamposDomicilio.CP_SEC_DOMICILIO, Entero),
+                                                    Item(CP_TIPO_PERSONA_PROVEEDOR, Texto, useAsMetadata_:=True),
+                                                    Item(CA_TAX_ID_PROVEEDOR, Texto),
+                                                    Item(CA_CVE_TAX_ID_PROVEEDOR, Texto),
                                                     Item(CamposDomicilio.CA_ID_PAIS, Texto),
                                                     Item(CamposDomicilio.CA_CVE_PAIS, Texto),
                                                     Item(CamposDomicilio.CA_PAIS, Texto),
-                                                    Item(CP_DESTINATARIO_PROVEEDOR, Entero),'ES DESTINATARIO
-                                                    Item(CA_TAX_ID_PROVEEDOR, Texto),
-                                                    Item(CA_CVE_TAX_ID_PROVEEDOR, Texto),
+                                                    Item(CP_DESTINATARIO_PROVEEDOR, Texto, useAsMetadata_:=True),'ES DESTINATARIO
                                                     Item(CA_RFC_PROVEEDOR, Texto),
                                                     Item(CA_CVE_RFC_PROVEEDOR, Texto),
                                                     Item(CA_CURP_PROVEEDOR, Texto),
                                                     Item(CA_CVE_CURP_PROVEEDOR, Texto),
+                                                    Item(CamposDomicilio.CP_ID_DOMICILIO, Texto),
                                                     Item(CamposDomicilio.CA_DOMICILIO_FISCAL, Texto),
                                                     Item(CamposDomicilio.CA_CALLE, Texto, longitud_:=80),
+                                                    Item(CamposDomicilio.CP_SEC_DOMICILIO, Texto),
                                                     Item(CamposDomicilio.CA_NUMERO_EXTERIOR, Texto, longitud_:=10),
                                                     Item(CamposDomicilio.CA_NUMERO_INTERIOR, Texto, longitud_:=10),
                                                     Item(CamposDomicilio.CA_NUMERO_EXT_INT, Texto, longitud_:=20),
@@ -206,7 +206,7 @@ Namespace Syn.Documento
                                                     Item(CamposDomicilio.CA_CIUDAD, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_ENTIDAD_MUNICIPIO, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_MUNICIPIO, Texto, longitud_:=80),
-                                                    Item(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA, Texto, longitud_:=3),
+                                                    Item(CamposDomicilio.CA_CVE_ENTIDAD_FEDERATIVA, Texto, longitud_:=80),
                                                     Item(CamposDomicilio.CA_ENTIDAD_FEDERATIVA, Texto, longitud_:=80),
                                                     Item(CamposGlobales.CP_IDENTITY, Entero) 'ES PARA EL TARJETERO
                                                 }
@@ -238,7 +238,7 @@ Namespace Syn.Documento
                                                     Item(CP_ID_CLIENTE_CONFIGURACION, IdObject),
                                                     Item(CP_TAX_ID_CONFIGURACION, Texto, longitud_:=30),
                                                     Item(CP_RFC_PROVEEDOR_CONFIGURACION, Texto, longitud_:=13),
-                                                    Item(CA_CVE_METODO_VALORACION, Entero),
+                                                    Item(CA_CVE_METODO_VALORACION, Texto),
                                                     Item(CP_METODO_VALORACION, Texto, longitud_:=60),
                                                     Item(CA_CVE_INCOTERM, Texto, longitud_:=3),
                                                     Item(CP_INCOTERM, Texto, longitud_:=70)
