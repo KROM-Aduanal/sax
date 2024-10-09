@@ -2,8 +2,14 @@
 Imports Cube.Interpreters
 Imports MongoDB.Bson
 Imports Cube.Validators
+Imports System.Web.UI
+Imports Gsol.Web.Components
+Imports System.IO
+Imports System.Runtime.Serialization.Formatters.Binary
+Imports Wma.Exceptions
 
 Public Class ValidatorReport
+    Implements ICloneable, IDisposable
 
 #Region "Enums"
 
@@ -35,21 +41,14 @@ Public Class ValidatorReport
 
 #Region "Propierties"
     Property _idreport As ObjectId
-
     Property title As String
-
     Property datereport As DateTime
-
     Property details As List(Of ItemReport)
-
     Property sourcetype As TriggerSourceTypes
-
     Property scope As AdviceTypesReport
-
     Property _iduser As ObjectId
-
     Property result As Object
-
+    Property resultTagWatcher As TagWatcher
     Property messages As List(Of String)
 
 #End Region
@@ -64,7 +63,6 @@ Public Class ValidatorReport
                                  description_ As String,
                                  sourceerrortype_ As String,
                                  valuesource_ As String, newExpression_ As String, Optional triggerSourceType_ As TriggerSourceTypes = TriggerSourceTypes.Interpreter) As ValidatorReport
-
 
         Select Case triggerSourceType_
 
@@ -124,8 +122,6 @@ Public Class ValidatorReport
                                     title_ = "Falta  un " & palabras_(1)
 
                                 End If
-
-
 
                             Else
 
@@ -222,51 +218,64 @@ Public Class ValidatorReport
 
                             End If
 
-
-
                         End If
 
                     End If
 
-
                 End If
-
 
                 title = title_
                 datereport = date_
                 sourcetype = triggerSourceType_
                 scope = scope_
                 _idreport = ObjectId.GenerateNewId
-                AddDetailReport(adviceTypeError_,
+
+                If valuesource_ <> "" Then
+
+                    AddDetailReport(adviceTypeError_,
                                              description_,
                                              valuesource_,
                                              errortype_)
+                End If
 
             Case TriggerSourceTypes.Cube
 
                 Dim errortype_ = ICubeController.CubeErrorTypes.ErrorRuleRules
 
+                If valuesource_ = "" Then
+
+                    errortype_ = ICubeController.CubeErrorTypes.Undefined
+
+                End If
+
                 title = title_
+
                 datereport = date_
+
                 sourcetype = triggerSourceType_
+
                 scope = scope_
+
                 _idreport = ObjectId.GenerateNewId
-                AddDetailReport(adviceTypeError_,
+
+
+
+
+                If valuesource_ <> "" Then
+
+                    AddDetailReport(adviceTypeError_,
                                              description_,
                                              valuesource_,
                                              errortype_)
-
-
+                End If
 
         End Select
-
 
         Return Me
 
     End Function
 
-
-    Private Sub AddDetailReport(adviceTypeError_ As AdviceTypesReport,
+    Public Sub AddDetailReport(adviceTypeError_ As AdviceTypesReport,
                                      description_ As String,
                                      valuesource_ As String,
                                      errortype_ As [Enum]
@@ -326,10 +335,10 @@ Public Class ValidatorReport
                 For Each itemreport_ In details
 
                     mensaje_ &= "No. " & itemreport_.numberitem & Chr(9) &
-                                itemreport_.description & Chr(9) &
-                                itemreport_.valuesourceitem & Chr(9) &
-                                itemreport_.errortype.ToString & Chr(9) &
-                                itemreport_.descriptionerrortype.ToString
+                                itemreport_.description & Chr(13) &
+                                itemreport_.valuesourceitem & Chr(13) &
+                                itemreport_.errortype.ToString & Chr(13) &
+                                itemreport_.descriptionerrortype.ToString & Chr(13)
 
                 Next
 
@@ -352,8 +361,78 @@ Public Class ValidatorReport
                 formularioMessage_.DisplayMessage(mensaje_.Replace(Chr(13), " ").Replace("'", Chr(34)),
                                    Gsol.Web.Template.FormularioGeneralWeb.StatusMessage.Fail)
 
+            Case 3
+
+                Dim mensaje_ As String = title & Chr(13)
+
+                Dim numberItem_ = 1
+
+                For Each itemreport_ In details
+
+                    mensaje_ &= If(itemreport_.valuesourceitem = "" And numberItem_ > 1,
+                                    "",
+                                    itemreport_.descriptionerrortype.ToString) &
+                                Chr(13) &
+                                "No. " & numberItem_ & Chr(9) &
+                                itemreport_.description & Chr(13) &
+                                itemreport_.valuesourceitem & Chr(13)
+
+                    numberItem_ += 1
+
+                Next
+
+                MsgBox(mensaje_)
+
         End Select
 
+    End Sub
+
+    Sub ShowMessageError(listalabel_ As List(Of Object))
+
+        If details IsNot Nothing Then
+
+            Dim labelCount_ = 0
+
+            For Each label_ As WebControls.Label In listalabel_
+
+                label_.Text = ""
+
+                labelCount_ += 1
+
+            Next
+
+            Dim title_ = details(0).valuesourceitem.Split(Chr(13))
+
+            listalabel_(0).Text = title_(1)
+            listalabel_(1).Text = title_(2)
+            listalabel_(2).Text = details(0).descriptionerrortype.ToString
+
+
+            For Each detail_ In details
+
+                Dim descripcions_ As List(Of String) = detail_.description.Replace("'", Chr(34)).Split(Chr(13)).ToList
+
+                Dim index_ = 3
+
+                For Each description_ In descripcions_
+
+                    If index_ < labelCount_ Then
+
+                        If description_ <> "" Then
+
+                            listalabel_(index_).Text = "#" & index_ - 2 & ": " & description_
+
+                            index_ += 1
+
+                        End If
+
+                    End If
+
+                Next
+
+            Next
+
+        End If
 
 
     End Sub
@@ -369,6 +448,84 @@ Public Class ValidatorReport
         Return details
 
     End Function
+
+#Region "Clone"
+
+    Public Function Clone() As Object Implements ICloneable.Clone
+
+        Dim validatorClone_ As ValidatorReport
+
+        Dim formatter_ As New BinaryFormatter()
+
+        Dim stream_ As New MemoryStream()
+
+        formatter_.Serialize(stream_, Me)
+
+        stream_.Position = 0
+
+        validatorClone_ = formatter_.Deserialize(stream_)
+
+        Return validatorClone_
+
+    End Function
+
+#End Region
+
+#Region "IDisposable Support"
+    Private disposedValue As Boolean ' Para detectar llamadas redundantes
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(disposing As Boolean)
+
+        If Not Me.disposedValue Then
+
+            If disposing Then
+                ' TODO: eliminar estado administrado (objetos administrados).
+            End If
+
+            'Propiedades no administradas
+
+            With Me
+
+                .datereport = Nothing
+
+                .details = Nothing
+
+                .messages = Nothing
+
+                .result = Nothing
+
+                .scope = Nothing
+
+                .sourcetype = Nothing
+
+                .title = Nothing
+
+                ._idreport = Nothing
+
+                ._iduser = Nothing
+
+            End With
+
+            ' TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
+            ' TODO: Establecer campos grandes como Null.
+        End If
+
+        Me.disposedValue = True
+
+    End Sub
+
+
+    ' Visual Basic agregó este código para implementar correctamente el modelo descartable.
+    Public Sub Dispose() Implements IDisposable.Dispose
+        ' No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
+        Dispose(True)
+
+        GC.SuppressFinalize(Me)
+
+    End Sub
+
+#End Region
 
 #End Region
 

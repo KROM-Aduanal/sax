@@ -31,7 +31,7 @@ Public Class validationpanel
     <BsonIgnoreIfNull>
     Public Property taked As Boolean
     <BsonIgnoreIfNull>
-    Public Property route As IValidationRouteController.ValidationRoutes
+    Public Property route As IValidationRoute.ValidationRoutes
     <BsonIgnoreIfNull>
     Public Property description As String
     <BsonIgnoreIfNull>
@@ -47,7 +47,7 @@ Public Class validationpanel
     Public Property estado As Int32
 
     Sub SetValidationPanel(field_ As CamposPedimento,
-                                        route_ As IValidationRouteController.ValidationRoutes,
+                                        route_ As IValidationRoute.ValidationRoutes,
                                         description_ As String,
                                         iduser_ As ObjectId,
                                         username_ As String,

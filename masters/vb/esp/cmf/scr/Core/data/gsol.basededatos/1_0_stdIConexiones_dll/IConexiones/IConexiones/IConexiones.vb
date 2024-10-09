@@ -105,6 +105,8 @@ Namespace gsol.basededatos
 
         Property ActivarBitacoraSimple As Boolean
 
+        Property SaxAppId As Int32?
+
 #End Region
 
 #Region "Métodos"

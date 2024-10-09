@@ -101,6 +101,8 @@ Namespace gsol.basededatos
 
         Private _activarBitacoraSimple As Boolean
 
+        Private _saxappid As Int32? = Nothing
+
 
 #End Region
 
@@ -160,6 +162,22 @@ Namespace gsol.basededatos
 #End Region
 
 #Region "Propiedades"
+
+        Public Property SaxAppId As Int32? Implements IConexiones.SaxAppId
+
+            Get
+
+                Return _saxappid
+
+            End Get
+
+            Set(value As Int32?)
+
+                _saxappid = value
+
+            End Set
+
+        End Property
 
         Public Property ActivarBitacoraAvanzada As Boolean _
     Implements IConexiones.ActivarBitacoraAvanzada
@@ -519,11 +537,11 @@ Namespace gsol.basededatos
                         'MasterOfPuppets
                         If _i_TiempoEspera = 0 Then : _i_TiempoEspera = 5 : End If
 
-                        _cadenaconexion = "Server=10.66.1.150;" & _
-                                       "Database=arkam3001;" & _
-                                       "UID=root;" & _
-                                       "Pwd=modelotx30;" & _
-                                       "Port=3306;" & _
+                        _cadenaconexion = "Server=10.66.1.150;" &
+                                       "Database=arkam3001;" &
+                                       "UID=root;" &
+                                       "Pwd=modelotx30;" &
+                                       "Port=3306;" &
                                        "Connect Timeout=" & _i_TiempoEspera.ToString & ";"
 
 
@@ -540,11 +558,11 @@ Namespace gsol.basededatos
 
                         If _i_TiempoEspera = 0 Then : _i_TiempoEspera = 5 : End If
 
-                        _cadenaconexion = "Server=" & _ipservidor & ";" & _
-                                          "Database=" & _nombrebasedatos & ";" & _
-                                          "UID=" & _usuario & ";" & _
-                                          "Pwd=" & _contrasena & ";" & _
-                                          "Port=" & _puerto & ";" & _
+                        _cadenaconexion = "Server=" & _ipservidor & ";" &
+                                          "Database=" & _nombrebasedatos & ";" &
+                                          "UID=" & _usuario & ";" &
+                                          "Pwd=" & _contrasena & ";" &
+                                          "Port=" & _puerto & ";" &
                                           "Connect Timeout=" & _i_TiempoEspera.ToString & ";"
 
                     Case IConexiones.Controladores.SQLServer2008
@@ -568,12 +586,25 @@ Namespace gsol.basededatos
 
                         With _statements
 
-                            ipservidor_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).ip
-                            stringoptions_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).stringoptions
-                            puerto_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).port
+                            If Not _saxappid Is Nothing Then
 
-                            usuario_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb").credentialId).user
-                            contrasena_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb").credentialId).password
+                                ipservidor_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb", _saxappid).endpointId, _saxappid).ip
+                                stringoptions_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb", _saxappid).endpointId, _saxappid).stringoptions
+                                puerto_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb", _saxappid).endpointId, _saxappid).port
+
+                                usuario_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb", _saxappid).credentialId, _saxappid).user
+                                contrasena_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb", _saxappid).credentialId, _saxappid).password
+                            Else
+
+                                ipservidor_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).ip
+                                stringoptions_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).stringoptions
+                                puerto_ = .GetEndPoint("project", .GetRol("project", "bigdataops", "nosql", "mongodb").endpointId).port
+
+                                usuario_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb").credentialId).user
+                                contrasena_ = .GetCredentials("project", .GetRol("project", "bigdataops", "nosql", "mongodb").credentialId).password
+
+                            End If
+
 
                         End With
 
@@ -746,8 +777,6 @@ Namespace gsol.basededatos
 
             Try
 
-                '_tagWatcherObject.SetError(TagWatcher.ErrorTypes.C2_000_2000, "Inicio de consulta")
-
                 _command.CommandText = _sentencia
 
                 _datadapter.SelectCommand = _command
@@ -848,20 +877,20 @@ Namespace gsol.basededatos
 
                 tiempoInicialL_ = ObtenerMilisegundos(f_FechaHoraInicial_)
 
-                _bitacoraAvanzada = New BitacoraCapaDatos(Nothing, _
-                    Nothing, _
-                    118, _
-                    Nothing, _
-                    Nothing, _
-                    IBitacoras.TiposBitacora.Informacion, _
-                     IBitacoras.TiposSucesos.Consultar, _
-                    _i_Cve_Usuario, _
-                    _i_Cve_DivisionMiEmpresa, _
-                    0, _
-                    f_FechaHoraInicial_, _
-                    _i_Cve_Aplicacion, _
-                    _i_TipoInstrumentacion, _
-                    _i_ModalidadConsulta, _
+                _bitacoraAvanzada = New BitacoraCapaDatos(Nothing,
+                    Nothing,
+                    118,
+                    Nothing,
+                    Nothing,
+                    IBitacoras.TiposBitacora.Informacion,
+                     IBitacoras.TiposSucesos.Consultar,
+                    _i_Cve_Usuario,
+                    _i_Cve_DivisionMiEmpresa,
+                    0,
+                    f_FechaHoraInicial_,
+                    _i_Cve_Aplicacion,
+                    _i_TipoInstrumentacion,
+                    _i_ModalidadConsulta,
                     _i_Cve_RecursoSolicitante
                    )
 
@@ -951,20 +980,20 @@ Namespace gsol.basededatos
 
                     tiempoInicialL_ = ObtenerMilisegundos(f_FechaHoraInicial_)
 
-                    _bitacoraAvanzada = New BitacoraCapaDatos(Nothing, _
-                        Nothing, _
-                        118, _
-                        Nothing, _
-                        Nothing, _
-                        IBitacoras.TiposBitacora.Informacion, _
-                         IBitacoras.TiposSucesos.Consultar, _
-                        _i_Cve_Usuario, _
-                        _i_Cve_DivisionMiEmpresa, _
-                        0, _
-                        f_FechaHoraInicial_, _
-                        _i_Cve_Aplicacion, _
-                        _i_TipoInstrumentacion, _
-                        _i_ModalidadConsulta, _
+                    _bitacoraAvanzada = New BitacoraCapaDatos(Nothing,
+                        Nothing,
+                        118,
+                        Nothing,
+                        Nothing,
+                        IBitacoras.TiposBitacora.Informacion,
+                         IBitacoras.TiposSucesos.Consultar,
+                        _i_Cve_Usuario,
+                        _i_Cve_DivisionMiEmpresa,
+                        0,
+                        f_FechaHoraInicial_,
+                        _i_Cve_Aplicacion,
+                        _i_TipoInstrumentacion,
+                        _i_ModalidadConsulta,
                         _i_Cve_RecursoSolicitante
                        )
 
@@ -1041,11 +1070,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsultaSinRespuesta}[System.InvalidOperationException]: " & vbNewLine & _
-                                              " ID Error: " & Err.Number.ToString & vbNewLine & _
-                                              "   " & _sentencia & ", " & vbNewLine & _
-                                             vbNewLine & _
-                                              "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsultaSinRespuesta}[System.InvalidOperationException]: " & vbNewLine &
+                                              " ID Error: " & Err.Number.ToString & vbNewLine &
+                                              "   " & _sentencia & ", " & vbNewLine &
+                                             vbNewLine &
+                                              "Mensaje excepción:" &
                                               "   " & ex1.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
                 End If
 
@@ -1083,11 +1112,11 @@ Namespace gsol.basededatos
 
                         If ActivarBitacoraSimple Then
 
-                            _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine & _
-                                                                               " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                               "   " & _sentencia & ", " & vbNewLine & _
-                                                                              vbNewLine & _
-                                                                               "Mensaje excepción:" & _
+                            _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine &
+                                                                               " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                               "   " & _sentencia & ", " & vbNewLine &
+                                                                              vbNewLine &
+                                                                               "Mensaje excepción:" &
                                                                                "   " & ex2.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                         End If
@@ -1103,11 +1132,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine & _
-                                                                    " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                    "   " & _sentencia & ", " & vbNewLine & _
-                                                                   vbNewLine & _
-                                                                    "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine &
+                                                                    " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                    "   " & _sentencia & ", " & vbNewLine &
+                                                                   vbNewLine &
+                                                                    "Mensaje excepción:" &
                                                                     "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1143,20 +1172,20 @@ Namespace gsol.basededatos
 
                     tiempoInicialL_ = ObtenerMilisegundos(f_FechaHoraInicial_)
 
-                    _bitacoraAvanzada = New BitacoraCapaDatos(Nothing, _
-                        Nothing, _
-                        118, _
-                        Nothing, _
-                        Nothing, _
-                        IBitacoras.TiposBitacora.Informacion, _
-                         IBitacoras.TiposSucesos.Consultar, _
-                        _i_Cve_Usuario, _
-                        _i_Cve_DivisionMiEmpresa, _
-                        0, _
-                        f_FechaHoraInicial_, _
-                        _i_Cve_Aplicacion, _
-                        _i_TipoInstrumentacion, _
-                        _i_ModalidadConsulta, _
+                    _bitacoraAvanzada = New BitacoraCapaDatos(Nothing,
+                        Nothing,
+                        118,
+                        Nothing,
+                        Nothing,
+                        IBitacoras.TiposBitacora.Informacion,
+                         IBitacoras.TiposSucesos.Consultar,
+                        _i_Cve_Usuario,
+                        _i_Cve_DivisionMiEmpresa,
+                        0,
+                        f_FechaHoraInicial_,
+                        _i_Cve_Aplicacion,
+                        _i_TipoInstrumentacion,
+                        _i_ModalidadConsulta,
                         _i_Cve_RecursoSolicitante
                        )
 
@@ -1230,11 +1259,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.InvalidOperationException]: " & vbNewLine & _
-                               " ID Error: " & Err.Number.ToString & vbNewLine & _
-                               "   " & _sentencia & ", " & vbNewLine & _
-                            vbNewLine & _
-                               "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.InvalidOperationException]: " & vbNewLine &
+                               " ID Error: " & Err.Number.ToString & vbNewLine &
+                               "   " & _sentencia & ", " & vbNewLine &
+                            vbNewLine &
+                               "Mensaje excepción:" &
                                "   " & ex1.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1279,11 +1308,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine & _
-                                                                    " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                    "   " & _sentencia & ", " & vbNewLine & _
-                                                                   vbNewLine & _
-                                                                    "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine &
+                                                                    " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                    "   " & _sentencia & ", " & vbNewLine &
+                                                                   vbNewLine &
+                                                                    "Mensaje excepción:" &
                                                                     "   " & ex2.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
 
@@ -1299,11 +1328,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine & _
-                                                                       " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                       "   " & _sentencia & ", " & vbNewLine & _
-                                                                      vbNewLine & _
-                                                                       "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine &
+                                                                       " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                       "   " & _sentencia & ", " & vbNewLine &
+                                                                      vbNewLine &
+                                                                       "Mensaje excepción:" &
                                                                        "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
 
@@ -1335,10 +1364,10 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaSentencia}:" & Chr(13) & _
-                                                       "   " & _sentencia & ", " & Chr(13) & _
-                                                       Chr(13) & _
-                                                       "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaSentencia}:" & Chr(13) &
+                                                       "   " & _sentencia & ", " & Chr(13) &
+                                                       Chr(13) &
+                                                       "Mensaje excepción:" &
                                                        "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1372,10 +1401,10 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaSentenciaIndividual}:" & Chr(13) & _
-                                     "   " & _sentencia & ", " & Chr(13) & _
-                                     Chr(13) & _
-                                     "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaSentenciaIndividual}:" & Chr(13) &
+                                     "   " & _sentencia & ", " & Chr(13) &
+                                     Chr(13) &
+                                     "Mensaje excepción:" &
                                      "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1422,9 +1451,9 @@ Namespace gsol.basededatos
 
                     _moduloCliente = "Conexiones64.dll"
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{Inicio Conexión}:" & Chr(13) & _
-                       Chr(13) & _
-                       "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{Inicio Conexión}:" & Chr(13) &
+                       Chr(13) &
+                       "Mensaje excepción:" &
                        "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1437,7 +1466,7 @@ Namespace gsol.basededatos
 
         'Usa bitácora antigua
         Private Function EjecutaConsultaEspecial(ByVal _sentencia As String) As Boolean _
-           ' Implements IConexiones.EjecutaConsulta
+            ' Implements IConexiones.EjecutaConsulta
 
             Dim ejecucion_ As Boolean = False
 
@@ -1469,11 +1498,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.InvalidOperationException]: " & vbNewLine & _
-                                              " ID Error: " & Err.Number.ToString & vbNewLine & _
-                                              "   " & _sentencia & ", " & vbNewLine & _
-                                           vbNewLine & _
-                                              "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.InvalidOperationException]: " & vbNewLine &
+                                              " ID Error: " & Err.Number.ToString & vbNewLine &
+                                              "   " & _sentencia & ", " & vbNewLine &
+                                           vbNewLine &
+                                              "Mensaje excepción:" &
                                               "   " & ex1.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1513,11 +1542,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine & _
-                                                                     " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                     "   " & _sentencia & ", " & vbNewLine & _
-                                                                    vbNewLine & _
-                                                                     "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}[System.Data.SqlClient.SqlException]: " & vbNewLine &
+                                                                     " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                     "   " & _sentencia & ", " & vbNewLine &
+                                                                    vbNewLine &
+                                                                     "Mensaje excepción:" &
                                                                      "   " & ex2.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1531,11 +1560,11 @@ Namespace gsol.basededatos
 
                 If ActivarBitacoraSimple Then
 
-                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine & _
-                                                                      " ..ID Error: " & Err.Number.ToString & vbNewLine & _
-                                                                      "   " & _sentencia & ", " & vbNewLine & _
-                                                                     vbNewLine & _
-                                                                      "Mensaje excepción:" & _
+                    _bitacoras = New BitacoraCapaDatos("SQLCommand Was{EjecutaConsulta*}: " & vbNewLine &
+                                                                      " ..ID Error: " & Err.Number.ToString & vbNewLine &
+                                                                      "   " & _sentencia & ", " & vbNewLine &
+                                                                     vbNewLine &
+                                                                      "Mensaje excepción:" &
                                                                       "   " & ex.Message, IBitacoras.TiposBitacora.Errores, IBitacoras.TiposSucesos.Consultar, _nombreUsuarioCliente, _moduloCliente)
 
                 End If
@@ -1558,6 +1587,12 @@ Namespace gsol.basededatos
 
                 datasetEstatico_.Tables.Add(messaje_.ObjectReturned)
 
+                Return True
+
+            Else
+
+                Return False
+
             End If
 
         End Function
@@ -1576,5 +1611,3 @@ Namespace gsol.basededatos
     End Class
 
 End Namespace
-
-

@@ -16,6 +16,8 @@ Imports MongoDB.Driver.MongoDBRefSerializer
 Imports MongoDB.Bson.Serialization.Attributes
 Imports MongoDB.Bson.Serialization.BsonSerializationContext
 Imports gsol.krom
+Imports Wma.Exceptions
+Imports Sax
 
 Namespace gsol.basededatos
 
@@ -28,25 +30,12 @@ Namespace gsol.basededatos
 
         Private _i_TiempoEspera As Int32 = 0
 
-        'Ahora incluiremos el manifiesto de carga de Sax para obtener recursos de ahí mediante el singleton
         Private _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
 #End Region
 
 #Region "Builders"
 
         Sub New()
-
-            'Configuracion.ObtenerInstancia()
-
-            'IpServidor = Configuracion.ConstanteGlobal(Configuracion.DatosGlobalesSistema.BMDDireccionIPMongoDB)
-
-            'PuertoConexion = 27017
-
-            'NombreBaseDatos = Configuracion.ConstanteGlobal(Configuracion.DatosGlobalesSistema.BMDNombreMongoDB)
-
-            'Usuario = Configuracion.ConstanteGlobal(Configuracion.DatosGlobalesSistema.BMDUsuarioMongoDB)
-
-            'Contrasena = Configuracion.ConstanteGlobal(Configuracion.DatosGlobalesSistema.BMDPasswordMongoDB)
 
             Dim _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
 
@@ -93,6 +82,121 @@ Namespace gsol.basededatos
 
         End Sub
 
+        Sub New(ByVal saxappid_ As Int32)
+
+            Dim _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
+
+            Dim rol_ As New Sax.rol
+
+            Dim endpoint_ As New endpoint
+
+            Dim credentials_ As New credential
+
+            Dim settingstypestr_ As String = "project"
+
+            rol_ = _statements.GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb", saxappid_)
+
+            endpoint_ = _statements.GetEndPoint(settingstypestr_, rol_.endpointId, saxappid_)
+
+            credentials_ = _statements.GetCredentials(settingstypestr_, rol_.credentialId, saxappid_)
+
+            With _statements
+
+                IpServidor = endpoint_.ip
+
+                NombreBaseDatos = rol_.name
+
+                PuertoConexion = endpoint_.port
+
+                Usuario = credentials_.user
+
+                Contrasena = credentials_.password
+
+            End With
+
+            SaxAppId = saxappid_
+
+            _estadoconexion = False
+
+            'Mongo settings
+
+            ControladorBaseDatos = IConexiones.Controladores.MongoDB
+
+            If ObjetoDatos = IConexiones.TipoConexion.Automatico Then
+
+                ObjetoDatos = IConexiones.TipoConexion.DirectMongoDB
+
+            ElseIf ObjetoDatos = IConexiones.TipoConexion.MySQLCommand _
+                Or ObjetoDatos = IConexiones.TipoConexion.OdbcCommand _
+                Or ObjetoDatos = IConexiones.TipoConexion.SqlCommand Then
+
+                ObjetoDatos = IConexiones.TipoConexion.DirectMongoDB
+
+            End If
+
+            If RepositorioDatos = IConexiones.TiposRepositorio.Automatico Then
+
+                RepositorioDatos = IConexiones.TiposRepositorio.BSONDocumentObject
+
+            End If
+
+        End Sub
+
+        Sub New(ByVal saxappid_ As Int32, ByVal rol_ As rol)
+
+            Dim _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
+
+            Dim endpoint_ As New endpoint
+
+            Dim credentials_ As New credential
+
+            Dim settingstypestr_ As String = "project"
+
+            endpoint_ = _statements.GetEndPoint(settingstypestr_, rol_.endpointId, saxappid_)
+
+            credentials_ = _statements.GetCredentials(settingstypestr_, rol_.credentialId, saxappid_)
+
+            With _statements
+
+                IpServidor = endpoint_.ip
+
+                NombreBaseDatos = rol_.name
+
+                PuertoConexion = endpoint_.port
+
+                Usuario = credentials_.user
+
+                Contrasena = credentials_.password
+
+            End With
+
+            SaxAppId = saxappid_
+
+            _estadoconexion = False
+
+            'Mongo settings
+
+            ControladorBaseDatos = IConexiones.Controladores.MongoDB
+
+            If ObjetoDatos = IConexiones.TipoConexion.Automatico Then
+
+                ObjetoDatos = IConexiones.TipoConexion.DirectMongoDB
+
+            ElseIf ObjetoDatos = IConexiones.TipoConexion.MySQLCommand _
+                Or ObjetoDatos = IConexiones.TipoConexion.OdbcCommand _
+                Or ObjetoDatos = IConexiones.TipoConexion.SqlCommand Then
+
+                ObjetoDatos = IConexiones.TipoConexion.DirectMongoDB
+
+            End If
+
+            If RepositorioDatos = IConexiones.TiposRepositorio.Automatico Then
+
+                RepositorioDatos = IConexiones.TiposRepositorio.BSONDocumentObject
+
+            End If
+
+        End Sub
 #End Region
 
 #Region "Properties"
@@ -122,16 +226,30 @@ Namespace gsol.basededatos
 
             With _statements
 
-                rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, resourceName_, rootId_)
+                'Deprecated, 29082024 MOP
+                'rol_ = .GetDatabaseAndCollectionName(databaseName_, collectionName_, resourceName_, rootId_)
+
+                rol_ = .GetDatabaseAndCollectionNameByApplication(databaseName_, collectionName_, SaxAppId, resourceName_, rootId_)
 
 
-                If rol_.officesuffix Then
+                If Not rol_ Is Nothing Then
 
-                    collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+                    If rol_.officesuffix Then
+
+                        collectionName_ = collectionName_ & .GetOfficeOnline()._id.ToString.PadLeft(2, "0"c)
+
+                    End If
+
+                    mongoCollection_ = imongoClient_.GetDatabase(databaseName_).GetCollection(Of T)(collectionName_)  'D0001_OO
+
+                Else
+
+                    Dim respuesta_ As New TagWatcher(0, "No encontró un elemento resourceName_ o rootId_ en Sax asociado a esta configuración")
+
+                    Return mongoCollection_
 
                 End If
 
-                mongoCollection_ = imongoClient_.GetDatabase(databaseName_).GetCollection(Of T)(collectionName_)  'D0001_OO
 
             End With
 
@@ -140,7 +258,8 @@ Namespace gsol.basededatos
         End Function
 
 
-        Public Function GetMongoClient(Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient Implements IConexionesNoSQL.GetMongoClient
+        Public Function GetMongoClient(Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient _
+            Implements IConexionesNoSQL.GetMongoClient
 
             Dim stringConnection_ As String = Nothing
 
@@ -164,15 +283,42 @@ Namespace gsol.basededatos
 
             With _statements
 
-                ipservidor_ = .GetEndPoint(settingstypestr_, .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb").endpointId).ip
-                stringoptions_ = .GetEndPoint(settingstypestr_, .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb").endpointId).stringoptions
-                puerto_ = .GetEndPoint(settingstypestr_, .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb").endpointId).port
+                Dim rol_ As New Sax.rol
 
-                usuario_ = .GetCredentials(settingstypestr_, .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb").credentialId).user
-                contrasena_ = .GetCredentials(settingstypestr_, .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb").credentialId).password
+                Dim endpoint_ As New endpoint
+
+                Dim credentials_ As New credential
+
+                If Not SaxAppId Is Nothing Then
+
+                    rol_ = .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb", SaxAppId)
+
+                    endpoint_ = .GetEndPoint(settingstypestr_, rol_.endpointId, SaxAppId)
+
+                    credentials_ = .GetCredentials(settingstypestr_, rol_.credentialId, SaxAppId)
+
+                Else
+
+                    rol_ = .GetRol(settingstypestr_, "bigdataops", "nosql", "mongodb")
+
+                    endpoint_ = .GetEndPoint(settingstypestr_, rol_.endpointId)
+
+                    credentials_ = .GetCredentials(settingstypestr_, rol_.credentialId)
+
+                End If
+
+
+                ipservidor_ = endpoint_.ip
+
+                stringoptions_ = endpoint_.stringoptions
+
+                puerto_ = endpoint_.port
+
+                usuario_ = credentials_.user
+
+                contrasena_ = credentials_.password
 
             End With
-
 
             stringConnection_ = "mongodb://" & IIf(Not usuario_ Is Nothing, usuario_ & ":" & contrasena_ & "@", Nothing) &
                                 Trim(ipservidor_) &
@@ -185,6 +331,86 @@ Namespace gsol.basededatos
 
         End Function
 
+        '31/08/2024 test1
+        Public Function GetMongoClientByRolId(ByVal rol_ As rol,
+                                       ByVal settingsType_ As Sax.SaxStatements.SettingTypes) As IMongoClient _
+            Implements IConexionesNoSQL.GetMongoClientByRolId
+
+            Dim stringConnection_ As String = Nothing
+
+            Dim settingstypestr_ As String = Nothing
+
+            Dim dbcontrollerstr_ As String = "mongodb"
+
+            Dim typecontroller_ As String = "nosql"
+
+            Select Case settingsType_
+
+                Case Sax.SaxStatements.SettingTypes.Core : settingstypestr_ = "core"
+
+                Case Sax.SaxStatements.SettingTypes.Projects : settingstypestr_ = "project"
+
+                Case Sax.SaxStatements.SettingTypes.Globals : settingstypestr_ = "globals"
+
+            End Select
+
+            Dim ipservidor_ As String
+            Dim stringoptions_ As String
+            Dim usuario_ As String
+            Dim contrasena_ As String
+            Dim puerto_ As String
+
+            With _statements
+
+                'Dim rol_ As New Sax.rol
+
+                Dim endpoint_ As New endpoint
+
+                Dim credentials_ As New credential
+
+                If Not SaxAppId Is Nothing Then
+
+                    'rol_ = .GetRol(settingstypestr_, Nothing, "nosql", "mongodb", SaxAppId, dbrolid_)
+                    'rol_ = .GetRolByDBRolId(settingstypestr_, "nosql", "mongodb", dbrolid_, SaxAppId)
+
+                    endpoint_ = .GetEndPoint(settingstypestr_, rol_.endpointId, SaxAppId)
+
+                    credentials_ = .GetCredentials(settingstypestr_, rol_.credentialId, SaxAppId)
+
+                Else
+
+                    'rol_ = .GetRol(settingstypestr_, Nothing, "nosql", "mongodb")
+                    'rol_ = .GetRolByDBRolId(settingstypestr_, "nosql", "mongodb", dbrolid_, Nothing)
+
+                    endpoint_ = .GetEndPoint(settingstypestr_, rol_.endpointId)
+
+                    credentials_ = .GetCredentials(settingstypestr_, rol_.credentialId)
+
+                End If
+
+
+                ipservidor_ = endpoint_.ip
+
+                stringoptions_ = endpoint_.stringoptions
+
+                puerto_ = endpoint_.port
+
+                usuario_ = credentials_.user
+
+                contrasena_ = credentials_.password
+
+            End With
+
+            stringConnection_ = "mongodb://" & IIf(Not usuario_ Is Nothing, usuario_ & ":" & contrasena_ & "@", Nothing) &
+                                Trim(ipservidor_) &
+                                IIf(Not puerto_ Is Nothing, ":" & puerto_, Nothing) &
+                                IIf(Not stringoptions_ Is Nothing, "/" & stringoptions_, Nothing)
+
+            Dim client_ = New MongoClient(stringConnection_)
+
+            Return client_
+
+        End Function
         Public Async Function AggregateAsync(ByVal collectionName_ As IMongoCollection(Of BsonDocument),
                                          Optional ByVal match_ As BsonDocument = Nothing,
                                          Optional ByVal unwind_ As BsonDocument = Nothing,

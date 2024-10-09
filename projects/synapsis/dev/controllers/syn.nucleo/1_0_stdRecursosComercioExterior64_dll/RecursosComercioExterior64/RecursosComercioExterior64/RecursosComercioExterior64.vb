@@ -160,6 +160,8 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("DescipcionesFacturas")> SPTO3 = 3
             <EnumMember> <Description("Historico Clasificacion")> SPTO4 = 4
             <EnumMember> <Description("Catalogo DescripcionesFacturas")> SPTO5 = 5
+            <EnumMember> <Description("Histórico de descripciones")> SPTO6 = 6
+
         End Enum
 
         Public Enum SeccionesTarifaArancelaria
@@ -968,6 +970,9 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("ObjectId Producto")> CP_OBJECTID_PRODUCTO = 9017
             <EnumMember> <Description("Descripcion Fracción Arancelaria")> CP_DESCRIPCION_FRACCION_ARANCELARIA = 9018
             <EnumMember> <Description("Descripcion Nico")> CP_DESCRIPCION_NICO = 9019
+            <EnumMember> <Description("Ruta del archivo de la muestra del producto")> CP_RUTA_ARCHIVO_MUESTRA = 9020
+            <EnumMember> <Description("Login del usuario que actualiza")> CP_LOGIN_USUARIO = 9021
+            <EnumMember> <Description("Enviroment de la oficina donde se actualiza")> CP_ENVIRONMENT = 9022
         End Enum
 
         Public Enum CamposTarifaArancelaria

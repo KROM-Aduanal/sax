@@ -2,16 +2,26 @@
 #Region "├┴┘├┴┘├┴┘├┴┘├┴┘|├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘   DEPENDENCIAS   ├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘├┴┘"
 
 'RECURSOS DEL CMF
+Imports System.Drawing
+Imports System.IO
+Imports System.Web.Script.Serialization
+Imports Cube.Validators
+Imports gsol.documento
 Imports gsol.Web.Components
 Imports gsol.Web.Components.PillboxControl.ToolbarModality
+Imports MongoDB.Bson
 Imports MongoDB.Driver
 'OBJETOS DIMENSIONALES (ODS's) Dependencias en MongoDB
 Imports Rec.Globals.Controllers
 'OBJETOS BIDIMENSIONALES (ODF's.  Dependencias Krombase/SQL Server)
 Imports Rec.Globals.Utils
+Imports Rec.Globals.Utils.Secuencias
 'UTILERIAS/RECURSOS ADICIONALES
 Imports Sax.Web
+Imports SharpCompress.Common
+Imports Syn.CustomBrokers.Controllers
 Imports Syn.Documento
+Imports Syn.Documento.Componentes
 Imports Syn.Nucleo.Recursos
 Imports Syn.Nucleo.RecursosComercioExterior
 Imports Syn.Operaciones
@@ -32,6 +42,8 @@ Public Class Ges022_001_RegistroProductos
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
+    Private _cdocumentos As New ControladorDocumento
+
 #End Region
 
 
@@ -50,6 +62,8 @@ Public Class Ges022_001_RegistroProductos
 
         End With
 
+
+
     End Sub
 
     'ASIGNACION PARA CONTROLES AUTOMÁTICOS
@@ -57,6 +71,8 @@ Public Class Ges022_001_RegistroProductos
 
         [Set](icNombreComercial, CamposProducto.CP_NOMBRE_COMERCIAL)
         [Set](swcEstadoProducto, CamposProducto.CP_HABILITADO, propiedadDelControl_:=PropiedadesControl.Checked)
+        [Set](fcImagenProducto, CamposProducto.CP_RUTA_ARCHIVO_MUESTRA)
+        [Set](fcImagenProducto, CamposProducto.CP_RUTA_ARCHIVO_MUESTRA, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
         [Set](fbcFraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA)
         [Set](fbcFraccionArancelaria, CamposProducto.CP_FRACCION_ARANCELARIA, asignarA_:=TiposAsignacion.ValorPresentacion, propiedadDelControl_:=PropiedadesControl.Text)
         [Set](icDescripcionFraccion, CamposProducto.CP_DESCRIPCION_FRACCION_ARANCELARIA)
@@ -83,8 +99,15 @@ Public Class Ges022_001_RegistroProductos
         [Set](icDescripcionCove, CamposProducto.CP_DESCRIPCION_COVE, propiedadDelControl_:=PropiedadesControl.Ninguno)
         [Set](ccDescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO5, propiedadDelControl_:=PropiedadesControl.Ninguno)
 
-
         [Set](pbcDescipcionesFacturas, Nothing, seccion_:=SeccionesProducto.SPTO3)
+
+        '[Set](icHistoricoFraccion, CamposProducto.CP_FRACCION_ARANCELARIA, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](icHistoricoNico, CamposProducto.CP_NICO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](icHistoricoMotivo, CamposProducto.CP_MOTIVO, propiedadDelControl_:=PropiedadesControl.Ninguno)
+        '[Set](icHistoricoFechaModificacion, CamposProducto.CP_FECHA_MODIFICACION, propiedadDelControl_:=PropiedadesControl.Ninguno)
+
+        '[Set](ccHistorialClasificacion, Nothing, seccion_:=SeccionesProducto.SPTO4)
+
         Return New TagWatcher(1)
 
     End Function
@@ -105,8 +128,11 @@ Public Class Ges022_001_RegistroProductos
 
     Public Overrides Sub BotoneraClicGuardar()
 
-        'ProcesarOperacion(Of Something)()
-        If Not ProcesarTransaccion(Of ConstructorProducto)().Status = TypeStatus.Errors Then : End If
+        If Not ProcesarTransaccion(Of ConstructorProducto)().Status = TypeStatus.Errors Then
+
+
+
+        End If
 
     End Sub
 
@@ -114,11 +140,17 @@ Public Class Ges022_001_RegistroProductos
 
         PreparaTarjetero(Advanced, pbcDescipcionesFacturas)
 
+
+
         btnRestaurar.Enabled = False
 
         btnArchivar.Enabled = True
 
         fscHistoriales.Visible = True
+
+        icMotivo.Visible = True
+
+
 
     End Sub
 
@@ -127,8 +159,22 @@ Public Class Ges022_001_RegistroProductos
 
     End Sub
 
+    Public Overrides Sub BotoneraClicOtros(ByVal IndexSelected_ As Integer)
+
+
+    End Sub
+
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    ' Esta metodo se manda llamar al dar clic en cualquiera de las opciones del      '
+    ' dropdown en la botonera; recibe el valor indice del boton al que se le ha dado '
+    ' clic                                                                           '
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
     'EVENTOS PARA LA INSERCIÓN DE DATOS
     Public Overrides Function AntesRealizarInsercion(ByVal session_ As IClientSessionHandle) As TagWatcher
+
+
 
         Dim tagwatcher_ As TagWatcher
 
@@ -162,8 +208,8 @@ Public Class Ges022_001_RegistroProductos
 
     Public Overrides Sub RealizarInsercion(ByRef documentoElectronico_ As DocumentoElectronico)
 
-        Dim secuencia_ As New Secuencia _
-                  With {.anio = 0,
+        Dim secuencia_ As New Syn.Operaciones.Secuencia _
+With {.anio = 0,
                         .environment = 0,
                         .mes = 0,
                         .nombre = "Productos",
@@ -195,52 +241,241 @@ Public Class Ges022_001_RegistroProductos
 
             .NombreCliente = Nothing
 
+
         End With
 
     End Sub
 
     Public Overrides Sub DespuesOperadorDatosProcesar(ByRef documentoElectronico_ As DocumentoElectronico)
 
+        Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
+
+        Dim userName_ As String = loginUsuario_("WebServiceUserID")
+
         With documentoElectronico_
 
             'HISTORICO CLASIFICACIÓN
-            Dim clasificacionArchivados_ = GetVars("_clasificacionArchivados")
 
-            If clasificacionArchivados_ IsNot Nothing Then
-                'Dictionary(Of String, String)
-                For Each item_ As Object In clasificacionArchivados_
+            With .Seccion(SeccionesProducto.SPTO1)
 
-                    Dim claIndice = Convert.ToInt32(item_.Item(ccHistorialClasificacion.KeyField))
+                If fcImagenProducto.Value = "" Then
 
-                    If claIndice > 0 Then
+                Else
 
-                        With .Seccion(SeccionesProducto.SPTO4).Partida(numeroSecuencia_:=claIndice)
+                    Dim valores_ = fcImagenProducto.Value.Replace("[{", "").Replace("}]", "").Replace(Chr(34), "").Split(",")
 
-                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("icHistoricoFraccion")
-                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("icHistoricoNico")
-                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("icHistoricoFechaModificacion")
-                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("icHistoricoMotivo")
+                    Dim valor_ = valores_(0).Split(":")
 
-                        End With
+                    If valor_.Count > 1 Then
+
+                        Dim valorPresentacion_ = valores_(1).Split(":")
+
+                        .Attribute(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA).Valor = ObjectId.Parse(valor_(1))
+
+                        .Attribute(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA).ValorPresentacion = valorPresentacion_(1)
 
                     Else
 
+                        .Attribute(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA).Valor = ObjectId.Parse(valor_(0))
+
+                        .Attribute(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA).ValorPresentacion = ""
+
+                    End If
+
+                End If
+
+            End With
+
+            Dim hayHistoricoClasificacion_ = If(ccHistorialClasificacion.DataSource Is Nothing, True, If(ccHistorialClasificacion.DataSource.length = 0, True, False))
+
+            If hayHistoricoClasificacion_ Then
+
+                If fbcFraccionArancelaria.Text <> "" Then
+
+                    With .Seccion(SeccionesProducto.SPTO4).Partida(documentoElectronico_)
+
+                        .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = fbcFraccionArancelaria.Text
+
+                        .Attribute(CamposProducto.CP_NICO).Valor = scNico.Text
+
+                        .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = DateTime.Now
+
+                        .Attribute(CamposProducto.CP_MOTIVO).Valor = "ALTA"
+
+                        .Attribute(CamposProducto.CP_LOGIN_USUARIO).Valor = userName_
+
+                        .Attribute(CamposProducto.CP_ENVIRONMENT).Valor = __SYSTEM_ENVIRONMENT.Value
+
+                        .Attribute(CamposProducto.CP_ENVIRONMENT).ValorPresentacion = __SYSTEM_ENVIRONMENT.Text.ToUpper
+
+                    End With
+
+                End If
+
+            Else
+
+
+                Dim encontrado_ = False
+
+
+                Dim item_ = ccHistorialClasificacion.DataSource(0)
+
+                If fbcFraccionArancelaria.Text & "-" & scNico.Text = item_("icHistoricoFraccion") Then
+                    encontrado_ = True
+
+                End If
+
+
+                If Not encontrado_ Then
+
+                    If fbcFraccionArancelaria.Text <> "" Then
+
                         With .Seccion(SeccionesProducto.SPTO4).Partida(documentoElectronico_)
 
-                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = item_.Item("icHistoricoFraccion")
-                            .Attribute(CamposProducto.CP_NICO).Valor = item_.Item("icHistoricoNico")
-                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = item_.Item("icHistoricoFechaModificacion")
-                            .Attribute(CamposProducto.CP_MOTIVO).Valor = item_.Item("icHistoricoMotivo")
+                            .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor = fbcFraccionArancelaria.Text
+
+                            .Attribute(CamposProducto.CP_NICO).Valor = scNico.Text
+
+                            .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor = DateTime.Now
+
+
+
+                            .Attribute(CamposProducto.CP_MOTIVO).Valor = If(icMotivo.Value = "", "ACTUALIZACIÓN", icMotivo.Value)
+
+                            .Attribute(CamposProducto.CP_LOGIN_USUARIO).Valor = userName_
+
+
+
+                            .Attribute(CamposProducto.CP_ENVIRONMENT).Valor = __SYSTEM_ENVIRONMENT.Value
+
+                            .Attribute(CamposProducto.CP_ENVIRONMENT).ValorPresentacion = __SYSTEM_ENVIRONMENT.Text.ToUpper
 
                         End With
 
                     End If
 
-                Next
+
+                End If
+
 
             End If
 
+            Dim Nodos_ = .Seccion(SeccionesProducto.SPTO3)
+
+            For Each nodo_ In Nodos_.Nodos
+
+                Dim nodoDescripciones_ = nodo_.Seccion(SeccionesProducto.SPTO5)
+
+
+                For Each nodoDescripcion_ In nodoDescripciones_.Nodos
+
+                    Dim secuencia_ As New Syn.Operaciones.Secuencia _
+                          With {.anio = 0,
+                        .environment = 0,
+                        .mes = 0,
+                        .nombre = "ProductosidKrom",
+                        .tiposecuencia = 1,
+                        .subtiposecuencia = 0
+                        }
+
+                    With nodoDescripcion_
+
+                        Dim idKrom_ = nodoDescripcion_.Campo(CamposProducto.CP_IDKROM).Valor
+
+                        Dim estado_ = nodoDescripcion_.Campo(CamposProducto.CP_IDKROM).estado
+
+
+                        If idKrom_ = 0 Then
+
+                            .Campo(CamposProducto.CP_IDKROM).Valor = secuencia_.Generar().Result.ObjectReturned.sec
+
+                            .Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor = Date.Now
+
+                            Dim partida_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO6).Partida(documentoElectronico_)
+
+                            partida_.Campo(CamposProducto.CP_IDKROM).Valor = .Campo(CamposProducto.CP_IDKROM).Valor
+
+                            partida_.Campo(CamposProducto.CP_NUMERO_PARTE).Valor = .Campo(CamposProducto.CP_NUMERO_PARTE).Valor
+
+                            partida_.Campo(CamposProducto.CP_TIPO_ALIAS).Valor = .Campo(CamposProducto.CP_TIPO_ALIAS).Valor
+
+                            partida_.Campo(CamposProducto.CP_APLICACOVE).Valor = .Campo(CamposProducto.CP_APLICACOVE).Valor
+
+                            partida_.Campo(CamposProducto.CP_DESCRIPCION).Valor = .Campo(CamposProducto.CP_DESCRIPCION).Valor
+
+                            partida_.Campo(CamposClientes.CA_RAZON_SOCIAL).Valor = nodo_.Campo(CamposClientes.CA_RAZON_SOCIAL).ValorPresentacion
+
+                            partida_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).Valor = nodo_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).ValorPresentacion
+
+                            partida_.Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor = .Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor
+
+                            partida_.Campo(CamposProducto.CP_LOGIN_USUARIO).Valor = userName_
+
+                            partida_.Campo(CamposProducto.CP_ENVIRONMENT).Valor = __SYSTEM_ENVIRONMENT.Value
+
+                            partida_.Campo(CamposProducto.CP_ENVIRONMENT).ValorPresentacion = __SYSTEM_ENVIRONMENT.Text.ToUpper
+
+
+                        Else
+
+                            Dim diccionarioDescrionciones_ = GetVars("diccionarioDescrionciones_")
+
+                            For Each descripcion_ In diccionarioDescrionciones_
+
+
+                                If descripcion_("icIdKrom") = idKrom_ And estado_ = 1 Then
+
+                                    Dim tipoalias_ = descripcion_("scTipoAlias")
+
+                                    If descripcion_("icNumeroParte") <> .Campo(CamposProducto.CP_NUMERO_PARTE).Valor OrElse
+                                       descripcion_("icDescripcion") <> .Campo(CamposProducto.CP_DESCRIPCION).Valor OrElse
+                                       descripcion_("swcAplicaCove") <> .Campo(CamposProducto.CP_APLICACOVE).Valor OrElse
+                                       descripcion_("icDescripcionCove") <> .Campo(CamposProducto.CP_DESCRIPCION_COVE).Valor OrElse
+                                       descripcion_("icAlias") <> .Campo(CamposProducto.CP_ALIAS).Valor Then
+
+
+                                        Dim partida_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO6).Partida(documentoElectronico_)
+
+                                        partida_.Campo(CamposProducto.CP_IDKROM).Valor = .Campo(CamposProducto.CP_IDKROM).Valor
+
+                                        partida_.Campo(CamposProducto.CP_NUMERO_PARTE).Valor = .Campo(CamposProducto.CP_NUMERO_PARTE).Valor
+
+                                        partida_.Campo(CamposProducto.CP_TIPO_ALIAS).Valor = .Campo(CamposProducto.CP_TIPO_ALIAS).Valor
+
+                                        partida_.Campo(CamposProducto.CP_APLICACOVE).Valor = .Campo(CamposProducto.CP_APLICACOVE).Valor
+
+                                        partida_.Campo(CamposProducto.CP_DESCRIPCION).Valor = .Campo(CamposProducto.CP_DESCRIPCION).Valor
+
+                                        partida_.Campo(CamposClientes.CA_RAZON_SOCIAL).Valor = nodo_.Campo(CamposClientes.CA_RAZON_SOCIAL).ValorPresentacion
+
+                                        partida_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).Valor = nodo_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).ValorPresentacion
+
+                                        partida_.Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor = .Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor
+
+                                        partida_.Campo(CamposProducto.CP_LOGIN_USUARIO).Valor = userName_
+
+                                        partida_.Campo(CamposProducto.CP_ENVIRONMENT).Valor = __SYSTEM_ENVIRONMENT.Value
+
+                                        partida_.Campo(CamposProducto.CP_ENVIRONMENT).ValorPresentacion = __SYSTEM_ENVIRONMENT.Text.ToUpper
+
+                                    End If
+                                End If
+
+                            Next
+
+                        End If
+
+                    End With
+
+                Next
+
+            Next
+
         End With
+
+        ColocaHistóricoClasificaciones(documentoElectronico_)
+
+        ColocaHistóricoDescripciones(documentoElectronico_)
 
     End Sub
 
@@ -276,8 +511,6 @@ Public Class Ges022_001_RegistroProductos
 
         End If
 
-        icFechaRegistro.Value = Convert.ToDateTime(Now).Date.ToString("yyyy-MM-dd")
-
         Return tagwatcher_
 
     End Function
@@ -298,91 +531,146 @@ Public Class Ges022_001_RegistroProductos
 
         'LLENADO DEL HISTORICO DE CLASIFICACIONES
 
-        Dim seccionUnicaClasificacion_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO4)
+        'Dim seccionUnicaClasificacion_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO4)
 
-        With seccionUnicaClasificacion_
+        'With seccionUnicaClasificacion_
 
-            ccHistorialClasificacion.ClearRows()
+        '    ccHistorialClasificacion.ClearRows()
 
-            For indice_ As Int32 = 1 To .CantidadPartidas
+        '    For indice_ As Int32 = 1 To .CantidadPartidas
 
-                ccHistorialClasificacion.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
+        '        ccHistorialClasificacion.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
 
-                                                    With .Partida(indice_)
+        '                                            With .Partida(indice_)
 
-                                                        catalogRow_.SetIndice(ccHistorialClasificacion.KeyField, indice_)
-                                                        catalogRow_.SetColumn(icHistoricoFraccion, .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor)
-                                                        catalogRow_.SetColumn(icHistoricoNico, .Attribute(CamposProducto.CP_NICO).Valor)
-                                                        catalogRow_.SetColumn(icHistoricoMotivo, .Attribute(CamposProducto.CP_MOTIVO).Valor)
-                                                        catalogRow_.SetColumn(icHistoricoFechaModificacion, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+        '                                                catalogRow_.SetIndice(ccHistorialClasificacion.KeyField, indice_)
+        '                                                catalogRow_.SetColumn(icHistoricoFraccion, .Attribute(CamposProducto.CP_FRACCION_ARANCELARIA).Valor)
+        '                                                catalogRow_.SetColumn(icHistoricoNico, .Attribute(CamposProducto.CP_NICO).Valor)
+        '                                                catalogRow_.SetColumn(icHistoricoMotivo, .Attribute(CamposProducto.CP_MOTIVO).Valor)
+        '                                                catalogRow_.SetColumn(icHistoricoFechaModificacion, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
 
-                                                    End With
+        '                                            End With
 
-                                                End Sub)
+        '                                        End Sub)
 
-            Next
+        '    Next
 
-            ccHistorialClasificacion.CatalogDataBinding()
+        '    ccHistorialClasificacion.CatalogDataBinding()
 
-            SetVars("_clasificacionArchivados", ccHistorialClasificacion.DataSource)
+        '    SetVars("_clasificacionArchivados", ccHistorialClasificacion.DataSource)
 
-        End With
+        'End With
 
 
         'LLENADO DEL HISTORICO DE DESCRIPCIONES
 
-        Dim seccionUnicaDescripciones_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO3)
+        'Dim seccionUnicaDescripciones_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO6)
 
-        With seccionUnicaDescripciones_
+        'With seccionUnicaDescripciones_
 
-            ccHistorialDescripciones.ClearRows()
+        '    ccHistorialDescripciones.ClearRows()
 
-            For indice_ As Int32 = 1 To .CantidadPartidas
+        '    Dim cuenta_ = 1
 
-                If .Partida(indice_).archivado = True Then
+        '    For Each nodoDescripcion_ In .Nodos
 
-                    Dim cliente_ = .Attribute(CamposClientes.CA_RAZON_SOCIAL).ValorPresentacion
+        '        ccHistorialDescripciones.SetRow(Sub(catalogRow_ As CatalogRow)
 
-                    Dim proveedor_ = .Attribute(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).ValorPresentacion
+        '                                            'Define el valor Llave de tu fila
 
-                    Dim subseccionUnicaDescripciones_ = documentoElectronico_.Seccion(SeccionesProducto.SPTO3).Partida(indice_).Seccion(SeccionesProducto.SPTO5)
+        '                                            catalogRow_.SetIndice(ccHistorialDescripciones.KeyField, cuenta_)
 
-                    With subseccionUnicaDescripciones_
+        '                                            'Define el valor de una columna de la fila
 
-                        For subindice_ As Int32 = 1 To .CantidadPartidas
 
-                            ccHistorialDescripciones.SetRow(Sub(ByVal catalogRow_ As CatalogRow)
 
-                                                                With .Partida(subindice_)
+        '                                            Dim icHistoricoNumeroParteT_ As New InputControl With {.ID = "icHistoricoNumeroParte",
+        '                                                                               .Value = nodoDescripcion_.Campo(CamposProducto.CP_NUMERO_PARTE).Valor,
+        '                                                                               .Type = InputControl.InputType.Text}
 
-                                                                    catalogRow_.SetIndice(ccHistorialDescripciones.KeyField, subindice_)
-                                                                    catalogRow_.SetColumn(icHistoricoCliente, cliente_)
-                                                                    catalogRow_.SetColumn(icHistoricoProveedor, proveedor_)
-                                                                    catalogRow_.SetColumn(icHistoricoNumeroParte, .Attribute(CamposProducto.CP_NUMERO_PARTE).Valor)
-                                                                    catalogRow_.SetColumn(icHistoricoDescripcion, .Attribute(CamposProducto.CP_DESCRIPCION).Valor)
-                                                                    'catalogRow_.SetColumn(icHistoricoFechaArchivado, .Attribute(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+        '                                            Dim icHistoricoDescripcionT_ As New InputControl With {.ID = "icHistoricoDescripcion",
+        '                                                                               .Value = nodoDescripcion_.Campo(CamposProducto.CP_DESCRIPCION).Valor,
+        '                                                                               .Type = InputControl.InputType.Text}
 
-                                                                End With
+        '                                            Dim icHistoricoProveedorT_ As New InputControl With {.ID = "icHistoricoProveedor",
+        '                                                                               .Value = nodoDescripcion_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).Valor,
+        '                                                                               .Type = InputControl.InputType.Text}
 
-                                                            End Sub)
+        '                                            Dim icHistoricoClienteT_ As New InputControl With {.ID = "icHistoricoCliente",
+        '                                                                               .Value = nodoDescripcion_.Campo(CamposClientes.CA_RAZON_SOCIAL).Valor,
+        '                                                                               .Type = InputControl.InputType.Text}
 
-                        Next
+        '                                            catalogRow_.SetColumn(icHistoricoNumeroParteT_, nodoDescripcion_.Campo(CamposProducto.CP_NUMERO_PARTE).Valor)
 
-                    End With
+        '                                            catalogRow_.SetColumn(icHistoricoDescripcionT_, nodoDescripcion_.Campo(CamposProducto.CP_DESCRIPCION).Valor)
 
-                End If
+        '                                            catalogRow_.SetColumn(icHistoricoProveedorT_, nodoDescripcion_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).Valor)
 
-            Next
+        '                                            catalogRow_.SetColumn(icHistoricoClienteT_, nodoDescripcion_.Campo(CamposClientes.CA_RAZON_SOCIAL).Valor)
 
-            ccHistorialDescripciones.CatalogDataBinding()
+        '                                            'de esta manera agregamos todas las columnas de nuestra fila 
+        '                                            'usando el control asociado a la columna y el valor que se asignara
+
+        '                                        End Sub)
+        '        cuenta_ += 1
+
+
+        '    Next
+
+        '    ccHistorialDescripciones.CatalogDataBinding()
+
+        'End With
+
+        fscHistoriales.Visible = True
+
+        With documentoElectronico_.Seccion(SeccionesProducto.SPTO1)
+
+            If fcImagenProducto.Value = "" Or fcImagenProducto.Value = "000000000000000000000000" Then
+
+            Else
+
+                Dim doc As Byte() = (New ControladorDocumento).GetDocument(.Campo(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA).Valor).ObjectReturned
+
+                Dim memoryStream_ As New MemoryStream(doc)
+
+                Randomize()
+
+                Dim filename_ = "prueba" & Rnd(10000) & ".jpg"
+
+                Dim filePath As String = "C:/inetpub/wwwroot/saxtest/sax/projects/synapsis/dev/main/FrontEnd/Recursos/Imgs/" & filename_ ' Ruta del archivo
+
+                Dim fileMode As FileMode = FileMode.Create ' Modo de acceso (crear en este caso)
+
+                Dim fileStream As FileStream = New FileStream(filePath, fileMode)
+
+                memoryStream_.WriteTo(fileStream)
+
+                fileStream.Close()
+
+                fcImagenProducto.CssClass = "col-xs-12 col-md-4"
+
+                icMuestraProducto.Source = "/FrontEnd/Recursos/Imgs/" & filename_
+
+                SetVars("PATH", icMuestraProducto.Source)
+
+                icMuestraProducto.Visible = True
+
+                'fcImagenProducto.Visible = False
+
+
+            End If
 
         End With
 
-        fscHistoriales.Visible = True
+
 
     End Sub
 
     Public Overrides Sub DespuesBuquedaGeneralConDatos()
+
+        ColocaHistóricoClasificaciones(OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
+
+        ColocaHistóricoDescripciones(OperacionGenerica.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente)
 
 
 
@@ -416,9 +704,16 @@ Public Class Ges022_001_RegistroProductos
 
         ccHistorialDescripciones.DataSource = Nothing
 
+        fcImagenProducto.CssClass = "col-xs-12 col-md-6"
+
         scNico.Value = Nothing
 
         scNico.DataSource = Nothing
+
+        icMotivo.Visible = False
+
+        icMuestraProducto.Visible = False
+
 
     End Sub
 
@@ -435,7 +730,7 @@ Public Class Ges022_001_RegistroProductos
 
 #End Region
 
-    Protected Sub fbx_Cliente_TextChanged(sender As Object, e As EventArgs)
+    Protected Sub fbc_Cliente_TextChanged(sender As Object, e As EventArgs)
 
         Dim controlBusqueda_ = New ControladorBusqueda(Of ConstructorCliente)
 
@@ -445,7 +740,7 @@ Public Class Ges022_001_RegistroProductos
 
     End Sub
 
-    Protected Sub fbx_Proveedor_TextChanged(sender As Object, e As EventArgs)
+    Protected Sub fbc_Proveedor_TextChanged(sender As Object, e As EventArgs)
 
         Dim controlBusqueda_ = New ControladorBusqueda(Of ConstructorProveedoresOperativos)
 
@@ -455,7 +750,7 @@ Public Class Ges022_001_RegistroProductos
 
     End Sub
 
-    Protected Sub fbx_FraccionArancelaria_TextChanged(sender As Object, e As EventArgs)
+    Protected Sub fbc_FraccionArancelaria_TextChanged(sender As Object, e As EventArgs)
 
         Dim controlador_ = New ControladorTIGIE()
 
@@ -477,7 +772,7 @@ Public Class Ges022_001_RegistroProductos
 
     End Sub
 
-    Protected Sub fbx_FraccionArancelaria_Click(sender As Object, e As EventArgs)
+    Protected Sub fbc_FraccionArancelaria_Click(sender As Object, e As EventArgs)
 
 
         If Not String.IsNullOrEmpty(fbcFraccionArancelaria.Text) Then
@@ -554,16 +849,20 @@ Public Class Ges022_001_RegistroProductos
 
     Protected Sub btn_ConfirmarArchivado_Click(sender As Object, e As EventArgs)
 
+        Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
+
+        Dim userName_ As String = loginUsuario_("WebServiceUserID")
+
         Dim clasificacionArchivados As Object() = GetVars("_clasificacionArchivados")
 
         Array.Resize(clasificacionArchivados, clasificacionArchivados.Length + 1)
 
         clasificacionArchivados(clasificacionArchivados.Length - 1) = New Dictionary(Of String, String) From {
             {ccHistorialClasificacion.KeyField, 0},
-            {"icHistoricoFraccion", fbcFraccionArancelaria.Text},
-            {"icHistoricoNico", scNico.Text},
+            {"icHistoricoFraccion", fbcFraccionArancelaria.Text & "-" & scNico.Text},
             {"icHistoricoMotivo", icMotivo.Value},
-            {"icHistoricoFechaModificacion", Date.Now().ToString("yyyy-MM-dd")}
+            {"icHistoricoFechaModificacion", Date.Now().ToString("yyyy-MM-dd")},
+            {"icHistoricoUsuario", userName_}
         }
 
         SetVars("_clasificacionArchivados", clasificacionArchivados)
@@ -604,6 +903,208 @@ Public Class Ges022_001_RegistroProductos
     '    ██████                                                                                        ██████
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
+    Public Function GeneraSecuencia(ByVal nombre_ As String,
+                                   Optional ByVal enviroment_ As Int16 = 0,
+                                   Optional ByVal anio_ As Int16 = 0,
+                                   Optional ByVal mes_ As Int16 = 0,
+                                   Optional ByVal tipoSecuencia_ As Integer = 0,
+                                   Optional ByVal subTipoSecuencia_ As Integer = 0,
+                                   Optional ByVal prefijo As String = Nothing
+                                   ) As Int32
+
+        Dim _controladorSecuencia = New ControladorSecuencia
+
+        Dim _secuencia = New Syn.Operaciones.Secuencia With {.nombre = nombre_,
+            .environment = enviroment_,
+            .anio = anio_,
+            .mes = mes_,
+            .tiposecuencia = tipoSecuencia_,
+            .subtiposecuencia = subTipoSecuencia_,
+            .prefijo = prefijo
+        }
+
+        Dim respuesta_ = _controladorSecuencia.Generar(_secuencia)
+
+        Dim sec_ As Int32 = 0
+
+        Select Case respuesta_.Status
+
+            Case TypeStatus.Ok
+
+                sec_ = respuesta_.ObjectReturned.sec
+
+            Case Else
+
+        End Select
+
+        Return sec_
+
+    End Function
+
+    Protected Sub fcImagenProducto_ChooseFile(sender As PropiedadesDocumento, e As EventArgs)
+
+        Dim id = ObjectId.GenerateNewId().ToString
+
+        With sender
+            ._idpropietario = id
+            .nombrepropietario = "ZERG"
+            .tipovinculacion = PropiedadesDocumento.TiposVinculacion.AgenciaAduanal
+            .datosadicionales = New InformacionDocumento With {
+                          .foliodocumento = "00000007",
+                          .tipodocumento = InformacionDocumento.TiposDocumento.SinDefinir,
+                          .datospropietario = New InformacionPropietario With {
+                              .nombrepropietario = "ZERG",
+                              ._id = id
+                          }
+                         }
+            .formatoarchivo = PropiedadesDocumento.FormatosArchivo.jpg
+        End With
+
+        Dim _idDocumento = ObjectId.Parse(id)
+
+        PROBANDOO()
+
+    End Sub
+
+    Sub ColocaHistóricoDescripciones(documentoElectronico_ As DocumentoElectronico)
+
+        With documentoElectronico_
+
+            With .Seccion(SeccionesProducto.SPTO6)
+
+                Dim cantidadPartidas_ = .Nodos.Count
+
+                ccHistorialDescripciones.ClearRows()
+
+                For indice_ = 1 To cantidadPartidas_
+
+                    Dim partida_ = .Partida(cantidadPartidas_ - indice_ + 1)
+
+                    ccHistorialDescripciones.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                                        'Define el valor Llave de tu fila
+
+                                                        catalogRow_.SetIndice(ccHistorialDescripciones.KeyField, indice_)
+
+                                                        'de esta manera agregamos todas las columnas de nuestra fila 
+                                                        'usando el control asociado a la columna y el valor que se asignara
+                                                        catalogRow_.SetColumn(icHistoricoNumeroParte, partida_.Campo(CamposProducto.CP_NUMERO_PARTE).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoDescripcion, partida_.Campo(CamposProducto.CP_DESCRIPCION).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoCliente, partida_.Campo(CamposClientes.CA_RAZON_SOCIAL).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoProveedor, partida_.Campo(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoFechaModificacionDescripciones, partida_.Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoUsuarioDescripciones, partida_.Campo(CamposProducto.CP_LOGIN_USUARIO).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoOficinaDescripciones, partida_.Campo(CamposProducto.CP_ENVIRONMENT).ValorPresentacion)
+
+                                                    End Sub)
+
+
+                Next
+
+                ccHistorialDescripciones.CatalogDataBinding()
+
+            End With
+
+
+        End With
+
+        Dim haycolumnas_ As Boolean = If(ccDescipcionesFacturas.DataSource Is Nothing, False, If(ccDescipcionesFacturas.DataSource.length = 0, False, True))
+
+        If haycolumnas_ Then
+
+
+
+            SetVars("diccionarioDescrionciones_", ccDescipcionesFacturas.DataSource)
+
+        End If
+
+    End Sub
+
+    Sub ColocaHistóricoClasificaciones(documentoElectronico_ As DocumentoElectronico)
+
+
+
+        With documentoElectronico_
+
+
+
+            With .Seccion(SeccionesProducto.SPTO4)
+
+                Dim cantidadPartidas_ = .Nodos.Count
+
+                ccHistorialClasificacion.ClearRows()
+
+                For indice_ = 1 To cantidadPartidas_
+
+                    Dim partida_ = .Partida(cantidadPartidas_ - indice_ + 1)
+
+                    ccHistorialClasificacion.SetRow(Sub(catalogRow_ As CatalogRow)
+
+                                                        'Define el valor Llave de tu fila
+
+                                                        catalogRow_.SetIndice(ccHistorialClasificacion.KeyField, indice_)
+
+                                                        'de esta manera agregamos todas las columnas de nuestra fila 
+                                                        'usando el control asociado a la columna y el valor que se asignara
+                                                        catalogRow_.SetColumn(icHistoricoFraccion, partida_.Campo(CamposProducto.CP_FRACCION_ARANCELARIA).Valor &
+                                                                                                   "-" &
+                                                                                                   partida_.Campo(CamposProducto.CP_NICO).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoMotivo, partida_.Campo(CamposProducto.CP_MOTIVO).Valor)
+
+                                                        Dim fechaModificacion_ As String = partida_.Campo(CamposProducto.CP_FECHA_MODIFICACION).Valor.ToString.Replace("-", "/")
+
+                                                        If fechaModificacion_.IndexOf("/") = 4 Then
+
+                                                            fechaModificacion_ = DateTime.ParseExact(fechaModificacion_, "dd/MM/yyyy hh:mm tt", Nothing)
+
+                                                        End If
+
+                                                        catalogRow_.SetColumn(icHistoricoFechaModificacion, fechaModificacion_)
+
+                                                        catalogRow_.SetColumn(icHistoricoUsuario, partida_.Campo(CamposProducto.CP_LOGIN_USUARIO).Valor)
+
+                                                        catalogRow_.SetColumn(icHistoricoOficina, partida_.Campo(CamposProducto.CP_ENVIRONMENT).ValorPresentacion)
+
+
+                                                    End Sub)
+
+
+                Next
+
+                ccHistorialClasificacion.CatalogDataBinding()
+
+            End With
+
+        End With
+
+
+
+
+    End Sub
+    Sub ActualizaImagen()
+
+        icMuestraProducto.Source = GetVars("PATH")
+
+        Dim algo_ = fcImagenProducto
+
+        Dim algo_2 = 0
+
+    End Sub
+
+    Sub PROBANDOO()
+
+        Dim algo_ = fcImagenProducto
+
+        Dim algo_2 = 0
+
+    End Sub
 
 #End Region
 

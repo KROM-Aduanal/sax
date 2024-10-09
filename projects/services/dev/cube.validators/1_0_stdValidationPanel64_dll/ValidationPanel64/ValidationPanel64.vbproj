@@ -44,9 +44,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cube.Validators.IValidationRouteController64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Cube.Validators.IValidationRoute64.0.0.0.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\libs\bin\cube.validators\Cube.Validators.IValidationRouteController64.0.0.0.0.dll</HintPath>
+      <HintPath>..\..\..\..\libs\bin\cube.validators\Cube.Validators.IValidationRoute64.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MongoDB.Bson">

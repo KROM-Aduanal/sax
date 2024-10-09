@@ -83,6 +83,10 @@
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\data\gsol.basededatos.IConexionesNoSQL.0.0.0.0.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="gsol.IRecursosSistemas.0.0.0.0">
+      <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\cmf\gsol.IRecursosSistemas.0.0.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="gsol.krom.EnlaceDatos64.0.0.0.0">
       <HintPath>..\..\..\..\..\..\masters\vb\esp\sax2.0\bin\Core\lnk\gsol.krom.EnlaceDatos64.0.0.0.0.dll</HintPath>
       <Private>False</Private>

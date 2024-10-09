@@ -423,14 +423,14 @@
     left: 1000px;
 }*/
 
-    .wc-cubo-formulas > div:nth-child(4) .iraformulacabulidad input {
-        background-position: left center;
-        background-repeat: no-repeat;
-        background-image: url('../../imgs/matraz.png');
-        background-size: 17%;
-        --tintColorss: #cecdcd;
-        background-color: var(--tintColorss);
-    }
+.wc-cubo-formulas > div:nth-child(4) .iraelaborarprueba input {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-image: url('../../imgs/matraz.png');
+    background-size: 17%;
+    --tintColorss: #cecdcd;
+    background-color: var(--tintColorss);
+}
 
     .wc-cubo-formulas > div:nth-child(4) .iralimpiar input {
         background-position: left center;

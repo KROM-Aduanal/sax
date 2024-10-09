@@ -1,7 +1,11 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel.Design.Serialization
+Imports System.Diagnostics.SymbolStore
+Imports System.IO
+Imports System.Runtime.Remoting.Contexts
 Imports gsol.krom
 Imports MongoDB.Bson
 Imports MongoDB.Bson.Serialization
+Imports MongoDB.Bson.Serialization.Attributes
 Imports Sax.SaxStatements
 Imports Wma.Exceptions
 
@@ -11,6 +15,17 @@ Namespace Sax
             Globals = 0
             Projects = 1
             Core = 2
+        End Enum
+
+        Public Enum RoladminTypes
+            master = 1
+            slave = 2
+        End Enum
+
+        Public Enum ConnectionTypes
+            Standard = 0
+            StringConnection = 1
+            APIRESTful = 2
         End Enum
 
         Public Enum CollectionTypes
@@ -38,6 +53,8 @@ Namespace Sax
 
         Private _object As Object
 
+        Private _saxappidMaster As Int32? = Nothing
+
 #End Region
 
 #Region "builders"
@@ -48,6 +65,7 @@ Namespace Sax
 
             _saxsettings = New List(Of SaxSettings)
 
+            'Carga master
             Initialize(appId_)
 
         End Sub
@@ -66,6 +84,14 @@ Namespace Sax
 
 #Region "properties"
 
+        ReadOnly Property SaxAppIdMaster As Int32?
+
+            Get
+                Return _saxappidMaster
+
+            End Get
+
+        End Property
         Property ObjectSession As Object
             Get
                 Return _object
@@ -111,9 +137,10 @@ Namespace Sax
 
 #Region "methods"
 
-        Public Sub Initialize(appId_)
+        Public Sub Initialize(ByVal appId_ As Int32,
+                              Optional ByVal roladmin_ As RoladminTypes = RoladminTypes.master)
 
-            LoadSettings(appId_)
+            LoadSettings(appId_, roladmin_)
 
         End Sub
 
@@ -134,11 +161,14 @@ Namespace Sax
             Return _instance
 
         End Function
+
         Public Shared Function GetInstance(ByVal appId_ As Int32) As SaxStatements
+
+            Dim slaves_ As List(Of slave)
 
             If _instance Is Nothing Then
 
-                _instance = New SaxStatements(appId_)
+                _instance = New SaxStatements()
 
                 For Each project_ As project In _instance.SaxProjects.projects
 
@@ -146,6 +176,8 @@ Namespace Sax
                     If project_.saxidapp = appId_ Then
 
                         project_.online = True
+
+                        slaves_ = project_.slaves
 
                     Else
                         project_.online = False
@@ -165,6 +197,73 @@ Namespace Sax
 
                         project_.online = True
 
+                        slaves_ = project_.slaves
+
+                    Else
+                        project_.online = False
+
+                    End If
+
+                Next
+
+            End If
+
+            'Turning on slaves of master project
+
+            If slaves_ IsNot Nothing Then
+
+                For Each slave_ In slaves_
+
+                    For Each project_ As project In _instance.SaxProjects.projects
+
+                        'Turning off & turning on current project.
+                        If project_.saxidapp = slave_.saxappid And project_.roladmin = RoladminTypes.slave.ToString Then
+
+                            project_.online = True
+
+                        End If
+
+                    Next
+
+                Next
+
+            End If
+
+            Return _instance
+
+        End Function
+        Public Shared Function GetInstance(ByVal appId_ As Int32,
+                                           Optional ByVal roladmin_ As RoladminTypes = RoladminTypes.master) As SaxStatements
+
+            If _instance Is Nothing Then
+
+                _instance = New SaxStatements(appId_)
+
+                For Each project_ As project In _instance.SaxProjects.projects
+
+                    'Turning off & turning on current master project.
+                    If project_.saxidapp = appId_ AndAlso project_.roladmin = roladmin_.ToString Then
+
+                        project_.online = True
+
+                    Else
+                        project_.online = False
+
+                    End If
+
+                Next
+
+            ElseIf Not IsOnLine(appId_, roladmin_) Then
+
+                Dim nothing_ = New SaxStatements(appId_)
+
+                For Each project_ As project In _instance.SaxProjects.projects
+
+                    'Turning off & turning on current project.
+                    If project_.saxidapp = appId_ AndAlso project_.roladmin = roladmin_.ToString Then
+
+                        project_.online = True
+
                     Else
                         project_.online = False
 
@@ -178,11 +277,12 @@ Namespace Sax
 
         End Function
 
-        Public Shared Function IsOnLine(ByVal appId_ As Int32) As Boolean
+        Public Shared Function IsOnLine(ByVal appId_ As Int32,
+                                        Optional ByVal roladmin_ As RoladminTypes = RoladminTypes.master) As Boolean
 
             For Each project_ In _instance.SaxProjects.projects
 
-                If project_.saxidapp = appId_ Then
+                If project_.saxidapp = appId_ AndAlso project_.roladmin = roladmin_.ToString Then
 
                     Return project_.online
 
@@ -198,7 +298,7 @@ Namespace Sax
 
             For Each project_ In _instance.SaxProjects.projects
 
-                If project_.online Then
+                If project_.online And project_.roladmin = RoladminTypes.master.ToString Then
 
                     Return project_
 
@@ -210,6 +310,22 @@ Namespace Sax
 
         End Function
 
+
+        Public Shared Function GetAppOnLine(roladminType_ As RoladminTypes) As project
+
+            For Each project_ In _instance.SaxProjects.projects
+
+                If project_.online And project_.roladmin = roladminType_.ToString Then
+
+                    Return project_
+
+                End If
+
+            Next
+
+            Return Nothing
+
+        End Function
 
         Private Function LoadSettingsComplete(ByVal appId_ As Int32) As TagWatcher
 
@@ -325,7 +441,6 @@ Namespace Sax
             If Not (File.Exists(pathglobalp1_) Or
                   File.Exists(pathglobals2_)) Then
 
-
                 Return New TagWatcher(0, Me, "File not found: " & pathglobals2_ & "," & pathglobalp1_, TagWatcher.ErrorTypes.C1_001_20002)
 
             End If
@@ -352,9 +467,43 @@ Namespace Sax
 
         End Function
 
-        Private Function LoadSettings(ByVal appId_ As Int32) As TagWatcher
+        Private Function LoadSlavesFromMaster(ByVal slaves_ As List(Of slave)) As TagWatcher
 
             Try
+
+                Dim status_ As New TagWatcher
+
+                For Each slave_ In slaves_
+
+                    status_ = LoadSettings(slave_.saxappid, RoladminTypes.slave)
+
+                    If status_.Status <> TagWatcher.TypeStatus.Ok Then
+
+                        Exit For
+
+                    End If
+
+                    Return status_
+
+                Next
+
+            Catch ex_ As Exception
+
+                Return New TagWatcher(0, Me, ex_.Message)
+
+            End Try
+
+
+
+        End Function
+
+
+        Private Function LoadSettings(ByVal appId_ As Int32,
+                                      Optional ByVal roladmin_ As RoladminTypes = RoladminTypes.master) As TagWatcher
+
+            Try
+
+                Dim slaves_ As New List(Of slave)
 
                 Dim myprojectpath_ As String = Nothing
 
@@ -366,9 +515,13 @@ Namespace Sax
 
                         For Each project_ As project In _instance.SaxProjects.projects
 
-                            If project_.activated And project_.saxidapp = appId_ Then
+                            If project_.activated And project_.saxidapp = appId_ And project_.roladmin = roladmin_.ToString Then
+
+                                _saxappidMaster = project_.saxidapp
 
                                 myprojectpath_ = project_.prjsettings
+
+                                slaves_ = project_.slaves
 
                                 myprojectmodulespath_ = project_.modulessettings
 
@@ -407,7 +560,17 @@ Namespace Sax
 
                     End If
 
-                    Return New TagWatcher(1)
+                    If roladmin_ = RoladminTypes.master Then
+
+                        Dim finalStatus_ As TagWatcher = LoadSlavesFromMaster(slaves_)
+
+                        Return finalStatus_ 'New TagWatcher(1)
+
+                    Else
+
+                        Return New TagWatcher(1)
+
+                    End If
 
                 Else
 
@@ -423,6 +586,35 @@ Namespace Sax
 
         End Function
 
+        Public Function GetCredentials(ByVal settingsType_ As String,
+                                       ByVal credentialId_ As Int32,
+                                       ByVal saxappid_ As Int32) As Sax.credential
+
+            Dim credentialEmpty_ As New Sax.credential With {.user = Nothing, .password = Nothing, .info = Nothing}
+
+            With GetSettings(settingsType_, saxappid_)
+
+                If Not .credentials Is Nothing Then
+
+                    For Each credential_ As Sax.credential In .credentials
+
+                        If credential_._id = credentialId_ Then
+
+                            Return credential_
+
+                        End If
+
+                    Next
+
+                End If
+
+            End With
+
+            Dim tagwatcher_ As New TagWatcher : tagwatcher_.SetError(Me, "¡No se encontraron las credenciales!")
+
+            Return credentialEmpty_
+
+        End Function
         Public Function GetCredentials(ByVal settingsType_ As String,
                                        ByVal credentialId_ As Int32) As Sax.credential
 
@@ -494,21 +686,25 @@ Namespace Sax
 
             For Each root_ As Sax.root In GetSettings(settingsType_).roots
 
-                If root_.collection = resourceName_ Then
+                If Not resourceName_ Is Nothing Then
 
-                    outputCollectionName_ = root_.collection
+                    If root_.collection = resourceName_ Then
 
-                    For Each rol_ As Sax.rol In GetSettings(settingsType_).servers.nosql.mongodb.rol
+                        outputCollectionName_ = root_.collection
 
-                        If rol_.rolname = root_.rolnamelinked Then
+                        For Each rol_ As Sax.rol In GetSettings(settingsType_).servers.nosql.mongodb.rol
 
-                            outputDatabaseName_ = rol_.name
+                            If rol_.rolname = root_.rolnamelinked Then
 
-                            Return rol_
+                                outputDatabaseName_ = rol_.name
 
-                        End If
+                                Return rol_
 
-                    Next
+                            End If
+
+                        Next
+
+                    End If
 
                 End If
 
@@ -583,22 +779,51 @@ Namespace Sax
 
         End Function
 
-        Public Function GetEndPoint(ByVal settingsType_ As String,
-                                    ByVal endpointId_ As Int32) As Sax.endpoint
+        Public Function GetDatabaseAndCollectionNameByApplication(ByRef outputDatabaseName_ As String,
+                                                                  ByRef outputCollectionName_ As String,
+                                                                  ByVal saxappid_ As Int32?,
+                                                                 Optional ByVal resourceName_ As String = Nothing,
+                                                                 Optional ByVal rootid_ As Int32? = Nothing,
+                                                                 Optional ByVal settingsType_ As String = "project") As Sax.rol
 
-            Dim endPoint_ As New Sax.endpoint With {.ip = "127.0.0.1", .port = Nothing, .info = Nothing}
+            Dim tagwatcher_ As New TagWatcher
 
-            With GetSettings(settingsType_)
+            Dim settings_ As New SaxSettings
 
-                If Not .endpoints Is Nothing Then
+            If Not saxappid_ Is Nothing Then
 
-                    If Not .about Is Nothing Then
+                settings_ = GetSettings(settingsType_, saxappid_)
 
-                        For Each endpointitem_ As Sax.endpoint In .endpoints
+            Else
 
-                            If endpointitem_._id = endpointId_ Then
+                settings_ = GetSettings(settingsType_)
 
-                                Return endpointitem_
+            End If
+
+
+            If resourceName_ Is Nothing And rootid_ Is Nothing Then
+
+                tagwatcher_.SetError(Me, "¡No envió el nombre de un recurso o id de root para buscar!")
+
+                Return Nothing
+
+            End If
+
+            For Each root_ As Sax.root In settings_.roots 'GetSettings(settingsType_, saxappid_).roots
+
+                If Not resourceName_ Is Nothing Then
+
+                    If root_.collection = resourceName_ Then
+
+                        outputCollectionName_ = root_.collection
+
+                        For Each rol_ As Sax.rol In settings_.servers.nosql.mongodb.rol
+
+                            If rol_.rolname = root_.rolnamelinked Then
+
+                                outputDatabaseName_ = rol_.name
+
+                                Return rol_
 
                             End If
 
@@ -608,11 +833,172 @@ Namespace Sax
 
                 End If
 
-            End With
+                If Not rootid_ Is Nothing Then
+
+                    If root_._id = rootid_ Then
+
+                        'Si hay un dbrolid se descarta todo lo demas, tendrá preferencia
+
+                        If Not root_.dbrolid Is Nothing Then
+
+                            outputCollectionName_ = root_.collection
+
+                            For Each rol_ As Sax.rol In settings_.servers.nosql.mongodb.rol
+
+                                If rol_._id = root_.dbrolid Then
+
+                                    outputDatabaseName_ = rol_.name
+
+                                    Return rol_
+
+                                End If
+
+                            Next
+
+                        Else
+
+                            If Not (root_.collection = "auto") And Not (root_.collection Is Nothing) Then
+
+                                outputCollectionName_ = root_.collection
+
+                            Else
+
+                                outputCollectionName_ = resourceName_
+
+                            End If
+
+                            For Each rol_ As Sax.rol In settings_.servers.nosql.mongodb.rol
+
+                                If rol_.rolname = root_.rolnamelinked Then
+
+                                    outputDatabaseName_ = rol_.name
+
+                                    Return rol_
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    End If
+
+                Else
+
+                    For Each linkedresource_ As Sax.linkedresource In root_.linkedresources
+
+                        If linkedresource_.name = resourceName_ Then
+
+                            If Not (root_.collection = "auto") And Not (root_.collection Is Nothing) Then
+
+                                outputCollectionName_ = root_.collection
+
+                            Else
+
+                                outputCollectionName_ = resourceName_
+
+                            End If
+                            'outputCollectionName_ = root_.collection
+
+                            For Each rol_ As Sax.rol In settings_.servers.nosql.mongodb.rol
+
+                                If rol_.rolname = root_.rolnamelinked Then
+
+                                    outputDatabaseName_ = rol_.name
+
+                                    Return rol_
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    Next
+
+                End If
+
+            Next
+
+            tagwatcher_.SetError(Me, "¡No se encontraron un rol que corresponda con el recurso!")
+
+            Return Nothing
+
+        End Function
+        Public Function GetEndPoint(ByVal settingsType_ As String,
+                                    ByVal endpointId_ As Int32,
+                                    ByVal saxappid_ As Int32) As Sax.endpoint
+
+            Return GetEndPointInternal(settingsType_, endpointId_, saxappid_)
+
+        End Function
+
+        Private Function GetEndPointInternal(settingsType_ As String,
+                                    ByVal endpointId_ As Int32,
+                                    Optional ByVal saxappid_ As Int32? = Nothing) As Sax.endpoint
+
+            Dim endPoint_ As New Sax.endpoint With {.ip = "127.0.0.1", .port = Nothing, .info = Nothing}
+
+            If Not saxappid_ Is Nothing Then
+
+                With GetSettings(settingsType_, saxappid_)
+
+                    If Not .endpoints Is Nothing Then
+
+                        If Not .about Is Nothing Then
+
+                            For Each endpointitem_ As Sax.endpoint In .endpoints
+
+                                If endpointitem_._id = endpointId_ Then
+
+                                    Return endpointitem_
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    End If
+
+                End With
+
+            Else
+
+                With GetSettings(settingsType_)
+
+                    If Not .endpoints Is Nothing Then
+
+                        If Not .about Is Nothing Then
+
+                            For Each endpointitem_ As Sax.endpoint In .endpoints
+
+                                If endpointitem_._id = endpointId_ Then
+
+                                    Return endpointitem_
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    End If
+
+                End With
+
+            End If
+
 
             Dim tagwatcher_ As New TagWatcher : tagwatcher_.SetError(Me, "¡No se encontraron endpoints disponibles!")
 
             Return endPoint_
+
+        End Function
+        Public Function GetEndPoint(ByVal settingsType_ As String,
+                                    ByVal endpointId_ As Int32) As Sax.endpoint
+
+            Return GetEndPointInternal(settingsType_, endpointId_)
 
         End Function
 
@@ -755,17 +1141,443 @@ Namespace Sax
 
         End Function
 
+        Public Function GetDBRolFromRootId(ByVal typedb_ As String,
+                                             ByVal db_ As String,
+                                             ByVal rootid_ As Int32,
+                                             ByVal saxappid_ As Int32?) As rol
+
+
+            Dim rol_ As New Sax.rol With {.name = Nothing,
+                                          .credentialId = 0,
+                                          .endpointId = 0,
+                                          .rolname = Nothing}
+
+            Dim listRoles_ As List(Of Sax.rol)
+
+            Dim settings_ As New SaxSettings
+
+            If Not saxappid_ Is Nothing Then
+
+                settings_ = GetSettings("project", saxappid_)
+
+            Else
+
+                settings_ = GetSettings("project", SaxAppIdMaster)
+
+            End If
+
+            Dim dbrolid_in_room_ As Int32? = Nothing
+
+            For Each root_ As root In settings_.roots
+
+                If root_._id = rootid_ Then
+
+                    dbrolid_in_room_ = root_.dbrolid
+
+                    Exit For
+
+                End If
+
+            Next
+
+            If Not dbrolid_in_room_ Is Nothing Then
+
+                'rol_ = GetRolByDBRolId("project", Nothing, "nosql", "mongodb", dbrolid_in_room_, saxappid_)
+
+                '***************************************
+
+                Select Case typedb_
+
+                    Case "sql"
+
+                        Select Case db_
+
+                            Case "mssql"
+
+                                With settings_
+
+                                    If Not .servers Is Nothing Then
+
+                                        If Not .servers Is Nothing Then
+
+                                            listRoles_ = .servers.sql.mssql.rol
+
+                                        End If
+
+                                    End If
+
+                                End With
+
+                            Case "mysql"
+
+                                With settings_
+
+                                    If Not .servers Is Nothing Then
+
+                                        If Not .servers Is Nothing Then
+
+                                            listRoles_ = .servers.sql.mysql.rol
+
+                                        End If
+
+                                    End If
+
+                                End With
+
+                        End Select
+
+                    Case "nosql"
+
+                        Select Case db_
+
+                            Case "mongodb"
+
+                                With settings_
+
+                                    If Not .servers Is Nothing Then
+
+                                        If Not .servers Is Nothing Then
+
+                                            listRoles_ = .servers.nosql.mongodb.rol
+
+                                        End If
+
+                                    End If
+
+                                End With
+
+                            Case "firebase"
+
+                                With settings_
+
+                                    If Not .servers Is Nothing Then
+
+                                        If Not .servers Is Nothing Then
+
+                                            listRoles_ = .servers.nosql.firebase.rol
+
+                                        End If
+
+                                    End If
+
+                                End With
+
+                        End Select
+
+                End Select
+
+                If Not listRoles_ Is Nothing Then
+
+                    For Each rolItem_ As Sax.rol In listRoles_
+
+                        If rolItem_.status = "on" And
+                           rolItem_._id = dbrolid_in_room_ Then
+
+                            Return rolItem_
+
+                        End If
+
+                    Next
+
+                End If
+
+                '***************************************
+
+            Else
+
+                Dim answer_ As New TagWatcher()
+
+                answer_.SetError(Me, "Does not exist the roomid or dbrolid " & rootid_.ToString & " in your sax settings.")
+
+                Return rol_
+
+            End If
+
+            Return rol_
+
+
+        End Function
+
+        Public Function GetRolByDBRolId(ByVal settingsType_ As String,
+                               ByVal typedb_ As String,
+                               ByVal db_ As String,
+                               ByVal dbrolid_ As Int32,
+                               Optional ByVal saxappid_ As Int32? = Nothing) As Sax.rol
+
+
+            Dim rol_ As New Sax.rol With {.name = Nothing,
+                                          .credentialId = 0,
+                                          .endpointId = 0,
+                                          .rolname = Nothing}
+
+            Dim listRoles_ As List(Of Sax.rol)
+
+            Dim settings_ As New SaxSettings
+
+            If Not saxappid_ Is Nothing Then
+
+                settings_ = GetSettings(settingsType_, saxappid_)
+
+            Else
+
+                settings_ = GetSettings(settingsType_)
+
+            End If
+
+            Select Case typedb_
+
+                Case "sql"
+
+                    Select Case db_
+
+                        Case "mssql"
+
+                            With settings_ 'GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.sql.mssql.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                        Case "mysql"
+
+                            With settings_ 'GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.sql.mysql.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                    End Select
+
+                Case "nosql"
+
+                    Select Case db_
+
+                        Case "mongodb"
+
+                            With settings_ 'GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.nosql.mongodb.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                        Case "firebase"
+
+                            With settings_ 'GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.nosql.firebase.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                    End Select
+
+            End Select
+
+            If Not listRoles_ Is Nothing Then
+
+                For Each rolItem_ As Sax.rol In listRoles_
+
+                    If rolItem_.status = "on" And
+                        rolItem_._id = dbrolid_ Then
+
+                        Return rolItem_
+
+                    End If
+
+                Next
+
+            End If
+
+            Return rol_
+
+        End Function
+
+        Public Function GetRol(ByVal settingsType_ As String,
+                               ByVal rolType_ As String,
+                               ByVal typedb_ As String,
+                               ByVal db_ As String,
+                               ByVal saxappid_ As Int32) As Sax.rol
+
+            Dim rol_ As New Sax.rol With {.name = Nothing,
+                                          .credentialId = 0,
+                                          .endpointId = 0,
+                                          .rolname = Nothing}
+
+            Dim listRoles_ As List(Of Sax.rol)
+
+            Select Case typedb_
+
+                Case "sql"
+
+                    Select Case db_
+
+                        Case "mssql"
+
+                            With GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.sql.mssql.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                        Case "mysql"
+
+                            With GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.sql.mysql.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                    End Select
+
+                Case "nosql"
+
+                    Select Case db_
+
+                        Case "mongodb"
+
+                            With GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.nosql.mongodb.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                        Case "firebase"
+
+                            With GetSettings(settingsType_, saxappid_)
+
+                                If Not .servers Is Nothing Then
+
+                                    If Not .servers Is Nothing Then
+
+                                        listRoles_ = .servers.nosql.firebase.rol
+
+                                    End If
+
+                                End If
+
+                            End With
+
+                    End Select
+
+            End Select
+
+            If Not listRoles_ Is Nothing Then
+
+                For Each rolItem_ As Sax.rol In listRoles_
+
+                    If rolItem_.status = "on" And
+                       rolItem_.rolname = rolType_ Then
+
+                        Return rolItem_
+
+                    End If
+
+                Next
+
+            End If
+
+            Return rol_
+
+        End Function
+        Public Function GetSettings(ByVal scope_ As String,
+                                    ByVal saxappid_ As Int32) As Sax.SaxSettings
+
+            Dim saxsettings_ As New Sax.SaxSettings With {.about = "void"}
+
+            For Each settingsItem_ As Sax.SaxSettings In _instance.SaxSettings
+
+                If settingsItem_.scope = scope_ And settingsItem_.saxidapp = saxappid_ Then
+
+                    Return settingsItem_
+
+                End If
+
+            Next
+
+            Return saxsettings_
+
+        End Function
+
         Public Function GetSettings(ByVal scope_ As String) As Sax.SaxSettings
 
             Dim saxsettings_ As New Sax.SaxSettings With {.about = "void"}
 
             For Each settingsItem_ As Sax.SaxSettings In _instance.SaxSettings
 
-                If settingsItem_.scope = scope_ Then
+                If Not _saxappidMaster Is Nothing Then
 
-                    Return settingsItem_
+                    If settingsItem_.scope = scope_ And settingsItem_.saxidapp = _saxappidMaster Then
+
+                        Return settingsItem_
+
+                    End If
+
+                Else
+
+                    If settingsItem_.scope = scope_ Then
+
+                        Return settingsItem_
+
+                    End If
+
 
                 End If
+
 
             Next
 
@@ -982,6 +1794,14 @@ Namespace Sax
 
     End Class
 
+    Public Class slave
+
+        Property saxappid As Int32
+
+        Property name As String
+        Property typeconnection As ConnectionTypes
+
+    End Class
     Public Class project
         Property _id As Int32
         Property saxidapp As Int32
@@ -991,6 +1811,14 @@ Namespace Sax
         Property status As String
         Property activated As Boolean
         Property online As Boolean
+
+        <BsonIgnoreIfNull>
+        Property roladmin As String
+
+        <BsonIgnoreIfNull>
+        Property slaves As List(Of slave)
+
+        'saxappid
         Property industry As String
         Property language As String
         Property directoryname As String
@@ -1003,7 +1831,10 @@ Namespace Sax
     Public Class SaxSettings
         Property about As String
         Property version As String
+
+        <BsonIgnoreIfNull>
         Property scope As String
+        Property saxidapp As Int32
         Property logs As logs
         Property globals As globals
         Property credentials As List(Of credential)
@@ -1059,6 +1890,9 @@ Namespace Sax
         Property name As String
         Property pref As String
         Property level As Int32?
+
+        <BsonIgnoreIfNull>
+        Property dbrolid As Int32?
         Property rolnamelinked As String
         Property officetype As String
         Property online As Boolean
@@ -1145,6 +1979,7 @@ Namespace Sax
     End Class
 
 #End Region
+
     '---------------modules
 #Region "Structure for modules"
     Public Class projectstructure
@@ -1237,4 +2072,3 @@ Namespace Sax
 #End Region
 
 End Namespace
-

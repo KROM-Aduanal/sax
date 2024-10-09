@@ -163,7 +163,17 @@ Public Class FileControl
 
         _textJsondata.Text = New JavaScriptSerializer().Serialize(data_)
 
-        _fileInput.Attributes.Add("accept", GetEnumDescription(documentodigital_.formatoarchivo))
+        Dim validFiles_ As String = ""
+
+        For Each formato_ As PropiedadesDocumento.FormatosArchivo In [Enum].GetValues(GetType(PropiedadesDocumento.FormatosArchivo))
+
+            validFiles_ &= formato_.ToString & ","
+
+        Next
+
+        validFiles_.Substring(0, validFiles_.Length - 1)
+
+        _fileInput.Attributes.Add("accept", validFiles_) ' GetEnumDescription(documentodigital_.formatoarchivo))
 
         'checar quen onda con el nommbre de archivo me da anciedad lo coloquen los usuarios pero es un rollo mandarlo al controlador
 
@@ -430,8 +440,23 @@ Public Class FileControl
 
                 _textJsondata.Text = New JavaScriptSerializer().Serialize(data_)
 
-                _fileInput.Attributes.Add("accept", GetEnumDescription(documentodigital_.formatoarchivo))
+                '   _fileInput.Attributes.Add("accept", GetEnumDescription(documentodigital_.formatoarchivo))
 
+                Dim validFiles_ As String = ""
+
+                For Each formato_ As PropiedadesDocumento.FormatosArchivo In [Enum].GetValues(GetType(PropiedadesDocumento.FormatosArchivo))
+
+                    If formato_ <> 0 Then
+
+                        validFiles_ &= GetEnumDescription(formato_) & ","
+
+                    End If
+
+                Next
+
+                validFiles_ = validFiles_.Substring(0, validFiles_.Length - 1)
+
+                _fileInput.Attributes.Add("accept", validFiles_) ' GetEnumDescription(documentodigital_.formatoarchivo))
 
                 .Controls.Add(New LiteralControl("<div class='row no-gutters wc-file wc-file-dragable mb-5 __component' " & ForeColor.HtmlPropertyColor & ">"))
 
