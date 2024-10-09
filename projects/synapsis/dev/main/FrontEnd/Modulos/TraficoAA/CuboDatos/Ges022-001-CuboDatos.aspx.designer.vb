@@ -122,6 +122,375 @@ Partial Public Class Ges022_001_CuboDatos
     Protected WithEvents fscformulas As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control ccErrores.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ccErrores As Global.Gsol.Web.Components.CardControl
+
+    '''<summary>
+    '''Control litem1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem3 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem5 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem6 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem7 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem8.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem8 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem9.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem9 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem10.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem10 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem11 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem12.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem12 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem13.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem13 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem14.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem14 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem15.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem15 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem16.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem16 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem17.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem17 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem18.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem18 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem19.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem19 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem20.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem20 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem21.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem21 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem22.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem22 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem23.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem23 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem24.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem24 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem25.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem25 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem26.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem26 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem27.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem27 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem28.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem28 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem29.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem29 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem30.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem30 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem31.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem31 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem32.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem32 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem33.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem33 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem34.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem34 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem35.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem35 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem36.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem36 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem37.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem37 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem38.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem38 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem39.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem39 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control litem40.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents litem40 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control p_formulillas.
     '''</summary>
     '''<remarks>
@@ -138,6 +507,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents l_RulesOld As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control scUseType.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scUseType As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control p_FormulaActual.
@@ -282,6 +660,15 @@ Partial Public Class Ges022_001_CuboDatos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents l_RulesNew As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control scUseTypeNew.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scUseTypeNew As Global.Gsol.Web.Components.SelectControl
 
     '''<summary>
     '''Control p_FormulaNueva.

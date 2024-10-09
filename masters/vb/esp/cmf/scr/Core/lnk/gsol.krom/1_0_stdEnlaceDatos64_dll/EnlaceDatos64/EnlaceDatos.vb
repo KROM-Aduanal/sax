@@ -11,9 +11,12 @@ Imports Syn.Operaciones
 Imports System.Threading.Tasks
 Imports MongoDB.Bson
 Imports MongoDB.Driver
-Imports Wma.Exceptions.TagWatcher
+'Imports Wma.Exceptions.TagWatcher
 Imports Rec.Globals.Utils
 Imports Syn.Utils
+Imports Wma.Exceptions.TagWatcher
+'Imports Sax
+'Imports Sax.SaxStatements
 
 Namespace gsol.krom
     Public Class EnlaceDatos
@@ -56,11 +59,28 @@ Namespace gsol.krom
         'Ahora incluiremos el manifiesto de carga de Sax para obtener recursos de ahí mediante el singleton
         Private _statements As Sax.SaxStatements = Sax.SaxStatements.GetInstance()
 
+        'Identificaremos la aplicación llamante, para contextualizar si el roladmin, si es master o slave
+        Private _saxappid As Int32? = Nothing
+
 #End Region
 
 #Region "Constructores"
 
         Sub New()
+
+            Iniciar()
+
+        End Sub
+
+        Sub New(ByVal saxAppId_ As Int32)
+
+            Iniciar(saxAppId_)
+
+            _saxappid = saxAppId_
+
+        End Sub
+
+        Private Sub Iniciar(Optional ByVal saxappid_ As Int32? = Nothing)
 
             'Parámetros por defecto
             _convertirCamposNulos = True
@@ -73,7 +93,15 @@ Namespace gsol.krom
 
             _tipoRespuestaRequerida = IEnlaceDatos.FormatosRespuesta.ObjetoSimple
 
-            _lineaBaseEnlaceDatos = New LineaBaseEnlaceDatos
+            If Not saxappid_ Is Nothing Then
+
+                _lineaBaseEnlaceDatos = New LineaBaseEnlaceDatos(saxappid_)
+
+            Else
+                _lineaBaseEnlaceDatos = New LineaBaseEnlaceDatos
+
+            End If
+
 
             _tagWatcher = New TagWatcher
 
@@ -237,7 +265,7 @@ Namespace gsol.krom
 
             'Dim iEnlace_ As IEnlaceDatos = New EnlaceDatos
 
-            Dim operacionesDB_ As IMongoCollection(Of OperacionGenerica) = Me.GetMongoCollection(Of OperacionGenerica)(objetoDatos_.GetType.Name)
+            Dim operacionesDB_ As IMongoCollection(Of OperacionGenerica) = GetMongoCollection(Of OperacionGenerica)(objetoDatos_.GetType.Name)
 
             Try
 
@@ -577,7 +605,7 @@ Namespace gsol.krom
 
                 Else
 
-                    _tagWatcher.SetError(Me, TagWatcher.ErrorTypes.C5_013_00001)
+                    _tagWatcher.SetError(Me, Wma.Exceptions.TagWatcher.ErrorTypes.C5_013_00001)
 
                 End If
 
@@ -996,10 +1024,101 @@ Namespace gsol.krom
         End Function
 
 
+        Public Function GetMongoCollectionByRootId(Of T)(ByVal rootid_ As Int32,
+                                                         Optional ByVal convertresourcename_ As Boolean = False) As IMongoCollection(Of T) _
+                                                         Implements IEnlaceDatos.GetMongoCollectionByRootId
+
+            Dim conexionesNoSQL_ As IConexionesNoSQL
+
+            'Dim saxappid_ As Int32
+
+
+            Dim rol_ As Sax.rol
+
+
+            If Not _saxappid Is Nothing Then
+
+                rol_ = _statements.GetDBRolFromRootId("nosql", "mongodb", rootid_, _saxappid)
+
+                If rol_._id = 0 Then
+
+                    'Throw New Exception("(Sax): No existe el roootId " & rootid_ & " revise sax.settings e intente nuevamente.")
+
+                    Dim exception_ As New TagWatcher()
+
+                    exception_.SetError(Me, "No existe el rootId " & rootid_ & " revise sax.settings e intente nuevamente.")
+
+                End If
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid, rol_)
+
+                'saxappid_ = _saxappid
+
+            Else
+
+                _saxappid = _statements.SaxAppIdMaster
+
+                rol_ = _statements.GetDBRolFromRootId("nosql", "mongodb", rootid_, _saxappid)
+
+                'conexionesNoSQL_ = New ConexionesNoSQL()
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid, rol_)
+
+            End If
+
+            'rol_ = _statements.GetDBRolFromRootId("nosql", "mongodb", rootid_, saxappid_)
+
+            If Not rol_ Is Nothing And rol_._id <> 0 Then
+
+                Using conexionesNoSQL_
+
+                    Dim resourceName_ As String = Nothing
+
+                    If convertresourcename_ Then
+
+                        If resourceName_ Is Nothing Then
+
+                            If GetType(T).Name <> "OperacionGenerica" Then
+
+                                resourceName_ = GetType(T).Name
+
+                            End If
+
+                        End If
+
+                    End If
+
+                    Return conexionesNoSQL_.GetMongoCollection(Of T)(GetMongoClientByRolId(rol_._id, Sax.SaxStatements.SettingTypes.Projects), resourceName_, rootid_)
+
+                End Using
+
+            Else
+
+                Dim answer_ As New TagWatcher(0, "RolId was not found in sax settings!")
+
+                Return Nothing
+
+            End If
+
+        End Function
+
         Public Function GetMongoCollection(Of T)(Optional ByVal resourceName_ As String = Nothing,
                                                  Optional ByVal rootid_ As Int32? = Nothing) As IMongoCollection(Of T) Implements IEnlaceDatos.GetMongoCollection
 
-            Using conexionesNoSQL_ As IConexionesNoSQL = New ConexionesNoSQL
+
+            Dim conexionesNoSQL_ As IConexionesNoSQL
+
+            If Not _saxappid Is Nothing Then
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid)
+
+            Else
+
+                conexionesNoSQL_ = New ConexionesNoSQL
+
+            End If
+
+            Using conexionesNoSQL_
 
                 If resourceName_ Is Nothing Then
                     If GetType(T).Name <> "OperacionGenerica" Then
@@ -1017,7 +1136,19 @@ Namespace gsol.krom
                                                  Optional ByVal resourceName_ As String = Nothing,
                                                  Optional ByVal rootid_ As Int32? = Nothing) As IMongoCollection(Of T) Implements IEnlaceDatos.GetMongoCollection
 
-            Using conexionesNoSQL_ As IConexionesNoSQL = New ConexionesNoSQL
+            Dim conexionesNoSQL_ As IConexionesNoSQL
+
+            If Not _saxappid Is Nothing Then
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid)
+
+            Else
+
+                conexionesNoSQL_ = New ConexionesNoSQL
+
+            End If
+
+            Using conexionesNoSQL_
 
                 Return conexionesNoSQL_.GetMongoCollection(Of T)(imongoClient_, resourceName_, rootid_)
 
@@ -1025,10 +1156,61 @@ Namespace gsol.krom
 
         End Function
 
+
+        Public Function GetMongoClientByRolId(ByVal dbrolid_ As Int32,
+                                        ByVal settingsType_ As Sax.SaxStatements.SettingTypes) As IMongoClient _
+            Implements IEnlaceDatos.GetMongoClientByRolId
+
+            Dim conexionesNoSQL_ As IConexionesNoSQL
+
+            Dim settingstypestr_ As String = Nothing
+
+            Dim rol_ As New Sax.rol
+
+            Select Case settingsType_
+                Case Sax.SaxStatements.SettingTypes.Core : settingstypestr_ = "core"
+                Case Sax.SaxStatements.SettingTypes.Projects : settingstypestr_ = "project"
+                Case Sax.SaxStatements.SettingTypes.Globals : settingstypestr_ = "globals"
+            End Select
+
+
+            If Not _saxappid Is Nothing Then
+
+                rol_ = _statements.GetRolByDBRolId(settingstypestr_, "nosql", "mongodb", dbrolid_, SaxAppId)
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid, rol_)
+
+            Else
+
+                rol_ = _statements.GetRolByDBRolId(settingstypestr_, "nosql", "mongodb", dbrolid_)
+
+                conexionesNoSQL_ = New ConexionesNoSQL
+
+            End If
+
+            Using conexionesNoSQL_
+                '31082024 temp1
+                Return conexionesNoSQL_.GetMongoClientByRolId(rol_, settingsType_)
+
+            End Using
+
+        End Function
         Public Function GetMongoClient(Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient _
                                       Implements IEnlaceDatos.GetMongoClient
 
-            Using conexionesNoSQL_ As IConexionesNoSQL = New ConexionesNoSQL
+            Dim conexionesNoSQL_ As IConexionesNoSQL
+
+            If Not _saxappid Is Nothing Then
+
+                conexionesNoSQL_ = New ConexionesNoSQL(_saxappid)
+
+            Else
+
+                conexionesNoSQL_ = New ConexionesNoSQL
+
+            End If
+
+            Using conexionesNoSQL_
 
                 Return conexionesNoSQL_.GetMongoClient()
 
@@ -1036,7 +1218,6 @@ Namespace gsol.krom
 
         End Function
 
-        'Public Async Sub CambiosDetectadosAsync(Of T)(ByVal listaActualizaciones_ As List(Of DocumentoElectronicoObjetoActualizador),
         Public Sub CambiosDetectadosAsync(Of T)(ByVal listaActualizaciones_ As List(Of DocumentoElectronicoObjetoActualizador),
                                                 ByVal referencia_ As String,
                                                 ByVal id_ As ObjectId,
@@ -1336,6 +1517,22 @@ Namespace gsol.krom
 #End Region
 
 #Region "Propiedades"
+
+        Public Property SaxAppId As Int32
+
+            Get
+                Return _saxappid
+
+            End Get
+
+            Set(value As Int32)
+
+                _saxappid = value
+
+            End Set
+
+        End Property
+
 
         Public Property ReflejarEn As IEnlaceDatos.DestinosParaReplicacion Implements IEnlaceDatos.ReflejarEn
             Get
@@ -2152,7 +2349,7 @@ Namespace gsol.krom
 
             Else
 
-                _tagWatcher.SetError(Me, TagWatcher.ErrorTypes.C5_013_00001)
+                _tagWatcher.SetError(Me, ErrorTypes.C5_013_00001)
 
             End If
 

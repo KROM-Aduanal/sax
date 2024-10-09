@@ -20,3 +20,9 @@ d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\sax\1_0_stdSaxStatements64_
 d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\sax\1_0_stdSaxStatements64_dll\SaxStatements64\obj\Debug\Sax.SaxStatements64.0.0.0.0.dll
 d:\Trabajos\krom\Sax\masters\vb\esp\cmf\scr\Core\cmf\sax\1_0_stdSaxStatements64_dll\SaxStatements64\obj\Debug\Sax.SaxStatements64.0.0.0.0.pdb
 C:\sax\masters\vb\esp\cmf\scr\Core\cmf\sax\1_0_stdSaxStatements64_dll\SaxStatements64\obj\Debug\SaxStatements64.vbproj.AssemblyReference.cache
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\snappy32.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\snappy64.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\libzstd.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\mongocrypt.dll
+C:\SAX\masters\vb\esp\sax2.0\bin\Core\cmf\Sax.SaxStatements64.0.0.0.0.dll.config
+C:\SAX\masters\vb\esp\cmf\scr\Core\cmf\sax\1_0_stdSaxStatements64_dll\SaxStatements64\obj\Debug\SaxState.F65E7F24.Up2Date

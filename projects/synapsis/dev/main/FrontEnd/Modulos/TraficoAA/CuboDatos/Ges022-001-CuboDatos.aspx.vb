@@ -1,9 +1,4 @@
-﻿Imports System.Net.NetworkInformation
-Imports System.Reflection.Emit
-Imports System.Web.Routing
-Imports System.Windows.Forms
-Imports Cube.Interpreters
-Imports Cube.Validators
+﻿Imports Cube.Validators
 Imports gsol.krom
 Imports gsol.Web.Components
 Imports MongoDB.Bson
@@ -29,7 +24,7 @@ Public Class Ges022_001_CuboDatos
     '    ██                                                                                                ██
     '    ████████████████████████████████████████████████████████████████████████████████████████████████████
 
-    '  Private _ctrlValidationRoute As IValidationRouteController
+    'Private _ctrlValidationRoute As IValidationRoute
 
     Private _ctrlCube As ICubeController
 
@@ -89,6 +84,21 @@ Public Class Ges022_001_CuboDatos
             ''Dim algo_ As New Dictionary(Of Object, Object) From {{"Value", "3*8"}}
 
             '.DataSource = dictionary_
+
+            '.DataObject = New ConstructorAcuseValor With {.FolioDocumento = "HYPERCUBE"}
+
+            Buscador.addFilter(1, 1, "A22/f(x)")
+            Buscador.addFilter(2, 2, "A22/(x)")
+            Buscador.addFilter(3, 3, "VOCE/(x)")
+            Buscador.addFilter(4, 4, "UCAA/(x)")
+            Buscador.addFilter(5, 5, "UAA/(x)")
+            Buscador.addFilter(6, 6, "UCC/(x)")
+            Buscador.addFilter(7, 7, "CDI/(x)")
+            Buscador.addFilter(8, 8, "PREV/(x)")
+            Buscador.addFilter(9, 9, "Descripción")
+            Buscador.addFilter(10, 10, "Por Autorizar")
+
+
 
             '.addFilter(1, 1, "Cubo de Datos")
             '.addFilter(SeccionesAcuseValor.SAcuseValor1, CamposFacturaComercial.CA_NUMERO_FACTURA, "FACTURA")
@@ -167,29 +177,21 @@ Public Class Ges022_001_CuboDatos
         ' Public Overridable Sub RechazaConfirmacion(argument_ As String)                                                  '
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
         _organismo = GetVars("_organismo")
 
         If _organismo Is Nothing Then
 
             _organismo = New Organismo
 
-
         End If
 
-
         _ctrlCube = GetVars("_cubeController")
-
-
 
         If _ctrlCube Is Nothing Then
 
             _ctrlCube = New CubeController
 
-
         End If
-
-
 
         If GetVars("_bcComparar") Is Nothing Then
 
@@ -206,8 +208,6 @@ Public Class Ges022_001_CuboDatos
 
         SetVars("_organismo", _organismo)
 
-
-
         _userName = GetVars("_userName")
 
         _accionDate = GetVars("_accionDate")
@@ -220,16 +220,15 @@ Public Class Ges022_001_CuboDatos
 
             SetVars("_cubeSource", "A22")
 
-
         End If
 
-        _elementos = GetVars("_chitlychitly")
+        _elementos = GetVars("_fieldmiss")
 
         If _elementos Is Nothing Then
 
             _elementos = _organismo.ObtenerSelectOption(_ctrlCube.fieldmiss)
 
-            SetVars("_chitlychitly", _elementos)
+            SetVars("_fieldmiss", _elementos)
 
         End If
 
@@ -239,19 +238,17 @@ Public Class Ges022_001_CuboDatos
 
             SetVars("_userdatas", False)
 
+            bc_SourceCube.Label = GetVars("_cubeSource")
 
+            bc_SourceCube.Value = GetVars("_cubeSource")
 
+            bc_SourceCubeChange.Label = GetVars("_cubeSource")
 
-            'fbc_RoomName.DataSource = elementos_
-
+            bc_SourceCubeChange.Value = GetVars("_cubeSource")
 
         End If
 
         bc_LimpiarFormula.Enabled = True
-
-        bc_SourceCube.Label = GetVars("_cubeSource")
-
-        bc_SourceCubeChange.Label = GetVars("_cubeSource")
 
         ' fbc_RoomName.ForeColor = Drawing.Color.Aqua
 
@@ -294,15 +291,11 @@ Public Class Ges022_001_CuboDatos
         ' Llamamos el método "ProcesarTransaccion" pasando el tipo de nuestra clase constructora  '
         '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-        'Dim acuseValorFindBar_ As ConstructorAcuseValor = GetVars("_AcuseValorFindBar")
-
-        ' If Not ProcesarTransaccion(Of ConstructorAcuseValor)().Status = TypeStatus.Errors Then : End If
-
         Dim bc_comparavisible As ButtonControl
 
         Dim bc_PendienteAutorizacion_ As ButtonControl
 
-        Dim branchName_ As String
+        Dim branchName_ As ICubeController.CubeSlices
 
         Dim swconline_ As SwitchControl
 
@@ -310,23 +303,18 @@ Public Class Ges022_001_CuboDatos
 
         Dim roomName_ As String
 
+        Dim useType_ As ICubeController.UseType
+
+        Dim checkUseType_ As Boolean
+
+
         If tb_Formula.Enabled Then
-
-            If tb_Formula.Text <> GetVars("_filled") Then
-
-                ' bc_Verificado.Visible = False
-
-                bc_Verificado.Enabled = False
-
-                SetVars("_bc_verificado", "NO")
-
-            End If
 
             bc_comparavisible = bc_Verificado
 
             bc_PendienteAutorizacion_ = bc_PorAutorizar
 
-            branchName_ = bc_SourceCube.Label
+            branchName_ = [Enum].Parse(GetType(ICubeController.CubeSlices), bc_SourceCube.Label, True)
 
             swconline_ = swc_Online
 
@@ -342,26 +330,34 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-        Else
+            checkUseType_ = [Enum].TryParse(Of ICubeController.UseType)(scUseType.Value, useType_)
 
-            'bc_Verificado.Visible = False
-            bc_Verificado.Enabled = False
+            If checkUseType_ Then
+
+                If tb_Formula.Text <> GetVars("_filled") Then
+
+                    bc_Verificado.Enabled = False
+
+                    SetVars("_bc_verificado", "NO")
+
+                End If
 
 
 
-            If tb_FormulaNueva.Text <> GetVars("_filled") Then
+            Else
 
-                bc_VerificadoNueva.Enabled = False
-
-                SetVars("_bc_verificado", "NO")
+                DisplayMessage("Tipo de usp inválido", TypeStatus.Errors)
 
             End If
+
+
+        Else
 
             bc_comparavisible = bc_VerificadoNueva
 
             bc_PendienteAutorizacion_ = bc_PorAutorizarNueva
 
-            branchName_ = bc_SourceCubeChange.Label
+            branchName_ = [Enum].Parse(GetType(ICubeController.CubeSlices), bc_SourceCubeChange.Label, True)
 
             swconline_ = swc_OnlineNueva
 
@@ -369,174 +365,183 @@ Public Class Ges022_001_CuboDatos
 
             roomName_ = ic_RoomNameNew.Value
 
-        End If
+            checkUseType_ = [Enum].TryParse(Of ICubeController.UseType)(scUseTypeNew.Value, useType_)
 
+            If checkUseType_ Then
 
+                bc_Verificado.Enabled = False
 
+                If tb_FormulaNueva.Text <> GetVars("_filled") Then
 
-        If bc_PendienteAutorizacion_.Enabled Then
+                    bc_VerificadoNueva.Enabled = False
 
-            DisplayMessage("No se puede actualizar porque está pendiente de autorización", TypeStatus.OkBut)
+                    SetVars("_bc_verificado", "NO")
 
-        Else
-
-
-            If ic_DescripcionRules.Value = "" Then
-
-                DisplayMessage("Falta especificar la descripción de la fórmula ó variable", TypeStatus.OkBut)
+                End If
 
             Else
 
-                If bc_comparavisible.Enabled Then
+                DisplayMessage("Tipo de uso inválido", TypeStatus.OkBut)
 
 
-                    Dim rulesType_, status_ As String
+            End If
 
 
-                    If bc_function_.Visible Then
+        End If
 
-                        rulesType_ = "formula"
+        If checkUseType_ Then
 
-                    Else
+            If bc_PendienteAutorizacion_.Enabled Then
 
-                        rulesType_ = "operando"
+                DisplayMessage("No se puede actualizar porque está pendiente de autorización", TypeStatus.OkBut)
 
+            Else
 
-                    End If
+                If ic_DescripcionRules.Value = "" Then
 
-                    If swconline_.Checked Then
-                        status_ = "on"
+                    DisplayMessage("Falta especificar la descripción de la fórmula ó variable", TypeStatus.OkBut)
 
-                    Else
-                        status_ = "off"
+                Else
 
-                    End If
+                    If bc_comparavisible.Enabled Then
 
+                        Dim status_ As String
 
-                    Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
+                        Dim rulesType_ As ICubeController.ContentTypes
 
-                    _userName = loginUsuario_("WebServiceUserID")
+                        If bc_function_.Visible Then
 
-                    Dim rules_ As String
+                            rulesType_ = ICubeController.ContentTypes.Formula
 
+                        Else
 
-                    If tb_Formula.Enabled Then
+                            rulesType_ = ICubeController.ContentTypes.Operando
 
-                        rules_ = tb_Formula.Text
+                        End If
 
-                        ic_changeReason.Value = ""
+                        If swconline_.Checked Then
+                            status_ = "on"
 
-                    Else
-
-                        rules_ = tb_FormulaNueva.Text
-
-                    End If
-
-                    If roomName_ = "" Then
-
-                        DisplayMessage("Falta especificar el nombre de la habitación", TypeStatus.OkBut)
-
-                    Else
-
-
-
-                        _ctrlCube = GetVars("_cubeController")
-
-                        If _ctrlCube Is Nothing Then
-
-                            _ctrlCube = New CubeController
+                        Else
+                            status_ = "off"
 
                         End If
 
 
+                        Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
 
-                        If rulesType_ = "formula" AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count = 0 Then
+                        _userName = loginUsuario_("WebServiceUserID")
 
-                            DisplayMessage("Nombre inválido para una habitación de tipo fórmula", TypeStatus.OkBut)
+                        Dim rules_ As String
+
+                        If tb_Formula.Enabled Then
+
+                            rules_ = tb_Formula.Text
+
+                            ic_changeReason.Value = ""
 
                         Else
 
-                            If rulesType_ <> "formula" AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count > 0 Then
+                            rules_ = tb_FormulaNueva.Text
 
-                                DisplayMessage("Has seleccionado variable y ese nombre está reservado para una habitación de tipo fórmula", TypeStatus.OkBut)
+                        End If
+
+                        If roomName_ = "" Then
+
+                            DisplayMessage("Falta especificar el nombre de la habitación", TypeStatus.OkBut)
+
+                        Else
+
+                            _ctrlCube = GetVars("_cubeController")
+
+                            If _ctrlCube Is Nothing Then
+
+                                _ctrlCube = New CubeController
+
+                            End If
+
+                            If rulesType_ = ICubeController.ContentTypes.Formula AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count = 0 Then
+
+                                DisplayMessage("Nombre inválido para una habitación de tipo fórmula", TypeStatus.OkBut)
 
                             Else
-                                _idRoom = GetVars("_idRoom")
 
+                                If rulesType_ <> ICubeController.ContentTypes.Formula AndAlso _ctrlCube.interpreter.GetValidFields.FindAll(Function(e) e.Contains(roomName_)).Count > 0 Then
 
-                                Dim ejecutar_ = True
+                                    DisplayMessage("Has seleccionado variable y ese nombre está reservado para una habitación de tipo fórmula", TypeStatus.OkBut)
 
-                                If rulesType_ = "formula" Then
+                                Else
 
-                                    Dim valor_ = GetVars("resultTest_")
+                                    _idRoom = GetVars("_idRoom")
 
+                                    Dim ejecutar_ = True
 
+                                    If rulesType_ = ICubeController.ContentTypes.Formula And useType_ = ICubeController.UseType.VALIDATION Then
 
-                                    If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
+                                        Dim valor_ = GetVars("resultTest_")
 
-                                        ejecutar_ = False
-
-                                        DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
-
-                                    Else
-
-                                        If GetVars("resultTest_").ToString = "OK" OrElse GetVars("resultTest_").ToString = "BAD" Then
-
-                                        Else
+                                        If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
                                             ejecutar_ = False
 
                                             DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+
+                                        Else
+
+                                            If GetVars("resultTest_").ToString = "OK" OrElse GetVars("resultTest_").ToString = "BAD" Then
+
+                                            Else
+
+                                                ejecutar_ = False
+
+                                                DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+
+                                            End If
+
                                         End If
 
                                     End If
-                                End If
 
+                                    If ejecutar_ Then
 
-
-
-
-                                If ejecutar_ Then
-
-                                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                        Dim tagwatcher_ = _ctrlCube.RunTransaction(_idRoom,
                                                                                       roomName_,
                                                                                       rules_,
                                                                                       branchName_,
                                                                                       rulesType_,
                                                                                       ic_DescripcionRules.Value,
                                                                                       status_,
+                                                                                      useType_,
                                                                                       CrearListaMensages,
                                                                                       Nothing,
                                                                                       userName_:=loginUsuario_("WebServiceUserID"),
                                                                                       reason_:=ic_changeReason.Value)
 
-                                    If tagwatcher_.ObjectReturned IsNot Nothing Then
+                                        If tagwatcher_.ObjectReturned IsNot Nothing Then
 
-                                        Dim room_ As room = tagwatcher_.ObjectReturned
+                                            Dim room_ As room = tagwatcher_.ObjectReturned
 
-                                        ColocaHistorial(room_.historical)
+                                            ColocaHistorial(room_.historical)
 
-                                        DisplayMessage("Regla asignada satisfactoriamente", Ok)
+                                            DisplayMessage("Regla asignada satisfactoriamente", Ok)
 
-                                        SetVars("_userName", _userName)
+                                            SetVars("_userName", _userName)
 
-                                        SetVars("_accionDate", _accionDate)
+                                            SetVars("_accionDate", _accionDate)
 
-                                        If tb_Formula.Enabled = True Then
+                                            If tb_Formula.Enabled = True Then
 
-                                            _ctrlCube.GetFieldsNamesResource()
+                                                _ctrlCube = New CubeController
 
-                                            SetVars("_cubeController", _ctrlCube)
+                                                SetVars("_cubeController", _ctrlCube)
 
+                                            End If
+
+                                        Else
+
+                                            DisplayMessage("Ya existe una racámara con nombre " & roomName_ & " en " & branchName_, TypeStatus.OkBut)
 
                                         End If
-
-                                    Else
-
-
-
-                                        DisplayMessage("Ya existe una racámara con nombre " & roomName_ & " en " & branchName_, TypeStatus.OkBut)
-
 
                                     End If
 
@@ -544,24 +549,23 @@ Public Class Ges022_001_CuboDatos
 
                             End If
 
-
-
                         End If
 
+                    Else
+
+                        DisplayMessage("Esta regla no ha sido verificada", TypeStatus.OkBut)
 
                     End If
 
-
-                Else
-
-                    DisplayMessage("Esta regla no ha sido verificada", TypeStatus.OkBut)
-
                 End If
+
+
 
             End If
 
 
         End If
+
 
 
     End Sub
@@ -671,6 +675,12 @@ Public Class Ges022_001_CuboDatos
 
         Dim swc_online_ As SwitchControl
 
+        Dim contentType_ As ICubeController.ContentTypes
+
+        Dim useType_ As ICubeController.UseType
+
+
+
         'MsgBox(IndexSelected_)
 
 
@@ -678,11 +688,7 @@ Public Class Ges022_001_CuboDatos
 
             If tb_Formula.Text <> GetVars("_filled") Then
 
-                'bc_Verificado.Visible = False
                 bc_Verificado.Enabled = False
-
-
-
 
                 SetVars("_bc_verificado", "NO")
 
@@ -696,13 +702,23 @@ Public Class Ges022_001_CuboDatos
 
             swc_online_ = swc_Online
 
+            If Not [Enum].TryParse(Of ICubeController.UseType)(scUseType.Value, useType_) Then
+
+                useType_ = ICubeController.UseType.Undefined
+
+            End If
+
+
+
         Else
 
-            ' bc_Verificado.Visible = False
+            If Not [Enum].TryParse(Of ICubeController.UseType)(scUseTypeNew.Value, useType_) Then
+
+                useType_ = ICubeController.UseType.Undefined
+
+            End If
+
             bc_Verificado.Enabled = False
-
-            ' bc_VerificadoNueva.Enabled = True
-
 
             If tb_FormulaNueva.Text <> GetVars("_filled") Then
 
@@ -720,22 +736,15 @@ Public Class Ges022_001_CuboDatos
 
             swc_online_ = swc_OnlineNueva
 
-
         End If
 
         Select Case IndexSelected_
 
             Case 7  'Está Opción será para mandar a Solicitar Autorización
 
-                ' VerificarFormula()
-
                 If ic_changeReason.Value = "" Then
 
                     DisplayMessage("Falta Especificar la razón de la autorización", TypeStatus.OkBut)
-
-                    'ic_changeReason.ToolTip = "Obligatorio para solicitar autorización"
-
-                    'ic_changeReason.ShowToolTip()
 
                 Else
 
@@ -747,17 +756,15 @@ Public Class Ges022_001_CuboDatos
 
                         If bc_comparavisible.Enabled Then
 
-                            Dim rulesType_, status_ As String
-
+                            Dim status_ As String
 
                             If bc_ContenType_.Visible Then
 
-                                rulesType_ = "formula"
+                                contentType_ = ICubeController.ContentTypes.Formula
 
                             Else
 
-                                rulesType_ = "operando"
-
+                                contentType_ = ICubeController.ContentTypes.Operando
 
                             End If
 
@@ -771,13 +778,11 @@ Public Class Ges022_001_CuboDatos
 
                             End If
 
-
                             Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
 
                             _userName = loginUsuario_("WebServiceUserID")
 
                             Dim roomName_, rules_ As String
-
 
                             If tb_Formula.Enabled Then
 
@@ -797,11 +802,9 @@ Public Class Ges022_001_CuboDatos
 
                             Dim ejecutar_ = True
 
-                            If rulesType_ = "formula" Then
+                            If contentType_ = ICubeController.ContentTypes.Formula And useType_ = ICubeController.UseType.VALIDATION Then
 
                                 Dim valor_ = GetVars("resultTest_")
-
-
 
                                 If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
@@ -818,6 +821,7 @@ Public Class Ges022_001_CuboDatos
                                         ejecutar_ = False
 
                                         DisplayMessage("Las reglas de tipo fórmula sólo pueden devolver OK o BAD", TypeStatus.OkBut)
+
                                     End If
 
                                 End If
@@ -827,14 +831,16 @@ Public Class Ges022_001_CuboDatos
 
                             If ejecutar_ Then
 
-                                Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                                Dim tagwatcher_ = _ctrlCube.RunTransaction(_idRoom,
                                                                                   roomName_,
                                                                                   rules_.Replace("[13]",
                                                                                                  vbCrLf),
-                                                                                  GetVars("_cubeSource"),
-                                                                                  rulesType_,
+                                                                                  [Enum].Parse(GetType(ICubeController.CubeSlices), GetVars("_cubeSource"), True),
+                                                                                  contentType_,
                                                                                   ic_DescripcionRules.Value,
-                                                                                  status_, CrearListaMensages,
+                                                                                  status_,
+                                                                                  useType_,
+                                                                                  CrearListaMensages,
                                                                                   Nothing,
                                                                                   userName_:=loginUsuario_("WebServiceUserID"),
                                                                                   enviado_:="sent",
@@ -852,22 +858,17 @@ Public Class Ges022_001_CuboDatos
 
                                     SetVars("_accionDate", _accionDate)
 
-
                                     bc_PendienteAutorizacion_.Enabled = True
 
                                     bi_SolicitarAutorizacion.Visible = False
-
 
                                 End If
 
                             End If
 
-
-
                         Else
 
                             DisplayMessage("Esta regla no ha sido verificada", TypeStatus.OkBut)
-
 
                         End If
 
@@ -875,10 +876,7 @@ Public Class Ges022_001_CuboDatos
 
                 End If
 
-
-
-
-            Case 8  'Esta Opción limpia todo el formlario
+            Case 8  'Esta Opción limpia todo el formulario
 
                 LimpiarTodo()
 
@@ -902,7 +900,7 @@ Public Class Ges022_001_CuboDatos
 
                 If bc_comparavisible.Enabled Then
 
-                    Dim rulesType_, status_ As String
+                    Dim status_ As String
 
                     If swc_online_.Checked Then
 
@@ -914,13 +912,11 @@ Public Class Ges022_001_CuboDatos
 
                     End If
 
-
                     Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
 
                     _userName = loginUsuario_("WebServiceUserID")
 
                     Dim roomName_, rules_ As String
-
 
                     If tb_Formula.Enabled Then
 
@@ -942,24 +938,22 @@ Public Class Ges022_001_CuboDatos
 
                     If bc_ContenType_.Visible Then
 
-                        rulesType_ = "formula"
+                        contentType_ = ICubeController.ContentTypes.Formula
 
                     Else
 
-                        rulesType_ = "operando"
-
+                        contentType_ = ICubeController.ContentTypes.Operando
 
                     End If
+
 
                     _idRoom = GetVars("_idRoom")
 
                     Dim ejecutar_ = True
 
-                    If rulesType_ = "formula" Then
+                    If contentType_ = ICubeController.ContentTypes.Formula And useType_ = ICubeController.UseType.VALIDATION Then
 
                         Dim valor_ = GetVars("resultTest_")
-
-
 
                         If TypeOf valor_ Is Dictionary(Of String, String) OrElse TypeOf valor_ Is List(Of String) Then
 
@@ -984,15 +978,15 @@ Public Class Ges022_001_CuboDatos
 
                     If ejecutar_ Then
 
-
-                        Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                        Dim tagwatcher_ = _ctrlCube.RunTransaction(_idRoom,
                                                                           roomName_,
                                                                           rules_.Replace("[13]",
                                                                                          vbCrLf),
-                                                                          GetVars("_cubeSource"),
-                                                                          rulesType_,
+                                                                          [Enum].Parse(GetType(ICubeController.CubeSlices), GetVars("_cubeSource"), True),
+                                                                          contentType_,
                                                                           ic_DescripcionRules.Value,
                                                                           status_,
+                                                                          useType_,
                                                                           CrearListaMensages,
                                                                           Nothing,
                                                                           userName_:=loginUsuario_("WebServiceUserID"),
@@ -1005,22 +999,19 @@ Public Class Ges022_001_CuboDatos
 
                             ColocaHistorial(room_.historical)
 
-
                             DisplayMessage("El cambio ha sido autorizado", TypeStatus.Ok)
 
                             SetVars("_userName", _userName)
 
                             SetVars("_accionDate", _accionDate)
 
-                            _ctrlCube.GetFieldsNamesResource()
+                            _ctrlCube = New CubeController
 
                             SetVars("_cubeController", _ctrlCube)
-
 
                         End If
 
                     End If
-
 
                 Else
 
@@ -1032,17 +1023,15 @@ Public Class Ges022_001_CuboDatos
 
                 If bc_comparavisible.Enabled Then
 
-                    Dim rulesType_, status_ As String
-
+                    Dim status_ As String
 
                     If bc_Function.Visible Then
 
-                        rulesType_ = "formula"
+                        contentType_ = ICubeController.ContentTypes.Formula
 
                     Else
 
-                        rulesType_ = "operando"
-
+                        contentType_ = ICubeController.ContentTypes.Operando
 
                     End If
 
@@ -1056,13 +1045,11 @@ Public Class Ges022_001_CuboDatos
 
                     End If
 
-
                     Dim loginUsuario_ As Dictionary(Of String, String) = Session("DatosUsuario")
 
                     _userName = loginUsuario_("WebServiceUserID")
 
                     Dim roomName_, rules_ As String
-
 
                     If tb_Formula.Enabled Then
 
@@ -1080,21 +1067,29 @@ Public Class Ges022_001_CuboDatos
 
                     _idRoom = GetVars("_idRoom")
 
-                    Dim algo_ As InputControl = fsc_Alertas.ListControls(0)
+                    If GetVars("_cubeSource") = "PREV" Then
 
+                        useType_ = ICubeController.UseType.ASSISTANCE
 
+                    Else
 
-                    Dim tagwatcher_ = _ctrlCube.SetFormula(Of String)(_idRoom,
+                        useType_ = ICubeController.UseType.MOTOR
+
+                    End If
+
+                    Dim tagwatcher_ = _ctrlCube.RunTransaction(_idRoom,
                                                                       roomName_,
                                                                       rules_,
-                                                                      GetVars("_cubeSource"),
-                                                                      rulesType_,
-                                                                      ic_DescripcionRules.Value, status_,
-                                                                     CrearListaMensages,
-                                                                     Nothing,
-                                                                     userName_:=loginUsuario_("WebServiceUserID"),
-                                                                     enviado_:="off",
-                                                                     reason_:=ic_changeReason.Value)
+                                                                      [Enum].Parse(GetType(ICubeController.CubeSlices), GetVars("_cubeSource"), True),
+                                                                      contentType_,
+                                                                      ic_DescripcionRules.Value,
+                                                                      status_,
+                                                                      useType_,
+                                                                      CrearListaMensages,
+                                                                      Nothing,
+                                                                      userName_:=loginUsuario_("WebServiceUserID"),
+                                                                      enviado_:="off",
+                                                                      reason_:=ic_changeReason.Value)
 
                     If tagwatcher_.Status = Ok Then
 
@@ -1102,14 +1097,11 @@ Public Class Ges022_001_CuboDatos
 
                         ColocaHistorial(room_.historical)
 
-
                         DisplayMessage("El cambio ha sido desechado", TypeStatus.Ok)
 
                         SetVars("_userName", _userName)
 
                         SetVars("_accionDate", _accionDate)
-
-
 
                     End If
 
@@ -1123,10 +1115,7 @@ Public Class Ges022_001_CuboDatos
 
                 SetVars("_bcComparar", 3)
 
-
                 p_formulillas.Visible = True
-
-
 
                 p_formulillas.CssClass = "col-md-6 col-xs-6"
 
@@ -1155,9 +1144,6 @@ Public Class Ges022_001_CuboDatos
                 l_RulesNew.Text = "Regla Nueva"
 
                 l_RulesOld.Text = "Regla Vigente"
-
-
-
 
             Case 15 'esta opción quita las dos fórmulas que se mostraban dejando sólo una
 
@@ -1192,7 +1178,7 @@ Public Class Ges022_001_CuboDatos
             Case 16 ' Esta Opción era para leer el CSV
 
 
-                '_ctrlCube.CamposExcelMongo("C:\ZERG\SYNAPSIS\CUBO\CAMPOSPEDIMENTOCSV.csv")
+                '_ctrlCube.CamposExcelMongo("C:\ZERG\SYNAPSIS\CUBO\ROOMSELIMINAR\ROOMSMOTORELIMINAR.csv")
                 'RunRoom(Of T)(roomname_ As String, params_ As Dictionary(Of String, T))
 
                 'Dim diccionary_ As Dictionary(Of String, Object) = Nothing
@@ -1230,12 +1216,12 @@ Public Class Ges022_001_CuboDatos
                 '              validation_,
                 '              index_,)
 
-                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CABULIDAD.1", 5}, {"RECABULIDAD.1", 9}}
-                Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.VARIABLEDEPRUEBA", dictionary_, preferIndex_:=1)
+                Dim dictionary_ As New Dictionary(Of String, Object) From {{"CABULIDAD", 5}, {"RECABULIDAD", 9}}
+                Dim report3_ = _ctrlCube.RunRoom(Of Object)("A22.VARIABLEDEPRUEBA", dictionary_)
 
-                Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
+                Dim diccionarioCubo_ As Dictionary(Of String, String) '= report_.ObjectReturned
 
-                'Dim dictionary_ As New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}, {"CP_TIPO_PEDIMENTO.0", "GLOBAL COMPLEMENTARIO"}}
+                dictionary_ = New Dictionary(Of String, Object) From {{"CA_TIPO_OPERACION.0", "1"}, {"CP_TIPO_PEDIMENTO.0", "GLOBAL COMPLEMENTARIO"}}
                 'Dim report_ = _ctrlCube.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
 
                 'Dim diccionarioCubo_ As Dictionary(Of String, String) = _ctrlCube.status.ObjectReturned
@@ -1256,128 +1242,95 @@ Public Class Ges022_001_CuboDatos
 
                 ' Next
 
-                Dim variable_ As ICubeController = New CubeController
+                Dim report_ = _ctrlCube.
+                          RunAssistance(Of Object)("PREV.AS_PED2",
+                                             dictionary_)
+
+                diccionarioCubo_ = report_.
+                                   ObjectReturned
+
+                Dim reportcube_ = _ctrlCube.
+                               GetReports()
 
 
-                report_ = variable_.RunRoom(Of Object)("A22.AS_PED2", dictionary_)
+                'ASI SE USA EL DISPOSE CUANDO ES INTERFACE
 
-                diccionarioCubo_ = _ctrlCube.status.ObjectReturned
-
-
-                'ASI ES LA CABULIDAD
-
-                CType(variable_, CubeController).Dispose()
+                'CType(_ctrlCube, CubeController).Dispose()
 
 
-                Dim algo_ = 5
 
             Case 17 ' Esta opción era para probar la ruta de validación
 
+                'Dim pedimento_ As New DocumentoElectronico
 
-                Dim pedimento_ As New DocumentoElectronico
+                'Dim folioOperacion_ = tb_Formula.Text
 
-                Dim sax_ As Sax.SaxStatements = Sax.SaxStatements.GetInstance(13)
+                'If folioOperacion_ = "" Then
 
-                'Dim saxSetting1_ = sax_.SaxSettings(1)
-
-                'sax_.SaxSettings(1) = sax_.SaxSettings(2)
-
-                'sax_.SaxSettings(2) = saxSetting1_
-
-                Dim folioOperacion_ = tb_Formula.Text
-
-                If folioOperacion_ = "" Then
-
-                    folioOperacion_ = "RKU24-00000301"
-
-                End If
-
-                Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos
-
-
-
-                    Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) =
-                    _enlaceDatos.GetMongoCollection(Of OperacionGenerica)(GetType(ConstructorPedimentoNormal).Name)
-                    operationsDB_.Aggregate().Match(Function(ch) ch.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente.FolioOperacion.Equals(folioOperacion_)).
-                    ToList().ForEach(Sub(items)
-
-                                         pedimento_ = items.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
-
-                                         'Dim section_ = pedimento_.Seccion(SeccionesPedimento.ANS18)
-
-                                         'Dim chido_ As Boolean = False
-
-                                         'Dim cadena_ As String = ""
-
-                                         'For Each nodo_ In section_.Nodos
-
-                                         '    cadena_ &= nodo_.Attribute(CamposPedimento.CA_CVE_IDENTIFICADOR).Valor &
-                                         '    Chr(13)
-
-                                         '    If nodo_.Attribute(CamposPedimento.CA_CVE_IDENTIFICADOR).Valor = "PC" Then
-
-                                         '        chido_ = True
-
-                                         '        Exit For
-
-                                         '    End If
-                                         'Next
-
-                                         'MsgBox(cadena_)
-
-                                     End Sub)
-
-                End Using
-
-                '_ctrlValidationRoute = New ValidationRouteController
-
-                'Dim validationType_ As IValidationRouteController.ValidationRoutes
-
-                'If pedimento_.Seccion(SeccionesPedimento.ANS1).Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = "1" Then
-
-                '    validationType_ = IValidationRouteController.ValidationRoutes.RUVA1
-
-                'Else
-
-                '    validationType_ = IValidationRouteController.ValidationRoutes.RUVA4
+                '    folioOperacion_ = "RKU24-00000301"
 
                 'End If
 
-                'Dim resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(validationType_, pedimento_)
+                'Using _enlaceDatos As IEnlaceDatos = New EnlaceDatos(13)
 
-                'resultado_.ShowMessageError()
+                '    Dim operationsDB_ As IMongoCollection(Of OperacionGenerica) = _enlaceDatos.
+                '                                                                  GetMongoCollection(Of OperacionGenerica) _
+                '                                                                  (GetType(ConstructorPedimentoNormal).Name)
 
-                'resultado_ = _ctrlValidationRoute.ValidatePedimento(Of Object)(IValidationRouteController.ValidationRoutes.RUVA21, pedimento_)
+                '    operationsDB_.Aggregate().
+                '                  Match(Function(ch) ch.
+                '                                     Borrador.
+                '                                     Folder.
+                '                                     ArchivoPrincipal.
+                '                                     Dupla.
+                '                                     Fuente.
+                '                                     FolioOperacion.
+                '                                     Equals(folioOperacion_)).
+                '                  ToList().
+                '                  ForEach(Sub(items)
 
-                'resultado_.ShowMessageError()
+                '                              pedimento_ = items.Borrador.Folder.ArchivoPrincipal.Dupla.Fuente
+
+                '                          End Sub)
+
+                'End Using
+
+                '_ctrlValidationRoute = New ValidationRouteAll
+
+                'Dim validationType_ As IValidationRoute.ValidationRoutes
+
+                'If pedimento_.Seccion(SeccionesPedimento.ANS1).Attribute(CamposPedimento.CA_TIPO_OPERACION).Valor = "1" Then
+
+                '    validationType_ = IValidationRoute.ValidationRoutes.RUVA1
+
+                'Else
+
+                '    validationType_ = IValidationRoute.ValidationRoutes.RUVA4
+
+                'End If
+
+                'Dim resultado_ = _ctrlValidationRoute.ValidateLinear(pedimento_).validateroute(validationType_)
+
+                'Dim ListControls_ As IEnumerable(Of Object) = ccErrores.ListControls
+
+                'resultado_.ShowMessageError(ListControls_.ToList)
+
+                'If resultado_.details IsNot Nothing Then
+
+                '    ccErrores.Visible = True
+
+                'End If
 
             Case 18  ' Esta opción nos dirá en que secciones se usa un campo del pedimento
 
-
                 If tb_Formula.Text <> "" Then
 
-                    Dim algo_ = _ctrlCube.GetSectionsResource(tb_Formula.Text)
-
-                    DisplayMessage(algo_.ObjectReturned, StatusMessage.Info)
+                    DisplayMessage(_ctrlCube.
+                                   GetSectionsResource(tb_Formula.Text).
+                                   ObjectReturned,
+                                   StatusMessage.Info)
 
                 End If
-
-                ' Obtener el control TextBox
-                'Dim textBox As TextBox = Me.tb_Formula
-
-                '' Obtener la posición inicial de la selección
-                'Dim startPos As Integer = tb_Formula.SelectionStart
-
-                '' Obtener la longitud de la selección
-                'Dim selectionLength As Integer = textBox.SelectionLength
-
-                '' Extraer el texto seleccionado
-                'Dim selectedText As String = textBox.Text.Substring(startPos, selectionLength)
-
-                '' Mostrar el texto seleccionado
-                'MessageBox.Show(selectedText)
-
-
 
         End Select
 
@@ -1528,9 +1481,6 @@ Public Class Ges022_001_CuboDatos
 
     End Sub
 
-
-
-
 #End Region
 
 #Region "████████████████  QUINTA CAPA  █████████       Reglas locales         ██████████████████████████████"
@@ -1542,13 +1492,17 @@ Public Class Ges022_001_CuboDatos
 
     Public Sub LimpiarTodo()
 
-
-
         ic_RoomName.Value = ""
 
         tb_Formula.Text = ""
 
         bc_SourceCube.Label = "A22"
+
+        bc_SourceCube.Value = "A22"
+
+        scUseType.Value = 1
+
+        sc_BranchNames.Value = 1
 
         bc_Function.Visible = True
 
@@ -1584,8 +1538,6 @@ Public Class Ges022_001_CuboDatos
 
         bc_PorAutorizarNueva.Enabled = False
 
-
-
         __SYSTEM_CONTEXT_FINDER.Text = ""
 
         __SYSTEM_CONTEXT_FINDER.Value = ""
@@ -1604,15 +1556,11 @@ Public Class Ges022_001_CuboDatos
 
         ShowUserData()
 
-
-
         SetVars("_bc_porautorizar", "SI")
-
 
         fbc_RoomName.Label = "Escriba quí el nombre de la habitación"
 
         fbc_RoomName.Text = ""
-
 
         l_RulesNew.Text = "Regla"
 
@@ -1628,13 +1576,11 @@ Public Class Ges022_001_CuboDatos
 
         tb_FormulaNueva.Text = ""
 
-
         If _ctrlCube Is Nothing Then
 
             _ctrlCube = New CubeController
 
         End If
-
 
         DirectCast(fsc_Alertas.ListControls(0), InputControl).Value = ""
 
@@ -1642,42 +1588,365 @@ Public Class Ges022_001_CuboDatos
 
         DirectCast(fsc_Información.ListControls(0), InputControl).Value = ""
 
-        _ctrlCube.GetFieldsNamesResource()
+        _ctrlCube = New CubeController '.GetFieldsNamesResource()
 
         SetVars("_cubeController", _ctrlCube)
+
+        SetVars("_cubeSource", "A22")
 
         PreparaBotonera(FormControl.ButtonbarModality.Default)
 
     End Sub
 
     Public Sub BuscarGajo()
-        'Dim keyValuePair_ As New KeyValuePair(Of Object, Dictionary(Of Object, Object))("Value", dictionaryKey_)
 
-        Dim roomResourceDictionary_ As New Dictionary(Of ObjectId, roomresource)
+        Dim filtering_ As New List(Of String)
 
-        Dim dictionary_ As New Dictionary(Of Object, Object) From {{"Habitación", New List(Of Dictionary(Of Object, Object))}}
+        Dim searchFilter_ As String
 
-        Dim buscador_ = Buscador.Text.Replace(" | ", ".")
+        Dim joinBranchName_ As String = "{$or:["
 
+        Dim indexFilter_ As Int16 = 0
 
+        Dim checkAutorizar_ As Boolean = False
 
-        Dim TagWatcher_ = _ctrlCube.GetRoomNamesResource(_organismo.SeparacionPalabras(buscador_.Substring(buscador_.IndexOf(".") + 1), "valorpresentacion", "", "", "normal"), 2)
+        Dim checkDescription_ As Boolean = False
 
-        For Each roomResource_ As roomresource In TagWatcher_.ObjectReturned
+        For Each checkbox_ In Buscador.CheckBoxs
 
-            dictionary_("Habitación").add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
-                                                                                   {"Text", roomResource_.branchname & " | " & roomResource_.valorpresentacion}})
-            roomResourceDictionary_(roomResource_._id) = roomResource_
+            If checkbox_.Checked Then
+
+                Dim cubeSlicesCheked_ As String = Buscador.Filters(indexFilter_).Text
+
+                Dim contentType_ As String
+
+                Dim diagonalPosition_ = cubeSlicesCheked_.IndexOf("/")
+
+                If diagonalPosition_ = -1 Then
+
+                    contentType_ = ""
+
+                    If Buscador.Filters(indexFilter_).Text.ToUpper = "POR AUTORIZAR" Then
+
+                        checkAutorizar_ = True
+
+                    Else
+
+                        checkDescription_ = True
+
+                    End If
+
+                Else
+
+                    contentType_ = cubeSlicesCheked_.Substring(diagonalPosition_ + 1)
+
+                    If contentType_ = "f(x)" Then
+
+                        contentType_ = "'formula'"
+
+                    Else
+
+                        contentType_ = "'operando'"
+
+                    End If
+
+                    cubeSlicesCheked_ = cubeSlicesCheked_.Substring(0, diagonalPosition_)
+
+                    joinBranchName_ &= "{$and:[{branchname:'" &
+                                        cubeSlicesCheked_.
+                                        Replace(" ", "") &
+                                        "'},{contenttype:" &
+                                        contentType_ &
+                                        "}]},"
+
+                End If
+
+            End If
+
+            indexFilter_ += 1
 
         Next
 
-        SetVars("_roomdictionary_", roomResourceDictionary_)
+        Dim roomResourceDictionary_ As New Dictionary(Of ObjectId, roomresource)
+
+        Dim buscador_ As String = Buscador.Text
+
+        If Buscador.Text.Contains("|") Then
+
+            Dim indexInitial_ = buscador_.IndexOf("|")
+
+            Dim indexFinal_ = buscador_.LastIndexOf("|")
+
+            buscador_ = buscador_.Substring(0, indexInitial_)
+
+        End If
+
+        Dim words_ = buscador_.Split(" ")
+
+        Dim word_ = words_.TakeWhile(Function(ch) ch.Contains("@"))
+
+        Dim email_ As New List(Of String)
+
+        If word_.Count > 0 Then
+
+            email_.Add("username")
+
+            buscador_ = buscador_.Replace(word_(0), "")
+
+            email_.Add("'" & word_(0) & "'")
+
+        Else
+
+            email_.Add("")
+
+            email_.Add("")
+
+        End If
+
+        Dim TagWatcher_ As TagWatcher
+
+        Dim key_ As String
+
+        Dim keys_ As New List(Of String) From {
+                                                "()A22/f(x)",
+                                                "()A22/(x)",
+                                                "()VOCE/(x)",
+                                                "()UCAA/(x)",
+                                                "()UAA/(x)",
+                                                "()UCC/(x)",
+                                                "()CDI/(x)",
+                                                "()PREV/(x)"
+                                              }
+
+        Dim dictionary_ As New Dictionary(Of Object, Object)
+
+        searchFilter_ = _organismo.SeparacionPalabras(buscador_, "valorpresentacion", email_(0), email_(1), "normal")
+
+        If joinBranchName_ <> "{$or:[" Then
+
+            joinBranchName_ = joinBranchName_.Substring(0, joinBranchName_.Length - 1) & "]}"
+
+            TagWatcher_ = _ctrlCube.GetRoomNamesResource(searchFilter_.Substring(0, searchFilter_.Length - 2) & "," & joinBranchName_ & "]}", ICubeController.TypeSearch.Free)
+
+            Dim roomResourceList_ As List(Of roomresource) = TagWatcher_.ObjectReturned
+
+            For Each keyFor_ In keys_
+
+                Dim branchname_ = keyFor_.Substring(2, keyFor_.IndexOf("/") - 2)
+
+                Dim contentType_ As String = If(keyFor_.Contains("f(x)"), "formula", "operando")
+
+                Dim roomResourceListForEach_ = roomResourceList_.FindAll(Function(ch) ch.branchname = branchname_ And
+                                                                      ch.contenttype = contentType_)
+
+                key_ = keyFor_.Replace("()", "(" & roomResourceListForEach_.Count & ")")
+
+                dictionary_.Add(key_, New List(Of Dictionary(Of Object, Object)))
+
+                For Each roomResource_ As roomresource In roomResourceListForEach_
+
+                    Dim valorPresentacion_ As String = roomResource_.valorpresentacion
+
+                    For Each wordBuscador_ In buscador_.Split(" ")
+
+                        valorPresentacion_ = Replace(valorPresentacion_, wordBuscador_.ToUpper, "<span>" & wordBuscador_.ToUpper & "</span>")
+
+                    Next
+
+                    If email_(0) = "" Then
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                   {"Text", valorPresentacion_ &
+                                                                                            " | " &
+                                                                                            roomResource_.usetype &
+                                                                                            " | " &
+                                                                                            If(roomResource_.awaitingapproval, "PENDIENTE", "AUTORIZADO")}})
+                    Else
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                   {"Text", valorPresentacion_ & " | " & roomResource_.username}})
+                    End If
+
+                    roomResourceDictionary_(roomResource_._id) = roomResource_
+
+                Next
+
+                If dictionary_(key_).Count = 0 Then
+
+                    dictionary_.Remove(key_)
+
+                End If
+
+
+            Next
+
+
+            'key_ = "(" & TagWatcher_.ObjectReturned.count & ")A22/(x)"
+
+            'dictionary_.Add(key_, New List(Of Dictionary(Of Object, Object)))
+
+            'For Each roomResource_ As roomresource In roomResourceList_.FindAll(Function(ch) ch.branchname = "A22" And
+            '                                                           ch.contenttype = "formula")
+            '    Dim valorPresentacion_ As String = roomResource_.valorpresentacion
+
+            '    For Each wordBuscador_ In buscador_.Split(" ")
+
+            '        valorPresentacion_ = Replace(valorPresentacion_, wordBuscador_.ToUpper, "<span>" & wordBuscador_.ToUpper & "</span>")
+
+            '    Next
+
+            '    If email_(0) = "" Then
+
+            '        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+            '                                                                       {"Text", roomResource_.branchname & " | " & valorPresentacion_}})
+            '    Else
+
+            '        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+            '                                                                       {"Text", roomResource_.branchname & " | " & valorPresentacion_ & " | " & roomResource_.username}})
+            '    End If
+
+            '    roomResourceDictionary_(roomResource_._id) = roomResource_
+
+            'Next
+
+            'If dictionary_(key_).Count = 0 Then
+
+            '    dictionary_.Remove(key_)
+
+            'End If
+
+
+            'If TagWatcher_.ObjectReturned.Count > 0 Then
+
+            '        dictionary_.Add(key_, New List(Of Dictionary(Of Object, Object)))
+
+            '        For Each roomResource_ As roomresource In TagWatcher_.ObjectReturned
+
+            '            Dim valorPresentacion_ As String = roomResource_.valorpresentacion
+
+            '            For Each wordBuscador_ In buscador_.Split(" ")
+
+            '                valorPresentacion_ = Replace(valorPresentacion_, wordBuscador_.ToUpper, "<span>" & wordBuscador_.ToUpper & "</span>")
+
+            '            Next
+
+            '            If email_(0) = "" Then
+
+            '                dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+            '                                                                           {"Text", roomResource_.branchname & " | " & valorPresentacion_}})
+            '            Else
+
+            '                dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+            '                                                                           {"Text", roomResource_.branchname & " | " & valorPresentacion_ & " | " & roomResource_.username}})
+            '            End If
+
+            '            roomResourceDictionary_(roomResource_._id) = roomResource_
+
+            '        Next
+
+            '    End If
+
+        End If
+
+        If checkAutorizar_ Then
+
+            TagWatcher_ = _ctrlCube.GetRoomNamesResource(True, searchFilter_, 2)
+
+            If TagWatcher_.ObjectReturned.count > 0 Then
+
+                key_ = "(" & TagWatcher_.ObjectReturned.count & ")Pendientes de Revisión"
+
+                dictionary_.Add(key_, New List(Of Dictionary(Of Object, Object)))
+
+                For Each roomResource_ As roomresource In TagWatcher_.ObjectReturned
+
+                    Dim valorPresentacion_ As String = roomResource_.valorpresentacion
+
+                    For Each wordBuscador_ In buscador_.Split(" ")
+
+                        valorPresentacion_ = Replace(valorPresentacion_, wordBuscador_.ToUpper, "<span>" & wordBuscador_.ToUpper & "</span>")
+
+                    Next
+
+                    If email_(0) = "" Then
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                       {"Text", valorPresentacion_ &
+                                                                                                " | " &
+                                                                                                roomResource_.usetype &
+                                                                                                " | " &
+                                                                                                roomResource_.branchname}})
+                    Else
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                       {"Text", roomResource_.branchname & " | " & valorPresentacion_ & " | " & roomResource_.username}})
+                    End If
+                    roomResourceDictionary_(roomResource_._id) = roomResource_
+
+                Next
+
+            End If
+
+        End If
+
+        If checkDescription_ Then
+
+            TagWatcher_ = _ctrlCube.GetRoomNamesResource(_organismo.SeparacionPalabras(buscador_, "description", email_(0), email_(1), "normal"), ICubeController.TypeSearch.Free)
+
+            If TagWatcher_.ObjectReturned.Count > 0 Then
+
+                key_ = "(" & TagWatcher_.ObjectReturned.count & ")Descripción"
+
+                dictionary_.Add(key_, New List(Of Dictionary(Of Object, Object)))
+
+                For Each roomResource_ As roomresource In TagWatcher_.ObjectReturned
+
+                    Dim valorPresentacion_ As String = roomResource_.valorpresentacion
+
+                    For Each wordBuscador_ In buscador_.Split(" ")
+
+                        valorPresentacion_ = Replace(valorPresentacion_, wordBuscador_.ToUpper, "<span>" & wordBuscador_.ToUpper & "</span>")
+
+                    Next
+
+                    If email_(0) = "" Then
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                       {"Text", valorPresentacion_ &
+                                                                                                " | " &
+                                                                                                roomResource_.usetype &
+                                                                                                " | " &
+                                                                                                roomResource_.branchname}})
+                    Else
+
+                        dictionary_(key_).add(New Dictionary(Of Object, Object) From {{"Value", roomResource_._id.ToString},
+                                                                                       {"Text", roomResource_.branchname & " | " & valorPresentacion_ & " | " & roomResource_.username}})
+                    End If
+                Next
+
+            End If
+
+        End If
+
+        If Buscador.Value = "" Then
+
+            SetVars("_roomdictionary_", roomResourceDictionary_)
+
+        Else
+
+            Dim _idRoomResource_ = ObjectId.Parse(Buscador.Value)
+
+            Dim roomResourceSelected_ = New Dictionary(Of ObjectId, roomresource) From {{_idRoomResource_, roomResourceDictionary_(_idRoomResource_)}}
+
+            roomResourceDictionary_ = roomResourceSelected_
+
+            SetVars("_roomdictionary_", roomResourceDictionary_)
+
+        End If
 
         Buscador.DataSource = dictionary_
 
         Buscador.DataBind()
-
-
 
     End Sub
 
@@ -1697,7 +1966,6 @@ Public Class Ges022_001_CuboDatos
 
         l_RulesNew.Text = "Regla"
 
-
         If sender_.Value.ToString() <> "" Then
 
             bc_Function.Enabled = True
@@ -1716,8 +1984,6 @@ Public Class Ges022_001_CuboDatos
             bc_SourceCube.Label = roomResource_.branchname
 
             Dim branchname_ As String = roomResource_.branchname
-
-
 
             Dim rooms_ As List(Of room) = _ctrlCube.GetRoom(roomResource_.idroom, roomResource_.rolid).ObjectReturned
 
@@ -1754,6 +2020,16 @@ Public Class Ges022_001_CuboDatos
 
                 End If
 
+
+            End If
+
+            If rooms_(0).usetype Is Nothing Then
+
+                scUseTypeNew.Value = 1
+
+            Else
+
+                scUseTypeNew.Value = [Enum].Parse(GetType(ICubeController.UseType), rooms_(0).usetype, True)
 
             End If
 
@@ -1807,7 +2083,6 @@ Public Class Ges022_001_CuboDatos
 
             messages_ = rooms_(0).messages
 
-
             bi_SudoAutorizar.Visible = False
 
             ic_DescripcionRules.Value = rooms_(0).description
@@ -1828,7 +2103,6 @@ Public Class Ges022_001_CuboDatos
 
                         messages_ = rooms_(0).messages
 
-
                         bc_PorAutorizar.Enabled = False
 
                         bc_PorAutorizarNueva.Enabled = False
@@ -1836,8 +2110,6 @@ Public Class Ges022_001_CuboDatos
 
 
                     Else
-
-
 
                         Dim roomNameNew_ As String = rooms_(0).awaitingupdates(0).roomname
 
@@ -1851,6 +2123,15 @@ Public Class Ges022_001_CuboDatos
 
                         messages_ = rooms_(0).awaitingupdates(0).messages
 
+                        If rooms_(0).awaitingupdates(0).usetype Is Nothing Then
+
+                            scUseTypeNew.Value = 1
+
+                        Else
+
+                            scUseTypeNew.Value = [Enum].Parse(GetType(ICubeController.UseType), rooms_(0).usetype, True)
+
+                        End If
 
                         bc_SourceCubeChange.Label = branchname_
 
@@ -1901,21 +2182,15 @@ Public Class Ges022_001_CuboDatos
 
                             l_RulesNew.Text = "Regla Borrador"
 
-
                         End If
 
                     End If
 
-
                 End If
-
 
             End If
 
-
             tb_Formula.Text = rooms_(0).rules
-
-
 
             If rooms_(0).status = "on" Then
 
@@ -1937,7 +2212,6 @@ Public Class Ges022_001_CuboDatos
 
             SetVars("_bc_porautorizar", "SI")
 
-
             If messages_.Count = 0 Then
 
                 DirectCast(fsc_Alertas.ListControls(0), InputControl).Value = ""
@@ -1956,17 +2230,13 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-
-            'bc_Verificado.Visible = False
             bc_Verificado.Enabled = False
 
             p_userdata.Visible = False
 
             p_userchange.Visible = True
 
-
             bc_VerificadoNueva.Enabled = False
-
 
             SetVars("_bc_verificado", "NO")
 
@@ -1974,10 +2244,9 @@ Public Class Ges022_001_CuboDatos
 
     End Sub
 
-
     Sub NewChangeContent()
 
-        '  bc_VarChange.BackColor = Drawing.Color.Orange
+        Dim cubeSlice_ = bc_SourceCubeChange.Value
 
         If bc_FunctionChange.Visible Then
 
@@ -2001,10 +2270,20 @@ Public Class Ges022_001_CuboDatos
 
         End If
 
+        bc_SourceCubeChange.Label = cubeSlice_
+
+        SetVars("_cubeSource", cubeSlice_)
+
     End Sub
     Sub CambioContenido()
 
-        'bc_Var.BackColor = Drawing.Color.Orange
+        Dim cubeSlice_ = bc_SourceCube.Value
+
+        If cubeSlice_ = "" Then
+
+            cubeSlice_ = GetVars("_cubeSource")
+
+        End If
 
         If bc_Function.Visible Then
 
@@ -2019,7 +2298,6 @@ Public Class Ges022_001_CuboDatos
             ic_RoomName.Enabled = True
 
             ic_RoomName.Value = ""
-
 
         Else
 
@@ -2044,6 +2322,9 @@ Public Class Ges022_001_CuboDatos
 
         End If
 
+        bc_SourceCube.Label = cubeSlice_
+
+        SetVars("_cubeSource", cubeSlice_)
 
     End Sub
 
@@ -2062,7 +2343,6 @@ Public Class Ges022_001_CuboDatos
 
 
             End If
-
 
             Dim cuenta_ = 1
 
@@ -2116,7 +2396,6 @@ Public Class Ges022_001_CuboDatos
 
     Sub VerificarFormula()
 
-
         Dim tipoRegla_ As Boolean
 
         If p_actualizacionformula.Visible Then
@@ -2129,8 +2408,8 @@ Public Class Ges022_001_CuboDatos
 
         End If
 
-
         Dim formulaFormato_ As String = tb_Formula.Text.Replace("[13]", vbCrLf)
+
         Dim formulaNuevaFormato_ As String = tb_FormulaNueva.Text.Replace("[13]", vbCrLf)
 
         If formulaFormato_ <> "" AndAlso
@@ -2140,7 +2419,6 @@ Public Class Ges022_001_CuboDatos
 
             Dim formula_ As String
 
-
             _ctrlCube = GetVars("_cubeController")
 
             If _ctrlCube Is Nothing Then
@@ -2149,10 +2427,7 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-
             Dim Values_ = New Dictionary(Of String, Object)
-
-            Dim icontroladorMonedas_ As IControladorMonedas = New ControladorMonedas
 
             Dim params_ As List(Of String)
 
@@ -2167,7 +2442,6 @@ Public Class Ges022_001_CuboDatos
             End If
 
             params_ = _ctrlCube.interpreter.GetParams(formula_)
-
 
             Dim rnd_ As New Random()
 
@@ -2201,8 +2475,6 @@ Public Class Ges022_001_CuboDatos
 
                     End If
 
-
-
                 End If
 
             Next
@@ -2231,8 +2503,6 @@ Public Class Ges022_001_CuboDatos
 
                     Else
 
-
-
                         operandName_ = operandNameFull
 
                         If found_ Then
@@ -2245,9 +2515,7 @@ Public Class Ges022_001_CuboDatos
 
                             position_ = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count
 
-
                         End If
-
 
                         If position_ = -1 Then
 
@@ -2256,7 +2524,6 @@ Public Class Ges022_001_CuboDatos
                         End If
 
                         operandNameFull = operandName_ & "." & position_
-                        ' position = Values_.Keys.Where(Function(ch) ch.Contains(operandName_)).Count)
 
                     End If
 
@@ -2279,28 +2546,19 @@ Public Class Ges022_001_CuboDatos
 
                 cc_ValoresOperandos.SetRow(Sub(catalogRow_ As CatalogRow)
 
-                                               'Define el valor Llave de tu fila
-
                                                catalogRow_.SetIndice(cc_ValoresOperandos.KeyField, cuenta_)
 
-                                               'Define el valor de una columna de la fila
-
-
-
-                                               Dim algo_ As New InputControl With {.ID = "operandName_",
+                                               Dim operandName_ As New InputControl With {.ID = "operandName_",
                                                                                        .Value = valor_.Key,
                                                                                        .Type = InputControl.InputType.Text}
 
-                                               Dim algo2_ As New InputControl With {.ID = "operandValue_",
+                                               Dim operandValue_ As New InputControl With {.ID = "operandValue_",
                                                                                        .Value = valor_.Value,
                                                                                        .Type = InputControl.InputType.Text}
 
+                                               catalogRow_.SetColumn(operandName_, valor_.Key)
 
-
-                                               catalogRow_.SetColumn(algo_, valor_.Key)
-
-                                               catalogRow_.SetColumn(algo2_, valor_.Value)
-
+                                               catalogRow_.SetColumn(operandValue_, valor_.Value)
 
                                                'de esta manera agregamos todas las columnas de nuestra fila 
                                                'usando el control asociado a la columna y el valor que se asignara
@@ -2312,7 +2570,6 @@ Public Class Ges022_001_CuboDatos
             Next
 
             cc_ValoresOperandos.CatalogDataBinding()
-
 
             Dim resultado_ = _ctrlCube.interpreter.RunExpression(Of Object)(formula_, Values_)
 
@@ -2336,12 +2593,11 @@ Public Class Ges022_001_CuboDatos
 
                 SetVars("resultTest_", "BADBAD")
 
+                Dim cubeReport_ = _ctrlCube.interpreter.GetReportFull
 
-                Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+                If cubeReport_.title <> "" Then
 
-                If reportCabulidad_.title <> "" Then
-
-                    reportCabulidad_.ShowMessageError(2, Me)
+                    cubeReport_.ShowMessageError(2, Me)
 
                 Else
 
@@ -2364,19 +2620,17 @@ Public Class Ges022_001_CuboDatos
 
                     SetVars("resultTest_", "BADBAD")
 
-                    Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+                    Dim interpreterReport_ = _ctrlCube.interpreter.GetReportFull
 
-                    If reportCabulidad_.title <> "" Then
+                    If interpreterReport_.title <> "" Then
 
-                        reportCabulidad_.ShowMessageError(2, Me)
+                        interpreterReport_.ShowMessageError(2, Me)
 
                     Else
 
                         DisplayMessage(stringFinal_, TypeStatus.OkInfo)
 
                     End If
-
-
 
                 Else
 
@@ -2391,7 +2645,6 @@ Public Class Ges022_001_CuboDatos
 
                                 Case "OK"
 
-
                                     Dim informationResult_ = DirectCast(fsc_Información.ListControls(0), InputControl).Value
 
                                     If informationResult_ <> "" Then
@@ -2401,9 +2654,7 @@ Public Class Ges022_001_CuboDatos
 
                                     End If
 
-
                                 Case "BAD"
-
 
                                     Dim alertResult_ = DirectCast(fsc_Alertas.ListControls(0), InputControl).Value
 
@@ -2418,7 +2669,6 @@ Public Class Ges022_001_CuboDatos
                                     messageResult_ = resultado_
 
                             End Select
-
 
                             For Each key_ In Values_.Keys
 
@@ -2435,9 +2685,6 @@ Public Class Ges022_001_CuboDatos
                             Next
 
                             SetVars("resultTest_", resultado_)
-
-                            'DisplayMessage(_ctrlInterpreter.RunExpression(Of Object)(formula_, Values_), TypeStatus.OkInfo)
-                            '                            DisplayMessage(messageResult_.ToString, TypeStatus.OkInfo)
 
                             Dim reportInterpreter_ = _ctrlCube.interpreter.GetReportFull
 
@@ -2469,13 +2716,11 @@ Public Class Ges022_001_CuboDatos
 
                             Next
 
+                            Dim interpreterReport_ = _ctrlCube.interpreter.GetReportFull
 
+                            If interpreterReport_.title <> "" Then
 
-                            Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
-
-                            If reportCabulidad_.title <> "" Then
-
-                                reportCabulidad_.ShowMessageError(2, Me)
+                                interpreterReport_.ShowMessageError(2, Me)
 
                             Else
 
@@ -2484,7 +2729,6 @@ Public Class Ges022_001_CuboDatos
                             End If
 
                         End If
-
 
                     Else
 
@@ -2497,11 +2741,11 @@ Public Class Ges022_001_CuboDatos
 
                         SetVars("resultTest_", "BADBAD")
 
-                        Dim reportCabulidad_ = _ctrlCube.interpreter.GetReportFull
+                        Dim interpreterReport = _ctrlCube.interpreter.GetReportFull
 
-                        If reportCabulidad_.title <> "" Then
+                        If interpreterReport.title <> "" Then
 
-                            reportCabulidad_.ShowMessageError(2, Me)
+                            interpreterReport.ShowMessageError(2, Me)
 
                         Else
 
@@ -2515,14 +2759,9 @@ Public Class Ges022_001_CuboDatos
 
             End If
 
-
-
-
-
-
             Dim report_ = _ctrlCube.interpreter.GetReportFull
 
-            If report_.getTitle = "" Then
+            If report_.GetTitle = "" Then
 
                 Dim botonFormula_ As ButtonControl
 
@@ -2533,7 +2772,6 @@ Public Class Ges022_001_CuboDatos
                 Else
 
                     botonFormula_ = bc_FunctionChange
-
 
                 End If
 
@@ -2559,10 +2797,7 @@ Public Class Ges022_001_CuboDatos
 
                 Else
 
-                    'bc_Verificado.Visible = False
                     bc_Verificado.Enabled = False
-
-
 
                     bc_VerificadoNueva.Enabled = False
 
@@ -2572,27 +2807,13 @@ Public Class Ges022_001_CuboDatos
 
             Else
 
-                'bc_Verificado.Visible = False
                 bc_Verificado.Enabled = False
-
-
-
 
                 bc_VerificadoNueva.Enabled = False
 
                 SetVars("_bc_verificado", "NO")
 
             End If
-
-            'If tb_Formula.Enabled Then
-
-            '    bi_SolicitarAutorizacion.Visible = Not bi_SudoAutorizar.Visible
-
-            'Else
-
-            '    bi_SolicitarAutorizacion.Visible = bc_VerificadoNueva.Enabled
-
-            'End If
 
             bi_SolicitarAutorizacion.Visible = Not bi_SudoAutorizar.Visible
 
@@ -2601,8 +2822,6 @@ Public Class Ges022_001_CuboDatos
             DisplayMessage("Falta Especificar la fórmula", TypeStatus.OkBut)
 
         End If
-
-
 
     End Sub
 
@@ -2787,19 +3006,19 @@ Public Class Ges022_001_CuboDatos
 
 
 
-                                                   Dim algo_ As New InputControl With {.ID = "operandName_",
+                                                   Dim operandName_ As New InputControl With {.ID = "operandName_",
                                                                                            .Value = valor_.Key,
                                                                                            .Type = InputControl.InputType.Text}
 
-                                                   Dim algo2_ As New InputControl With {.ID = "operandValue_",
+                                                   Dim operandValue_ As New InputControl With {.ID = "operandValue_",
                                                                                            .Value = valor_.Value,
                                                                                            .Type = InputControl.InputType.Text}
 
 
 
-                                                   catalogRow_.SetColumn(algo_, valor_.Key)
+                                                   catalogRow_.SetColumn(operandName_, valor_.Key)
 
-                                                   catalogRow_.SetColumn(algo2_, valor_.Value)
+                                                   catalogRow_.SetColumn(operandValue_, valor_.Value)
 
 
                                                    'de esta manera agregamos todas las columnas de nuestra fila 
@@ -2893,8 +3112,11 @@ Public Class Ges022_001_CuboDatos
     Sub CargaInicialModulo()
 
         If GetVars("_cubeSource") <> "" Then
+
             bc_SourceCube.Label = GetVars("_cubeSource")
+
         End If
+
         p_formulillas.CssClass = "col-md-12 col-xs-6"
 
         p_descriptions.CssClass = "col-md-12 col-xs-6 wc-cubo-description"
@@ -2941,19 +3163,13 @@ Public Class Ges022_001_CuboDatos
 
         fbc_RoomName.Enabled = True
 
-
-        '__SYSTEM_MODULE_FORM.Modality = FormControl.ButtonbarModality.Default
-
-
+        scUseType.Value = 1
 
         SetVars("_idRoom", Nothing)
-
 
     End Sub
 
     Sub CargaEncontradolModulo()
-
-        '__SYSTEM_MODULE_FORM.Modality = FormControl.ButtonbarModality.Reading
 
         PreparaBotonera(FormControl.ButtonbarModality.Reading)
 
@@ -2983,17 +3199,11 @@ Public Class Ges022_001_CuboDatos
 
         bc_LimpiarFormula.Enabled = False
 
-
         ic_RoomNameNew.Enabled = False
 
         bc_SourceCubeChange.Label = GetVars("_cubeSource")
 
         ColocaHistorial(GetVars("_historical"))
-
-
-        ' bc_FunctionChange.Enabled = False
-
-        ' ic_RoomNameNew.Enabled = False
 
     End Sub
 
@@ -3006,15 +3216,11 @@ Public Class Ges022_001_CuboDatos
 
             bc_PendienteAutorizacion_ = bc_PorAutorizar
 
-
-
         Else
 
             bc_PendienteAutorizacion_ = bc_PorAutorizarNueva
 
         End If
-
-
 
         bi_SudoAutorizar.Visible = bc_PendienteAutorizacion_.Enabled
 
@@ -3022,38 +3228,7 @@ Public Class Ges022_001_CuboDatos
 
         bi_SolicitarAutorizacion.Visible = Not bi_SudoAutorizar.Visible
 
-        'Dim solicitaAutorizar_ As String = GetVars("_bc_porautorizar")
-
-        'If solicitaAutorizar_ = Nothing Then
-
-        '    bi_SolicitarAutorizacion.Visible = False
-
-
-        '    SetVars("_bc_porautorizar", "NO")
-
-        'Else
-
-        '    If solicitaAutorizar_ = "NO" Then
-
-        '        bi_SolicitarAutorizacion.Visible = False
-
-
-        '        SetVars("_bc_porautorizar", "NO")
-
-        '    Else
-
-        '        bi_SolicitarAutorizacion.Visible = True
-
-
-        '        SetVars("_bc_porautorizar", "SI")
-
-        '    End If
-
-        'End If
-
-
         ChecaBotonComparar()
-
 
         bc_SourceCubeChange.Label = GetVars("_cubeSource")
 
@@ -3079,10 +3254,7 @@ Public Class Ges022_001_CuboDatos
             'bc_Verificado.Visible = False
             bc_Verificado.Enabled = False
 
-
-
             bc_VerificadoNueva.Enabled = False
-
 
             SetVars("_bc_verificado", "NO")
 
@@ -3094,10 +3266,7 @@ Public Class Ges022_001_CuboDatos
 
             Else
 
-                'bc_Verificado.Visible = Fals
                 bc_Verificado.Enabled = False
-
-
 
                 bc_VerificadoNueva.Enabled = False
 
@@ -3106,8 +3275,6 @@ Public Class Ges022_001_CuboDatos
             End If
 
         End If
-
-
 
     End Sub
 
@@ -3121,7 +3288,6 @@ Public Class Ges022_001_CuboDatos
 
             SetVars("_bc_verificado", "SI")
 
-
         End If
 
     End Sub
@@ -3132,13 +3298,13 @@ Public Class Ges022_001_CuboDatos
 
             bc_SourceCube.Label = sc_BranchNames.Text
 
+            bc_SourceCube.Value = sc_BranchNames.Text
+
             SetVars("_cubeSource", bc_SourceCube.Label)
 
         Else
 
         End If
-
-
 
         bc_SourceCube.Visible = True
 
@@ -3277,6 +3443,45 @@ Public Class Ges022_001_CuboDatos
                DirectCast(fsc_Información.ListControls(0), InputControl).Value}
 
     End Function
+
+    Sub ActualizarSlice(sender_ As Object, e As EventArgs)
+
+        Dim cubeSlice_ As ICubeController.CubeSlices
+
+        If [Enum].TryParse(Of ICubeController.CubeSlices)(sc_BranchNames.Text, cubeSlice_) Then
+
+            If bc_SourceCube.Visible Then
+
+                bc_SourceCube.Value = sc_BranchNames.Text
+
+                bc_SourceCube.Label = sc_BranchNames.Text
+
+                SetVars("_cubeSource", bc_SourceCube.Value)
+
+            Else
+
+                bc_SourceCubeChange.Value = sc_BranchNames.Text
+
+                bc_SourceCubeChange.Label = sc_BranchNames.Text
+
+                SetVars("_cubeSource", bc_SourceCubeChange.Value)
+
+            End If
+
+        Else
+
+            Dim cubeSource_ As String = GetVars("_cubeSource")
+
+            If [Enum].TryParse(Of ICubeController.CubeSlices)(cubeSource_, cubeSlice_) Then
+
+                sc_BranchNames.Value = cubeSlice_
+
+            End If
+
+
+        End If
+
+    End Sub
 
 
 #End Region

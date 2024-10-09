@@ -59,23 +59,16 @@ Public Interface IMathematicalInterpreter : Inherits IDisposable
 
 #Region "Methods"
 
-    Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), Optional indexM As Int32 = 0) As T
-
+    Sub SetValidFields(campos_ As List(Of String))
+    Sub SetValidField(field_ As String)
+    Sub addOperands(operands_ As List(Of String))
+    Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), Optional indexM As Int32? = Nothing) As T
     Function RunExpression(Of T)(expression_ As String, constantValues_ As Dictionary(Of String, T), interprete_ As InterpreterTypes) As T
-
     Function GetReportFull() As ValidatorReport
     Function GetParams(expression_ As String) As List(Of String)
-
-    Sub SetValidFields(campos_ As List(Of String))
-
-    Sub SetValidField(field_ As String)
-
-
     Function GetValidFields() As List(Of String)
-
     Function ExistFields(expresion_ As String, fields_ As List(Of String)) As Boolean
-
-    Sub addOperands(operands_ As List(Of String))
+    Function Clone() As Object
 
 #End Region
 

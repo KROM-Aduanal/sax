@@ -14,6 +14,8 @@ export class WCFile extends HTMLInputElement {
 
         this.fileInput = this.component.querySelector('input[type="file"]');
 
+        //this.fileInput.setAttribute('accept', "application/pdf,image/jpeg,text/xml");
+
         this.uploadButton = this.component.querySelector('.__upload');
 
         this.downloadButton = this.component.querySelector('.__download');
@@ -163,7 +165,9 @@ export class WCFile extends HTMLInputElement {
 
         for (let i = 0; i < this.files.length; i++) {
 
-            const types = this.getAttribute('accept').split(',');
+            const typeimage_ = this.getAttribute('accept'); //+ ",image/jpeg"
+
+            const types = typeimage_.split(',');
 
             if (!types.includes(this.files[i].type)) {
 
@@ -531,13 +535,24 @@ export class WCFile extends HTMLInputElement {
             },
             error: (a) => {
 
+                console.log("error");
+
+                console.log(a);
+
             },
             failure: (a) => {
 
+                console.log("failure");
+
+                console.log(a);
             },
             xhr: () => {
 
                 var fileXhr = $.ajaxSettings.xhr();
+
+                console.log("xhr");
+
+                console.log(fileXhr);
 
                 if (fileXhr.upload) {
 
@@ -552,6 +567,8 @@ export class WCFile extends HTMLInputElement {
                         }
 
                     }, false);
+
+
                 }
                 return fileXhr;
             }

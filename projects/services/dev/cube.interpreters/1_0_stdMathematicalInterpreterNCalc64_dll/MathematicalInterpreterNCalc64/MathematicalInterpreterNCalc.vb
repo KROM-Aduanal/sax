@@ -1,4 +1,6 @@
-﻿Imports System.Linq.Expressions
+﻿Imports System.IO
+Imports System.Linq.Expressions
+Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Text.RegularExpressions
 Imports Cube.ValidatorReport
 Imports Cube.Validators
@@ -92,6 +94,7 @@ Public Class MathematicalInterpreterNCalc
                                                      "EXTRAE",
                                                      "HOY",
                                                      "LARGO",
+                                                     "MEZCLAR",
                                                      "NO",
                                                      "O",
                                                      "OBTENERVALOR",
@@ -232,19 +235,16 @@ Public Class MathematicalInterpreterNCalc
     Public Function RunExpression(Of T)(expression_ As String,
                                          constantValues_ As Dictionary(Of String,
                                                                          T),
-                                        Optional preferIndex_ As Int32 = 0) As T _
+                                        Optional preferIndex_ As Int32? = Nothing) As T _
                                         Implements IMathematicalInterpreter.RunExpression
-
-
-        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).endpointId = 2
-
-        'sax2_.SaxSettings(1).servers.nosql.mongodb.rol(0).credentialId = 3
 
         If constantValues_ Is Nothing Then
 
             constantValues_ = New Dictionary(Of String, T)
 
         End If
+
+        preferIndex_ = If(preferIndex_, 0)
 
         Dim newExpression_ = GetExpression(expression_.Replace(Chr(34), "'").Replace("\r", " "),
                                            constantValues_, preferIndex_)
@@ -271,7 +271,6 @@ Public Class MathematicalInterpreterNCalc
 
                 If _validFields.IndexOf(fieldName_.ToUpper) = -1 And fieldName_.IndexOf(".") <> -1 Then
 
-
                     paramErrorName_.Add(fieldName_)
 
                 Else
@@ -289,7 +288,6 @@ Public Class MathematicalInterpreterNCalc
                             paramValues_.Add(constanvalue_.Key, constanvalue_.Value)
 
                         Else
-
 
                             If Double.TryParse(constanvalue_.Value.ToString, doubleParse_) Then
 
@@ -310,8 +308,6 @@ Public Class MathematicalInterpreterNCalc
                                     End If
 
                                 End If
-
-
 
                             Else
 
@@ -335,8 +331,6 @@ Public Class MathematicalInterpreterNCalc
                 End If
 
             End If
-
-
 
         Next
 
@@ -368,11 +362,9 @@ Public Class MathematicalInterpreterNCalc
 
         Else
 
-
             _expressionNCalc = New NCalc.Expression(newExpression_.Replace("&", " and ")) With {.Parameters = paramValues_}
 
             AddHandler _expressionNCalc.EvaluateFunction, RunFunctionHandler(paramValues_)
-
 
             Try
 
@@ -402,9 +394,7 @@ Public Class MathematicalInterpreterNCalc
 
                             AddHandler expresionSqrt_.EvaluateFunction, RunFunctionHandler(paramValues_)
 
-
                             If expresionSqrt_.Evaluate < 0 Then
-
 
                                 _reports.SetHeaderReport(result_.ToString & " Número Imaginario ",
                                             DateTime.Now,
@@ -442,8 +432,6 @@ Public Class MathematicalInterpreterNCalc
 
                     End If
 
-
-
                 End If
 
             Catch ex_ As NCalc.EvaluationException
@@ -459,15 +447,13 @@ Public Class MathematicalInterpreterNCalc
                                         expression_, newExpression_)
                 Else
                     _reports.SetHeaderReport(ex_.Message,
-                DateTime.Now,
-                AdviceTypesReport.Alert,
-                AdviceTypesReport.Alert,
-                ex_.Message,
-                ex_.HResult,
-                expression_, newExpression_)
+                                             DateTime.Now,
+                                             AdviceTypesReport.Alert,
+                                             AdviceTypesReport.Alert,
+                                             ex_.Message,
+                                             ex_.HResult,
+                                             expression_, newExpression_)
                 End If
-
-
 
                 _reports.ShowMessageError(0)
 
@@ -477,32 +463,32 @@ Public Class MathematicalInterpreterNCalc
 
             Catch ex_ As Exception
 
-                Dim algo_ = Array.FindAll(expression_.Split(""), Function(ch) ch = "'").Count
-
                 If Array.FindAll(expression_.ToCharArray(), Function(ch) ch = "'").Count Mod 2 = 1 Then
 
                     _reports.SetHeaderReport("Falta una comilla(') de cierre",
-                                         DateTime.Now,
-                                        AdviceTypesReport.Alert,
-                                         AdviceTypesReport.Alert,
-                                        "Falta una comilla(') de cierre",
-                                        "-2146232832",
-                                        expression_, newExpression_)
+                                             DateTime.Now,
+                                             AdviceTypesReport.Alert,
+                                             AdviceTypesReport.Alert,
+                                             "Falta una comilla(') de cierre",
+                                             "-2146232832",
+                                             expression_,
+                                             newExpression_)
+
                 Else
 
 
                     _reports.SetHeaderReport(ex_.Message,
-                                     DateTime.Now,
-                                    AdviceTypesReport.Alert,
-                                     AdviceTypesReport.Alert,
-                                    ex_.Message,
-                                    ex_.HResult,
-                                    expression_, newExpression_)
+                                             DateTime.Now,
+                                             AdviceTypesReport.Alert,
+                                             AdviceTypesReport.Alert,
+                                             ex_.Message,
+                                             ex_.HResult,
+                                             expression_,
+                                             newExpression_)
+
                 End If
 
-
                 _reports.ShowMessageError(0)
-
 
                 result_ = ""
 
@@ -537,6 +523,12 @@ Public Class MathematicalInterpreterNCalc
         Return _reports
 
     End Function
+
+    Private Sub SetReport(ByRef report_ As ValidatorReport)
+
+        report_ = CType(_reports.Clone(), ValidatorReport)
+
+    End Sub
 
     Private Function GetExpressionInside(expression_ As String) As String
 
@@ -2324,7 +2316,6 @@ finalExpression_.Length - 1)
 
                                              Next
 
-
                                          End If
 
                                          functionParameters_.Result = dictionary_
@@ -2632,6 +2623,28 @@ finalExpression_.Length - 1)
 
                                      resultIsDouble_ = True
 
+                                 Case "MEZCLAR"
+
+                                     Dim resultList_ As New List(Of String)
+
+                                     Dim list1_ As List(Of String) = functionParameters_.Parameters(0).Evaluate
+
+                                     Dim list2_ As List(Of String) = functionParameters_.Parameters(1).Evaluate
+
+                                     Dim index_ = 0
+
+                                     For Each element_ In list1_
+
+                                         resultList_.Add(element_ & list2_(index_))
+
+                                         index_ += 1
+
+                                     Next
+
+                                     functionParameters_.Result = resultList_
+
+                                     resultIsDouble_ = False
+
                                  Case "NO"
 
                                      Dim firstParameter_ As Boolean = functionParameters_.
@@ -2691,19 +2704,35 @@ finalExpression_.Length - 1)
                                              functionParameters_.Result = ""
 
                                          End If
-
-
                                      Else
+
+                                         If TypeOf firstParameter_ Is Dictionary(Of String, List(Of String)) Then
 
                                              Dim dictionary_ As Dictionary(Of String, List(Of String)) = firstParameter_
 
-                                         If dictionary_.ContainsKey(secondParameter_) Then
+                                             If dictionary_.ContainsKey(secondParameter_) Then
 
-                                             functionParameters_.Result = dictionary_(secondParameter_)
+                                                 functionParameters_.Result = dictionary_(secondParameter_)
+
+                                             Else
+
+                                                 functionParameters_.Result = New List(Of String)
+
+                                             End If
 
                                          Else
 
-                                             functionParameters_.Result = New List(Of String)
+                                             Dim list_ As List(Of String) = firstParameter_
+
+                                             If list_.Count < secondParameter_ Then
+
+                                                 functionParameters_.Result = ""
+
+                                             Else
+
+                                                 functionParameters_.Result = list_(secondParameter_ - 1)
+
+                                             End If
 
                                          End If
 
@@ -2738,7 +2767,7 @@ finalExpression_.Length - 1)
 
                                      Dim parameters_ As New List(Of String)
 
-                                     Dim cube_ As ICubeController = New CubeController("cube")
+                                     Dim cube_ As ICubeController = New CubeController()
 
                                      Dim lastParameter_ As String = ""
 
@@ -2767,18 +2796,49 @@ finalExpression_.Length - 1)
 
                                              Else
 
+                                                 Dim foundParameter_ = functionParameters_.Parameters.Where(Function(ch) ch.ParsedExpression.ToString = "[" & parametro_.ToString & ".0]")(0)
+
+
+
                                                  If values_.ContainsKey(parametro_.ToString & ".0") Then
 
-                                                     values_(parametro_.ToString & ".0") = functionParameters_.
-                                                                                                  Parameters(paramPosition_).
-                                                                                                  Evaluate
+
+                                                     'values_(parametro_.ToString & ".0") = functionParameters_.
+                                                     '                                             Parameters(paramPosition_).
+                                                     '                                             Evaluate
+
+                                                     If foundParameter_ Is Nothing Then
+
+                                                         values_(parametro_.ToString & ".0") = functionParameters_.
+                                                                                                      Parameters(paramPosition_).
+                                                                                                      Evaluate
+
+                                                     Else
+
+                                                         values_(parametro_.ToString & ".0") = foundParameter_.Evaluate
+
+                                                     End If
 
                                                  Else
 
-                                                     values_.Add(parametro_.ToString & ".0",
-                                                                        functionParameters_.
-                                                                        Parameters(paramPosition_).
-                                                                        Evaluate)
+                                                     If foundParameter_ Is Nothing Then
+
+                                                         'values_(parametro_.ToString & ".0") = functionParameters_.
+                                                         '                                             Parameters(paramPosition_).
+                                                         '                                             Evaluate
+
+                                                         values_.Add(parametro_.ToString & ".0",
+                                                                     functionParameters_.
+                                                                     Parameters(paramPosition_).
+                                                                     Evaluate)
+
+                                                     Else
+
+                                                         values_.Add(parametro_.ToString & ".0",
+                                                                     foundParameter_.Evaluate)
+
+
+                                                     End If
 
                                                  End If
 
@@ -2798,8 +2858,17 @@ finalExpression_.Length - 1)
 
                                          For position_ = 1 To functionParameters_.Parameters.Count - paramPosition_
 
-                                             values_(lastParameter_.ToString & "." & position_) = functionParameters_.
-                                                                                                  Parameters(position_ + paramPosition_ - 1).
+                                             Dim foundParameter_ = functionParameters_.Parameters.Where(Function(ch) ch.ParsedExpression.ToString = "[" & lastParameter_.ToString & "." & position_ & "]")(0)
+
+                                             If foundParameter_ Is Nothing Then
+
+                                                 values_(lastParameter_.ToString & "." & position_) = functionParameters_.
+                                                                                                      Parameters(paramPosition_ + position_).
+                                                                                                      Evaluate
+
+                                             End If
+
+                                             values_(lastParameter_.ToString & "." & position_) = foundParameter_.
                                                                                                   Evaluate
 
                                          Next
@@ -3216,13 +3285,98 @@ finalExpression_.Length - 1)
 
     End Function
 
-    Public Sub Dispose() Implements IDisposable.Dispose
-        Throw New NotImplementedException()
+#Region "IDisposable Support"
+    Private disposedValue As Boolean ' Para detectar llamadas redundantes
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(disposing As Boolean)
+
+        If Not Me.disposedValue Then
+
+            If disposing Then
+                ' TODO: eliminar estado administrado (objetos administrados).
+            End If
+
+            'Propiedades no administradas
+
+            With Me
+
+                .InterpreterType = Nothing
+
+                ._status = Nothing
+
+                ._validFields = Nothing
+
+                ._customFunctions = Nothing
+
+                ._expressionNCalc = Nothing
+
+                ._operandsTemp = Nothing
+
+                ._operators = Nothing
+
+                ._reports.Dispose()
+
+            End With
+
+            ' TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
+            ' TODO: Establecer campos grandes como Null.
+        End If
+
+        Me.disposedValue = True
+
     End Sub
 
-    Public Function Clone() As Object Implements ICloneable.Clone
-        Throw New NotImplementedException()
+
+    ' Visual Basic agregó este código para implementar correctamente el modelo descartable.
+    Public Sub Dispose() Implements IDisposable.Dispose
+        ' No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
+        Dispose(True)
+
+        GC.SuppressFinalize(Me)
+
+    End Sub
+
+#End Region
+
+#Region "Clon"
+
+    Private Function CloneTagWatcher() As TagWatcher
+
+        Dim tagWatcherClone_ As TagWatcher
+
+        Dim formatter_ As New BinaryFormatter()
+
+        Dim stream_ As New MemoryStream()
+
+        formatter_.Serialize(stream_, _status)
+
+        stream_.Position = 0
+
+        tagWatcherClone_ = formatter_.Deserialize(stream_)
+
+        Return tagWatcherClone_
+
     End Function
+    Public Function Clone() As Object Implements ICloneable.Clone, IMathematicalInterpreter.Clone
+
+        Dim intepreterClone_ As IMathematicalInterpreter = New MathematicalInterpreterNCalc
+
+        With intepreterClone_
+
+            .interpreterType = Me.InterpreterType
+
+            .status = Me.CloneTagWatcher()
+
+        End With
+
+        SetReport(intepreterClone_.GetReportFull)
+
+        Return intepreterClone_
+
+    End Function
+
+#End Region
 
 #End Region
 

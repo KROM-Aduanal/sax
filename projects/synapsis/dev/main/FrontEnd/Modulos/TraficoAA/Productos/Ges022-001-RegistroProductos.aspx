@@ -7,7 +7,7 @@
 
 <% If IsPopup = False Then %>
 
-    <GWC:FindbarControl Label="Buscar Producto" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="BusquedaGeneral"/>
+    <GWC:FindbarControl Label="Buscar Producto" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="BusquedaGeneral" />
 
  <% End If %>
 
@@ -120,8 +120,9 @@
                             <ListControls>
                                 <GWC:InputControl runat="server" ID="icNombreComercial" CssClass="col-xs-12 col-md-5" Label="Nombre comercial" Type="TextArea"/>
                                 <GWC:SwitchControl runat="server" ID="swcEstadoProducto" CssClass="col-xs-12 col-md-1 mt-40" OnText="Si" OffText="No" Label="Habilitado"/>
-                                
-                                <GWC:FileControl runat="server" Dragable="true" Label="Imagen del producto" CssClass="col-xs-12 col-md-6"/>
+                                <GWC:ImageControl runat="server" ID="icMuestraProducto" CssClass="col-xs-12 col-md-2" Visible="False" Height="80px"  Aspect="Cover" OnLoad="ActualizaImagen" >
+                                </GWC:ImageControl>
+                                <GWC:FileControl runat="server" Label="Imagen del producto" CssClass="col-xs-12 col-md-6" ID="fcImagenProducto" OnChooseFile="fcImagenProducto_ChooseFile" Dragable="true" />
 
                             </ListControls>
                         </GWC:FieldsetControl>
@@ -132,15 +133,14 @@
                                     <asp:Button runat="server" ID="btnRestaurar" CssClass="btnAction btnRestaurar" OnClick="ConfigurarControlesClasificacion_Click"/>
                                 </asp:Panel>
                                 <asp:Panel runat="server" CssClass="row fieldset">
-                                    <GWC:FindboxControl runat="server" ID="fbcFraccionArancelaria" CssClass="col-xs-12 col-md-6 mb-3" Label="Fracción Arancelaria" OnTextChanged="fbx_FraccionArancelaria_TextChanged" OnClick="fbx_FraccionArancelaria_Click" RequiredSelect="true"/>
+                                    <GWC:FindboxControl runat="server" ID="fbcFraccionArancelaria" CssClass="col-xs-12 col-md-6 mb-3" Label="Fracción Arancelaria" OnTextChanged="fbc_FraccionArancelaria_TextChanged" OnClick="fbc_FraccionArancelaria_Click" RequiredSelect="true"/>
                                     <GWC:SelectControl runat="server" ID="scNico" CssClass="col-xs-12 col-md-6 mb-3" Label="Nico" OnSelectedIndexChanged="sl_Nico_Selected"></GWC:SelectControl>
 
                                     <GWC:InputControl runat="server" ID="icDescripcionFraccion" CssClass="col-xs-12 col-md-6 mb-5" Label="Descripción Fracción" Enabled="false" Type="TextArea"/>
                                     <GWC:InputControl runat="server" ID="icDescripcionNico" CssClass="col-xs-12 col-md-6 mb-5" Label="Descripción Nico" Enabled="false" Type="TextArea"/>
 
                                     <%-- <GWC:FindboxControl runat="server" ID="fbx_Nico" CssClass="col-xs-12 col-md-9 mb-5" Label="Nico" OnTextChanged="fbx_Nico_TextChanged"/> --%>
-                                    <GWC:InputControl runat="server" ID="icFechaRegistro" CssClass="col-xs-12 col-md-6 mb-3" Label="Fecha de registro" Type="Text" Format="Calendar" Enabled="false"/>
-                                    
+                                    <GWC:InputControl runat="server" ID="icFechaRegistro" CssClass="col-xs-12 col-md-6 mb-3" Label="Fecha de registro" Type="Text" Format="Calendar" Enabled="false"/>                                   
                                     
                                     <GWC:SelectControl runat="server" ID="scEstatus" CssClass="col-xs-12 col-md-6 mb-3" Label="Estatus">
                                         <Options>
@@ -165,8 +165,8 @@
                                             <%-- 
                                             <GWC:SwitchControl runat="server" ID="cd6" CssClass="col-xs-12 col-md-2 d-flex align-items-center justify-content-center" OnText="Si" OffText="No" Label="Combinar Descripción"/>
                                             --%>
-                                            <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-4" ID="fbcCliente" Label="Cliente" OnTextChanged="fbx_Cliente_TextChanged" RequiredSelect="true"/>
-                                            <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-4" ID="fbcProveedor" Label="Proveedor" OnTextChanged="fbx_Proveedor_TextChanged" RequiredSelect="true"/>                                   
+                                            <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-4" ID="fbcCliente" Label="Cliente" OnTextChanged="fbc_Cliente_TextChanged" RequiredSelect="true"/>
+                                            <GWC:FindboxControl runat="server" CssClass="col-xs-12 col-md-6 mb-4" ID="fbcProveedor" Label="Proveedor" OnTextChanged="fbc_Proveedor_TextChanged" RequiredSelect="true"/>                                   
                                        
                                             <GWC:FieldsetControl runat="server" Label="Descripciones" Priority="false" CssClass="mt-4">
                                                 <ListControls>
@@ -205,10 +205,11 @@
                                     <ListControls>
                                         <GWC:CatalogControl runat="server" ID="ccHistorialClasificacion" CssClass="w-100" KeyField="indice" UserInteraction="false">
                                             <Columns>
-                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoFraccion" Label="Fracción Arancelaria"/>
-                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoNico" Label="Fracción Nico"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoFraccion" Label="Fracción-Nico"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="icHistoricoMotivo" Label="Motivo"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="icHistoricoFechaModificacion" Label="Fecha Modificacion"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoUsuario" Label="Clasificador"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoOficina" Label="Oficina"/>
                                             </Columns>
                                         </GWC:CatalogControl>
                                     </ListControls>
@@ -221,6 +222,9 @@
                                                 <GWC:InputControl Type="Text" runat="server" ID="icHistoricoDescripcion" Label="Descripción"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="icHistoricoProveedor" Label="Proveedor"/>
                                                 <GWC:InputControl Type="Text" runat="server" ID="icHistoricoCliente" Label="Cliente"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoFechaModificacionDescripciones" Label="Fecha Modificacion"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoUsuarioDescripciones" Label="Clasificador"/>
+                                                <GWC:InputControl Type="Text" runat="server" ID="icHistoricoOficinaDescripciones" Label="Oficina"/>
                                                 <%--<GWC:InputControl Type="Text" runat="server" ID="icHistoricoFechaArchivado" Label="Fecha archivado"/>--%>
                                             </Columns>
                                         </GWC:CatalogControl>
@@ -236,22 +240,22 @@
     <script>
         $(() => {
 
-            $("body").on("click","input[type='checkbox']", (e) => {
+            $("body").on("click", "input[type='checkbox']", (e) => {
 
                 const tr = e.target.closest(".__row");
-               
+
                 if (tr) {
-                    
+
                     if (e.target.checked) {
-                        
+
                         const desc = tr.querySelector("td:nth-child(4) input");
-                        
+
                         const desccove = tr.querySelector("td:nth-child(6) input");
-                        
+
                         desccove.value = desc.value;
 
                     }
-                    
+
                 }
 
             });

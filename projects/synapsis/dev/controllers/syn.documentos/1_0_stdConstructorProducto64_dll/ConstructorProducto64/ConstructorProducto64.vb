@@ -70,12 +70,15 @@ Namespace Syn.Documento
 
             ConstruyeSeccion(seccionEnum_:=SeccionesProducto.SPTO3,
                  tipoBloque_:=TiposBloque.Cuerpo,
-                 conCampos_:=True)
+                 conCampos_:=False)
 
             ConstruyeSeccion(seccionEnum_:=SeccionesProducto.SPTO4,
                  tipoBloque_:=TiposBloque.Cuerpo,
-                 conCampos_:=True)
+                 conCampos_:=False)
 
+            ConstruyeSeccion(seccionEnum_:=SeccionesProducto.SPTO6,
+                 tipoBloque_:=TiposBloque.Cuerpo,
+                 conCampos_:=False)
 
 
         End Sub
@@ -95,7 +98,8 @@ Namespace Syn.Documento
                 Case SeccionesProducto.SPTO1
                     Return New List(Of Nodo) From {
                                                     Item(CamposProducto.CP_NOMBRE_COMERCIAL, Texto, 120),
-                                                    Item(CamposProducto.CP_HABILITADO, Booleano)
+                                                    Item(CamposProducto.CP_HABILITADO, Booleano),
+                                                    Item(CamposProducto.CP_RUTA_ARCHIVO_MUESTRA, IdObject, longitud_:=100)
                                                   }
 
 
@@ -105,7 +109,9 @@ Namespace Syn.Documento
 
                     Return New List(Of Nodo) From {
                                                     Item(CamposProducto.CP_FRACCION_ARANCELARIA, Texto, 80),
+                                                    Item(CamposProducto.CP_DESCRIPCION_FRACCION_ARANCELARIA, Texto, 80),
                                                     Item(CamposProducto.CP_NICO, Texto),
+                                                    Item(CamposProducto.CP_DESCRIPCION_NICO, Texto, 80),
                                                     Item(CamposProducto.CP_FECHA_REGISTRO, Fecha),
                                                     Item(CamposProducto.CP_ESTATUS, Texto, 30),
                                                     Item(CamposProducto.CP_OBSERVACION, Texto, 250)
@@ -114,28 +120,33 @@ Namespace Syn.Documento
 
                 Case SeccionesProducto.SPTO3
 
-                    'Sección tres del documento
+                    'Sección tres del documento Proveedores con descripciones
 
                     Return New List(Of Nodo) From {
                                                     Item(CamposClientes.CA_RAZON_SOCIAL, Texto, 120),
                                                     Item(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, Texto, 120),
                                                     Item(CamposGlobales.CP_IDENTITY, Entero),
-                                                    Item(SeccionesProducto.SPTO5, True)
+                                                    Item(SeccionesProducto.SPTO5, False)
                                                   }
 
                 Case SeccionesProducto.SPTO4
 
-                    'Seccion cuatro del documento
+                    'Seccion cuatro del documento Histórico de Clasificaciones
+
                     Return New List(Of Nodo) From {
                                                     Item(CamposProducto.CP_FRACCION_ARANCELARIA, Texto, 80),
                                                     Item(CamposProducto.CP_NICO, Texto, 80),
+                                                    Item(CamposProducto.CP_DESCRIPCION_FRACCION_ARANCELARIA, Texto, 80),
+                                                    Item(CamposProducto.CP_DESCRIPCION_NICO, Texto, 80),
                                                     Item(CamposProducto.CP_FECHA_MODIFICACION, Fecha),
-                                                    Item(CamposProducto.CP_MOTIVO, Texto, 250)
+                                                    Item(CamposProducto.CP_MOTIVO, Texto, 250),
+                                                    Item(CamposProducto.CP_LOGIN_USUARIO, Texto, 20),
+                                                    Item(CamposProducto.CP_ENVIRONMENT, Entero)
                                                   }
 
                 Case SeccionesProducto.SPTO5
 
-                    'Seccion cinco del documento
+                    'Seccion cinco del documento clasificación
                     Return New List(Of Nodo) From {
                                                     Item(CamposProducto.CP_IDKROM, Entero),
                                                     Item(CamposProducto.CP_NUMERO_PARTE, Texto, 30),
@@ -147,7 +158,24 @@ Namespace Syn.Documento
                                                     Item(CamposProducto.CP_FECHA_MODIFICACION, Fecha)
                                                   }
 
+                Case SeccionesProducto.SPTO6
 
+                    'Seccion seis del documento  Histórico de descripciones
+                    Return New List(Of Nodo) From {
+                                                    Item(CamposProducto.CP_IDKROM, Entero),
+                                                    Item(CamposProducto.CP_NUMERO_PARTE, Texto, 30),
+                                                    Item(CamposProducto.CP_ALIAS, Texto, 80),
+                                                    Item(CamposProducto.CP_TIPO_ALIAS, Entero),
+                                                    Item(CamposProducto.CP_DESCRIPCION, Texto, 250),
+                                                    Item(CamposProducto.CP_APLICACOVE, Booleano),
+                                                    Item(CamposProducto.CP_DESCRIPCION_COVE, Texto, 250),
+                                                    Item(CamposProducto.CP_FECHA_MODIFICACION, Fecha),
+                                                    Item(CamposClientes.CA_RAZON_SOCIAL, Texto, 120),
+                                                    Item(CamposProveedorOperativo.CA_RAZON_SOCIAL_PROVEEDOR, Texto, 120),
+                                                    Item(CamposProducto.CP_FECHA_MODIFICACION, Fecha),
+                                                    Item(CamposProducto.CP_LOGIN_USUARIO, Texto, 20),
+                                                    Item(CamposProducto.CP_ENVIRONMENT, Entero)
+                                                    }
 
                 Case Else
 

@@ -6,7 +6,7 @@ Imports MongoDB.Bson.Serialization.Attributes
 
 
 #End Region
-
+<Serializable>
 Public Class room
     Public Property _id As ObjectId
     <BsonIgnoreIfNull>
@@ -27,15 +27,19 @@ Public Class room
     Public Property status As String
     <BsonIgnoreIfNull>
     Public Property type As String
+
     <BsonIgnoreIfNull>
     Public Property contenttype As String
     <BsonIgnoreIfNull>
     Public Property awaitingupdates As List(Of roomhistory)
     <BsonIgnoreIfNull>
     Public Property historical As List(Of roomhistory)
+    <BsonIgnoreIfNull>
+    Public Property usetype As String
 
 End Class
 
+<Serializable>
 Public Class roomcontext
 
     <BsonIgnoreIfNull>
@@ -66,6 +70,7 @@ Public Class roomcontext
 
 End Class
 
+<Serializable>
 Public Class runnedsurround
 
     <BsonIgnoreIfNull>
@@ -96,6 +101,7 @@ Public Class runnedsurround
 
 End Class
 
+<Serializable>
 Public Class roomhistory
 
     Public Property _id As ObjectId
@@ -121,10 +127,12 @@ Public Class roomhistory
     Public Property _iduser As ObjectId
     Public Property username As String
     Public Property allowwableusername As String
+    <BsonIgnoreIfNull>
+    Public Property usetype As String
 
 End Class
 
-
+<Serializable>
 Public Class roomresource
 
     Public Property _id As ObjectId
@@ -156,10 +164,14 @@ Public Class roomresource
     Public Property enviroment As Int32
     <BsonIgnoreIfNull>
     Public Property valorpresentacion As String
+    <BsonIgnoreIfNull>
+    Public Property awaitingapproval As Boolean
+    <BsonIgnoreIfNull>
+    Public Property usetype As String
 
 End Class
 
-
+<Serializable>
 Public Class validfields
 
     Public Property _id As ObjectId

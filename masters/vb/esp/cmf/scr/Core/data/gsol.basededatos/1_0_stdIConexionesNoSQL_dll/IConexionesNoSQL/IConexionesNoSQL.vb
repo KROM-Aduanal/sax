@@ -7,6 +7,7 @@ Imports System.Threading.Tasks
 'Imports gsol.krom
 Imports gsol.krom
 Imports gsol.BaseDatos.Operaciones
+Imports Sax
 
 
 'Imports gsol.monitoreo
@@ -18,11 +19,7 @@ Namespace gsol.basededatos
 
 
 #Region "Methods"
-        'Function GetMongoCollection(Of T)(Optional ByVal rolname_ As IEnlaceDatos.RolNames = IEnlaceDatos.RolNames.bigdata) As IMongoCollection(Of T)
-        'Function GetMongoCollection(Of T)(ByVal resourceName_ As String) As IMongoCollection(Of T)
 
-        'Function GetMongoCollection(Of T)(ByRef imongoClient_ As IMongoClient,
-        '                                  ByVal resourceName_ As String) As IMongoCollection(Of T)
         Function GetMongoCollection(Of T)(ByRef imongoClient_ As IMongoClient,
                                                  Optional ByVal resourceName_ As String = Nothing,
                                                  Optional ByVal rootId_ As Int32? = Nothing) As IMongoCollection(Of T)
@@ -30,15 +27,14 @@ Namespace gsol.basededatos
         Function GetMongoCollection(Of T)(Optional ByVal resourceName_ As String = Nothing,
                                                  Optional ByVal rootId_ As Int32? = Nothing) As IMongoCollection(Of T)
 
-        'Function GetMongoCollection(Of T)(ByVal collectiontype_ As Sax.SaxStatements.CollectionTypes,
-        '                                         Optional ByVal rolname_ As IEnlaceDatos.RolNames = IEnlaceDatos.RolNames.bigdata) As IMongoCollection(Of T)
-        'Function GetMongoCollection(Of T)(ByRef imongoClient_ As IMongoClient,
-        '                                         ByVal collectionTypes_ As Sax.SaxStatements.CollectionTypes,
-        '                                         Optional ByVal rolname_ As IEnlaceDatos.RolNames = IEnlaceDatos.RolNames.bigdata) As IMongoCollection(Of T)
-        'Function GetMongoClient(ByVal rolname_ As IEnlaceDatos.RolNames,
-        '                          Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient
 
         Function GetMongoClient(Optional ByVal settingsType_ As Sax.SaxStatements.SettingTypes = Sax.SaxStatements.SettingTypes.Projects) As IMongoClient
+
+
+        '2024, we need this resource for access by dbrolid in sax, 31/08/2024 MOP
+        Function GetMongoClientByRolId(ByVal rol_ As rol,
+                                       ByVal settingsType_ As Sax.SaxStatements.SettingTypes) As IMongoClient
+
 
         Function EjecutaConsultaAsync(ByVal collectionName_ As String,
                                                   ByVal queryDocument_ As QueryDocument,

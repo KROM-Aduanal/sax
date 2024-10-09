@@ -7,7 +7,7 @@
 
          <% If IsPopup = False Then %>
 
-               <GWC:FindbarControl Label="Buscar recámara" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo"/>
+               <GWC:FindbarControl Label="Buscar regla" ID="__SYSTEM_CONTEXT_FINDER" runat="server" OnClick="CargarGajo" OnTextChanged="BuscarGajo" />
 
          <% End If %> 
 
@@ -70,16 +70,79 @@
 
                     <ListControls>
 
+                        
+                        <GWC:CardControl runat="server" ID="ccErrores" Visible="false" CssClass="col-xs-12 col-md-6 mb-5">
+                            <listcontrols>
+                                <asp:Label runat="server" ID="litem1" CssClass="col-xs-12 col-md-12 margin-bottom weight-bold" Font-Size="X-Large" Font-Bold="true" Text="AQUÍ SE MOSTRARÁ EL ERROR1" style="text-align:center; color:#432776"/>
+                                <asp:Label runat="server" ID="litem2" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR2" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem3" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR3" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem4" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR4" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem5" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR5" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem6" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR6" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem7" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR7" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem8" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERRO8" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem9" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR9" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem10" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR10" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem11" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem12" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem13" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem14" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem15" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem16" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem17" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem18" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem19" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem20" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem21" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem22" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem23" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem24" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem25" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem26" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem27" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem28" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem29" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem30" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem31" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem32" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem33" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem34" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem35" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem36" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem37" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem38" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                                <asp:Label runat="server" ID="litem39" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#432776"/>
+                                <asp:Label runat="server" ID="litem40" CssClass="col-xs-12 col-md-12 margin-bottom font-weight-bold" Text="AQUÍ SE MOSTRARÁ EL ERROR11" style="text-align:left; color:#ff6a00"/>
+                            </listcontrols>
+                        </GWC:CardControl> 
+
                         <asp:Panel runat="server" CssClass="col-md-12 col-xs-6" ID="p_formulillas">
 
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesOld"></asp:Label>
 
+                            <div>
+
+                                            <GWC:SelectControl runat="server" CssClass="col-md-2 col-xs-6" ID="scUseType"  SearchBarEnabled="false" LocalSearch="false" Rules="required" visible="true" Label="Tipo de uso" >
+
+                                                     <Options >
+
+                                                               <GWC:SelectOption Value="1" Text="MOTOR DE CÁLCULO"/>
+
+                                                               <GWC:SelectOption Value="2" Text="VALIDACIÓN"/>
+
+                                                               <GWC:SelectOption Value="3" Text="ASISTENCIA"/>
+
+                                                     </Options>
+
+                                           </GWC:SelectControl> 
+                                </div>
+
                             <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_FormulaActual">
 
                                 <div>
 
-                                          <GWC:ButtonControl CssClass="cubo-btn" runat="server" Label="A22" ID="bc_SourceCube"  Visible="true" OnClick="ShowBranchNames"/>
+                                          <GWC:ButtonControl CssClass="cubo-btn" runat="server" ID="bc_SourceCube"  Visible="true" OnClick="ShowBranchNames" OnLoad="ActualizarSlice"/>
 
                                           <GWC:ButtonControl CssClass="cubo-btn-formula" runat="server" ID="bc_Function"  OnClick="CambioContenido" Visible="true" />
 
@@ -145,7 +208,7 @@
 
                                     <GWC:ButtonControl runat="server" Label="Limpiar"  CssClass="iralimpiar" OnClick="LimpiarFormulaCubo" ID="bc_LimpiarFormula"/>
 
-                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPrueba" CssClass="iraformulacabulidad"  OnClick="IrVerificarFormula" Enabled="false"/>
+                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPrueba" CssClass="iraelaborarprueba"  OnClick="IrVerificarFormula" Enabled="false"/>
 
                                 </div>
 
@@ -159,6 +222,23 @@
                         <asp:Panel runat="server" CssClass="col-md-6 col-xs-6" ID="p_actualizacionformula" Visible="False">
                             <%-- DISEÑO COMPONENTE --%>
                             <asp:Label runat="server" Text="Regla" CssClass="fieldset-subtitle" ID="l_RulesNew"></asp:Label>
+
+                           <div>
+
+                                            <GWC:SelectControl runat="server" CssClass="col-md-2 col-xs-6" ID="scUseTypeNew"  SearchBarEnabled="false" LocalSearch="false" Rules="required" visible="true" Label="Tipo de uso" >
+
+                                                     <Options >
+
+                                                               <GWC:SelectOption Value="1" Text="MOTOR DE CÁLCULO"/>
+
+                                                               <GWC:SelectOption Value="2" Text="VALIDACIÓN"/>
+
+                                                               <GWC:SelectOption Value="3" Text="ASISTENCIA"/>
+
+                                                     </Options>
+
+                                           </GWC:SelectControl> 
+                             </div>
 
                             <asp:Panel runat="server" CssClass="wc-cubo-formulas" ID="p_FormulaNueva">
 
@@ -185,7 +265,7 @@
 
                                     <asp:Panel runat="server"  ID="p_userchange" Visible="true"  >
 
-                                         <gwc-userdata ID="algo_" title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
+                                         <gwc-userdata ID="imageuser_" title="<%=_userName%>" Image="<%=_userImage%>" Date="<%=_accionDate%>" ></gwc-userdata>
 
                                     </asp:Panel>
 
@@ -205,7 +285,7 @@
 
                                     <GWC:ButtonControl runat="server" Label="Limpiar"  CssClass="iralimpiar" OnClick="LimpiarFormulaCubo" ID="bc_LimpiarFormulaEditar"/>
 
-                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPruebaEditar" CssClass="iraformulacabulidad"  OnClick="IrVerificarFormula" Enabled="false"/>
+                                    <GWC:ButtonControl runat="server" Label="Elaborar prueba" ID="bc_ElaborarPruebaEditar" CssClass="iraelaborarprueba"  OnClick="IrVerificarFormula" Enabled="false"/>
 
                                 </div>
 
@@ -376,8 +456,6 @@
 
      localStorage.setItem('ValorNuevo', '');
 
-
-
      document.addEventListener('click', function (event) {
 
 
@@ -396,7 +474,7 @@
              bc_EleaborarPrueba_.style.backgroundColor = 'var(--tintColor) ';
 
 
-         if (event.target.parentNode.classList.contains('iraformulacabulidad')) {
+         if (event.target.parentNode.classList.contains('iraelaborarprueba')) {
 
              var feditor_ = document.querySelector('.feditor-formula-actual');
 
@@ -425,9 +503,6 @@
 
 
                  } else {
-
-
-
 
 
                      localStorage.setItem('checarInputs', 'SI');
@@ -539,10 +614,10 @@
              }
 
 
-             var bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
+             var bc_irprobarformula_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPrueba_bc_ElaborarPrueba');
 
-             if (!bc_ircabulidad_)
-                 bc_ircabulidad_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPruebaEditar_bc_ElaborarPruebaEditar');
+             if (!bc_irprobarformula_)
+                 bc_irprobarformula_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_ElaborarPruebaEditar_bc_ElaborarPruebaEditar');
 
 
              //console.log(bc_ircabulidad_);
@@ -551,9 +626,9 @@
 
                  localStorage.setItem('contenidoFEditor', '');
 
-                 bc_ircabulidad_.style.backgroundColor = '#cecdcd';
+                 bc_irprobarformula_.style.backgroundColor = '#cecdcd';
 
-                 bc_ircabulidad_.disabled = true;
+                 bc_irprobarformula_.disabled = true;
 
              }
              else {
@@ -570,9 +645,9 @@
                      bc_limpiar_.disabled = true;
 
 
-                     bc_ircabulidad_.style.backgroundColor = '#cecdcd';
+                     bc_irprobarformula_.style.backgroundColor = '#cecdcd';
 
-                     bc_ircabulidad_.disabled = true;
+                     bc_irprobarformula_.disabled = true;
 
                      var bc_verificado_ = document.getElementById('contentBody___SYSTEM_MODULE_FORM_fscformulas_bc_Verificado_bc_Verificado');
 
@@ -600,9 +675,9 @@
 
                      localStorage.setItem('ValorNuevo', valorNew);
 
-                     bc_ircabulidad_.style.backgroundColor = 'var(--tintColor)';
+                     bc_irprobarformula_.style.backgroundColor = 'var(--tintColor)';
 
-                     bc_ircabulidad_.disabled = false;
+                     bc_irprobarformula_.disabled = false;
 
                  }
                  //bc_ircabulidad_.style.backgroundImage = 'url("/FrontEnd/Librerias/Krom/imgs/matrazc.png")';
