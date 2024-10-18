@@ -314,16 +314,6 @@ Namespace Syn.Documento
                                    Item(CA_VALOR_DOLARES, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                    Item(CA_VALOR_ADUANA, Entero, longitud_:=12),
                                    Item(CA_PRECIO_PAGADO_VALOR_COMERCIAL, Entero, longitud_:=12),
-                                   Item(CA_VALOR_SEGUROS, Entero, longitud_:=12),
-                                   Item(CA_SEGUROS, Entero, longitud_:=12),
-                                   Item(CA_FLETES, Entero, longitud_:=12),
-                                   Item(CA_EMBALAJES, Entero, longitud_:=12),
-                                   Item(CA_OTROS_INCREMENTABLES, Entero, longitud_:=12),
-                                   Item(CA_TRANSPORTE_DECREMENTABLES, Entero, longitud_:=12),
-                                   Item(CA_SEGURO_DECREMENTABLES, Entero, longitud_:=12),
-                                   Item(CA_CARGA_DECREMENTABLES, Entero, longitud_:=12),
-                                   Item(CA_DESCARGA_DECREMENTABLES, Entero, longitud_:=12),
-                                   Item(CA_OTROS_DECREMENTABLES, Entero, longitud_:=12),
                                    Item(CA_ACUSE_ELECTRONICO_VALIDACION, Texto, longitud_:=8),
                                    Item(CA_CODIGO_BARRAS, Texto, longitud_:=6), 'Revisar captura dice el ConstructorCampoPedimento64
                                    Item(CA_CLAVE_SAD, Texto, longitud_:=3),
@@ -375,7 +365,36 @@ Namespace Syn.Documento
                                Item(CA_CODIGO_POSTAL_IOE, Texto, longitud_:=10),
                                Item(CA_MUNICIPIO_CIUDAD_IOE, Texto, longitud_:=80),
                                Item(CA_ENTIDAD_FEDERATIVA_IOE, Texto, longitud_:=3),
-                               Item(CA_PAIS_IOE, Texto, longitud_:=3)
+                               Item(CA_PAIS_IOE, Texto, longitud_:=3),
+                               Item(CA_VALOR_SEGUROS, Entero, longitud_:=12),
+                               Item(CA_SEGUROS, Entero, longitud_:=12),
+                               Item(CP_MONEDA_SEGUROS, Texto, longitud_:=3),
+                               Item(CP_FACTOR_SEGUROS, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_FLETES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_FLETES, Texto, longitud_:=3),
+                               Item(CP_FACTOR_FLETES, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_EMBALAJES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_EMBALAJES, Texto, longitud_:=3),
+                               Item(CP_FACTOR_EMBALAJES, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_OTROS_INCREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_OTROS_INCREMENTABLES, Texto, longitud_:=3),
+                               Item(CP_FACTOR_OTROS_INCREMENTABLES, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_TRANSPORTE_DECREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_TRASNPORTE, Texto, longitud_:=3),
+                               Item(CP_FACTOR_TRANSPORTE, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_SEGURO_DECREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_SEGUROS_DECREMENTABLES, Texto, longitud_:=3),
+                               Item(CP_FACTOR_SEGUROS_DECREMENTABLES, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_CARGA_DECREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_CARGA, Texto, longitud_:=3),
+                               Item(CP_FACTOR_CARGA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_DESCARGA_DECREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_DESCARGA, Texto, longitud_:=3),
+                               Item(CP_FACTOR_DESCARGA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_OTROS_DECREMENTABLES, Entero, longitud_:=12),
+                               Item(CP_MONEDA_OTROS_DECREMENTABLES, Texto, longitud_:=3),
+                               Item(CP_FACTOR_OTROS_DECREMENTABLES, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CA_CVE_TIPO_OPERACION, Entero, longitud_:=1)
                          }
 
                 ' Datos generales del pedimento complementario
@@ -401,7 +420,9 @@ Namespace Syn.Documento
                                Item(CA_CONTRIBUCION, Texto, longitud_:=7),
                                Item(CA_CVE_TIPO_TASA, Entero, longitud_:=2),
                                Item(CA_TASA, Real, cantidadEnteros_:=5, cantidadDecimales_:=1),
-                               Item(CA_CVE_CONCEPTO_NIVEL_PEDIMENTO, Entero, longitud_:=2)
+                               Item(CA_CVE_CONCEPTO_NIVEL_PEDIMENTO, Entero, longitud_:=2),
+                               Item(CP_INPC_MES_ANTERIOR_DOF, Entero, longitud_:=2),'Revisar tipos y longitudes
+                               Item(CP_INPC_MES_ANTIGUO_DOF, Entero, longitud_:=2)
                          }
 
                         ' Cuadro de liquidación
@@ -422,7 +443,10 @@ Namespace Syn.Documento
                                Item(CA_DESCRIPCION_CONCEPTO, Texto, longitud_:=50),
                                Item(CA_FORMA_PAGO, Entero, longitud_:=3),
                                Item(CA_IMPORTE, Entero, longitud_:=12),
-                               Item(CA_CVE_CONCEPTO_NIVEL_PEDIMENTO, Entero, longitud_:=2)
+                               Item(CA_CVE_CONCEPTO_NIVEL_PEDIMENTO, Entero, longitud_:=2),
+                               Item(CA_EFECTIVO, Entero, longitud_:=12),
+                               Item(CA_OTROS, Entero, longitud_:=12),
+                               Item(CA_TOTAL, Entero, longitud_:=12)
                          }
 
                         ' Informe de la industria automotriz
@@ -466,6 +490,7 @@ Namespace Syn.Documento
                                Item(CA_MUNICIPIO_CIUDAD_POC, Texto, longitud_:=80),
                                Item(CA_ENTIDAD_FEDERATIVA_POC, Texto, longitud_:=3),
                                Item(CA_PAIS_POC, Texto, 3),
+                               Item(CA_FACTOR_MONEDA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
                                Item(SeccionesPedimento.ANS13, False),
                                Item(CamposGlobales.CP_IDENTITY, Entero)
                          }
@@ -508,7 +533,6 @@ Namespace Syn.Documento
                                Item(CA_INCOTERM, Texto, longitud_:=3),
                                Item(CA_CVE_MONEDA_FACTURA, Texto, longitud_:=3),
                                Item(CA_MONTO_MONEDA_FACTURA, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
-                               Item(CA_FACTOR_MONEDA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
                                Item(CA_MONTO_USD, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_NUMERO_ACUSE_DE_VALOR, Texto, longitud_:=40),
                                Item(CA_ACUSE_VALOR, Texto, longitud_:=20)
@@ -664,6 +688,7 @@ Namespace Syn.Documento
                                Item(CA_CVE_PAIS_DESTINO_PARTIDA, Texto, longitud_:=3),
                                Item(CA_DESCRIPCION_MERCANCIA_PARTIDA, Texto, longitud_:=250),
                                Item(CA_VALOR_ADUANA_PARTIDA, Entero, longitud_:=12),
+                               Item(CA_VALOR_DOLAR_PARTIDA, Entero, longitud_:=12),
                                Item(CA_PRECIO_PAGADO_PARTIDA, Entero, longitud_:=12),
                                Item(CA_VALOR_COMERCIAL_PARTIDA, Entero, longitud_:=12),
                                Item(CA_PRECIO_UNITARIO_PARTIDA, Real, cantidadEnteros_:=10, cantidadDecimales_:=5),
@@ -677,6 +702,8 @@ Namespace Syn.Documento
                                Item(CA_ENTIDAD_FEDERATIVA_DESTINO, Texto, longitud_:=3),
                                Item(CA_ENTIDAD_FEDERATIVA_COMPRADOR, Texto, longitud_:=3),
                                Item(CA_ENTIDAD_FEDERATIVA_VENDEDOR, Texto, longitud_:=3),
+                               Item(CP_VALOR_FACTURA_PARTIDA, Texto, longitud_:=3),
+                               Item(CP_PRECIO_REFERENCIA_PARTIDA_DOF, Texto, longitud_:=3),
                                Item(CamposGlobales.CP_IDENTITY, Entero),
                                Item(SeccionesPedimento.ANS25, True),
                                Item(SeccionesPedimento.ANS26, True),
@@ -698,7 +725,7 @@ Namespace Syn.Documento
                                Item(CA_KILOMETRAJE_PARTIDA, Entero, longitud_:=6)
                          }
 
-                        ' Regulaciones y restricciones no arancelarias
+                        ' Regulaciones y restricciones no arancelarias (Nivel Partida)
                 Case SeccionesPedimento.ANS26
 
                     Return New List(Of Nodo) From {
@@ -740,15 +767,18 @@ Namespace Syn.Documento
                                Item(CA_CVE_CONTRIBUCION_PARTIDA, Texto, longitud_:=7),
                                Item(CA_TASA_PARTIDA, Real),
                                Item(CA_CVE_TIPO_TASA_PARTIDA, Entero, longitud_:=2),
-                               Item(CA_FORMA_PAGO_PARTIDA, Entero, longitud_:=3),
-                               Item(CA_IMPORTE_PARTIDA, Entero, longitud_:=12),
                                Item(CA_CVE_CONTRIBUCION_NIVEL_PARTIDA, Entero, longitud_:=2)
                          }
 
                         ' Contribuciones a nivel partida
                 Case SeccionesPedimento.ANS30
 
-                    Return New List(Of Nodo)
+                    Return New List(Of Nodo) From {
+                               Item(CA_CVE_CONTRIBUCION_PARTIDA, Texto, longitud_:=7),
+                               Item(CA_CVE_CONTRIBUCION_NIVEL_PARTIDA, Entero, longitud_:=2),
+                               Item(CA_FORMA_PAGO_PARTIDA, Entero, longitud_:=3),
+                               Item(CA_IMPORTE_PARTIDA, Entero, longitud_:=12)
+                        }
 
                         ' Partidas del informe de la industria automotriz
                 Case SeccionesPedimento.ANS31
@@ -830,7 +860,10 @@ Namespace Syn.Documento
                                Item(CA_DIFERENCIA_TOTAL, Entero, longitud_:=7),
                                Item(CA_CONCEPTO_DIFERENCIA_CONTRIBUCION, Texto, longitud_:=7),
                                Item(CA_CVE_CONCEPTO_DIFERENCIA_CONTRIBUCION, Entero, longitud_:=2),
-                               Item(CA_FORMA_PAGO_DIFERENCIAS, Entero, longitud_:=2)
+                               Item(CA_FORMA_PAGO_DIFERENCIAS, Entero, longitud_:=2),
+                               Item(CP_RECTIFICACIONES_CONTRIBUCION_ORIGINAL, Texto, longitud_:=5),'Revisar tipos y longitudes
+                               Item(CP_RECTIFICACIONES_CVE_CONTRIBUCION_ORIGINAL, Entero, longitud_:=2),
+                               Item(CP_RECTIFICACIONES_FORMA_PAGO_ORIGINAL, Entero, longitud_:=2)
                     }
 
                         ' Prueba suficiente
