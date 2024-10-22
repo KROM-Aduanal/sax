@@ -23,6 +23,7 @@ Namespace Syn.Nucleo
         Enum SecuenciasComercioExterior
             ProveedoresOperativos
             FacturasComerciales
+            Pedimentos
         End Enum
 
         Enum SeccionesPedimento
@@ -367,13 +368,12 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("CANTIDAD UMT")> CA_CANTIDAD_UMT_PARTIDA = 116
             <EnumMember> <Description("P. VENDEDOR.")> CA_CVE_PAIS_VENDEDOR_PARTIDA = 117
             <EnumMember> <Description("P. ORIGEN.")> CA_CVE_PAIS_ORIGEN_PARTIDA = 118
-            <EnumMember> <Description("P. COMPRADOR.")> CA_CVE_PAIS_COMPRADOR_PARTIDA = 296
-            <EnumMember> <Description("P. DESTINO.")> CA_CVE_PAIS_DESTINO_PARTIDA = 297
+            <EnumMember> <Description("P. COMPRADOR.")> CA_CVE_PAIS_COMPRADOR_PARTIDA = 248
+            <EnumMember> <Description("P. DESTINO.")> CA_CVE_PAIS_DESTINO_PARTIDA = 250
             <EnumMember> <Description("DESCRIPCION (RENGLONES VARIABLES SEGUN SE REQUIERA).")> CA_DESCRIPCION_MERCANCIA_PARTIDA = 119
             <EnumMember> <Description("VAL. ADU.")> CA_VALOR_ADUANA_PARTIDA = 120
             <EnumMember> <Description("IMP. PRECIO PAG.")> CA_PRECIO_PAGADO_PARTIDA = 121
-            <EnumMember> <Description("VAL. USD.")> CA_VALOR_DOLAR_PARTIDA = 298
-            <EnumMember> <Description("VALOR COMERCIAL.")> CA_VALOR_COMERCIAL_PARTIDA = 299
+            <EnumMember> <Description("VALOR COMERCIAL.")> CA_VALOR_COMERCIAL_PARTIDA = 251
             <EnumMember> <Description("PRECIO UNIT.")> CA_PRECIO_UNITARIO_PARTIDA = 122
             <EnumMember> <Description("VAL. AGREG.")> CA_VALOR_AGREGADO_PARTIDA = 123
             <EnumMember> <Description("MARCA.")> CA_MARCA_PARTIDA = 124
@@ -484,7 +484,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("CANTIDAD DE REGISTROS")> CA_CANTIDAD_REGISTROS = 229
             <EnumMember> <Description("CLAVE DEL PREVALIDADOR")> CA_CVE_PREVALIDADOR = 230
             <EnumMember> <Description("NUMERO DE PEDIMENTO 7 DIGITOS")> CA_NUMERO_PEDIMENTO = 231
-            <EnumMember> <Description("ANIO VALIDACIÓN A 2 DÍGITOS")> CA_ANIO_VALIDACION_2 = 232
+            <EnumMember> <Description("PARTIDA - VALOR DOLAR PARTIDA")> CA_VALOR_DOLAR_PARTIDA = 232 'Se usa este ID el anterior era el año de validación a dos digitos.
             <EnumMember> <Description("VALOR UNITARIO DEL TITULO")> CA_VALOR_UNITARIO_TITULO_PEDIMENTO = 233
             <EnumMember> <Description("PATENTE ORIGINAL")> CA_PATENTE_ORIGINAL = 234
             <EnumMember> <Description("IMPORTE DEL GRAVAMEN")> CA_IMPORTE_GRAVAMEN_COMPENSACION = 235
@@ -502,7 +502,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("NUMERO DE ACUSE DE VALOR")> CA_NUMERO_ACUSE_DE_VALOR = 247
             <EnumMember> <Description("CLAVE VINCULACION")> CA_CVE_VINCULACION = 249
             <EnumMember> <Description("NUMERO DE PEDIMENTO ORIGINAL 7 DIGITOS")> CA_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS = 252
-            <EnumMember> <Description("ANIO VALIDACION 2 DIGITOS ORIGINAL")> CA_ANIO_VALIDACION_2_ORIGINAL = 253
+            <EnumMember> <Description("SIN USAR 4")> CA_SIN_USAR4 = 253
             <EnumMember> <Description("ANIO VALIDACION ORIGINAL")> CA_ANIO_VALIDACION_ORIGINAL = 254
             <EnumMember> <Description("ADUANA DESPACHO ORIGINAL")> CA_ADUANA_DESPACHO_ORIGINAL = 255
             <EnumMember> <Description("ADUANA DESPACHO ORIGINAL 2 DIGITOS")> CA_ADUANA_DESPACHO_ORIGINAL_2 = 256
@@ -527,21 +527,21 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("FECHA FACTURACIÓN")> CA_FECHA_FACTURACION = 274
 
             <EnumMember> <Description("DESCRIPCIÓN CONCEPTO")> CA_DESCRIPCION_CONCEPTO = 275
-            <EnumMember> <Description("COVE")> CA_ACUSE_VALOR = 276
+            <EnumMember> <Description("SIN USAR")> CA_SIN_USAR = 276
 
             <EnumMember> <Description("PAGOS VIRTUALES - FORMA DE PAGO")> CA_PAGOS_VIRTUALES_FORMA_PAGO = 277
             <EnumMember> <Description("RECTIFICACIONES - FECHA DE OPERACION ORIGINAL.")> CA_RECTIFICACION_FECHA_PEDIMENTO_ORIGINAL = 278
             <EnumMember> <Description("RECTIFICACIONES - CVE. PEDIMENTO ORIGINAL.")> CA_RECTIFICACION_CVE_PEDIMENTO_ORIGINAL = 279
             <EnumMember> <Description("RECTIFICACIONES - PATENTE ORIGINAL")> CA_RECTIFICACION_PATENTE_ORIGINAL = 280
             <EnumMember> <Description("RECTIFICACIONES - NUMERO DE PEDIMENTO ORIGINAL 7 DIGITOS")> CA_RECTIFICACION_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS = 281
-            <EnumMember> <Description("RECTIFICACIONES - ANIO VALIDACION 2 DIGITOS ORIGINAL")> CA_RECTIFICACION_ANIO_VALIDACION_2_ORIGINAL = 282
+            <EnumMember> <Description("RECTIFICACIONES - SIN USAR")> CA_SIN_USAR2 = 282
             <EnumMember> <Description("RECTIFICACIONES - ANIO VALIDACION ORIGINAL")> CA_RECTIFICACION_ANIO_VALIDACION_ORIGINAL = 283
             <EnumMember> <Description("RECTIFICACIONES - ADUANA DESPACHO ORIGINAL")> CA_RECTIFICACION_ADUANA_DESPACHO_ORIGINAL = 284
             <EnumMember> <Description("RECTIFICACIONES - ADUANA DESPACHO ORIGINAL 2 DIGITOS")> CA_RECTIFICACION_ADUANA_DESPACHO_ORIGINAL_2 = 285
             <EnumMember> <Description("COMPENSACIONES - CONTRIB")> CA_COMPENSACION_CONTRIBUCION = 286
             <EnumMember> <Description("COMPENSACIONES - NUM. PEDIMENTO ORIGINAL COMPLETO")> CA_COMPENSACION_NUMERO_PEDIMENTO_ORIGINAL_COMPLETO = 287
             <EnumMember> <Description("COMPENSACIONES - ANIO VALIDACION ORIGINAL")> CA_COMPENSACION_ANIO_VALIDACION_ORIGINAL = 288
-            <EnumMember> <Description("COMPENSACIONES - ANIO VALIDACION 2 DIGITOS ORIGINAL")> CA_COMPENSACION_ANIO_VALIDACION_2_ORIGINAL = 289
+            <EnumMember> <Description("COMPENSACIONES - SIN USAR")> CA_SIN_USAR3 = 289
             <EnumMember> <Description("COMPENSACIONES - PATENTE ORIGINAL")> CA_COMPENSACION_PATENTE_ORIGINAL = 290
             <EnumMember> <Description("COMPENSACIONES - ADUANA DESPACHO ORIGINAL")> CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL = 291
             <EnumMember> <Description("COMPENSACIONES - ADUANA DESPACHO ORIGINAL 2 DIGITOS")> CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL_2 = 292
@@ -598,6 +598,7 @@ Namespace Syn.Nucleo
             <EnumMember> <Description("INPC DEL MES ANTERIOR SEGÚN EL DOF")> CP_INPC_MES_ANTERIOR_DOF = 1039
             <EnumMember> <Description("INPC DEL MES MÁS ANTIGUO AL PERIODO ANTERIOR SEGÚN EL DOF")> CP_INPC_MES_ANTIGUO_DOF = 1040
             <EnumMember> <Description("PARTIDA - PRECIO DE REFERENCIA POR PARTIDA SEGÚN EL DOF")> CP_PRECIO_REFERENCIA_PARTIDA_DOF = 1041
+            <EnumMember> <Description("AÑO EN CURSO")> CP_ANIO_CURSO = 1042
 
             '#############################  CAMPOS ÚNICOS PROPIOS ##################################3
 
