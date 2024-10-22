@@ -320,7 +320,7 @@ Namespace Syn.Documento
                                    Item(CA_MARCAS_NUMEROS_TOTAL_BULTOS, Texto), 'No tiene longitud en ConstructorCampoPedimento64
                                    Item(CA_CERTIFICACION, Texto, longitud_:=6), 'Revisar captura dice el ConstructorCampoPedimento64
                                    Item(CA_CLAVE_SAD, Texto, longitud_:=3),
-                                   Item(CA_ANIO_VALIDACION, Texto, longitud_:=2),
+                                   Item(CA_ANIO_VALIDACION, Texto, longitud_:=4),
                                    Item(CA_ADUANA_SIN_SECCION, Texto, longitud_:=2),
                                    Item(CA_CVE_TIPO_OPERACION, Entero, longitud_:=1),
                                    Item(CA_FECHA_VALIDACION, Fecha),
@@ -336,7 +336,8 @@ Namespace Syn.Documento
                                    Item(CA_ACUSE_ELECTRONICO_PAGO, Texto, longitud_:=8),
                                    Item(CA_ARCHIVO_PAGO, Texto, longitud_:=16),
                                    Item(CP_TIPO_PEDIMENTO, Entero, longitud_:=2),
-                                   Item(CP_RUTA_VALIDACION, Entero, longitud_:=2)
+                                   Item(CP_RUTA_VALIDACION, Entero, longitud_:=2),
+                                   Item(CP_ANIO_CURSO, Texto, longitud_:=4)
                                    }
 
                 ' Encabezado para páginas secundarias del pedimento
@@ -482,7 +483,6 @@ Namespace Syn.Documento
                                Item(CA_DOMICILIO_POC, Texto, longitud_:=190),
                                Item(CA_VINCULACION, Texto, longitud_:=2),
                                Item(CA_CVE_VINCULACION, Entero, longitud_:=1),
-                               Item(CP_APLICA_ENAJENACION, Booleano),
                                Item(CA_CALLE_POC, Texto, longitud_:=80),
                                Item(CA_NUMERO_INTERIOR_POC, Texto, longitud_:=10),
                                Item(CA_NUMERO_EXTERIOR_POC, Texto, longitud_:=10),
@@ -490,7 +490,6 @@ Namespace Syn.Documento
                                Item(CA_MUNICIPIO_CIUDAD_POC, Texto, longitud_:=80),
                                Item(CA_ENTIDAD_FEDERATIVA_POC, Texto, longitud_:=3),
                                Item(CA_PAIS_POC, Texto, 3),
-                               Item(CA_FACTOR_MONEDA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
                                Item(SeccionesPedimento.ANS13, False),
                                Item(CamposGlobales.CP_IDENTITY, Entero)
                          }
@@ -535,7 +534,8 @@ Namespace Syn.Documento
                                Item(CA_MONTO_MONEDA_FACTURA, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_MONTO_USD, Real, cantidadEnteros_:=12, cantidadDecimales_:=2),
                                Item(CA_NUMERO_ACUSE_DE_VALOR, Texto, longitud_:=40),
-                               Item(CA_ACUSE_VALOR, Texto, longitud_:=20)
+                               Item(CA_FACTOR_MONEDA, Real, cantidadEnteros_:=2, cantidadDecimales_:=5),
+                               Item(CP_APLICA_ENAJENACION, Booleano)
                          }
 
                         ' Fechas
@@ -622,7 +622,6 @@ Namespace Syn.Documento
                                Item(CA_FECHA_PEDIMENTO_ORIGINAL, Fecha),
                                Item(CA_CVE_PEDIMENTO_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=4),
-                               Item(CA_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_PATENTE_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL, Texto, longitud_:=3),
                                Item(CA_ADUANA_DESPACHO_ORIGINAL_2, Texto, longitud_:=2),
@@ -642,7 +641,6 @@ Namespace Syn.Documento
                                Item(CA_IMPORTE_GRAVAMEN_COMPENSACION, Entero, longitud_:=12),
                                Item(CA_CVE_CONCEPTO_COMPENSACION, Entero, longitud_:=2),
                                Item(CA_COMPENSACION_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=4),
-                               Item(CA_COMPENSACION_ANIO_VALIDACION_2_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_COMPENSACION_PATENTE_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL, Texto, longitud_:=3),
                                Item(CA_COMPENSACION_ADUANA_DESPACHO_ORIGINAL_2, Texto, longitud_:=2),
@@ -710,6 +708,7 @@ Namespace Syn.Documento
                                Item(SeccionesPedimento.ANS27, True),
                                Item(SeccionesPedimento.ANS28, True),
                                Item(SeccionesPedimento.ANS29, True),
+                               Item(SeccionesPedimento.ANS30, True),
                                Item(SeccionesPedimento.ANS32, True),
                                Item(SeccionesPedimento.ANS33, True),
                                Item(SeccionesPedimento.ANS34, True),
@@ -842,7 +841,6 @@ Namespace Syn.Documento
                                Item(CA_RECTIFICACION_CVE_PEDIMENTO_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_RECTIFICACION_PATENTE_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_RECTIFICACION_NUMERO_PEDIMENTO_ORIGINAL_7_DIGITOS, Texto, longitud_:=7),
-                               Item(CA_RECTIFICACION_ANIO_VALIDACION_2_ORIGINAL, Texto, longitud_:=2),
                                Item(CA_RECTIFICACION_ANIO_VALIDACION_ORIGINAL, Texto, longitud_:=4),
                                Item(CA_RECTIFICACION_ADUANA_DESPACHO_ORIGINAL, Texto, longitud_:=3),
                                Item(CA_RECTIFICACION_ADUANA_DESPACHO_ORIGINAL_2, Texto, longitud_:=2),
