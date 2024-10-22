@@ -149,6 +149,15 @@ Partial Public Class Ges022_ProcesamientoElectronicoDocumentos
     Protected WithEvents fsDetallesDocumentos As Global.Gsol.Web.Components.FieldsetControl
 
     '''<summary>
+    '''Control panelCarga.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents panelCarga As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''Control scTipoDocumentos.
     '''</summary>
     '''<remarks>
@@ -185,6 +194,15 @@ Partial Public Class Ges022_ProcesamientoElectronicoDocumentos
     Protected WithEvents lbButtonXML As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
+    '''Control areaDetalleDocumento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents areaDetalleDocumento As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
     '''Control lbDetalleDocumentosProcesados.
     '''</summary>
     '''<remarks>
@@ -203,29 +221,56 @@ Partial Public Class Ges022_ProcesamientoElectronicoDocumentos
     Protected WithEvents ccDocumentosProcesados As Global.Gsol.Web.Components.CatalogControl
 
     '''<summary>
-    '''Control icNombreArchivo.
+    '''Control icNombreDocumento.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icNombreArchivo As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icNombreDocumento As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icTipo.
+    '''Control icFechaProceso.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icTipo As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icFechaProceso As Global.Gsol.Web.Components.InputControl
 
     '''<summary>
-    '''Control icEstado.
+    '''Control icEmisor.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents icEstado As Global.Gsol.Web.Components.InputControl
+    Protected WithEvents icEmisor As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icPorcentaje.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icPorcentaje As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control icEstatus.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents icEstatus As Global.Gsol.Web.Components.InputControl
+
+    '''<summary>
+    '''Control btnGenerarFactura.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGenerarFactura As Global.System.Web.UI.WebControls.Panel
 End Class

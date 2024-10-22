@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\sax\\projects\\synapsis\\dev\\main\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|C:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|C:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|c:\\sax\\projects\\synapsis\\dev\\main\\frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8BF87BCB-579F-4244-8E5A-568F08C1756C}|KromSAAI.vbproj|solutionrelative:frontend\\modulos\\traficoaa\\procesamientoelectronicodocumentos\\ges022_procesamientoelectronicodocumentos.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Ges022_ProcesamientoElectronicoDocumentos.aspx",
               "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx",
               "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx",
@@ -107,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Ges022_ProcesamientoElectronicoDocumentos.aspx.designer.vb",
               "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.designer.vb",
               "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.designer.vb",
@@ -120,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Ges022_ProcesamientoElectronicoDocumentos.aspx.vb",
               "DocumentMoniker": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb",
               "RelativeDocumentMoniker": "FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb",
               "ToolTip": "C:\\sax\\projects\\synapsis\\dev\\main\\FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb",
               "RelativeToolTip": "FrontEnd\\Modulos\\TraficoAA\\ProcesamientoElectronicoDocumentos\\Ges022_ProcesamientoElectronicoDocumentos.aspx.vb",
-              "ViewState": "AQIAAN0AAAAAAAAAAAAAwN8AAAALAAAA",
+              "ViewState": "AQIAADICAAAAAAAAAAAYwDsCAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-09-30T19:09:30.223Z",
               "EditorCaption": ""
